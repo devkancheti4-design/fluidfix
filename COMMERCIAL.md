@@ -13,7 +13,7 @@ proprietary product, offering it inside a closed SaaS, or any deployment where
 the source-offer obligation is unacceptable — a commercial license removes
 those obligations.
 
-Contact: kanchetiindu9@gmail.com with:
+Contact: devkancheti4@gmail.com with:
 
 1. how fluidfix will be deployed (product, internal tool, SaaS),
 2. approximate scale (developers, repositories, or repair volume),
