@@ -110,6 +110,20 @@
   .expr { font-family:"IBM Plex Mono",monospace; color:var(--teal); font-size:.8rem;
           margin-top:.7rem; overflow-x:auto; white-space:nowrap; }
 
+  .gwrap { overflow-x:auto; border:1px solid var(--line); border-radius:12px;
+           background:var(--panel); margin-top:2rem; }
+  .gtable { border-collapse:collapse; width:100%; font-size:.88rem; min-width:44rem; }
+  .gtable th { font-family:"IBM Plex Mono",monospace; font-size:.68rem; font-weight:600;
+               text-transform:uppercase; letter-spacing:.1em; color:var(--muted);
+               text-align:left; padding:.75rem 1rem; border-bottom:1px solid var(--line); }
+  .gtable td { padding:.7rem 1rem; border-bottom:1px solid var(--line); color:var(--muted);
+               vertical-align:top; }
+  .gtable tr:last-child td { border-bottom:none; }
+  .gtable .r { font-family:"IBM Plex Mono",monospace; white-space:nowrap; }
+  .gtable .ok { color:var(--teal); font-weight:600; }
+  .gtable .safe { color:var(--amber); font-weight:600; }
+  .gtable td b { color:var(--ink); font-weight:600; }
+
   .price-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));
                 gap:1.1rem; margin-top:2rem; }
   .price { background:var(--panel); border:1px solid var(--line); border-radius:14px;
@@ -306,6 +320,36 @@ $ echo $?
   an unattended repair tool is only trustworthy if its failure mode is a loud "not this one," never a
   silent wrong edit. Measured record across every test: many repairs, <b style="color:var(--teal)">zero
   wrong ones</b>.</p>
+</div></section>
+
+<section id="proof"><div class="wrap">
+  <p class="eyebrow">one example, measured</p>
+  <h2>Teach a class once. Here's exactly how far that goes.</h2>
+  <p class="lead">Each class was taught from <b>one</b> worked example, then tested on
+  <b>different, held-out bugs</b> of the same class. These results are enforced as tests in the
+  repo's CI — if they stop being true, the build goes red.</p>
+  <div class="gwrap"><table class="gtable">
+    <tr><th>Class shape</th><th>Held-out bugs</th><th>Result</th></tr>
+    <tr><td><b>Rule-shaped</b> — flipped <span class="mono">+/−</span>, comparison strictness,
+        off-by-one literals, missing <span class="mono">.get</span> default…</td>
+      <td class="r">11 bugs · 4 classes</td>
+      <td class="ok">11/11 repaired byte-exact</td></tr>
+    <tr><td><b>Value-shaped, repo-searchable</b> — the wrong attribute, name, or constant, where
+        the correct value exists <b>somewhere in your repo</b>: fluidfix mines the candidates
+        (bounded at 32) and your suite judges each one. One registration covered
+        <span class="mono">.name→.id</span> and <span class="mono">.count→.total</span> —
+        different values, same class.</td>
+      <td class="r">held-out set</td>
+      <td class="ok">repaired byte-exact</td></tr>
+    <tr><td><b>Value not in the repo</b> — the right answer was a computation that exists nowhere
+        in the codebase.</td>
+      <td class="r">1 case</td>
+      <td class="safe">every candidate failed → refused, tree byte-identical</td></tr>
+  </table></div>
+  <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">The contract underneath all
+  three rows: fluidfix has <b style="color:var(--ink)">never made a wrong repair</b> — every fix
+  passes your full suite or is rolled back byte-for-byte, and what it can't prove, it refuses.
+  Precision is bounded by your suite's strength, which is also why it rewards teams that test.</p>
 </div></section>
 
 <section id="students"><div class="wrap">
