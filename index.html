@@ -489,23 +489,7 @@ jobs:
       msg.textContent = "Almost done — your email app just opened with the reservation pre-filled. Press send there.";
       window.location.href = mailto;
     }
-    (async function () {
-      try {
-        var artifact = window.claude && await window.claude.use("artifact");
-        if (!artifact) return fallback();
-        var next = JSON.parse(JSON.stringify(state));
-        next.bookings.push(b);
-        var marker = '<script type="application/json" id="prebook-state">';
-        var start = pristine.indexOf(marker);
-        var end = pristine.indexOf("<\/script>", start);
-        if (start < 0 || end < 0) return fallback();
-        var html = pristine.slice(0, start + marker.length) +
-                   JSON.stringify(next) + pristine.slice(end);
-        await artifact.publish(html);
-        msg.className = "ok";
-        msg.textContent = "Reserved. You're in the first-ten cohort — we'll email you when checkout opens.";
-      } catch (e) { fallback(); }
-    })();
+    fallback();
   });
 })();
 </script>
