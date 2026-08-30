@@ -33,16 +33,9 @@ class MechanicalObserver:
         for p in packets:
             obs = []
             for l in p.lines:
-                line = p.src_lines[l - 1]
-                kinds = []
-                if KINDS[0][2].search(line):
-                    kinds.append(0)
-                if KINDS[1][2].search(line):
-                    kinds.append(1)
-                if KINDS[2][2].search(line):
-                    kinds += [2, 3]
-                elif KINDS[3][2].search(line):
-                    kinds.append(3)
+                line = p.src_lines[l - 1].rstrip("\r")
+                kinds = [k for k, (_, _, sig) in sorted(KINDS.items())
+                         if sig.search(line)]
                 if kinds:
                     obs.append(Observation(lineno=l, kinds=kinds))
             out.append(obs)
@@ -118,13 +111,19 @@ class ClaudeObserver:
         kwargs = dict(model=self.model, max_tokens=self.max_tokens,
                       output_config=fmt,
                       messages=[{"role": "user", "content": prompt}])
-        import anthropic
         if self.fallbacks:
+            # SDK import only on this path: an injected client with
+            # fallbacks=False must work without the anthropic package.
+            try:
+                import anthropic
+                bad_request = anthropic.BadRequestError
+            except ModuleNotFoundError:
+                bad_request = ()
             try:
                 return self.client.beta.messages.create(
                     betas=["server-side-fallback-2026-07-01"],
                     fallbacks="default", **kwargs)
-            except anthropic.BadRequestError:
+            except bad_request:
                 pass  # beta not available here — fall through to plain call
         return self.client.messages.create(**kwargs)
 
@@ -135,14 +134,28 @@ class ClaudeObserver:
             raise RuntimeError(f"observer request refused: "
                                f"{getattr(det, 'explanation', 'no details')}")
         self.last_usage = getattr(response, "usage", None)
-        text = next(b.text for b in response.content if b.type == "text")
-        raw = {o["id"]: o for o in json.loads(text)["observations"]}
+        stop = getattr(response, "stop_reason", None)
+        if stop == "max_tokens":
+            raise RuntimeError("observer response truncated at max_tokens="
+                               f"{self.max_tokens} — raise max_tokens or send "
+                               "fewer packets per call")
+        text = next((b.text for b in response.content if b.type == "text"), None)
+        if text is None:
+            raise RuntimeError(f"observer returned no text block (stop_reason={stop})")
+        try:
+            raw = {o["id"]: o for o in json.loads(text)["observations"]}
+        except (json.JSONDecodeError, KeyError, TypeError) as e:
+            raise RuntimeError(f"observer returned unparseable output "
+                               f"(stop_reason={stop}): {e}") from e
+        missing = [i for i in range(len(packets)) if i not in raw]
+        if missing:
+            # a failed observer round trip must not masquerade as an honest
+            # refusal — the ids are echoed from the prompt and must all match
+            raise RuntimeError(f"observer echoed wrong bug ids: missing {missing}, "
+                               f"got {sorted(raw)}")
         out = []
         for i, _ in enumerate(packets):
-            o = raw.get(i)
-            if o is None:
-                out.append([])
-                continue
+            o = raw[i]
             out.append([Observation(
                 lineno=int(o["lineno"]),
                 kinds=[k for k in o["kinds"] if isinstance(k, int)],

@@ -10,7 +10,8 @@
     result = repair(oracle, "pkg/module.py", observations)
     print(result.summary())
 """
-from .acts import ACTS, KINDS, WORKED_EXAMPLE, Observation, act_for, apply
+from .acts import (ACTS, KINDS, WORKED_EXAMPLE, Observation, act_for, apply,
+                   register)
 from .lanes import ADVANCE, EMIT, HALT, kind_of, mask_of
 from .localize import Packet, build_packet
 from .loop import RepairResult, repair
@@ -23,6 +24,7 @@ __all__ = [
     "route", "route_packed", "pack",
     "EMIT", "ADVANCE", "HALT", "mask_of", "kind_of",
     "Observation", "KINDS", "ACTS", "WORKED_EXAMPLE", "act_for", "apply",
+    "register",
     "Oracle", "Packet", "build_packet",
     "MechanicalObserver", "ClaudeObserver", "observer_prompt",
     "repair", "RepairResult",

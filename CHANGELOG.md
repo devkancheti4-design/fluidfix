@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0 — 2026-08-30 (r2, pre-release review applied)
+
+- `register()`: teach a new fault class from one registration — observation
+  contract + transform; the router infers the act code from the same worked
+  example. Mechanical observer now covers registered kinds generically.
+- Review fixes (all reproduced before fixing): site-local zero simplification
+  in `_reduce_literal` (was able to eat an unrelated `-0.5` elsewhere on the
+  line); byte-preserving file handling (CRLF/FF-safe, no write on refusal);
+  path-boundary coverage matching (same-suffix sibling packages can no longer
+  shadow the defect file); root-level modules get a correct default `--cov`
+  target; CLI timeout flags (`--suite-timeout`, `--test-timeout`,
+  `--candidate-timeout`, defaulting consistently); observer errors are
+  diagnosable (truncation, missing text, wrong echoed ids raise instead of
+  masquerading as refusals); injected observer clients work without the SDK;
+  `acts_tried` counts only real candidates.
+
 ## 0.1.0 — 2026-08-30
 
 Initial release.

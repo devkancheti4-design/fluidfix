@@ -8,13 +8,13 @@ version = "0.1.0"
 description = "Zero-token repair decisions for mechanical single-line bugs: a machine-authored routing kernel decides, your test suite judges, and an LLM is only ever the eyes."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "AGPL-3.0-or-later" }
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE", "COMMERCIAL.md"]
 authors = [{ name = "devkancheti4-design", email = "kanchetiindu9@gmail.com" }]
 keywords = ["automated-program-repair", "debugging", "fault-localization", "mutation", "llm", "claude"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
     "Programming Language :: Python :: 3",
     "Topic :: Software Development :: Debuggers",
     "Topic :: Software Development :: Quality Assurance",

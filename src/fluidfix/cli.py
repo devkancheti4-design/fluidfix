@@ -16,7 +16,9 @@ import sys
 
 def _oracle(args):
     from .oracle import Oracle
-    return Oracle(args.root, python=args.python)
+    return Oracle(args.root, python=args.python,
+                  timeout=args.suite_timeout,
+                  per_test_timeout=args.test_timeout)
 
 
 def cmd_repair(args) -> int:
@@ -38,7 +40,8 @@ def cmd_repair(args) -> int:
     else:
         from .observers import MechanicalObserver
         observations = MechanicalObserver().observe([packet])[0]
-    result = repair(oracle, args.file, observations)
+    result = repair(oracle, args.file, observations,
+                    candidate_timeout=args.candidate_timeout)
     if args.json:
         print(json.dumps(result.__dict__, default=str, indent=1))
     else:
@@ -110,12 +113,18 @@ def main(argv=None) -> int:
                         help="target project's python (default: this one)")
         sp.add_argument("--cov", default=None,
                         help="coverage target package (default: inferred)")
+        sp.add_argument("--suite-timeout", type=int, default=300,
+                        help="full-suite budget in seconds (default 300)")
+        sp.add_argument("--test-timeout", type=int, default=60,
+                        help="per-test pytest-timeout in seconds (default 60)")
 
     sp = sub.add_parser("repair", help="localise, observe, and repair one defect")
     common(sp)
     sp.add_argument("--observer", choices=["mechanical", "claude"],
                     default="mechanical")
     sp.add_argument("--model", default="claude-opus-5")
+    sp.add_argument("--candidate-timeout", type=int, default=None,
+                    help="per-candidate suite budget (default: --suite-timeout)")
     sp.add_argument("--json", action="store_true")
     sp.set_defaults(fn=cmd_repair)
 

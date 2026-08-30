@@ -44,7 +44,7 @@ class Packet:
         for l in self.lines:
             if prev is not None and l > prev + 1:
                 excerpt.append("  ...")
-            excerpt.append(f"{l:4d}| {self.src_lines[l - 1][:120]}")
+            excerpt.append(f"{l:4d}| {self.src_lines[l - 1].rstrip(chr(13))[:120]}")
             prev = l
         head = (f"### {tag or 'BUG'}  defect file: {self.defect_file}  "
                 f"(showing only the {len(self.lines)} lines the failing test "
@@ -89,25 +89,47 @@ def build_packet(oracle: Oracle, defect_file: str, coverage_target: str | None =
     """Build a lean packet, or None if the suite is green (nothing to observe).
 
     coverage_target: the --cov target (package name or path); defaults to the
-    defect file's top-level package directory name.
+    defect file's top-level package directory, or its module name for a
+    root-level file.
     """
     fails, out1 = oracle.failing_output()
     if not fails:
         return None
     path = os.path.join(oracle.root, defect_file)
-    src = open(path, encoding="utf-8").read()
-    src_lines = src.splitlines()
+    with open(path, encoding="utf-8", newline="") as f:
+        src = f.read()
+    # split on "\n" only: CRLF keeps its "\r" as line content, and form feeds
+    # stay inside lines, so numbering matches the tokenizer and coverage.
+    src_lines = src.split("\n")
 
-    base = os.path.basename(defect_file)
+    want = defect_file.replace("\\", "/")
+
+    def _is_defect_path(p: str) -> bool:
+        p = p.replace("\\", "/")
+        return p == want or p.endswith("/" + want) or want.endswith("/" + p)
+
+    # traceback frames: prefer path-boundary matches; fall back to basename
+    # only if no boundary match exists anywhere in the output (a same-named
+    # file elsewhere must not inject its line numbers).
+    clean = _ANSI.sub("", out1)
+    hits = re.findall(r"([\w./\\-]+\.py)[\":,]+\s*(?:line\s+)?(\d+)", clean)
+    strong = [(p, ln) for p, ln in hits if _is_defect_path(p)]
+    if not strong:
+        base = os.path.basename(want)
+        strong = [(p, ln) for p, ln in hits if os.path.basename(p) == base]
     frames: set[int] = set()
-    for m in re.finditer(r"([\w./\\-]+\.py)[\":,]+\s*(?:line\s+)?(\d+)",
-                         _ANSI.sub("", out1)):
-        if os.path.basename(m.group(1)) == base:
-            ln = int(m.group(2))
-            frames.update(range(max(1, ln - 12), min(len(src_lines), ln + 12) + 1))
+    for _, ln in strong:
+        ln = int(ln)
+        frames.update(range(max(1, ln - 12), min(len(src_lines), ln + 12) + 1))
 
     covered: set[int] = set()
-    tgt = coverage_target or defect_file.replace("\\", "/").split("/")[0]
+    if coverage_target:
+        tgt = coverage_target
+    else:
+        seg = want.split("/")[0]
+        # a root-level defect file is a module: --cov takes its module name,
+        # not the filename (--cov=mod.py silently collects nothing)
+        tgt = seg[:-3] if seg.endswith(".py") else seg
     cov_json = os.path.join(oracle.root, "_fluidfix_cov.json")
     # NOTE: no -x here — pytest 9.1 + pytest-cov 7.1 silently skip the JSON
     # report when the session ends via exit-first.
@@ -116,12 +138,15 @@ def build_packet(oracle: Oracle, defect_file: str, coverage_target: str | None =
     if os.path.exists(cov_json):
         try:
             cov = json.load(open(cov_json))
-            want = defect_file.replace("\\", "/")
-            for f, data in cov.get("files", {}).items():
-                fn = f.replace("\\", "/")
-                if fn.endswith(want) or want.endswith(fn):
-                    covered = set(data.get("executed_lines", []))
-                    break
+            files = cov.get("files", {})
+            # exact relative path first; then path-boundary suffix — a bare
+            # endswith lets mypkg/core.py shadow pkg/core.py entirely
+            match = next((f for f in files
+                          if f.replace("\\", "/") == want), None)
+            if match is None:
+                match = next((f for f in files if _is_defect_path(f)), None)
+            if match is not None:
+                covered = set(files[match].get("executed_lines", []))
         finally:
             os.remove(cov_json)
 

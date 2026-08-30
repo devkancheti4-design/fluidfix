@@ -1,0 +1,1317 @@
+[
+ {
+  "n": 0,
+  "lib": "humanize-4.16.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 587,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 1.3,
+  "suite_runs": 2
+ },
+ {
+  "n": 0,
+  "lib": "humanize-4.16.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 587,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    secs = days * 24 * 3600 + secs",
+  "secs": 1.3,
+  "suite_runs": 2
+ },
+ {
+  "n": 1,
+  "lib": "humanize-4.16.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 36,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 1.3,
+  "suite_runs": 2
+ },
+ {
+  "n": 1,
+  "lib": "humanize-4.16.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 36,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        return f\"{str(items[0])} and {str(items[1])}\"",
+  "secs": 1.3,
+  "suite_runs": 2
+ },
+ {
+  "n": 2,
+  "lib": "humanize-4.16.0",
+  "op": "arith_add",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 587,
+  "obs_kinds": [
+   3
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   8
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    secs = days * 24 * 3600 + secs",
+  "secs": 0.6,
+  "suite_runs": 1
+ },
+ {
+  "n": 2,
+  "lib": "humanize-4.16.0",
+  "op": "arith_add",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 587,
+  "obs_kinds": [
+   3
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   8
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    secs = days * 24 * 3600 + secs",
+  "secs": 0.6,
+  "suite_runs": 1
+ },
+ {
+  "n": 5,
+  "lib": "humanize-4.16.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 669,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    tail = texts[-1]",
+  "secs": 0.6,
+  "suite_runs": 1
+ },
+ {
+  "n": 5,
+  "lib": "humanize-4.16.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 669,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    tail = texts[-1]",
+  "secs": 0.6,
+  "suite_runs": 1
+ },
+ {
+  "n": 6,
+  "lib": "humanize-4.16.0",
+  "op": "cmp_strict",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 354,
+  "obs_kinds": [
+   0
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   5
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "def naturaldate(value: dt.date | dt.datetime) -> str:",
+  "secs": 0.6,
+  "suite_runs": 1
+ },
+ {
+  "n": 6,
+  "lib": "humanize-4.16.0",
+  "op": "cmp_strict",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 354,
+  "obs_kinds": [
+   0
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   5
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "def naturaldate(value: dt.date | dt.datetime) -> str:",
+  "secs": 0.6,
+  "suite_runs": 1
+ },
+ {
+  "n": 7,
+  "lib": "humanize-4.16.0",
+  "op": "logic_flip",
+  "in_vocab": false,
+  "variant": "v1",
+  "obs_lineno": 258,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 7,
+  "lib": "humanize-4.16.0",
+  "op": "logic_flip",
+  "in_vocab": false,
+  "variant": "v2",
+  "obs_lineno": 258,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 8,
+  "lib": "inflection-0.5.1",
+  "op": "bool_flip",
+  "in_vocab": false,
+  "variant": "v1",
+  "obs_lineno": 144,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 8,
+  "lib": "inflection-0.5.1",
+  "op": "bool_flip",
+  "in_vocab": false,
+  "variant": "v2",
+  "obs_lineno": 144,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 9,
+  "lib": "inflection-0.5.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 19,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    (r\"(?i)^(oxen)$\", r'\\1'),",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 9,
+  "lib": "inflection-0.5.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 19,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    (r\"(?i)^(oxen)$\", r'\\1'),",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 10,
+  "lib": "inflection-0.5.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 226,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.5,
+  "suite_runs": 2
+ },
+ {
+  "n": 10,
+  "lib": "inflection-0.5.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 226,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    if number % 100 in (11, 12, 13):",
+  "secs": 0.5,
+  "suite_runs": 2
+ },
+ {
+  "n": 11,
+  "lib": "inflection-0.5.1",
+  "op": "arith_add",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 100,
+  "obs_kinds": [
+   3
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   8
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.2,
+  "suite_runs": 1
+ },
+ {
+  "n": 11,
+  "lib": "inflection-0.5.1",
+  "op": "arith_add",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 100,
+  "obs_kinds": [
+   3
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   8
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.2,
+  "suite_runs": 1
+ },
+ {
+  "n": 12,
+  "lib": "inflection-0.5.1",
+  "op": "arith_add",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 140,
+  "obs_kinds": [
+   3
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   8
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            singular[0].lower() + singular[1:]",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 12,
+  "lib": "inflection-0.5.1",
+  "op": "arith_add",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 140,
+  "obs_kinds": [
+   3
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   8
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            singular[0].lower() + singular[1:]",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 13,
+  "lib": "inflection-0.5.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 105,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.5,
+  "suite_runs": 2
+ },
+ {
+  "n": 13,
+  "lib": "inflection-0.5.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 105,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            r'\\1' + plural[1:]",
+  "secs": 0.5,
+  "suite_runs": 2
+ },
+ {
+  "n": 14,
+  "lib": "inflection-0.5.1",
+  "op": "arith_add",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 168,
+  "obs_kinds": [
+   3
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   8
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        return string[0].lower() + camelize(string)[1:]",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 14,
+  "lib": "inflection-0.5.1",
+  "op": "arith_add",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 168,
+  "obs_kinds": [
+   3
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   8
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        return string[0].lower() + camelize(string)[1:]",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 15,
+  "lib": "inflection-0.5.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 168,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.5,
+  "suite_runs": 2
+ },
+ {
+  "n": 15,
+  "lib": "inflection-0.5.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 168,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        return string[0].lower() + camelize(string)[1:]",
+  "secs": 0.5,
+  "suite_runs": 2
+ },
+ {
+  "n": 16,
+  "lib": "natsort-8.4.0",
+  "op": "logic_flip",
+  "in_vocab": false,
+  "variant": "v1",
+  "obs_lineno": 591,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 16,
+  "lib": "natsort-8.4.0",
+  "op": "logic_flip",
+  "in_vocab": false,
+  "variant": "v2",
+  "obs_lineno": 591,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 17,
+  "lib": "natsort-8.4.0",
+  "op": "cmp_strict",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 17,
+  "obs_kinds": [
+   0
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   5
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": ") -> bool:",
+  "secs": 1.8,
+  "suite_runs": 1
+ },
+ {
+  "n": 17,
+  "lib": "natsort-8.4.0",
+  "op": "cmp_strict",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 17,
+  "obs_kinds": [
+   0
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   5
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": ") -> bool:",
+  "secs": 1.8,
+  "suite_runs": 1
+ },
+ {
+  "n": 18,
+  "lib": "natsort-8.4.0",
+  "op": "bool_flip",
+  "in_vocab": false,
+  "variant": "v1",
+  "obs_lineno": 46,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 18,
+  "lib": "natsort-8.4.0",
+  "op": "bool_flip",
+  "in_vocab": false,
+  "variant": "v2",
+  "obs_lineno": 46,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 19,
+  "lib": "natsort-8.4.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 639,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 3.6,
+  "suite_runs": 2
+ },
+ {
+  "n": 19,
+  "lib": "natsort-8.4.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 639,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            (?=[0-9]{{3}}    # Three numbers must follow",
+  "secs": 3.6,
+  "suite_runs": 2
+ },
+ {
+  "n": 20,
+  "lib": "natsort-8.4.0",
+  "op": "arith_mul",
+  "in_vocab": false,
+  "variant": "v1",
+  "obs_lineno": 324,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 20,
+  "lib": "natsort-8.4.0",
+  "op": "arith_mul",
+  "in_vocab": false,
+  "variant": "v2",
+  "obs_lineno": 324,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 21,
+  "lib": "natsort-8.4.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 232,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 4.3,
+  "suite_runs": 2
+ },
+ {
+  "n": 21,
+  "lib": "natsort-8.4.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 232,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        return [range_check(f[0], f[1]) for f in filters]",
+  "secs": 4.3,
+  "suite_runs": 2
+ },
+ {
+  "n": 22,
+  "lib": "natsort-8.4.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 669,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    return utils.regex_chooser(alg).pattern[1:-1]",
+  "secs": 1.8,
+  "suite_runs": 1
+ },
+ {
+  "n": 22,
+  "lib": "natsort-8.4.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 669,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    return utils.regex_chooser(alg).pattern[1:-1]",
+  "secs": 1.8,
+  "suite_runs": 1
+ },
+ {
+  "n": 23,
+  "lib": "natsort-8.4.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 432,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            return _sep, _nan_replace, \"2\"",
+  "secs": 1.8,
+  "suite_runs": 1
+ },
+ {
+  "n": 23,
+  "lib": "natsort-8.4.0",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 432,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            return _sep, _nan_replace, \"2\"",
+  "secs": 1.8,
+  "suite_runs": 1
+ },
+ {
+  "n": 24,
+  "lib": "parse-1.22.1",
+  "op": "arith_add",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 89,
+  "obs_kinds": [
+   3
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   8
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "                if string[number_start + 1] in \"bB\":",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 24,
+  "lib": "parse-1.22.1",
+  "op": "arith_add",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 89,
+  "obs_kinds": [
+   3
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   8
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "                if string[number_start + 1] in \"bB\":",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 25,
+  "lib": "parse-1.22.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 805,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.6,
+  "suite_runs": 2
+ },
+ {
+  "n": 25,
+  "lib": "parse-1.22.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 805,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            conv[group] = partial(date_convert, mm=n + 1, dd=n + 3, hms=n + 5)",
+  "secs": 0.6,
+  "suite_runs": 2
+ },
+ {
+  "n": 26,
+  "lib": "parse-1.22.1",
+  "op": "bool_flip",
+  "in_vocab": false,
+  "variant": "v1",
+  "obs_lineno": 367,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 26,
+  "lib": "parse-1.22.1",
+  "op": "bool_flip",
+  "in_vocab": false,
+  "variant": "v2",
+  "obs_lineno": 367,
+  "obs_kinds": [],
+  "loc_correct": true,
+  "acts_tried": [],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.0,
+  "suite_runs": 0
+ },
+ {
+  "n": 27,
+  "lib": "parse-1.22.1",
+  "op": "cmp_strict",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 449,
+  "obs_kinds": [
+   0
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   5
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        return \"<%s %r>\" % (self.__class__.__name__, self._format)",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 27,
+  "lib": "parse-1.22.1",
+  "op": "cmp_strict",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 449,
+  "obs_kinds": [
+   0
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   5
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        return \"<%s %r>\" % (self.__class__.__name__, self._format)",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 28,
+  "lib": "parse-1.22.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 358,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        fill = format[0]",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 28,
+  "lib": "parse-1.22.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 358,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        fill = format[0]",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 29,
+  "lib": "parse-1.22.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 790,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            self._group_index += 6",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 29,
+  "lib": "parse-1.22.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 790,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            self._group_index += 6",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 30,
+  "lib": "parse-1.22.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 763,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": false,
+  "exact": false,
+  "refused": true,
+  "secs": 0.6,
+  "suite_runs": 2
+ },
+ {
+  "n": 30,
+  "lib": "parse-1.22.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 763,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            s = r\"(\\d{1,2}[-/](\\d{1,2}|%s)[-/]\\d{4})(\\s+%s)?%s?%s?\"",
+  "secs": 0.6,
+  "suite_runs": 2
+ },
+ {
+  "n": 31,
+  "lib": "parse-1.22.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 718,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            s = r\"(0[oO])?[0-7]+\"",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 31,
+  "lib": "parse-1.22.1",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 718,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "            s = r\"(0[oO])?[0-7]+\"",
+  "secs": 0.3,
+  "suite_runs": 1
+ },
+ {
+  "n": 33,
+  "lib": "wcwidth-0.8.2",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 18,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    if ucs < table[0][0] or ucs > table[ubound][1]:",
+  "secs": 1.1,
+  "suite_runs": 1
+ },
+ {
+  "n": 33,
+  "lib": "wcwidth-0.8.2",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 18,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "    if ucs < table[0][0] or ucs > table[ubound][1]:",
+  "secs": 1.1,
+  "suite_runs": 1
+ },
+ {
+  "n": 35,
+  "lib": "wcwidth-0.8.2",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 155,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "                idx += 1",
+  "secs": 0.9,
+  "suite_runs": 1
+ },
+ {
+  "n": 35,
+  "lib": "wcwidth-0.8.2",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 155,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "                idx += 1",
+  "secs": 0.9,
+  "suite_runs": 1
+ },
+ {
+  "n": 36,
+  "lib": "wcwidth-0.8.2",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v1",
+  "obs_lineno": 177,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        return cls(params=TextSizingParams.from_params(match.group(1), control_codes=control_codes),",
+  "secs": 0.9,
+  "suite_runs": 1
+ },
+ {
+  "n": 36,
+  "lib": "wcwidth-0.8.2",
+  "op": "const_off",
+  "in_vocab": true,
+  "variant": "v2",
+  "obs_lineno": 177,
+  "obs_kinds": [
+   1
+  ],
+  "loc_correct": true,
+  "acts_tried": [
+   6
+  ],
+  "repaired": true,
+  "exact": true,
+  "refused": false,
+  "fix": "        return cls(params=TextSizingParams.from_params(match.group(1), control_codes=control_codes),",
+  "secs": 0.9,
+  "suite_runs": 1
+ }
+]

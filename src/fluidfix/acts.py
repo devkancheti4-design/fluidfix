@@ -83,8 +83,17 @@ def _reduce_literal(line: str, obs: Observation) -> str:
         m = re.search(r"\d+", line)
     if not m:
         return line
-    out = line[:m.start()] + str(int(m.group()) - 1) + line[m.end():]
-    return re.sub(r"\s*[+-]\s*0(?![0-9])", "", out)
+    new_lit = str(int(m.group()) - 1)
+    out = line[:m.start()] + new_lit + line[m.end():]
+    # Simplify `x + 1` -> decrement -> `x + 0` -> `x`, but ONLY at the
+    # decrement site, and only when the zero stands alone: a global
+    # unanchored sub was measured to eat an unrelated `-0.5` elsewhere on
+    # the line while the suite still passed.
+    if new_lit == "0" and not re.match(r"[0-9.eEjJxXbBoO_]", line[m.end():m.end() + 1] or " "):
+        pre = re.search(r"\s*[+-]\s*$", line[:m.start()])
+        if pre:
+            out = line[:pre.start()] + line[m.end():]
+    return out
 
 
 def _swap_return_operands(line: str, obs: Observation) -> str:
@@ -93,6 +102,10 @@ def _swap_return_operands(line: str, obs: Observation) -> str:
 
 
 def _flip_additive(line: str, obs: Observation) -> str:
+    # Deliberate divergence from kdebug's substring match: \s admits tabs and
+    # non-overlapping scanning skips a "+" that shares a space with a
+    # preceding "-" (`a - + b`). fluidfix attempts strictly more candidates
+    # on those whitespace edge cases; the suite remains the judge.
     ops = list(re.finditer(r"\s([+-])\s", line))
     if not ops:
         return line
@@ -118,6 +131,27 @@ ACTS = {
 def act_for(kind: int) -> int:
     """The router's decision: kind -> act code, from the one worked example."""
     return route(WORKED_EXAMPLE[0], WORKED_EXAMPLE[1], kind)
+
+
+def register(kind: int, name: str, description: str, signal,
+             applier) -> int:
+    """Teach fluidfix a new fault class. One entry, one transform — the router
+    is untouched: it infers this kind's act code from the same single worked
+    example, so a new class costs exactly one registration, once, and every
+    future member of the class is decided for free.
+
+    kind: 0-15 (the kernel's domain — one dictionary holds 16 classes).
+    signal: compiled regex a line must match for the mechanical observer to
+        report this kind (LLM observers receive `description` verbatim).
+    applier(line, observation) -> candidate line.
+    Returns the act code the router assigned.
+    """
+    if not 0 <= kind <= 15:
+        raise ValueError("kind must be 0..15 — the kernel routes mod 16")
+    code = act_for(kind)
+    KINDS[kind] = (name, description, signal)
+    ACTS[code] = applier
+    return code
 
 
 def apply(line: str, act: int, obs: Observation) -> str:

@@ -19,7 +19,9 @@ Contact: kanchetiindu9@gmail.com with:
 2. approximate scale (developers, repositories, or repair volume),
 3. whether you need the act-dictionary compilation service (a per-repository
    vocabulary trained on your codebase's own bug history — measured at +21
-   points byte-exact over the general dictionary on real bugs).
+   points on the candidate-containment ceiling for real one-line fixes, 62%
+   vs 41% for a general dictionary, with the buggy line supplied; that is a
+   ceiling on what the dictionary can reach, not a realized repair rate).
 
 The copyright holder for fluidfix and the vendored kernels
 (fluid-router, fluid-router2) is devkancheti4-design; dual licensing is

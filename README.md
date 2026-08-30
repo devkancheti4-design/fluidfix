@@ -3,8 +3,9 @@
 **Zero-token repair decisions for mechanical single-line bugs.** A
 machine-authored four-instruction kernel decides which repair to try, your
 test suite judges it, and a language model — when you use one at all — is only
-ever the eyes. Every output is either a byte-exact restoration your suite
-accepts, or an explicit refusal. There is no "plausible fix" branch.
+ever the eyes. Every output is either a repair your suite accepts — measured
+byte-exact in 26 of 26 accepted repairs on the benchmark — or an explicit
+refusal. There is no "plausible fix" branch.
 
 ```
 pip install fluidfix            # core: zero runtime dependencies
@@ -28,17 +29,19 @@ print(repair(oracle, "pkg/module.py", observations).summary())
 
 All numbers below are from a live benchmark on 33 injected single-line bugs in
 five real PyPI libraries (humanize, inflection, natsort, parse, wcwidth), each
-library's own suite as the oracle, run 2026-08-30. Provenance and the full
-harness: [fluid-router](https://github.com/devkancheti4-design/fluid-router)
-`BENCHMARK.md`.
+library's own suite as the oracle, run 2026-08-30. Per-bug data and
+methodology ship with this package in [docs/BENCHMARK.md](docs/BENCHMARK.md);
+the corpus, injector, and recorded baselines are from
+[fluid-router](https://github.com/devkancheti4-design/fluid-router)
+`benchmark/`.
 
 |                             | fluidfix (Claude Opus 5 as eyes) | full Claude Opus 5 debugging |
 |-----------------------------|-----------------------------------|------------------------------|
 | in-vocabulary byte-exact    | **26/27**                         | 22/27 (5 green-only)         |
 | out-of-vocabulary           | 6/6 refused honestly              | 5/6 exact                    |
 | silently wrong repairs      | **0**                             | —                            |
-| tokens                      | **125,402 total (3,800/bug)**     | 1,322,802 (40,084/bug)       |
-| decision cost after that    | **0 (1.55 ns/decision)**          | ~40k tokens each time        |
+| tokens¹                     | **125,402 total (3,800/bug)**     | 1,322,802 (40,084/bug)       |
+| decision cost after that    | **0 tokens²**                     | ~40k tokens each time        |
 
 - The observer named the correct defective line **33/33** from lean packets
   averaging ~1,060 tokens.
@@ -47,8 +50,16 @@ harness: [fluid-router](https://github.com/devkancheti4-design/fluid-router)
 - The kernel's decisions are invariant under all 16 renumberings of the act
   vocabulary: **432/432** live decisions correct; a frozen lookup table
   scores 27/432 on the same test.
-- With no model anywhere (mechanical observer), the same pipeline scores
-  17/27 byte-exact — still zero tokens, still zero wrong repairs.
+- With no model anywhere, fluid-router's recorded blind-search kernel scores
+  17/27 byte-exact at zero tokens — without the localisation this package
+  adds. fluidfix's mechanical mode is validated end-to-end but not yet
+  corpus-scored; see [docs/BENCHMARK.md](docs/BENCHMARK.md).
+
+¹ Fleet-level harness measurement, all agent context included; the two token
+columns use different accounting and support the ~10× ratio, not a precise
+figure. Provenance: `docs/data/lean_arm_tokens.json`.
+² fluid-router2's C verifier measures its kernels at 1.55 ns/decision; this
+package's pure-Python reference is ~0.6 µs. Either way: no tokens.
 
 ## How it works
 
@@ -89,14 +100,36 @@ fluidfix selfcheck
   exit-first-swallows-coverage, and truncated-node-id failure classes are all
   encoded in `oracle.py`, each one a scar from a measured harness defect.
 
-## What it will not do
+## Teaching it new classes — the maintenance loop
 
-Wrong variable passed, missing guard, wrong API call, misunderstood loop
-intent: those are not single-token substitutions and no act dictionary reaches
-them. The measured share of real one-line fixes that are single-token
-substitutions is ~16% (see fluid-router's `benchmark/domain/`). fluidfix's
-position: repair those mechanically for free, refuse the rest honestly, and
-let a full model spend its 40k tokens only where the mask comes back empty.
+The four shipped acts are a starter dictionary, not a ceiling. A fault class
+is teachable the moment its repair can be expressed as a mechanical transform
+of the defective line:
+
+```python
+import re
+from fluidfix import register
+
+register(4, "logic-flip", 'an "and" that should be "or", or vice versa',
+         re.compile(r"\b(?:and|or)\b"),
+         lambda line, obs: (line.replace(" or ", " and ", 1) if " or " in line
+                            else line.replace(" and ", " or ", 1)))
+```
+
+One registration, once — the router is never edited: it infers the new
+class's act code from the same single worked example
+(`tests/test_regressions.py` shows an and/or bug going from refused to
+repaired with exactly this snippet). That is the deployment story fluidfix is
+built for: ship it on a maintained codebase, let the known classes repair
+themselves for free, and when an update introduces a novel fault class, hand
+that class to fluidfix once and maintenance is free again.
+
+The honest boundary: classes whose repair needs information absent from the
+defective line — a wrong variable, a missing guard, a different algorithm —
+are not transforms, and are refused rather than attempted. (Measured share of
+real one-line fixes that are single-token substitutions: ~16%; see
+fluid-router's `benchmark/domain/`.) The refusal is your signal to spend a
+frontier model exactly once, on the class, never again on its instances.
 
 ## Licensing
 

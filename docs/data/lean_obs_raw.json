@@ -1,0 +1,289 @@
+{
+ "observations": [
+  {
+   "id": 0,
+   "lineno": 587,
+   "kinds": [
+    1
+   ],
+   "literal_value": "3601",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 1,
+   "lineno": 36,
+   "kinds": [
+    1
+   ],
+   "literal_value": "2",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 2,
+   "lineno": 587,
+   "kinds": [
+    3
+   ],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 5,
+   "lineno": 669,
+   "kinds": [
+    1
+   ],
+   "literal_value": "2",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 6,
+   "lineno": 354,
+   "kinds": [
+    0
+   ],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 7,
+   "lineno": 258,
+   "kinds": [],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 8,
+   "lineno": 144,
+   "kinds": [],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 9,
+   "lineno": 19,
+   "kinds": [
+    1
+   ],
+   "literal_value": "2",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 10,
+   "lineno": 226,
+   "kinds": [
+    1
+   ],
+   "literal_value": "13",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 11,
+   "lineno": 100,
+   "kinds": [
+    3
+   ],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 12,
+   "lineno": 140,
+   "kinds": [
+    3
+   ],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 13,
+   "lineno": 105,
+   "kinds": [
+    1
+   ],
+   "literal_value": "2",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 14,
+   "lineno": 168,
+   "kinds": [
+    3
+   ],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 15,
+   "lineno": 168,
+   "kinds": [
+    1
+   ],
+   "literal_value": "2",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 16,
+   "lineno": 591,
+   "kinds": [],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 17,
+   "lineno": 17,
+   "kinds": [
+    0
+   ],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 18,
+   "lineno": 46,
+   "kinds": [],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 19,
+   "lineno": 639,
+   "kinds": [
+    1
+   ],
+   "literal_value": "4",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 20,
+   "lineno": 324,
+   "kinds": [],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 21,
+   "lineno": 232,
+   "kinds": [
+    1
+   ],
+   "literal_value": "2",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 22,
+   "lineno": 669,
+   "kinds": [
+    1
+   ],
+   "literal_value": "2",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 23,
+   "lineno": 432,
+   "kinds": [
+    1
+   ],
+   "literal_value": "3",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 24,
+   "lineno": 89,
+   "kinds": [
+    3
+   ],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 25,
+   "lineno": 805,
+   "kinds": [
+    1
+   ],
+   "literal_value": "4",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 26,
+   "lineno": 367,
+   "kinds": [],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 27,
+   "lineno": 449,
+   "kinds": [
+    0
+   ],
+   "literal_value": null,
+   "literal_occurrence": null
+  },
+  {
+   "id": 28,
+   "lineno": 358,
+   "kinds": [
+    1
+   ],
+   "literal_value": "1",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 29,
+   "lineno": 790,
+   "kinds": [
+    1
+   ],
+   "literal_value": "7",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 30,
+   "lineno": 763,
+   "kinds": [
+    1
+   ],
+   "literal_value": "5",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 31,
+   "lineno": 718,
+   "kinds": [
+    1
+   ],
+   "literal_value": "1",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 33,
+   "lineno": 18,
+   "kinds": [
+    1
+   ],
+   "literal_value": "1",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 35,
+   "lineno": 155,
+   "kinds": [
+    1
+   ],
+   "literal_value": "2",
+   "literal_occurrence": 1
+  },
+  {
+   "id": 36,
+   "lineno": 177,
+   "kinds": [
+    1
+   ],
+   "literal_value": "2",
+   "literal_occurrence": 1
+  }
+ ]
+}

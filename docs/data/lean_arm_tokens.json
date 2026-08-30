@@ -1,0 +1,6 @@
+{
+ "lean_observer_total_tokens": 125402,
+ "per_bug": 3800,
+ "source": "workflow harness subagent_tokens for run wf_23846822-e50 (one batched Claude Opus 5 call, all agent context included), 2026-08-30",
+ "comparison_basis": "recorded full-Opus tokens from fluid-router benchmark/tok.json use different accounting; the ~10x ratio is supported, not a precise figure"
+}

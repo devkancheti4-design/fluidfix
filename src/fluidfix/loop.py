@@ -1,7 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # Copyright (C) 2026 devkancheti4-design
 # Commercial licensing: see COMMERCIAL.md.
-"""The repair loop: observations in, byte-exact repair or honest refusal out.
+"""The repair loop: observations in, suite-accepted repair or honest refusal out.
+(Byte-exactness is a measured property of the acts — 26/26 accepted repairs on
+the benchmark corpus — not an enforced invariant; the suite is the judge.)
 
     for each observation:
         mask <- one bit per reported kind
@@ -17,6 +19,11 @@ The output space is exactly {repair the suite accepts, refusal}. There is no
 "plausible fix" branch: an empty mask halts, a kindless observation refuses,
 and a green suite refuses before anything runs — searching without a failing
 test has been measured to corrupt working code while reporting success.
+
+File handling is byte-preserving: the source is split on "\\n" only (CRLF
+lines keep their "\\r" as line content, form feeds stay inside lines so line
+numbers match the tokenizer's), candidates re-attach the line's own ending,
+and nothing is written back unless a candidate was actually tried.
 """
 from __future__ import annotations
 
@@ -51,12 +58,18 @@ class RepairResult:
         return f"refused: {self.reason} ({self.seconds:.1f}s)"
 
 
+def _write(path: str, content: str) -> None:
+    with open(path, "w", encoding="utf-8", newline="") as f:
+        f.write(content)
+
+
 def repair(oracle: Oracle, defect_file: str,
            observations: list[Observation],
-           candidate_timeout: int = 120) -> RepairResult:
+           candidate_timeout: int | None = None) -> RepairResult:
     t0 = time.time()
     res = RepairResult(repaired=False, refused=True)
     path = os.path.join(oracle.root, defect_file)
+    cand_t = candidate_timeout or oracle.timeout
 
     # PRECONDITION: a failing test. Without one the first candidate that leaves
     # the suite green is accepted — on a green suite that is the first
@@ -68,44 +81,47 @@ def repair(oracle: Oracle, defect_file: str,
         return res
     res.suite_runs += 1
 
-    src = open(path, encoding="utf-8").read()
-    lines = src.splitlines()
-    trailing_nl = "\n" if src.endswith("\n") else ""
+    with open(path, encoding="utf-8", newline="") as f:
+        src = f.read()
+    raw = src.split("\n")            # "\n".join(raw) == src, byte for byte
     tried: set[tuple[int, str]] = set()
+    wrote = False
 
     try:
         for obs in observations:
             i = obs.lineno - 1
-            if not (0 <= i < len(lines)):
+            if not (0 <= i < len(raw)):
                 continue
-            line = lines[i]
+            body = raw[i].rstrip("\r")
+            ending = raw[i][len(body):]          # "" or "\r"
             mask = mask_of(k for k in obs.kinds if 0 <= k <= 15)
             while not HALT(mask):
                 kind = kind_of(EMIT(mask))
                 mask = ADVANCE(mask)
                 act = act_for(kind)
-                cand = apply(line, act, obs)
-                res.acts_tried.append(act)
-                if cand == line or (i, cand) in tried:   # NOPROGRESS
+                cand = apply(body, act, obs)
+                if cand == body or (i, cand) in tried:   # NOPROGRESS
                     continue
                 tried.add((i, cand))
-                new = lines[:]
-                new[i] = cand
-                open(path, "w", encoding="utf-8").write("\n".join(new) + trailing_nl)
+                res.acts_tried.append(act)               # a real candidate
+                new = raw[:]
+                new[i] = cand + ending
+                _write(path, "\n".join(new))
+                wrote = True
                 res.suite_runs += 1
-                if oracle.green(timeout=candidate_timeout):
+                if oracle.green(timeout=cand_t):
                     res.repaired, res.refused = True, False
-                    res.lineno, res.old_line, res.new_line = obs.lineno, line, cand
+                    res.lineno, res.old_line, res.new_line = obs.lineno, body, cand
                     res.reason = f"kind {kind} -> act {act}"
                     return res
-                open(path, "w", encoding="utf-8").write("\n".join(lines) + trailing_nl)
+                _write(path, src)                        # byte-exact restore
         res.reason = ("no observation named a kind this vocabulary can repair"
                       if not res.acts_tried else
                       "every candidate left the suite red — fault is outside "
                       "this vocabulary or the observations are wrong")
         return res
     finally:
-        if not res.repaired:
-            open(path, "w", encoding="utf-8").write(src)
+        if wrote and not res.repaired:
+            _write(path, src)
             oracle.clear_pyc()
         res.seconds = time.time() - t0
