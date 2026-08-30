@@ -6,7 +6,9 @@ outputs are from real runs. The demo video in `docs/media/demo.mp4` follows
 this exact script.
 
 **Prerequisites:** Python ≥ 3.10, `git`, and the target project's own test
-suite runnable with `pytest`. fluidfix's core has zero dependencies.
+suite runnable with `pytest`, plus `pytest-cov` in the target venv (it powers
+coverage-based fault-file discovery on large codebases). fluidfix's core has
+zero dependencies.
 
 ---
 

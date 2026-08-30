@@ -7,9 +7,11 @@ runs with `pytest`.
 ## Step 1 — Install and check it
 
 ```bash
-pip install fluidfix
+pip install fluidfix pytest-cov
 fluidfix selfcheck
 ```
+
+(`pytest-cov` is how fluidfix finds the broken *file* in a big repo when a traceback doesn't name it — always install it alongside.)
 
 You should see `SELFCHECK PASS` at the end. That means the repair engine just
 re-proved all of its own math on your machine. If it ever says FAIL, don't

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.1 — 2026-08-31
+
+- Guard refusals now diagnose themselves: when no candidate file is found and
+  `pytest-cov` is missing from the target interpreter, the refusal (and
+  `.fluidfix/last_refusal.json`) says exactly that and gives the install
+  command. Found live: on pallets/click (1,990 tests) an assert-only failure
+  names no source file, so without pytest-cov the guard refused; with it, the
+  guard localised and repaired the fault unaided in 71s. Verified again on
+  sortedcontainers. Docs now list pytest-cov as a prerequisite.
+
 ## 0.2.0 — 2026-08-30
 
 - `--dictionary FILE` on `guard` and `repair`, and `load_dictionary()`: ship a

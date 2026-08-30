@@ -41,15 +41,18 @@ class GuardReport:
     candidates: list[str] = field(default_factory=list)
     seconds: float = 0.0
 
+    hint: str = ""
+
     def summary(self) -> str:
         if self.status == "green":
             return "suite green — nothing to do"
         if self.status == "repaired":
             return f"{self.file}: {self.result.summary()}"
-        return ("REFUSED: fault is outside the taught vocabulary "
+        base = ("REFUSED: fault is outside the taught vocabulary "
                 f"(candidate files tried: {', '.join(self.candidates) or 'none found'}). "
                 "Teach the class once — register() an observation + transform — "
                 "and its whole family becomes free.")
+        return base + (f"\n  hint: {self.hint}" if self.hint else "")
 
 
 def _is_test_path(rel: str) -> bool:
@@ -101,6 +104,14 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
     return [rel for _, rel in ranked[:limit]]
 
 
+def _has_pytest_cov(oracle: Oracle) -> bool:
+    try:
+        return subprocess.run([oracle.python, "-c", "import pytest_cov"],
+                              capture_output=True, timeout=30).returncode == 0
+    except Exception:
+        return False
+
+
 def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                coverage_target: str | None = None,
                candidate_timeout: int | None = None) -> GuardReport:
@@ -109,6 +120,12 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     if not fails:
         return GuardReport(status="green", seconds=time.time() - t0)
     candidates = files or find_candidate_files(oracle, out)
+    hint = ""
+    if not candidates and not _has_pytest_cov(oracle):
+        hint = ("pytest-cov is not installed in the target interpreter, so "
+                "coverage-based localisation was unavailable — install it "
+                f"({oracle.python} -m pip install pytest-cov) and re-run; "
+                "on large codebases it is how the fault file gets found.")
     for rel in candidates:
         packet = build_packet(oracle, rel, coverage_target=coverage_target)
         if packet is None:
@@ -121,7 +138,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                                candidates=candidates,
                                seconds=time.time() - t0)
     return GuardReport(status="refused", candidates=candidates,
-                       seconds=time.time() - t0)
+                       seconds=time.time() - t0, hint=hint)
 
 
 def commit_repair(root: str, report: GuardReport) -> str:
@@ -159,7 +176,8 @@ def write_refusal(root: str, report: GuardReport) -> str:
     path = os.path.join(d, "last_refusal.json")
     json.dump({"status": report.status, "candidates": report.candidates,
                "seconds": report.seconds,
-               "hint": "fault class is outside the taught vocabulary; "
+               "hint": report.hint or
+                       "fault class is outside the taught vocabulary; "
                        "register() it once and its family becomes free"},
               open(path, "w"), indent=1)
     return path
