@@ -32,8 +32,9 @@ dev = ["pytest>=8", "pytest-cov>=7", "build"]
 fluidfix = "fluidfix.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/devkancheti4-design/fluid-router"
-"Benchmark & provenance" = "https://github.com/devkancheti4-design/fluid-router/blob/main/BENCHMARK.md"
+Homepage = "https://github.com/devkancheti4-design/fluidfix"
+"Kernel provenance" = "https://github.com/devkancheti4-design/fluid-router"
+"Measured results" = "https://github.com/devkancheti4-design/fluidfix/blob/master/docs/BENCHMARK.md"
 
 [tool.setuptools.packages.find]
 where = ["src"]
