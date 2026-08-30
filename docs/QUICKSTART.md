@@ -19,7 +19,41 @@ use it (and please report it).
 
 fluidfix never guesses — **your tests are the judge**. No tests, nothing to
 guard. If your new repo has none yet, one tiny test is enough to start.
-Example project:
+
+### Never written a test? Here's the whole idea in 2 minutes
+
+A test is just a tiny file that **calls your function and checks the
+answer**. Three rules and one formula:
+
+1. Put it in a file whose name starts with `test_` (e.g. `test_billing.py`).
+2. Inside, write a function whose name starts with `test_`.
+3. In it, one line: `assert your_function(example_input) == expected_answer`.
+
+```python
+# test_anything.py — the universal pattern
+from mymodule import my_function
+
+def test_my_function():
+    assert my_function(2, 3) == 5      # call it, check the answer
+```
+
+**Don't know what the expected answer should be?** Use the paste trick: your
+code works today, so run it once and freeze that answer.
+
+```bash
+python -c "from billing import price_after_tax; print(price_after_tax(100, 0.1))"
+# it prints: 110.00000000000001  ← copy this
+```
+
+…then paste it into the assert:
+`assert price_after_tax(100, 0.1) == 110.00000000000001`. That's called a
+regression test — it says "whatever this did today, keep doing it" — and
+defending exactly that is fluidfix's whole job.
+
+One test per function you care about is plenty to start. Run them all with
+`pytest -q`.
+
+### The example project used below:
 
 ```python
 # billing.py
