@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fluidfix"
+version = "0.1.0"
+description = "Zero-token repair decisions for mechanical single-line bugs: a machine-authored routing kernel decides, your test suite judges, and an LLM is only ever the eyes."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "AGPL-3.0-or-later" }
+authors = [{ name = "devkancheti4-design", email = "kanchetiindu9@gmail.com" }]
+keywords = ["automated-program-repair", "debugging", "fault-localization", "mutation", "llm", "claude"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Debuggers",
+    "Topic :: Software Development :: Quality Assurance",
+]
+# Core is dependency-free by design: the kernel, lanes, acts, localizer, and
+# repair loop use only the standard library. The target project supplies its
+# own pytest (and pytest-cov for coverage localisation).
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=1.0"]
+dev = ["pytest>=8", "pytest-cov>=7", "build"]
+
+[project.scripts]
+fluidfix = "fluidfix.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/devkancheti4-design/fluid-router"
+"Benchmark & provenance" = "https://github.com/devkancheti4-design/fluid-router/blob/main/BENCHMARK.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
