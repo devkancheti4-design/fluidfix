@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0 — 2026-08-30 (r3)
+
+- `fluidfix guard`: commit-and-forget maintenance. Mechanical fault-file
+  discovery (traceback frames, else failing-test coverage ranking), one-shot
+  CI mode (exit 2 on refusal) or `--interval` watch mode, opt-in `--commit`
+  of each restoration, and a machine-readable `.fluidfix/last_refusal.json`
+  teach-me signal on refusal. Library API: `guard_once`,
+  `find_candidate_files`, `commit_repair`, `write_refusal`.
+
 ## 0.1.0 — 2026-08-30 (r2, pre-release review applied)
 
 - `register()`: teach a new fault class from one registration — observation

@@ -13,6 +13,10 @@ pip install "fluidfix[llm]"     # adds the Claude Opus 5 observer
 ```
 
 ```bash
+# commit-and-forget: watch the suite, restore what breaks, refuse what is novel
+fluidfix guard path/to/project --python path/to/venv/bin/python --interval 900 --commit
+
+# or one-shot on a known defect file
 fluidfix repair path/to/project --file pkg/module.py --python path/to/venv/bin/python
 ```
 
@@ -60,6 +64,27 @@ columns use different accounting and support the ~10× ratio, not a precise
 figure. Provenance: `docs/data/lean_arm_tokens.json`.
 ² fluid-router2's C verifier measures its kernels at 1.55 ns/decision; this
 package's pure-Python reference is ~0.6 µs. Either way: no tokens.
+
+## The guard: deploy, commit, forget
+
+Most deployed software is not being actively developed — it is being kept
+alive. `fluidfix guard` is built for exactly that. It needs no defect file:
+when the suite goes red it finds the fault file mechanically (traceback
+frames, else failing-test coverage ranking), repairs it, and — with
+`--commit` — records the restoration:
+
+```
+$ fluidfix guard . --commit
+[16:43:06] billing.py: repaired line 2 in 4 suite runs (0.7s):
+  - return p * (1 - rate)
+  + return p * (1 + rate)
+  committed
+```
+
+Run it one-shot in CI (exit 0 green/repaired, exit 2 refused), or under cron
+with `--interval`. Green suite: it touches nothing. Novel fault class: it
+refuses, leaves the tree byte-identical, and writes
+`.fluidfix/last_refusal.json` — the teach-me signal for `register()` below.
 
 ## How it works
 

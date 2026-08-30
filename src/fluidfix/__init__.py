@@ -12,6 +12,8 @@
 """
 from .acts import (ACTS, KINDS, WORKED_EXAMPLE, Observation, act_for, apply,
                    register)
+from .guard import (GuardReport, commit_repair, find_candidate_files,
+                    guard_once, write_refusal)
 from .lanes import ADVANCE, EMIT, HALT, kind_of, mask_of
 from .localize import Packet, build_packet
 from .loop import RepairResult, repair
@@ -28,4 +30,6 @@ __all__ = [
     "Oracle", "Packet", "build_packet",
     "MechanicalObserver", "ClaudeObserver", "observer_prompt",
     "repair", "RepairResult",
+    "GuardReport", "guard_once", "find_candidate_files", "commit_repair",
+    "write_refusal",
 ]

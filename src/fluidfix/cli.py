@@ -3,6 +3,7 @@
 # Commercial licensing: see COMMERCIAL.md.
 """fluidfix CLI.
 
+  fluidfix guard ROOT [--interval 900] [--commit] [--observer mechanical|claude]
   fluidfix repair ROOT --file pkg/mod.py [--python VENV_PY] [--observer mechanical|claude]
   fluidfix packet ROOT --file pkg/mod.py [--python VENV_PY]
   fluidfix selfcheck
@@ -47,6 +48,33 @@ def cmd_repair(args) -> int:
     else:
         print(result.summary())
     return 0 if result.repaired else 2
+
+
+def _observer(args):
+    if args.observer == "claude":
+        from .observers import ClaudeObserver
+        return ClaudeObserver(model=args.model)
+    from .observers import MechanicalObserver
+    return MechanicalObserver()
+
+
+def cmd_guard(args) -> int:
+    import time as _time
+    from .guard import commit_repair, guard_once, write_refusal
+    oracle = _oracle(args)
+    observer = _observer(args)
+    while True:
+        report = guard_once(oracle, observer, coverage_target=args.cov,
+                            candidate_timeout=args.candidate_timeout)
+        print(f"[{_time.strftime('%H:%M:%S')}] {report.summary()}")
+        if report.status == "repaired" and args.commit:
+            print("  committed" if commit_repair(oracle.root, report)
+                  else "  commit failed — repair left in working tree")
+        if report.status == "refused":
+            print(f"  refusal report: {write_refusal(oracle.root, report)}")
+        if args.interval is None:
+            return 0 if report.status in ("green", "repaired") else 2
+        _time.sleep(args.interval)
 
 
 def cmd_packet(args) -> int:
@@ -105,10 +133,11 @@ def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="fluidfix", description=__doc__)
     sub = p.add_subparsers(dest="cmd", required=True)
 
-    def common(sp):
+    def common(sp, need_file=True):
         sp.add_argument("root", help="target project root (where pytest runs)")
-        sp.add_argument("--file", required=True,
-                        help="defect file, relative to root")
+        if need_file:
+            sp.add_argument("--file", required=True,
+                            help="defect file, relative to root")
         sp.add_argument("--python", default=None,
                         help="target project's python (default: this one)")
         sp.add_argument("--cov", default=None,
@@ -117,6 +146,20 @@ def main(argv=None) -> int:
                         help="full-suite budget in seconds (default 300)")
         sp.add_argument("--test-timeout", type=int, default=60,
                         help="per-test pytest-timeout in seconds (default 60)")
+
+    sp = sub.add_parser("guard", help="commit-and-forget maintenance: watch "
+                        "the suite, restore what breaks, refuse what is novel")
+    common(sp, need_file=False)
+    sp.add_argument("--observer", choices=["mechanical", "claude"],
+                    default="mechanical")
+    sp.add_argument("--model", default="claude-opus-5")
+    sp.add_argument("--candidate-timeout", type=int, default=None,
+                    help="per-candidate suite budget (default: --suite-timeout)")
+    sp.add_argument("--interval", type=int, default=None,
+                    help="seconds between checks; omit for one pass (CI mode)")
+    sp.add_argument("--commit", action="store_true",
+                    help="git-commit each restoration (only the repaired file)")
+    sp.set_defaults(fn=cmd_guard)
 
     sp = sub.add_parser("repair", help="localise, observe, and repair one defect")
     common(sp)
