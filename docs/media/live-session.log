@@ -1,0 +1,132 @@
+# fluidfix live session — 2026-08-30 17:52:30 (local) — unedited transcript
+# host: Darwin 25.5.0 · python 3.14.4 · one continuous session, no commands removed, absolute wall-clock stamps
+
+$ fluidfix --help | head -6
+[17:52:30.057] usage: fluidfix [-h] {guard,repair,packet,selfcheck} ...
+[17:52:30.057] 
+[17:52:30.057] fluidfix CLI. fluidfix guard ROOT [--interval 900] [--commit] [--observer
+[17:52:30.057] mechanical|claude] fluidfix repair ROOT --file pkg/mod.py [--python VENV_PY]
+[17:52:30.057] [--observer mechanical|claude] fluidfix packet ROOT --file pkg/mod.py
+[17:52:30.057] [--python VENV_PY] fluidfix selfcheck
+[exit 0]
+
+$ fluidfix selfcheck
+[17:52:30.117] router vs reference, all 4096 (F1,A1,Fq): 4096/4096
+[17:52:30.117] identity route(F1,A1,F1)==A1:               256/256
+[17:52:30.122] composition route(o2, route(o1, q)):        4096/4096
+[17:52:30.122] lanes: EMIT/ADVANCE/HALT on 256 states:     0 wrong
+[17:52:30.122] termination: every mask drains (1024 total steps)
+[17:52:30.122] SELFCHECK PASS
+[exit 0]
+
+$ ls && pytest -q | tail -1
+[17:52:30.136] billing.py
+[17:52:30.136] company_rules.py
+[17:52:30.136] invoices.py
+[17:52:30.136] metrics.py
+[17:52:30.136] test_billing.py
+[17:52:30.136] test_invoices.py
+[17:52:30.136] test_metrics.py
+[17:52:30.311] 3 passed in 0.01s
+[exit 0]
+
+$ sed -i '' 's/(1 + rate)/(1 - rate)/' billing.py && git commit -am 'ship pricing v2' && git log --oneline -1
+[17:52:30.353] b1e7966 ship pricing v2
+[exit 0]
+
+$ pytest -q | tail -2
+[17:52:30.533] FAILED test_billing.py::test_tax - assert 90.0 == 110.00000000000001
+[17:52:30.533] 1 failed, 2 passed in 0.01s
+[exit 0]
+
+$ fluidfix guard . --commit
+[17:52:32.204] [17:52:32] billing.py: repaired line 2 in 4 suite runs (0.7s):
+[17:52:32.204]   - return p * (1 - rate)
+[17:52:32.204]   + return p * (1 + rate)
+[17:52:32.260]   committed
+[exit 0]
+
+$ git log --oneline -2 && git show HEAD --stat | head -8
+[17:52:32.282] 2ee9a89 fluidfix: restore billing.py:2
+[17:52:32.282] b1e7966 ship pricing v2
+[17:52:32.293] commit 2ee9a898cfb2c852d21a5c10d091009ce092c3d6
+[17:52:32.293] Author: devkancheti4-design <kanchetiindu9@gmail.com>
+[17:52:32.293] Date:   Sun Aug 30 17:52:32 2026 +0530
+[17:52:32.293] 
+[17:52:32.293]     fluidfix: restore billing.py:2
+[17:52:32.293]     
+[17:52:32.293]     - return p * (1 - rate)
+[17:52:32.293]     + return p * (1 + rate)
+[exit 0]
+
+$ sed -i '' 's/get("tax", 0)/get("tax")/' invoices.py && git commit -am 'ship invoicing v3'
+[exit 0]
+
+$ fluidfix guard . --commit; echo "guard exit code: $?"
+[17:52:33.566] [17:52:33] REFUSED: fault is outside the taught vocabulary (candidate files tried: invoices.py). Teach the class once — register() an observation + transform — and its whole family becomes free.
+[17:52:33.566]   refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/2682cc83-6aee-4dbf-b1f4-1dccd45624a1/scratchpad/videos/live/.fluidfix/last_refusal.json
+[17:52:33.572] guard exit code: 2
+[exit 0]
+
+$ cat .fluidfix/last_refusal.json
+[17:52:33.580] {
+[17:52:33.580]  "status": "refused",
+[17:52:33.580]  "candidates": [
+[17:52:33.580]   "invoices.py"
+[17:52:33.580]  ],
+[17:52:33.580]  "seconds": 1.1500039100646973,
+[17:52:33.580]  "hint": "fault class is outside the taught vocabulary; register() it once and its family becomes free"
+[17:52:33.580] }
+[exit 0]
+
+$ cat company_rules.py
+[17:52:33.585] # company_rules.py — version this file next to the code it maintains
+[17:52:33.585] # Taught from ONE worked example (incident INC-2041):
+[17:52:33.585] #   due += inv["amount"] + inv.get("tax")      <- summed None, crashed
+[17:52:33.586] #   due += inv["amount"] + inv.get("tax", 0)   <- the fix
+[17:52:33.586] register(
+[17:52:33.586]     4,                                  # kind: 0-15, one per class
+[17:52:33.586]     "missing-get-default",              # name
+[17:52:33.586]     'a .get(key) with no default, letting None poison arithmetic',  # what an
+[17:52:33.586]                                         # observer must see (LLM observers get
+[17:52:33.586]                                         # this sentence verbatim)
+[17:52:33.586]     re.compile(r"\.get\((\"[^\"]+\"|'[^']+')\)"),        # signal: when a line
+[17:52:33.586]                                         # can exhibit the class
+[17:52:33.586]     lambda line, o: re.sub(r"\.get\((\"[^\"]+\"|'[^']+')\)",
+[17:52:33.586]                            r".get(\1, 0)", line),        # the repair transform
+[17:52:33.586] )
+[exit 0]
+
+$ fluidfix guard . --commit --dictionary company_rules.py
+[17:52:33.635] dictionary company_rules.py: 1 fault class(es) registered
+[17:52:34.980] [17:52:34] invoices.py: repaired line 4 in 4 suite runs (0.7s):
+[17:52:34.980]   - due += inv["amount"] + inv.get("tax")
+[17:52:34.980]   + due += inv["amount"] + inv.get("tax", 0)
+[17:52:35.035]   committed
+[exit 0]
+
+$ sed -i '' 's/get("ms", 0)/get("ms")/' metrics.py && git commit -am 'ship metrics v2'
+[exit 0]
+
+$ fluidfix guard . --commit --dictionary company_rules.py
+[17:52:35.124] dictionary company_rules.py: 1 fault class(es) registered
+[17:52:36.282] [17:52:36] metrics.py: repaired line 4 in 3 suite runs (0.5s):
+[17:52:36.282]   - acc += s.get("ms")
+[17:52:36.282]   + acc += s.get("ms", 0)
+[17:52:36.336]   committed
+[exit 0]
+
+$ git log --oneline -8
+[17:52:36.358] 62aa375 fluidfix: restore metrics.py:4
+[17:52:36.358] 770e786 ship metrics v2
+[17:52:36.358] e58a96b fluidfix: restore invoices.py:4
+[17:52:36.358] 58342e0 ship invoicing v3
+[17:52:36.358] 2ee9a89 fluidfix: restore billing.py:2
+[17:52:36.358] b1e7966 ship pricing v2
+[17:52:36.358] 6493a75 deploy billing service
+[exit 0]
+
+$ pytest -q | tail -1
+[17:52:36.530] 3 passed in 0.01s
+[exit 0]
+

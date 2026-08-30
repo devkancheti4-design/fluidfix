@@ -30,7 +30,7 @@ print(repair(oracle, "pkg/module.py", observations).summary())
 ```
 
 
-**[▶ Full demo video](docs/media/demo.mp4)** (76s, real-time output) · **[Step-by-step tested instructions](docs/DEMO.md)** — every step enforced by `tests/test_demo_walkthrough.py` in CI.
+**[▶ Full demo video](docs/media/demo.mp4)** (76s, real-time output) · **[▶ Live session, unedited](docs/media/live-session.mp4)** + its **[wall-clock-stamped terminal log](docs/media/live-session.log)** (every command shown, breaks included — 3 repairs and 1 refusal in 6.5s of machine time) · **[Step-by-step tested instructions](docs/DEMO.md)** — every step enforced by `tests/test_demo_walkthrough.py` in CI.
 
 ## Watch it (each under 30 seconds, real runs)
 
