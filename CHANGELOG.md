@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0 — 2026-08-30
+
+- `--dictionary FILE` on `guard` and `repair`, and `load_dictionary()`: ship a
+  versioned per-repo fault-class dictionary (a Python file of `register()`
+  calls). One hard example teaches a class; the guard loads it at startup and
+  every member of the class is repaired autonomously from then on.
+- `commit_repair()` now returns "committed" / "clean" / "failed" so a
+  restoration that already matches HEAD is not reported as a failure.
+- `docs/media/`: five sub-30s terminal recordings from real runs (live PyPI
+  install, guard commit-and-forget, real-library repair, teach-a-class,
+  one-hard-example -> whole-class across three files).
+
 ## 0.1.0 — 2026-08-30 (r3)
 
 - `fluidfix guard`: commit-and-forget maintenance. Mechanical fault-file

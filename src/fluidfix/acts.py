@@ -154,6 +154,20 @@ def register(kind: int, name: str, description: str, signal,
     return code
 
 
+def load_dictionary(path: str) -> int:
+    """Load a repo's fault-class dictionary: a Python file whose top level
+    calls register(). Version it next to the code it maintains — one worked
+    example per class, taught once, decided free forever. Returns how many
+    classes the file registered."""
+    import re as _re
+    before = set(KINDS)
+    ns = {"register": register, "re": _re}
+    with open(path, encoding="utf-8") as f:
+        code = compile(f.read(), path, "exec")
+    exec(code, ns)
+    return len(set(KINDS) - before)
+
+
 def apply(line: str, act: int, obs: Observation) -> str:
     """Apply an act to a line. Unknown acts are a no-op (NOPROGRESS upstream)."""
     fn = ACTS.get(act)

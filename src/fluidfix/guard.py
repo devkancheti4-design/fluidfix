@@ -124,10 +124,18 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                        seconds=time.time() - t0)
 
 
-def commit_repair(root: str, report: GuardReport) -> bool:
-    """Opt-in: commit a successful restoration. Only the repaired file."""
+def commit_repair(root: str, report: GuardReport) -> str:
+    """Opt-in: commit a successful restoration (only the repaired file).
+    Returns "committed", "clean" (restoration already matches HEAD — the
+    defect was never committed), or "failed"."""
     if report.status != "repaired":
-        return False
+        return "failed"
+    try:
+        if subprocess.run(["git", "-C", root, "diff", "--quiet", "--",
+                           report.file], timeout=30).returncode == 0:
+            return "clean"
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        return "failed"
     r = report.result
     msg = (f"fluidfix: restore {report.file}:{r.lineno}\n\n"
            f"- {r.old_line.strip()}\n+ {r.new_line.strip()}\n\n"
@@ -138,10 +146,10 @@ def commit_repair(root: str, report: GuardReport) -> bool:
                        check=True, capture_output=True, timeout=30)
         subprocess.run(["git", "-C", root, "commit", "-m", msg],
                        check=True, capture_output=True, timeout=30)
-        return True
+        return "committed"
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired,
             FileNotFoundError):
-        return False
+        return "failed"
 
 
 def write_refusal(root: str, report: GuardReport) -> str:

@@ -25,6 +25,7 @@ def _oracle(args):
 def cmd_repair(args) -> int:
     from .localize import build_packet
     from .loop import repair
+    _load_dictionary(args)
     oracle = _oracle(args)
     packet = build_packet(oracle, args.file, coverage_target=args.cov)
     if packet is None:
@@ -50,6 +51,13 @@ def cmd_repair(args) -> int:
     return 0 if result.repaired else 2
 
 
+def _load_dictionary(args):
+    if getattr(args, "dictionary", None):
+        from .acts import load_dictionary
+        n = load_dictionary(args.dictionary)
+        print(f"dictionary {args.dictionary}: {n} fault class(es) registered")
+
+
 def _observer(args):
     if args.observer == "claude":
         from .observers import ClaudeObserver
@@ -61,6 +69,7 @@ def _observer(args):
 def cmd_guard(args) -> int:
     import time as _time
     from .guard import commit_repair, guard_once, write_refusal
+    _load_dictionary(args)
     oracle = _oracle(args)
     observer = _observer(args)
     while True:
@@ -68,8 +77,10 @@ def cmd_guard(args) -> int:
                             candidate_timeout=args.candidate_timeout)
         print(f"[{_time.strftime('%H:%M:%S')}] {report.summary()}")
         if report.status == "repaired" and args.commit:
-            print("  committed" if commit_repair(oracle.root, report)
-                  else "  commit failed — repair left in working tree")
+            outcome = commit_repair(oracle.root, report)
+            print({"committed": "  committed",
+                   "clean": "  tree already matches last commit — nothing to commit",
+                   "failed": "  commit failed — repair left in working tree"}[outcome])
         if report.status == "refused":
             print(f"  refusal report: {write_refusal(oracle.root, report)}")
         if args.interval is None:
@@ -142,6 +153,9 @@ def main(argv=None) -> int:
                         help="target project's python (default: this one)")
         sp.add_argument("--cov", default=None,
                         help="coverage target package (default: inferred)")
+        sp.add_argument("--dictionary", default=None,
+                        help="repo fault-class dictionary: a Python file of "
+                             "register() calls, loaded before observing")
         sp.add_argument("--suite-timeout", type=int, default=300,
                         help="full-suite budget in seconds (default 300)")
         sp.add_argument("--test-timeout", type=int, default=60,

@@ -70,7 +70,7 @@ def test_guard_commit_records_the_restoration(tmp_path):
         subprocess.run(cmd, cwd=tmp_path, check=True, capture_output=True)
     report = guard_once(oracle, MechanicalObserver())
     assert report.status == "repaired"
-    assert commit_repair(str(tmp_path), report)
+    assert commit_repair(str(tmp_path), report) == "committed"
     log = subprocess.run(["git", "log", "--oneline", "-1"], cwd=tmp_path,
                          capture_output=True, text=True).stdout
     assert "fluidfix: restore mod.py:4" in log

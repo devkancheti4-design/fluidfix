@@ -29,6 +29,17 @@ observations = MechanicalObserver().observe([packet])[0]
 print(repair(oracle, "pkg/module.py", observations).summary())
 ```
 
+
+## Watch it (each under 30 seconds, real runs)
+
+| | |
+|---|---|
+| [Live from PyPI](docs/media/clip_s1.gif) | install + exhaustive selfcheck |
+| [Deploy, break, forget](docs/media/clip_s2.gif) | guard repairs and commits in 0.7s |
+| [Real library](docs/media/clip_s3.gif) | 455-test suite, byte-exact restore |
+| [Teach a class once](docs/media/clip_s4.gif) | refused -> register() -> repaired |
+| [One hard example, whole class](docs/media/clip_s5.gif) | one dictionary fixes 3 different files |
+
 ## Measured, not promised
 
 All numbers below are from a live benchmark on 33 injected single-line bugs in
