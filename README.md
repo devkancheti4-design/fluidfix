@@ -30,6 +30,8 @@ print(repair(oracle, "pkg/module.py", observations).summary())
 ```
 
 
+**[▶ Full demo video](docs/media/demo.mp4)** (76s, real-time output) · **[Step-by-step tested instructions](docs/DEMO.md)** — every step enforced by `tests/test_demo_walkthrough.py` in CI.
+
 ## Watch it (each under 30 seconds, real runs)
 
 | | |
