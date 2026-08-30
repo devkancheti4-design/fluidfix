@@ -112,7 +112,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install -e . pytest fluidfix
+      - run: pip install -e . pytest pytest-cov fluidfix
       - run: fluidfix guard .
         # exit 0 = tests green (or auto-repairable)
         # exit 2 = a real bug fluidfix won't guess at — fix it yourself
