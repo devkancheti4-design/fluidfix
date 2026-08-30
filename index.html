@@ -159,6 +159,7 @@
   <div class="nav-links">
     <a href="#demo">Demo</a>
     <a href="#how">How it works</a>
+    <a href="#scope">What it fixes</a>
     <a href="#students">Students</a>
     <a href="#pricing">Pricing</a>
     <a href="https://github.com/devkancheti4-design/fluidfix">GitHub</a>
@@ -270,6 +271,41 @@ $ echo $?
     <div class="card"><span class="chip">honesty</span><h3>Refusal under contract</h3>
       <p>Green suite: touches nothing. Unknown class: refuses, exits 2, writes the teach-me report. The failure mode is a statement, not a wrong edit.</p></div>
   </div>
+</div></section>
+
+<section id="scope"><div class="wrap">
+  <p class="eyebrow">what it fixes — honestly</p>
+  <h2>You teach rules, not values.</h2>
+  <p class="lead">fluidfix learns a whole bug class from one example when the fix is a
+  <b style="color:var(--ink)">rule you apply to the broken line</b>. When a fix needs a
+  <b style="color:var(--ink)">value that isn't on the line</b>, it refuses instead of guessing.
+  Both columns below are from a real generalisation test — one example taught, then run on
+  different, unseen bugs of the same class.</p>
+  <div class="trio" style="grid-template-columns:1fr 1fr">
+    <div class="card" style="border-color:var(--teal-dim)">
+      <span class="chip">generalises from one example ✓</span>
+      <h3 style="color:var(--teal)">Rule-shaped fixes</h3>
+      <p style="color:var(--ink)">Flipped <span class="mono">&gt;=</span> / <span class="mono">&gt;</span>,
+      swapped <span class="mono">+</span> / <span class="mono">−</span>, off-by-one literals,
+      <span class="mono">and</span>/<span class="mono">or</span>, <span class="mono">True</span>/<span class="mono">False</span>,
+      <span class="mono">==</span>/<span class="mono">!=</span>, a <span class="mono">.get()</span> missing its default,
+      swapped return operands. One example = the whole class, free forever.</p>
+      <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">Tested: 11/11 unseen bugs repaired byte-exact.</p>
+    </div>
+    <div class="card" style="border-color:var(--line2)">
+      <span class="chip" style="color:var(--amber)">refused, never guessed ✗</span>
+      <h3 style="color:var(--amber)">Value-shaped fixes</h3>
+      <p style="color:var(--muted)">The <em>right</em> variable name, the <em>right</em> constant, the
+      <em>right</em> guard for this function — information the broken line doesn't carry. One example of
+      <span class="mono">name→email</span> can't know the next bug is <span class="mono">count→total</span>.
+      fluidfix leaves these for a human.</p>
+      <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">Tested: 0/5 — every one safely refused, zero wrong edits.</p>
+    </div>
+  </div>
+  <p style="color:var(--faint);font-size:.85rem;margin-top:1.2rem">That refusal is the product:
+  an unattended repair tool is only trustworthy if its failure mode is a loud "not this one," never a
+  silent wrong edit. Measured record across every test: many repairs, <b style="color:var(--teal)">zero
+  wrong ones</b>.</p>
 </div></section>
 
 <section id="students"><div class="wrap">
