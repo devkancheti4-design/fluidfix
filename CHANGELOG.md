@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0 — 2026-08-31
+
+- **Repo-searchable value classes.** Taught transforms may now return a
+  candidate SET (list of lines) mined from repo context — `Observation`
+  carries `file`, `root`, and `all_lines`; the loop tries each candidate in
+  order (bounded at 32) and the suite adjudicates every one. Measured before:
+  rule-shaped classes generalized 11/11 exact from one example, value-shaped
+  0/5 (all refused). With one context-aware registration, the same held-out
+  value bugs now repair byte-exact — and when the correct value exists
+  nowhere in the repo, every candidate fails and the guard still refuses with
+  the tree byte-identical. The no-wrong-repairs contract is unchanged;
+  precision is bounded by suite strength.
+- `apply()` retained as the single-candidate back-compat API.
+
 ## 0.2.1 — 2026-08-31
 
 - Guard refusals now diagnose themselves: when no candidate file is found and

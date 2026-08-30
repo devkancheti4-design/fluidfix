@@ -31,7 +31,7 @@ import os
 import time
 from dataclasses import dataclass, field
 
-from .acts import Observation, act_for, apply
+from .acts import Observation, act_for, candidates
 from .lanes import ADVANCE, EMIT, HALT, kind_of, mask_of
 from .oracle import Oracle
 
@@ -99,21 +99,27 @@ def repair(oracle: Oracle, defect_file: str,
                 kind = kind_of(EMIT(mask))
                 mask = ADVANCE(mask)
                 act = act_for(kind)
-                cand = apply(body, act, obs)
-                if cand == body or (i, cand) in tried:   # NOPROGRESS
-                    continue
-                tried.add((i, cand))
-                res.acts_tried.append(act)               # a real candidate
-                new = raw[:]
-                new[i] = cand + ending
-                _write(path, "\n".join(new))
-                wrote = True
-                res.suite_runs += 1
-                if oracle.green(timeout=cand_t):
-                    res.repaired, res.refused = True, False
-                    res.lineno, res.old_line, res.new_line = obs.lineno, body, cand
-                    res.reason = f"kind {kind} -> act {act}"
-                    return res
+                obs.file, obs.root = defect_file, oracle.root
+                obs.all_lines = [l.rstrip("\r") for l in raw]
+                counted = False
+                for cand in candidates(body, act, obs):
+                    if cand == body or (i, cand) in tried:   # NOPROGRESS
+                        continue
+                    tried.add((i, cand))
+                    if not counted:
+                        res.acts_tried.append(act)           # a real candidate set
+                        counted = True
+                    new = raw[:]
+                    new[i] = cand + ending
+                    _write(path, "\n".join(new))
+                    wrote = True
+                    res.suite_runs += 1
+                    if oracle.green(timeout=cand_t):
+                        res.repaired, res.refused = True, False
+                        res.lineno, res.old_line, res.new_line = obs.lineno, body, cand
+                        res.reason = f"kind {kind} -> act {act}"
+                        return res
+                    _write(path, "\n".join(raw))             # roll back, next candidate
                 _write(path, src)                        # byte-exact restore
         res.reason = ("no observation named a kind this vocabulary can repair"
                       if not res.acts_tried else

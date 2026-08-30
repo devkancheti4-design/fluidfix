@@ -39,6 +39,12 @@ class Observation:
     literal_occurrence: int | None = None
     op_occurrence: int | None = None
     note: str = ""
+    # repo context, populated by the repair loop before appliers run — lets a
+    # taught transform search for values that live in the repo rather than on
+    # the broken line (enumerate candidates; the suite picks; refusal if none)
+    file: str | None = None          # defect file, relative to root
+    root: str | None = None          # project root (absolute)
+    all_lines: list | None = None    # full defect-file lines, sans endings
 
 
 # kind -> (name, description used verbatim in observer prompts, line-signal regex)
@@ -168,7 +174,27 @@ def load_dictionary(path: str) -> int:
     return len(set(KINDS) - before)
 
 
-def apply(line: str, act: int, obs: Observation) -> str:
-    """Apply an act to a line. Unknown acts are a no-op (NOPROGRESS upstream)."""
+def candidates(line: str, act: int, obs: Observation) -> list:
+    """All candidate lines an act proposes (possibly several).
+
+    A shipped or taught applier may return either a single string (the common
+    case: the fix is a pure rule over the line) or a list of strings — a
+    candidate set searched in order, for classes whose correct value lives
+    elsewhere in the repo (`obs.file`/`obs.root`/`obs.all_lines` carry the
+    context). The suite adjudicates every candidate; none passing means
+    refusal, so the no-wrong-repairs contract is unchanged. Unknown acts are
+    a no-op (NOPROGRESS upstream). Candidate sets are capped at 32.
+    """
     fn = ACTS.get(act)
-    return line if fn is None else fn(line, obs)
+    if fn is None:
+        return [line]
+    out = fn(line, obs)
+    if isinstance(out, str):
+        return [out]
+    return [c for c in out if isinstance(c, str)][:32]   # bounded search
+
+
+def apply(line: str, act: int, obs: Observation) -> str:
+    """Apply an act to a line — the first candidate (back-compat single-fix API)."""
+    out = candidates(line, act, obs)
+    return out[0] if out else line

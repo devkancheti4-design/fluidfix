@@ -11,7 +11,7 @@
     print(result.summary())
 """
 from .acts import (ACTS, KINDS, WORKED_EXAMPLE, Observation, act_for, apply,
-                   register)
+                   candidates, register)
 from .guard import (GuardReport, commit_repair, find_candidate_files,
                     guard_once, write_refusal)
 from .lanes import ADVANCE, EMIT, HALT, kind_of, mask_of
@@ -21,12 +21,12 @@ from .observers import ClaudeObserver, MechanicalObserver, observer_prompt
 from .oracle import Oracle
 from .router import pack, route, route_packed
 
-__version__ = "0.2.1"
+__version__ = "0.3.0"
 __all__ = [
     "route", "route_packed", "pack",
     "EMIT", "ADVANCE", "HALT", "mask_of", "kind_of",
     "Observation", "KINDS", "ACTS", "WORKED_EXAMPLE", "act_for", "apply",
-    "register",
+    "register", "candidates",
     "Oracle", "Packet", "build_packet",
     "MechanicalObserver", "ClaudeObserver", "observer_prompt",
     "repair", "RepairResult",

@@ -116,9 +116,14 @@ Rules of thumb (all enforced by how the pipeline works):
 - **One class = one `register()` call.** The kind number is yours; the act
   code is inferred by the router from its single worked example — you never
   touch the kernel, and renumbering your classes never breaks anything.
-- **The transform must be derivable from the defective line alone.** If the
-  fix needs information the line doesn't carry (a wrong variable name, a
-  missing guard), it is not a class fluidfix should own — leave it refused.
+- **The transform must be derivable from the line plus what the repo already
+  contains.** A pure rule (flip, decrement, add-default) returns one
+  candidate. When the correct value lives elsewhere in the repo — the right
+  attribute name, a constant sibling code already uses — return a candidate
+  **list** mined from `obs.all_lines` / `obs.root` (capped at 32); the suite
+  tries each in order and refusal still happens if none passes. Only fixes
+  needing information that exists nowhere in the repo (a new algorithm, an
+  outside fact) stay out of scope — leave those refused.
 - **The suite stays the judge.** A wrong transform cannot land: candidates
   that don't green the suite are rolled back byte-exactly.
 - `re` and `register` are in scope inside a dictionary file; nothing else is
