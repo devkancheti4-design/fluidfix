@@ -283,7 +283,7 @@ $ echo $?
       <p style="margin-top:.5rem">Selfcheck re-proves the whole engine on your machine in about a second — expect <span class="mono">SELFCHECK PASS</span>.</p></div>
     <div class="step"><div class="k">step 2</div><h3>Guard your repo</h3>
       <p class="mono" style="color:var(--ink)">cd your-project<br>fluidfix guard . --commit</p>
-      <p style="margin-top:.5rem">Green tests: it touches nothing. A mechanical bug: it finds the file itself, repairs it byte-exact, and commits <span class="mono">fluidfix: restore …</span>. An unknown bug: it refuses loudly — that one's yours (or teach it the class).</p></div>
+      <p style="margin-top:.5rem">Green tests: it touches nothing. A mechanical bug: it finds the file itself, repairs it byte-exact, and commits <span class="mono">fluidfix: restore …</span>. An unknown bug: it refuses loudly — that one's yours to fix, and honestly, that's the good practice.</p></div>
     <div class="step"><div class="k">step 3</div><h3>Guard it on GitHub</h3>
       <p>Add <span class="mono">.github/workflows/fluidfix.yml</span> so every push is checked:</p>
       <pre style="background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:.7rem .8rem;font-size:.72rem;line-height:1.6;overflow-x:auto;margin:.6rem 0 0"><code>name: fluidfix
@@ -297,8 +297,8 @@ jobs:
         with: {python-version: "3.12"}
       - run: pip install -e . pytest fluidfix
       - run: fluidfix guard .
-        # exit 0 = green or repairable
-        # exit 2 = real bug outside the vocabulary — fix or teach it</code></pre></div>
+        # exit 0 = green or auto-repairable
+        # exit 2 = a real bug fluidfix won't guess at — fix it yourself</code></pre></div>
   </div>
   <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">Full walkthrough with expected
   outputs (every step CI-tested): <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/DEMO.md">docs/DEMO.md</a>.
