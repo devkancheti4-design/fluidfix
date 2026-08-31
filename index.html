@@ -166,7 +166,7 @@
   .foot-col a:hover { color:var(--teal); }
 </style>
 
-<div class="banner">v0.6.0 is live on PyPI · checkout is being set up — <b>pre-book now, pay nothing today,</b> lock 50% off your first year</div>
+<div class="banner">v0.6.1 is live on PyPI · checkout is being set up — <b>pre-book now, pay nothing today,</b> lock 50% off your first year</div>
 
 <nav><div class="nav-in">
   <span class="logo">fluidfix</span>
@@ -366,7 +366,7 @@ $ echo $?
   three rows: fluidfix has <b style="color:var(--ink)">never made a wrong repair</b> — every fix
   passes your full suite or is rolled back byte-for-byte, and what it can't prove, it refuses.
   Precision is bounded by your suite's strength, which is also why it rewards teams that test.</p>
-  <h2 style="margin-top:3rem">v0.6: a third law now rules on every miss</h2>
+  <h2 style="margin-top:3rem">v0.6: a third law took every miss back</h2>
   <p class="lead">The guard is now governed by a machine-authored decision law. When a search was
   budget-truncated, it escalates &mdash; bounded by a wall clock. When two <i>different</i> fixes both
   pass your suite, it refuses and asks for one pinning test &mdash; it never guesses. And when nothing
@@ -377,11 +377,14 @@ $ echo $?
     <tr><td class="mono">click/_textwrap.py:18</td><td class="safe">refused</td><td class="ok">byte-exact repair &middot; default budget</td></tr>
     <tr><td class="mono">click/termui.py:744</td><td class="safe">suite-passing, not byte-exact</td><td class="ok">byte-exact repair &middot; default budget</td></tr>
     <tr><td class="mono">click/utils.py:70</td><td class="safe">refused</td><td class="ok">byte-exact repair &middot; raised budget (<span class="mono">--escalate-budget 1800</span>)</td></tr>
-    <tr><td class="mono">arrow/locales.py:5468</td><td class="safe">refused</td><td class="safe">still refuses &mdash; bounded, tree untouched, names the way out</td></tr>
+    <tr><td class="mono">arrow/locales.py:5468</td><td class="safe">refused</td><td class="ok">byte-exact repair &middot; default budget &mdash; the failing test's own name led the search to the line</td></tr>
   </table></div>
-  <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">Three of the four former misses
-  now restore the original bytes; the fourth tells the truth about why it can't. Raw replay logs
-  and the exact injection scripts ship in the repo:
+  <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">All four former misses now
+  restore the original bytes &mdash; the last one fell when v0.6.1 taught the search what test names
+  already say: <span class="mono">TestOdiaLocale::test_ordinal_number</span> points straight at
+  <span class="mono">OdiaLocale._ordinal_number</span>, line 5,468 of a 6,500-line file, repaired in
+  3 suite runs. Raw replay logs, the exact injection scripts, and the full lab notebook &mdash;
+  including one contaminated round we caught, discarded, and documented &mdash; ship in the repo:
   <a href="https://github.com/devkancheti4-design/fluidfix/tree/master/docs/data/scale">docs/data/scale</a>.</p>
 </div></section>
 
