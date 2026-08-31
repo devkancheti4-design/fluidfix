@@ -346,6 +346,22 @@ $ echo $?
       <td class="r">1 case</td>
       <td class="safe">every candidate failed → refused, tree byte-identical</td></tr>
   </table></div>
+  <h2 style="margin-top:3rem">And at large-repo scale — strict, seeded, no cherry-picking</h2>
+  <p class="lead">Random mechanical bugs injected at seeded sites across three big codebases;
+  the guard was never told which file. Both held-out repos beat the one the fixes were tuned on.
+  Full protocol, raw logs, and every miss autopsied:
+  <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/SCALE.md">docs/SCALE.md</a>.</p>
+  <div class="gwrap"><table class="gtable">
+    <tr><th>Repo</th><th>Size</th><th>Byte-exact</th><th>Refused (safe)</th><th>Wrong repairs</th></tr>
+    <tr><td><b>click</b></td><td class="r">28,581 LOC · 1,990 tests</td><td class="ok">3/6 + 1 suite-passing</td><td class="safe">2</td><td class="ok">0</td></tr>
+    <tr><td><b>arrow</b> <span class="mono">(held-out)</span></td><td class="r">19,928 LOC · 1,902 tests</td><td class="ok">5/6</td><td class="safe">1</td><td class="ok">0</td></tr>
+    <tr><td><b>sortedcontainers</b> <span class="mono">(held-out)</span></td><td class="r">11,324 LOC · 366 tests</td><td class="ok">6/6</td><td class="safe">0</td><td class="ok">0</td></tr>
+    <tr><td><b>total</b></td><td class="r">18 live trials</td><td class="ok">14/18 byte-exact (78%)</td><td class="safe">3 — each with a named cause</td><td class="ok">0 · and 3/3 novel-class bugs refused</td></tr>
+  </table></div>
+  <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">Big-repo repairs take seconds to
+  minutes (median ≈ 3 min; the suite is re-run for every candidate). Precise wording we stand by:
+  fluidfix never ships a repair your suite rejects; byte-exactness is bounded by your suite's
+  strength — 14 of 15 accepted repairs here restored the original code exactly.</p>
   <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">The contract underneath all
   three rows: fluidfix has <b style="color:var(--ink)">never made a wrong repair</b> — every fix
   passes your full suite or is rolled back byte-for-byte, and what it can't prove, it refuses.
