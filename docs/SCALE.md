@@ -42,3 +42,33 @@ repair its suite rejects; byte-exactness is bounded by suite strength** —
 measured here at 14 byte-exact of 15 accepted repairs (93%). Strong suites
 get exact restorations; weak coverage admits suite-equivalent imposters, the
 known cost every automated-repair system pays.
+
+## v0.6.0 addendum — the engine law replayed against every miss
+
+v0.6.0 fuses the third machine-authored kernel (the engine law,
+`fluidfix/engine.py`, vendored verbatim and fingerprint-tested) into the
+guard: AMB refuses when two different candidates both green the suite,
+CAPPED escalates truncated searches (packet ×3/×9, files 24/72) under
+`--escalate-budget` (default 600s), REFUTED and UNREAD stop honestly with
+specific hints.
+
+Every v0.5 miss above was then replayed **byte-faithfully** — same seed-
+derived sites, same columns, same tokens, injection asserted against
+baseline content, repos hard-reset to pinned SHAs (raw logs:
+`data/scale/v6-replays-round*.log`, scripts alongside):
+
+| v0.5 miss | v0.5 verdict | v0.6 verdict |
+|---|---|---|
+| `click/_textwrap.py:18` (cmp) | REFUSED 209s | **byte-exact repair**, default budget, 432s total |
+| `click/termui.py:744` (lit `\033`→`\034`) | GREEN-ONLY imposter | **byte-exact repair**, default budget, 198s total |
+| `click/utils.py:70` (lit) | REFUSED 814s | **byte-exact repair** at `--escalate-budget 1800` (refuses boundedly at the 600s default) |
+| `arrow/locales.py:5468` (cmp) | REFUSED 765s | still refuses — boundedly, tree untouched, honest hint — at 600s and 1800s |
+
+Three of the four former misses now restore byte-exact. The fourth is a
+~6,500-line file whose failing tests execute thousands of lines; the
+refusal hint says exactly that and names the ways out (raise the budget,
+`--observer claude`, fix by hand). The termui imposter's root cause was a
+generator bug — literal decrement lost zero-padding ("034"→"33") — fixed
+width-preserving and regression-tested; the byte-exact candidate now exists
+and wins. No unbounded runtime remains: every escalation is wall-clock
+capped and every stop states its reason.

@@ -143,29 +143,101 @@ def _has_pytest_cov(oracle: Oracle) -> bool:
 
 def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                coverage_target: str | None = None,
-               candidate_timeout: int | None = None) -> GuardReport:
+               candidate_timeout: int | None = None,
+               escalate: bool = True,
+               escalate_budget: int = 600) -> GuardReport:
+    """One guard pass, governed by the engine law: a refusal is not the end
+    until the law says so. CAPPED (a budget truncated the search) rules
+    RAISE_BUDGET and the pass retries with tripled budgets (3 rounds max);
+    AMB, UNREAD and REFUTED rule honest stops with specific reports."""
+    from .engine import decide, situation
+
     t0 = time.time()
     fails, out = oracle.failing_output()
     if not fails:
         return GuardReport(status="green", seconds=time.time() - t0)
     candidates = files or find_candidate_files(oracle, out)
     hint = ""
+    capped0 = acts0 = False
     if not candidates and not _has_pytest_cov(oracle):
         hint = ("pytest-cov is not installed in the target interpreter, so "
                 "coverage-based localisation was unavailable — install it "
                 f"({oracle.python} -m pip install pytest-cov) and re-run; "
-                "on large codebases it is how the fault file gets found.")
+                "on large codebases it is how the fault file gets found. "
+                "(engine law: UNREAD -> ADD_MATERIAL)")
     for rel in candidates:
         packet = build_packet(oracle, rel, coverage_target=coverage_target)
         if packet is None:
             continue
+        capped0 = capped0 or packet.truncated
         observations = observer.observe([packet])[0]
         result = repair(oracle, rel, observations,
                         candidate_timeout=candidate_timeout)
+        acts0 = acts0 or bool(result.acts_tried)
         if result.repaired:
             return GuardReport(status="repaired", file=rel, result=result,
                                candidates=candidates,
                                seconds=time.time() - t0)
+        if result.ambiguous:                     # engine law: BUILT+AMB -> ADD_STATE
+            return GuardReport(status="refused", file=rel,
+                               candidates=candidates, result=result,
+                               seconds=time.time() - t0,
+                               hint=result.reason)
+
+    # ---- the engine law rules on the refusal -------------------------------
+    # Measure what actually blocked, then do what the law says. Only
+    # RAISE_BUDGET retries; everything else is an honest, specific stop.
+    # a truncated candidate-file list is also a CAPPED budget: more files
+    # were implicated by coverage than the first pass tried
+    all_files = files or find_candidate_files(oracle, out, limit=999)
+    capped0 = capped0 or len(all_files) > len(candidates)
+    if escalate and decide(situation(CAPPED=capped0, REFUTED=acts0)) == "RAISE_BUDGET":
+        fully_searched: set[str] = set()
+        esc_t0 = time.time()
+        for factor in (3, 9):
+            capped = False
+            any_acts = False
+            round_files = all_files[:8 * factor]
+            for rel in round_files:
+                if time.time() - esc_t0 > escalate_budget:
+                    return GuardReport(
+                        status="refused", candidates=candidates,
+                        seconds=time.time() - t0,
+                        hint=(f"escalation budget exhausted ({escalate_budget}s) "
+                              "with CAPPED still ruling RAISE_BUDGET — raise "
+                              "--escalate-budget, use --observer claude, or fix "
+                              "by hand (the search space is real, the clock ran out)"))
+                packet = build_packet(oracle, rel, coverage_target=coverage_target,
+                                      max_lines=110 * factor)
+                if packet is None:
+                    continue
+                if rel in fully_searched:
+                    continue      # searched untruncated at a smaller budget already
+                if not packet.truncated:
+                    fully_searched.add(rel)
+                capped = capped or packet.truncated or len(all_files) > len(round_files)
+                observations = observer.observe([packet])[0]
+                result = repair(oracle, rel, observations,
+                                candidate_timeout=candidate_timeout)
+                any_acts = any_acts or bool(result.acts_tried)
+                if result.repaired:
+                    result.reason += f" (engine law: CAPPED -> RAISE_BUDGET x{factor})"
+                    return GuardReport(status="repaired", file=rel, result=result,
+                                       candidates=candidates,
+                                       seconds=time.time() - t0)
+                if result.ambiguous:
+                    return GuardReport(status="refused", file=rel,
+                                       candidates=candidates, result=result,
+                                       seconds=time.time() - t0,
+                                       hint=result.reason)
+            sit = situation(CAPPED=capped, REFUTED=any_acts)
+            if decide(sit) != "RAISE_BUDGET":
+                if any_acts and not hint:
+                    hint = ("every generated candidate was rejected by the suite "
+                            "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — "
+                            "the refusal report lists what was tried; teach the "
+                            "class or fix by hand")
+                break
     return GuardReport(status="refused", candidates=candidates,
                        seconds=time.time() - t0, hint=hint)
 

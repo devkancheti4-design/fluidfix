@@ -39,6 +39,16 @@ def test_reduce_literal_pointer_beats_first_match():
             == "    if number % 100 in (11, 12, 13):")
 
 
+def test_reduce_literal_preserves_zero_padding():
+    # click termui.py:744 replay: "\034[" must decrement to "\033[" (byte-
+    # exact restore), not "\33[" — inside string escapes the padding is
+    # meaning. int() round-tripping lost it before this was measured.
+    line = 'bits.append(f"\\034[{c}m")'
+    assert apply(line, 6, obs()) == 'bits.append(f"\\033[{c}m")'
+    # unpadded literals keep the plain decrement — never "10" -> "09"
+    assert apply("x = 10", 6, obs()) == "x = 9"
+
+
 def test_swap_return_operands():
     assert apply("    return a // b", 7, obs()) == "    return b // a"
     assert apply("    return x * y", 7, obs()) == "    return y * x"

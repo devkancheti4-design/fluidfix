@@ -32,6 +32,7 @@ import time
 from dataclasses import dataclass, field
 
 from .acts import Observation, act_for, candidates
+from .engine import decide, situation
 from .lanes import ADVANCE, EMIT, HALT, kind_of, mask_of
 from .oracle import Oracle
 
@@ -49,6 +50,8 @@ class RepairResult:
     suite_runs: int = 0
     seconds: float = 0.0
     reason: str = ""
+    ambiguous: bool = False
+    greens: list[str] = field(default_factory=list)   # all suite-passing candidates
 
     def summary(self) -> str:
         if self.repaired:
@@ -102,6 +105,7 @@ def repair(oracle: Oracle, defect_file: str,
                 obs.file, obs.root = defect_file, oracle.root
                 obs.all_lines = [l.rstrip("\r") for l in raw]
                 counted = False
+                greens: list[str] = []
                 for cand in candidates(body, act, obs):
                     if cand == body or (i, cand) in tried:   # NOPROGRESS
                         continue
@@ -115,12 +119,33 @@ def repair(oracle: Oracle, defect_file: str,
                     wrote = True
                     res.suite_runs += 1
                     if oracle.green(timeout=cand_t):
+                        greens.append(cand)
+                        if len(greens) >= 2:                 # AMB proven — stop
+                            _write(path, "\n".join(raw))
+                            break
+                    _write(path, "\n".join(raw))             # roll back, keep testing
+                _write(path, src)                        # byte-exact restore
+                if greens:
+                    # the engine law rules on what happened: one green is
+                    # BUILT -> SHIP; two DISTINCT greens is BUILT+AMB ->
+                    # ADD_STATE (the suite cannot tell the candidates apart —
+                    # refuse and ask for a pinning test, never guess)
+                    ruling = decide(situation(BUILT=True, AMB=len(greens) > 1))
+                    res.greens = greens
+                    if ruling == "SHIP":
+                        new = raw[:]
+                        new[i] = greens[0] + ending
+                        _write(path, "\n".join(new))
                         res.repaired, res.refused = True, False
-                        res.lineno, res.old_line, res.new_line = obs.lineno, body, cand
+                        res.lineno, res.old_line, res.new_line = obs.lineno, body, greens[0]
                         res.reason = f"kind {kind} -> act {act}"
                         return res
-                    _write(path, "\n".join(raw))             # roll back, next candidate
-                _write(path, src)                        # byte-exact restore
+                    res.ambiguous = True
+                    res.reason = (f"AMBIGUOUS: {len(greens)} different candidates all "
+                                  f"pass the suite at line {obs.lineno} — the tests "
+                                  "cannot tell them apart; add one pinning test "
+                                  "(engine law: ADD_STATE, never guess)")
+                    return res
         res.reason = ("no observation named a kind this vocabulary can repair"
                       if not res.acts_tried else
                       "every candidate left the suite red — fault is outside "

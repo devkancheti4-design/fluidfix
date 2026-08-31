@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.6.0 — 2026-08-31
+
+- **The engine law fused into the guard.** The third machine-authored kernel
+  (`act = (4 & ntzb(x-7)) + ntzb(x + (x&128))`) is vendored verbatim in
+  `fluidfix/engine.py` — pinned by a fingerprint test (sha256 `48bf50bf…`,
+  1,555 chars) — and now rules on every non-green pass instead of hard-coded
+  policy:
+  - **BUILT+AMB → ADD_STATE**: when two *different* candidates both green the
+    suite, the guard refuses and asks for one pinning test instead of
+    shipping whichever came first. It never guesses between
+    suite-indistinguishable repairs.
+  - **CAPPED → RAISE_BUDGET**: when a budget truncated the search (packet
+    sampling, or more implicated files than the pass tried), the guard
+    escalates — packet ×3/×9, candidate files 24/72 — under a wall-clock cap
+    (`--escalate-budget`, default 600s). Refusals state the cap was hit.
+  - **REFUTED → HARVEST_COUNTEREXAMPLE / UNREAD → ADD_MATERIAL**: honest,
+    specific stops (what was tried; what to install) — never silent.
+- **Measured: byte-faithful replays of all four v0.5 misses** (same seeded
+  sites, columns, tokens; injection asserted against pinned baselines; raw
+  logs in `docs/data/scale/`). Three now repair byte-exact:
+  `click/_textwrap.py:18` and `click/termui.py:744` at the default budget,
+  `click/utils.py:70` at `--escalate-budget 1800`. The fourth
+  (`arrow/locales.py:5468`) still refuses — boundedly, tree untouched, with
+  the honest hint — at both 600s and 1800s. Full table in `docs/SCALE.md`.
+- **Zero-padded literals now decrement width-preserving** (`034`→`033`,
+  never `33`). The round-1 termui replay measured the green-only imposter
+  this generated; with the fix the byte-exact restore is generated and wins.
+  Regression-tested against the exact replay line.
+- 55/55 tests. The law's rulings and each fused path (AMB refusal, CAPPED
+  escalation, REFUTED stop) have dedicated tests in
+  `tests/test_engine_fusion.py`.
+
 ## 0.5.0 — 2026-08-31
 
 - **Large-repo localisation, measured then fixed.** A strict seeded benchmark

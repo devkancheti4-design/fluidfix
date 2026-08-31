@@ -93,7 +93,15 @@ def _flip_strictness(line: str, obs: Observation) -> list:
 
 
 def _dec_at(line: str, m) -> str:
-    new_lit = str(int(m.group()) - 1)
+    lit = m.group()
+    val = int(lit) - 1
+    new_lit = str(val)
+    # A zero-padded literal keeps its width ("034" -> "033", not "33"):
+    # inside string escapes the padding is meaning, and byte-exact
+    # restoration is the product's whole claim (measured: click termui
+    # \033 -> \034 replay shipped "\33" without this).
+    if val >= 0 and len(lit) > 1 and lit.startswith("0"):
+        new_lit = new_lit.zfill(len(lit))
     out = line[:m.start()] + new_lit + line[m.end():]
     # Simplify `x + 1` -> decrement -> `x + 0` -> `x`, but ONLY at the
     # decrement site, and only when the zero stands alone: a global

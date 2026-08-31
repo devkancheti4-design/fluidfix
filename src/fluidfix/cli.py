@@ -75,7 +75,8 @@ def cmd_guard(args) -> int:
     observer = _observer(args)
     while True:
         report = guard_once(oracle, observer, coverage_target=args.cov,
-                            candidate_timeout=args.candidate_timeout)
+                            candidate_timeout=args.candidate_timeout,
+                            escalate_budget=args.escalate_budget)
         print(f"[{_time.strftime('%H:%M:%S')}] {report.summary()}")
         if report.status == "repaired" and args.commit:
             outcome = commit_repair(oracle.root, report)
@@ -254,6 +255,8 @@ def main(argv=None) -> int:
     sp.add_argument("--model", default="claude-opus-5")
     sp.add_argument("--candidate-timeout", type=int, default=None,
                     help="per-candidate suite budget (default: --suite-timeout)")
+    sp.add_argument("--escalate-budget", type=int, default=600,
+                    help="wall-clock cap for law-driven escalation rounds (s)")
     sp.add_argument("--interval", type=int, default=None,
                     help="seconds between checks; omit for one pass (CI mode)")
     sp.add_argument("--commit", action="store_true",
