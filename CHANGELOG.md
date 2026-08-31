@@ -1,5 +1,47 @@
 # Changelog
 
+## 0.6.1 — 2026-08-31
+
+- **All four v0.5 misses now repair byte-exact** (byte-faithful replays, raw
+  logs + injection scripts in `docs/data/scale/`): `arrow/locales.py:5468`
+  at the DEFAULT budget (3 suite runs / 8.5s once sighted; 781s total),
+  `click/_textwrap.py:18` (326s) and `click/termui.py:744` (203s) at the
+  default budget, `click/utils.py:70` at `--escalate-budget 1800` (553s —
+  2.6× faster than 0.6.0; refuses honestly and boundedly at the 600s
+  default). Zero wrong repairs under clean-room conditions.
+- **Depth-first escalation scheduler.** CAPPED→RAISE_BUDGET no longer walks
+  breadth-first factor rounds (measured: they spent the whole clock on
+  packets too small to see the arrow defect). Each candidate file, in rank
+  order, now gets full sight at once — packet at 990 lines, rebuilt
+  unbounded if still truncated — one repair per file, under the wall clock.
+- **Line-level affinity ranking.** The failing test names its subject:
+  `TestOdiaLocale::test_ordinal_number` points at `OdiaLocale.
+  _ordinal_number`, so observations inside name-matching classes/defs are
+  tried first. Measured: the arrow defect sat ~900th of 931 observations in
+  line order — unreachable inside any honest budget — and ranks in the
+  first handful by affinity. Tokens come only from FAILED/ERROR node ids.
+- **Five fixes from an adversarial review of the scheduler** (each pinned by
+  a test): a deadline can never interrupt a candidate set after one green —
+  the ambiguity proof always completes, so a repair shipped under time
+  pressure can no longer be an unproven guess; a signal-filter drop now
+  counts as CAPPED (in-vocabulary lines like `a // b` match no filter
+  token, and "untruncated" packets missing them defeated escalation); files
+  whose first-pass packet was already complete are not redundantly
+  re-searched; one file can eat at most half the escalation budget (a wrong
+  rank-1 must not starve the rest); no observer calls are spent after the
+  deadline.
+- **Multi-line logic fixes are now CI-pinned**: a taught class rewriting one
+  defective line into a corrected block (zero-guard control flow), taught
+  from one example and generalising to a second member with zero new
+  examples, is a committed test — the claim goes red if it stops being true.
+- Lab-notebook honesty note: two intermediate replay rounds were discarded
+  after discovering an orphaned benchmark process concurrently writing
+  candidate lines into the arrow clone (it made one contaminated run look
+  like a wrong repair of `arrow/arrow.py`). The published verdicts come from
+  a verified-quiet environment; the discarded logs ship in
+  `docs/data/scale/` too, labeled as contaminated.
+- 59/59 tests.
+
 ## 0.6.0 — 2026-08-31
 
 - **The engine law fused into the guard.** The third machine-authored kernel

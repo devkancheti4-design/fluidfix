@@ -68,7 +68,8 @@ def _write(path: str, content: str) -> None:
 
 def repair(oracle: Oracle, defect_file: str,
            observations: list[Observation],
-           candidate_timeout: int | None = None) -> RepairResult:
+           candidate_timeout: int | None = None,
+           deadline: float | None = None) -> RepairResult:
     t0 = time.time()
     res = RepairResult(repaired=False, refused=True)
     path = os.path.join(oracle.root, defect_file)
@@ -92,6 +93,12 @@ def repair(oracle: Oracle, defect_file: str,
 
     try:
         for obs in observations:
+            if deadline is not None and time.time() > deadline:
+                # tree is byte-identical to src here (every candidate is
+                # rolled back before the next observation) — an honest stop
+                res.reason = ("wall-clock deadline reached mid-search — "
+                              "remaining observations untried")
+                return res
             i = obs.lineno - 1
             if not (0 <= i < len(raw)):
                 continue
@@ -99,6 +106,15 @@ def repair(oracle: Oracle, defect_file: str,
             ending = raw[i][len(body):]          # "" or "\r"
             mask = mask_of(k for k in obs.kinds if 0 <= k <= 15)
             while not HALT(mask):
+                if deadline is not None and time.time() > deadline:
+                    # between kinds the tree is byte-identical to src.
+                    # NEVER inside a candidate set: a lone green with the
+                    # set unfinished is an UNPROVEN-unique repair — shipping
+                    # it would be a guess (adversarial review, 2026-08-31).
+                    # Overshoot is bounded: one candidate set, <= 32 runs.
+                    res.reason = ("wall-clock deadline reached mid-search — "
+                                  "remaining kinds untried")
+                    return res
                 kind = kind_of(EMIT(mask))
                 mask = ADVANCE(mask)
                 act = act_for(kind)

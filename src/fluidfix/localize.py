@@ -160,10 +160,17 @@ def build_packet(oracle: Oracle, defect_file: str, coverage_target: str | None =
     mode = ("frames+coverage" if frames and expanded else
             "frames" if frames else "coverage")
     lo = [l for l in sorted(frames | expanded) if 1 <= l <= len(src_lines)]
+    filtered = False
     if len(lo) > max_lines - 30:
         sig = re.compile(r"[<>]=?|\d|\s[-+*/]\s|\band\b|\bor\b|\bTrue\b|\bFalse\b")
-        lo = [l for l in lo if sig.search(src_lines[l - 1])] or lo
-    truncated = len(lo) > max_lines
+        kept = [l for l in lo if sig.search(src_lines[l - 1])] or lo
+        # a filter-dropped anchor is a CAPPED budget too: in-vocabulary lines
+        # can match no signal token (`a // b` — no digit, no spaced +-*/),
+        # and an "untruncated" packet missing them defeats the guard's
+        # raise-until-full-sight escalation (adversarial review, 2026-08-31)
+        filtered = len(kept) < len(lo)
+        lo = kept
+    truncated = len(lo) > max_lines or filtered
     if truncated:
         # SPREAD-sample rather than truncate: taking the FIRST max_lines was
         # measured (Click, seeded bench) to cut defects that sit late in big

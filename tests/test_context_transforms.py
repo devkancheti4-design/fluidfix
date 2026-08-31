@@ -93,3 +93,43 @@ def test_candidate_sets_are_bounded():
         assert len(out) <= 32
     finally:
         KINDS.pop(5, None); ACTS.pop(10, None)
+
+
+def test_multiline_logic_fix_from_one_example(tmp_path, clean_registry):
+    # A taught class may rewrite its ONE defective line into a corrected
+    # BLOCK — new control flow, not a token flip. Taught from one worked
+    # example (a zero-guard incident) and generalising to a second member
+    # with different names, zero new examples. Live-proven 2026-08-31;
+    # pinned here so the multi-line claim is CI-enforced.
+    def zero_guard(line, o):
+        m = re.match(r"^(\s*)return (\w+) / (\w+)$", line)
+        if not m:
+            return [line]
+        ind, a, b = m.groups()
+        return [f"{ind}if {b} == 0:\n{ind}    return 0\n{ind}return {a} / {b}"]
+
+    register(4, "missing-zero-guard",
+             "a bare x / y return with no guard for y == 0",
+             re.compile(r"return \w+ / \w+"), zero_guard)
+    (tmp_path / "mod.py").write_text(
+        "def safe_div(a, b):\n    return a / b\n\n"
+        "def rate(events, seconds):\n    return events / seconds\n")
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import safe_div, rate\n\ndef test_div():\n"
+        "    assert safe_div(6, 2) == 3\n    assert safe_div(5, 0) == 0\n")
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    from fluidfix import guard_once
+    r1 = guard_once(oracle, MechanicalObserver())
+    assert r1.status == "repaired"
+    body = (tmp_path / "mod.py").read_text()
+    assert "    if b == 0:\n        return 0\n    return a / b" in body
+
+    # second member of the class, same dictionary, no new example
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import safe_div, rate\n\ndef test_div():\n"
+        "    assert safe_div(5, 0) == 0\n\ndef test_rate():\n"
+        "    assert rate(10, 0) == 0\n")
+    r2 = guard_once(oracle, MechanicalObserver())
+    assert r2.status == "repaired"
+    assert "    if seconds == 0:\n        return 0\n    return events / seconds" \
+        in (tmp_path / "mod.py").read_text()

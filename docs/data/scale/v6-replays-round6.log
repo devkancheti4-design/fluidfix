@@ -1,0 +1,10 @@
+injected arrow/locales.py:5468: if n >= 10 or n == 0:
+[22:10:08] arrow/locales.py: repaired line 5468 in 3 suite runs (8.5s):
+  - if n >= 10 or n == 0:
+  + if n > 10 or n == 0:
+  committed
+REPLAY6[arrow/arrow/locales.py:5468 budget=600] exit=0 in 781s
+  final line:         if n > 10 or n == 0:
+  baseline  :         if n > 10 or n == 0:
+=============================================
+V6_REPLAYS6_DONE

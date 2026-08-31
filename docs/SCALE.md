@@ -72,3 +72,34 @@ generator bug — literal decrement lost zero-padding ("034"→"33") — fixed
 width-preserving and regression-tested; the byte-exact candidate now exists
 and wins. No unbounded runtime remains: every escalation is wall-clock
 capped and every stop states its reason.
+
+## v0.6.1 — the fourth miss falls (all four now byte-exact)
+
+The arrow refusal above was autopsied to two scheduler faults, both fixed:
+the escalation walked breadth-first rounds whose packets were too small to
+see line 5468 at all, and the repair loop tried observations in line order
+— the defect sat ~900th of 931, beyond any honest wall clock at ~6s of
+suite per candidate. v0.6.1 escalates DEPTH-FIRST (each ranked file gets
+full sight at once) and ranks observations by failing-test-name affinity:
+`TestOdiaLocale::test_ordinal_number` names `OdiaLocale._ordinal_number`,
+which is exactly where line 5468 lives. An adversarial review of the new
+scheduler surfaced five defects — including a deadline path that could
+have shipped a repair whose uniqueness was never proven — all fixed and
+each pinned by a test before the re-runs below.
+
+| v0.5 miss | v0.6.0 | v0.6.1 (rounds 5–6, clean-room) |
+|---|---|---|
+| `click/termui.py:744` | byte-exact @default | **byte-exact @default**, 203s |
+| `click/_textwrap.py:18` | byte-exact @default | **byte-exact @default**, 326s |
+| `click/utils.py:70` | byte-exact @1800 | **byte-exact @1800**, 553s (2.6× faster); bounded honest refusal @600 |
+| `arrow/locales.py:5468` | refused @600 and @1800 | **byte-exact @DEFAULT 600** — 3 suite runs / 8.5s once sighted, 781s total |
+
+Lab-notebook note, in full: rounds 4 and part of 5 were discarded after
+forensics found an orphaned benchmark process (a killed measurement probe)
+still writing candidate lines into the arrow clone concurrently — it made
+one contaminated run appear to commit a wrong repair to `arrow/arrow.py`.
+The environment was verified quiet (process tree killed, file stability
+watched) before round 6, whose verdict is the published one. The
+contaminated logs ship here too (`v6-replays-round5.log`, arrow entry),
+labeled invalid: misses get autopsies, and so do our own benchmark
+mistakes.

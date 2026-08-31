@@ -105,6 +105,81 @@ def test_capped_escalation_raises_budget_and_repairs(tmp_path):
     assert "RAISE_BUDGET" in report.result.reason
 
 
+def test_deadline_never_ships_unproven_ambiguity(tmp_path, clean_registry):
+    # adversarial review 2026-08-31: the old candidate-loop deadline break
+    # shipped a lone green whose uniqueness was never proven — a guess under
+    # time pressure. Contract: under ANY deadline the repair either completes
+    # its candidate set (and AMB-refuses on two greens) or stops with the
+    # tree untouched. It never ships mid-proof.
+    import time as _t
+    from fluidfix.localize import build_packet
+
+    register(4, "amb-deadline", "two suite-passing candidates",
+             re.compile(r"K = "),
+             lambda line, o: ["K = 1", "K = 2"])
+    src = "K = 0\n\ndef f():\n    return K\n"
+    (tmp_path / "mod.py").write_text(src)
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import f\n\ndef test_f():\n    assert f() >= 1\n")
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    pk = build_packet(oracle, "mod.py")
+    obs = MechanicalObserver().observe([pk])[0]
+    # aimed to expire between the first green and the second candidate; on
+    # timing drift either side the honest outcome is still refuse-untouched
+    res = repair(oracle, "mod.py", obs, deadline=_t.time() + 2.5)
+    assert not res.repaired
+    assert (tmp_path / "mod.py").read_text() == src        # never a guess
+
+
+def test_filter_dropped_anchor_marks_packet_truncated(tmp_path):
+    # adversarial review 2026-08-31: the signal filter can drop in-vocabulary
+    # lines (no digit, no comparison, no spaced operator) while leaving the
+    # packet under max_lines — that MUST count as CAPPED, or the guard's
+    # raise-until-full-sight escalation never rebuilds the complete packet
+    from fluidfix.localize import build_packet
+
+    body = [f"flag_{c}{d} = True" for c in "abcdefghi" for d in "abcdefghij"][:82]
+    body += [f"alias_{d} = flag_aa" for d in "abcd"]       # no signal tokens
+    body += ["", "def f():", "    return 1", ""]
+    (tmp_path / "mod.py").write_text("\n".join(body))
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import f\n\ndef test_f():\n    assert f() == 2\n")
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    pk = build_packet(oracle, "mod.py")                    # default max_lines
+    assert pk is not None
+    assert len(pk.lines) <= 110
+    assert pk.truncated                # dropped anchors == capped budget
+
+
+def test_rank_observations_failing_test_names_its_subject():
+    # arrow locales.py:5468 measured: the defect's observation sat ~900th of
+    # 931 in line order; TestOdiaLocale::test_ordinal_number names class
+    # OdiaLocale, def _ordinal_number — affinity must rank its lines first
+    import textwrap
+    from fluidfix import Observation
+    from fluidfix.guard import rank_observations
+
+    src = textwrap.dedent("""\
+        class FrenchLocale:
+            def _ordinal_number(self, n):
+                return 1
+        class OdiaLocale:
+            def _ordinal_number(self, n):
+                if n > 10 or n == 0:
+                    return 2
+        def helper():
+            return 3
+    """)
+    out = ("FAILED tests/test_locales.py::TestOdiaLocale::test_ordinal_number"
+           " - AssertionError")
+    obs = [Observation(lineno=l) for l in (3, 9, 6)]
+    ranked = rank_observations(src, obs, out)
+    assert [o.lineno for o in ranked] == [6, 3, 9]   # odia body, french, helper
+    # no failing node ids -> order untouched
+    assert [o.lineno for o in rank_observations(src, obs, "1 failed")] \
+        == [3, 9, 6]
+
+
 def test_refuted_refusal_does_not_escalate(tmp_path):
     # candidates were generated and rejected, nothing was truncated:
     # law rules HARVEST_COUNTEREXAMPLE — an honest stop, no budget rounds
