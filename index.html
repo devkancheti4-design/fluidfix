@@ -356,7 +356,12 @@ $ echo $?
   <p class="eyebrow">students &amp; open source</p>
   <h2>Free for your repos. Forever.</h2>
   <p class="lead">fluidfix is open source (AGPL) — students, hobby projects, and open source pay
-  nothing, ever. If your repo has a pytest suite, you can guard it in three steps.
+  nothing, ever. <b style="color:var(--ink)">No tests? No problem:</b>
+  <span class="mono">fluidfix init .</span> generates a starter suite that guards every module
+  against import-breaking bugs — so any repo is guardable in three commands:
+  <span class="mono">pip install fluidfix pytest pytest-cov</span> →
+  <span class="mono">fluidfix init .</span> → <span class="mono">fluidfix guard . --commit</span>.
+  Already have a pytest suite? Even better — three steps:
   Never written a test? The
   <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/QUICKSTART.md">quickstart</a>
   teaches you the whole idea in 2 minutes — call your function, check the answer.</p>
