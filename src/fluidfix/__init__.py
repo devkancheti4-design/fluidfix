@@ -21,7 +21,7 @@ from .observers import ClaudeObserver, MechanicalObserver, observer_prompt
 from .oracle import Oracle
 from .router import pack, route, route_packed
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 __all__ = [
     "route", "route_packed", "pack",
     "EMIT", "ADVANCE", "HALT", "mask_of", "kind_of",

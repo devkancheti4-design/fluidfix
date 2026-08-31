@@ -17,6 +17,23 @@ You should see `SELFCHECK PASS` at the end. That means the repair engine just
 re-proved all of its own math on your machine. If it ever says FAIL, don't
 use it (and please report it).
 
+## No tests at all? Three commands. That's it.
+
+```bash
+pip install fluidfix pytest pytest-cov
+fluidfix init .
+fluidfix guard . --commit
+```
+
+`fluidfix init` scans your repo and writes `test_fluidfix_smoke.py` — a
+starter suite that guards every module against import-breaking regressions
+(syntax errors, bad renames, crashes in module-level code). Zero testing
+knowledge needed; commit the file. It tells you which modules it covered.
+
+Honest scope: import-smoke can't see a wrong *value* (a function returning
+the wrong number). For that, level up with the 2-minute lesson below — the
+generated file contains the template.
+
 ## Step 2 — Make sure you have a test
 
 fluidfix never guesses — **your tests are the judge**. No tests, nothing to

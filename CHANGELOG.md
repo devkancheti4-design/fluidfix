@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.0 — 2026-08-31
+
+- **`fluidfix init` — the zero-tests on-ramp.** Scans the repo, probes every
+  module in a subprocess, and generates `test_fluidfix_smoke.py` covering the
+  ones that import cleanly today — so a repo with NO tests becomes guardable
+  in three commands (install, init, guard). Modules that don't import are
+  reported and excluded; existing files are never clobbered without --force.
+  The generated file carries the paste-trick template for leveling up to
+  value-level guarding. End-to-end tested: init -> guard repairs an
+  import-breaking operator flip and commits the restoration.
+
 ## 0.3.0 — 2026-08-31
 
 - **Repo-searchable value classes.** Taught transforms may now return a
