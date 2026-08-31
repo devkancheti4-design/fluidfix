@@ -1,0 +1,22 @@
+### arrow: baseline green at 2224255
+  [arrow/cmp] dead: arrow/factory.py:330
+  [arrow/cmp] dead: arrow/locales.py:6102
+  [arrow/cmp] dead: arrow/arrow.py:459
+  [arrow/cmp] arrow/util.py:92 -> EXACT in 43.5s (attempts so far 4)
+  [arrow/cmp] dead: arrow/arrow.py:697
+  [arrow/cmp] dead: arrow/factory.py:3
+  [arrow/cmp] dead: arrow/arrow.py:361
+  [arrow/cmp] arrow/locales.py:5468 -> REFUSED in 765.3s (attempts so far 8)
+  [arrow/add] arrow/arrow.py:1749 -> EXACT in 859.2s (attempts so far 1)
+  [arrow/add] arrow/arrow.py:818 -> EXACT in 175.3s (attempts so far 2)
+  [arrow/lit] arrow/arrow.py:1250 -> EXACT in 890.6s (attempts so far 1)
+  [arrow/lit] arrow/arrow.py:133 -> EXACT in 120.7s (attempts so far 2)
+  [arrow/oov] arrow/arrow.py:166 -> REFUSED in 287.9s (attempts so far 1)
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/2682cc83-6aee-4dbf-b1f4-1dccd45624a1/scratchpad/complex/big_bench.py", line 188, in <module>
+    main()
+    ~~~~^^
+  File "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/2682cc83-6aee-4dbf-b1f4-1dccd45624a1/scratchpad/complex/big_bench.py", line 109, in main
+    assert not suite_fails(py, repo), f"{name}: baseline suite not green"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: sortedcontainers: baseline suite not green

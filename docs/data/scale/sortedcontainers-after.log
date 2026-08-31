@@ -1,0 +1,33 @@
+### sortedcontainers: baseline green at 3ac3586
+  [sortedcontainers/cmp] src/sortedcontainers/sortedlist.py:2372 -> EXACT in 486.2s (attempts so far 1)
+  [sortedcontainers/cmp] dead: src/sortedcontainers/sortedlist.py:1552
+  [sortedcontainers/cmp] dead: src/sortedcontainers/sortedset.py:494
+  [sortedcontainers/cmp] src/sortedcontainers/sortedlist.py:601 -> EXACT in 18.1s (attempts so far 4)
+  [sortedcontainers/add] src/sortedcontainers/sortedlist.py:429 -> EXACT in 42.2s (attempts so far 1)
+  [sortedcontainers/add] src/sortedcontainers/sortedlist.py:924 -> EXACT in 241.4s (attempts so far 2)
+  [sortedcontainers/lit] src/sortedcontainers/sortedlist.py:1265 -> EXACT in 620.1s (attempts so far 1)
+  [sortedcontainers/lit] src/sortedcontainers/sortedlist.py:664 -> EXACT in 401.2s (attempts so far 2)
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedset.py:5
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedlist.py:1497
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedset.py:88
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedlist.py:465
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedlist.py:995
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedlist.py:2047
+  [sortedcontainers/oov] dead: src/sortedcontainers/sorteddict.py:496
+  [sortedcontainers/oov] dead: src/sortedcontainers/sorteddict.py:93
+  [sortedcontainers/oov] dead: src/sortedcontainers/sorteddict.py:634
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedlist.py:1297
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedset.py:315
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedlist.py:497
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedlist.py:840
+  [sortedcontainers/oov] dead: src/sortedcontainers/sortedset.py:404
+  [sortedcontainers/oov] src/sortedcontainers/sortedlist.py:776 -> REFUSED in 216.1s (attempts so far 15)
+
+==== SUMMARY ====
+in-vocab live trials : 6
+  repaired byte-exact: 6
+  green-only         : 0
+  refused/no-action  : 0
+  seconds min/median/max: 18.1 / 401.2 / 620.1
+OOV trials           : 1, refused: 1, wrongly repaired: 0
+BENCH_DONE

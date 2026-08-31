@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.5.0 — 2026-08-31
+
+- **Large-repo localisation, measured then fixed.** A strict seeded benchmark
+  (docs/SCALE.md) scored the shipped pipeline 0/6 on click. Three general
+  fixes — file ranking by failing-test-name affinity + coverage specificity
+  (not file size), spread-sampled packets (no first-N truncation), and
+  appliers that emit every-occurrence candidate sets — took the identical
+  sites to 14/18 byte-exact across click, arrow, and sortedcontainers, with
+  both held-out repos beating the diagnosed one. All misses autopsied and
+  named in docs/SCALE.md; out-of-vocabulary safety 3/3 refused.
+- Precision wording sharpened after the first-ever green-only repair on a
+  weakly-tested line: fluidfix never ships a repair its suite rejects;
+  byte-exactness is bounded by suite strength (14/15 accepted repairs exact
+  in this benchmark).
+
 ## 0.4.0 — 2026-08-31
 
 - **`fluidfix init` — the zero-tests on-ramp.** Scans the repo, probes every

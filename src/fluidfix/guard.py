@@ -83,25 +83,54 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
     ordered.reverse()
     if ordered:
         return ordered[:limit]
-    # no source frames (pure assertion failure): rank by the failing test's
-    # own coverage — run recorded by the caller's failing_output(), so --lf
-    # re-runs exactly it. No -x: exit-first suppresses the JSON report.
-    cov_json = os.path.join(oracle.root, "_fluidfix_guard_cov.json")
-    oracle.run(["--lf", "--tb=no", "--cov=.",
-                f"--cov-report=json:{cov_json}"], cache=True)
-    ranked: list[tuple[int, str]] = []
-    if os.path.exists(cov_json):
-        try:
-            cov = json.load(open(cov_json))
-            for f, data in cov.get("files", {}).items():
-                rel = f.replace("\\", "/")
-                if _is_test_path(rel) or not rel.endswith(".py"):
-                    continue
-                ranked.append((len(data.get("executed_lines", [])), rel))
-        finally:
-            os.remove(cov_json)
-    ranked.sort(reverse=True)
-    return [rel for _, rel in ranked[:limit]]
+    # No source frames (pure assertion failure): file-level SPECTRUM
+    # localisation. Two coverage runs — the failing test alone (--lf) and the
+    # full suite — then rank by how SPECIFIC a file is to the failure:
+    #     score = |lines the failing test executes in f| / |lines the whole
+    #             suite executes in f|
+    # Ranking by raw executed-line count was measured (Click, seeded bench) to
+    # bury the defect file under big central modules that every test touches.
+    # A filename token shared with the failing test module boosts to front.
+    def _cov_counts(args):
+        cov_json = os.path.join(oracle.root, "_fluidfix_guard_cov.json")
+        oracle.run(args + ["--tb=no", "--cov=.",
+                          f"--cov-report=json:{cov_json}"], cache=True)
+        out = {}
+        if os.path.exists(cov_json):
+            try:
+                cov = json.load(open(cov_json))
+                for f, data in cov.get("files", {}).items():
+                    rel = f.replace("\\", "/")
+                    if _is_test_path(rel) or not rel.endswith(".py"):
+                        continue
+                    out[rel] = len(data.get("executed_lines", []))
+            finally:
+                os.remove(cov_json)
+        return out
+
+    fail_cov = _cov_counts(["--lf"])
+    full_cov = _cov_counts([])
+    # affinity tokens come ONLY from the failing tests' module names —
+    # test_termui.py names termui; traceback file mentions are noise
+    fail_mods: set[str] = set()
+    for m in re.finditer(r"^(?:FAILED|ERROR)\s+\S*?([\w]+)\.py", clean, re.M):
+        name = m.group(1).lower()
+        name = re.sub(r"^test_?|_?tests?$", "", name)
+        fail_mods.update(t for t in re.findall(r"[a-z]{3,}", name))
+    ranked2: list[tuple[float, float, int, str]] = []
+    for rel, n_fail in fail_cov.items():
+        if n_fail == 0:
+            continue
+        n_full = max(full_cov.get(rel, n_fail), n_fail)
+        specificity = n_fail / n_full
+        base_tokens = set(re.findall(r"[a-z]{3,}",
+                                     os.path.basename(rel).lower()))
+        affinity = 1.0 if base_tokens & fail_mods else 0.0
+        ranked2.append((affinity, specificity, n_fail, rel))
+    # affinity first (the failing test names its subject), then specificity,
+    # then substance (n_fail) so trivially-imported stubs sink
+    ranked2.sort(key=lambda t: (-t[0], -t[1], -t[2], t[3]))
+    return [rel for _, _, _, rel in ranked2[:max(limit, 8)]]
 
 
 def _has_pytest_cov(oracle: Oracle) -> bool:

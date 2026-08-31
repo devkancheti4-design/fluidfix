@@ -162,6 +162,11 @@ def build_packet(oracle: Oracle, defect_file: str, coverage_target: str | None =
     if len(lo) > max_lines - 30:
         sig = re.compile(r"[<>]=?|\d|\s[-+*/]\s|\band\b|\bor\b|\bTrue\b|\bFalse\b")
         lo = [l for l in lo if sig.search(src_lines[l - 1])] or lo
-    lo = lo[:max_lines]
+    if len(lo) > max_lines:
+        # SPREAD-sample rather than truncate: taking the FIRST max_lines was
+        # measured (Click, seeded bench) to cut defects that sit late in big
+        # files out of the packet entirely. A stride keeps whole-file reach.
+        stride = len(lo) / max_lines
+        lo = [lo[int(i * stride)] for i in range(max_lines)]
     return Packet(defect_file=defect_file, failure=_compress_failure(out1),
                   lines=lo, src_lines=src_lines, mode=mode)

@@ -68,27 +68,31 @@ KINDS = {
 }
 
 
-def _flip_strictness(line: str, obs: Observation) -> str:
-    for a, b in ((">=", ">"), ("<=", "<")):
-        if a in line:
-            return line.replace(a, b, 1)
-    for a, b in ((">", ">="), ("<", "<=")):
-        if a in line:
-            return line.replace(a, b, 1)
-    return line
+def _flip_strictness(line: str, obs: Observation) -> list:
+    """Every strictness flip on the line, as a candidate set. The legacy
+    first-match candidate stays FIRST (apply() back-compat); the seeded
+    large-repo benchmark showed the mutated operator is usually NOT the
+    line's first, so the loop tries every occurrence — suite judges."""
+    out, seen = [], set()
+    for a, b in ((">=", ">"), ("<=", "<"), (">", ">="), ("<", "<=")):
+        start = 0
+        while True:
+            i = line.find(a, start)
+            if i < 0:
+                break
+            # don't rewrite the strict op inside its own relaxed form
+            if a in (">", "<") and line[i:i + 2] in (">=", "<="):
+                start = i + 2
+                continue
+            cand = line[:i] + b + line[i + len(a):]
+            if cand not in seen:
+                seen.add(cand)
+                out.append(cand)
+            start = i + len(a)
+    return out or [line]
 
 
-def _reduce_literal(line: str, obs: Observation) -> str:
-    m = None
-    if obs.literal_value:
-        hits = [h for h in re.finditer(r"\d+", line) if h.group() == str(obs.literal_value)]
-        occ = max(1, obs.literal_occurrence or 1)
-        if len(hits) >= occ:
-            m = hits[occ - 1]
-    if m is None:
-        m = re.search(r"\d+", line)
-    if not m:
-        return line
+def _dec_at(line: str, m) -> str:
     new_lit = str(int(m.group()) - 1)
     out = line[:m.start()] + new_lit + line[m.end():]
     # Simplify `x + 1` -> decrement -> `x + 0` -> `x`, but ONLY at the
@@ -102,26 +106,54 @@ def _reduce_literal(line: str, obs: Observation) -> str:
     return out
 
 
+def _reduce_literal(line: str, obs: Observation) -> list:
+    """Decrement candidates for EVERY literal on the line, observer-pointed
+    literal first, then left-to-right (legacy first-match order preserved)."""
+    hits = list(re.finditer(r"\d+", line))
+    if not hits:
+        return [line]
+    ordered = []
+    if obs.literal_value:
+        want = [h for h in hits if h.group() == str(obs.literal_value)]
+        occ = max(1, obs.literal_occurrence or 1)
+        if len(want) >= occ:
+            ordered.append(want[occ - 1])
+    ordered += [h for h in hits if h not in ordered]
+    out, seen = [], set()
+    for m in ordered:
+        cand = _dec_at(line, m)
+        if cand not in seen:
+            seen.add(cand)
+            out.append(cand)
+    return out
+
+
 def _swap_return_operands(line: str, obs: Observation) -> str:
     m = re.match(r"^(\s*return\s+)(.*?)(\s(?://|[-+*])\s)(.*)$", line)
     return line if not m else f"{m.group(1)}{m.group(4)}{m.group(3)}{m.group(2)}"
 
 
-def _flip_additive(line: str, obs: Observation) -> str:
-    # Deliberate divergence from kdebug's substring match: \s admits tabs and
-    # non-overlapping scanning skips a "+" that shares a space with a
-    # preceding "-" (`a - + b`). fluidfix attempts strictly more candidates
-    # on those whitespace edge cases; the suite remains the judge.
+def _flip_additive(line: str, obs: Observation) -> list:
+    """Flip candidates for EVERY binary +/- on the line. Order: the
+    observer's op_occurrence pointer first, else legacy first-`+` heuristic,
+    then the remaining occurrences left-to-right — suite judges each."""
     ops = list(re.finditer(r"\s([+-])\s", line))
     if not ops:
-        return line
+        return [line]
+    ordered = []
     if obs.op_occurrence and 1 <= obs.op_occurrence <= len(ops):
-        m = ops[obs.op_occurrence - 1]
+        ordered.append(ops[obs.op_occurrence - 1])
     else:
-        # legacy first-match heuristic, kept for observers with no pointer
-        m = next((o for o in ops if o.group(1) == "+"), ops[0])
-    flipped = "-" if m.group(1) == "+" else "+"
-    return line[:m.start(1)] + flipped + line[m.end(1):]
+        ordered.append(next((o for o in ops if o.group(1) == "+"), ops[0]))
+    ordered += [o for o in ops if o not in ordered]
+    out, seen = [], set()
+    for m in ordered:
+        flipped = "-" if m.group(1) == "+" else "+"
+        cand = line[:m.start(1)] + flipped + line[m.end(1):]
+        if cand not in seen:
+            seen.add(cand)
+            out.append(cand)
+    return out
 
 
 # act code -> applier; codes are one translation of the vocabulary. Renumber

@@ -1,0 +1,24 @@
+### click: baseline green at 700149f
+  [click/cmp] dead: src/click/_textwrap.py:25
+  [click/cmp] src/click/_termui_impl.py:301 -> EXACT in 229.2s (attempts so far 2)
+  [click/cmp] src/click/_textwrap.py:18 -> REFUSED in 209.5s (attempts so far 3)
+  [click/add] dead: src/click/core.py:1910
+  [click/add] src/click/formatting.py:261 -> EXACT in 152.9s (attempts so far 2)
+  [click/add] dead: src/click/_textwrap.py:129
+  [click/add] src/click/formatting.py:180 -> EXACT in 84.3s (attempts so far 4)
+  [click/lit] dead: src/click/termui.py:724
+  [click/lit] dead: src/click/core.py:1502
+  [click/lit] dead: src/click/types.py:694
+  [click/lit] src/click/utils.py:70 -> REFUSED in 813.9s (attempts so far 4)
+  [click/lit] dead: src/click/shell_completion.py:152
+  [click/lit] dead: src/click/formatting.py:261
+  [click/lit] src/click/termui.py:744 -> GREEN-ONLY in 187.8s (attempts so far 7)
+  [click/oov] src/click/shell_completion.py:657 -> REFUSED in 143.2s (attempts so far 1)
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/2682cc83-6aee-4dbf-b1f4-1dccd45624a1/scratchpad/complex/big_bench.py", line 185, in <module>
+    main()
+    ~~~~^^
+  File "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/2682cc83-6aee-4dbf-b1f4-1dccd45624a1/scratchpad/complex/big_bench.py", line 106, in main
+    assert not suite_fails(py, repo), f"{name}: baseline suite not green"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: arrow: baseline suite not green

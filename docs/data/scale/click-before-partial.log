@@ -1,0 +1,5 @@
+### click: baseline green at 700149f
+  [click/cmp] dead: src/click/_textwrap.py:25
+  [click/cmp] src/click/_termui_impl.py:301 -> REFUSED in 270.7s (attempts so far 2)
+  [click/cmp] src/click/_textwrap.py:18 -> REFUSED in 144.9s (attempts so far 3)
+  [click/add] dead: src/click/core.py:1910
