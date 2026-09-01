@@ -431,10 +431,13 @@ jobs:
 
 <section id="pricing" style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)"><div class="wrap">
   <p class="eyebrow">pricing</p>
-  <h2>Open source forever. Pre-book the rest.</h2>
-  <p class="lead">Checkout is being set up — pre-booking costs nothing today, locks the launch
-  discount, and puts you in the first-ten cohort. We email you when payment opens; you can
-  walk away any time.</p>
+  <h2>Every repo is different. The rules are not.</h2>
+  <p class="lead">There are as many kinds of real repos as there are teams — so we don't sell one
+  number. We scan <i>your</i> clone, apply one fixed set of rules, and the quote prints with every
+  measured input, starting at $100/yr. The product underneath is the same for everyone:
+  <b>your repo stays clean</b> — regressions restored and committed, everything unprovable refused
+  loudly. Pre-booking costs nothing today, locks 50% off your first-year quote, and puts you in
+  the first-ten cohort.</p>
   <div class="price-grid">
     <div class="price">
       <h3>Open source</h3>
@@ -445,20 +448,30 @@ jobs:
       <a class="btn btn-ghost" href="https://pypi.org/project/fluidfix/">pip install fluidfix</a>
     </div>
     <div class="price hot">
-      <h3>Commercial license</h3>
-      <div class="amt"><s>$39</s>$19<span style="font-size:.95rem">/repo/mo</span></div>
-      <div class="per">first-ten cohort · locked for as long as you subscribe</div>
-      <ul><li>Per guarded repo, unlimited developers</li><li>No copyleft obligations — proprietary &amp; SaaS OK</li>
+      <h3>Guard subscription — scanned &amp; quoted</h3>
+      <div class="amt">from $100<span style="font-size:.95rem">/repo/yr</span></div>
+      <div class="per">your price = your repo's math · first-ten: 50% off year one</div>
+      <ul><li>The rules, fixed for every repo: we measure size, suite strength, commit velocity,
+          and your history's mechanical-incident rate — the quote prints every input</li>
+          <li>Price = 25% of the LOWEST value estimate: you keep ~4&times; what you pay
+          before counting anything history can't see</li>
+          <li>A weaker test suite gets a <i>lower</i> price — the promise is bounded by your
+          tests, so the bill is too</li>
+          <li>No copyleft obligations — proprietary &amp; SaaS OK · unlimited developers</li>
           <li>60-day guarantee: a real regression repaired, or full refund</li></ul>
-      <button class="btn btn-solid" data-tier="Commercial license ($19/repo/mo, first-ten)">Pre-book — pay nothing today</button>
+      <button class="btn btn-solid" data-tier="Guard subscription (scanned quote, from $100/yr)">Get my repo scanned — free, no payment</button>
     </div>
     <div class="price">
       <h3>Custom dictionary</h3>
       <div class="amt">$1,500</div>
-      <div class="per">one-time · per repository</div>
-      <ul><li>Fault classes compiled from YOUR bug history</li><li>Ships as versioned company_rules.py</li>
-          <li>The kernel runs it free forever</li></ul>
-      <button class="btn btn-ghost" data-tier="Custom dictionary ($1,500 one-time)">Pre-book — pay nothing today</button>
+      <div class="per">one-time · only when your math clears it</div>
+      <ul><li>Fault classes compiled from YOUR bug history, shipped as versioned company_rules.py —
+          the kernel runs them free forever</li>
+          <li>Offered ONLY when the scan shows recurring classes past break-even — otherwise the
+          quote literally says "don't buy this"</li>
+          <li>We published the trial where it <i>wasn't</i> worth it — that's why you can trust
+          the quote when it is</li></ul>
+      <button class="btn btn-ghost" data-tier="Custom dictionary ($1,500, scan-gated)">Pre-book — pay nothing today</button>
     </div>
   </div>
   <p style="color:var(--faint); font-size:.85rem; margin-top:1rem">Enterprise (unlimited repos, SSO,
@@ -483,8 +496,8 @@ jobs:
     <div style="grid-column:1 / -1"><label for="pb-tier">Tier</label>
       <select id="pb-tier">
         <option>Book a 20-minute live demo (free)</option>
-        <option>Commercial license ($19/repo/mo, first-ten)</option>
-        <option>Custom dictionary ($1,500 one-time)</option>
+        <option>Guard subscription (scanned quote, from $100/yr)</option>
+        <option>Custom dictionary ($1,500, scan-gated)</option>
         <option>Enterprise (from $10k/yr)</option>
       </select></div>
     <button class="btn btn-solid" type="submit" style="grid-column:1 / -1">Pre-book — pay nothing today</button>
