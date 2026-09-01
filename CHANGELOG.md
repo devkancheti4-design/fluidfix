@@ -1,5 +1,44 @@
 # Changelog
 
+## 0.8.0 — 2026-09-02
+
+The 82-agent fresh-eyes fleet (24 real `pip install` personas, 24 adversarial
+auditors, 18 identity judges, 14 market forecasters) produced a ranked fix
+list; this release clears the engineering items. Every fix is test-pinned.
+
+- **The teaching loop is documented** (~19/24 fresh users were blocked on
+  this): `docs/TEACHING.md` — the full register() contract, kind numbering
+  (4–7 reserved for user dictionaries), SpanEdit, and a 30-minute
+  refusal-to-taught-class walkthrough — plus a runnable
+  `examples/company_rules.py` (3 classes: rule, repo-mined set, span). A test
+  extracts the walkthrough dictionary from the doc verbatim and proves it
+  repairs its incident.
+- **Five new shipped fault classes** (kinds 8–12; every one was a fresh
+  user's FIRST bug and was refused): min/max swap, `+=`/`-=` flip,
+  comparison-direction flip, reversed minus operands, boolean flip.
+  `register()` now warns loudly before a user kind clobbers a shipped one.
+- **`fluidfix kinds`** lists all 16 slots — shipped, taught, and free.
+- **CLI**: readable `--help` (examples in an epilog), exit codes documented
+  per subcommand, and relative `--python` now resolves against your shell's
+  cwd and fails with ONE line instead of a 40-line traceback.
+- **`--dry-run` — the propose-only channel** (the audit's top adoption
+  blocker): repairs are captured as a unified diff in
+  `.fluidfix/proposed.patch`, the tree is restored byte-exactly, and the
+  patch applies cleanly with `git apply`. Mutually exclusive with
+  `--commit`. Refusals unchanged.
+- **Hygiene**: stale `last_refusal.json` cleared on green/repaired passes;
+  stray `.coverage` files cleaned up; `.fluidfix/` gitignore guidance;
+  refusal messages point at docs instead of marketing copy; harvest `why`
+  entries doubled to 400 chars; repairs carry `restored_original`
+  provenance when git can attest it.
+- **Candidates that don't compile no longer burn suite runs**: a `compile()`
+  pre-filter rejects syntax-error candidates instantly and logs them as
+  such (Python targets only; jguard untouched).
+- **PyPI publishing is now test-gated**: publish.yml runs the full suite
+  before build/publish — nothing ships on red.
+- 108/108 tests.
+
+
 ## 0.7.1 — 2026-09-01
 
 - **Fail-fast candidate adjudication.** Every candidate now faces the

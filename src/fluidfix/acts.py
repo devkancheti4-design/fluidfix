@@ -20,6 +20,7 @@ touching the router:
 from __future__ import annotations
 
 import re
+import warnings
 from dataclasses import dataclass, field
 
 __all__ = ["Observation", "KINDS", "ACTS", "WORKED_EXAMPLE", "SpanEdit",
@@ -87,7 +88,33 @@ KINDS = {
         'a binary " + " that should be " - ", or a " - " that should be '
         '" + " (spaces around the operator)',
         re.compile(r"\s[-+]\s")),
+    # kinds 4..7 are reserved for user dictionaries (register()/
+    # load_dictionary) — shipped classes never squat there, so a taught
+    # dictionary keeps working across upgrades. Shipped vocabulary resumes at 8.
+    8: ("minmax-swap",
+        "a call to min( that should be max(, or a max( that should be min(",
+        re.compile(r"\b(?:min|max)\(")),
+    9: ("flipped-augmented-assign",
+        'an augmented assignment "+=" that should be "-=", or a "-=" that '
+        'should be "+="',
+        re.compile(r"[-+]=(?!=)")),
+    10: ("flipped-comparison-direction",
+         'a comparison pointing the wrong way: a "<" that should be ">" or '
+         'a "<=" that should be ">=" (or vice versa), with the operands '
+         "themselves in the right order",
+         re.compile(r"(?<![-<>])[<>](?![<>])")),
+    11: ("reversed-minus-operands",
+         'a returned or assigned subtraction "a - b" whose operands are '
+         'reversed — the correct expression is "b - a"',
+         re.compile(r"^\s*(?:return\s|[A-Za-z_][\w.\[\]'\"]*\s*=\s*(?![=<>])).*\s-\s")),
+    12: ("flipped-boolean",
+         "a boolean literal True that should be False, or a False that "
+         "should be True",
+         re.compile(r"\b(?:True|False)\b")),
 }
+
+USER_KINDS = range(4, 8)          # the dictionary slots KINDS leaves free
+SHIPPED_KINDS = frozenset(KINDS)  # register() warns before clobbering these
 
 
 def _flip_strictness(line: str, obs: Observation) -> list:
@@ -186,6 +213,90 @@ def _flip_additive(line: str, obs: Observation) -> list:
     return out
 
 
+def _swap_minmax(line: str, obs: Observation) -> list:
+    """Swap candidates for EVERY min(/max( call on the line, left to
+    right — suite judges each."""
+    out, seen = [], set()
+    for m in re.finditer(r"\b(min|max)\(", line):
+        other = "max" if m.group(1) == "min" else "min"
+        cand = line[:m.start(1)] + other + line[m.end(1):]
+        if cand not in seen:
+            seen.add(cand)
+            out.append(cand)
+    return out or [line]
+
+
+def _flip_augmented(line: str, obs: Observation) -> list:
+    """Flip candidates for EVERY += / -= on the line, left to right —
+    suite judges each."""
+    out, seen = [], set()
+    for m in re.finditer(r"([-+])=(?!=)", line):
+        flipped = "-" if m.group(1) == "+" else "+"
+        cand = line[:m.start(1)] + flipped + line[m.end(1):]
+        if cand not in seen:
+            seen.add(cand)
+            out.append(cand)
+    return out or [line]
+
+
+def _flip_comparison(line: str, obs: Observation) -> list:
+    """Every comparison-direction flip on the line, as a candidate set:
+    the relaxed pair "<=" <-> ">=" first, then strict "<" <-> ">", each
+    occurrence left to right — suite judges. Arrows, shifts and "->="
+    corruptions are strictness territory (kind 0), never direction flips."""
+    out, seen = [], set()
+    for a, b in (("<=", ">="), (">=", "<="), ("<", ">"), (">", "<")):
+        start = 0
+        while True:
+            i = line.find(a, start)
+            if i < 0:
+                break
+            # skip a strict op inside its own relaxed form, and any op
+            # glued to -/</> (an arrow, a shift, a ->= corruption)
+            if line[i - 1:i] in ("-", "<", ">") or \
+                    (a in ("<", ">") and line[i + 1:i + 2] in ("=", "<", ">")):
+                start = i + 1
+                continue
+            cand = line[:i] + b + line[i + len(a):]
+            if cand not in seen:
+                seen.add(cand)
+                out.append(cand)
+            start = i + len(a)
+    return out or [line]
+
+
+def _reverse_minus_operands(line: str, obs: Observation) -> list:
+    """Reversal candidates for EVERY binary " - " in a returned or assigned
+    expression: the expression splits at that occurrence and the sides swap
+    ((a - b) -> (b - a)), left to right — suite judges each."""
+    m = re.match(r"^(\s*(?:return\s+|[A-Za-z_][\w.\[\]'\"]*\s*=\s*(?![=<>])))"
+                 r"(.*?)(\s*)$", line)
+    if not m:
+        return [line]
+    head, expr, tail = m.groups()
+    out, seen = [], set()
+    for o in re.finditer(r"\s-\s", expr):
+        cand = (head + expr[o.end():] + expr[o.start():o.end()]
+                + expr[:o.start()] + tail)
+        if cand not in seen:
+            seen.add(cand)
+            out.append(cand)
+    return out or [line]
+
+
+def _flip_boolean(line: str, obs: Observation) -> list:
+    """Flip candidates for EVERY True/False literal on the line, left to
+    right — suite judges each."""
+    out, seen = [], set()
+    for m in re.finditer(r"\b(True|False)\b", line):
+        flipped = "False" if m.group(1) == "True" else "True"
+        cand = line[:m.start(1)] + flipped + line[m.end(1):]
+        if cand not in seen:
+            seen.add(cand)
+            out.append(cand)
+    return out or [line]
+
+
 # act code -> applier; codes are one translation of the vocabulary. Renumber
 # them freely — the router recovers the offset from WORKED_EXAMPLE each call.
 ACTS = {
@@ -193,6 +304,13 @@ ACTS = {
     6: _reduce_literal,
     7: _swap_return_operands,
     8: _flip_additive,
+    # kinds 8..12 under the shipped worked example; 11 and 12 wrap mod 16.
+    # 9..12 stay free — they belong to user-dictionary kinds 4..7.
+    13: _swap_minmax,
+    14: _flip_augmented,
+    15: _flip_comparison,
+    0: _reverse_minus_operands,
+    1: _flip_boolean,
 }
 
 
@@ -208,7 +326,9 @@ def register(kind: int, name: str, description: str, signal,
     example, so a new class costs exactly one registration, once, and every
     future member of the class is decided for free.
 
-    kind: 0-15 (the kernel's domain — one dictionary holds 16 classes).
+    kind: 0-15 (the kernel's domain — one dictionary holds 16 classes);
+        user dictionaries belong in the reserved USER_KINDS slots (4..7) —
+        registering over a shipped kind replaces it, with a loud warning.
     signal: compiled regex a line must match for the mechanical observer to
         report this kind (LLM observers receive `description` verbatim).
     applier(line, observation) -> candidate line.
@@ -216,6 +336,13 @@ def register(kind: int, name: str, description: str, signal,
     """
     if not 0 <= kind <= 15:
         raise ValueError("kind must be 0..15 — the kernel routes mod 16")
+    if kind in SHIPPED_KINDS:
+        warnings.warn(
+            f"register(kind={kind}) CLOBBERS the shipped fault class "
+            f"{KINDS[kind][0]!r} — that class can no longer be observed or "
+            f"repaired; user dictionaries belong in kinds "
+            f"{USER_KINDS.start}..{USER_KINDS.stop - 1}",
+            RuntimeWarning, stacklevel=2)
     code = act_for(kind)
     KINDS[kind] = (name, description, signal)
     ACTS[code] = applier

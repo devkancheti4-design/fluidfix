@@ -1,19 +1,30 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # Copyright (C) 2026 devkancheti4-design
 # Commercial licensing: see COMMERCIAL.md.
-"""fluidfix CLI.
-
-  fluidfix guard ROOT [--interval 900] [--commit] [--observer mechanical|claude]
-  fluidfix repair ROOT --file pkg/mod.py [--python VENV_PY] [--observer mechanical|claude]
-  fluidfix packet ROOT --file pkg/mod.py [--python VENV_PY]
-  fluidfix selfcheck
-"""
+"""fluidfix — suite-adjudicated repair of mechanical defects: a branchless
+kernel picks the act, the target's own test suite judges every candidate."""
 from __future__ import annotations
 
 import argparse
 import json
 import os
 import sys
+
+
+def _python_arg(value: str) -> str:
+    # resolve a relative --python against the INVOKING cwd at parse time —
+    # the oracle runs subprocesses with cwd=root, which silently re-anchored
+    # relative paths there. Bare names keep their PATH lookup.
+    return os.path.abspath(value) if os.sep in value else value
+
+
+def _python_works(python: str) -> bool:
+    import subprocess
+    try:
+        return subprocess.run([python, "-c", "pass"], capture_output=True,
+                              timeout=30).returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        return False
 
 
 def _oracle(args):
@@ -69,7 +80,7 @@ def _observer(args):
 
 def cmd_guard(args) -> int:
     import time as _time
-    from .guard import commit_repair, guard_once, write_refusal
+    from .guard import commit_repair, guard_once, propose_repair, write_refusal
     _load_dictionary(args)
     oracle = _oracle(args)
     observer = _observer(args)
@@ -79,6 +90,14 @@ def cmd_guard(args) -> int:
                             escalate_budget=args.escalate_budget,
                             budget=args.budget)
         print(f"[{_time.strftime('%H:%M:%S')}] {report.summary()}")
+        if report.status == "repaired" and args.dry_run:
+            # propose-only channel: patch written, tree restored byte-exactly.
+            # Returns even under --interval — re-looping would grind out the
+            # same proposal every pass until someone applies it.
+            _, diff = propose_repair(oracle.root, report)
+            print(diff, end="" if diff.endswith("\n") else "\n")
+            print("PROPOSED (dry-run): apply with git apply .fluidfix/proposed.patch")
+            return 0
         if report.status == "repaired" and args.commit:
             outcome = commit_repair(oracle.root, report)
             print({"committed": "  committed",
@@ -244,8 +263,43 @@ def cmd_selfcheck(args) -> int:
     return 0 if not (bad or ident or comp or lane_bad) else 1
 
 
+def cmd_kinds(args) -> int:
+    """List the fault-class vocabulary: every registered kind plus the slots
+    a user dictionary may claim. The kernel routes mod 16, so 16 slots total."""
+    import textwrap
+    from .acts import KINDS, SHIPPED_KINDS, USER_KINDS
+    _load_dictionary(args)
+    for kind in range(16):
+        if kind in KINDS:
+            name, desc, _ = KINDS[kind]
+            origin = "shipped" if kind in SHIPPED_KINDS else "taught"
+            print(f"{kind:3d}  {name}  ({origin})")
+            print(textwrap.fill(desc, width=78, initial_indent="     ",
+                                subsequent_indent="     "))
+        elif kind in USER_KINDS:
+            print(f"{kind:3d}  (free for users — teach it with register() "
+                  "in a --dictionary file)")
+    return 0
+
+
+_EXAMPLES = """\
+examples:
+  fluidfix init [ROOT]                         generate a starter smoke suite
+  fluidfix guard ROOT --interval 900 --commit  watch, restore, refuse the novel
+  fluidfix guard ROOT --observer claude        LLM eyes, kernel decisions
+  fluidfix guard ROOT --dry-run                propose only: patch written, tree untouched
+  fluidfix repair ROOT --file pkg/mod.py       localise + repair one defect
+  fluidfix packet ROOT --file pkg/mod.py       print the observation packet
+  fluidfix jguard ROOT                         guard a Java/Maven project (alpha)
+  fluidfix kinds                               list the fault-class vocabulary
+  fluidfix selfcheck                           re-verify the shipped laws
+"""
+
+
 def main(argv=None) -> int:
-    p = argparse.ArgumentParser(prog="fluidfix", description=__doc__)
+    p = argparse.ArgumentParser(
+        prog="fluidfix", description=__doc__, epilog=_EXAMPLES,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
 
     def common(sp, need_file=True):
@@ -253,7 +307,7 @@ def main(argv=None) -> int:
         if need_file:
             sp.add_argument("--file", required=True,
                             help="defect file, relative to root")
-        sp.add_argument("--python", default=None,
+        sp.add_argument("--python", default=None, type=_python_arg,
                         help="target project's python (default: this one)")
         sp.add_argument("--cov", default=None,
                         help="coverage target package (default: inferred)")
@@ -266,7 +320,10 @@ def main(argv=None) -> int:
                         help="per-test pytest-timeout in seconds (default 60)")
 
     sp = sub.add_parser("guard", help="commit-and-forget maintenance: watch "
-                        "the suite, restore what breaks, refuse what is novel")
+                        "the suite, restore what breaks, refuse what is novel",
+                        formatter_class=argparse.RawDescriptionHelpFormatter,
+                        epilog="exit codes (one pass, no --interval): "
+                               "0 green or repaired, 2 refused")
     common(sp, need_file=False)
     sp.add_argument("--observer", choices=["mechanical", "claude"],
                     default="mechanical")
@@ -282,11 +339,19 @@ def main(argv=None) -> int:
                          "--escalate-budget). Default: unbounded first pass")
     sp.add_argument("--interval", type=int, default=None,
                     help="seconds between checks; omit for one pass (CI mode)")
-    sp.add_argument("--commit", action="store_true",
-                    help="git-commit each restoration (only the repaired file)")
+    g = sp.add_mutually_exclusive_group()
+    g.add_argument("--commit", action="store_true",
+                   help="git-commit each restoration (only the repaired file)")
+    g.add_argument("--dry-run", action="store_true",
+                   help="propose, don't write: print the repair's unified "
+                        "diff, restore the tree byte-exactly, save the diff "
+                        "to .fluidfix/proposed.patch, exit 0")
     sp.set_defaults(fn=cmd_guard)
 
-    sp = sub.add_parser("repair", help="localise, observe, and repair one defect")
+    sp = sub.add_parser("repair", help="localise, observe, and repair one defect",
+                        formatter_class=argparse.RawDescriptionHelpFormatter,
+                        epilog="exit codes: 0 repaired, 2 refused, "
+                               "3 suite green — nothing to repair")
     common(sp)
     sp.add_argument("--observer", choices=["mechanical", "claude"],
                     default="mechanical")
@@ -303,12 +368,14 @@ def main(argv=None) -> int:
     sp = sub.add_parser("init", help="zero-tests on-ramp: generate a starter "
                         "smoke suite so any repo can be guarded today")
     sp.add_argument("root", nargs="?", default=".")
-    sp.add_argument("--python", default=None)
+    sp.add_argument("--python", default=None, type=_python_arg)
     sp.add_argument("--force", action="store_true")
     sp.set_defaults(fn=cmd_init)
 
     sp = sub.add_parser("jguard", help="guard a Java/Maven project: JUnit is "
-                        "the judge, same kernels, same contracts (alpha)")
+                        "the judge, same kernels, same contracts (alpha)",
+                        formatter_class=argparse.RawDescriptionHelpFormatter,
+                        epilog="exit codes: 0 green or repaired, 2 refused")
     sp.add_argument("root", nargs="?", default=".")
     sp.add_argument("--mvn", default="mvn")
     sp.add_argument("--suite-timeout", type=int, default=600)
@@ -317,10 +384,23 @@ def main(argv=None) -> int:
     sp.add_argument("--commit", action="store_true")
     sp.set_defaults(fn=cmd_jguard)
 
+    sp = sub.add_parser("kinds", help="list the fault-class vocabulary: every "
+                        "registered kind and the free user slots")
+    sp.add_argument("--dictionary", default=None,
+                    help="load this fault-class dictionary before listing")
+    sp.set_defaults(fn=cmd_kinds)
+
     sp = sub.add_parser("selfcheck", help="re-verify the shipped laws exhaustively")
     sp.set_defaults(fn=cmd_selfcheck)
 
     args = p.parse_args(argv)
+    python = getattr(args, "python", None)
+    if python is not None and not _python_works(python):
+        # fail fast, one line — a bad interpreter otherwise surfaces as a
+        # confusing suite failure (or a traceback) deep inside the oracle
+        print(f"fluidfix: --python {python}: not a working interpreter "
+              f"(`{python} -c pass` failed)", file=sys.stderr)
+        return 2
     return args.fn(args)
 
 

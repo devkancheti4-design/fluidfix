@@ -4,5 +4,6 @@ dist/
 build/
 .pytest_cache/
 .coverage
-_fluidfix_cov.json
+_fluidfix*.json
+.fluidfix/
 .venv/

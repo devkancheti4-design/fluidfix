@@ -66,12 +66,23 @@ class Oracle:
         if self._has_timeout:
             cmd += [f"--timeout={self.per_test_timeout}"]
         cmd += self.extra_args + args
+        # pytest-cov drops its .coverage data file in root; a coverage-bearing
+        # run must not leave a stray one behind in the guarded repo
+        cov_data = os.path.join(self.root, ".coverage")
+        stray = (any(a.startswith("--cov") for a in cmd)
+                 and not os.path.exists(cov_data))
         try:
             p = subprocess.run(cmd, cwd=self.root, capture_output=True, text=True,
                                timeout=timeout or self.timeout, env=env)
             return p.returncode, p.stdout + p.stderr
         except subprocess.TimeoutExpired:
             return 1, "TIMEOUT"
+        finally:
+            if stray and os.path.exists(cov_data):
+                try:
+                    os.remove(cov_data)
+                except OSError:
+                    pass
 
     def green(self, timeout: int | None = None) -> bool:
         self.clear_pyc()
@@ -113,7 +124,7 @@ class Oracle:
             if not why:
                 tail = [l for l in out.strip().splitlines() if l.strip()]
                 why = tail[-1] if tail else "suite run produced no output"
-            return False, why[:200]
+            return False, why[:400]
         rc, out = self.run(["--tb=no"], timeout=timeout)
         if rc == 0:
             return True, ""
@@ -122,7 +133,7 @@ class Oracle:
         if not why:
             tail = [l for l in out.strip().splitlines() if l.strip()]
             why = tail[-1] if tail else "suite run produced no output"
-        return False, why[:200]
+        return False, why[:400]
 
     def failing_output(self) -> tuple[bool, str]:
         """(suite_fails, first-failure output). Uses -x and keeps the cache so

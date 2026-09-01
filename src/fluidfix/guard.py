@@ -42,6 +42,9 @@ class GuardReport:
     result: RepairResult | None = None
     candidates: list[str] = field(default_factory=list)
     seconds: float = 0.0
+    # --dry-run's restore point: the defect file's bytes as found (broken),
+    # captured just before the repair that landed
+    before: bytes | None = None
 
     hint: str = ""
     # engine law HARVEST_COUNTEREXAMPLE, actuated: every candidate rejected
@@ -55,8 +58,7 @@ class GuardReport:
             return f"{self.file}: {self.result.summary()}"
         base = ("REFUSED: fault is outside the taught vocabulary "
                 f"(candidate files tried: {', '.join(self.candidates) or 'none found'}). "
-                "Teach the class once — register() an observation + transform — "
-                "and its whole family becomes free.")
+                "teach it once: docs/TEACHING.md (or run: fluidfix kinds)")
         if self.attempts:
             base += (f" {len(self.attempts)} candidate(s) were tried and "
                      "rejected — each is logged with the test that failed "
@@ -221,6 +223,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     first_deadline = t0 + budget / 3 if budget else None
     fails, out = oracle.failing_output()
     if not fails:
+        clear_refusal(oracle.root)
         return GuardReport(status="green", seconds=time.time() - t0)
     candidates = files or find_candidate_files(oracle, out)
     hint = ""
@@ -250,15 +253,17 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             full_sight.add(rel)
         observations = rank_observations("\n".join(packet.src_lines),
                                          observer.observe([packet])[0], out)
+        before = open(os.path.join(oracle.root, rel), "rb").read()
         result = repair(oracle, rel, observations,
                         candidate_timeout=candidate_timeout,
                         deadline=first_deadline)
         attempts += result.tried_log
         acts0 = acts0 or bool(result.acts_tried)
         if result.repaired:
+            clear_refusal(oracle.root)
             return GuardReport(status="repaired", file=rel, result=result,
                                candidates=candidates,
-                               seconds=time.time() - t0)
+                               seconds=time.time() - t0, before=before)
         if result.ambiguous:                     # engine law: BUILT+AMB -> ADD_STATE
             return GuardReport(status="refused", file=rel,
                                candidates=candidates, result=result,
@@ -313,6 +318,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             # review, 2026-08-31 — depth-first starvation)
             file_share = ((deadline - time.time()) / 2
                           if total_deadline is not None else escalate_budget / 2)
+            before = open(os.path.join(oracle.root, rel), "rb").read()
             result = repair(oracle, rel, observations,
                             candidate_timeout=candidate_timeout,
                             deadline=min(deadline,
@@ -321,9 +327,10 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             any_acts = any_acts or bool(result.acts_tried)
             if result.repaired:
                 result.reason += " (engine law: CAPPED -> RAISE_BUDGET, depth-first)"
+                clear_refusal(oracle.root)
                 return GuardReport(status="repaired", file=rel, result=result,
                                    candidates=candidates,
-                                   seconds=time.time() - t0)
+                                   seconds=time.time() - t0, before=before)
             if result.ambiguous:
                 return GuardReport(status="refused", file=rel,
                                    candidates=candidates, result=result,
@@ -337,6 +344,49 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     return GuardReport(status="refused", candidates=candidates,
                        seconds=time.time() - t0, hint=hint,
                        attempts=attempts)
+
+
+def propose_repair(root: str, report: GuardReport) -> tuple[str, str]:
+    """--dry-run's propose-only channel: with the repaired file on disk,
+    capture the broken->repaired unified diff, restore the tree byte-exactly
+    to the broken state, and write the diff to .fluidfix/proposed.patch
+    (`git apply`-ready from root). Returns (patch_path, diff_text)."""
+    rel = report.file.replace(os.sep, "/")
+    path = os.path.join(root, report.file)
+    after = open(path, "rb").read()
+    diff = None
+    try:
+        p = subprocess.run(["git", "-C", root, "diff", "--", rel],
+                           capture_output=True, text=True, timeout=30)
+        if p.returncode == 0 and p.stdout:
+            diff = p.stdout
+    except (subprocess.TimeoutExpired, FileNotFoundError, OSError):
+        pass
+    with open(path, "wb") as f:
+        f.write(report.before)
+    if diff is not None:
+        # git diff is index->worktree, not broken->repaired: trust it only
+        # if it applies to the restored broken tree (an uncommitted defect
+        # breaks that identity)
+        try:
+            if subprocess.run(["git", "-C", root, "apply", "--check", "-"],
+                              input=diff, capture_output=True, text=True,
+                              timeout=30).returncode != 0:
+                diff = None
+        except (subprocess.TimeoutExpired, FileNotFoundError, OSError):
+            diff = None
+    if diff is None:
+        import difflib
+        diff = "".join(difflib.unified_diff(
+            report.before.decode("utf-8").splitlines(keepends=True),
+            after.decode("utf-8").splitlines(keepends=True),
+            fromfile=f"a/{rel}", tofile=f"b/{rel}"))
+    d = os.path.join(root, ".fluidfix")
+    os.makedirs(d, exist_ok=True)
+    patch = os.path.join(d, "proposed.patch")
+    with open(patch, "w", encoding="utf-8", newline="") as f:
+        f.write(diff)
+    return patch, diff
 
 
 def commit_repair(root: str, report: GuardReport) -> str:
@@ -365,6 +415,15 @@ def commit_repair(root: str, report: GuardReport) -> str:
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired,
             FileNotFoundError):
         return "failed"
+
+
+def clear_refusal(root: str) -> None:
+    """write_refusal's counterpart: a green or repaired pass retires the
+    stale teach-me signal (guard_once callers key on the file's existence)."""
+    try:
+        os.remove(os.path.join(root, ".fluidfix", "last_refusal.json"))
+    except OSError:
+        pass
 
 
 def write_refusal(root: str, report: GuardReport) -> str:

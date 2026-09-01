@@ -4,13 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fluidfix"
-version = "0.7.1"
+version = "0.8.0"
 description = "Zero-token repair decisions for mechanical single-line bugs: a machine-authored routing kernel decides, your test suite judges, and an LLM is only ever the eyes."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "AGPL-3.0-or-later"
 license-files = ["LICENSE", "COMMERCIAL.md"]
-authors = [{ name = "devkancheti4-design", email = "devkancheti4@gmail.com" }]
+authors = [{ name = "Devieswar Kancheti", email = "devkancheti4@gmail.com" }]
+maintainers = [{ name = "Devieswar Kancheti", email = "devkancheti4@gmail.com" }]
 keywords = ["automated-program-repair", "debugging", "fault-localization", "mutation", "llm", "claude"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -33,6 +34,7 @@ fluidfix = "fluidfix.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/devkancheti4-design/fluidfix"
+Documentation = "https://github.com/devkancheti4-design/fluidfix/blob/master/docs/TEACHING.md"
 "Kernel provenance" = "https://github.com/devkancheti4-design/fluid-router"
 "Measured results" = "https://github.com/devkancheti4-design/fluidfix/blob/master/docs/BENCHMARK.md"
 

@@ -87,6 +87,58 @@ def test_noop_acts_do_not_count_as_tried(tmp_path):
     assert "no observation named a kind" in result.reason
 
 
+def test_harvest_why_keeps_long_failing_test_ids(tmp_path):
+    # minor: the 200-char why cap amputated long node ids from the harvest
+    # log; 400 keeps the killing test recognisable
+    long_name = "test_" + "x" * 250
+    (tmp_path / "mod.py").write_text("def f(n):\n    return n + 1\n")
+    (tmp_path / "test_mod.py").write_text(
+        f"from mod import f\n\ndef {long_name}():\n    assert f(1) == 5\n")
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    result = repair(oracle, "mod.py", [Observation(lineno=2, kinds=[3])])
+    assert result.refused and result.tried_log
+    why = result.tried_log[0]["why"]
+    assert long_name in why and 200 < len(why) <= 400
+
+
+def test_noncompiling_candidate_skipped_before_any_suite_run(tmp_path):
+    # a taught transform may emit garbage: reject it for free — never
+    # written, no suite run paid — and harvest it with the compile error
+    import re
+    from fluidfix import ACTS, KINDS, register
+    src = "def f():\n    return 2\n"
+    (tmp_path / "mod.py").write_text(src)
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import f\n\ndef test_f():\n    assert f() == 1\n")
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    saved_kinds, saved_acts = dict(KINDS), dict(ACTS)
+    try:
+        register(4, "garbage", "always proposes a syntax error",
+                 re.compile(r"return"), lambda line, o: "    return ((")
+        result = repair(oracle, "mod.py", [Observation(lineno=2, kinds=[4])])
+    finally:
+        KINDS.clear(); KINDS.update(saved_kinds)
+        ACTS.clear(); ACTS.update(saved_acts)
+    assert result.refused
+    assert result.suite_runs == 1            # only the red-suite precondition
+    assert result.tried_log[0]["why"].startswith("does not compile:")
+    assert (tmp_path / "mod.py").read_text() == src
+
+
+def test_coverage_runs_leave_no_stray_data_file(tmp_path):
+    # minor: pytest-cov's .coverage data file was left behind in the guarded
+    # repo after every coverage-bearing localisation run
+    (tmp_path / "mod.py").write_text("def f(n):\n    return n + 1\n")
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import f\n\ndef test_f():\n    assert f(1) == 5\n")
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    assert build_packet(oracle, "mod.py") is not None
+    assert not (tmp_path / ".coverage").exists()
+    (tmp_path / ".coverage").write_text("")  # pre-existing file is the user's
+    build_packet(oracle, "mod.py")
+    assert (tmp_path / ".coverage").exists()
+
+
 class _StubResponse:
     def __init__(self, text, stop="end_turn"):
         class B:

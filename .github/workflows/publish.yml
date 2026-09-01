@@ -15,7 +15,19 @@ on:
     tags: ["v*"]
 
 jobs:
+  # Gate: nothing reaches PyPI unless the suite is green on the tagged commit.
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e . pytest pytest-cov
+      - run: python -m pytest tests/ -q
+
   build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +41,7 @@ jobs:
           path: dist/
 
   publish:
-    needs: build
+    needs: [test, build]
     runs-on: ubuntu-latest
     environment: pypi
     permissions:

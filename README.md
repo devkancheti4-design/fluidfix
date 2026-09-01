@@ -98,6 +98,7 @@ Run it one-shot in CI (exit 0 green/repaired, exit 2 refused), or under cron
 with `--interval`. Green suite: it touches nothing. Novel fault class: it
 refuses, leaves the tree byte-identical, and writes
 `.fluidfix/last_refusal.json` — the teach-me signal for `register()` below.
+`.fluidfix/` is the guard's state directory: add it to your `.gitignore`.
 
 ## How it works
 
@@ -168,6 +169,14 @@ are not transforms, and are refused rather than attempted. (Measured share of
 real one-line fixes that are single-token substitutions: ~16%; see
 fluid-router's `benchmark/domain/`.) The refusal is your signal to spend a
 frontier model exactly once, on the class, never again on its instances.
+
+## Teach it your bugs
+
+[docs/TEACHING.md](docs/TEACHING.md) is the full guide: how to turn a refusal
+into a registered fault class, what makes a transform safe, and how the router
+infers the new act from one worked example.
+[examples/company_rules.py](examples/company_rules.py) is a ready-to-adapt
+dictionary of registrations to copy into your own deployment.
 
 ## Licensing
 

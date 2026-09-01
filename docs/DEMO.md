@@ -178,3 +178,38 @@ print(report.summary())        # repaired / green / refused — never a guess
 | Coverage localisation finds nothing | never run pytest-cov with `-x` (exit-first silently skips the JSON report — upstream bug, fluidfix avoids it) |
 | Guard refuses on a suite slower than 300s | raise `--suite-timeout` / `--candidate-timeout` |
 | Wrong interpreter / missing deps | pass `--python path/to/project/venv/bin/python` |
+
+---
+
+## Deployment modes: propose-only (`--dry-run`)
+
+Fleets that gate every write behind human review can run the guard as a pure
+proposer (executed by `tests/test_dry_run.py`):
+
+```bash
+fluidfix guard . --dry-run
+```
+
+When a repair lands, the guard prints the broken→repaired unified diff,
+restores the working tree **byte-exactly** to its broken state, writes the
+diff to `.fluidfix/proposed.patch`, and exits 0:
+
+```
+[..] mod.py: repaired line 4 in 4 suite runs (0.6s): ...
+--- a/mod.py
++++ b/mod.py
+@@ -1,6 +1,6 @@
+ ...
+-        if x >= t:
++        if x > t:
+ ...
+PROPOSED (dry-run): apply with git apply .fluidfix/proposed.patch
+```
+
+The suite still judged the candidate — the diff was accepted green before the
+restore. Apply it after review with `git apply .fluidfix/proposed.patch`
+(the patch is `git apply`-ready even in non-git trees, via the difflib
+fallback). Refusals behave exactly as without the flag: exit 2, tree
+untouched, teach-me signal in `.fluidfix/last_refusal.json`. `--dry-run` and
+`--commit` are mutually exclusive — one guard either proposes or writes,
+never both.

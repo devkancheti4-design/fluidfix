@@ -37,6 +37,7 @@ def test_guard_follows_traceback_frames(tmp_path):
     report = guard_once(oracle, MechanicalObserver())
     assert report.status == "repaired" and report.file == "mod.py"
     assert "a + b" in (tmp_path / "mod.py").read_text()
+    assert report.result.restored_original is None       # no git repo here
 
 
 def test_guard_green_touches_nothing(tmp_path):
@@ -56,6 +57,9 @@ def test_guard_refuses_novel_class_loudly_and_untouched(tmp_path):
     report = guard_once(oracle, MechanicalObserver())
     assert report.status == "refused"
     assert (tmp_path / "mod.py").read_text() == src
+    s = report.summary()
+    assert "docs/TEACHING.md" in s and "fluidfix kinds" in s
+    assert "becomes free" not in s                       # marketing retired
     path = write_refusal(str(tmp_path), report)
     assert "register()" in open(path).read() or "vocabulary" in open(path).read()
 
@@ -70,6 +74,7 @@ def test_guard_commit_records_the_restoration(tmp_path):
         subprocess.run(cmd, cwd=tmp_path, check=True, capture_output=True)
     report = guard_once(oracle, MechanicalObserver())
     assert report.status == "repaired"
+    assert report.result.restored_original is False      # the bug WAS committed
     assert commit_repair(str(tmp_path), report) == "committed"
     log = subprocess.run(["git", "log", "--oneline", "-1"], cwd=tmp_path,
                          capture_output=True, text=True).stdout
@@ -77,3 +82,32 @@ def test_guard_commit_records_the_restoration(tmp_path):
     status = subprocess.run(["git", "status", "--porcelain", "-uno"],
                             cwd=tmp_path, capture_output=True, text=True).stdout
     assert status.strip() == ""          # no tracked file left modified
+
+
+def test_repair_reports_restored_original_provenance(tmp_path):
+    # an uncommitted defect's repair equals the HEAD line: provenance True
+    oracle = _project(tmp_path, module_src=BUGGY.replace("x >= t", "x > t"))
+    for cmd in (["git", "init", "-q"],
+                ["git", "config", "user.email", "guard@test"],
+                ["git", "config", "user.name", "guard"],
+                ["git", "add", "-A"],
+                ["git", "commit", "-qm", "seed (clean)"]):
+        subprocess.run(cmd, cwd=tmp_path, check=True, capture_output=True)
+    (tmp_path / "mod.py").write_text(BUGGY)     # defect never reaches HEAD
+    report = guard_once(oracle, MechanicalObserver())
+    assert report.status == "repaired"
+    assert report.result.restored_original is True
+
+
+def test_stale_refusal_cleared_on_green_or_repaired_pass(tmp_path):
+    # guard_once callers key on the file's existence — a green or repaired
+    # pass must retire the stale teach-me signal
+    oracle = _project(tmp_path)
+    refusal = tmp_path / ".fluidfix" / "last_refusal.json"
+    refusal.parent.mkdir()
+    refusal.write_text("{}")
+    report = guard_once(oracle, MechanicalObserver())
+    assert report.status == "repaired" and not refusal.exists()
+    refusal.write_text("{}")
+    report = guard_once(oracle, MechanicalObserver())
+    assert report.status == "green" and not refusal.exists()

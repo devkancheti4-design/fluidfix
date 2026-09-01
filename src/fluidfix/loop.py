@@ -28,6 +28,7 @@ and nothing is written back unless a candidate was actually tried.
 from __future__ import annotations
 
 import os
+import subprocess
 import time
 from dataclasses import dataclass, field
 
@@ -56,6 +57,9 @@ class RepairResult:
     # candidate is kept WITH the failing test that rejected it
     tried_log: list = field(default_factory=list)
     tried_more: int = 0               # rejections beyond the 64-entry cap
+    # provenance: the repair equals the git-HEAD content at that line (the
+    # defect was an uncommitted edit); None when git/HEAD is unavailable
+    restored_original: bool | None = None
 
     def summary(self) -> str:
         if self.repaired:
@@ -68,6 +72,21 @@ class RepairResult:
 def _write(path: str, content: str) -> None:
     with open(path, "w", encoding="utf-8", newline="") as f:
         f.write(content)
+
+
+def _restored_original(root: str, rel: str, lineno: int, new_line: str) -> bool | None:
+    """Does the shipped repair equal the committed (HEAD) content at that
+    line? None when git or the HEAD version is unavailable."""
+    try:
+        p = subprocess.run(["git", "-C", root, "show",
+                            f"HEAD:{rel.replace(os.sep, '/')}"],
+                           capture_output=True, text=True, timeout=30)
+    except (subprocess.TimeoutExpired, FileNotFoundError, OSError):
+        return None
+    if p.returncode != 0:
+        return None
+    new = new_line.split("\n")
+    return p.stdout.split("\n")[lineno - 1:lineno - 1 + len(new)] == new
 
 
 def repair(oracle: Oracle, defect_file: str,
@@ -161,6 +180,20 @@ def repair(oracle: Oracle, defect_file: str,
                         res.acts_tried.append(act)           # a real candidate set
                         counted = True
                     content = "\n".join(new)
+                    # a candidate that cannot even compile is rejected for
+                    # free: never written, no suite run paid (.py only —
+                    # jguard's Java candidates are the JVM's to judge)
+                    if defect_file.endswith(".py"):
+                        try:
+                            compile(content, path, "exec")
+                        except SyntaxError as e:
+                            if len(res.tried_log) < 64:
+                                res.tried_log.append(
+                                    {"at": at_str, "tried": crepr[:200],
+                                     "why": f"does not compile: {e}"[:400]})
+                            else:
+                                res.tried_more += 1
+                            continue
                     _write(path, content)
                     wrote = True
                     res.suite_runs += 1
@@ -190,6 +223,8 @@ def repair(oracle: Oracle, defect_file: str,
                         _write(path, content)
                         res.repaired, res.refused = True, False
                         res.lineno, res.old_line, res.new_line = at, old_repr, crepr
+                        res.restored_original = _restored_original(
+                            oracle.root, defect_file, at, crepr)
                         res.reason = f"kind {kind} -> act {act}"
                         return res
                     res.ambiguous = True
