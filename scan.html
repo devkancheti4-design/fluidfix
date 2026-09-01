@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>fluidfix — get your repo scanned</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg:#0C1310; --bg2:#0F1713; --panel:#121B17; --line:#233029;
+    --line2:#2E3E36; --ink:#E8F0EB; --muted:#93A69B; --faint:#5F7168;
+    --teal:#3ECDB4; --teal-hi:#6FE3CF; --teal-dim:#1D5D51;
+    --amber:#E3A75D; --red:#E36A5D; --ink-inv:#06120E;
+  }
+  * { box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); margin:0; line-height:1.6;
+         font-family:"Archivo","Helvetica Neue",Arial,sans-serif; }
+  .wrap { max-width:46rem; margin:0 auto; padding:0 1.4rem; }
+  code,.mono { font-family:"IBM Plex Mono",ui-monospace,monospace; }
+  a { color:var(--teal); text-decoration:none; }
+  a:hover { color:var(--teal-hi); }
+  nav { position:sticky; top:0; background:rgba(12,19,16,.92);
+        backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  .nav-in { display:flex; align-items:center; gap:1.6rem; padding:.85rem 1.4rem;
+            max-width:70rem; margin:0 auto; }
+  .logo { font-family:"IBM Plex Mono",monospace; font-weight:600;
+          font-size:1.15rem; color:var(--teal); letter-spacing:.04em; }
+  h1 { letter-spacing:-0.02em; font-size:2rem; margin:2.4rem 0 .4rem; }
+  .lead { color:var(--muted); }
+  .card { background:var(--panel); border:1px solid var(--line);
+          border-radius:12px; padding:1.2rem 1.3rem; margin:1.1rem 0; }
+  input[type=text] { width:100%; background:var(--bg2); color:var(--ink);
+          border:1px solid var(--line2); border-radius:8px;
+          padding:.7rem .9rem; font-family:"IBM Plex Mono",monospace;
+          font-size:.95rem; }
+  input:focus { outline:2px solid var(--teal); }
+  .btn { display:inline-block; border-radius:8px; padding:.65rem 1.2rem;
+         font-weight:700; cursor:pointer; border:1px solid var(--line2);
+         background:var(--teal); color:var(--ink-inv); font-size:1rem; }
+  .btn:disabled { opacity:.5; cursor:wait; }
+  .btn-ghost { background:transparent; color:var(--teal); }
+  .row { display:flex; gap:.7rem; margin-top:.8rem; flex-wrap:wrap; }
+  .kv { display:grid; grid-template-columns:14rem 1fr; gap:.25rem .8rem;
+        font-size:.92rem; }
+  .kv b { color:var(--muted); font-weight:500; }
+  .verdict { font-size:1.15rem; font-weight:800; margin:.2rem 0 .6rem; }
+  .ok { color:var(--teal-hi); } .warn { color:var(--amber); } .no { color:var(--red); }
+  .note { color:var(--faint); font-size:.85rem; }
+  .spin { color:var(--muted); font-family:"IBM Plex Mono",monospace; }
+  #log { font-size:.8rem; color:var(--faint); white-space:pre-wrap;
+         font-family:"IBM Plex Mono",monospace; max-height:9rem; overflow:auto; }
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <a class="logo" href="https://devkancheti4-design.github.io/fluidfix/">fluidfix</a>
+  <span style="color:var(--faint);font-size:.9rem">get your repo scanned</span>
+  <a style="margin-left:auto;font-size:.9rem" href="https://devkancheti4-design.github.io/fluidfix/#pricing">pricing</a>
+</div></nav>
+
+<div class="wrap">
+  <h1>Would <span style="color:var(--teal)">your</span> repo have saved?</h1>
+  <p class="lead">Paste a public GitHub repo. This page reads its recent commit history —
+  right here in your browser, nothing uploaded anywhere — and estimates the surface fluidfix
+  would maintain: real one-line bug fixes from <i>your</i> history, the subset your own tests
+  could judge, and the subset the shipped kernel repairs free today. Same fixed rules for every
+  repo. The result is a sampled preview; the firm quote comes from a full clone scan.</p>
+
+  <div class="card">
+    <label class="note" for="repo">github.com/owner/repo — public repos only (private? use the email path below)</label>
+    <div class="row" style="margin-top:.4rem">
+      <input type="text" id="repo" placeholder="e.g. pallets/click or https://github.com/arrow-py/arrow" style="flex:1">
+      <button class="btn" id="go">Scan eligibility</button>
+    </div>
+    <p class="note" style="margin-bottom:0">Uses GitHub's public API from your browser
+    (60 requests/hour, unauthenticated) — a scan samples ~25 recent commits. We never ask for
+    tokens or passwords.</p>
+  </div>
+
+  <div class="card" id="out" style="display:none"></div>
+
+  <div class="card">
+    <b>The full scan (free, firm quote)</b>
+    <p class="note">The in-browser preview samples what the API allows. The real scanner runs on a
+    full clone: complete history mining, class recurrence, suite-strength measurement — every
+    input printed, price from $100/yr, and it will say "don't buy the add-on" when your math
+    says so.</p>
+    <a class="btn btn-ghost" id="mailbtn"
+       href="mailto:devkancheti4@gmail.com?subject=Free%20repo%20scan%20request&body=Repo%20URL%3A%20%0ARoughly%20how%20often%20do%20you%20deploy%3F%20%0APrivate%20repo%3F%20(a%20read-only%20guest%20clone%20or%20a%20mirror%20works)%20">
+       Email for the full scan</a>
+  </div>
+  <p class="note">How the rules work and why we publish failed trials too:
+  <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/SCALE.md">docs/SCALE.md</a>.</p>
+  <div id="log"></div>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const log = m => { $("log").textContent += m + "\n"; };
+
+const TOKEN = /\d+|==|!=|<=|>=|\band\b|\bor\b|\bTrue\b|\bFalse\b|[<>+\-]|\w+|\S/g;
+function stockClass(a, b) {
+  const ta = a.match(TOKEN) || [], tb = b.match(TOKEN) || [];
+  if (ta.length !== tb.length) return null;
+  const d = [];
+  for (let i = 0; i < ta.length; i++) if (ta[i] !== tb[i]) d.push([ta[i], tb[i]]);
+  if (d.length !== 1) return null;
+  const [x, y] = d[0], s = new Set([x, y]);
+  const eq = (p, q) => s.size === 2 && s.has(p) && s.has(q);
+  if (/^\d+$/.test(x) && /^\d+$/.test(y) && Math.abs(+x - +y) === 1) return "literal";
+  if (eq("<", "<=") || eq(">", ">=")) return "comparison";
+  if (eq("+", "-")) return "additive";
+  if (eq("and", "or")) return "logic";
+  if (eq("True", "False")) return "boolean";
+  if (eq("==", "!=")) return "equality";
+  return null;
+}
+
+async function gh(path) {
+  const r = await fetch("https://api.github.com" + path,
+                        { headers: { Accept: "application/vnd.github+json" } });
+  if (r.status === 403 || r.status === 429) throw new Error("RATELIMIT");
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return r.json();
+}
+
+function parseRepo(v) {
+  const m = v.trim().match(/(?:github\.com[/:])?([\w.-]+)\/([\w.-]+?)(?:\.git)?(?:[/?#].*)?$/);
+  return m ? m[1] + "/" + m[2] : null;
+}
+
+async function scan() {
+  const slug = parseRepo($("repo").value);
+  const out = $("out");
+  out.style.display = "block";
+  $("log").textContent = "";
+  if (!slug) { out.innerHTML = '<div class="verdict no">That does not look like owner/repo.</div>'; return; }
+  $("go").disabled = true;
+  out.innerHTML = '<div class="spin">scanning ' + slug + ' …</div>';
+  try {
+    const meta = await gh("/repos/" + slug);
+    const isPy = (meta.language || "").toLowerCase() === "python";
+    const pushedDays = Math.round((Date.now() - new Date(meta.pushed_at)) / 86400000);
+    log("repo: " + meta.full_name + "  lang=" + meta.language + "  pushed " + pushedDays + "d ago");
+
+    const list = await gh("/repos/" + slug + "/commits?per_page=100");
+    const nonMerge = list.filter(c => (c.parents || []).length < 2);
+    const spanDays = Math.max(1, (new Date(nonMerge[0].commit.committer.date)
+                     - new Date(nonMerge[nonMerge.length - 1].commit.committer.date)) / 86400000);
+    const perYear = n => (n / (spanDays / 365.25));
+    log("recent history: " + nonMerge.length + " non-merge commits over " + Math.round(spanDays) + " days");
+
+    const SAMPLE = 25;
+    let t1 = 0, t2 = 0, t3 = 0, testsSeen = false, checked = 0;
+    const classes = {};
+    for (const c of nonMerge.slice(0, SAMPLE)) {
+      const d = await gh("/repos/" + slug + "/commits/" + c.sha);
+      checked++;
+      const files = d.files || [];
+      if (files.some(f => /test/i.test(f.filename))) testsSeen = true;
+      const src = files.filter(f => f.filename.endsWith(".py") && !/test/i.test(f.filename));
+      const tst = files.filter(f => /test/i.test(f.filename) && f.filename.endsWith(".py"));
+      const nonDoc = files.filter(f => !/\.(rst|md|txt|cfg|toml|ini|ya?ml|json)$/.test(f.filename));
+      if (src.length !== 1 || nonDoc.length !== src.length + tst.length) continue;
+      const f = src[0];
+      if (f.additions !== 1 || f.deletions !== 1 || !f.patch) continue;
+      const minus = f.patch.split("\n").filter(l => l[0] === "-" && !l.startsWith("---"));
+      const plus  = f.patch.split("\n").filter(l => l[0] === "+" && !l.startsWith("+++"));
+      if (minus.length !== 1 || plus.length !== 1) continue;
+      const buggy = minus[0].slice(1), fixed = plus[0].slice(1);
+      if (!buggy.trim() || buggy.trim().startsWith("#")) continue;
+      const bugish = /\bfix|\bbug|wrong|crash|regress|error|broken|incorrect/i.test(d.commit.message);
+      if (!bugish && tst.length === 0) continue;
+      t1++;
+      if (tst.length) t2++;
+      const cls = stockClass(buggy, fixed);
+      if (cls) { t3++; classes[cls] = (classes[cls] || 0) + 1; }
+      log("  one-line fix: " + c.sha.slice(0, 7) + " " + d.commit.message.split("\n")[0].slice(0, 60));
+    }
+    const scale = nonMerge.length / Math.max(checked, 1);
+    const est1 = perYear(t1 * scale), est3 = perYear(t3 * scale);
+    const valueLow = Math.round(est1 * 100);
+    const price = Math.max(100, Math.round(valueLow * 0.25 / 10) * 10);
+
+    let verdict, cls_ = "ok";
+    if (!isPy) { verdict = "Not yet — fluidfix is Python-first today"; cls_ = "no"; }
+    else if (pushedDays > 180) { verdict = "Eligible, low urgency — this repo is quiet"; cls_ = "warn"; }
+    else if (!testsSeen && t2 === 0) { verdict = "Eligible after a suite — start with `fluidfix init`"; cls_ = "warn"; }
+    else { verdict = "Eligible — this repo can be guarded today"; }
+
+    out.innerHTML =
+      '<div class="verdict ' + cls_ + '">' + verdict + "</div>" +
+      '<div class="kv">' +
+      "<b>sampled</b><span>" + checked + " recent commits (of " + nonMerge.length + " listed)</span>" +
+      "<b>one-line bug fixes found</b><span>" + t1 + " in sample → ~" + est1.toFixed(1) + "/yr estimated</span>" +
+      "<b>· shipped with tests</b><span>" + t2 + " (your suite could judge these automatically)</span>" +
+      "<b>· free stock-vocabulary</b><span>" + t3 + (t3 ? " " + JSON.stringify(classes) : "") +
+        " → ~" + est3.toFixed(1) + "/yr repaired free, no teaching</span>" +
+      "<b>activity</b><span>last push " + pushedDays + " days ago</span>" +
+      "<b>provisional price</b><span>from $" + price + "/yr (25% of the LOW estimate — " +
+        "firm number needs the full clone scan)</span>" +
+      "</div>" +
+      '<p class="note" style="margin-bottom:0">Sampled preview, stated as a lower bound: bugs ' +
+      "fixed before merge never appear in history, and 25 commits is a keyhole. " +
+      'The <a href="mailto:devkancheti4@gmail.com?subject=Free%20repo%20scan%3A%20' +
+      encodeURIComponent(slug) + '">full free scan</a> mines everything and prints every input.</p>';
+  } catch (e) {
+    out.innerHTML = e.message === "RATELIMIT"
+      ? '<div class="verdict warn">GitHub rate limit reached (60/hr per IP).</div>' +
+        '<p class="note">Try again in an hour — or skip straight to the ' +
+        '<a href="mailto:devkancheti4@gmail.com?subject=Free%20repo%20scan%20request">full free scan by email</a>.</p>'
+      : '<div class="verdict no">Could not scan: ' + e.message + '</div>' +
+        '<p class="note">Private repo, typo, or GitHub hiccup. The ' +
+        '<a href="mailto:devkancheti4@gmail.com?subject=Free%20repo%20scan%20request">email path</a> works for everything.</p>';
+  } finally {
+    $("go").disabled = false;
+  }
+}
+$("go").addEventListener("click", scan);
+$("repo").addEventListener("keydown", e => { if (e.key === "Enter") scan(); });
+</script>
+</body>
+</html>
