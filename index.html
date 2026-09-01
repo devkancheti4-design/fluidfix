@@ -184,11 +184,13 @@
 
 <header class="hero"><div class="wrap hero-grid">
   <div>
-    <h1>Deployed code that <span class="t">repairs itself.</span></h1>
-    <p class="sub">fluidfix watches your test suite and restores mechanical regressions
-    <b>byte-exact</b> — <b>zero AI tokens per decision</b>. Teach it a bug class once, from one
-    example; every future member is fixed free, forever. Unknown bugs are
-    <b>refused loudly, never guessed.</b></p>
+    <h1>Known bugs get the <span class="t">same fix, every time.</span></h1>
+    <p class="sub">Not a guess anymore — <b>rules you wrote, judged by tests you own</b>.
+    fluidfix repairs known error classes deterministically: <b>no model in the loop, no external
+    tools, no network</b> — the same input produces the same byte-exact fix in CI, on a laptop,
+    or air-gapped. Show it a class once; it fixes every member the same way forever. Anything
+    outside your rules is <b>refused loudly, never guessed</b> — with the failing test that
+    killed each rejected fix on record.</p>
     <div class="cta-row">
       <a class="btn btn-solid" href="#prebook">Pre-book a license</a>
       <a class="btn btn-ghost" href="https://github.com/devkancheti4-design/fluidfix">Star on GitHub</a>
@@ -321,10 +323,16 @@ $ echo $?
       <p>Empty mask → loud refusal, untouched tree, and a machine-readable teach-me signal. Never a plausible guess.</p></div>
   </div>
   <div class="trio">
-    <div class="card"><span class="chip">precision</span><h3>More exact than the model it replaces</h3>
-      <p>On 33 real-library bugs: 26/27 byte-exact in-vocabulary vs 22/27 for full Opus 5 debugging — which also shipped five suite-green-but-different edits. fluidfix shipped zero.</p></div>
-    <div class="card"><span class="chip">economics</span><h3>Pay for a class once, decide members free</h3>
-      <p>One worked example buys an entire fault class. Every future instance routes in four integer instructions — re-runs, audits, renumberings included.</p></div>
+    <div class="card"><span class="chip">deterministic</span><h3>Same bug, same fix — provably</h3>
+      <p>The decision is four integer instructions, not a model: no temperature, no drift, no
+      prompt. Run <span class="mono">fluidfix selfcheck</span> and re-derive every law on your own
+      machine — 4,096 routing cases, identity, composition, termination — in about a second.
+      Reproducible fixes are auditable fixes.</p></div>
+    <div class="card"><span class="chip">yours</span><h3>Your rules, your tests, your repo</h3>
+      <p>Fault classes are versioned files in YOUR repo, written from YOUR incidents, judged by
+      YOUR suite — nothing leaves the machine, no vendor in the decision path. On 33 real-library
+      bugs the rules beat a frontier model debugging freely: 26/27 byte-exact vs 22/27 — and the
+      model shipped five suite-green-but-different edits; the rules shipped zero.</p></div>
     <div class="card"><span class="chip">honesty</span><h3>Refusal under contract</h3>
       <p>Green suite: touches nothing. Unknown class: refuses, exits 2, writes the teach-me report. The failure mode is a statement, not a wrong edit.</p></div>
   </div>
