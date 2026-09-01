@@ -44,6 +44,9 @@ class GuardReport:
     seconds: float = 0.0
 
     hint: str = ""
+    # engine law HARVEST_COUNTEREXAMPLE, actuated: every candidate rejected
+    # on the way to this report, each with the failing test that killed it
+    attempts: list = field(default_factory=list)
 
     def summary(self) -> str:
         if self.status == "green":
@@ -54,6 +57,10 @@ class GuardReport:
                 f"(candidate files tried: {', '.join(self.candidates) or 'none found'}). "
                 "Teach the class once — register() an observation + transform — "
                 "and its whole family becomes free.")
+        if self.attempts:
+            base += (f" {len(self.attempts)} candidate(s) were tried and "
+                     "rejected — each is logged with the test that failed "
+                     "it in the refusal report.")
         return base + (f"\n  hint: {self.hint}" if self.hint else "")
 
 
@@ -202,6 +209,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     candidates = files or find_candidate_files(oracle, out)
     hint = ""
     capped0 = acts0 = False
+    attempts: list = []
     full_sight: set[str] = set()      # pass-0 packet was complete: nothing
                                       # a bigger budget could add for this file
     if not candidates and not _has_pytest_cov(oracle):
@@ -221,6 +229,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                                          observer.observe([packet])[0], out)
         result = repair(oracle, rel, observations,
                         candidate_timeout=candidate_timeout)
+        attempts += result.tried_log
         acts0 = acts0 or bool(result.acts_tried)
         if result.repaired:
             return GuardReport(status="repaired", file=rel, result=result,
@@ -230,7 +239,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             return GuardReport(status="refused", file=rel,
                                candidates=candidates, result=result,
                                seconds=time.time() - t0,
-                               hint=result.reason)
+                               hint=result.reason, attempts=attempts)
 
     # ---- the engine law rules on the refusal -------------------------------
     # Measure what actually blocked, then do what the law says. Only
@@ -254,7 +263,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             if time.time() > deadline:
                 return GuardReport(
                     status="refused", candidates=candidates,
-                    seconds=time.time() - t0,
+                    seconds=time.time() - t0, attempts=attempts,
                     hint=(f"escalation budget exhausted ({escalate_budget}s) "
                           "with CAPPED still ruling RAISE_BUDGET — raise "
                           "--escalate-budget, use --observer claude, or fix "
@@ -279,6 +288,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                             candidate_timeout=candidate_timeout,
                             deadline=min(deadline,
                                          time.time() + escalate_budget / 2))
+            attempts += result.tried_log
             any_acts = any_acts or bool(result.acts_tried)
             if result.repaired:
                 result.reason += " (engine law: CAPPED -> RAISE_BUDGET, depth-first)"
@@ -289,14 +299,15 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 return GuardReport(status="refused", file=rel,
                                    candidates=candidates, result=result,
                                    seconds=time.time() - t0,
-                                   hint=result.reason)
+                                   hint=result.reason, attempts=attempts)
         if any_acts and not hint:
             hint = ("every generated candidate was rejected by the suite "
                     "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — "
                     "the refusal report lists what was tried; teach the "
                     "class or fix by hand")
     return GuardReport(status="refused", candidates=candidates,
-                       seconds=time.time() - t0, hint=hint)
+                       seconds=time.time() - t0, hint=hint,
+                       attempts=attempts)
 
 
 def commit_repair(root: str, report: GuardReport) -> str:
@@ -336,6 +347,9 @@ def write_refusal(root: str, report: GuardReport) -> str:
                "seconds": report.seconds,
                "hint": report.hint or
                        "fault class is outside the taught vocabulary; "
-                       "register() it once and its family becomes free"},
+                       "register() it once and its family becomes free",
+               # engine law: REFUTED -> HARVEST_COUNTEREXAMPLE — what was
+               # tried, and the exact failing test that rejected each
+               "rejected_candidates": report.attempts[:200]},
               open(path, "w"), indent=1)
     return path

@@ -22,9 +22,31 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
-__all__ = ["Observation", "KINDS", "ACTS", "WORKED_EXAMPLE", "apply", "act_for"]
+__all__ = ["Observation", "KINDS", "ACTS", "WORKED_EXAMPLE", "SpanEdit",
+           "apply", "act_for"]
 
 from .router import route
+
+
+class SpanEdit:
+    """A candidate that replaces LINES start..end (1-based, inclusive) with
+    `text` as ONE atomic edit — for fixes that must rewrite several existing
+    lines together (neither line's change alone can green the suite).
+
+    Returned by taught transforms in place of a plain string. The span must
+    contain the observed line (an observation may not edit code it never
+    pointed at), stays suite-adjudicated candidate-by-candidate, rolls back
+    byte-exactly on rejection, and two DIFFERENT green spans still refuse
+    as AMBIGUOUS. `text` is the full replacement block without trailing
+    newline; it may be multi-line."""
+
+    __slots__ = ("start", "end", "text")
+
+    def __init__(self, start: int, end: int, text: str):
+        self.start, self.end, self.text = int(start), int(end), str(text)
+
+    def __repr__(self):
+        return f"SpanEdit({self.start}..{self.end}, {self.text!r:.60})"
 
 # The single mapping supplied to the router; every other act is inferred.
 WORKED_EXAMPLE = (0, 5)
@@ -207,7 +229,7 @@ def load_dictionary(path: str) -> int:
     classes the file registered."""
     import re as _re
     before = set(KINDS)
-    ns = {"register": register, "re": _re}
+    ns = {"register": register, "re": _re, "SpanEdit": SpanEdit}
     with open(path, encoding="utf-8") as f:
         code = compile(f.read(), path, "exec")
     exec(code, ns)
@@ -231,7 +253,8 @@ def candidates(line: str, act: int, obs: Observation) -> list:
     out = fn(line, obs)
     if isinstance(out, str):
         return [out]
-    return [c for c in out if isinstance(c, str)][:32]   # bounded search
+    return [c for c in out
+            if isinstance(c, (str, SpanEdit))][:32]      # bounded search
 
 
 def apply(line: str, act: int, obs: Observation) -> str:

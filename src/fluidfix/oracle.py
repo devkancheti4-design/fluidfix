@@ -78,6 +78,21 @@ class Oracle:
         rc, _ = self.run(["--tb=no"], timeout=timeout)
         return rc == 0
 
+    def check(self, timeout: int | None = None) -> tuple[bool, str]:
+        """green() plus WHY: (ok, first-failure line). The rejection
+        evidence the repair loop harvests per candidate (engine law:
+        REFUTED -> HARVEST_COUNTEREXAMPLE) — same suite run, no extra cost."""
+        self.clear_pyc()
+        rc, out = self.run(["--tb=no"], timeout=timeout)
+        if rc == 0:
+            return True, ""
+        why = next((l.strip() for l in out.splitlines()
+                    if l.startswith(("FAILED", "ERROR"))), "")
+        if not why:
+            tail = [l for l in out.strip().splitlines() if l.strip()]
+            why = tail[-1] if tail else "suite run produced no output"
+        return False, why[:200]
+
     def failing_output(self) -> tuple[bool, str]:
         """(suite_fails, first-failure output). Uses -x and keeps the cache so
         a later --lf coverage run re-runs exactly the recorded failing test."""

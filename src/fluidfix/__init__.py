@@ -10,7 +10,7 @@
     result = repair(oracle, "pkg/module.py", observations)
     print(result.summary())
 """
-from .acts import (ACTS, KINDS, WORKED_EXAMPLE, Observation, act_for, apply,
+from .acts import (ACTS, KINDS, WORKED_EXAMPLE, Observation, SpanEdit, act_for, apply,
                    candidates, register)
 from .guard import (GuardReport, commit_repair, find_candidate_files,
                     guard_once, write_refusal)
@@ -21,7 +21,7 @@ from .observers import ClaudeObserver, MechanicalObserver, observer_prompt
 from .oracle import Oracle
 from .router import pack, route, route_packed
 
-__version__ = "0.6.1"
+__version__ = "0.7.0"
 __all__ = [
     "route", "route_packed", "pack",
     "EMIT", "ADVANCE", "HALT", "mask_of", "kind_of",

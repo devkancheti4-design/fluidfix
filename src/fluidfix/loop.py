@@ -31,7 +31,7 @@ import os
 import time
 from dataclasses import dataclass, field
 
-from .acts import Observation, act_for, candidates
+from .acts import Observation, SpanEdit, act_for, candidates
 from .engine import decide, situation
 from .lanes import ADVANCE, EMIT, HALT, kind_of, mask_of
 from .oracle import Oracle
@@ -52,6 +52,10 @@ class RepairResult:
     reason: str = ""
     ambiguous: bool = False
     greens: list[str] = field(default_factory=list)   # all suite-passing candidates
+    # the engine law's HARVEST_COUNTEREXAMPLE act, actuated: every rejected
+    # candidate is kept WITH the failing test that rejected it
+    tried_log: list = field(default_factory=list)
+    tried_more: int = 0               # rejections beyond the 64-entry cap
 
     def summary(self) -> str:
         if self.repaired:
@@ -121,24 +125,57 @@ def repair(oracle: Oracle, defect_file: str,
                 obs.file, obs.root = defect_file, oracle.root
                 obs.all_lines = [l.rstrip("\r") for l in raw]
                 counted = False
-                greens: list[str] = []
+                # each green: (new_repr, full_file_content, old_repr, lineno)
+                greens: list[tuple[str, str, str, int]] = []
                 for cand in candidates(body, act, obs):
-                    if cand == body or (i, cand) in tried:   # NOPROGRESS
+                    if isinstance(cand, SpanEdit):
+                        # the engine law's CHANGE_GRANULARITY act, actuated:
+                        # one candidate replaces lines start..end atomically.
+                        # Bounds AND anchor safety — a span may only edit
+                        # code its own observation points into.
+                        s_, e_ = cand.start, cand.end
+                        if not (1 <= s_ <= e_ <= len(raw)) \
+                                or not (s_ <= obs.lineno <= e_):
+                            continue
+                        old_repr = "\n".join(l.rstrip("\r")
+                                             for l in raw[s_ - 1:e_])
+                        if cand.text == old_repr:            # NOPROGRESS
+                            continue
+                        key = (s_, e_, cand.text)
+                        cend = raw[e_ - 1][len(raw[e_ - 1].rstrip("\r")):]
+                        new = raw[:s_ - 1] + [cand.text + cend] + raw[e_:]
+                        crepr, at = cand.text, s_
+                        at_str = f"{defect_file}:{s_}-{e_}"
+                    else:
+                        if cand == body:                     # NOPROGRESS
+                            continue
+                        key = (i, cand)
+                        new = raw[:]
+                        new[i] = cand + ending
+                        crepr, old_repr, at = cand, body, obs.lineno
+                        at_str = f"{defect_file}:{obs.lineno}"
+                    if key in tried:
                         continue
-                    tried.add((i, cand))
+                    tried.add(key)
                     if not counted:
                         res.acts_tried.append(act)           # a real candidate set
                         counted = True
-                    new = raw[:]
-                    new[i] = cand + ending
-                    _write(path, "\n".join(new))
+                    content = "\n".join(new)
+                    _write(path, content)
                     wrote = True
                     res.suite_runs += 1
-                    if oracle.green(timeout=cand_t):
-                        greens.append(cand)
+                    ok, why = oracle.check(timeout=cand_t)
+                    if ok:
+                        greens.append((crepr, content, old_repr, at))
                         if len(greens) >= 2:                 # AMB proven — stop
                             _write(path, "\n".join(raw))
                             break
+                    elif len(res.tried_log) < 64:
+                        res.tried_log.append({"at": at_str,
+                                              "tried": crepr[:200],
+                                              "why": why})
+                    else:
+                        res.tried_more += 1
                     _write(path, "\n".join(raw))             # roll back, keep testing
                 _write(path, src)                        # byte-exact restore
                 if greens:
@@ -147,13 +184,12 @@ def repair(oracle: Oracle, defect_file: str,
                     # ADD_STATE (the suite cannot tell the candidates apart —
                     # refuse and ask for a pinning test, never guess)
                     ruling = decide(situation(BUILT=True, AMB=len(greens) > 1))
-                    res.greens = greens
+                    res.greens = [g[0] for g in greens]
                     if ruling == "SHIP":
-                        new = raw[:]
-                        new[i] = greens[0] + ending
-                        _write(path, "\n".join(new))
+                        crepr, content, old_repr, at = greens[0]
+                        _write(path, content)
                         res.repaired, res.refused = True, False
-                        res.lineno, res.old_line, res.new_line = obs.lineno, body, greens[0]
+                        res.lineno, res.old_line, res.new_line = at, old_repr, crepr
                         res.reason = f"kind {kind} -> act {act}"
                         return res
                     res.ambiguous = True

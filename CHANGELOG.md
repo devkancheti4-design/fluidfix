@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.7.0 — 2026-09-01
+
+- **Span edits — the engine law's CHANGE_GRANULARITY act, actuated.** A
+  taught transform may now return `SpanEdit(start, end, text)`: ONE atomic
+  candidate replacing several existing lines together — the fix for defects
+  where no single-line change can green the suite (that boundary was
+  measured and pinned in 0.6.1's tests; the same scenario now repairs).
+  Every contract carries over unchanged: suite-adjudicated per candidate,
+  byte-exact rollback on rejection (CRLF-pinned test), two different green
+  spans refuse as AMBIGUOUS with the pinning-test ask, and a span may only
+  edit lines its own observation points into (bounds + anchor safety,
+  tested). Also closes the dead-code shadowing hazard: block rewrites now
+  replace the whole wrong region instead of stranding unreachable lines.
+- **Per-candidate failure logs — the engine law's HARVEST_COUNTEREXAMPLE
+  act, actuated.** Every rejected candidate is recorded WITH the exact
+  failing test that rejected it (same suite run, zero extra cost) and
+  written to `.fluidfix/last_refusal.json` as `rejected_candidates`;
+  refusal summaries state how many candidates were tried. Teaching a class
+  after a refusal now starts from evidence, not archaeology.
+- `SpanEdit` is in scope inside dictionary files (like `re` and
+  `register`) and exported from the package root. 67/67 tests
+  (`tests/test_span_edits.py` is the new battery).
+
+
 ## 0.6.1 — 2026-08-31
 
 - **All four v0.5 misses now repair byte-exact** (byte-faithful replays, raw
