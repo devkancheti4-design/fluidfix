@@ -260,12 +260,55 @@ $ echo $?
   </div>
 </div></section>
 
+<section id="numbers"><div class="wrap">
+  <p class="eyebrow">the problem, in numbers engineers already cite</p>
+  <h2>Maintenance is not a side quest. It is most of the job.</h2>
+  <p class="lead">None of these numbers are ours — they are the industry's own measurements.
+  fluidfix exists because a measurable slice of this spend is <i>structural</i>: the same
+  small bug shapes, shipped again and again, each one burning an engineer-hour to triage
+  and fix by hand.</p>
+  <div class="cards">
+    <div class="card"><span class="chip">42%</span><h3>of developer time goes to maintenance</h3>
+      <p>13.5 h/week on technical debt plus 3.8 h on bad code, out of a 41.1-hour week —
+      ~$300B/year of lost capacity.
+      <a href="https://stripe.com/files/reports/the-developer-coefficient.pdf">Stripe, The Developer Coefficient</a></p></div>
+    <div class="card"><span class="chip">~50%</span><h3>of programming time is finding &amp; fixing bugs</h3>
+      <p>$312B/year of global debugging cost — a quarter of the world's software wage bill.
+      <a href="https://www.jbs.cam.ac.uk/2013/research-by-cambridge-mbas-for-tech-firm-undo-finds-software-bugs-cost-the-industry-316-billion-a-year/">Cambridge Judge Business School</a></p></div>
+    <div class="card"><span class="chip">$2.41T</span><h3>cost of poor software quality — US alone, one year</h3>
+      <p>Including ~$1.52T of accumulated technical debt.
+      <a href="https://www.it-cisq.org/the-cost-of-poor-quality-software-in-the-us-a-2022-report/">CISQ 2022 report</a></p></div>
+    <div class="card"><span class="chip">16 shapes</span><h3>cover a third of single-statement bug fixes</h3>
+      <p>153,652 single-statement fixes mined from 1,000 top open-source projects: ~33% match
+      just 16 syntactic templates — about one such bug per 1,600–2,500 lines of code.
+      Those templates are exactly what fluidfix calls <i>fault classes</i>.
+      <a href="https://arxiv.org/abs/1905.13334">ManySStuBs4J, MSR</a></p></div>
+  </div>
+  <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">And our own measured slice, so
+  you can compare like with like: across 10 real codebases (~20,000 commits scanned) we counted
+  3.6–22 one-line bug fixes shipped per repo per year <i>that made it into history</i> — a lower
+  bound, since regressions caught before merge never appear as commits. High-churn software that
+  fights a moving world (scrapers, adapters, integrations) sits at the top of that range. Every
+  protocol and raw log:
+  <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/SCALE.md">docs/SCALE.md</a>.</p>
+</div></section>
+
 <section id="how" style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)"><div class="wrap">
   <p class="eyebrow">how it works</p>
   <h2>A four-instruction kernel decides. Your suite judges.</h2>
   <p class="lead">The decision layer is a machine-authored, exhaustively verified expression —
   not a model, not a lookup table. Run <span class="mono">fluidfix selfcheck</span> and re-derive
   every law on your machine in about a second.</p>
+  <p class="lead" style="margin-top:.8rem">Three machine-authored repos, one system:
+  <a href="https://github.com/devkancheti4-design/fluid-router"><span class="mono">fluid-router</span></a>
+  decides — four integer instructions route an observed fault kind to its repair, verified on all
+  4,096 cases. <a href="https://github.com/devkancheti4-design/dev"><span class="mono">dev</span></a>
+  (the engine law) governs — when a repair is blocked it rules escalate, refuse, or ask, never
+  guess; vendored verbatim and fingerprint-tested. And
+  <a href="https://github.com/devkancheti4-design/proven-reason"><span class="mono">proven-reason</span></a>
+  derives &amp; proves — give it examples and it authors the smallest rule that reproduces them,
+  then a decider checks every int32 input that exists. fluidfix ships the first two inside every
+  install; the third is the same lab's standalone reasoner.</p>
   <div class="steps">
     <div class="step"><div class="k">01</div><h3>Localise</h3>
       <p>Traceback frames ∪ failing-test coverage ∪ AST spans find the fault file and line. Mechanical, zero tokens.</p></div>
