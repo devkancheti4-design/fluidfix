@@ -185,6 +185,23 @@ def test_module_imports(mod):
     return 0
 
 
+def cmd_jguard(args) -> int:
+    import time as _time
+    from .guard import commit_repair, write_refusal
+    from .javaoracle import JavaOracle, jguard_once
+    from .observers import MechanicalObserver
+    _load_dictionary(args)
+    oracle = JavaOracle(args.root, mvn=args.mvn, timeout=args.suite_timeout)
+    report = jguard_once(oracle, MechanicalObserver(), budget=args.budget)
+    print(f"[{_time.strftime('%H:%M:%S')}] {report.summary()}")
+    if report.status == "repaired" and args.commit:
+        print({"committed": "  committed", "clean": "  nothing to commit",
+               "failed": "  commit failed"}[commit_repair(oracle.root, report)])
+    if report.status == "refused":
+        print(f"  refusal report: {write_refusal(oracle.root, report)}")
+    return 0 if report.status in ("green", "repaired") else 2
+
+
 def cmd_selfcheck(args) -> int:
     """Re-derive the shipped laws from scratch. No network, no dependencies."""
     from .lanes import ADVANCE, EMIT, HALT
@@ -289,6 +306,16 @@ def main(argv=None) -> int:
     sp.add_argument("--python", default=None)
     sp.add_argument("--force", action="store_true")
     sp.set_defaults(fn=cmd_init)
+
+    sp = sub.add_parser("jguard", help="guard a Java/Maven project: JUnit is "
+                        "the judge, same kernels, same contracts (alpha)")
+    sp.add_argument("root", nargs="?", default=".")
+    sp.add_argument("--mvn", default="mvn")
+    sp.add_argument("--suite-timeout", type=int, default=600)
+    sp.add_argument("--budget", type=int, default=None)
+    sp.add_argument("--dictionary", default=None)
+    sp.add_argument("--commit", action="store_true")
+    sp.set_defaults(fn=cmd_jguard)
 
     sp = sub.add_parser("selfcheck", help="re-verify the shipped laws exhaustively")
     sp.set_defaults(fn=cmd_selfcheck)
