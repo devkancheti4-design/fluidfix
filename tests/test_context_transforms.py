@@ -133,3 +133,71 @@ def test_multiline_logic_fix_from_one_example(tmp_path, clean_registry):
     assert r2.status == "repaired"
     assert "    if seconds == 0:\n        return 0\n    return events / seconds" \
         in (tmp_path / "mod.py").read_text()
+
+
+def test_whole_algorithm_fix_from_one_example(tmp_path, clean_registry):
+    # "It fixes what it was shown": ONE perfect example teaches a class
+    # whose fix is a complete 5-line algorithm, not a token — and the class
+    # covers every member (second function, different variable name, zero
+    # new examples). Live-proven 2026-09-01; pinned so the claim is
+    # CI-enforced.
+    def mean_to_median(line, o):
+        m = re.match(r"^(\s*)return sum\((\w+)\) / len\(\2\)$", line)
+        if not m:
+            return [line]
+        ind, v = m.groups()
+        return [(f"{ind}ys = sorted({v})\n{ind}n = len(ys)\n"
+                 f"{ind}if n % 2:\n{ind}    return ys[n // 2]\n"
+                 f"{ind}return (ys[n // 2 - 1] + ys[n // 2]) / 2")]
+
+    register(4, "mean-where-median",
+             "a mean computed where the tests demand a median",
+             re.compile(r"return sum\(\w+\) / len\(\w+\)"), mean_to_median)
+    (tmp_path / "mod.py").write_text(
+        "def middle_price(xs):\n    return sum(xs) / len(xs)\n\n"
+        "def middle_latency(vals):\n    return sum(vals) / len(vals)\n")
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import middle_price\n\ndef test_m():\n"
+        "    assert middle_price([1, 100, 3]) == 3\n"
+        "    assert middle_price([1, 2, 100, 4]) == 3\n")
+    from fluidfix import guard_once
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    r1 = guard_once(oracle, MechanicalObserver())
+    assert r1.status == "repaired"
+    assert "ys = sorted(xs)" in (tmp_path / "mod.py").read_text()
+
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import middle_price, middle_latency\n\ndef test_m():\n"
+        "    assert middle_price([1, 100, 3]) == 3\n\n"
+        "def test_l():\n    assert middle_latency([5, 900, 7, 9]) == 8\n")
+    r2 = guard_once(oracle, MechanicalObserver())
+    assert r2.status == "repaired"
+    assert "ys = sorted(vals)" in (tmp_path / "mod.py").read_text()
+
+
+def test_two_coordinated_wrong_lines_refuse(tmp_path, clean_registry):
+    # The honest boundary, pinned: when TWO existing lines are wrong
+    # together (neither alone greens the suite), single-line candidates
+    # cannot land and the guard refuses with the tree byte-identical —
+    # it never half-fixes and never guesses.
+    def lit_swap(line, o):
+        out = []
+        for m in re.finditer(r"(?<![\w.])(\d+)(?![\w.])", line):
+            for d in (1, 2, -1, -2):
+                v = int(m.group(1)) + d
+                if v >= 0:
+                    out.append(line[:m.start()] + str(v) + line[m.end():])
+        return out or [line]
+
+    register(4, "lit-neighborhood", "an integer literal off by 1-2",
+             re.compile(r"(?<![\w.])\d+(?![\w.])"), lit_swap)
+    src = "def scale(x):\n    a = x * 3\n    b = a + 5\n    return b\n"
+    (tmp_path / "mod.py").write_text(src)
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import scale\n\ndef test_s():\n"
+        "    assert scale(1) == 9\n    assert scale(2) == 11\n")
+    from fluidfix import guard_once
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    report = guard_once(oracle, MechanicalObserver())
+    assert report.status == "refused"
+    assert (tmp_path / "mod.py").read_text() == src

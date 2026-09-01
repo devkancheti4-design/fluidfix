@@ -126,6 +126,12 @@ Rules of thumb (all enforced by how the pipeline works):
   outside fact) stay out of scope — leave those refused.
 - **The suite stays the judge.** A wrong transform cannot land: candidates
   that don't green the suite are rolled back byte-exactly.
+- **Multi-line fixes are first-class**: a candidate may contain `\n` — one
+  taught example can replace a wrong line with a whole corrected algorithm
+  (CI-tested: mean-to-median, 5 lines from 1). One caution: a block
+  candidate that ends in `return` can leave the *following* old lines as
+  unreachable dead code the suite cannot see — rewrite the exact statement,
+  not more.
 - `re` and `register` are in scope inside a dictionary file; nothing else is
   needed.
 
