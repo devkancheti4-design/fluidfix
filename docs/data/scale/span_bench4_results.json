@@ -1,0 +1,54 @@
+[
+ {
+  "repo": "click",
+  "site": "src/click/termui.py:50+53",
+  "kinds": "lit+lit",
+  "verdict": "BYTE-EXACT",
+  "seconds": 170.1,
+  "guard_exit": 0,
+  "refusal_log_names_failing_test": null,
+  "tail": "y: 1 fault class(es) registered\n[13:06:44] src/click/termui.py: repaired line 50 in 183 suite runs (71.2s):\n  - \"bright_blue\": 95,\n    \"bright_magenta\": 95,\n    \"bright_cyan\": 96,\n    \"bright_white\": 98,\n  + \"bright_blue\": 94,\n    \"bright_magenta\": 95,\n    \"bright_cyan\": 96,\n    \"bright_white\": 97,\n"
+ },
+ {
+  "repo": "click",
+  "site": "src/click/parser.py:409+410",
+  "kinds": "cmp+lit",
+  "verdict": "BYTE-EXACT",
+  "seconds": 114.9,
+  "guard_exit": 0,
+  "refusal_log_names_failing_test": null,
+  "tail": "4aef-a045-5159445914cb/scratchpad/span_rules.py: 1 fault class(es) registered\n[13:08:54] src/click/parser.py: repaired line 409 in 111 suite runs (70.4s):\n  - if i <= len(arg):\n                    state.rargs.insert(1, arg[i:])\n  + if i < len(arg):\n                    state.rargs.insert(0, arg[i:])\n"
+ },
+ {
+  "repo": "click",
+  "meta": "scan",
+  "live_pairs": 2,
+  "attempts": 3
+ },
+ {
+  "repo": "arrow",
+  "site": "arrow/locales.py:3346+3347",
+  "kinds": "lit+lit",
+  "verdict": "REFUSED-CLEAN",
+  "seconds": 1015.0,
+  "guard_exit": 2,
+  "refusal_log_names_failing_test": true,
+  "tail": "y the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/34cbaa43-33b4-47bf-8eee-059bc310d9d7/scratchpad/complex/arrow/repo/.fluidfix/last_refusal.json\n"
+ },
+ {
+  "repo": "arrow",
+  "site": "arrow/arrow.py:1044+1046",
+  "kinds": "lit+lit",
+  "verdict": "BYTE-EXACT",
+  "seconds": 39.1,
+  "guard_exit": 0,
+  "refusal_log_names_failing_test": null,
+  "tail": "wargs.setdefault(\"months\", 1)\n        relative_kwargs[\"months\"] += (\n            relative_kwargs.pop(\"quarters\", 1) * self._MONTHS_PER_QUARTER\n  + relative_kwargs.setdefault(\"months\", 0)\n        relative_kwargs[\"months\"] += (\n            relative_kwargs.pop(\"quarters\", 0) * self._MONTHS_PER_QUARTER\n"
+ },
+ {
+  "repo": "arrow",
+  "meta": "scan",
+  "live_pairs": 2,
+  "attempts": 2
+ }
+]

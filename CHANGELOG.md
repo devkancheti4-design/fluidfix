@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.7.1 — 2026-09-01
+
+- **Fail-fast candidate adjudication.** Every candidate now faces the
+  last-failed tests first (~10× cheaper); only a candidate that fixes those
+  runs the FULL suite, which remains the only acceptance gate — soundness
+  untouched, rejections (~97% of all repair work) massively cheaper.
+  Measured on the seeded span bench: click termui pair 1189s → **170s**,
+  click parser pair 604s → **115s**, both byte-exact. Coverage fail-under
+  gates are neutralized on the fast run only (subset coverage is
+  meaningless); the confirming run keeps the repo's own configuration.
+- **`--budget` — one wall clock for the whole guard pass.** First pass gets
+  at most a third; the full-sight escalation stage gets all the rest
+  (overriding `--escalate-budget`). Expiry anywhere is an honest refusal
+  that names the budget. The three-round measurement history that shaped
+  the split (half/half starved escalation; the split alone without
+  fail-fast lost previously-won repairs) is in docs/SCALE.md — published,
+  not hidden.
+- Span bench final (seeded coordinated pairs, triple liveness proof, one
+  generic taught class): **3/4 byte-exact atomic two-line repairs** at
+  `--budget 1500`; the fourth (arrow locales.py, the 6,500-line data
+  table) refuses boundedly at 1015s with every rejected candidate logged
+  against the test that killed it. Zero wrong repairs, zero impostors,
+  zero dirty trees across all four rounds.
+- 69/69 tests (budget honesty + first-pass→escalation handoff pinned).
+
+
 ## 0.7.0 — 2026-09-01
 
 - **Span edits — the engine law's CHANGE_GRANULARITY act, actuated.** A

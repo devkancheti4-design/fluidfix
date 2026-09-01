@@ -128,3 +128,24 @@ runs per observation (≤32 candidates each), and the paired-drift signal
 matches nearly every line of a 6,500-line locale table. Guidance shipped
 with the feature: keep span-class signals TIGHT; a global `--budget` for
 the first pass is the queued fix.
+
+
+## v0.7.1 — the span bench drives two product fixes (4 rounds, all published)
+
+| round | config | termui pair | parser pair | arrow.py pair | locales pair |
+|---|---|---|---|---|---|
+| 1 | unbounded first pass | exact 1189s | exact 604s | exact 39s | TIMEOUT 1800s |
+| 2 | `--budget 1500`, half/half | refused | exact 606s | exact 40s | refused 1268s |
+| 3 | split fixed (⅓ + rest) | refused | refused 1500s | exact 40s | refused 1122s |
+| 4 | **+ fail-fast adjudication** | **exact 170s** | **exact 115s** | exact 39s | refused 1015s |
+
+Round 3's regression was the decisive measurement: budget arithmetic was
+never the bottleneck — candidate cost was (32-span sets × full 1,990-test
+runs ≈ 2.5 min per observation). v0.7.1's fail-fast gate (last-failed
+tests first, full suite as the only acceptance) made rejections ~10×
+cheaper and returned every normal-code case to byte-exact at 5–7× round-1
+speed. The locales data table remains the named hard case: bounded honest
+refusal, tree clean, every rejected candidate logged with its killing
+test. Round 2's "dirty tree" flags were a HARNESS bug (uncommitted
+injections scored as guard writes) — disproven by direct byte-comparison
+and fixed in round 3's protocol; rollback integrity never broke.

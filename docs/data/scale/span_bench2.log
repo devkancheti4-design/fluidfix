@@ -1,0 +1,12 @@
+### click: baseline green at 36baa15
+  [click] dead-A src/click/testing.py:756
+  [click] LIVE PAIR src/click/termui.py:50(lit)+53(lit) — guard runs
+  [click] src/click/termui.py:50+53 -> REFUSED-DIRTY-TREE! in 1383.3s (log_ok=True)
+  [click] LIVE PAIR src/click/parser.py:409(cmp)+410(lit) — guard runs
+  [click] src/click/parser.py:409+410 -> BYTE-EXACT in 606.1s (log_ok=None)
+### arrow: baseline green at 2224255
+  [arrow] LIVE PAIR arrow/locales.py:3346(lit)+3347(lit) — guard runs
+  [arrow] arrow/locales.py:3346+3347 -> REFUSED-DIRTY-TREE! in 1268.1s (log_ok=True)
+  [arrow] LIVE PAIR arrow/arrow.py:1044(lit)+1046(lit) — guard runs
+  [arrow] arrow/arrow.py:1044+1046 -> BYTE-EXACT in 39.5s (log_ok=None)
+SPAN_BENCH2_DONE

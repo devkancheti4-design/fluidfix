@@ -78,11 +78,42 @@ class Oracle:
         rc, _ = self.run(["--tb=no"], timeout=timeout)
         return rc == 0
 
+    def _cov_installed(self) -> bool:
+        if not hasattr(self, "_cov_probe"):
+            try:
+                self._cov_probe = subprocess.run(
+                    [self.python, "-c", "import pytest_cov"],
+                    capture_output=True, timeout=30).returncode == 0
+            except Exception:
+                self._cov_probe = False
+        return self._cov_probe
+
     def check(self, timeout: int | None = None) -> tuple[bool, str]:
-        """green() plus WHY: (ok, first-failure line). The rejection
-        evidence the repair loop harvests per candidate (engine law:
-        REFUTED -> HARVEST_COUNTEREXAMPLE) — same suite run, no extra cost."""
+        """Candidate adjudication with WHY: (ok, first-failure line).
+
+        FAIL-FAST, FULL-CONFIRM: the candidate first faces only the
+        last-failed tests (--lf, ~10x cheaper) — a candidate that cannot
+        even fix those is rejected on the spot, with the failing test
+        harvested (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE). Only a
+        candidate that clears the fast gate runs the FULL suite, which
+        remains the ONLY acceptance gate — soundness is untouched, the
+        v0.7 span bench measured rejection cost dominating (32-candidate
+        span sets x full 1,990-test runs busting every honest budget).
+        A coverage fail-under gate is neutralized on the fast run only
+        (subset coverage is meaningless); the full run keeps the repo's
+        own configuration."""
         self.clear_pyc()
+        fast = ["--lf", "--tb=no"]
+        if self._cov_installed():
+            fast.append("--cov-fail-under=0")
+        rc, out = self.run(fast, cache=True, timeout=timeout)
+        if rc != 0:
+            why = next((l.strip() for l in out.splitlines()
+                        if l.startswith(("FAILED", "ERROR"))), "")
+            if not why:
+                tail = [l for l in out.strip().splitlines() if l.strip()]
+                why = tail[-1] if tail else "suite run produced no output"
+            return False, why[:200]
         rc, out = self.run(["--tb=no"], timeout=timeout)
         if rc == 0:
             return True, ""

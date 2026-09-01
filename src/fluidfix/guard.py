@@ -193,16 +193,32 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                coverage_target: str | None = None,
                candidate_timeout: int | None = None,
                escalate: bool = True,
-               escalate_budget: int = 600) -> GuardReport:
+               escalate_budget: int = 600,
+               budget: int | None = None) -> GuardReport:
     """One guard pass, governed by the engine law: a refusal is not the end
     until the law says so. CAPPED (a budget truncated the search) rules
     RAISE_BUDGET and the pass retries DEPTH-FIRST — each candidate file in
     rank order gets full sight (packet raised until untruncated) before the
     next file is tried, all under one wall-clock budget; AMB, UNREAD and
-    REFUTED rule honest stops with specific reports."""
+    REFUTED rule honest stops with specific reports.
+
+    `budget` (optional) caps the ENTIRE pass: the first pass may spend at
+    most half of it — measured (v0.7 span bench, arrow locales.py): span
+    classes multiply suite runs per observation, and an unbounded first
+    pass on a promiscuous signal can burn the whole clock BEFORE reaching
+    the escalation stage whose full sight + affinity ranking actually sees
+    the defect. Bounding the first pass forces that handoff; expiry of the
+    whole budget is an honest refusal. AMB-proof atomicity is preserved
+    (deadlines are only checked between observations and between kinds)."""
     from .engine import decide, situation
 
     t0 = time.time()
+    total_deadline = t0 + budget if budget else None
+    # first pass gets a THIRD of the budget; escalation gets the rest.
+    # Measured (v0.7 span bench round 2): a half/half split let blind
+    # first-pass grinding starve the full-sight escalation stage that
+    # actually repairs — termui's round-1 win regressed to a refusal.
+    first_deadline = t0 + budget / 3 if budget else None
     fails, out = oracle.failing_output()
     if not fails:
         return GuardReport(status="green", seconds=time.time() - t0)
@@ -219,6 +235,13 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 "on large codebases it is how the fault file gets found. "
                 "(engine law: UNREAD -> ADD_MATERIAL)")
     for rel in candidates:
+        if total_deadline is not None and time.time() > total_deadline:
+            return GuardReport(
+                status="refused", candidates=candidates,
+                seconds=time.time() - t0, attempts=attempts,
+                hint=(f"--budget exhausted ({budget}s) during the first "
+                      "pass — raise --budget, tighten taught-class signals, "
+                      "or fix by hand"))
         packet = build_packet(oracle, rel, coverage_target=coverage_target)
         if packet is None:
             continue
@@ -228,7 +251,8 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
         observations = rank_observations("\n".join(packet.src_lines),
                                          observer.observe([packet])[0], out)
         result = repair(oracle, rel, observations,
-                        candidate_timeout=candidate_timeout)
+                        candidate_timeout=candidate_timeout,
+                        deadline=first_deadline)
         attempts += result.tried_log
         acts0 = acts0 or bool(result.acts_tried)
         if result.repaired:
@@ -258,6 +282,9 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
         # move on. The wall clock is the only other stop, checked inside
         # repair() too so one huge file cannot overshoot the budget.
         deadline = time.time() + escalate_budget
+        if total_deadline is not None:
+            # --budget dominates: escalation gets ALL remaining wall clock
+            deadline = total_deadline
         any_acts = False
         for rel in all_files:
             if time.time() > deadline:
@@ -284,10 +311,12 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             # a wrong rank-1 file must not starve every other candidate:
             # one file gets at most half the escalation budget (adversarial
             # review, 2026-08-31 — depth-first starvation)
+            file_share = ((deadline - time.time()) / 2
+                          if total_deadline is not None else escalate_budget / 2)
             result = repair(oracle, rel, observations,
                             candidate_timeout=candidate_timeout,
                             deadline=min(deadline,
-                                         time.time() + escalate_budget / 2))
+                                         time.time() + file_share))
             attempts += result.tried_log
             any_acts = any_acts or bool(result.acts_tried)
             if result.repaired:

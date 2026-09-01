@@ -167,3 +167,52 @@ def test_refusal_logs_why_each_candidate_failed(tmp_path):
     path = write_refusal(str(tmp_path), report)
     data = json.load(open(path))
     assert data["rejected_candidates"] == report.attempts[:200]
+
+
+def test_global_budget_is_an_honest_stop(tmp_path, clean_registry):
+    # --budget expiry anywhere is an honest refusal: tree untouched, the
+    # hint names the budget. (AMB-proof atomicity is separately pinned in
+    # test_deadline_never_ships_unproven_ambiguity.)
+    def slow_class(line, o):
+        return [f"K = {n}" for n in range(2, 30)]     # a grind, all red
+    register(4, "grind", "many wrong candidates",
+             re.compile(r"K = "), slow_class)
+    src = "K = 0\n\ndef f():\n    return K\n"
+    (tmp_path / "mod.py").write_text(src)
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import f\n\ndef test_f():\n    assert f() == 99\n")
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    report = guard_once(oracle, MechanicalObserver(), budget=3)
+    assert report.status == "refused"
+    assert (tmp_path / "mod.py").read_text() == src
+    # bounded well under the unbounded grind (28 candidates x ~1s suite)
+    assert report.seconds < 30
+
+
+def test_budget_hands_first_pass_over_to_escalation(tmp_path, clean_registry):
+    # the measured locales anatomy, miniature: the bug is OUTSIDE the
+    # first-pass packet sample, and a slow taught class makes the first
+    # pass grind. With --budget the first pass is cut at half and the
+    # escalation stage (full sight) repairs; correctness must not depend
+    # on the first pass finishing its grind.
+    import itertools
+    names = ["".join(t) for t in itertools.product("abcdefghij", repeat=3)][:800]
+    filler = [f"f_{n} = True" for n in names]
+    fn = ["", "def tier(v, limit):", "    if v > limit:",
+          "        return 1", "    return 0", ""]
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import tier\n\ndef test_t():\n"
+        "    assert tier(5, 5) == 1 and tier(4, 5) == 0\n")
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    for pad in range(6):
+        body = filler[:400 + pad] + fn + filler[400 + pad:]
+        bug_lineno = (400 + pad) + 3
+        (tmp_path / "mod.py").write_text("\n".join(body) + "\n")
+        pk = build_packet(oracle, "mod.py")
+        if pk is not None and pk.truncated and bug_lineno not in pk.lines:
+            break
+    else:
+        pytest.skip("could not place the bug outside the first-pass sample")
+    report = guard_once(oracle, MechanicalObserver(), budget=300)
+    assert report.status == "repaired"
+    assert report.result.new_line.strip() == "if v >= limit:"
