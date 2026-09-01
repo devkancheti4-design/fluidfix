@@ -103,3 +103,28 @@ watched) before round 6, whose verdict is the published one. The
 contaminated logs ship here too (`v6-replays-round5.log`, arrow entry),
 labeled invalid: misses get autopsies, and so do our own benchmark
 mistakes.
+
+## v0.7.0 — span edits benchmarked on real repos (seeded, coordination-proven)
+
+Pairs of single-token mutations on lines ≤3 apart, seed 20260901, with a
+TRIPLE liveness proof per pair: each mutation ALONE breaks the suite, and
+both together break it — so no single-line fix can green the trial and only
+an atomic `SpanEdit` can. One generic taught class (paired-drift: candidates
+mined from the observed line's own ±3-line neighborhood, capped at 32 —
+nothing site-specific). Protocol and raw logs: `data/scale/span_bench*`.
+
+| trial | pair | verdict |
+|---|---|---|
+| click `termui.py:50+53` | lit+lit, 3 apart | **byte-exact**, 1189s |
+| click `parser.py:409+410` | cmp+lit, adjacent | **byte-exact**, 604s |
+| arrow `arrow.py:1044+1046` | lit+lit, 2 apart | **byte-exact**, 39s |
+| arrow `locales.py:3346+3347` | lit+lit, adjacent | timeout at the 1800s harness cap |
+
+Three coordinated two-line defects on 1,990/1,902-test repos restored
+byte-identical in one atomic candidate each; zero wrong repairs, zero
+suite-green impostors, zero dirty trees. The locales.py timeout is the
+known first-pass-unbounded gap amplified: a span class multiplies suite
+runs per observation (≤32 candidates each), and the paired-drift signal
+matches nearly every line of a 6,500-line locale table. Guidance shipped
+with the feature: keep span-class signals TIGHT; a global `--budget` for
+the first pass is the queued fix.
