@@ -8,7 +8,7 @@ byte-exact in 26 of 26 accepted repairs on the benchmark — or an explicit
 refusal. There is no "plausible fix" branch.
 
 ```
-pip install fluidfix            # core: zero runtime dependencies
+pip install --upgrade fluidfix            # core: zero runtime dependencies
 pip install "fluidfix[llm]"     # adds the Claude Opus 5 observer
 ```
 

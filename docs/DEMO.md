@@ -15,7 +15,7 @@ zero dependencies.
 ## Step 1 — Install and verify
 
 ```bash
-pip install fluidfix
+pip install --upgrade fluidfix
 fluidfix selfcheck
 ```
 

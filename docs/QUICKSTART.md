@@ -7,7 +7,7 @@ runs with `pytest`.
 ## Step 1 — Install and check it
 
 ```bash
-pip install fluidfix pytest-cov
+pip install --upgrade fluidfix pytest-cov
 fluidfix selfcheck
 ```
 
@@ -20,7 +20,7 @@ use it (and please report it).
 ## No tests at all? Three commands. That's it.
 
 ```bash
-pip install fluidfix pytest pytest-cov
+pip install --upgrade fluidfix pytest pytest-cov
 fluidfix init .
 fluidfix guard . --commit
 ```
