@@ -4,7 +4,10 @@ suite; metadata, README teaching pointers, and .gitignore guard-state entries
 must not silently regress. Workflow checks are structural string asserts so
 this file needs no PyYAML (CI installs only `.[dev]`)."""
 import re
-import tomllib
+import pytest
+
+tomllib = pytest.importorskip(
+    "tomllib", reason="tomllib is stdlib from 3.11; the publish gate runs 3.12")
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
