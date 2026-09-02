@@ -31,7 +31,48 @@ import shutil
 import subprocess
 import sys
 
-__all__ = ["Oracle"]
+__all__ = ["Oracle", "HarnessError"]
+
+
+class HarnessError(RuntimeError):
+    """The suite did not RUN — so nothing can be judged.
+
+    pytest distinguishes "tests failed" (exit 1) from "no tests collected"
+    (5), "usage error" (4), "internal error" (3) and "interrupted" (2).
+    Treating those as a red suite is unsafe: every candidate scores red, no
+    repair can ever be accepted, and the guard reports "outside the taught
+    vocabulary" when the truth is that the harness is misconfigured.
+
+    Measured on SQLAlchemy 2.1 (2026-09-02): its pytest plugin collects
+    1,466 tests with `-p no:cacheprovider` and ZERO with the cache provider
+    enabled — so the coverage/--lf paths silently collected nothing and the
+    guard searched for 21 minutes against a suite that never ran."""
+
+
+# Exit 1 (tests failed) and exit 2 (interrupted — which is how a collection
+# error from a broken module under test surfaces) are REAL red suites: an
+# import-breaking regression must stay repairable. Only these mean the
+# harness itself never produced a verdict.
+_EXIT_MEANING = {
+    3: "pytest hit an internal error",
+    4: "pytest usage/configuration error",
+    5: "pytest collected NO TESTS",
+}
+
+
+def _check_harness(rc: int, args: list, out: str, root: str) -> None:
+    if rc not in _EXIT_MEANING:
+        return
+    hint = ""
+    if rc == 5:
+        hint = (" — the suite collected nothing, so nothing can be judged. "
+                "Common causes: wrong --python (project deps missing), a "
+                "testpaths/plugin interaction (SQLAlchemy collects 0 unless "
+                "`-p no:cacheprovider` is passed), or no tests in this root.")
+    raise HarnessError(
+        f"{_EXIT_MEANING[rc]} (exit {rc}) while running pytest in {root} "
+        f"with {' '.join(args) or 'no extra args'}{hint}\n"
+        f"--- last output ---\n{out.strip()[-600:]}")
 
 
 class Oracle:
@@ -86,7 +127,8 @@ class Oracle:
 
     def green(self, timeout: int | None = None) -> bool:
         self.clear_pyc()
-        rc, _ = self.run(["--tb=no"], timeout=timeout)
+        rc, out = self.run(["--tb=no"], timeout=timeout)
+        _check_harness(rc, self.extra_args, out, self.root)
         return rc == 0
 
     def _cov_installed(self) -> bool:
@@ -118,6 +160,7 @@ class Oracle:
         if self._cov_installed():
             fast.append("--cov-fail-under=0")
         rc, out = self.run(fast, cache=True, timeout=timeout)
+        _check_harness(rc, self.extra_args, out, self.root)
         if rc != 0:
             why = next((l.strip() for l in out.splitlines()
                         if l.startswith(("FAILED", "ERROR"))), "")
@@ -126,6 +169,7 @@ class Oracle:
                 why = tail[-1] if tail else "suite run produced no output"
             return False, why[:400]
         rc, out = self.run(["--tb=no"], timeout=timeout)
+        _check_harness(rc, self.extra_args, out, self.root)
         if rc == 0:
             return True, ""
         why = next((l.strip() for l in out.splitlines()
@@ -140,4 +184,5 @@ class Oracle:
         a later --lf coverage run re-runs exactly the recorded failing test."""
         self.clear_pyc()
         rc, out = self.run(["-x", "--tb=long"], cache=True)
+        _check_harness(rc, self.extra_args, out, self.root)
         return rc != 0, out
