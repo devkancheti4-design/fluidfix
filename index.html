@@ -460,7 +460,7 @@ $ echo $?
       <p class="mono" style="color:var(--ink)">cd your-project<br>fluidfix guard . --commit</p>
       <p style="margin-top:.5rem">Green tests: it touches nothing. A mechanical bug: it finds the file itself, repairs it byte-exact, and commits <span class="mono">fluidfix: restore …</span>. An unknown bug: it refuses loudly — that one's yours to fix, and honestly, that's the good practice.</p></div>
     <div class="step"><div class="k">step 3</div><h3>Guard it on GitHub</h3>
-      <p>Add <span class="mono">.github/workflows/fluidfix.yml</span> so every push is checked:</p>
+      <p>Add <span class="mono">.github/workflows/fluidfix.yml</span> — repairs don't just pass CI, they land on the branch:</p>
       <pre style="background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:.7rem .8rem;font-size:.72rem;line-height:1.6;overflow-x:auto;margin:.6rem 0 0"><code>name: fluidfix
 on: [push]
 jobs:
@@ -470,10 +470,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install -e . pytest pytest-cov fluidfix
-      - run: fluidfix guard .
-        # exit 0 = green or auto-repairable
-        # exit 2 = a real bug fluidfix won't guess at — fix it yourself</code></pre></div>
+      - run: pip install -e . pytest pytest-cov   # your project's deps
+      - uses: devkancheti4-design/fluidfix@master
+        # repairs are PUSHED BACK to the branch (permissions: contents: write)
+        # refusals fail the job with every rejected candidate + the test
+        # that killed it in the job summary — live proof:
+        # github.com/devkancheti4-design/fluidfix-action-demo</code></pre></div>
   </div>
   <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">Full walkthrough with expected
   outputs (every step CI-tested): <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/DEMO.md">docs/DEMO.md</a>.
