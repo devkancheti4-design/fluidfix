@@ -64,3 +64,28 @@ def test_a_real_failing_suite_is_still_just_red(tmp_path):
     assert fails
     ok, why = oracle.check()
     assert not ok and "test_f" in why
+
+
+def test_budget_refusal_does_not_blame_the_vocabulary():
+    """A refusal must name the right cause.
+
+    Measured on click 2026-09-02: a taught constant-drift class had just
+    repaired two instances of that class, and the third was reported as
+    "fault is outside the taught vocabulary" — when the truth was that the
+    defect file was never opened before the clock ran out. That message
+    sends the user to write a rule they already have.
+    """
+    from fluidfix.guard import GuardReport
+
+    starved = GuardReport(
+        status="refused", candidates=["a.py", "b.py"], attempts=[{"x": 1}],
+        hint="escalation budget exhausted (600s) with CAPPED still ruling "
+             "RAISE_BUDGET — raise --escalate-budget")
+    s = starved.summary()
+    assert "SEARCH limit" in s
+    assert "not a gap in the taught vocabulary" in s
+    assert "outside the taught vocabulary" not in s.split("hint:")[0]
+
+    genuine = GuardReport(status="refused", candidates=["a.py"],
+                          hint="every generated candidate was rejected")
+    assert "outside the taught vocabulary" in genuine.summary()

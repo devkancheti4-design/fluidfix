@@ -56,9 +56,24 @@ class GuardReport:
             return "suite green — nothing to do"
         if self.status == "repaired":
             return f"{self.file}: {self.result.summary()}"
-        base = ("REFUSED: fault is outside the taught vocabulary "
-                f"(candidate files tried: {', '.join(self.candidates) or 'none found'}). "
-                "teach it once: docs/TEACHING.md (or run: fluidfix kinds)")
+        # A refusal must name the RIGHT cause. Running out of clock while
+        # files were still unsearched is a SEARCH limit, not a vocabulary
+        # gap — measured 2026-09-02 on click: a taught constant-drift class
+        # had already repaired two instances minutes earlier, and the third
+        # was refused as "outside the taught vocabulary" when the truth was
+        # that the defect file was never opened. Blaming the vocabulary
+        # sends the user to write a rule they already have.
+        exhausted = "budget exhausted" in (self.hint or "")
+        if exhausted:
+            base = ("REFUSED: ran out of budget before the fault was found — "
+                    "this is a SEARCH limit, not a gap in the taught "
+                    "vocabulary. "
+                    f"Files searched: {', '.join(self.candidates) or 'none'}; "
+                    "the defect may be in a file the ranking never reached.")
+        else:
+            base = ("REFUSED: fault is outside the taught vocabulary "
+                    f"(candidate files tried: {', '.join(self.candidates) or 'none found'}). "
+                    "teach it once: docs/TEACHING.md (or run: fluidfix kinds)")
         if self.attempts:
             base += (f" {len(self.attempts)} candidate(s) were tried and "
                      "rejected — each is logged with the test that failed "
