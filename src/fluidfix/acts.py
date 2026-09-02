@@ -24,7 +24,7 @@ import warnings
 from dataclasses import dataclass, field
 
 __all__ = ["Observation", "KINDS", "ACTS", "WORKED_EXAMPLE", "SpanEdit",
-           "apply", "act_for"]
+           "apply", "act_for", "candidate_cap"]
 
 from .router import route
 
@@ -363,6 +363,28 @@ def load_dictionary(path: str) -> int:
     return len(set(KINDS) - before)
 
 
+# How many candidates one act may propose for one line. Every candidate costs
+# a suite run, so this is a BUDGET, not a safety limit — the suite still
+# adjudicates every one and refusal is unchanged. Default 32.
+#
+# Measured (SQLAlchemy, 21 years of real fixes, 2026-09-02): for
+# wrong-name classes the maintainer's exact fix was generated for 25 of 38
+# later bugs but sat at ranks 42..10,563 — i.e. the taught class DID
+# generalise and this cap, not the teaching, was the binding constraint.
+# Raise it when candidates are cheap (fail-fast rejection) and the class is
+# name-shaped; keep it low when each suite run is expensive.
+_CAP_DEFAULT = 32
+
+
+def candidate_cap() -> int:
+    import os as _os
+    try:
+        return max(1, int(_os.environ.get("FLUIDFIX_CANDIDATE_CAP",
+                                          _CAP_DEFAULT)))
+    except ValueError:
+        return _CAP_DEFAULT
+
+
 def candidates(line: str, act: int, obs: Observation) -> list:
     """All candidate lines an act proposes (possibly several).
 
@@ -381,7 +403,7 @@ def candidates(line: str, act: int, obs: Observation) -> list:
     if isinstance(out, str):
         return [out]
     return [c for c in out
-            if isinstance(c, (str, SpanEdit))][:32]      # bounded search
+            if isinstance(c, (str, SpanEdit))][:candidate_cap()]
 
 
 def apply(line: str, act: int, obs: Observation) -> str:

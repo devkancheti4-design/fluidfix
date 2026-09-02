@@ -79,7 +79,10 @@ def _observer(args):
 
 
 def cmd_guard(args) -> int:
+    import os as _os
     import time as _time
+    if getattr(args, "max_candidates", None):
+        _os.environ["FLUIDFIX_CANDIDATE_CAP"] = str(args.max_candidates)
     from .guard import commit_repair, guard_once, propose_repair, write_refusal
     _load_dictionary(args)
     oracle = _oracle(args)
@@ -332,6 +335,10 @@ def main(argv=None) -> int:
                     help="per-candidate suite budget (default: --suite-timeout)")
     sp.add_argument("--escalate-budget", type=int, default=600,
                     help="wall-clock cap for law-driven escalation rounds (s)")
+    sp.add_argument("--max-candidates", type=int, default=None,
+                    help="candidates one act may propose per line (default "
+                         "32). Each costs a suite run; raise it for "
+                         "name-shaped classes with cheap suites")
     sp.add_argument("--budget", type=int, default=None,
                     help="wall-clock cap for the WHOLE guard pass (s): the "
                          "first pass gets at most a third; the full-sight "

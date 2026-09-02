@@ -84,6 +84,7 @@ class Oracle:
         self.timeout = timeout
         self.per_test_timeout = per_test_timeout
         self.extra_args = list(extra_args or [])
+        self._fastgate_ok = True      # cleared if the harness cannot do --lf
         # probe the TARGET interpreter for pytest-timeout once
         try:
             self._has_timeout = subprocess.run(
@@ -159,17 +160,30 @@ class Oracle:
         fast = ["--lf", "--tb=no"]
         if self._cov_installed():
             fast.append("--cov-fail-under=0")
-        rc, out = self.run(fast, cache=True, timeout=timeout)
-        _check_harness(rc, self.extra_args, out, self.root)
-        if rc != 0:
-            why = next((l.strip() for l in out.splitlines()
-                        if l.startswith(("FAILED", "ERROR"))), "")
-            if not why:
-                tail = [l for l in out.strip().splitlines() if l.strip()]
-                why = tail[-1] if tail else "suite run produced no output"
-            return False, why[:400]
+        if self._fastgate_ok:
+            rc, out = self.run(fast, cache=True, timeout=timeout)
+            if rc in _EXIT_MEANING:
+                # The fast gate is an OPTIMIZATION, never a verdict. When a
+                # project cannot support it, disable it and judge on the
+                # full suite alone rather than failing the run over a
+                # speedup. Measured on SQLAlchemy 2.1: its pytest plugin
+                # collects 1,466 tests with `-p no:cacheprovider` and ZERO
+                # with the cache provider that --lf requires.
+                self._fastgate_ok = False
+            elif rc != 0:
+                why = next((l.strip() for l in out.splitlines()
+                            if l.startswith(("FAILED", "ERROR"))), "")
+                if not why:
+                    tail = [l for l in out.strip().splitlines() if l.strip()]
+                    why = tail[-1] if tail else "suite run produced no output"
+                return False, why[:400]
         rc, out = self.run(["--tb=no"], timeout=timeout)
-        _check_harness(rc, self.extra_args, out, self.root)
+        if rc in _EXIT_MEANING:
+            # A CANDIDATE is in the tree: whatever pytest just choked on is
+            # attributable to the candidate, not the harness. Reject it and
+            # keep searching — only baseline judgments (green/failing_output,
+            # where the tree is the project's own) raise HarnessError.
+            return False, f"{_EXIT_MEANING[rc]} with this candidate applied"
         if rc == 0:
             return True, ""
         why = next((l.strip() for l in out.splitlines()

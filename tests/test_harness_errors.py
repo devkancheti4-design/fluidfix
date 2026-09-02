@@ -25,13 +25,33 @@ def test_no_tests_collected_raises_harness_error_not_red(tmp_path):
     assert "nothing can be judged" in str(e.value)
 
 
-def test_green_and_check_also_refuse_to_judge_a_dead_harness(tmp_path):
+def test_green_raises_but_check_rejects(tmp_path):
+    # green()/failing_output() judge the PROJECT's own tree: a dead harness
+    # there is unjudgeable and must raise. check() always has a CANDIDATE
+    # applied, so the same symptom is the candidate's fault — reject it and
+    # keep searching rather than aborting the run.
     (tmp_path / "mod.py").write_text("def f():\n    return 1\n")
     oracle = Oracle(str(tmp_path), python=sys.executable)
     with pytest.raises(HarnessError):
         oracle.green()
-    with pytest.raises(HarnessError):
-        oracle.check()
+    ok, why = oracle.check()
+    assert ok is False and "candidate applied" in why
+
+
+def test_candidate_caused_harness_failure_rejects_not_aborts(tmp_path):
+    # A candidate in the tree owns whatever pytest chokes on. Measured on
+    # SQLAlchemy 2026-09-02: a candidate triggered pytest exit 3 and the
+    # whole run aborted, when the honest outcome is "this candidate is bad".
+    (tmp_path / "mod.py").write_text("def f():\n    return 1\n")
+    (tmp_path / "test_mod.py").write_text(
+        "from mod import f\n\ndef test_f():\n    assert f() == 2\n")
+    oracle = Oracle(str(tmp_path), python=sys.executable)
+    oracle.failing_output()                     # baseline is legitimately red
+    # now make the FULL run fail as a usage error, as a bad candidate would
+    oracle.extra_args = ["--not-a-real-flag"]
+    oracle._fastgate_ok = False
+    ok, why = oracle.check()
+    assert ok is False and "candidate applied" in why   # rejected, not raised
 
 
 def test_a_real_failing_suite_is_still_just_red(tmp_path):
