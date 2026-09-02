@@ -180,13 +180,22 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
     def file_priority(rel, specificity, n_fail):
         base_tokens = set(re.findall(r"[a-z]{3,}",
                                      os.path.basename(rel).lower()))
+        # FAILONLY is the law's second-strongest lane and the one that
+        # discriminates here: a file whose executed lines come almost
+        # entirely from the FAILING tests is implicated, and a file every
+        # test touches is not. specificity = |failing-test lines| /
+        # |all-test lines| is exactly that measurement.
+        # (Fixed 2026-09-02: specificity was first wired to DENSE — bit 6,
+        # deprioritise — which inverted the strongest signal available and
+        # left the true defect file behind files no evidence favoured.)
         return _rank(observe_bits(
             frame=os.path.basename(rel) in framed_files,
+            failonly=specificity >= 0.9,
             named=bool(base_tokens & fail_mods),
             signaled=n_fail > 0,
             recent=rel in recent_files,
             cheap=0 < n_fail < 80,
-            dense=specificity > 0.9,
+            dense=specificity < 0.25,     # every test touches it: unspecific
         ))
 
     ranked2.sort(key=lambda t: (file_priority(t[3], t[1], t[2]),
