@@ -170,7 +170,7 @@
 
 <nav><div class="nav-in">
   <span class="logo">fluidfix</span>
-  <div class="nav-links">
+  <div class="nav-links"><a href="#kernels">the kernels</a>
     <a href="#demo">Demo</a>
     <a href="#how">How it works</a>
     <a href="#scope">What it fixes</a>
@@ -482,54 +482,110 @@ jobs:
   Built something cool with it? <a href="mailto:devkancheti4@gmail.com?subject=Student%20using%20fluidfix">Email me</a> — student stories get featured.</p>
 </div></section>
 
+<section id="kernels"><div class="wrap">
+  <p class="eyebrow">what's actually inside</p>
+  <h2>Three machine-authored kernels. None of them written by a human.</h2>
+  <p class="lead">fluidfix is not a model with a prompt. Its decisions come from three small
+  integer laws, each authored by a synthesis engine from measured examples, each published in its
+  own repo, each verifiable on your machine in about a second with
+  <span class="mono">fluidfix selfcheck</span>.</p>
+  <div class="cards">
+    <div class="card"><span class="chip">decides</span>
+      <h3><a href="https://github.com/devkancheti4-design/fluid-router">fluid-router</a></h3>
+      <p>Routes an observed fault kind to its repair in four integer instructions:
+      <span class="mono">route(F1,A1,Fq) = (Fq+A1−F1) mod 16</span>. Verified exhaustively on all
+      4,096 cases, plus identity and composition. One worked example per class is all it needs —
+      renumber your classes and nothing breaks.</p></div>
+    <div class="card"><span class="chip">drives</span>
+      <h3><a href="https://github.com/devkancheti4-design/fluid-router2">fluid-router2</a></h3>
+      <p>The candidate loop discipline — <span class="mono">EMIT</span>,
+      <span class="mono">ADVANCE</span>, <span class="mono">HALT</span> over a fault-kind mask.
+      Checked on all 256 dispatch states, with termination proved: every mask drains.</p></div>
+    <div class="card"><span class="chip">governs</span>
+      <h3><a href="https://github.com/devkancheti4-design/dev">dev — the engine law</a></h3>
+      <p><span class="mono">act = (4 &amp; ntzb(x−7)) + ntzb(x + (x&amp;128))</span> — authored in
+      2.9 seconds from 22 measured events. It rules on what happens when a repair is
+      <i>blocked</i>: escalate the search, refuse and ask for one pinning test, harvest the
+      counterexample, or ship. fluidfix vendors it <b>verbatim</b> and a test pins it to the dev
+      repo's own published fingerprint (sha256 <span class="mono">48bf50bf…</span>, 1,555
+      characters).</p></div>
+    <div class="card"><span class="chip">proves</span>
+      <h3><a href="https://github.com/devkancheti4-design/proven-reason">proven-reason</a></h3>
+      <p>The same lab's standalone reasoner: give it examples and it authors the smallest
+      expression reproducing every one, then a decider checks all 4,294,967,296 int32 inputs.
+      It derives what has not been written — and says so when nothing in its material can reach
+      the answer.</p></div>
+  </div>
+  <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">The fusion is audited, not
+  asserted: fluidfix's copy of the engine law is byte-identical to the dev repo's, agrees with it
+  on <b>all 1,024 situations</b>, rules exactly on <b>all 22 measured events</b>, and a test parses
+  every "engine law: X → Y" claim in the shipped source and re-derives it from the law itself —
+  so a comment can never drift from the ruling it names.</p>
+</div></section>
+
 <section id="pricing" style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)"><div class="wrap">
   <p class="eyebrow">pricing</p>
-  <h2>Free. All of it, right now.</h2>
-  <p class="lead"><b>Everything on this page is free right now.</b> The engine is open source,
-  the repo scan is free, the setup help is free, and the dictionary help is free for early
-  adopters — because the product is young and the fastest way to make it great is to run it on
-  real repos with real teams. When pricing arrives later, everyone who booked a demo in the free
-  era keeps founding-user terms. The product is the same for everyone: <b>your repo stays
-  clean</b> — regressions restored and committed, everything unprovable refused loudly.</p>
-  <div class="price-grid">
+  <h2>Priced by what your repo actually breaks.</h2>
+  <p class="lead">Not by seats, not by lines of code. We scanned 10 real codebases
+  (~20,000 commits) and counted the mechanical one-line fixes each one really shipped per year —
+  the work fluidfix takes over. Repo <i>type</i> predicts that rate, so type sets the rate card
+  below, and a free scan of your repo either confirms your tier or moves you down. <b>The scan
+  can only lower your price, never raise it.</b></p>
+  <div class="gwrap"><table class="gtable">
+    <tr><th>Repo type</th><th>Measured one-line fixes / year</th><th>Per repo / month</th></tr>
+    <tr><td><b>Library / stable</b><br><span class="mono" style="font-size:.8rem">datetime, locale, crypto utilities</span></td>
+        <td class="r">3.6–4.0 <span class="mono" style="font-size:.8rem">(arrow, babel, paramiko)</span></td>
+        <td class="r"><b>$9</b></td></tr>
+    <tr><td><b>Service / framework</b><br><span class="mono" style="font-size:.8rem">web apps, APIs, CLIs, internal services</span></td>
+        <td class="r">4.4–6.3 <span class="mono" style="font-size:.8rem">(flask, httpx, tqdm, requests, click)</span></td>
+        <td class="r"><b>$19</b></td></tr>
+    <tr><td><b>Adapter / integration</b><br><span class="mono" style="font-size:.8rem">scrapers, connectors, parsers, data generators — anything fighting a moving world</span></td>
+        <td class="r">8.7–22.1 <span class="mono" style="font-size:.8rem">(faker, yt-dlp)</span></td>
+        <td class="r"><b>$49</b></td></tr>
+    <tr><td><b>Enterprise fleet</b><br><span class="mono" style="font-size:.8rem">every repo typed and scanned, then rolled up</span></td>
+        <td class="r">your mix, measured</td>
+        <td class="r"><b>from $499</b><span style="font-size:.8rem">/mo</span></td></tr>
+  </table></div>
+  <p style="color:var(--faint);font-size:.88rem;margin-top:1.1rem">Every tier is roughly a
+  quarter of the <i>low</i> end of what that repo type costs in engineer time at $100/hr — so you
+  keep about 4&times; what you pay before counting anything history can't see (regressions caught
+  before merge never become commits). The full protocol and per-repo numbers:
+  <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/SCALE.md">docs/SCALE.md</a>.
+  Enterprise adds SSO, an SLA, private fault-class dictionaries compiled from your own incident
+  history, and Java/JUnit support as it leaves alpha.</p>
+  <div class="price-grid" style="margin-top:1.6rem">
     <div class="price">
       <h3>Open source</h3>
       <div class="amt">$0</div>
       <div class="per">AGPL-3.0 · forever</div>
-      <ul><li>Full engine, guard, selfcheck</li><li>Teach classes with register()</li>
+      <ul><li>Full engine, guard, GitHub Action, selfcheck</li>
+          <li>Teach your own classes with register()</li>
           <li>Commercial use under AGPL terms</li></ul>
       <a class="btn btn-ghost" href="https://pypi.org/project/fluidfix/">pip install --upgrade fluidfix</a>
     </div>
     <div class="price hot">
-      <h3>Guarded setup — live demo</h3>
+      <h3>Free scan + guarded setup</h3>
       <div class="amt">FREE</div>
       <div class="per">20 minutes · your repo · you watch it happen</div>
-      <ul><li>We scan your repo and show you its numbers — size, suite strength, incident
-          rate — every input printed, nothing hidden</li>
-          <li>Then we guard it live: inject a bug class your tests can see, watch the
-          byte-exact repair land and commit, watch an unknown bug get refused with the
-          failing test named</li>
-          <li>You leave with the guard running in your CI and the exact commands in your
-          runbook</li>
-          <li>Python/pytest today · Java/JUnit in alpha</li></ul>
-      <a class="btn btn-solid" href="mailto:devkancheti4@gmail.com?subject=Book%20a%20fluidfix%20demo&body=Repo%20URL%20(or%20private%20—%20we%27ll%20sort%20access)%3A%20%0AWhen%20works%20for%20you%3F%20">Book a demo — free</a>
+      <ul><li>We scan your repo and print every input — size, suite strength, real incident
+          rate — then quote your exact tier</li>
+          <li>Then we guard it live: inject a bug class your tests can see, watch the byte-exact
+          repair land and push itself, watch an unknown bug get refused with the failing test named</li>
+          <li>You leave with the guard running in your CI and the commands in your runbook</li>
+          <li>Book during early access and your rate is locked as a founding user</li></ul>
+      <a class="btn btn-solid" href="mailto:devkancheti4@gmail.com?subject=Free%20fluidfix%20scan%20%2B%20demo&body=Repo%20URL%20(or%20private%20—%20we%27ll%20sort%20access)%3A%20%0ARepo%20type%20(library%20%2F%20service%20%2F%20adapter)%3A%20%0AWhen%20works%20for%20you%3F%20">Get my repo scanned — free</a>
     </div>
     <div class="price">
-      <h3>Custom dictionary</h3>
-      <div class="amt">FREE</div>
-      <div class="per">for early adopters · normally the paid tier, later</div>
-      <ul><li>Fault classes compiled from YOUR bug history, shipped as versioned
-          company_rules.py — the kernel runs them free forever</li>
-          <li>We'll tell you honestly when your history doesn't justify one — we published
-          the trial where it wasn't worth it</li>
-          <li>Free-era teams keep founding-user terms when pricing arrives</li></ul>
-      <button class="btn btn-ghost" data-tier="Custom dictionary (free, early-adopter)">Book a demo — free</button>
+      <h3>Enterprise</h3>
+      <div class="amt">from $499<span style="font-size:.95rem">/mo</span></div>
+      <div class="per">custom · your fleet, typed and scanned</div>
+      <ul><li>Every repo typed and quoted, rolled into one monthly number — no per-seat maths</li>
+          <li>Private fault-class dictionaries compiled from your own incident history; we tell
+          you honestly when your history doesn't justify one (we published the trial where it didn't)</li>
+          <li>SSO, SLA, and a named engineer for onboarding</li></ul>
+      <a class="btn btn-ghost" href="mailto:devkancheti4@gmail.com?subject=fluidfix%20enterprise&body=Roughly%20how%20many%20repos%3F%20%0ALanguages%3F%20%0ADeploy%20cadence%3F%20">Talk to us</a>
     </div>
   </div>
-  <p style="color:var(--faint); font-size:.85rem; margin-top:1rem">Bigger org, many repos, SSO/SLA
-  questions? Same answer for now: it's free —
-  <a href="mailto:devkancheti4@gmail.com?subject=fluidfix%20for%20our%20org">talk to us</a>.
-  Every number on this page comes from measured runs: <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/BENCHMARK.md">benchmark &amp; per-bug data</a>.</p>
 </div></section>
 
 <section class="prebook" id="prebook"><div class="wrap">
