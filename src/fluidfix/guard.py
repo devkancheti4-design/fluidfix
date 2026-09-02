@@ -164,37 +164,124 @@ def _name_tokens(name: str) -> set[str]:
             if len(w) >= 3 and w.lower() not in ("test", "tests")}
 
 
-def rank_observations(src: str, observations: list, failing_output: str) -> list:
-    """The failing test names its subject — at LINE granularity.
-    `FAILED ...::TestOdiaLocale::test_ordinal_number` points at
-    class OdiaLocale, def _ordinal_number; observations whose enclosing
-    class/def share name tokens with the failing tests are tried first.
-    Measured (arrow locales.py:5468): in line order the defect sat ~900th of
-    931 observations — beyond any honest wall clock at ~6s of suite per
-    candidate — while affinity ranks it into the first handful. Tokens come
-    ONLY from FAILED/ERROR node ids, so this is fully generic."""
-    toks: set[str] = set()
+def _recent_lines(root: str, rel: str, depth: int = 40) -> set:
+    """Lines last touched by the most recent `depth` commits (bit RECENT).
+    One blame per file, failure-tolerant: no git, no blame, no bit."""
+    try:
+        recent = set(subprocess.run(
+            ["git", "-C", root, "log", f"-{depth}", "--format=%H"],
+            capture_output=True, text=True, timeout=30).stdout.split())
+        if not recent:
+            return set()
+        out = subprocess.run(["git", "-C", root, "blame", "--porcelain", "--", rel],
+                             capture_output=True, text=True, errors="replace",
+                             timeout=120).stdout
+    except Exception:
+        return set()
+    hit, lineno = set(), 0
+    for line in out.splitlines():
+        m = re.match(r"^([0-9a-f]{40})\s+\d+\s+(\d+)", line)
+        if m:
+            lineno = int(m.group(2))
+            if m.group(1) in recent:
+                hit.add(lineno)
+    return hit
+
+
+def _shape(line: str) -> str:
+    """A line's SHAPE, for bit DENSE: identifiers and numbers flattened, so
+    sibling rows of a table or dict collapse to one shape."""
+    return re.sub(r"\d+", "#", re.sub(r"[A-Za-z_]\w*", "N", line.strip()))
+
+
+def rank_observations(src: str, observations: list, failing_output: str,
+                      *, root: str | None = None, rel: str | None = None,
+                      retried: set | None = None) -> list:
+    """Order candidate lines by the RANKING LAW (fluidfix/rank.py) — the
+    fourth machine-authored kernel. Each line's evidence is measured
+    mechanically, packed into one byte, and the law returns a priority 0..7.
+
+    Measured need (click, 2026-09-02): a taught class that had just repaired
+    two instances of itself spent 1,934s and 474 rejected candidates on a
+    third without ever opening the defect file. Line ORDER was the gap.
+
+    Bits measured here: FRAME, NAMED, SIGNALED, CHEAP, DENSE, RECENT,
+    RETRIED. FAILONLY (executed by failing tests but no passing test) needs
+    line-level coverage of both sets and is not yet measured — documented,
+    not forgotten; the law reads it as 0 until it is.
+    """
+    from .rank import observe_bits, rank as _rank
+
     clean = _ANSI.sub("", failing_output)
+    lines = src.split("\n")
+
+    # --- FRAME: the traceback names this exact line -----------------------
+    base = os.path.basename(rel) if rel else None
+    framed: set = set()
+    for m in re.finditer(r"([\w./\\-]+\.py)[\":,]+\s*(?:line\s+)?(\d+)", clean):
+        if base is None or os.path.basename(m.group(1)) == base:
+            framed.add(int(m.group(2)))
+
+    # --- NAMED: enclosing def/class shares a token with a failing test ----
+    toks: set = set()
     for m in re.finditer(r"^(?:FAILED|ERROR)\s+\S*?::(\S+)", clean, re.M):
         for part in m.group(1).split("::"):
             toks |= _name_tokens(part.split("[")[0])
-    if not toks:
-        return observations
+    line_toks: dict = {}
     try:
         tree = ast.parse(src)
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.ClassDef, ast.FunctionDef,
+                                 ast.AsyncFunctionDef)):
+                nt = _name_tokens(node.name)
+                if nt:
+                    for l in range(node.lineno,
+                                   (node.end_lineno or node.lineno) + 1):
+                        line_toks.setdefault(l, set()).update(nt)
     except SyntaxError:
-        return observations
-    line_toks: dict[int, set[str]] = {}
-    for node in ast.walk(tree):
-        if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
-            nt = _name_tokens(node.name)
-            if not nt:
-                continue
-            for l in range(node.lineno, (node.end_lineno or node.lineno) + 1):
-                line_toks.setdefault(l, set()).update(nt)
+        pass
+
+    # --- DENSE: how many sibling lines share this line's shape ------------
+    shapes: dict = {}
+    for l in lines:
+        if l.strip():
+            shapes[_shape(l)] = shapes.get(_shape(l), 0) + 1
+
+    recent = _recent_lines(root, rel) if (root and rel) else set()
+    retried = retried or set()
+
+    def priority(obs):
+        ln = obs.lineno
+        body = lines[ln - 1] if 0 < ln <= len(lines) else ""
+        try:                       # CHEAP: few candidates, no suite runs
+            from .acts import act_for, candidates
+            n = sum(len(candidates(body.strip(), act_for(k), obs))
+                    for k in (obs.kinds or [])[:2])
+            cheap = 0 < n < 8
+        except Exception:
+            cheap = False
+        return _rank(observe_bits(
+            frame=ln in framed,
+            named=bool(line_toks.get(ln, set()) & toks),
+            signaled=bool(obs.kinds),
+            recent=ln in recent,
+            cheap=cheap,
+            dense=shapes.get(_shape(body), 0) >= 8,
+            retried=ln in retried,
+        ))
+
+    # The LAW sets the priority class. Inside a class, the finer evidence
+    # breaks the tie: more shared name tokens means a more specific match
+    # (TestOdiaLocale::test_ordinal_number matches OdiaLocale._ordinal_number
+    # on four tokens and FrenchLocale._ordinal_number on three). The law is
+    # binary by design — it reads the SITUATION, not the degree — so the
+    # degree belongs here, under it, never over it.
+    def _tokens(obs):
+        return len(line_toks.get(obs.lineno, set()) & toks)
+
     order = sorted(range(len(observations)),
-                   key=lambda i: (-len(line_toks.get(observations[i].lineno,
-                                                     set()) & toks), i))
+                   key=lambda i: (priority(observations[i]),
+                                  -_tokens(observations[i]), i))
     return [observations[i] for i in order]
 
 
@@ -269,7 +356,8 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
         if not packet.truncated:
             full_sight.add(rel)
         observations = rank_observations("\n".join(packet.src_lines),
-                                         observer.observe([packet])[0], out)
+                                         observer.observe([packet])[0], out,
+                                         root=oracle.root, rel=rel)
         before = open(os.path.join(oracle.root, rel), "rb").read()
         result = repair(oracle, rel, observations,
                         candidate_timeout=candidate_timeout,
@@ -329,7 +417,8 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             if packet is None or time.time() > deadline:
                 continue    # never spend an observer call on a dead deadline
             observations = rank_observations("\n".join(packet.src_lines),
-                                             observer.observe([packet])[0], out)
+                                             observer.observe([packet])[0], out,
+                                             root=oracle.root, rel=rel)
             # a wrong rank-1 file must not starve every other candidate:
             # one file gets at most half the escalation budget (adversarial
             # review, 2026-08-31 — depth-first starvation)
