@@ -153,9 +153,44 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
                                      os.path.basename(rel).lower()))
         affinity = 1.0 if base_tokens & fail_mods else 0.0
         ranked2.append((affinity, specificity, n_fail, rel))
-    # affinity first (the failing test names its subject), then specificity,
-    # then substance (n_fail) so trivially-imported stubs sink
-    ranked2.sort(key=lambda t: (-t[0], -t[1], -t[2], t[3]))
+    # THE RANKING LAW, applied at FILE granularity. The same seven evidence
+    # lanes read just as well of a file as of a line, and the file order is
+    # what actually cost the time: measured 2026-09-02 on click, a defect in
+    # _textwrap.py was refused after eight OTHER files were searched first.
+    #   FRAME     the traceback names this file
+    #   NAMED     a failing test's name shares a token with the filename
+    #   SIGNALED  the failing tests execute lines here at all
+    #   CHEAP     few executed lines to search
+    #   DENSE     the failing tests execute nearly all of it (unspecific)
+    #   RECENT    the file was touched by recent commits
+    # Specificity still breaks ties INSIDE a priority class, never over it.
+    from .rank import observe_bits, rank as _rank
+
+    framed_files = {os.path.basename(m.group(1))
+                    for m in re.finditer(r"([\w./\\-]+\.py)[\":,]", clean)}
+    try:
+        recent_files = {
+            l.strip() for l in subprocess.run(
+                ["git", "-C", oracle.root, "log", "-40", "--name-only",
+                 "--format="], capture_output=True, text=True,
+                timeout=30).stdout.splitlines() if l.strip().endswith(".py")}
+    except Exception:
+        recent_files = set()
+
+    def file_priority(rel, specificity, n_fail):
+        base_tokens = set(re.findall(r"[a-z]{3,}",
+                                     os.path.basename(rel).lower()))
+        return _rank(observe_bits(
+            frame=os.path.basename(rel) in framed_files,
+            named=bool(base_tokens & fail_mods),
+            signaled=n_fail > 0,
+            recent=rel in recent_files,
+            cheap=0 < n_fail < 80,
+            dense=specificity > 0.9,
+        ))
+
+    ranked2.sort(key=lambda t: (file_priority(t[3], t[1], t[2]),
+                                -t[0], -t[1], -t[2], t[3]))
     return [rel for _, _, _, rel in ranked2[:max(limit, 8)]]
 
 
