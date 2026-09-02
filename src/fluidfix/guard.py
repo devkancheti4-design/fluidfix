@@ -198,7 +198,47 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
             dense=specificity < 0.25,     # every test touches it: unspecific
         ))
 
-    ranked2.sort(key=lambda t: (file_priority(t[3], t[1], t[2]),
+    # EVIDENCE THE FAILURE ITSELF CARRIES. An assertion prints the values it
+    # compared: `assert '\x1b[95m...' == '\x1b[94m...'`. Measured 2026-09-02
+    # on click: the literal 95 appears in exactly ONE of 17 source files —
+    # termui.py, the defect — while no coverage or name signal distinguished
+    # it at all (ranked #6 under the old heuristic AND under the law). A
+    # literal that names one or two files is the failure pointing at them, so
+    # it feeds the law's FRAME lane; when it names many, it says nothing and
+    # is ignored.
+    assert_lits = set()
+    for m in re.finditer(r"^E?\s*(?:assert|AssertionError).*", clean, re.M):
+        assert_lits.update(re.findall(r"\d{2,}", m.group(0)))
+    lit_named: set[str] = set()
+    if assert_lits:
+        bodies = {}
+        for rel in {t[3] for t in ranked2}:
+            try:
+                bodies[rel] = open(os.path.join(oracle.root, rel),
+                                   encoding="utf-8", errors="replace").read()
+            except OSError:
+                pass
+        for lit in assert_lits:
+            pat = re.compile(rf"(?<![\w.]){re.escape(lit)}(?![\w.])")
+            hits = [rel for rel, b in bodies.items() if pat.search(b)]
+            if 0 < len(hits) <= 2:          # discriminating, not noise
+                lit_named.update(hits)
+
+    def file_priority2(rel, specificity, n_fail):
+        base_tokens = set(re.findall(r"[a-z]{3,}",
+                                     os.path.basename(rel).lower()))
+        return _rank(observe_bits(
+            frame=(os.path.basename(rel) in framed_files
+                   or rel in lit_named),
+            failonly=specificity >= 0.9,
+            named=bool(base_tokens & fail_mods),
+            signaled=n_fail > 0,
+            recent=rel in recent_files,
+            cheap=0 < n_fail < 80,
+            dense=specificity < 0.25,
+        ))
+
+    ranked2.sort(key=lambda t: (file_priority2(t[3], t[1], t[2]),
                                 -t[0], -t[1], -t[2], t[3]))
     return [rel for _, _, _, rel in ranked2[:max(limit, 8)]]
 
