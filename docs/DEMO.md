@@ -74,6 +74,27 @@ fluidfix guard .                  # one-shot: exit 0 green/repaired, exit 2 refu
 fluidfix guard . --interval 900   # watch mode, every 15 minutes (cron/systemd)
 ```
 
+On GitHub, use the ACTION — a bare `fluidfix guard .` in CI validates a
+repair and then throws it away with the runner; the action pushes the
+restore commit back to the branch and writes the verdict (or the refusal's
+rejected-candidate log) into the job summary:
+
+```yaml
+# .github/workflows/fluidfix.yml
+name: fluidfix
+on: [push]
+permissions: { contents: write }
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -e . pytest pytest-cov   # YOUR project's deps
+      - uses: devkancheti4-design/fluidfix@master # mode: push (default)
+```
+
 ## Step 4 — A novel bug class is refused, loudly
 
 Ship a different defect — say `inv.get("tax")` losing its `, 0` default so

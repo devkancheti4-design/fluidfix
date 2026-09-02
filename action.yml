@@ -1,0 +1,98 @@
+name: 'fluidfix guard'
+description: >-
+  Repo guard that actually lands its repairs: restores suite-caught
+  regressions byte-exact and pushes the fix back, refuses what it cannot
+  prove — with every rejected candidate logged against the test that
+  killed it.
+author: 'devkancheti4-design'
+branding:
+  icon: 'shield'
+  color: 'green'
+
+inputs:
+  mode:
+    description: >-
+      "push" (default): a successful repair is pushed back to the branch —
+      commit-and-forget for real. "check": validate only; the job fails on
+      refusal, repairs are reported but not pushed.
+    default: 'push'
+  python:
+    description: 'Interpreter that has the PROJECT''s test deps (default: the job''s python3).'
+    default: 'python3'
+  dictionary:
+    description: 'Path to a fault-class dictionary (register() file) in the repo, if any.'
+    default: ''
+  budget:
+    description: 'Wall-clock cap for the whole guard pass, seconds.'
+    default: '1200'
+  suite-timeout:
+    description: 'Full-suite budget per run, seconds.'
+    default: '600'
+
+outputs:
+  status:
+    description: 'green | repaired | refused'
+    value: ${{ steps.guard.outputs.status }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: fluidfix guard
+      id: guard
+      shell: bash
+      run: |
+        set -u
+        pip install --quiet --upgrade fluidfix pytest pytest-cov
+        git config user.name  "fluidfix"
+        git config user.email "guard@fluidfix"
+
+        ARGS=(--commit --python "${{ inputs.python }}"
+              --budget "${{ inputs.budget }}"
+              --suite-timeout "${{ inputs.suite-timeout }}")
+        if [ -n "${{ inputs.dictionary }}" ]; then
+          ARGS+=(--dictionary "${{ inputs.dictionary }}")
+        fi
+
+        set +e
+        fluidfix guard . "${ARGS[@]}" | tee /tmp/fluidfix.out
+        rc=${PIPESTATUS[0]}
+        set -e
+
+        if git log -1 --pretty=%s | grep -q '^fluidfix: restore'; then
+          status=repaired
+          {
+            echo "### 🛡️ fluidfix repaired this branch"
+            echo '```'
+            git log -1 --pretty=%B
+            git show --stat --format= HEAD
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ inputs.mode }}" = "push" ]; then
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+            echo "Repair pushed to ${GITHUB_REF_NAME}." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "check mode: repair validated but NOT pushed." >> "$GITHUB_STEP_SUMMARY"
+          fi
+        elif [ "$rc" -eq 0 ]; then
+          status=green
+          echo "### 🛡️ fluidfix: suite green — nothing to do" >> "$GITHUB_STEP_SUMMARY"
+        else
+          status=refused
+          {
+            echo "### 🛡️ fluidfix refused — a bug it cannot prove a fix for"
+            echo ""
+            echo "It never guesses. What it tried, and the exact test that"
+            echo "rejected each candidate:"
+            echo '```json'
+            if [ -f .fluidfix/last_refusal.json ]; then
+              head -c 6000 .fluidfix/last_refusal.json
+            else
+              tail -20 /tmp/fluidfix.out
+            fi
+            echo ""
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+        fi
+        echo "status=$status" >> "$GITHUB_OUTPUT"
+        [ "$status" = "refused" ] && exit 2
+        exit 0
