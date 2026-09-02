@@ -192,3 +192,50 @@ def test_refuted_refusal_does_not_escalate(tmp_path):
     assert report.status == "refused"
     src = (tmp_path / "mod.py").read_text()
     assert "a * b" in src                                    # untouched
+
+
+def test_law_is_byte_identical_to_the_dev_repo_publication():
+    # the LAW is vendored, not paraphrased: the dev repo's README publishes
+    # sha256 48bf50bff36a2cc9 / 1,555 chars, and engine.py must match it
+    # exactly. Re-authoring the law is allowed; silently editing it is not.
+    assert len(LAW) == 1555
+    assert hashlib.sha256(LAW.encode()).hexdigest().startswith("48bf50bff36a2cc9")
+    assert " " in LAW and LAW.startswith("((4 & ") and LAW.endswith("& 7))")
+
+
+def test_every_cited_ruling_in_the_source_is_a_real_ruling():
+    """FUSION INTEGRITY. Any source comment or message that says
+    "engine law: BITS -> ACT" is a claim about what the vendored law
+    decides. This test parses every such citation out of the shipped
+    package and re-derives it from the law itself, so a citation can never
+    drift from the ruling it names (found 2026-09-02: two paths cited the
+    law in strings while branching on hardcoded conditions)."""
+    import pathlib
+    pkg = pathlib.Path(__file__).resolve().parent.parent / "src" / "fluidfix"
+    pat = re.compile(r"engine law:\s*([A-Z_+ ]+?)\s*->\s*([A-Z_]+)")
+    found = 0
+    for path in sorted(pkg.glob("*.py")):
+        for raw_bits, act in pat.findall(path.read_text(encoding="utf-8")):
+            bits = [b for b in re.split(r"[+ ]+", raw_bits.strip()) if b]
+            if not bits or any(b not in KINDS_BITS for b in bits):
+                continue
+            got = decide(situation(**{b: True for b in bits}))
+            assert got == act, (
+                f"{path.name}: cites 'engine law: {'+'.join(bits)} -> {act}' "
+                f"but the vendored law rules {got}")
+            found += 1
+    assert found >= 3, f"expected the law to be cited in the source; found {found}"
+
+
+KINDS_BITS = ["BUILT", "AMB", "UNREAD", "NOTWIN", "HIDDEN", "CAPPED",
+              "REFUTED", "SELF"]
+
+
+def test_unread_and_refuted_paths_consult_the_law():
+    # both were hardcoded branches wearing the law's name until 2026-09-02;
+    # the call sites must now be genuine decide() consultations
+    import pathlib
+    src = (pathlib.Path(__file__).resolve().parent.parent
+           / "src" / "fluidfix" / "guard.py").read_text(encoding="utf-8")
+    assert 'decide(situation(UNREAD=True)) == "ADD_MATERIAL"' in src
+    assert 'decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE"' in src

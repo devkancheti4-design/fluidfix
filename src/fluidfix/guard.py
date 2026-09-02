@@ -232,11 +232,13 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     full_sight: set[str] = set()      # pass-0 packet was complete: nothing
                                       # a bigger budget could add for this file
     if not candidates and not _has_pytest_cov(oracle):
-        hint = ("pytest-cov is not installed in the target interpreter, so "
-                "coverage-based localisation was unavailable — install it "
-                f"({oracle.python} -m pip install pytest-cov) and re-run; "
-                "on large codebases it is how the fault file gets found. "
-                "(engine law: UNREAD -> ADD_MATERIAL)")
+        # a needed tool reads nothing: ASK the law rather than assume
+        if decide(situation(UNREAD=True)) == "ADD_MATERIAL":
+            hint = ("pytest-cov is not installed in the target interpreter, so "
+                    "coverage-based localisation was unavailable — install it "
+                    f"({oracle.python} -m pip install pytest-cov) and re-run; "
+                    "on large codebases it is how the fault file gets found. "
+                    "(engine law: UNREAD -> ADD_MATERIAL)")
     for rel in candidates:
         if total_deadline is not None and time.time() > total_deadline:
             return GuardReport(
@@ -336,11 +338,17 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                                    candidates=candidates, result=result,
                                    seconds=time.time() - t0,
                                    hint=result.reason, attempts=attempts)
-        if any_acts and not hint:
+        if any_acts and not hint and \
+                decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
             hint = ("every generated candidate was rejected by the suite "
                     "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — "
                     "the refusal report lists what was tried; teach the "
                     "class or fix by hand")
+    if not hint and acts0 and \
+            decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
+        hint = ("every generated candidate was rejected by the suite "
+                "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the "
+                "refusal report lists each one with the test that killed it")
     return GuardReport(status="refused", candidates=candidates,
                        seconds=time.time() - t0, hint=hint,
                        attempts=attempts)
