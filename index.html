@@ -387,9 +387,13 @@ $ echo $?
       <td class="ok">11/11 repaired byte-exact</td></tr>
     <tr><td><b>Value-shaped, repo-searchable</b> — the wrong attribute, name, or constant, where
         the correct value exists <b>somewhere in your repo</b>: fluidfix mines the candidates
-        (bounded at 32) and your suite judges each one. One registration covered
+        and your suite judges each one. One registration covered
         <span class="mono">.name→.id</span> and <span class="mono">.count→.total</span> —
-        different values, same class.</td>
+        different values, same class. <b>Scale caveat, measured:</b> the candidate set is
+        bounded (32 by default, <span class="mono">--max-candidates</span> raises it) because
+        every candidate costs a suite run. In a small module the right name is found in
+        seconds; in a 200,000-line codebase it can rank in the <i>thousands</i>, and then
+        fluidfix refuses rather than guess — see the note below.</td>
       <td class="r">held-out set</td>
       <td class="ok">repaired byte-exact</td></tr>
     <tr><td><b>Value not in the repo</b> — the right answer was a computation that exists nowhere
@@ -397,6 +401,18 @@ $ echo $?
       <td class="r">1 case</td>
       <td class="safe">every candidate failed → refused, tree byte-identical</td></tr>
   </table></div>
+  <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">
+  <b>The boundary, stated plainly (measured on SQLAlchemy — 18,270 commits, 21 years,
+  201k lines).</b> What decides whether one example pays off is not how often a bug class
+  recurs, it is <b>how big the candidate set is</b>. Rule-shaped classes have one answer
+  (&ldquo;add the missing default&rdquo;), so one example covers the whole family forever.
+  Value-shaped classes have as many answers as your file has names: replaying 38 real
+  historical bugs, the maintainer&rsquo;s exact fix <i>was</i> generated for 25 of them — but
+  at ranks 42 to 10,563, so the default budget stops first and the guard refuses with the
+  tree untouched. Raising <span class="mono">--max-candidates</span> reaches more of them
+  when your suite is cheap. We publish this because it is the honest way to know what to
+  expect from your repo before you pay for anything.</p>
+
   <h2 style="margin-top:3rem">And at large-repo scale — strict, seeded, no cherry-picking</h2>
   <p class="lead">Random mechanical bugs injected at seeded sites across three big codebases;
   the guard was never told which file. Both held-out repos beat the one the fixes were tuned on.
