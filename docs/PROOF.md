@@ -75,6 +75,30 @@ A guard running on every push lives in the 1–20 failure regime.
 
 ---
 
+## 3b. How fast will it be on YOUR repo? (a formula, not a promise)
+
+Repair time is **suite runs x your suite's own runtime** — the test *count*
+barely matters. An independent tester (Sept 2026, macOS/py3.14) measured the
+middle of this curve and the model holds across three orders of magnitude:
+
+| project | suite runtime | suite runs | repair |
+|---|---|---|---|
+| toy service, 2 tests | 0.01 s | 2 | ~1.1 s |
+| 105-test game engine | 0.07 s | 3 | **1.7 s** |
+| click, 1,990 tests | 4.5 s | 8 | **36 s** |
+| click, harder localisation | 4.5 s | 80 | 50 s |
+
+So: `time ~= runs x (your suite time + ~0.5 s pytest startup)`, where runs is
+typically 2-10 for an in-vocabulary defect. A 105-test suite that runs in
+0.07 s is *cheaper to guard* than a 20-test suite that takes 5 s — which is
+also why `--interval` and the GitHub Action are the right deployment: one
+regression at a time, when only a handful of tests are red.
+
+Time your own suite (`pytest -q` once) and multiply. That is the honest
+estimate, and it is the same arithmetic the benchmarks above obey.
+
+---
+
 ## 4. It lands the fix — not just validates it
 
 A bare `fluidfix guard .` in CI validates a repair and then throws it away
