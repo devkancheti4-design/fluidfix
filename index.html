@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>fluidfix</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -166,7 +167,7 @@
   .foot-col a:hover { color:var(--teal); }
 </style>
 
-<div class="banner">v0.8.0 is live on PyPI · <b>everything is free right now</b> — book a demo and we'll guard your repo together</div>
+<div class="banner">v0.10.0 is live on PyPI · <b>everything is free right now</b> — run <span class="mono">fluidfix estimate .</span> to see your repair time before you install</div>
 
 <nav><div class="nav-in">
   <span class="logo">fluidfix</span>
@@ -301,16 +302,18 @@ $ echo $?
   <p class="lead">The decision layer is a machine-authored, exhaustively verified expression —
   not a model, not a lookup table. Run <span class="mono">fluidfix selfcheck</span> and re-derive
   every law on your machine in about a second.</p>
-  <p class="lead" style="margin-top:.8rem">Three machine-authored repos, one system:
+  <p class="lead" style="margin-top:.8rem"><b>Five laws, one system</b>, and each one earned its
+  place by fixing a measured failure:
   <a href="https://github.com/devkancheti4-design/fluid-router"><span class="mono">fluid-router</span></a>
-  decides — four integer instructions route an observed fault kind to its repair, verified on all
-  4,096 cases. <a href="https://github.com/devkancheti4-design/dev"><span class="mono">dev</span></a>
-  (the engine law) governs — when a repair is blocked it rules escalate, refuse, or ask, never
-  guess; vendored verbatim and fingerprint-tested. And
-  <a href="https://github.com/devkancheti4-design/proven-reason"><span class="mono">proven-reason</span></a>
-  derives &amp; proves — give it examples and it authors the smallest rule that reproduces them,
-  then a decider checks every int32 input that exists. fluidfix ships the first two inside every
-  install; the third is the same lab's standalone reasoner.</p>
+  decides <i>which repair</i> — four integer instructions, all 4,096 cases verified.
+  <span class="mono">fluid-router2</span> drives <i>which candidate next</i>, with termination
+  proved. <a href="https://github.com/devkancheti4-design/dev"><span class="mono">dev</span></a>
+  (the engine law) derives <i>what to do next</i> — one controller that generalises across four
+  different jobs, proved by an exhaustive sweep (0 of 256 situations rule differently); vendored
+  verbatim and fingerprint-tested. The <b>ranking law</b> orders <i>which line first</i>, and the
+  <b>SIGHT law</b> orders <i>which file first</i> — the two that decide whether fluidfix ever
+  opens the right file at all. All five re-derive on your machine in about a second.
+  <a href="#kernels">What each one is for &rarr;</a></p>
   <div class="steps">
     <div class="step"><div class="k">01</div><h3>Localise</h3>
       <p>Traceback frames ∪ failing-test coverage ∪ AST spans find the fault file and line. Mechanical, zero tokens.</p></div>
@@ -326,7 +329,7 @@ $ echo $?
     <div class="card"><span class="chip">deterministic</span><h3>Same bug, same fix — provably</h3>
       <p>The decision is four integer instructions, not a model: no temperature, no drift, no
       prompt. Run <span class="mono">fluidfix selfcheck</span> and re-derive every law on your own
-      machine — 4,096 routing cases, identity, composition, termination — in about a second.
+      machine — all five laws, 4,096 routing cases, identity, composition, termination — in about a second.
       Reproducible fixes are auditable fixes.</p></div>
     <div class="card"><span class="chip">yours</span><h3>Your rules, your tests, your repo</h3>
       <p>Fault classes are versioned files in YOUR repo, written from YOUR incidents, judged by
@@ -433,6 +436,26 @@ $ echo $?
   three rows: fluidfix has <b style="color:var(--ink)">never made a wrong repair</b> — every fix
   passes your full suite or is rolled back byte-for-byte, and what it can't prove, it refuses.
   Precision is bounded by your suite's strength, which is also why it rewards teams that test.</p>
+  <h2 style="margin-top:3rem">v0.9.1: know your repair time before you install</h2>
+  <p class="lead">Repair time is not a mystery and it is not our number &mdash; it is
+  <b>suite runs &times; your suite's own runtime</b>. Test count barely matters: 105 tests that run
+  in 0.07s are cheaper to guard than 20 tests that take 5s. One command measures your repo and
+  tells you, before you commit to anything:</p>
+  <div class="expr" style="margin:1rem 0">fluidfix estimate .</div>
+  <div class="gwrap"><table class="gtable">
+    <tr><th>repo</th><th>suite</th><th>predicted</th><th>actual</th></tr>
+    <tr><td class="mono">toy fixture</td><td>2 tests @ 0.01s</td><td>~1.1s</td><td class="ok">1.1s</td></tr>
+    <tr><td class="mono">RPG engine (independent tester)</td><td>105 tests @ 0.07s</td><td>1.4&ndash;7s</td><td class="ok">1.7s</td></tr>
+    <tr><td class="mono">click 8.5.1</td><td>1,990 tests @ 4.5s</td><td>12.2&ndash;61s</td><td class="ok">36s and 50s</td></tr>
+  </table></div>
+  <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">The model was validated, not
+  asserted: both real repairs landed inside the band predicted from their suite alone. The
+  arithmetic is <span class="mono">time &asymp; runs &times; (suite time + startup)</span> &mdash;
+  nothing else in fluidfix costs measurable wall clock, because the kernels decide in nanoseconds.
+  <b style="color:var(--ink)">Your tests are the entire bill.</b> The timing model came from an
+  independent third-party tester who built a 105-test engine specifically to probe the middle of
+  the curve; <span class="mono">estimate</span> ships their finding as a command.</p>
+
   <h2 style="margin-top:3rem">v0.6: a third law took every miss back</h2>
   <p class="lead">The guard is now governed by a machine-authored decision law. When a search was
   budget-truncated, it escalates &mdash; bounded by a wall clock. When two <i>different</i> fixes both
@@ -500,43 +523,89 @@ jobs:
 
 <section id="kernels"><div class="wrap">
   <p class="eyebrow">what's actually inside</p>
-  <h2>Three machine-authored kernels. None of them written by a human.</h2>
-  <p class="lead">fluidfix is not a model with a prompt. Its decisions come from three small
-  integer laws, each authored by a synthesis engine from measured examples, each published in its
-  own repo, each verifiable on your machine in about a second with
-  <span class="mono">fluidfix selfcheck</span>.</p>
+  <h2>Five machine-authored laws. Not one of them written by a human.</h2>
+  <p class="lead">fluidfix is not a model with a prompt. Every decision it makes comes from a small
+  integer law authored by a synthesis engine from measured examples. <b>Each one exists because
+  something measurably failed without it</b> — the incident is named on every card. Re-derive all
+  five on your own machine in about a second with <span class="mono">fluidfix selfcheck</span>.</p>
+
   <div class="cards">
     <div class="card"><span class="chip">decides</span>
-      <h3><a href="https://github.com/devkancheti4-design/fluid-router">fluid-router</a></h3>
-      <p>Routes an observed fault kind to its repair in four integer instructions:
-      <span class="mono">route(F1,A1,Fq) = (Fq+A1−F1) mod 16</span>. Verified exhaustively on all
-      4,096 cases, plus identity and composition. One worked example per class is all it needs —
-      renumber your classes and nothing breaks.</p></div>
+      <h3><a href="https://github.com/devkancheti4-design/fluid-router">fluid-router</a> — which repair</h3>
+      <p><span class="mono">route(F1,A1,Fq) = (Fq+A1&minus;F1) mod 16</span>, four integer
+      instructions. Verified on all 4,096 cases plus identity and composition.</p>
+      <p><b>Why:</b> a fault class must cost <i>one</i> worked example, not a rule per instance.
+      The router infers each class's act from that single example, so teaching is one
+      <span class="mono">register()</span> call and renumbering your classes breaks nothing.</p></div>
+
     <div class="card"><span class="chip">drives</span>
-      <h3><a href="https://github.com/devkancheti4-design/fluid-router2">fluid-router2</a></h3>
-      <p>The candidate loop discipline — <span class="mono">EMIT</span>,
-      <span class="mono">ADVANCE</span>, <span class="mono">HALT</span> over a fault-kind mask.
-      Checked on all 256 dispatch states, with termination proved: every mask drains.</p></div>
-    <div class="card"><span class="chip">governs</span>
-      <h3><a href="https://github.com/devkancheti4-design/dev">dev — the engine law</a></h3>
-      <p><span class="mono">act = (4 &amp; ntzb(x−7)) + ntzb(x + (x&amp;128))</span> — authored in
-      2.9 seconds from 22 measured events. It rules on what happens when a repair is
-      <i>blocked</i>: escalate the search, refuse and ask for one pinning test, harvest the
-      counterexample, or ship. fluidfix vendors it <b>verbatim</b> and a test pins it to the dev
-      repo's own published fingerprint (sha256 <span class="mono">48bf50bf…</span>, 1,555
-      characters).</p></div>
-    <div class="card"><span class="chip">proves</span>
-      <h3><a href="https://github.com/devkancheti4-design/proven-reason">proven-reason</a></h3>
-      <p>The same lab's standalone reasoner: give it examples and it authors the smallest
-      expression reproducing every one, then a decider checks all 4,294,967,296 int32 inputs.
-      It derives what has not been written — and says so when nothing in its material can reach
-      the answer.</p></div>
+      <h3><a href="https://github.com/devkancheti4-design/fluid-router2">fluid-router2</a> — which candidate next</h3>
+      <p><span class="mono">EMIT</span>, <span class="mono">ADVANCE</span>,
+      <span class="mono">HALT</span> over a fault-kind mask. All 256 dispatch states checked.</p>
+      <p><b>Why:</b> a repair loop that can't prove it stops is a repair loop that hangs in your CI.
+      Termination is proved, not hoped for: every mask drains.</p></div>
+
+    <div class="card"><span class="chip">derives &amp; generalises</span>
+      <h3><a href="https://github.com/devkancheti4-design/dev">dev — the engine law</a> — what to do next</h3>
+      <p><span class="mono">act = (4 &amp; ntzb(x&minus;7)) + ntzb(x + (x&amp;128))</span> — authored
+      in 2.9 seconds from 22 measured events, exact on all 22. Vendored <b>verbatim</b>; a test
+      pins it to the dev repo's published fingerprint (sha256
+      <span class="mono">48bf50bf…</span>, 1,555 chars).</p>
+      <p><b>It generalises, structurally.</b> One controller governs four different jobs —
+      write code, answer a question, debug, review a PR — and the job lives in bits it
+      <i>cannot see</i>. Swept exhaustively: <b>0 of 256</b> situations rule differently across
+      those four jobs. It generalises <i>because</i> it never looks at which job it is in.</p>
+      <p><b>And it derives fixes, not just verdicts.</b> Eight observations map to eight acts:
+      ship, add state, add material, reshape, change granularity, raise budget, harvest the
+      counterexample, author a successor. Two of those rulings became fluidfix features because
+      the law called for them: <span class="mono">CHANGE_GRANULARITY</span> is why repairs can
+      edit a multi-line span atomically, and <span class="mono">HARVEST_COUNTEREXAMPLE</span> is
+      why every rejected candidate is logged with the test that killed it. The law told the
+      product what to build.</p>
+      <p style="color:var(--faint);font-size:.85rem">fluidfix measures 5 of the 8 observations
+      today; <span class="mono">NOTWIN</span>, <span class="mono">HIDDEN</span> and
+      <span class="mono">SELF</span> are never set — a documented limitation, not an accident.</p></div>
+
+    <div class="card"><span class="chip">orders lines</span>
+      <h3>the ranking law — which line first</h3>
+      <p>Seven evidence lanes over one observation byte, with <span class="mono">RETRIED</span> as
+      a veto. 256/256 against spec, veto dominance and monotonicity both hold.</p>
+      <p><b>Why:</b> measured 2026-09-02 on click — a taught class that had just repaired two
+      instances of itself spent <b>1,934s and 474 rejected candidates</b> on a third without ever
+      opening the defect file. Line order was hand-written heuristics; it was the whole gap. With
+      the law and the failure's own literals as evidence, that repair went
+      <b>1,740s failing &rarr; 50s byte-exact</b>.</p></div>
+
+    <div class="card"><span class="chip">orders files</span>
+      <h3>the SIGHT law — which file first</h3>
+      <p>Eight lanes in two tiers. <b>R1:</b> pointing evidence outranks circumstantial evidence at
+      any quantity. <b>R2:</b> the ubiquity penalty cannot reach a pointed-at file. Both hold
+      <i>algebraically</i>, not by a comparison someone could write backwards. 0 violations on all
+      256 inputs; <b>1.22 ns</b> per candidate file.</p>
+      <p><b>Why:</b> measured 2026-09-03 on click — a defect in
+      <span class="mono">types.py</span> whose failing tests lived in
+      <span class="mono">test_shell_completion.py</span>. Because click <i>has</i> a
+      <span class="mono">shell_completion.py</span>, a filename coincidence outranked real
+      evidence and the defect file was ranked <b>6th</b>, then deprioritised again for being
+      touched by every test. 209 candidates, budget gone, refused. The law makes that inversion
+      unrepresentable.</p></div>
+
+    <div class="card"><span class="chip">authors</span>
+      <h3><a href="https://github.com/devkancheti4-design/proven-reason">proven-reason</a> — the engine behind them</h3>
+      <p>Give it examples; it authors the smallest expression reproducing every one, then a decider
+      checks all 4,294,967,296 int32 inputs.</p>
+      <p><b>Why:</b> it derives what has not been written — and says so when nothing in its
+      material can reach the answer. That refusal is the reason these laws can be trusted.</p></div>
   </div>
+
   <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">The fusion is audited, not
-  asserted: fluidfix's copy of the engine law is byte-identical to the dev repo's, agrees with it
-  on <b>all 1,024 situations</b>, rules exactly on <b>all 22 measured events</b>, and a test parses
-  every "engine law: X → Y" claim in the shipped source and re-derives it from the law itself —
-  so a comment can never drift from the ruling it names.</p>
+  asserted. <span class="mono">fluidfix selfcheck</span> re-derives <b>all five laws</b> from
+  scratch — no network, no dependencies — and fluidfix's copy of the engine law is byte-identical
+  to the dev repo's, agrees with it on <b>all 1,024 situations</b>, and rules exactly on
+  <b>all 22 measured events</b>. A test parses every "engine law: X &rarr; Y" claim in the shipped
+  source and re-derives it from the law itself, so a comment can never drift from the ruling it
+  names. Each law is attached at exactly one granularity — the ranking law orders lines, the SIGHT
+  law orders files — and tests pin that too.</p>
 </div></section>
 
 <section id="pricing" style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)"><div class="wrap">
