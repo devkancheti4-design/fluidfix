@@ -1,5 +1,70 @@
 # Changelog
 
+## 0.10.0 — 2026-09-03
+
+- **A fifth machine-authored kernel: the SIGHT LAW.** The ranking law
+  ordered *lines*; *file* order was still a hand-written blend in which a
+  filename coincidence could outrank direct evidence. Measured on click
+  8.5.1: a defect at `src/click/types.py:499` whose failing tests live in
+  `tests/test_shell_completion.py` — and click HAS a `shell_completion.py`,
+  so the NAMED lane fired for the wrong file. The defect file ranked 6th,
+  then took a further penalty for being executed by every test.
+  `src/fluidfix/sight.py` vendors the authored law verbatim (the C source is
+  in `docs/laws/sight.c`): eight lanes in two tiers, with two rules that hold
+  *algebraically* rather than by a comparison that could be written
+  backwards —
+
+      R1  POINTING evidence (FRAMED / SCARCE / LITERAL) outranks
+          circumstantial evidence at any quantity.
+      R2  the UBIQUITOUS penalty cannot reach a pointed-at file.
+
+  Both the circumstantial sum and the penalty are ANDed with a gate that is
+  identically zero whenever a pointing bit is set, so the inversion that cost
+  the click search is *unrepresentable*, not merely tested against. Verified
+  exhaustively: 0 violations on all 256 inputs, 1.22 ns per candidate file.
+  `fluidfix selfcheck` now re-derives **five** laws.
+- **SCARCE — the taught class is itself a localiser.** A signal regex that
+  matches lines in only one or two files repo-wide has said where to look
+  before a single candidate is tried. Broad signals name many files and are
+  ignored, so the lane cannot hand out free promotions.
+- **A refusal now names the right cause, and there are three.** Running out
+  of clock with *no* pointing evidence is not the same as running out of
+  clock with some, and they need opposite advice. Previously both got
+  "raise the budget", which is right for one of them:
+
+      vocabulary gap  candidates generated, all rejected  -> teach the class
+      search limit    a POINTING lane named a file        -> more budget helps
+      evidence gap    nothing pointed anywhere            -> name the file
+                                                             (--file), or make
+                                                             the failure carry
+                                                             a locating value
+
+  The escalation hint no longer asserts "the search space is real" when
+  nothing pointed at anything — with no evidence the search order is
+  arbitrary, and saying otherwise sent users to buy budget that could not
+  help.
+- **A missing pytest is no longer reported as a red suite.** `python -m
+  pytest` exits 1 when pytest is absent — indistinguishable by exit code
+  from a genuine failure. `fluidfix estimate` on this very repo, run by an
+  interpreter without pytest, reported a confident "suite runtime: 0.03s"
+  and blamed the user's suite for being red. The suite had never run.
+  `_check_harness` now detects this, names the interpreter, and gives the
+  `--python` fix — which protects `guard` and `repair` too.
+- **`estimate` refuses rather than guesses.** It will not print a number
+  when the suite did not actually execute: missing pytest, a harness error
+  (exit 3/4/5), a suite timeout, or a run with no test results at all. For
+  the timeout case the refusal *is* the answer, with the arithmetic shown.
+- Measured, and published because it corrects an earlier claim in this
+  project's own docs: `types.py:499` — no traceback frame, no discriminating
+  literal, and a taught signal matching 3 files where SCARCE needs <= 2, so
+  **no pointing lane fired at all** — repaired **byte-exact in 17 suite runs
+  (87.1s)** once run uncapped. Earlier runs of that exact defect were
+  reported as misses; they were capped at 420s and 600s, below the wall clock
+  it needed. The absence of pointing evidence costs *search time*, not the
+  repair. The engine law's CAPPED -> RAISE_BUDGET was correct and the
+  operator was not.
+
+
 ## 0.9.1 — 2026-09-03
 
 - **`fluidfix estimate` — know your number before you install.** Times your

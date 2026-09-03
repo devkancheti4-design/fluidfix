@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fluidfix"
-version = "0.9.1"
+version = "0.10.0"
 description = "Zero-token repair decisions for mechanical single-line bugs: a machine-authored routing kernel decides, your test suite judges, and an LLM is only ever the eyes."
 readme = "README.md"
 requires-python = ">=3.10"

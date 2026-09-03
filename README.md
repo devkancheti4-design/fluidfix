@@ -141,6 +141,13 @@ proofs yourself, offline, in seconds:
 fluidfix selfcheck
 ```
 
+`selfcheck` re-derives **five** machine-authored laws with no network and no
+dependencies: fluid-router (which repair), fluid-router2 (which candidate
+next), the engine law (what to do when blocked — one controller that governs
+four different jobs, 0 of 256 situations ruling differently), the ranking law
+(which line first) and the SIGHT law (which file first — two tiers, where
+pointing evidence outranks circumstantial evidence *algebraically*).
+
 ## Safety properties
 
 - **Refuses on a green suite.** Searching without a failing test has been

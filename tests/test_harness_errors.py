@@ -77,8 +77,13 @@ def test_budget_refusal_does_not_blame_the_vocabulary():
     """
     from fluidfix.guard import GuardReport
 
+    # The termui incident had POINTING evidence: the asserted literal 95
+    # occurred in exactly one file. That is what makes it a SEARCH limit
+    # rather than an evidence gap — with nothing pointing, a bigger budget
+    # re-searches the same arbitrary order (see test_refusal_diagnosis.py).
     starved = GuardReport(
         status="refused", candidates=["a.py", "b.py"], attempts=[{"x": 1}],
+        evidence={"pointed": ["src/click/termui.py"]},
         hint="escalation budget exhausted (600s) with CAPPED still ruling "
              "RAISE_BUDGET — raise --escalate-budget")
     s = starved.summary()

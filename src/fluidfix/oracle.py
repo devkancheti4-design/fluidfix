@@ -60,7 +60,25 @@ _EXIT_MEANING = {
 }
 
 
-def _check_harness(rc: int, args: list, out: str, root: str) -> None:
+# `python -m pytest` with pytest absent exits 1 — indistinguishable, by exit
+# code alone, from a genuine red suite. Measured 2026-09-03: `fluidfix
+# estimate` on this very repo, run by the pipx interpreter, reported a
+# confident 0.03s estimate and blamed the user's suite for being red. The
+# suite had never run. Installing fluidfix and having the project's pytest
+# on the SAME interpreter is the exception, not the rule.
+_NO_PYTEST = "No module named pytest"
+
+
+def _check_harness(rc: int, args: list, out: str, root: str,
+                   python: str = "") -> None:
+    if rc != 0 and _NO_PYTEST in out:
+        raise HarnessError(
+            "the interpreter running your suite has no pytest, so no test "
+            "has been judged.\n"
+            f"  interpreter: {python or '(the one fluidfix runs on)'}\n"
+            "  fix: point fluidfix at your project's interpreter --\n"
+            "       fluidfix ... --python /path/to/venv/bin/python\n"
+            "  (or install pytest into the interpreter above)")
     if rc not in _EXIT_MEANING:
         return
     hint = ""
@@ -129,7 +147,7 @@ class Oracle:
     def green(self, timeout: int | None = None) -> bool:
         self.clear_pyc()
         rc, out = self.run(["--tb=no"], timeout=timeout)
-        _check_harness(rc, self.extra_args, out, self.root)
+        _check_harness(rc, self.extra_args, out, self.root, self.python)
         return rc == 0
 
     def _cov_installed(self) -> bool:
@@ -198,5 +216,5 @@ class Oracle:
         a later --lf coverage run re-runs exactly the recorded failing test."""
         self.clear_pyc()
         rc, out = self.run(["-x", "--tb=long"], cache=True)
-        _check_harness(rc, self.extra_args, out, self.root)
+        _check_harness(rc, self.extra_args, out, self.root, self.python)
         return rc != 0, out

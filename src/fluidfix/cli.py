@@ -235,8 +235,12 @@ def cmd_estimate(args) -> int:
         2 tests   @ 0.01s ->  2 runs -> ~1.1s
         105 tests @ 0.07s ->  3 runs ->  1.7s
         1,990     @ 4.5s  ->  8 runs ->   36s
+
+    An estimate is only worth as much as the run behind it: this command
+    REFUSES to print a number when the suite did not actually execute.
     """
     import time as _time
+    from .oracle import HarnessError
 
     oracle = _oracle(args)
     print(f"timing your suite (one run, {oracle.python})...")
@@ -247,15 +251,46 @@ def cmd_estimate(args) -> int:
         print(f"could not run the suite: {e}")
         return 1
     secs = _time.time() - t0
-    n = ""
+
+    # A number nobody measured is worse than no number. Everything below
+    # this line refuses rather than guesses.
+    if out.strip() == "TIMEOUT":
+        print(f"  your suite did not finish within --suite-timeout "
+              f"({args.suite_timeout}s).\n")
+        print("EXPECTED REPAIR TIME on this repo")
+        print(f"  unmeasurable here, and that IS the answer: at >"
+              f"{args.suite_timeout}s per run even a\n  2-run repair costs "
+              f"over {2 * args.suite_timeout // 60} minutes. Guard a fast "
+              f"subset instead --\n  pass test paths after the root, or "
+              f"raise --suite-timeout if the suite\n  really is that long "
+              f"and you accept the cost.")
+        return 1
+    try:
+        from .oracle import _check_harness
+        _check_harness(rc, oracle.extra_args, out, oracle.root, oracle.python)
+    except HarnessError as e:
+        print(f"  the suite did not run, so there is nothing to time.\n")
+        print(f"{e}")
+        return 1
+
+    summary = ""
     for line in reversed(out.strip().splitlines()):
-        if " passed" in line or " failed" in line:
-            n = line.strip()[:70]
+        if " passed" in line or " failed" in line or " error" in line:
+            summary = line.strip()[:70]
             break
+    if not summary:
+        # pytest exited 0 with no summary line: nothing was collected in a
+        # way _check_harness recognises. Still refuse — an estimate built on
+        # zero tests is a fabrication.
+        print("  pytest ran but reported no test results, so this repo has "
+              "nothing\n  for fluidfix to be judged by yet. Run `fluidfix "
+              "init` to generate a\n  starter smoke suite, then estimate "
+              "again.")
+        return 1
 
     startup = 0.5                     # pytest process startup, measured
     per_run = secs + startup
-    print(f"  {n or 'suite finished'}")
+    print(f"  {summary}")
     print(f"  suite runtime: {secs:.2f}s  (+~{startup}s pytest startup "
           f"per run)\n")
     print("EXPECTED REPAIR TIME on this repo")
@@ -355,9 +390,36 @@ def cmd_selfcheck(args) -> int:
     print(f"ranking law veto dominance / monotonicity:   "
           f"{'both hold' if not (veto_bad or mono_bad) else 'VIOLATED'}")
 
+    # ---- law 5: the SIGHT law, verified as its author verifies it ---------
+    from .sight import sight as _sight
+
+    def _sspec(x):
+        if x & 7:                      # any POINTING bit
+            return 0
+        for i, base in ((3, 2), (4, 3), (5, 4), (6, 5)):
+            if (x >> i) & 1:
+                return base + ((x >> 7) & 1)
+        return 6 + ((x >> 7) & 1)
+
+    sight_bad = sum(_sight(x) != _sspec(x) for x in range(256))
+    # R1: pointing outranks every non-pointing file, at any evidence count
+    r1_bad = sum(1 for a in range(256) if a & 7
+                 for b in range(256) if not b & 7 and not _sight(a) < _sight(b))
+    # R2: the ubiquity penalty cannot reach a pointed-at file
+    r2_bad = sum(1 for x in range(256)
+                 if x & 7 and _sight(x) != _sight(x & 0x7F))
+    # R3: more evidence is never worse
+    r3_bad = sum(1 for x in range(256) for b in range(7)
+                 if not ((x >> b) & 1) and _sight(x | (1 << b)) > _sight(x))
+    print(f"sight law vs specification, all 256:         {256 - sight_bad}/256")
+    print(f"sight law tiers (R1 pointing > circumstantial,\n"
+          f"  R2 no penalty on pointing, R3 monotone):    "
+          f"{'all hold' if not (r1_bad or r2_bad or r3_bad) else 'VIOLATED'}")
+
     total = (bad or 0) + ident + comp + lane_bad + law_bad + rule_bad \
-        + rank_bad + veto_bad + mono_bad
-    print("SELFCHECK PASS — 4 laws re-derived" if not total else "SELFCHECK FAIL")
+        + rank_bad + veto_bad + mono_bad \
+        + sight_bad + r1_bad + r2_bad + r3_bad
+    print("SELFCHECK PASS — 5 laws re-derived" if not total else "SELFCHECK FAIL")
     return 0 if not total else 1
 
 

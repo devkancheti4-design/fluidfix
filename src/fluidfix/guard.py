@@ -50,6 +50,9 @@ class GuardReport:
     # engine law HARVEST_COUNTEREXAMPLE, actuated: every candidate rejected
     # on the way to this report, each with the failing test that killed it
     attempts: list = field(default_factory=list)
+    # what the SIGHT law had to read: which files any POINTING lane named.
+    # Empty means the ranking was ordering on circumstantial evidence alone.
+    evidence: dict = field(default_factory=dict)
 
     def summary(self) -> str:
         if self.status == "green":
@@ -64,10 +67,34 @@ class GuardReport:
         # that the defect file was never opened. Blaming the vocabulary
         # sends the user to write a rule they already have.
         exhausted = "budget exhausted" in (self.hint or "")
-        if exhausted:
+        pointed = (self.evidence or {}).get("pointed") or []
+        if exhausted and not pointed:
+            # THE THIRD CAUSE. Running out of clock with NO pointing evidence
+            # is not a search limit that a bigger budget fixes: the ranking
+            # was ordering on circumstantial signals alone, so more time buys
+            # more files in an essentially arbitrary order.
+            # Measured 2026-09-03 on click: a defect at types.py:499 whose
+            # only failure signal was `assert [...] == [...]` over string
+            # lists. No traceback frame, no discriminating literal, and the
+            # taught signal matched 3 files (the SCARCE lane needs <= 2). The
+            # guard advised raising the budget; a bigger budget would have
+            # searched the same files in the same order.
+            base = ("REFUSED: nothing in the failure pointed at a file — no "
+                    "traceback frame, no discriminating literal, no taught "
+                    "signal narrow enough to localise. The ranking had only "
+                    "circumstantial evidence, so a bigger budget searches the "
+                    "same files in the same order. "
+                    f"Files searched: {', '.join(self.candidates) or 'none'}. "
+                    "What helps, in order: name the file yourself "
+                    "(--file <path>); make the failing assertion carry a "
+                    "value that occurs in few files; or teach a narrower "
+                    "signal for this class.")
+        elif exhausted:
             base = ("REFUSED: ran out of budget before the fault was found — "
                     "this is a SEARCH limit, not a gap in the taught "
                     "vocabulary. "
+                    f"The failure pointed at {', '.join(pointed)}, so more "
+                    "clock genuinely helps. "
                     f"Files searched: {', '.join(self.candidates) or 'none'}; "
                     "the defect may be in a file the ranking never reached.")
         else:
@@ -89,9 +116,18 @@ def _is_test_path(rel: str) -> bool:
 
 
 def find_candidate_files(oracle: Oracle, failing_output: str,
-                         limit: int = 3) -> list[str]:
-    """Project source files implicated by the failure, most suspect first."""
+                         limit: int = 3, evidence: dict | None = None) -> list[str]:
+    """Project source files implicated by the failure, most suspect first.
+
+    `evidence`, when given, is filled in with what the SIGHT law actually had
+    to read: {"pointed": [files carrying a POINTING bit], "lanes": {...}}.
+    A refusal must be able to say whether the ranking had evidence or was
+    guessing — those need opposite advice from the user.
+    """
     clean = _ANSI.sub("", failing_output)
+    if evidence is not None:
+        evidence.setdefault("pointed", [])
+        evidence.setdefault("lanes", {})
     ordered: list[str] = []
     for m in re.finditer(r"([\w./\\-]+\.py)[\":,]", clean):
         p = m.group(1).replace("\\", "/")
@@ -108,7 +144,11 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
         ordered.append(rel)
     ordered.reverse()
     if ordered:
+        if evidence is not None:
+            evidence["pointed"] = list(ordered[:limit])
+            evidence["lanes"] = {"FRAMED": list(ordered[:limit])}
         return ordered[:limit]
+
     # No source frames (pure assertion failure): file-level SPECTRUM
     # localisation. Two coverage runs — the failing test alone (--lf) and the
     # full suite — then rank by how SPECIFIC a file is to the failure:
@@ -153,18 +193,27 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
                                      os.path.basename(rel).lower()))
         affinity = 1.0 if base_tokens & fail_mods else 0.0
         ranked2.append((affinity, specificity, n_fail, rel))
-    # THE RANKING LAW, applied at FILE granularity. The same seven evidence
-    # lanes read just as well of a file as of a line, and the file order is
-    # what actually cost the time: measured 2026-09-02 on click, a defect in
-    # _textwrap.py was refused after eight OTHER files were searched first.
-    #   FRAME     the traceback names this file
-    #   NAMED     a failing test's name shares a token with the filename
-    #   SIGNALED  the failing tests execute lines here at all
-    #   CHEAP     few executed lines to search
-    #   DENSE     the failing tests execute nearly all of it (unspecific)
-    #   RECENT    the file was touched by recent commits
-    # Specificity still breaks ties INSIDE a priority class, never over it.
-    from .rank import observe_bits, rank as _rank
+    # THE SIGHT LAW (fluidfix/sight.py) decides FILE order. Its two tiers are
+    # the point: POINTING evidence (the failure or the taught class naming a
+    # file) always outranks CIRCUMSTANTIAL evidence, and the ubiquity penalty
+    # is algebraically unreachable on a pointed-at file.
+    #   FRAMED   the traceback names this file            POINTING
+    #   SCARCE   the class signal matches <= 2 files       POINTING
+    #   LITERAL  an asserted literal occurs in <= 2 files  POINTING
+    #   FAILONLY specificity >= 0.9                       circumstantial
+    #   NAMED    filename shares a token with the test     circumstantial
+    #   TOUCHED  the file was touched by recent commits    circumstantial
+    #   SMALL    few executed lines to search              circumstantial
+    #   UBIQUITOUS nearly every test executes it           penalty
+    # Specificity still breaks ties INSIDE a priority class, never over it —
+    # which is also how the three equal-rank POINTING bits are separated.
+    #
+    # Ranking here used to be rank.py (the LINE law) reused at file
+    # granularity. It could not express either tier rule: NAMED, a filename
+    # coincidence, outranked direct evidence, and DENSE demoted the defect
+    # file itself. Measured 2026-09-03 on click, that put types.py 6th behind
+    # shell_completion.py and cost the repair. rank.py still orders LINES.
+    from .sight import observe_bits as _sight_bits, sight as _sight
 
     framed_files = {os.path.basename(m.group(1))
                     for m in re.finditer(r"([\w./\\-]+\.py)[\":,]", clean)}
@@ -177,27 +226,6 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
     except Exception:
         recent_files = set()
 
-    def file_priority(rel, specificity, n_fail):
-        base_tokens = set(re.findall(r"[a-z]{3,}",
-                                     os.path.basename(rel).lower()))
-        # FAILONLY is the law's second-strongest lane and the one that
-        # discriminates here: a file whose executed lines come almost
-        # entirely from the FAILING tests is implicated, and a file every
-        # test touches is not. specificity = |failing-test lines| /
-        # |all-test lines| is exactly that measurement.
-        # (Fixed 2026-09-02: specificity was first wired to DENSE — bit 6,
-        # deprioritise — which inverted the strongest signal available and
-        # left the true defect file behind files no evidence favoured.)
-        return _rank(observe_bits(
-            frame=os.path.basename(rel) in framed_files,
-            failonly=specificity >= 0.9,
-            named=bool(base_tokens & fail_mods),
-            signaled=n_fail > 0,
-            recent=rel in recent_files,
-            cheap=0 < n_fail < 80,
-            dense=specificity < 0.25,     # every test touches it: unspecific
-        ))
-
     # EVIDENCE THE FAILURE ITSELF CARRIES. An assertion prints the values it
     # compared: `assert '\x1b[95m...' == '\x1b[94m...'`. Measured 2026-09-02
     # on click: the literal 95 appears in exactly ONE of 17 source files —
@@ -209,34 +237,65 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
     assert_lits = set()
     for m in re.finditer(r"^E?\s*(?:assert|AssertionError).*", clean, re.M):
         assert_lits.update(re.findall(r"\d{2,}", m.group(0)))
+
+    # One read of each candidate file, serving both POINTING lanes below.
+    bodies: dict[str, str] = {}
+    for rel in {t[3] for t in ranked2}:
+        try:
+            bodies[rel] = open(os.path.join(oracle.root, rel),
+                               encoding="utf-8", errors="replace").read()
+        except OSError:
+            pass
+
     lit_named: set[str] = set()
-    if assert_lits:
-        bodies = {}
-        for rel in {t[3] for t in ranked2}:
-            try:
-                bodies[rel] = open(os.path.join(oracle.root, rel),
-                                   encoding="utf-8", errors="replace").read()
-            except OSError:
-                pass
-        for lit in assert_lits:
-            pat = re.compile(rf"(?<![\w.]){re.escape(lit)}(?![\w.])")
-            hits = [rel for rel, b in bodies.items() if pat.search(b)]
-            if 0 < len(hits) <= 2:          # discriminating, not noise
-                lit_named.update(hits)
+    for lit in assert_lits:
+        pat = re.compile(rf"(?<![\w.]){re.escape(lit)}(?![\w.])")
+        hits = [rel for rel, b in bodies.items() if pat.search(b)]
+        if 0 < len(hits) <= 2:          # discriminating, not noise
+            lit_named.update(hits)
+
+    # SCARCE — the taught class is itself a localiser. A signal regex that
+    # matches lines in only one or two files repo-wide has told us where to
+    # look before a single candidate is tried. Measured 2026-09-03 on click:
+    # the defect file ranked 6th because nothing read this, while a filename
+    # coincidence (NAMED) promoted the wrong file to 2nd.
+    # Broad signals (the shipped classes match almost everywhere) name many
+    # files and are ignored — the lane is self-limiting, not a free boost.
+    scarce_named: set[str] = set()
+    try:
+        from .acts import KINDS
+        for _kind, entry in list(KINDS.items()):
+            sig = entry[2]
+            if sig is None:
+                continue
+            hits = [rel for rel, b in bodies.items() if sig.search(b)]
+            if 0 < len(hits) <= 2:
+                scarce_named.update(hits)
+    except Exception:                                       # noqa: BLE001
+        pass
 
     def file_priority2(rel, specificity, n_fail):
         base_tokens = set(re.findall(r"[a-z]{3,}",
                                      os.path.basename(rel).lower()))
-        return _rank(observe_bits(
-            frame=(os.path.basename(rel) in framed_files
-                   or rel in lit_named),
+        return _sight(_sight_bits(
+            framed=os.path.basename(rel) in framed_files,
+            scarce=rel in scarce_named,
+            literal=rel in lit_named,
             failonly=specificity >= 0.9,
             named=bool(base_tokens & fail_mods),
-            signaled=n_fail > 0,
-            recent=rel in recent_files,
-            cheap=0 < n_fail < 80,
-            dense=specificity < 0.25,
+            touched=rel in recent_files,
+            small=0 < n_fail < 80,
+            ubiquitous=specificity < 0.25,
         ))
+
+    if evidence is not None:
+        framed_here = [t[3] for t in ranked2
+                       if os.path.basename(t[3]) in framed_files]
+        evidence["lanes"] = {"FRAMED": framed_here,
+                             "SCARCE": sorted(scarce_named),
+                             "LITERAL": sorted(lit_named)}
+        evidence["pointed"] = sorted(
+            set(framed_here) | scarce_named | lit_named)
 
     ranked2.sort(key=lambda t: (file_priority2(t[3], t[1], t[2]),
                                 -t[0], -t[1], -t[2], t[3]))
@@ -411,7 +470,8 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     if not fails:
         clear_refusal(oracle.root)
         return GuardReport(status="green", seconds=time.time() - t0)
-    candidates = files or find_candidate_files(oracle, out)
+    ev: dict = {}
+    candidates = files or find_candidate_files(oracle, out, evidence=ev)
     hint = ""
     capped0 = acts0 = False
     attempts: list = []
@@ -432,7 +492,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 seconds=time.time() - t0, attempts=attempts,
                 hint=(f"--budget exhausted ({budget}s) during the first "
                       "pass — raise --budget, tighten taught-class signals, "
-                      "or fix by hand"))
+                      "or fix by hand"), evidence=ev)
         packet = build_packet(oracle, rel, coverage_target=coverage_target)
         if packet is None:
             continue
@@ -457,14 +517,15 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             return GuardReport(status="refused", file=rel,
                                candidates=candidates, result=result,
                                seconds=time.time() - t0,
-                               hint=result.reason, attempts=attempts)
+                               hint=result.reason, attempts=attempts, evidence=ev)
 
     # ---- the engine law rules on the refusal -------------------------------
     # Measure what actually blocked, then do what the law says. Only
     # RAISE_BUDGET retries; everything else is an honest, specific stop.
     # a truncated candidate-file list is also a CAPPED budget: more files
     # were implicated by coverage than the first pass tried
-    all_files = files or find_candidate_files(oracle, out, limit=999)
+    all_files = files or find_candidate_files(oracle, out, limit=999,
+                                              evidence=ev)
     capped0 = capped0 or len(all_files) > len(candidates)
     if escalate and decide(situation(CAPPED=capped0, REFUTED=acts0)) == "RAISE_BUDGET":
         # DEPTH-FIRST: the budget belongs to the best-ranked file first.
@@ -482,13 +543,25 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
         any_acts = False
         for rel in all_files:
             if time.time() > deadline:
+                # The hint states the FACT (the clock ran out); summary()
+                # names the cause, which depends on whether any POINTING lane
+                # had anything to say. Claiming "the search space is real"
+                # unconditionally was the misdiagnosis: with no evidence, the
+                # search space is not real, it is arbitrary.
+                _pointed = (ev or {}).get("pointed") or []
                 return GuardReport(
-                    status="refused", candidates=candidates,
+                    status="refused", candidates=candidates, evidence=ev,
                     seconds=time.time() - t0, attempts=attempts,
                     hint=(f"escalation budget exhausted ({escalate_budget}s) "
-                          "with CAPPED still ruling RAISE_BUDGET — raise "
-                          "--escalate-budget, use --observer claude, or fix "
-                          "by hand (the search space is real, the clock ran out)"))
+                          "with CAPPED still ruling RAISE_BUDGET — "
+                          + ("raise --escalate-budget, use --observer claude, "
+                             "or fix by hand (the clock ran out on a search "
+                             "the failure genuinely pointed at)"
+                             if _pointed else
+                             "but no POINTING lane named a file, so a larger "
+                             "budget re-searches the same arbitrary order; "
+                             "name the file with --file, or make the failure "
+                             "carry a locating value")))
             if rel in full_sight:
                 continue    # pass 0 already searched this file's COMPLETE
                             # packet — a bigger budget adds nothing here
@@ -525,7 +598,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 return GuardReport(status="refused", file=rel,
                                    candidates=candidates, result=result,
                                    seconds=time.time() - t0,
-                                   hint=result.reason, attempts=attempts)
+                                   hint=result.reason, attempts=attempts, evidence=ev)
         if any_acts and not hint and \
                 decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
             hint = ("every generated candidate was rejected by the suite "
@@ -538,7 +611,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the "
                 "refusal report lists each one with the test that killed it")
     return GuardReport(status="refused", candidates=candidates,
-                       seconds=time.time() - t0, hint=hint,
+                       seconds=time.time() - t0, hint=hint, evidence=ev,
                        attempts=attempts)
 
 
