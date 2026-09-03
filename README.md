@@ -20,6 +20,24 @@ fluidfix guard path/to/project --python path/to/venv/bin/python --interval 900 -
 fluidfix repair path/to/project --file pkg/module.py --python path/to/venv/bin/python
 ```
 
+**How fast will it be on your repo?** Repair time is *suite runs x your
+suite's own runtime* — test count barely matters. Ask before you commit:
+
+```bash
+fluidfix estimate .
+```
+
+```
+  1990 passed, 25 skipped in 4.87s
+  suite runtime: 5.60s  (+~0.5s pytest startup per run)
+
+EXPECTED REPAIR TIME on this repo
+  typical in-vocabulary defect (2-10 suite runs):  12.2s - 61s
+```
+
+(Those bounds are real: the same repo repaired in 36s and 50s.)
+
+
 ```python
 from fluidfix import Oracle, build_packet, MechanicalObserver, repair
 

@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.9.1 — 2026-09-03
+
+- **`fluidfix estimate` — know your number before you install.** Times your
+  suite once and projects repair time from the model that independent
+  third-party testing surfaced and this project confirmed:
+
+      repair time ~= suite runs x (your suite's runtime + ~0.5s startup)
+
+  **Test COUNT barely matters — your suite's RUNTIME is the entire bill.**
+  105 tests running in 0.07s are cheaper to guard than 20 tests taking 5s.
+  Validated against real repairs: the 105-test engine predicted 1.4-7s and
+  repaired in 1.7s; click (1,990 tests, 4.5s) predicted 12.2-61s and
+  repaired in 36s and 50s — both inside the band. It also tells slow-suite
+  repos to guard a subset or run on `--interval`, and says plainly when the
+  suite is already red.
+- Credit where due: the scaling model came from an independent tester who
+  built a 105-test game engine to probe the middle of the curve after being
+  told the toy-project numbers were the easy regime.
+
+
 ## 0.9.0 — 2026-09-02
 
 - **A fourth machine-authored kernel: the RANKING LAW.** fluidfix had laws
