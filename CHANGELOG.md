@@ -1,5 +1,52 @@
 # Changelog
 
+## 0.9.0 — 2026-09-02
+
+- **A fourth machine-authored kernel: the RANKING LAW.** fluidfix had laws
+  for *what* to repair (fluid-router), *how* to drive candidates
+  (fluid-router2) and what to do when *blocked* (the engine law) — but the
+  order in which files and lines were examined was hand-written heuristics.
+  Measured on click: a taught class that had just repaired two instances of
+  itself spent 1,934s and 474 rejected candidates on a third without ever
+  opening the defect file. `src/fluidfix/rank.py` vendors the authored law
+  verbatim — seven evidence lanes with the RETRIED veto folded into each,
+  priority 0..7, lower examined first — and it governs both file and line
+  order. Verified exhaustively (all 256 situations against the
+  specification, veto dominance, monotonicity in evidence).
+- **`fluidfix selfcheck` now re-derives all FOUR laws**, not two: router
+  (4,096 cases + identity + composition), lanes (256 states + termination),
+  the engine law (verbatim fingerprint + the rulings the guard depends on),
+  and the ranking law (256 situations + veto + monotonicity).
+- **The failure's own evidence is now read.** An assertion prints the values
+  it compared. Measured: a failing test printed
+  `assert '\x1b[95m…' == '\x1b[94m…'`, and the literal `95` appeared in
+  exactly ONE of 17 source files — the defect — while neither coverage
+  specificity nor test-name affinity distinguished it at all (#6 under the
+  old heuristic AND under the law). Feeding it into the law's FRAME lane
+  moved it to #1, and the repair went from **1,740s and failing** to
+  **50s byte-exact**. A literal naming one or two files is evidence; one
+  naming many is noise and is ignored.
+- **Refusals name the right cause.** Running out of clock while files were
+  still unsearched is a SEARCH limit, not a vocabulary gap — it used to
+  report "fault is outside the taught vocabulary" for a class that had just
+  been taught and had already repaired two of its members, sending the user
+  to write a rule they already had.
+- **A suite that never RAN is no longer judged as a failing suite.**
+  pytest exit 3/4/5 raise `HarnessError` naming the cause (found on
+  SQLAlchemy 2.1: 1,466 tests collected with `-p no:cacheprovider`, ZERO
+  with the cache provider `--lf` requires). A candidate in the tree owns
+  whatever pytest chokes on, so `check()` rejects rather than aborting; and
+  the fail-fast gate disables itself on harnesses that cannot support it.
+- **Fusion integrity, enforced.** Two paths cited the engine law in strings
+  while branching on hardcoded conditions; both now consult `decide()`, and
+  a test parses every "engine law: X → Y" claim in the shipped source and
+  re-derives it from the vendored law, so a comment can never drift from
+  the ruling it names.
+- `--max-candidates` / `FLUIDFIX_CANDIDATE_CAP`: the 32-candidate bound is a
+  budget, not a safety limit — the suite still adjudicates every candidate.
+- 122/122 tests.
+
+
 ## 0.8.0 — 2026-09-02
 
 The 82-agent fresh-eyes fleet (24 real `pip install` personas, 24 adversarial

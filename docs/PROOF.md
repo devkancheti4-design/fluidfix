@@ -14,7 +14,7 @@ what it has been shown one example of, proves every repair with your own
 suite, and refuses everything it cannot prove — leaving the tree
 byte-identical and telling you exactly what it tried.
 
-It is not a linter, not a detector, not a model writing code. Three
+It is not a linter, not a detector, not a model writing code. Four
 machine-authored integer laws decide; your suite is the only judge.
 
 ---
@@ -58,7 +58,13 @@ no hint. One regression at a time, as they actually occur. Pass mark is
 |---|---|---|---|
 | `testing.py:726` constant drift | 28 | **byte-exact**, committed | 138 s |
 | `formatting.py:143` constant drift | 15 | **byte-exact**, committed | **36 s** (8 suite runs) |
-| `_textwrap.py:109` constant drift | 244 | *(see §7 — blast radius)* | |
+| `termui.py:50` colour-code drift | 2 | **byte-exact**, committed | **50 s** (was 1,740 s and FAILING before the ranking law — see §9) |
+| `_textwrap.py:109` constant drift | 244 | refused honestly, 474 candidates logged with the test that killed each | 1,934 s |
+
+**3 of 4 byte-exact, zero wrong repairs.** The refusal is the honest kind:
+the tree was left untouched and the report named every attempt. Its cause is
+known — the failing assertion carries no literal that names a file, so the
+evidence that rescued `termui.py` has nothing to offer it.
 
 fluidfix authored its own commits: `fluidfix: restore src/click/formatting.py:143`.
 
@@ -188,7 +194,39 @@ The trials were run to break the product, and they did:
 | [fluid-router](https://github.com/devkancheti4-design/fluid-router) | **decides** — routes a fault kind to its repair in four integer instructions; verified on all 4,096 cases |
 | [fluid-router2](https://github.com/devkancheti4-design/fluid-router2) | **drives** — EMIT/ADVANCE/HALT over the candidate mask; 256 states, termination proved |
 | [dev](https://github.com/devkancheti4-design/dev) | **governs** — the engine law: escalate, refuse, harvest, or ship |
+| **the ranking law** (`src/fluidfix/rank.py`) | **orders** — which file and which line to examine next, from seven lanes of measured evidence with a RETRIED veto |
 | [proven-reason](https://github.com/devkancheti4-design/proven-reason) | **proves** — authors the smallest rule from examples, then checks all 4,294,967,296 int32 inputs |
+
+### The ranking law, and what it bought
+
+fluidfix knew *what* to repair, *how* to drive candidates, and what to do
+when *blocked* — but the order it examined files and lines in was
+hand-written heuristics, and that was where the time went. A taught class
+that had just repaired two instances of itself spent 1,934 s and 474
+rejected candidates on a third without ever opening the defect file.
+
+The law reads seven lanes of evidence about one candidate (FRAME, FAILONLY,
+NAMED, SIGNALED, RECENT, CHEAP, DENSE) with RETRIED as a veto, and returns a
+priority 0..7. It verifies exhaustively — 256/256 against its
+specification, veto dominance, monotone in evidence — in C and in the
+vendored Python port.
+
+Fusing it took three corrections, all mine, none the law's: it was first
+wired at line level while the cost was in *file* order; coverage
+specificity was connected to DENSE (deprioritise) when it is the FAILONLY
+signal (near-top priority), inverting the strongest evidence available; and
+a broken regex silently produced no literals at all. Once the evidence was
+honest, one measured change did the work:
+
+| | before | after |
+|---|---|---|
+| `termui.py` rank among candidate files | #6 | **#1** |
+| repair | **failed at 1,740 s** | **byte-exact in 50 s** |
+
+The evidence was in the error message the whole time: the failing assertion
+printed `assert '\x1b[95m…' == '\x1b[94m…'`, and the literal `95` appears in
+exactly one of seventeen source files — the defect. Neither coverage nor
+name affinity distinguished it at all.
 
 The fusion is audited, not asserted: fluidfix's copy of the engine law is
 byte-identical to the dev repo's (sha256 `48bf50bf…`, 1,555 chars), agrees
@@ -196,7 +234,20 @@ with it on **all 1,024 situations**, rules exactly on **all 22 measured
 events**, and job-invariance is 0/256.
 
 ```bash
-fluidfix selfcheck        # re-derives every law on your machine, ~1 second
+fluidfix selfcheck        # re-derives all FOUR laws on your machine, ~1 second
+```
+
+```
+router vs reference, all 4096 (F1,A1,Fq): 4096/4096
+identity route(F1,A1,F1)==A1:               256/256
+composition route(o2, route(o1, q)):        4096/4096
+lanes: EMIT/ADVANCE/HALT on 256 states:     0 wrong
+termination: every mask drains (1024 total steps)
+engine law fingerprint (sha256 48bf50bff36a2cc9, 1555 chars): verbatim
+engine law rulings the guard depends on:      5/5
+ranking law vs specification, all 256:       256/256
+ranking law veto dominance / monotonicity:   both hold
+SELFCHECK PASS — 4 laws re-derived
 ```
 
 ---

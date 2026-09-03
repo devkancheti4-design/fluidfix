@@ -262,8 +262,46 @@ def cmd_selfcheck(args) -> int:
             steps += 1
             assert steps < 4096, "ADVANCE failed to reduce"
     print(f"termination: every mask drains ({steps} total steps)")
-    print("SELFCHECK PASS" if not (bad or ident or comp or lane_bad) else "SELFCHECK FAIL")
-    return 0 if not (bad or ident or comp or lane_bad) else 1
+    # ---- law 3: the engine law (dev repo), vendored verbatim ------------
+    import hashlib
+
+    from .engine import LAW, decide, situation
+    fp = hashlib.sha256(LAW.encode()).hexdigest()
+    law_bad = 0 if (len(LAW) == 1555 and fp.startswith("48bf50bff36a2cc9")) else 1
+    print(f"engine law fingerprint (sha256 {fp[:16]}, {len(LAW)} chars): "
+          f"{'verbatim' if not law_bad else 'DRIFTED'}")
+    rulings = {"BUILT": "SHIP", "AMB": "ADD_STATE", "UNREAD": "ADD_MATERIAL",
+               "CAPPED": "RAISE_BUDGET", "REFUTED": "HARVEST_COUNTEREXAMPLE"}
+    rule_bad = sum(decide(situation(**{k: True})) != v for k, v in rulings.items())
+    print(f"engine law rulings the guard depends on:      "
+          f"{len(rulings) - rule_bad}/{len(rulings)}")
+
+    # ---- law 4: the ranking law, verified as its author verifies it ------
+    from .rank import rank as _rank
+
+    def _spec(x):
+        if (x >> 7) & 1:
+            return 7
+        ev = x & 0x7F
+        if not ev:
+            return 7
+        i = 0
+        while not ((ev >> i) & 1):
+            i += 1
+        return i
+
+    rank_bad = sum(_rank(x) != _spec(x) for x in range(256))
+    veto_bad = sum(_rank(x | 128) != 7 for x in range(256))
+    mono_bad = sum(1 for x in range(128) for b in range(7)
+                   if not ((x >> b) & 1) and _rank(x | (1 << b)) > _rank(x))
+    print(f"ranking law vs specification, all 256:       {256 - rank_bad}/256")
+    print(f"ranking law veto dominance / monotonicity:   "
+          f"{'both hold' if not (veto_bad or mono_bad) else 'VIOLATED'}")
+
+    total = (bad or 0) + ident + comp + lane_bad + law_bad + rule_bad \
+        + rank_bad + veto_bad + mono_bad
+    print("SELFCHECK PASS — 4 laws re-derived" if not total else "SELFCHECK FAIL")
+    return 0 if not total else 1
 
 
 def cmd_kinds(args) -> int:
