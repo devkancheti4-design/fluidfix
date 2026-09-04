@@ -165,6 +165,20 @@
   }
 
 
+
+  /* ---------- derivation ---------- */
+  .derive{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1px; background:var(--rail)}
+  .dcell{background:var(--panel); padding:24px 26px}
+  .dcell .tag{font-family:var(--mono); font-size:.66rem; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--void); padding:3px 8px; display:inline-block; margin-bottom:12px}
+  .dcell h3{font-family:var(--disp); text-transform:uppercase; font-size:1rem; margin:0 0 10px}
+  .dcell p{margin:0; color:var(--mute); font-size:.92rem}
+  .dcell b{color:var(--ink); font-weight:600}
+  .absent{
+    margin-top:22px; font-family:var(--mono); font-size:.82rem; color:var(--faint);
+    border:1px dashed var(--rail2); padding:14px 16px;
+  }
+  .absent b{color:var(--verify)}
   /* ---------- upstream receipt ---------- */
   .receipt{
     margin-top:26px; background:var(--panel); border:1px solid var(--rail2);
@@ -298,6 +312,51 @@
     </div>
 
   </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>It derives the fix from your codebase</h2>
+  <p class="lead">Teaching is one worked example. The interesting question is what happens when a
+  <b>different</b> instance of that class breaks — one whose correct answer was never in the
+  example. We tested it on Box2D's rigid-body core.</p>
+
+  <div class="derive">
+    <div class="dcell">
+      <span class="tag" style="background:var(--mute)">what it was taught</span>
+      <h3>One example. Different file, different fields.</h3>
+      <div class="diff" style="margin:0"><span class="minus">- shape->density = def->friction;</span>
+<span class="plus">+ shape->density = def->density;</span></div>
+      <p style="margin-top:12px">A class described only by its <b>shape</b>: "a struct field access
+      naming the wrong member; the right name is already used elsewhere in this file."</p>
+    </div>
+    <div class="dcell">
+      <span class="tag" style="background:var(--hot)">what broke, later</span>
+      <h3>Mass accumulation, in another file.</h3>
+      <div class="diff" style="margin:0"><span class="minus">- body->mass += massData.mass;</span>
+<span class="plus">+ body->inertia += massData.mass;</span></div>
+      <p style="margin-top:12px">Compiles clean. Silently corrupts every mass computation in the
+      engine. Broke <b>DeterminismTest</b> and <b>MultithreadingTest</b>.</p>
+    </div>
+  </div>
+
+  <div class="absent">
+    the correct field name <b>mass</b> appears in the worked example: <b>never</b>
+    &nbsp;·&nbsp; in the taught transform: <b>never</b>
+    &nbsp;·&nbsp; it was mined from <b>your source</b> and chosen by <b>your tests</b>
+  </div>
+
+  <div class="facts" style="margin-top:20px">
+    <div class="f"><span class="n">34</span><span class="l">suite runs</span></div>
+    <div class="f"><span class="n">116s</span><span class="l">to derive it</span></div>
+    <div class="f"><span class="n">0</span><span class="l">times shown the answer</span></div>
+    <div class="f"><span class="n">byte-exact</span><span class="l">restoration</span></div>
+  </div>
+
+  <p class="note" style="margin-top:18px">The taught class supplied the <b>shape</b>. Your
+  codebase supplied the <b>value</b>. Your suite decided. That is what "derives" means here — and
+  what it does not mean: this is a search over values your repository already contains, not
+  invention. If the right field existed nowhere in that file, no amount of teaching would conjure
+  it, and fluidfix would refuse.</p>
 </div></section>
 
 <section><div class="wrap">
