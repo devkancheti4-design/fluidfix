@@ -501,6 +501,55 @@
   </div>
 </div></section>
 
+<section id="trust"><div class="wrap">
+  <h2>What is guaranteed, and what is not</h2>
+  <p class="lead">This architecture is unlike the tools it sits beside, so it is worth being exact
+  about where the guarantee starts and stops — <b>over-expecting it and dismissing it are the same
+  mistake made from opposite directions.</b></p>
+
+  <div class="derive">
+    <div class="dcell">
+      <span class="tag" style="background:var(--verify)">guaranteed</span>
+      <h3>The law rules. It does not repair.</h3>
+      <p>Every decision comes from a machine-authored integer law, exhaustively verified over its
+      entire input domain and re-derivable on your machine in about a second. Audited against
+      <b>every incident this project has recorded</b>: nine so far, and the number whose defect
+      lived in a <i>ruling</i> is <b>zero</b>. A test in the repo fails the build if that ever
+      stops being true.</p>
+    </div>
+    <div class="dcell">
+      <span class="tag" style="background:var(--amber)">not guaranteed</span>
+      <h3>It cannot out-think your tests.</h3>
+      <p>The law rules on a <b>situation</b> — and the situation is measured from your suite. Give
+      it a suite that does not hold still and it will rule correctly on a false observation.
+      Measured: against a test that skipped its assert half the time, fluidfix accepted
+      <span style="font-family:var(--mono)">return b - a</span> for
+      <span style="font-family:var(--mono)">return a + b</span> in <b>14% of searches</b>.</p>
+    </div>
+  </div>
+
+  <div class="absent" style="border-style:solid;border-color:var(--rail2)">
+    every defect this project has found lived in <b>observation</b> (4) ·
+    <b>actuation</b> (1) · <b>the wording of a report</b> (1) ·
+    <span style="color:var(--amber)">the ruling itself (0)</span>
+  </div>
+
+  <p class="note" style="margin-top:20px"><b>So the fix is never to patch the decision.</b> It is
+  to measure the situation properly and ask the law again. When a suite was found to be unstable,
+  the remedy was not a special case bolted on — the law already had a ruling for it
+  (<span style="font-family:var(--mono)">HIDDEN &rarr; CHANGE_GRANULARITY</span>: when fine records
+  disagree with a coarse one, stop judging at that granularity), sitting in a lane fluidfix had
+  never measured. Wiring it took the false-repair rate from <b>14% to 0%</b> — and produced
+  <b>more</b> correct repairs, because a candidate that was only ever green by luck stops
+  occupying the answer.</p>
+
+  <p class="note"><b>What this means when you evaluate us.</b> Do not expect a tool that is right
+  about code your tests are wrong about — nothing can be. Do expect one whose reasoning you can
+  audit offline in a second, that refuses rather than guesses, and whose failures are published
+  with numbers rather than discovered by you. <b>Correctness is bounded by your suite, not by
+  us</b> — which is the honest boundary, and the only one you can do something about.</p>
+</div></section>
+
 <section><div class="wrap">
   <h2>It is not allowed to touch your tests</h2>
   <p class="lead">The question every engineer asks second, right after "does it work".</p>

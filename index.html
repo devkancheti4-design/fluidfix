@@ -434,9 +434,14 @@ $ echo $?
   fluidfix never ships a repair your suite rejects; byte-exactness is bounded by your suite's
   strength — 14 of 15 accepted repairs here restored the original code exactly.</p>
   <p style="color:var(--faint);font-size:.88rem;margin-top:1.2rem">The contract underneath all
-  three rows: fluidfix has <b style="color:var(--ink)">never made a wrong repair</b> — every fix
-  passes your full suite or is rolled back byte-for-byte, and what it can't prove, it refuses.
-  Precision is bounded by your suite's strength, which is also why it rewards teams that test.</p>
+  three rows, stated precisely because the precise version is the one that holds:
+  <b style="color:var(--ink)">the law has never ruled wrongly</b> — audited against every
+  incident this project has recorded, and enforced by a test in the repo. What a law cannot do is
+  out-think your tests. Every fix passes your full suite or is rolled back byte-for-byte, and what
+  it can't prove it refuses — so <b style="color:var(--ink)">correctness is bounded by your suite,
+  not by us</b>. That is the honest boundary and also the useful one: it names the thing you can
+  improve. <a href="games.html#trust" style="color:var(--teal)">How we measured it, including
+  where it goes wrong &rarr;</a></p>
   <h2 style="margin-top:3rem">v0.9.1: know your repair time before you install</h2>
   <p class="lead">Repair time is not a mystery and it is not our number &mdash; it is
   <b>suite runs &times; your suite's own runtime</b>. Test count barely matters: 105 tests that run
