@@ -1,5 +1,96 @@
 # Changelog
 
+## 0.11.0 — 2026-09-04
+
+- **C/C++ support: `fluidfix cguard` (alpha).** `src/fluidfix/coracle.py` is
+  a compile-and-run oracle behind the SAME contract the repair loop already
+  speaks, so `repair()`, `SpanEdit`, AMB refusal, deadlines and the
+  per-candidate failure harvest are REUSED. **No kernel changed.** The five
+  laws route integers and edit lines of text; they never knew what Python
+  was and did not need to learn what C is. Java took a 223-line adapter;
+  C took ~450.
+- **The compiler is a second oracle, and it is cheaper than the tests.** In
+  Python a nonsense candidate still runs and must be rejected by a full
+  suite; in C most nonsense does not compile and the toolchain says so in
+  milliseconds. A build failure on a MUTATED tree is an ordinary rejection;
+  a build failure on the PRISTINE tree is a `CBuildError` — conflating them
+  would be the C form of treating a missing pytest as a red suite.
+- **A gcov tier.** A separate instrumented build directory beside the fast
+  one, so the candidate loop never pays for instrumentation. Fail-only
+  coverage in 0.5s and full-suite coverage in 0.3s on Box2D; the packet is
+  anchored on lines the failing test actually executed (mode `coverage`),
+  and files it never executed are dropped — but only when the coverage is
+  credible (see below).
+- **Measured on two real game repos, all byte-exact:**
+
+      Box2D   b2Cross sign flip (shipped vocabulary, no teaching)
+              -> byte-exact in 46 suite runs, 82.8s
+      cglm    glm_vec3_add sign flip
+              -> byte-exact in 100 suite runs, 326.7s
+      Box2D   pointer arithmetic in contact_solver.c, with NO frame, NO
+              discriminating literal and NO name affinity (the failing tests
+              are MultithreadingTest / DeterminismTest, which name no source
+              file at all)
+              -> REFUSED at a 3600s budget before the gcov tier;
+                 byte-exact in 428 suite runs (1479s) after it, and 5x
+                 cheaper per candidate (18.8s -> 3.5s)
+
+- **THE ORACLE IS NOT A CANDIDATE — the most important fix in this
+  release.** Caught by this release's own end-to-end test: given a runner at
+  a repo root that was not recognised as test code, the guard repaired the
+  RUNNER rather than the defect. What it wrote:
+
+      - { printf("test failed: AddTest\n"); return 1; }
+      + { printf("test failed: AddTest\n"); return 0; }
+
+  It did not fix the bug. It changed the harness's failure exit code, left
+  the defect untouched, and declared success — while the output still said
+  `test failed`. It silenced the alarm instead of putting out the fire. Any
+  repair tool that can reach its own oracle will find that edit, because it
+  is the cheapest path to green, and that single behaviour would void every
+  other guarantee this project makes.
+
+  TWO defences, because excluding harness files by NAME is a patch and not a
+  cure — a project may call its runner anything:
+
+    1. harness files are excluded by name as well as by directory;
+    2. **a green exit code is no longer sufficient.** The suite's OUTPUT is
+       cross-examined against its exit code, and a run that still reports
+       failing tests is red no matter what it returns. A candidate that
+       silences the oracle instead of repairing the fault is rejected with
+       that reason named.
+
+  Both are pinned by tests, including one that disables the first defence to
+  prove the second forces a real repair on its own.
+
+  **The Python oracle got the same cross-examination.** The exposure is
+  structural, not language-specific: `_is_test_path` keeps test files out of
+  the candidate set, but a project may keep its tests somewhere fluidfix does
+  not recognise, and pytest's exit code was the only thing being trusted. A
+  run that exits 0 while its summary still reports `N failed` or `N errors`
+  is now rejected with that reason named.
+- Four more C-specific corrections, each found by measurement:
+  - a stem maps to EVERY file that shares it: `vec3.c` and `vec3.h` collided
+    and the five-line wrapper beat the header holding the implementation;
+  - do not split a letter from a digit: `vec3` is the token that identifies
+    the module, and `vec` + `3` identifies nothing;
+  - camelCase test names are split, so `MathTest` reaches `math_functions.c`;
+  - `samples/`, `shared/`, `benchmark/` and `examples/` are never candidates
+    — `DeterminismTest` matched `shared/determinism.c` while the real fault
+    sat in `src/contact_solver.c`.
+- **Coverage must earn the right to DROP a file.** The first failing test a
+  runner reports may pass in isolation: Box2D's `MultithreadingTest` fails
+  only in combination and covers 47 lines alone. Probing it produced
+  coverage of two files, and the "drop what the failure never executed"
+  rule then discarded the real defect file. Coverage is now the union over
+  every failing test, and may only remove candidates when it covers at
+  least five real files; below that it may reorder but never drop.
+- C test runners have no pytest monoculture: cglm prints a cross mark and
+  `assert fail in <file> on line <n>`, Box2D prints `test failed: MathTest`
+  with no file or line anywhere. The parser handles both, and widens as new
+  projects are guarded.
+
+
 ## 0.10.0 — 2026-09-03
 
 - **A fifth machine-authored kernel: the SIGHT LAW.** The ranking law

@@ -27,6 +27,7 @@ fluid-router, plus two found while building this package):
 from __future__ import annotations
 
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -91,6 +92,27 @@ def _check_harness(rc: int, args: list, out: str, root: str,
         f"{_EXIT_MEANING[rc]} (exit {rc}) while running pytest in {root} "
         f"with {' '.join(args) or 'no extra args'}{hint}\n"
         f"--- last output ---\n{out.strip()[-600:]}")
+
+
+# A GREEN EXIT CODE IS NOT ENOUGH. Measured on the C adapter 2026-09-04:
+# given a test runner it was allowed to edit, the guard changed the harness's
+# failing `return 1` to `return 0`, left the defect untouched, and declared
+# success — while the output still read `test failed`. Any repair tool that
+# can reach its own oracle will find that edit, because it is the cheapest
+# path to green. Python is less exposed (`_is_test_path` keeps test files out
+# of the candidate set) but the exposure is structural, not language-specific:
+# a project may keep tests somewhere fluidfix does not recognise. So the exit
+# code is cross-examined against what the run actually SAID.
+_SUMMARY_FAIL = re.compile(r"\b(\d+) (failed|error(?:s|ed)?)\b")
+
+
+def _still_reports_failures(out: str) -> str:
+    """Non-empty when a run that exited 0 nonetheless reports failures."""
+    for line in reversed(out.strip().splitlines()[-25:]):
+        m = _SUMMARY_FAIL.search(line)
+        if m and m.group(1) != "0":
+            return m.group(0)
+    return ""
 
 
 class Oracle:
@@ -203,6 +225,12 @@ class Oracle:
             # where the tree is the project's own) raise HarnessError.
             return False, f"{_EXIT_MEANING[rc]} with this candidate applied"
         if rc == 0:
+            liars = _still_reports_failures(out)
+            if liars:
+                return False, (
+                    f"suite exited 0 but still reports failures ({liars}) — "
+                    f"refusing to accept a candidate that silences the oracle "
+                    f"instead of repairing the fault")
             return True, ""
         why = next((l.strip() for l in out.splitlines()
                     if l.startswith(("FAILED", "ERROR"))), "")

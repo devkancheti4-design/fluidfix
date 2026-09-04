@@ -224,6 +224,32 @@ def cmd_jguard(args) -> int:
     return 0 if report.status in ("green", "repaired") else 2
 
 
+def cmd_cguard(args) -> int:
+    """Guard a C/C++ project: the compiler is a cheap first oracle, the test
+    binary is the acceptance gate, same five kernels."""
+    import time as _time
+    from .coracle import COracle, CBuildError, cguard_once
+    from .guard import commit_repair, write_refusal
+    from .observers import MechanicalObserver
+    _load_dictionary(args)
+    oracle = COracle(args.root, build_cmd=args.build_cmd,
+                     test_cmd=args.test_cmd, build_dir=args.build_dir,
+                     timeout=args.suite_timeout)
+    print(f"  build: {oracle.build_cmd}\n  test:  {oracle.test_cmd}")
+    try:
+        report = cguard_once(oracle, MechanicalObserver(), budget=args.budget)
+    except CBuildError as e:
+        print(f"fluidfix: {e}")
+        return 1
+    print(f"[{_time.strftime('%H:%M:%S')}] {report.summary()}")
+    if report.status == "repaired" and args.commit:
+        print({"committed": "  committed", "clean": "  nothing to commit",
+               "failed": "  commit failed"}[commit_repair(oracle.root, report)])
+    if report.status == "refused":
+        print(f"  refusal report: {write_refusal(oracle.root, report)}")
+    return 0 if report.status in ("green", "repaired") else 2
+
+
 def cmd_estimate(args) -> int:
     """Answer "how fast will fluidfix be on MY repo?" before anyone commits.
 
@@ -547,6 +573,25 @@ def main(argv=None) -> int:
     sp.add_argument("--dictionary", default=None)
     sp.add_argument("--commit", action="store_true")
     sp.set_defaults(fn=cmd_jguard)
+
+    sp = sub.add_parser("cguard", help="guard a C/C++ project: the compiler "
+                        "is a cheap first oracle, your test binary is the "
+                        "judge, same kernels (alpha)",
+                        formatter_class=argparse.RawDescriptionHelpFormatter,
+                        epilog="exit codes: 0 green or repaired, 2 refused, "
+                               "1 the project does not build")
+    sp.add_argument("root", nargs="?", default=".")
+    sp.add_argument("--build-cmd", default=None,
+                    help="how to build (default: cmake --build <build-dir> -j8)")
+    sp.add_argument("--test-cmd", default=None,
+                    help="how to run tests (default: a test binary found in "
+                         "<build-dir>, else ctest)")
+    sp.add_argument("--build-dir", default="build")
+    sp.add_argument("--suite-timeout", type=int, default=600)
+    sp.add_argument("--budget", type=int, default=None)
+    sp.add_argument("--dictionary", default=None)
+    sp.add_argument("--commit", action="store_true")
+    sp.set_defaults(fn=cmd_cguard)
 
     sp = sub.add_parser("kinds", help="list the fault-class vocabulary: every "
                         "registered kind and the free user slots")

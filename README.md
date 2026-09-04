@@ -141,6 +141,22 @@ proofs yourself, offline, in seconds:
 fluidfix selfcheck
 ```
 
+### Languages
+
+| language | command | judge | status |
+|---|---|---|---|
+| Python | `fluidfix guard` | pytest | stable |
+| C / C++ | `fluidfix cguard` | your test binary, plus the **compiler** as a cheap first oracle | alpha |
+| Java | `fluidfix jguard` | JUnit via Maven | alpha |
+
+Adding a language is an **adapter**, not a rewrite — the kernels route
+integers and edit lines of text, and never learn the language. Java took 223
+lines, C took ~450. Measured on two real game repos, all byte-exact:
+Box2D's `b2Cross` sign flip in 46 suite runs (82.8s), cglm's `glm_vec3_add`
+in 100 runs, and a pointer-arithmetic defect in Box2D's `contact_solver.c` —
+with no traceback frame, no discriminating literal and no name affinity — in
+428 runs once the gcov tier was supplying executed-line evidence.
+
 `selfcheck` re-derives **five** machine-authored laws with no network and no
 dependencies: fluid-router (which repair), fluid-router2 (which candidate
 next), the engine law (what to do when blocked — one controller that governs
