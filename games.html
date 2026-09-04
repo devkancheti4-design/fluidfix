@@ -179,6 +179,23 @@
     border:1px dashed var(--rail2); padding:14px 16px;
   }
   .absent b{color:var(--verify)}
+
+  /* ---------- hotspots ---------- */
+  .cmd{
+    font-family:var(--mono); font-size:.9rem; background:var(--void);
+    border:1px solid var(--rail2); border-left:2px solid var(--hot);
+    padding:12px 16px; margin:0 0 20px; color:var(--ink); overflow-x:auto;
+  }
+  .buy{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:.86rem}
+  .buy th{
+    text-align:left; font-weight:500; color:var(--faint); font-size:.68rem;
+    letter-spacing:.11em; text-transform:uppercase; padding:9px 16px 9px 0;
+    border-bottom:1px solid var(--rail2); white-space:nowrap;
+  }
+  .buy td{padding:10px 16px 10px 0; border-bottom:1px solid var(--rail); color:var(--mute)}
+  .buy td.big{color:var(--verify); font-weight:600}
+  .buy tr.key td{color:var(--ink)}
+  .buy tr.key td.big{color:var(--verify)}
   /* ---------- upstream receipt ---------- */
   .receipt{
     margin-top:26px; background:var(--panel); border:1px solid var(--rail2);
@@ -414,6 +431,28 @@
     </div>
   </div>
 
+
+
+  <div class="cmd">$ fluidfix hotspots .</div>
+  <p class="lead" style="margin:0 0 18px">Your repository already knows which files to test,
+  because <b>every bug fix in its history names the file that broke</b>. fluidfix ranks them by
+  defect density against current coverage — and tells you what testing them buys. Run on Box2D's
+  own 1,383 commits:</p>
+
+  <div class="scroll"><table class="buy">
+    <tr><th>guard this share of past defects</th><th>files to test</th><th>of the files that ever broke</th></tr>
+    <tr><td>30%</td><td class="big">17</td><td>5%</td></tr>
+    <tr><td>50%</td><td class="big">40</td><td>12%</td></tr>
+    <tr class="key"><td><b>60%</b></td><td class="big">58</td><td><b>18%</b></td></tr>
+    <tr><td>80%</td><td class="big">138</td><td>42%</td></tr>
+  </table></div>
+
+  <p class="note" style="margin-top:18px"><b>60% of the defects costs 18% of the files.</b>
+  Defects cluster, so coverage aimed at the cluster is worth roughly twice coverage spread evenly.
+  "Get to 60% coverage" is a year nobody funds. <b>"Test the 58 files your own history already
+  named"</b> is a sprint — and for a live-service title you do not even need the git archaeology:
+  three months of incidents <i>is</i> that ranking, and every incident is a test that pays twice,
+  once as a regression guard and once as a worked example a class can be taught from.</p>
 
   <div class="receipt">
     <span class="ref">upstream · erincatto/box2d · issue #1103 · open</span>
