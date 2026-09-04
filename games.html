@@ -164,6 +164,18 @@
     padding:3px 8px; color:var(--verify); font-size:.86rem;
   }
 
+
+  /* ---------- upstream receipt ---------- */
+  .receipt{
+    margin-top:26px; background:var(--panel); border:1px solid var(--rail2);
+    border-left:3px solid var(--verify); padding:24px 26px;
+  }
+  .receipt h3{font-family:var(--disp); text-transform:uppercase; font-size:1.05rem; margin:0 0 10px}
+  .receipt p{margin:0 0 10px; color:var(--mute); font-size:.94rem; max-width:72ch}
+  .receipt p:last-child{margin-bottom:0}
+  .receipt b{color:var(--ink); font-weight:600}
+  .receipt a{color:var(--verify); text-decoration:none; border-bottom:1px solid var(--rail2)}
+  .receipt .ref{font-family:var(--mono); font-size:.78rem; color:var(--faint); margin-bottom:12px; display:block}
   /* ---------- maintenance log ---------- */
   .log{
     font-family:var(--mono); font-size:.82rem; line-height:1.9; background:var(--void);
@@ -341,6 +353,21 @@
       <p>Same defect. Same vocabulary. <b>Nothing taught.</b> 29 suite runs, byte-exact — the
       <b>fastest repair we recorded</b>, on the file that was invisible ten minutes earlier.</p>
     </div>
+  </div>
+
+
+  <div class="receipt">
+    <span class="ref">upstream · erincatto/box2d · issue #1103 · open</span>
+    <h3>We reported the gap to Box2D</h3>
+    <p>The coverage analysis above is not a marketing exercise — it found a real hole in a real
+    engine, so we wrote the missing test and
+    <a href="https://github.com/erincatto/box2d/issues/1103">filed it upstream</a>. The test is
+    public, and it fails on <b>two independent seeded defects</b> in the plane solver while passing
+    on unmodified sources.</p>
+    <p>We filed an issue rather than a pull request because Box2D's own template asks for that, and
+    we did not mention this product in it. Whether the maintainer takes the test is entirely his
+    call. <b>The point is that the analysis is checkable by anyone</b> — click the link and read
+    what we actually found.</p>
   </div>
 
   <p class="note" style="margin-top:22px">Two different things fail two different ways, and only
