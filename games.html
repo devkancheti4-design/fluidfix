@@ -163,17 +163,35 @@
     font-family:var(--mono); background:var(--void); border:1px solid var(--rail);
     padding:3px 8px; color:var(--verify); font-size:.86rem;
   }
+
+  /* ---------- maintenance log ---------- */
+  .log{
+    font-family:var(--mono); font-size:.82rem; line-height:1.9; background:var(--void);
+    border:1px solid var(--rail); padding:18px 20px; overflow-x:auto; white-space:pre;
+  }
+  .log .dev{color:var(--mute)}
+  .log .fix{color:var(--verify)}
+  .log .miss{color:var(--amber)}
+  .axes{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px; background:var(--rail); margin-top:8px}
+  .axis{background:var(--panel); padding:24px 26px}
+  .axis h3{font-family:var(--disp); text-transform:uppercase; font-size:1rem; margin:0 0 10px}
+  .axis .tag{font-family:var(--mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--void); padding:3px 8px; display:inline-block; margin-bottom:10px}
+  .axis p{margin:0; color:var(--mute); font-size:.92rem}
+  .axis b{color:var(--ink); font-weight:600}
+  .bar{height:8px; background:var(--rail); margin:16px 0 6px; overflow:hidden}
+  .bar i{display:block; height:100%; background:var(--verify)}
+  .barlab{font-family:var(--mono); font-size:.72rem; color:var(--faint)}
   footer{padding:52px 0 72px; color:var(--faint); font-size:.88rem}
   footer p{margin:0 0 10px; max-width:72ch}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style></head>
+</style>
+</head>
 <body>
 <div style="background:#08090C;border-bottom:1px solid #1E232C">
   <div style="max-width:1120px;margin:0 auto;padding:12px 28px;display:flex;gap:20px;align-items:center;
               font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.78rem">
     <a href="./" style="color:#3ECDB4;text-decoration:none;font-weight:600">fluidfix</a>
-    <span style="color:#626D7E">/</span>
-    <span style="color:#F2F4F8">for games</span>
+    <span style="color:#626D7E">/</span><span style="color:#F2F4F8">for games</span>
     <a href="./" style="margin-left:auto;color:#9AA3B2;text-decoration:none">&larr; main site</a>
   </div>
 </div>
@@ -271,6 +289,69 @@
 </div></section>
 
 <section><div class="wrap">
+  <h2>Left running. Nobody watching.</h2>
+  <p class="lead">A guard on a 20-second cycle, with <b>--commit</b>. A developer lands three
+  regressions over sixteen minutes. fluidfix is never told a regression happened, never told which
+  file, never told which line. This is the real git log:</p>
+
+  <div class="log"><span class="dev">608cd3b  Gameplay Dev          perf: micro-optimise b2CrossVS</span>
+<span class="fix">41cdfb2  fluidfix              restore math_functions.h:206   ← autonomous</span>
+<span class="dev">2da9958  Gameplay Dev          perf: micro-optimise b2Dot</span>
+<span class="fix">45e70e2  fluidfix              restore math_functions.h:212   ← autonomous</span>
+<span class="dev">136bc7e  Gameplay Dev          perf: micro-optimise b2Cross</span></div>
+
+  <div class="facts" style="margin-top:20px">
+    <div class="f"><span class="n">16 min</span><span class="l">unattended</span></div>
+    <div class="f"><span class="n">2 of 3</span><span class="l">restored</span></div>
+    <div class="f"><span class="n">79.9s</span><span class="l">first repair</span></div>
+    <div class="f"><span class="n">81.2s</span><span class="l">second repair</span></div>
+    <div class="f"><span class="n">0</span><span class="l">humans involved</span></div>
+  </div>
+
+  <p class="note" style="margin-top:18px"><b>The third one shipped.</b> The
+  <span style="font-family:var(--mono)">b2CrossVS</span> regression is still in that tree, because
+  no test in Box2D references it — the suite stayed green and fluidfix correctly did nothing. We
+  are showing you the miss because it is the whole point of the next section.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>It maintains exactly what your tests cover</h2>
+  <p class="lead">Not more, not less. We measured Box2D's own suite against its own engine, with
+  the same coverage tier fluidfix uses to localise:</p>
+
+  <div class="bar"><i style="width:56%"></i></div>
+  <p class="barlab">13,418 of 23,963 engine code lines exercised — <b style="color:var(--ink)">56%
+  guardable today</b> · 15 of 52 files under 25%</p>
+
+  <p class="lead" style="margin-top:28px"><b>So we took the worst file in the engine.</b>
+  <span style="font-family:var(--mono)">src/mover.c</span> — the character controller's plane
+  solver — <b>0% covered</b>. We broke it with a sign flip and watched what happened.</p>
+
+  <div class="axes">
+    <div class="axis">
+      <span class="tag" style="background:var(--amber)">before · no test</span>
+      <h3>Suite green. Nothing to do.</h3>
+      <p>The defect was a <b>shipped fault class</b> — fluidfix already had the exact act that
+      repairs it. It changed nothing, because no test went red. <b>A rule cannot create a failing
+      test.</b> The bug would have shipped.</p>
+    </div>
+    <div class="axis">
+      <span class="tag" style="background:var(--verify)">after · one 20-line test</span>
+      <h3>Repaired in 18.7 seconds.</h3>
+      <p>Same defect. Same vocabulary. <b>Nothing taught.</b> 29 suite runs, byte-exact — the
+      <b>fastest repair we recorded</b>, on the file that was invisible ten minutes earlier.</p>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:22px">Two different things fail two different ways, and only
+  one of them is ours. <b>Shown or not shown</b> is vocabulary: teach a class once from one worked
+  example and every future member is repaired free, forever. <b>Covered or not covered</b> is your
+  oracle: one test unlocks an entire file. That 56% is not a ceiling — it is a
+  <b>roadmap</b>, and fluidfix can tell you exactly which files are one test away from being
+  maintained.</p>
+</div></section>
+
+<section><div class="wrap">
   <h2>In a C build, the compiler works for you</h2>
   <p class="lead">This is the one thing C changes, and it changes it in your favour.</p>
   <div class="trio">
@@ -329,8 +410,11 @@
         <td>five integer kernels; re-derive them offline in ~1s</td></tr>
     <tr><td class="k">A rejected candidate cannot corrupt your tree</td><td class="ok">measured</td>
         <td>byte-exact rollback held across 192 rejected candidates</td></tr>
-    <tr><td class="k">Works without a test suite</td><td class="no">no</td>
-        <td>your tests are the oracle — no suite, no verdict, and it says so</td></tr>
+    <tr><td class="k">Maintains code your tests never run</td><td class="no">no</td>
+        <td>measured: a defect in Box2D's 0%-covered mover.c left the suite green and was ignored —
+        one 20-line test made it repairable in 18.7s</td></tr>
+    <tr><td class="k">Works unattended, on a schedule</td><td class="ok">measured</td>
+        <td>16 minutes, three landed regressions, two restored and committed with no human</td></tr>
     <tr><td class="k">Finds anything, however the failure reports</td><td class="no">not free</td>
         <td>when nothing points at a file, search cost rises sharply — one case needed 1,479s</td></tr>
     <tr><td class="k">Repairs novel logic it was never shown</td><td class="no">no</td>
