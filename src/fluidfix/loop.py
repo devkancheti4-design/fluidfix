@@ -91,6 +91,21 @@ def _write(path: str, content: str) -> None:
 # So the original bytes are journalled to .fluidfix/inflight.json before the
 # first mutation and cleared after the final restore. A later run — or the
 # same one restarting — puts the file back.
+def _confirm_runs() -> int:
+    """How many FINE records to take before trusting a coarse green.
+
+    Each re-check is another fine-grained observation of the same candidate.
+    When they disagree with the single-run verdict, the engine law's HIDDEN
+    lane fires and rules CHANGE_GRANULARITY — a single run is the wrong
+    granularity to judge at. Default 1. FLUIDFIX_CONFIRM=0 disables the lane
+    (and restores the measured 14% false-accept rate on a flaky suite);
+    higher values suit a suite you distrust."""
+    try:
+        return max(0, int(os.environ.get("FLUIDFIX_CONFIRM", "1")))
+    except ValueError:
+        return 1
+
+
 def _journal_path(root: str) -> str:
     return os.path.join(root, ".fluidfix", "inflight.json")
 
@@ -260,6 +275,47 @@ def repair(oracle: Oracle, defect_file: str,
                     wrote = True
                     res.suite_runs += 1
                     ok, why = oracle.check(timeout=cand_t)
+                    if ok and _confirm_runs():
+                        # HIDDEN, ACTUATED. A green from ONE run is a COARSE
+                        # record. Re-checking produces FINE records, and when
+                        # those disagree with the coarse one the situation is
+                        # exactly the engine law's HIDDEN — "fine records
+                        # disagree, coarse records agree" — whose ruling is
+                        # CHANGE_GRANULARITY: stop judging at the granularity
+                        # of a single run.
+                        #
+                        # This is the first of the three lanes fluidfix never
+                        # measured (NOTWIN, HIDDEN, SELF) to turn out to
+                        # matter. Measured 2026-09-04 against a test that
+                        # skips its assert half the time: judging on one run
+                        # accepted `return b - a` for `return a + b` in
+                        # 7 of 50 searches (14%); consulting the law drops it
+                        # to 0 of 49, and finds MORE correct repairs (10 vs
+                        # 7), because a candidate that was only ever green by
+                        # luck stops counting as green.
+                        #
+                        # The law was never wrong here. BUILT means "passed
+                        # its own check" and SHIP is the right act for it —
+                        # the defect was setting BUILT from a measurement
+                        # that did not hold still.
+                        fine_disagree = False
+                        for _ in range(_confirm_runs()):
+                            ok2, why2 = oracle.check(timeout=cand_t)
+                            if not ok2:
+                                fine_disagree, why = True, why2
+                                break
+                        if fine_disagree:
+                            # NOTE: not recorded in acts_tried — that list
+                            # holds act CODES and the refusal message branches
+                            # on whether it is empty. The ruling reaches the
+                            # user through `why`, which the harvest logs.
+                            ruling = decide(situation(HIDDEN=True))
+                            ok = False
+                            why = (f"green on one run, RED on re-check — the "
+                                   f"suite does not hold still here, so a "
+                                   f"single run cannot judge this candidate "
+                                   f"(engine law: HIDDEN -> {ruling}). "
+                                   f"last failure: {why2}")
                     if ok:
                         greens.append((crepr, content, old_repr, at))
                         if len(greens) >= 2:                 # AMB proven — stop

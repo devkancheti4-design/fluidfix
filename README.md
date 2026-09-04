@@ -161,7 +161,18 @@ aimed at the cluster is worth roughly twice coverage spread evenly.
 |---|---|---|---|
 | Python | `fluidfix guard` | pytest | stable |
 | C / C++ | `fluidfix cguard` | your test binary, plus the **compiler** as a cheap first oracle | alpha |
+| C# / .NET | `fluidfix cguard --build-cmd "dotnet build" --test-cmd "dotnet test --no-build"` | `dotnet test` (xunit measured) | alpha |
 | Java | `fluidfix jguard` | JUnit via Maven | alpha |
+
+C# needed **no adapter at all** — `cguard` is generic over its build and test
+commands. Supporting it cost one source extension (`.cs`) and one regex for
+the `Failed Class.Method [2 ms]` shape that dotnet prints. Measured: a
+cross-product sign flip in a .NET class library repaired **byte-exact in 14
+suite runs (20.8s)**, warm cycle 1.63s.
+
+**Unity is not the same as C#.** The language works; Unity's own test
+framework generally needs the Editor in batch mode to run tests, which is a
+harder oracle and is untested here.
 
 Adding a language is an **adapter**, not a rewrite — the kernels route
 integers and edit lines of text, and never learn the language. Java took 223

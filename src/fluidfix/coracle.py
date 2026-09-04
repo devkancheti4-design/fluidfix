@@ -66,23 +66,26 @@ _FRAME = re.compile(
 # projects are guarded. Measured 2026-09-03 — cglm marks failures with a
 # cross mark and cites `assert fail in <file> on line <n>`; Box2D prints
 # `test failed: MathTest` and `condition false: <expr>` with NO file or line
-# anywhere. A parser tuned to one sees literally nothing in the other.
+# anywhere; dotnet/xunit prints `Failed Class.Method [2 ms]`. A parser tuned
+# to one sees literally nothing in the others — measured on all three.
 _FAILTEST = re.compile(
     r"(?:[𐄂✖✗×]\s+(?P<n1>\S+)"
     r"|(?:test|subtest)\s+failed:\s*(?P<n2>\S+)"
     r"|(?:FAILED|FAIL)[:\s]+(?P<n3>[\w:./]+)"
-    r"|(?P<n4>\w+)\s+\.\.\.\s*FAILED)")
+    r"|(?P<n4>\w+)\s+\.\.\.\s*FAILED"
+    r"|^\s*Failed\s+(?P<n5>[\w.]+)\s*\[)", re.M)
 
 
 def _fail_names(clean: str) -> list[str]:
     """Every failing test name any known runner shape reports."""
     out: list[str] = []
     for m in _FAILTEST.finditer(clean):
-        name = m.group("n1") or m.group("n2") or m.group("n3") or m.group("n4")
+        name = (m.group("n1") or m.group("n2") or m.group("n3")
+                or m.group("n4") or m.group("n5"))
         if name and name not in out:
             out.append(name)
     return out
-_SRC_EXT = (".c", ".h", ".cc", ".cpp", ".hpp", ".cxx", ".hh")
+_SRC_EXT = (".c", ".h", ".cc", ".cpp", ".hpp", ".cxx", ".hh", ".cs")
 
 
 class CBuildError(RuntimeError):

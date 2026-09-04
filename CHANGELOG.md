@@ -1,5 +1,51 @@
 # Changelog
 
+## 0.13.0 — 2026-09-04
+
+- **A FLAKY SUITE CAN MAKE A WRONG REPAIR, AND THE LAW ALREADY HAD THE
+  REMEDY.** Measured against a test that skips its assert half the time:
+  fluidfix accepted `return b - a` for `return a + b` in **14% of searches**
+  (7 of 50; a second run measured 4 of 45). Correctness is bounded by the
+  oracle, and an oracle that does not hold still is a weak one.
+
+  The fix was NOT a patch to the decision. A green from ONE run is a COARSE
+  record; re-checking produces FINE records, and when those disagree the
+  situation is exactly the engine law's `HIDDEN` — *"fine records disagree,
+  coarse records agree"* — whose ruling is `CHANGE_GRANULARITY`: stop judging
+  at the granularity of a single run. That lane had never been measured.
+  Wiring it took the false-accept rate to **0 of 49 and 0 of 46** across two
+  A/B runs, and produced *more* correct repairs (10 vs 7, 10 vs 1) — a
+  candidate that was only ever green by luck stops occupying the answer.
+  Tunable with `FLUIDFIX_CONFIRM` (default 1; 0 restores the old behaviour).
+
+- **The law has never ruled wrongly, and that is now a test.**
+  `tests/test_law_never_ruled_wrong.py` audits every incident this project
+  has recorded — nine of them — against what the law ruled and where the
+  defect actually lived: observation (4), actuation (1), the wording of a
+  report (1), **the ruling itself (0)**. The build fails if that ever
+  changes. This replaces the older, weaker and false claim that fluidfix
+  "never makes a wrong repair": it does, when its oracle lies to it. What
+  holds is that the law rules correctly on the situation it is given.
+
+- **C# / .NET works, and needed no adapter.** `cguard` is already generic
+  over its build and test commands, so `dotnet build` and
+  `dotnet test --no-build` slot straight in. Supporting the language cost
+  **one source extension (`.cs`) and one regex** for the
+  `Failed Class.Method [2 ms]` shape dotnet prints. Measured on a .NET class
+  library with xunit: a cross-product sign flip repaired **byte-exact in 14
+  suite runs (20.8s)**, warm cycle 1.63s. Java took 223 lines of adapter, C
+  took ~450, C# took two.
+
+  **Unity is not the same as C#**: the language works, but Unity's own test
+  framework generally needs the Editor in batch mode, which is a harder
+  oracle and is untested.
+
+- The failure parser now reads three runner families that share nothing —
+  cglm's cross mark with `assert fail in <file> on line <n>`, Box2D's
+  `test failed: <Name>` with no file or line anywhere, and dotnet's
+  `Failed <Class>.<Method> [2 ms]` — without any of them breaking the others.
+
+
 ## 0.12.0 — 2026-09-04
 
 - **`fluidfix hotspots` — what should we test FIRST?** fluidfix maintains

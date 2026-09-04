@@ -356,3 +356,43 @@ def test_staleness_is_not_reported_when_it_cannot_be_known(tmp_path):
     o = _tiny_project(tmp_path, "a + b")
     o.test_cmd = "ctest --test-dir build"
     assert o.stale_binary() is False
+
+
+def test_hidden_lane_rules_on_a_suite_that_does_not_hold_still():
+    """HIDDEN, ACTUATED — and a check that the LAW is what decides.
+
+    A green from one run is a COARSE record; re-checking produces FINE
+    records. When they disagree the situation is the engine law's HIDDEN
+    ("fine records disagree, coarse records agree"), whose ruling is
+    CHANGE_GRANULARITY: a single run is the wrong granularity to judge at.
+
+    Measured 2026-09-04 against a test that skips its assert half the time:
+    judging on one run accepted `return b - a` for `return a + b` in 7 of 50
+    searches (14%); consulting the law drops it to 0 of 49.
+
+    The law was never wrong: BUILT means "passed its own check" and SHIP is
+    the right act for it. The defect was setting BUILT from a measurement
+    that did not hold still.
+    """
+    from fluidfix.engine import decide, situation
+    assert decide(situation(HIDDEN=True)) == "CHANGE_GRANULARITY"
+    assert decide(situation(BUILT=True)) == "SHIP"   # not a veto
+
+
+def test_confirm_runs_is_configurable_and_defaults_on():
+    import os
+    from fluidfix.loop import _confirm_runs
+    old = os.environ.get("FLUIDFIX_CONFIRM")
+    try:
+        os.environ.pop("FLUIDFIX_CONFIRM", None)
+        assert _confirm_runs() == 1                # the lane is ON by default
+        os.environ["FLUIDFIX_CONFIRM"] = "0"
+        assert _confirm_runs() == 0                # opt out
+        os.environ["FLUIDFIX_CONFIRM"] = "3"
+        assert _confirm_runs() == 3
+        os.environ["FLUIDFIX_CONFIRM"] = "nonsense"
+        assert _confirm_runs() == 1                # never crash on bad input
+    finally:
+        os.environ.pop("FLUIDFIX_CONFIRM", None)
+        if old is not None:
+            os.environ["FLUIDFIX_CONFIRM"] = old
