@@ -600,6 +600,55 @@
   </div>
 </div></section>
 
+<section><div class="wrap">
+  <h2>Almost all of it comes down to how you show it</h2>
+  <p class="lead">A fault class is taught from <b>one worked example</b>. How that example is
+  shaped decides almost everything downstream — and the gap between a good shape and a careless
+  one is not subtle. We measured both, on the same defect, in the same engine:</p>
+
+  <div class="derive">
+    <div class="dcell">
+      <span class="tag" style="background:var(--amber)">shown carelessly</span>
+      <h3>38 files. 1,063 candidates. Refused.</h3>
+      <p>We taught a class whose signal matched
+      <span style="font-family:var(--mono)">-&gt;anything</span> — which is nearly every statement
+      in C. Nothing could point anywhere, the search space exploded, and after
+      <b>30 minutes</b> it refused. The class was correct. <b>The shape was not.</b></p>
+    </div>
+    <div class="dcell">
+      <span class="tag" style="background:var(--verify)">shown well</span>
+      <h3>One line. 34 runs. Byte-exact.</h3>
+      <p>Same engine, same defect, a class shaped to what actually distinguishes it — and it
+      derived a field name it had never been shown, in <b>116 seconds</b>, restoring the original
+      bytes exactly.</p>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:20px"><b>That was our mistake, not a customer's</b> — and it
+  is the single biggest lever on what this thing is worth to you. A class shaped to the way your
+  regressions actually look is repaired forever, at zero tokens, on every future instance. A class
+  shaped carelessly burns your build machine and refuses. <b>Same law, same engine, opposite
+  outcome.</b></p>
+
+  <p class="note">One thing shaping cannot buy: a test that does not exist. Teaching decides what
+  fluidfix <i>can</i> repair; your suite decides what it is ever <i>asked</i> to. Those are two
+  different levers and we will tell you which one is binding on your repo before you pay for
+  anything.</p>
+
+  <div class="trust" style="margin-top:28px">
+    <h3>If you are not sure whether your codebase fits — ask</h3>
+    <p>Send us the repo (or just run <span style="font-family:var(--mono)">fluidfix hotspots</span>
+    yourself and send the output). We will tell you which files carry your defects, how much of
+    them your suite actually reaches, and whether your regressions are the shape this repairs —
+    <b>including when the answer is no</b>. That answer is free and it is about your code, so it
+    is worth having whether or not you ever buy anything.</p>
+    <div class="cta" style="margin-top:18px">
+      <a class="btn" href="mailto:devkancheti4@gmail.com?subject=Does%20fluidfix%20fit%20our%20codebase%3F">Ask us about your codebase</a>
+      <a class="btn ghost" href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/TEACHING.md">How teaching works</a>
+    </div>
+  </div>
+</div></section>
+
 <footer><div class="wrap">
   <p>Point it at your repo and it will tell you what it costs before you commit to anything:</p>
   <p><code>fluidfix cguard . --build-dir build</code> &nbsp;·&nbsp; <code>fluidfix selfcheck</code></p>
