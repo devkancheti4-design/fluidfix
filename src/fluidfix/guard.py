@@ -466,6 +466,15 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     # first-pass grinding starve the full-sight escalation stage that
     # actually repairs — termui's round-1 win regressed to a refusal.
     first_deadline = t0 + budget / 3 if budget else None
+    # A previous run may have been killed while a candidate was applied.
+    # Put the file back before judging anything, or the "failure" we localise
+    # is fluidfix's own leftover mutation.
+    from .loop import recover_inflight
+    _recovered = recover_inflight(oracle.root)
+    if _recovered:
+        print(f"  recovered {_recovered}: a previous run was killed mid-"
+              f"candidate; original bytes restored from the journal")
+
     fails, out = oracle.failing_output()
     if not fails:
         clear_refusal(oracle.root)

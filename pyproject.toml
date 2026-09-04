@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fluidfix"
-version = "0.11.0"
+dynamic = ["version"]
 description = "Zero-token repair decisions for mechanical single-line bugs: a machine-authored routing kernel decides, your test suite judges, and an LLM is only ever the eyes."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -24,6 +24,9 @@ classifiers = [
 # repair loop use only the standard library. The target project supplies its
 # own pytest (and pytest-cov for coverage localisation).
 dependencies = []
+
+[tool.setuptools.dynamic]
+version = {attr = "fluidfix.__version__"}
 
 [project.optional-dependencies]
 llm = ["anthropic>=1.0"]

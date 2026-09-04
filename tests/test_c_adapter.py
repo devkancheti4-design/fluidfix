@@ -214,3 +214,145 @@ def test_python_oracle_also_refuses_a_silenced_suite():
     assert f("2 errors in 0.1s") == "2 errors"
     assert f("0 failed, 5 passed in 0.1s") == ""      # no false positive
     assert f("1990 passed, 25 skipped in 4.5s") == ""
+
+
+def test_rollback_survives_the_process_being_killed(tmp_path):
+    """ROLLBACK MUST SURVIVE THE PROCESS DYING.
+
+    Measured 2026-09-04 on Box2D: a literal-off-by-one candidate turned an
+    atomic increment into `+ 0` inside a worker spin loop. The test binary
+    hung, every core saturated, the guard was killed, and src/parallel_for.c
+    was left holding fluidfix's mutation with nothing recording the original
+    bytes. Unattended on CI that is corrupted source with no audit trail.
+    """
+    from fluidfix.loop import begin_inflight, end_inflight, recover_inflight
+
+    src = tmp_path / "engine.c"
+    original = "int step(void) { return 1; }\n"
+    src.write_text(original)
+
+    # a run starts, journals, mutates... and is killed here
+    begin_inflight(str(tmp_path), "engine.c", original)
+    src.write_text("int step(void) { return 0; }\n")
+    assert src.read_text() != original
+
+    # the next run puts it back before judging anything
+    assert recover_inflight(str(tmp_path)) == "engine.c"
+    assert src.read_text() == original
+    # and the journal is discharged, so it does not fire twice
+    assert recover_inflight(str(tmp_path)) is None
+
+
+def test_recovery_is_a_no_op_when_nothing_was_in_flight(tmp_path):
+    from fluidfix.loop import recover_inflight
+    assert recover_inflight(str(tmp_path)) is None
+
+
+def test_journal_is_discharged_after_a_clean_pass(tmp_path):
+    """A completed pass must leave no journal behind, or the NEXT run would
+    'recover' a file that was never broken."""
+    import os
+    from fluidfix.loop import begin_inflight, end_inflight
+    (tmp_path / "a.c").write_text("int a;\n")
+    begin_inflight(str(tmp_path), "a.c", "int a;\n")
+    assert os.path.exists(tmp_path / ".fluidfix" / "inflight.json")
+    end_inflight(str(tmp_path))
+    assert not os.path.exists(tmp_path / ".fluidfix" / "inflight.json")
+
+
+@pytest.mark.skipif(not HAS_CC, reason="no C compiler")
+def test_a_hanging_candidate_is_killed_not_orphaned(tmp_path):
+    """A candidate can HANG rather than fail — ordinary in C, and not the same
+    as failing. subprocess.run(shell=True) kills only the shell on timeout, so
+    a spinning test binary outlives its run and competes with every later
+    candidate. Measured on Box2D: load average 30 from exactly this."""
+    import subprocess as sp
+    import time
+    (tmp_path / "spin.c").write_text(
+        "int main(void){ for(;;){} return 0; }\n")
+    sp.run(["cc", "-O0", "-o", str(tmp_path / "spin"), str(tmp_path / "spin.c")],
+           capture_output=True)
+    o = COracle(str(tmp_path), build_cmd="true", test_cmd="./spin",
+                build_dir=".", timeout=2)
+    t0 = time.time()
+    rc, out = o.run(timeout=2)
+    assert out == "TIMEOUT" and rc != 0
+    assert time.time() - t0 < 30                 # returned promptly
+    time.sleep(0.5)
+    still = sp.run(["pgrep", "-f", str(tmp_path / "spin")],
+                   capture_output=True, text=True).stdout.strip()
+    assert still == "", f"orphaned spinning process survived: {still}"
+
+
+@pytest.mark.skipif(not HAS_CC, reason="no C compiler")
+def test_journal_covers_every_mutation_not_just_the_first(tmp_path):
+    """The journal must span the WHOLE repair call.
+
+    First attempt opened it on the first mutation and discharged it inside
+    the per-kind loop; `wrote` stays True across iterations, so every later
+    mutation ran unjournalled. Measured 2026-09-04: a hung candidate in
+    Box2D's parallel_for.c was left on disk with an EMPTY .fluidfix — the
+    journal had already been discharged while a mutation was still live.
+    """
+    import os, json
+    import fluidfix.loop as L
+    from fluidfix.observers import MechanicalObserver
+
+    o = _tiny_project(tmp_path, "a - b")
+    seen = {}
+    real_write = L._write
+
+    def spy(path, content):                       # capture journal state at
+        jp = tmp_path / ".fluidfix" / "inflight.json"   # every single write
+        if content != (tmp_path / "src" / "mathx.c").read_text():
+            seen[len(seen)] = jp.exists()
+        return real_write(path, content)
+
+    L._write = spy
+    try:
+        cguard_once(o, MechanicalObserver(), budget=300)
+    finally:
+        L._write = real_write
+
+    # every mutation observed had a live journal behind it
+    assert seen, "no mutations were observed"
+    assert all(seen.values()), f"unjournalled mutations: {seen}"
+    # and the journal is discharged once the call completes
+    assert not os.path.exists(tmp_path / ".fluidfix" / "inflight.json")
+
+
+@pytest.mark.skipif(not HAS_CC, reason="no C compiler")
+def test_a_stale_binary_is_refused_not_judged(tmp_path):
+    """THE BUILD IS PART OF THE ORACLE.
+
+    Mutate a header and an incremental build may not rebuild every unit that
+    includes it; the binary stops corresponding to the source and every
+    verdict after is noise. Measured 2026-09-04 on Box2D: a stale binary made
+    the suite red for an unrelated reason, so all 35 candidates — including
+    the CORRECT one — were rejected. Re-run after a clean rebuild, the same
+    experiment repaired byte-exact in 34 runs.
+    """
+    import time
+    from fluidfix.coracle import CBuildError
+    o = _tiny_project(tmp_path, "a - b")
+    o.build(timeout=60)                       # binary now matches source
+    assert o.stale_binary() is False
+
+    time.sleep(1.1)                           # make the mtime difference real
+    (tmp_path / "src" / "mathx.c").write_text(
+        "int add(int a, int b) { return a + b; }\n")   # source moves on...
+    assert o.stale_binary() is True           # ...binary does not
+
+    o.build_cmd = "true"                      # a build that does nothing
+    with pytest.raises(CBuildError) as e:
+        o.failing_output()
+    assert "not the code on disk" in str(e.value)
+
+
+@pytest.mark.skipif(not HAS_CC, reason="no C compiler")
+def test_staleness_is_not_reported_when_it_cannot_be_known(tmp_path):
+    """ctest, `make check`, a wrapper script — the binary is not nameable, so
+    the check must stay silent rather than cry wolf."""
+    o = _tiny_project(tmp_path, "a + b")
+    o.test_cmd = "ctest --test-dir build"
+    assert o.stale_binary() is False

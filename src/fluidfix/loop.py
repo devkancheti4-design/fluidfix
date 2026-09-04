@@ -27,6 +27,8 @@ and nothing is written back unless a candidate was actually tried.
 """
 from __future__ import annotations
 
+import json
+
 import os
 import subprocess
 import time
@@ -74,6 +76,60 @@ def _write(path: str, content: str) -> None:
         f.write(content)
 
 
+# ---------------------------------------------------------- crash safety --
+# ROLLBACK MUST SURVIVE THE PROCESS DYING. Candidates are applied to the real
+# file and rolled back from memory, which is byte-exact and correct — right up
+# until the process is killed while a candidate is applied. Then the mutation
+# stays on disk and nothing records what was there before.
+#
+# Measured 2026-09-04 on Box2D: a literal-off-by-one candidate turned an
+# atomic increment into `+ 0` inside a worker spin loop. The test binary hung,
+# every core went to 100% (load average 30), the guard was killed, and
+# src/parallel_for.c was left holding fluidfix's mutation. Unattended on a
+# studio's CI that is corrupted source with no audit trail.
+#
+# So the original bytes are journalled to .fluidfix/inflight.json before the
+# first mutation and cleared after the final restore. A later run — or the
+# same one restarting — puts the file back.
+def _journal_path(root: str) -> str:
+    return os.path.join(root, ".fluidfix", "inflight.json")
+
+
+def begin_inflight(root: str, rel: str, original: str) -> None:
+    try:
+        os.makedirs(os.path.join(root, ".fluidfix"), exist_ok=True)
+        with open(_journal_path(root), "w", encoding="utf-8") as fh:
+            json.dump({"file": rel, "original": original,
+                       "started": time.time()}, fh)
+    except OSError:
+        pass                      # journalling is best-effort, never fatal
+
+
+def end_inflight(root: str) -> None:
+    try:
+        os.remove(_journal_path(root))
+    except OSError:
+        pass
+
+
+def recover_inflight(root: str) -> str | None:
+    """Restore a file a killed run left mutated. Returns the path restored,
+    or None. Safe to call on every start."""
+    jp = _journal_path(root)
+    if not os.path.exists(jp):
+        return None
+    try:
+        with open(jp, encoding="utf-8") as fh:
+            rec = json.load(fh)
+        target = os.path.join(root, rec["file"])
+        with open(target, "w", encoding="utf-8", newline="") as fh:
+            fh.write(rec["original"])
+    except (OSError, KeyError, ValueError):
+        return None
+    end_inflight(root)
+    return rec.get("file")
+
+
 def _restored_original(root: str, rel: str, lineno: int, new_line: str) -> bool | None:
     """Does the shipped repair equal the committed (HEAD) content at that
     line? None when git or the HEAD version is unavailable."""
@@ -114,6 +170,12 @@ def repair(oracle: Oracle, defect_file: str,
     tried: set[tuple[int, str]] = set()
     wrote = False
 
+    # Journal the original bytes for the WHOLE call, not per observation.
+    # First attempt scoped this to the first mutation window and discharged
+    # it inside the per-kind loop; `wrote` stays True across iterations, so
+    # every later mutation ran UNJOURNALLED — measured 2026-09-04, a hung
+    # candidate in Box2D's parallel_for.c was left on disk with no journal.
+    begin_inflight(oracle.root, defect_file, src)
     try:
         for obs in observations:
             if deadline is not None and time.time() > deadline:
@@ -242,4 +304,7 @@ def repair(oracle: Oracle, defect_file: str,
         if wrote and not res.repaired:
             _write(path, src)
             oracle.clear_pyc()
+        # The file is now either its original bytes or an ACCEPTED repair —
+        # both intentional, neither something a later run should undo.
+        end_inflight(oracle.root)
         res.seconds = time.time() - t0

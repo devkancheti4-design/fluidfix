@@ -11,6 +11,26 @@ import os
 import sys
 
 
+def _version() -> str:
+    """The version of the CODE that is running.
+
+    Prefers the package attribute over installed metadata: an editable
+    install keeps the metadata recorded at `pip install -e` time, so after a
+    version bump `importlib.metadata` reports the OLD number while the code
+    on disk is new — the same silent-staleness trap as `pip install` not
+    upgrading."""
+    try:
+        from . import __version__
+        return __version__
+    except Exception:                                       # noqa: BLE001
+        pass
+    try:
+        import importlib.metadata as _md
+        return _md.version("fluidfix")
+    except Exception:                                       # noqa: BLE001
+        return "unknown"
+
+
 def _python_arg(value: str) -> str:
     # resolve a relative --python against the INVOKING cwd at parse time —
     # the oracle runs subprocesses with cwd=root, which silently re-anchored
@@ -236,18 +256,71 @@ def cmd_cguard(args) -> int:
                      test_cmd=args.test_cmd, build_dir=args.build_dir,
                      timeout=args.suite_timeout)
     print(f"  build: {oracle.build_cmd}\n  test:  {oracle.test_cmd}")
-    try:
-        report = cguard_once(oracle, MechanicalObserver(), budget=args.budget)
-    except CBuildError as e:
-        print(f"fluidfix: {e}")
+    while True:
+        try:
+            report = cguard_once(oracle, MechanicalObserver(),
+                                 budget=args.budget)
+        except CBuildError as e:
+            print(f"fluidfix: {e}")
+            return 1
+        if report.status != "green" or args.interval is None:
+            print(f"[{_time.strftime('%H:%M:%S')}] {report.summary()}")
+        if report.status == "repaired" and args.commit:
+            print({"committed": "  committed",
+                   "clean": "  nothing to commit",
+                   "failed": "  commit failed"}[commit_repair(oracle.root,
+                                                              report)])
+        if report.status == "refused":
+            print(f"  refusal report: {write_refusal(oracle.root, report)}")
+        if args.interval is None:
+            return 0 if report.status in ("green", "repaired") else 2
+        _time.sleep(args.interval)
+
+
+def cmd_hotspots(args) -> int:
+    """Answer "what should we test FIRST?" — the question that decides how
+    much of a repo fluidfix can maintain. Reads git history; uses coverage
+    when the project can produce it."""
+    from .hotspots import bugfix_churn, coverage_to_reach, rank_hotspots
+
+    churn, scanned, fixes = bugfix_churn(args.root, commits=args.commits)
+    if not churn:
+        print("no bug-fix history found here — is this a git repository with "
+              "commit messages that say what they fix?")
         return 1
-    print(f"[{_time.strftime('%H:%M:%S')}] {report.summary()}")
-    if report.status == "repaired" and args.commit:
-        print({"committed": "  committed", "clean": "  nothing to commit",
-               "failed": "  commit failed"}[commit_repair(oracle.root, report)])
-    if report.status == "refused":
-        print(f"  refusal report: {write_refusal(oracle.root, report)}")
-    return 0 if report.status in ("green", "repaired") else 2
+    print(f"scanned {scanned} commits · {fixes} look like bug fixes · "
+          f"touching {len(churn)} source files\n")
+
+    covered = None
+    if args.coverage:
+        from .coracle import COracle
+        oracle = COracle(args.root, build_cmd=args.build_cmd,
+                         test_cmd=args.test_cmd, build_dir=args.build_dir)
+        cov = oracle.coverage()
+        if cov.available():
+            print("measuring current coverage (instrumented build)...")
+            covered = cov.lines(timeout=args.suite_timeout) or None
+        if covered is None:
+            print("  coverage unavailable — ranking on defect density alone\n")
+
+    rows = rank_hotspots(args.root, churn, covered, limit=args.top)
+    head = f"{'#':>3}  {'defects':>7}  {'covered':>7}  file"
+    print("WHAT TO TEST FIRST — ranked by defect density x coverage gap")
+    print(head)
+    for i, r in enumerate(rows, 1):
+        cov_s = "     ?" if r["covered"] is None else f"{r['covered']*100:5.0f}%"
+        print(f"{i:3d}  {r['defects']:7d}  {cov_s:>7}  {r['file']}")
+
+    print("\nWHAT IT BUYS — share of this repo's OWN historical defects")
+    for share, n in coverage_to_reach(churn):
+        pct = n / max(len(churn), 1) * 100
+        print(f"  guard {share*100:3.0f}% of past defects  ->  test {n:4d} files"
+              f"  ({pct:.0f}% of the files that have ever broken)")
+    print("\n  Defects cluster, so coverage aimed at the cluster is worth "
+          "roughly twice\n  coverage spread evenly. fluidfix maintains "
+          "exactly what your tests cover —\n  this is the cheapest order to "
+          "widen that.")
+    return 0
 
 
 def cmd_estimate(args) -> int:
@@ -343,7 +416,15 @@ def cmd_estimate(args) -> int:
 
 
 def cmd_selfcheck(args) -> int:
-    """Re-derive the shipped laws from scratch. No network, no dependencies."""
+    """Re-derive the shipped laws from scratch. No network, no dependencies.
+
+    Prints the running version first. `pip install fluidfix` is a NO-OP when
+    any version is already present — it does not upgrade — so a stale install
+    is silent and users report missing subcommands as bugs. Measured three
+    times on one machine in a single day. Showing the version costs a line
+    and turns that into something a user can see.
+    """
+    print(f"fluidfix {_version()}")
     from .lanes import ADVANCE, EMIT, HALT
     from .router import route
 
@@ -486,6 +567,8 @@ def main(argv=None) -> int:
     p = argparse.ArgumentParser(
         prog="fluidfix", description=__doc__, epilog=_EXAMPLES,
         formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("--version", action="version",
+                   version=f"fluidfix {_version()}")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     def common(sp, need_file=True):
@@ -591,7 +674,27 @@ def main(argv=None) -> int:
     sp.add_argument("--budget", type=int, default=None)
     sp.add_argument("--dictionary", default=None)
     sp.add_argument("--commit", action="store_true")
+    sp.add_argument("--interval", type=int, default=None,
+                    help="seconds between checks; omit for one pass (CI mode). "
+                         "With --commit this is commit-and-forget maintenance: "
+                         "the guard watches, restores what breaks, and refuses "
+                         "what is novel, unattended")
     sp.set_defaults(fn=cmd_cguard)
+
+    sp = sub.add_parser("hotspots", help="what should we test FIRST? ranks "
+                        "files by defect density x coverage gap")
+    sp.add_argument("root", nargs="?", default=".")
+    sp.add_argument("--top", type=int, default=25)
+    sp.add_argument("--commits", type=int, default=4000,
+                    help="how much history to read (default 4000)")
+    sp.add_argument("--coverage", action="store_true",
+                    help="also measure current coverage (C/C++ projects; "
+                         "builds an instrumented tree)")
+    sp.add_argument("--build-cmd", default=None)
+    sp.add_argument("--test-cmd", default=None)
+    sp.add_argument("--build-dir", default="build")
+    sp.add_argument("--suite-timeout", type=int, default=900)
+    sp.set_defaults(fn=cmd_hotspots)
 
     sp = sub.add_parser("kinds", help="list the fault-class vocabulary: every "
                         "registered kind and the free user slots")

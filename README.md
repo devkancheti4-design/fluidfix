@@ -141,6 +141,20 @@ proofs yourself, offline, in seconds:
 fluidfix selfcheck
 ```
 
+### What should we test first?
+
+fluidfix maintains exactly what your tests cover, so that is the question
+worth asking before adopting it — and your repository already knows, because
+every bug fix in its history names the file that broke:
+
+```bash
+fluidfix hotspots .
+```
+
+Measured on Box2D's own history: guarding **60% of its past defects** costs
+testing **58 files, not 60% of the engine**. Defects cluster, so coverage
+aimed at the cluster is worth roughly twice coverage spread evenly.
+
 ### Languages
 
 | language | command | judge | status |

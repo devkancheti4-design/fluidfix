@@ -44,6 +44,7 @@ from __future__ import annotations
 import os
 import re
 import shutil
+import signal
 import subprocess
 import time
 
@@ -124,16 +125,85 @@ class COracle:
                 return f"./{self.build_dir}/{name}"
         return f"ctest --test-dir {self.build_dir} --output-on-failure"
 
+
+    # ------------------------------------------------------- staleness ----
+    def _binary_path(self) -> str | None:
+        """The test binary the test command runs, when it names one."""
+        tok = self.test_cmd.split()[0] if self.test_cmd else ""
+        if not tok.startswith("./"):
+            return None                      # ctest, make check, a script
+        p = os.path.join(self.root, tok[2:])
+        return p if os.path.isfile(p) else None
+
+    def _newest_source_mtime(self) -> float:
+        newest = 0.0
+        skip = {".git", self.build_dir, "node_modules", "covbuild"}
+        for dp, dn, fns in os.walk(self.root):
+            dn[:] = [d for d in dn if d not in skip and not d.startswith(".")]
+            for fn in fns:
+                if fn.endswith(_SRC_EXT):
+                    try:
+                        m = os.path.getmtime(os.path.join(dp, fn))
+                    except OSError:
+                        continue
+                    newest = max(newest, m)
+        return newest
+
+    def stale_binary(self) -> bool:
+        """True when the test binary is OLDER than the newest source file.
+
+        THE BUILD IS PART OF THE ORACLE. Mutate a header and an incremental
+        build may not rebuild every translation unit that includes it; the
+        binary then no longer corresponds to the source, and every verdict
+        after that is noise. Measured 2026-09-04 on Box2D: a stale binary
+        made the suite red for a reason unrelated to the defect, so all 35
+        candidates — including the CORRECT one — were rejected. The same
+        experiment re-run after a clean rebuild repaired byte-exact in 34
+        runs. A tool that cannot tell "red because of the defect" from "red
+        because the build is stale" burns a studio's afternoon rejecting
+        right answers."""
+        binary = self._binary_path()
+        if binary is None:
+            return False                     # cannot tell; do not cry wolf
+        try:
+            return os.path.getmtime(binary) < self._newest_source_mtime() - 1
+        except OSError:
+            return False
+
     # ------------------------------------------------------------- running
     def _sh(self, cmd: str, timeout: int | None) -> tuple[int, str]:
+        """Run a build or test command, and KILL ITS WHOLE PROCESS GROUP on
+        timeout.
+
+        A candidate can hang rather than fail — ordinary in C, and not the
+        same as failing. Measured 2026-09-04 on Box2D: a literal-off-by-one
+        candidate turned an atomic increment into `+ 0` inside a worker spin
+        loop; the test binary never exited and pinned every core (load
+        average 30). `subprocess.run(shell=True)` kills only the SHELL on
+        timeout, so the binary survived as an orphan, still spinning, and
+        competed with every later candidate. Starting a new session and
+        signalling the group kills the binary too."""
+        proc = None
         try:
-            p = subprocess.run(cmd, cwd=self.root, shell=True,
-                               capture_output=True, text=True,
-                               errors="replace",
-                               timeout=timeout or self.timeout)
-            return p.returncode, p.stdout + p.stderr
+            proc = subprocess.Popen(
+                cmd, cwd=self.root, shell=True, text=True, errors="replace",
+                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                start_new_session=True)
+            out, _ = proc.communicate(timeout=timeout or self.timeout)
+            return proc.returncode, out or ""
         except subprocess.TimeoutExpired:
+            if proc is not None:
+                try:
+                    os.killpg(os.getpgid(proc.pid), signal.SIGKILL)
+                except (OSError, ProcessLookupError):
+                    proc.kill()
+                try:
+                    proc.communicate(timeout=10)
+                except Exception:                           # noqa: BLE001
+                    pass
             return 1, "TIMEOUT"
+        except OSError as e:
+            return 1, f"could not run: {e}"
 
     def build(self, timeout: int | None = None) -> tuple[int, str]:
         return self._sh(self.build_cmd, timeout)
@@ -181,6 +251,14 @@ class COracle:
                 f"--- last output ---\n{out.strip()[-600:]}")
         self._pristine_checked = True
         clean = _ANSI.sub("", out)
+        if self.stale_binary():
+            raise CBuildError(
+                f"the test binary in {self.build_dir} is older than your "
+                f"sources, so the suite that just ran is not the code on "
+                f"disk.\n  Every verdict from here would be noise — a "
+                f"candidate cannot be judged against a binary that does not "
+                f"contain it.\n  fix: rebuild from scratch (remove "
+                f"{self.build_dir} and re-configure), then re-run.")
         self._fail_tests = _fail_names(clean)[:40]
         return True, clean
 
@@ -268,8 +346,18 @@ class _Coverage:
             return False
         path = os.path.join(self.o.root, self.cov_dir)
         if not os.path.isdir(path):
+            # INSTRUMENT THE SAME PROGRAM YOU ARE JUDGING. This forced
+            # CMAKE_BUILD_TYPE=Debug, which on Box2D turns on assertions the
+            # Release build compiles out: the instrumented binary tripped
+            # `input->proxyB.radius >= 0.0f` in distance.c and died on
+            # SIGTRAP, so gcov never flushed and the tier silently reported
+            # NO coverage at all (measured 2026-09-04). Coverage of a
+            # different configuration is worse than none — it is evidence
+            # about a program that is not under test. Mirror the project's
+            # own build type and only add instrumentation.
+            btype = self._build_type() or "Release"
             rc, _ = self.o._sh(
-                f'cmake -S . -B {self.cov_dir} -DCMAKE_BUILD_TYPE=Debug '
+                f'cmake -S . -B {self.cov_dir} -DCMAKE_BUILD_TYPE={btype} '
                 f'-DCMAKE_C_FLAGS="--coverage -O0" '
                 f'-DCMAKE_CXX_FLAGS="--coverage -O0" '
                 f'-DCMAKE_EXE_LINKER_FLAGS="--coverage"', timeout)
@@ -278,6 +366,19 @@ class _Coverage:
         rc, _ = self.o._sh(f"cmake --build {self.cov_dir} -j8", timeout)
         self._ready = rc == 0
         return self._ready
+
+    def _build_type(self) -> str:
+        """The build type the project's own fast build uses, read from its
+        CMake cache. Empty when it cannot be determined."""
+        cache = os.path.join(self.o.root, self.o.build_dir, "CMakeCache.txt")
+        try:
+            with open(cache, encoding="utf-8", errors="replace") as fh:
+                for line in fh:
+                    if line.startswith("CMAKE_BUILD_TYPE:"):
+                        return line.split("=", 1)[1].strip()
+        except OSError:
+            pass
+        return ""
 
     def _test_binary(self) -> str | None:
         bd = os.path.join(self.o.root, self.cov_dir)
@@ -572,6 +673,15 @@ def cguard_once(oracle: COracle, observer, candidate_timeout=None,
 
     t0 = time.time()
     deadline = t0 + budget if budget else None
+    # A previous run may have been killed while a candidate was applied.
+    # Put the file back before judging anything, or the "failure" we localise
+    # is fluidfix's own leftover mutation.
+    from .loop import recover_inflight
+    _recovered = recover_inflight(oracle.root)
+    if _recovered:
+        print(f"  recovered {_recovered}: a previous run was killed mid-"
+              f"candidate; original bytes restored from the journal")
+
     fails, out = oracle.failing_output()
     if not fails:
         return GuardReport(status="green", seconds=time.time() - t0)

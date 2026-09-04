@@ -1,5 +1,84 @@
 # Changelog
 
+## 0.12.0 — 2026-09-04
+
+- **`fluidfix hotspots` — what should we test FIRST?** fluidfix maintains
+  exactly what your tests cover, which makes that the highest-value question
+  a team can ask before adopting it, and the repository already knows the
+  answer: every bug fix in its history names the file that broke. Ranks files
+  by defect density x coverage gap, and reports what testing them buys.
+  Measured on Box2D's own history (1,383 commits):
+
+      to guard 30% of past defects  ->  test  17 files
+      to guard 50%                  ->  test  40 files
+      to guard 60%                  ->  test  58 files
+      to guard 80%                  ->  test 138 files
+
+  **60% of defects costs ~30% of files, not 60%** — defects cluster, so
+  coverage aimed at the cluster is worth roughly twice coverage spread
+  evenly. "Get to 60% coverage" is a year nobody funds; "test the 58 files
+  your own history named" is a sprint.
+
+- **ROLLBACK NOW SURVIVES THE PROCESS DYING.** Candidates were applied to the
+  real file and rolled back from memory — byte-exact and correct, right up
+  until the process was killed mid-candidate. Then the mutation stayed on
+  disk and NOTHING recorded the original bytes. Measured on Box2D: a
+  literal-off-by-one candidate turned an atomic increment into `+ 0` inside a
+  worker spin loop; the test binary hung, every core saturated (load average
+  30), the guard was killed, and src/parallel_for.c was left holding
+  fluidfix's mutation. Unattended on a studio's CI that is corrupted source
+  with no audit trail. The original bytes are now journalled to
+  `.fluidfix/inflight.json` before any mutation and recovered on the next
+  start, by both the Python and C guards.
+
+  The first fix was wrong in an instructive way: it scoped the journal to the
+  first mutation window and discharged it inside the per-kind loop, but
+  `wrote` stays true across iterations, so every LATER mutation ran
+  unjournalled. A test now spies on every single write and asserts a live
+  journal behind each one.
+
+- **A hanging candidate is killed, not orphaned.** A candidate can hang
+  rather than fail — ordinary in C, and not the same thing.
+  `subprocess.run(shell=True)` kills only the SHELL on timeout, so a spinning
+  test binary outlived its run and competed with every later candidate. The
+  C oracle now starts a new session and signals the whole process group.
+
+- **THE BUILD IS PART OF THE ORACLE.** Mutate a header and an incremental
+  build may not rebuild every translation unit that includes it; the binary
+  stops corresponding to the source and every verdict after that is noise.
+  Measured on Box2D: a stale binary made the suite red for a reason unrelated
+  to the defect, so all 35 candidates — INCLUDING THE CORRECT ONE — were
+  rejected. Re-run after a clean rebuild, the same experiment repaired
+  byte-exact in 34 runs. The C oracle now refuses to judge against a test
+  binary older than the sources, and says how to fix it.
+
+- **`fluidfix --version`, and a version that cannot drift.** `pip install
+  fluidfix` is a NO-OP when any version is already present — it does not
+  upgrade — so a stale install is silent and surfaces later as "this
+  subcommand does not exist". Hit three times on one machine in a single day.
+  `selfcheck` now prints the running version as its first line. Fixing that
+  exposed a worse one: `__version__` sat at "0.9.1" in `__init__.py` through
+  BOTH the 0.10.0 and 0.11.0 releases, so two shipped versions advertised the
+  wrong number to anyone reading it. `pyproject.toml` now derives the
+  distribution version FROM that attribute, `_version()` prefers the package
+  attribute over installed metadata (an editable install reports whatever it
+  was registered with — the same staleness trap in another costume), and a
+  test pins the attribute against both the pyproject wiring and the newest
+  CHANGELOG heading.
+- Measured on Box2D, and the reason the release exists: **a taught class
+  derives the fix from the codebase.** Taught ONE example —
+  `shape->density = def->friction` -> `def->density`, a different file and
+  different fields, describing only the SHAPE of the fault. Broke
+  `body->mass += massData.mass` to `body->inertia` in another file: compiles
+  clean, silently corrupts every mass computation, breaks DeterminismTest and
+  MultithreadingTest. Repaired **byte-exact in 34 suite runs (116s)**. The
+  field name `mass` appears in no worked example and in no transform — it was
+  mined from the source and chosen by the suite. That is what "derives"
+  means, and what it does not: a search over values the repository already
+  contains, not invention. If the right field existed nowhere in that file,
+  fluidfix refuses.
+
+
 ## 0.11.0 — 2026-09-04
 
 - **C/C++ support: `fluidfix cguard` (alpha).** `src/fluidfix/coracle.py` is
