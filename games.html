@@ -354,6 +354,28 @@
       at the same time.</p>
     </div>
 
+    <div class="case">
+      <div class="case-top">
+        <span class="repo">C# / .NET</span>
+        <span class="what">a gameplay math library, xunit</span>
+        <span class="stamp">byte-exact</span>
+      </div>
+      <div class="diff"><span class="minus">- return a.X * b.Y + a.Y * b.X;</span>
+<span class="plus">+ return a.X * b.Y - a.Y * b.X;</span></div>
+      <div class="facts">
+        <div class="f"><span class="n">14</span><span class="l">suite runs</span></div>
+        <div class="f"><span class="n">20.8s</span><span class="l">wall clock</span></div>
+        <div class="f"><span class="n">1.63s</span><span class="l">per candidate</span></div>
+        <div class="f"><span class="n">2</span><span class="l">lines to support it</span></div>
+      </div>
+      <p class="note">The same cross-product sign flip as the Box2D case, in C#. It needed
+      <b>no new adapter</b> — the C guard is generic over your build and test commands, so
+      <span style="font-family:var(--mono)">dotnet build</span> and
+      <span style="font-family:var(--mono)">dotnet test</span> slot straight in. Supporting the
+      language cost <b>one file extension and one regex</b> for the failure shape dotnet prints.
+      <b>Unity is not the same as C#</b>: the language works, but Unity's own test framework
+      generally needs the Editor in batch mode, which is a harder oracle and is untested.</p>
+    </div>
   </div>
 </div></section>
 
@@ -685,7 +707,8 @@
   <p>Point it at your repo and it will tell you what it costs before you commit to anything:</p>
   <p><code>fluidfix cguard . --build-dir build</code> &nbsp;·&nbsp; <code>fluidfix selfcheck</code></p>
   <p style="margin-top:18px">Adding a language is an adapter, not a rewrite — the kernels route
-  integers and edit lines of text, and never learn the language. Java took 223 lines. C took ~450.
+  integers and edit lines of text, and never learn the language. <b>Java took 223 lines, C took
+  ~450, and C# took two</b> (one file extension, one regex for the failure shape dotnet prints).
   <b style="color:var(--mute)">Your tests are the entire bill.</b></p>
 </div></footer>
 
