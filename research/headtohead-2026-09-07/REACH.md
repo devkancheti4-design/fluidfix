@@ -52,3 +52,28 @@ one at a time.
 - Being *reachable* is not being *repaired*: the repo's own suite must still see
   the defect, and on cglm 3 of 6 real one-token fixes were invisible to its own
   tests. Reach is a ceiling, not a hit rate.
+
+## The cap we set, and why 25
+
+Measured share of real fix commits confined to ONE FILE, by changed lines:
+
+| repo | ≤25 lines | ≤30 lines | unbounded |
+|---|---|---|---|
+| raylib | **71.3%** | 73.8% | 85.4% |
+| cglm | **54.2%** | 54.7% | 60.9% |
+| Box2D | **37.3%** | 38.3% | 41.3% |
+
+Going 25 → 30 buys **at most 2.5 points**. Going 30 → unbounded buys the rest
+only by permitting arbitrarily large rewrites. So **25 is the number**: it keeps
+essentially all the reach and bounds the blast radius.
+
+Note the same table for one file AND one contiguous hunk is flat at 23-35% from
+about 12 lines onward. **The line budget is not what is binding — multiple sites
+in one file is.** That is the PARTITION lane.
+
+Set in `loop.py` as a hard ceiling on any single repair, overridable with
+`FLUIDFIX_MAX_LINES`. It also closes a measured defect: a taught class could
+return a span covering the whole file, which contains the observed line and so
+passed every existing check — a red team used exactly that to flip an uncovered
+compliance flag 13 lines from the defect and have it reported as "repaired
+line 1". Containment was never proximity.

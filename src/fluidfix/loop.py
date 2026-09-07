@@ -88,6 +88,18 @@ class RepairResult:
         return f"refused: {self.reason} ({self.seconds:.1f}s)"
 
 
+def _max_changed_lines() -> int:
+    """The most lines one repair may rewrite. Default 25 — see the measurement
+    at the call site. Raise it deliberately, with `FLUIDFIX_MAX_LINES`, if your
+    taught classes genuinely need a wider span; there is no bound at which this
+    becomes safe by itself, only cheaper to review."""
+    import os as _os
+    try:
+        return max(1, int(_os.environ.get("FLUIDFIX_MAX_LINES", "25")))
+    except ValueError:
+        return 25
+
+
 def _write(path: str, content: str) -> None:
     with open(path, "w", encoding="utf-8", newline="") as f:
         f.write(content)
@@ -429,6 +441,28 @@ def repair(oracle: Oracle, defect_file: str,
                         s_, e_ = cand.start, cand.end
                         if not (1 <= s_ <= e_ <= len(raw)) \
                                 or not (s_ <= obs.lineno <= e_):
+                            continue
+                        # A CEILING ON HOW MUCH ONE REPAIR MAY REWRITE.
+                        #
+                        # Containment is not proximity: a taught class can
+                        # return SpanEdit(1, len(file)), which contains the
+                        # observed line and therefore passed every check above.
+                        # Measured 2026-09-07 by a red team: exactly that span
+                        # flipped an UNCOVERED compliance flag 13 lines from the
+                        # defect and reported it as "repaired line 1".
+                        #
+                        # 25 is not arbitrary. Measured across three repositories'
+                        # full histories (research/headtohead-2026-09-07/REACH.md),
+                        # the share of real fix commits confined to one file:
+                        #     <= 25 lines   <= 30 lines   unbounded
+                        #     raylib 71.3%      73.8%       85.4%
+                        #     cglm   54.2%      54.7%       60.9%
+                        #     Box2D  37.3%      38.3%       41.3%
+                        # Going 25 -> 30 buys at most 2.5 points and 30 ->
+                        # unbounded buys the rest by allowing arbitrarily large
+                        # rewrites. 25 keeps essentially all the reach and
+                        # bounds the blast radius.
+                        if (e_ - s_ + 1) > _max_changed_lines():
                             continue
                         old_repr = "\n".join(l.rstrip("\r")
                                              for l in raw[s_ - 1:e_])
