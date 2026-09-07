@@ -759,6 +759,72 @@
   different levers and we will tell you which one is binding on your repo before you pay for
   anything.</p>
 
+  <h2 style="margin-top:52px">What it costs</h2>
+
+  <p class="lead">Four things, priced on what we have measured. No per-seat fee: it runs on your
+  machine, invokes no model, and costs us nothing per repair — charging per developer would be
+  charging for nothing.</p>
+
+  <div class="scroll"><table class="buy">
+    <tr><th>what</th><th>price</th><th>what you get</th></tr>
+    <tr>
+      <td><b>Free</b><br><span class="ref">AGPL-3.0</span></td>
+      <td class="big">$0</td>
+      <td>Everything. All six laws, every language path, unlimited repositories, no feature gate.
+        If your project is open source this is the whole product.</td>
+    </tr>
+    <tr class="key">
+      <td><b>Measurement pilot</b><br><span class="ref">six weeks · credited in full</span></td>
+      <td class="big">$5,000</td>
+      <td>We produce <b>the number that decides everything and does not exist yet</b>: how many of
+        your regressions are in this class, how many your suite actually catches, and what it
+        would have saved. If the answer is small we tell you and you stop here.</td>
+    </tr>
+    <tr>
+      <td><b>Licence</b><br><span class="ref">per year · up to 10 repos</span></td>
+      <td class="big">$12,000</td>
+      <td>Closed-source use, CI integration, the hotspots report, one language path. Pays for
+        itself at roughly <b>two qualifying defects a week</b>.</td>
+    </tr>
+    <tr>
+      <td><b>Studio</b><br><span class="ref">per year · unlimited repos</span></td>
+      <td class="big">$40,000</td>
+      <td>All language paths, and the part that actually generalises: <b>we author and maintain
+        the fault classes for your codebase</b> from your own worked examples.</td>
+    </tr>
+  </table></div>
+
+  <p class="note" style="margin-top:18px"><b>Maintenance is the whole point, so here is how it is
+  priced.</b> A fault class is taught once and guards its family forever — one class written from a
+  single 2016 example emitted the historically correct repair for <b>four separate cglm fixes
+  spanning 2016 to 2023, in four different files</b>. So we do not bill per repair or per token,
+  because after the class exists the next instance costs zero tokens and a few suite runs. The
+  Studio tier bills for the <i>authoring</i>, which is the only part that takes human judgement,
+  and for keeping those classes correct as your engine changes shape.</p>
+
+  <p class="note"><b>The honest arithmetic.</b> One qualifying defect costs an engineer roughly
+  30–60 minutes of triage, fix and PR — call it $50–150 loaded. Multiply by how many you get a
+  year, then by the fraction your suite actually catches. On a slow-moving library we measured
+  about <b>1.5 a year</b>, which is worth a couple of hundred dollars and <b>no licence at all</b>
+  — we will say so. A live-service title patching weekly is plausibly far higher, and
+  <b>plausibly is not measured</b>. That is exactly what the pilot is for.</p>
+
+  <p class="note"><b>What we price lower because it measured weaker.</b> The Python path proves
+  uniqueness before it ships: it runs two passing candidates against each other and refuses if they
+  are different programs. On C, C++, Java and C# that check does not run, and a repair says so in
+  its own words rather than implying a proof it did not make. On cglm's six real historical
+  one-token fixes, end to end, the score was <b>0 of 6</b> — three the suite could not see at all,
+  one whose site no longer exists, and two where the C file-finder never opened the defect file.
+  The taught class itself was correct for four of the six. That gap is open work, not a footnote,
+  and it is why C is inside Studio rather than sold as finished.</p>
+
+  <p class="note"><b>Every number on this page is reproducible.</b> Clone the repo and run
+  <span style="font-family:var(--mono)">./docs/verify.sh</span>: the six laws re-derive over their whole input space,
+  the law rules on every exit, ambiguity is measured in both directions, and a real repair and a
+  real refusal run end to end. The full reasoning behind these prices is in
+  <span style="font-family:var(--mono)">docs/PRICING.md</span>, and the audit that produced the caveats is in
+  <span style="font-family:var(--mono)">research/AUDIT-2026-09-07.md</span>.</p>
+
   <div class="trust" style="margin-top:28px">
     <h3>If you are not sure whether your codebase fits — ask</h3>
     <p>Send us the repo (or just run <span style="font-family:var(--mono)">fluidfix hotspots</span>
