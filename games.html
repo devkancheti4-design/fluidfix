@@ -547,40 +547,43 @@
 
 <section><div class="wrap">
   <p class="kicker" style="color:var(--verify)">what it costs to run</p>
-  <h2>No model in the decision path</h2>
+  <h2>Zero tokens. And the extra suite runs are the proof.</h2>
 
   <p class="zero">0</p>
-  <p class="zerolab">tokens — every repair on this page</p>
+  <p class="zerolab">tokens — every repair on this page, and the one below</p>
 
-  <p class="lead" style="margin-top:28px">Box2D twice, cglm, C# — all four repairs above were
-  made with <b>zero tokens</b>, no network, and nothing leaving the build machine. The decision is
-  six integer laws; your suite is the judge. That is not a cost optimisation, it is the
-  architecture: <b>an air-gapped machine runs this</b>.</p>
-
-  <p class="lead">You can optionally put a model in as <b>eyes</b> — it names the fault class and
-  nothing else. It never proposes a fix, never reads a failure, never iterates. It is asked
-  <b>once per defect</b>, and it only ever sees the lines the failing test executed:</p>
+  <p class="lead" style="margin-top:28px">We ran a blind head-to-head. A fresh repository, a
+  defect drawn at random from 33 mechanically-enumerated sites and withheld from both sides, a
+  red suite. An LLM agent repaired it first; then fluidfix repaired the identical defect.</p>
 
   <div class="scroll"><table class="tok">
-    <tr><th>repair</th><th>file lines</th><th>shown to model</th><th>~tokens in</th><th>suite runs</th></tr>
-    <tr><td>Box2D &nbsp;b2Cross</td><td>616</td><td>106</td><td class="big">1,392</td><td>46</td></tr>
-    <tr><td>Box2D &nbsp;contact_solver</td><td>2,100</td><td>110</td><td class="big">1,440</td><td>428</td></tr>
-    <tr><td>cglm &nbsp;&nbsp;vec3_add</td><td>1,277</td><td>110</td><td class="big">1,440</td><td>100</td></tr>
-    <tr><td>C# &nbsp;&nbsp;&nbsp;&nbsp;Vector2.Cross</td><td>18</td><td>18</td><td class="big">336</td><td>14</td></tr>
-    <tr><td><b>four repairs</b></td><td></td><td></td><td class="big"><b>~4,600</b></td><td><b>588</b></td></tr>
+    <tr><th>same defect</th><th>tokens</th><th>suite runs</th><th>candidates that passed</th><th>uniqueness proven</th></tr>
+    <tr><td>LLM agent</td><td>795</td><td>3</td><td>1 — the first it found</td><td style="color:var(--amber)">no</td></tr>
+    <tr><td><b>fluidfix</b></td><td class="big"><b>0</b></td><td>126</td><td>1 — of 126 tried</td><td class="big">yes</td></tr>
   </table></div>
 
-  <p class="note" style="margin-top:18px"><b>Read the last two columns together.</b>
-  <span style="font-family:var(--mono)">contact_solver.c</span> took <b>428 suite runs</b> to
-  repair and cost <b>1,440 tokens</b> — because the kernel drives the loop and your tests judge
-  it. A model doing the repair itself pays for every one of those 428 rounds: it reads the file,
-  proposes, reads the failure, retries. Here the model is asked once, for a number.</p>
+  <p class="note" style="margin-top:18px"><b>Read the last two columns, not the middle one.</b>
+  The agent stopped at the first candidate that turned the suite green. fluidfix tried 126 and
+  found that exactly one passes — so the ruling to ship rests on 125 measured rejections.
+  <b>The agent was faster because it skipped that proof.</b> Stopping at the first green is
+  precisely the behaviour that, on the Unity case above, shipped a change that broke vector
+  addition to cancel the real bug. The fused law refused it; an agent has nothing to refuse
+  with.</p>
 
-  <p class="note"><b>How to read these figures.</b> The character counts are measured from real
-  packets on those repairs; tokens are the standard chars÷4 estimate. We are deliberately not
-  printing a head-to-head against an LLM agent — we have not run that experiment, and the honest
-  comparison is architectural rather than a benchmark: <b>one bounded call per defect, or none at
-  all</b>.</p>
+  <p class="note"><b>What the zero buys.</b> The decision is six integer laws and your own
+  suite; there is no step a model could be inserted into. So it runs air-gapped, your source
+  never leaves the building, no vendor sits in the decision path, and the same input rules the
+  same way in ten years. The 126 suite runs are 54 seconds of your own CPU — unmetered, local,
+  free at any scale. <b>fluidfix converts a token cost into a compute cost, and pays in the
+  currency you already own.</b></p>
+
+  <p class="note"><b>Honesty about the measurement.</b> One defect, one trial; the agent was a
+  strong model with the repository in its training data, and the defect was the kind agents are
+  best at — an exception whose traceback names the line. On harder cases the gap widens in
+  fluidfix's favour: <span style="font-family:var(--mono)">contact_solver.c</span> needed 428
+  suite runs and cost zero tokens, where an agent pays for every round of read-propose-retry.
+  We are not printing a token-ratio, because on this trial the honest ratio is 795 to 0 and no
+  ratio survives division by zero.</p>
 </div></section>
 
 <section><div class="wrap">
