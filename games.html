@@ -166,6 +166,27 @@
 
 
 
+
+  /* ---------- tokens ---------- */
+  .zero{
+    font-family:var(--disp); font-size:clamp(3rem,9vw,6rem); line-height:.9;
+    color:var(--verify); letter-spacing:-.03em; margin:0;
+  }
+  .zerolab{
+    font-family:var(--mono); font-size:.78rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--faint); margin:8px 0 0;
+  }
+  .tok{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:.84rem}
+  .tok th{
+    text-align:right; font-weight:500; color:var(--faint); font-size:.66rem;
+    letter-spacing:.1em; text-transform:uppercase; padding:9px 14px 9px 0;
+    border-bottom:1px solid var(--rail2); white-space:nowrap;
+  }
+  .tok th:first-child, .tok td:first-child{text-align:left}
+  .tok td{padding:10px 14px 10px 0; border-bottom:1px solid var(--rail);
+    color:var(--mute); text-align:right; font-variant-numeric:tabular-nums}
+  .tok td:first-child{color:var(--ink)}
+  .tok td.big{color:var(--verify)}
   /* ---------- derivation ---------- */
   .derive{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1px; background:var(--rail)}
   .dcell{background:var(--panel); padding:24px 26px}
@@ -522,6 +543,44 @@
   oracle: one test unlocks an entire file. That 56% is not a ceiling — it is a
   <b>roadmap</b>, and fluidfix can tell you exactly which files are one test away from being
   maintained.</p>
+</div></section>
+
+<section><div class="wrap">
+  <p class="kicker" style="color:var(--verify)">what it costs to run</p>
+  <h2>No model in the decision path</h2>
+
+  <p class="zero">0</p>
+  <p class="zerolab">tokens — every repair on this page</p>
+
+  <p class="lead" style="margin-top:28px">Box2D twice, cglm, C# — all four repairs above were
+  made with <b>zero tokens</b>, no network, and nothing leaving the build machine. The decision is
+  six integer laws; your suite is the judge. That is not a cost optimisation, it is the
+  architecture: <b>an air-gapped machine runs this</b>.</p>
+
+  <p class="lead">You can optionally put a model in as <b>eyes</b> — it names the fault class and
+  nothing else. It never proposes a fix, never reads a failure, never iterates. It is asked
+  <b>once per defect</b>, and it only ever sees the lines the failing test executed:</p>
+
+  <div class="scroll"><table class="tok">
+    <tr><th>repair</th><th>file lines</th><th>shown to model</th><th>~tokens in</th><th>suite runs</th></tr>
+    <tr><td>Box2D &nbsp;b2Cross</td><td>616</td><td>106</td><td class="big">1,392</td><td>46</td></tr>
+    <tr><td>Box2D &nbsp;contact_solver</td><td>2,100</td><td>110</td><td class="big">1,440</td><td>428</td></tr>
+    <tr><td>cglm &nbsp;&nbsp;vec3_add</td><td>1,277</td><td>110</td><td class="big">1,440</td><td>100</td></tr>
+    <tr><td>C# &nbsp;&nbsp;&nbsp;&nbsp;Vector2.Cross</td><td>18</td><td>18</td><td class="big">336</td><td>14</td></tr>
+    <tr><td><b>four repairs</b></td><td></td><td></td><td class="big"><b>~4,600</b></td><td><b>588</b></td></tr>
+  </table></div>
+
+  <p class="note" style="margin-top:18px"><b>Read the last two columns together.</b>
+  <span style="font-family:var(--mono)">contact_solver.c</span> took <b>428 suite runs</b> to
+  repair and cost <b>1,440 tokens</b> — because the kernel drives the loop and your tests judge
+  it. A model doing the repair itself pays for every one of those 428 rounds: it reads the file,
+  proposes, reads the failure, retries. Here the model is asked once, for a number.</p>
+
+  <p class="note"><b>How to read these figures.</b> The character counts are measured from real
+  packets on those repairs; tokens are the standard chars÷4 estimate. We are deliberately not
+  printing a head-to-head against an LLM agent — we have not run that experiment, and the honest
+  comparison is architectural rather than a benchmark: <b>one bounded call per defect, or none at
+  all</b>.</p>
 </div></section>
 
 <section><div class="wrap">
