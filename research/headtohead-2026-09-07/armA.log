@@ -1,0 +1,6 @@
+[18:28:03] pkg/ledger.py: repaired line 13 in 13 suite runs (4.7s):
+  - if spend > 250:
+  + if spend >= 250:
+real 6.33
+user 5.21
+sys 0.95
