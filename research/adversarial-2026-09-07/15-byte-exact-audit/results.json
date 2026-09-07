@@ -1,0 +1,711 @@
+[
+ {
+  "name": "01-strictness-lf",
+  "note": "control: plain LF, kind 0 strictness",
+  "seconds": 4.7,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 4,
+  "suite_runs": 6,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 4 in 6 suite runs (2.8s):\n  - if x >= t:\n  + if x > t:",
+  "restored_original": null,
+  "greens": [
+   "        if x > t:"
+  ],
+  "old_line": "        if x >= t:",
+  "new_line": "        if x > t:",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 6,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 101
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 6,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 101
+  },
+  "line_diff": []
+ },
+ {
+  "name": "02-additive-crlf",
+  "note": "CRLF line endings throughout, kind 3 flipped-additive",
+  "seconds": 4.0,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 2,
+  "suite_runs": 4,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 2 in 4 suite runs (2.6s):\n  - return a - b\n  + return a + b",
+  "restored_original": null,
+  "greens": [
+   "    return a + b"
+  ],
+  "old_line": "    return a - b",
+  "new_line": "    return a + b",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 2,
+   "lone_lf": 0,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 36
+  },
+  "eol_after": {
+   "crlf": 2,
+   "lone_lf": 0,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 36
+  },
+  "line_diff": []
+ },
+ {
+  "name": "03-swapret-trailing-ws",
+  "note": "kind 2 swapped-return-operands on a line with TWO trailing spaces",
+  "seconds": 3.8,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 2,
+  "suite_runs": 4,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 2 in 4 suite runs (2.0s):\n  - return b + a\n  + return a   + b",
+  "restored_original": null,
+  "greens": [
+   "    return a   + b"
+  ],
+  "old_line": "    return b + a  ",
+  "new_line": "    return a   + b",
+  "error": null,
+  "byte_exact": false,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": 30,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 36
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 36
+  },
+  "line_diff": [
+   {
+    "line": 2,
+    "pristine": "b'    return a + b  '",
+    "on_disk": "b'    return a   + b'"
+   }
+  ]
+ },
+ {
+  "name": "04-literal-no-final-nl",
+  "note": "no trailing newline at EOF, kind 1 literal-off-by-one",
+  "seconds": 3.7,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 2,
+  "suite_runs": 2,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 2 in 2 suite runs (1.7s):\n  - return xs[2:]\n  + return xs[1:]",
+  "restored_original": null,
+  "greens": [
+   "    return xs[1:]"
+  ],
+  "old_line": "    return xs[2:]",
+  "new_line": "    return xs[1:]",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 1,
+   "lone_cr": 0,
+   "final_newline": false,
+   "bom": false,
+   "len": 31
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 1,
+   "lone_cr": 0,
+   "final_newline": false,
+   "bom": false,
+   "len": 31
+  },
+  "line_diff": []
+ },
+ {
+  "name": "05-minmax-tabs",
+  "note": "TAB indentation, kind 8 minmax-swap",
+  "seconds": 3.2,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 2,
+  "suite_runs": 2,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 2 in 2 suite runs (1.5s):\n  - return max(v, hi)\n  + return min(v, hi)",
+  "restored_original": null,
+  "greens": [
+   "\treturn min(v, hi)"
+  ],
+  "old_line": "\treturn max(v, hi)",
+  "new_line": "\treturn min(v, hi)",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 40
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 40
+  },
+  "line_diff": []
+ },
+ {
+  "name": "06-strictness-bom",
+  "note": "UTF-8 BOM as the first three bytes, kind 0 strictness",
+  "seconds": 3.0,
+  "pre_green": true,
+  "post_green": false,
+  "status": "refused",
+  "file": null,
+  "lineno": null,
+  "suite_runs": null,
+  "reason": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists each one with the test that killed it",
+  "summary": "REFUSED: fault is outside the taught vocabulary (candidate files tried: mod.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 5 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists each one with the test that killed it",
+  "restored_original": null,
+  "greens": [],
+  "old_line": null,
+  "new_line": null,
+  "error": null,
+  "byte_exact": false,
+  "unchanged_from_defect": true,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": 68,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 6,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": true,
+   "len": 104
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 6,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": true,
+   "len": 105
+  },
+  "line_diff": [
+   {
+    "line": 4,
+    "pristine": "b'        if x > t:'",
+    "on_disk": "b'        if x >= t:'"
+   }
+  ]
+ },
+ {
+  "name": "07-nonascii-ident",
+  "note": "non-ASCII identifier + em-dash/umlaut string literal, kind 0",
+  "seconds": 3.7,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 5,
+  "suite_runs": 3,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 5 in 3 suite runs (1.8s):\n  - return len([x for x in xs if x >= t])\n  + return len([x for x in xs if x > t])",
+  "restored_original": null,
+  "greens": [
+   "    return len([x for x in xs if x > t])"
+  ],
+  "old_line": "    return len([x for x in xs if x >= t])",
+  "new_line": "    return len([x for x in xs if x > t])",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 5,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 93
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 5,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 93
+  },
+  "line_diff": []
+ },
+ {
+  "name": "08-augmented-assign",
+  "note": "kind 9 flipped-augmented-assign",
+  "seconds": 3.4,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 3,
+  "suite_runs": 3,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 3 in 3 suite runs (1.7s):\n  - n += 1\n  + n -= 1",
+  "restored_original": null,
+  "greens": [
+   "        n -= 1"
+  ],
+  "old_line": "        n += 1",
+  "new_line": "        n -= 1",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 4,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 68
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 4,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 68
+  },
+  "line_diff": []
+ },
+ {
+  "name": "09-comparison-direction",
+  "note": "kind 10 flipped-comparison-direction",
+  "seconds": 3.3,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 2,
+  "suite_runs": 3,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 2 in 3 suite runs (1.7s):\n  - return [x for x in xs if x > t]\n  + return [x for x in xs if x < t]",
+  "restored_original": null,
+  "greens": [
+   "    return [x for x in xs if x < t]"
+  ],
+  "old_line": "    return [x for x in xs if x > t]",
+  "new_line": "    return [x for x in xs if x < t]",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 54
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 54
+  },
+  "line_diff": []
+ },
+ {
+  "name": "10-boolean-flip",
+  "note": "kind 12 flipped-boolean",
+  "seconds": 3.8,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 3,
+  "suite_runs": 5,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 3 in 5 suite runs (2.2s):\n  - return False\n  + return True",
+  "restored_original": null,
+  "greens": [
+   "        return True"
+  ],
+  "old_line": "        return False",
+  "new_line": "        return True",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 4,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 68
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 4,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 68
+  },
+  "line_diff": []
+ },
+ {
+  "name": "11-revminus-trailing-ws",
+  "note": "kind 11 reversed-minus-operands, THREE trailing spaces on the line",
+  "seconds": 4.6,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 2,
+  "suite_runs": 4,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 2 in 4 suite runs (2.8s):\n  - return a - b\n  + return b    - a",
+  "restored_original": null,
+  "greens": [
+   "    return b    - a",
+   "    return b - a   "
+  ],
+  "old_line": "    return a - b   ",
+  "new_line": "    return b    - a",
+  "error": null,
+  "byte_exact": false,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": 28,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 35
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 35
+  },
+  "line_diff": [
+   {
+    "line": 2,
+    "pristine": "b'    return b - a   '",
+    "on_disk": "b'    return b    - a'"
+   }
+  ]
+ },
+ {
+  "name": "12-crlf-no-final-nl",
+  "note": "CRLF AND no trailing newline, kind 1",
+  "seconds": 3.2,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 2,
+  "suite_runs": 2,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 2 in 2 suite runs (1.5s):\n  - return xs[2:]\n  + return xs[1:]",
+  "restored_original": null,
+  "greens": [
+   "    return xs[1:]"
+  ],
+  "old_line": "    return xs[2:]",
+  "new_line": "    return xs[1:]",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 1,
+   "lone_lf": 0,
+   "lone_cr": 0,
+   "final_newline": false,
+   "bom": false,
+   "len": 32
+  },
+  "eol_after": {
+   "crlf": 1,
+   "lone_lf": 0,
+   "lone_cr": 0,
+   "final_newline": false,
+   "bom": false,
+   "len": 32
+  },
+  "line_diff": []
+ },
+ {
+  "name": "13-exec-mode",
+  "note": "file mode 0o755 (an executable module), kind 3",
+  "seconds": 3.9,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 2,
+  "suite_runs": 4,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 2 in 4 suite runs (2.1s):\n  - return a - b\n  + return a + b",
+  "restored_original": null,
+  "greens": [
+   "    return a + b"
+  ],
+  "old_line": "    return a - b",
+  "new_line": "    return a + b",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o755",
+  "mode_after": "0o755",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 34
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 34
+  },
+  "line_diff": []
+ },
+ {
+  "name": "14-zero-padded-escape",
+  "note": "zero-padded octal escape inside a string, kind 1",
+  "seconds": 5.8,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 1,
+  "suite_runs": 5,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 1 in 5 suite runs (2.9s):\n  - BOLD = '\\034[1m'\n  + BOLD = '\\033[1m'",
+  "restored_original": null,
+  "greens": [
+   "BOLD = '\\033[1m'"
+  ],
+  "old_line": "BOLD = '\\034[1m'",
+  "new_line": "BOLD = '\\033[1m'",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 5,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 52
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 5,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 52
+  },
+  "line_diff": []
+ },
+ {
+  "name": "15-latin1-source",
+  "note": "latin-1 declared source with a non-UTF-8 byte, kind 0",
+  "seconds": 1.6,
+  "pre_green": true,
+  "post_green": false,
+  "status": null,
+  "file": null,
+  "lineno": null,
+  "suite_runs": null,
+  "reason": "",
+  "summary": "",
+  "restored_original": null,
+  "greens": [],
+  "old_line": null,
+  "new_line": null,
+  "error": "Traceback (most recent call last):\n  File \"/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/15-byte-exact-audit/audit.py\", line 93, in run_one\n    report = guard_once(Oracle(d, python=PY, timeout=SUITE_TIMEOUT), MechanicalObserver())\n  File \"/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/guard.py\", line 505, in guard_once\n    packet = build_packet(oracle, rel, coverage_target=coverage_target)\n  File \"/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/localize.py\", line 101, in build_packet\n    src = f.read()\n  File \"<frozen codecs>\", line 325, in decode\nUnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 38: invalid continuation byte\n",
+  "byte_exact": false,
+  "unchanged_from_defect": true,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": 97,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 6,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 102
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 6,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 103
+  },
+  "line_diff": [
+   {
+    "line": 6,
+    "pristine": "b'    return len([x for x in xs if x > t])'",
+    "on_disk": "b'    return len([x for x in xs if x >= t])'"
+   }
+  ]
+ },
+ {
+  "name": "16-neighbour-trailing-ws",
+  "note": "trailing whitespace on neighbouring lines + a blank final line, kind 0",
+  "seconds": 5.9,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 4,
+  "suite_runs": 6,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 4 in 6 suite runs (3.2s):\n  - if x >= t:\n  + if x > t:",
+  "restored_original": null,
+  "greens": [
+   "        if x > t:"
+  ],
+  "old_line": "        if x >= t:",
+  "new_line": "        if x > t:",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 7,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 108
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 7,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 108
+  },
+  "line_diff": []
+ }
+]

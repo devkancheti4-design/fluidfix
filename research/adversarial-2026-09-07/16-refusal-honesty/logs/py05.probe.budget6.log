@@ -1,0 +1,10 @@
+{
+ "repaired": false,
+ "ambiguous": false,
+ "reason_repair_produced": "wall-clock deadline reached mid-search \u2014 remaining observations untried",
+ "greens_len": 0,
+ "greens": [],
+ "rejected": 0,
+ "suite_runs": 1,
+ "seconds": 0.51
+}

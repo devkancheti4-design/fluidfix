@@ -1,0 +1,23 @@
+=== A. The three constant-byte decide() calls in guard.py ===
+  guard.py:491  UNREAD=True          -> ADD_MATERIAL   (byte is a literal: branch is a tautology)
+  guard.py:612  REFUTED=True         -> HARVEST_COUNTEREXAMPLE   (byte is a literal: branch is a tautology)
+  guard.py:618  REFUTED=True         -> HARVEST_COUNTEREXAMPLE   (byte is a literal: branch is a tautology)
+
+=== B. loop.py:221/230 -- is `set_amb or len(sites)>1` the same test as `ruling==ADD_STATE`? ===
+  BUILT is always True at loop.py:217. Enumerate AMB x CAPPED:
+    AMB=0 CAPPED=0 -> law=SHIP                   body branch at :230 -> CAPPED wording     OK 
+    AMB=0 CAPPED=1 -> law=RAISE_BUDGET           body branch at :230 -> CAPPED wording     OK 
+    AMB=1 CAPPED=0 -> law=ADD_STATE              body branch at :230 -> AMBIGUOUS wording  OK 
+    AMB=1 CAPPED=1 -> law=ADD_STATE              body branch at :230 -> AMBIGUOUS wording  OK 
+  mismatches: none
+
+=== C. guard.py:539 -- what the law rules for every (CAPPED,REFUTED) the body can pass ===
+    CAPPED=0 REFUTED=0 -> SHIP
+    CAPPED=0 REFUTED=1 -> HARVEST_COUNTEREXAMPLE
+    CAPPED=1 REFUTED=0 -> RAISE_BUDGET
+    CAPPED=1 REFUTED=1 -> RAISE_BUDGET
+
+=== D. the engine law's full 8-act reach vs what the body's 6 decide() calls can construct ===
+  situations the body can construct: 10 of 256
+  acts reached: ['ADD_MATERIAL', 'ADD_STATE', 'CHANGE_GRANULARITY', 'HARVEST_COUNTEREXAMPLE', 'RAISE_BUDGET', 'SHIP']
+  acts NEVER reached: ['AUTHOR_SUCCESSOR', 'RESHAPE']

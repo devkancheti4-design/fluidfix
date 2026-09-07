@@ -1,0 +1,4 @@
+  recovered vpkg/calc.py: a previous run was killed mid-candidate; original bytes restored from the journal
+[14:44:15] vpkg/calc.py: repaired line 10 in 8 suite runs (13.7s):
+  - if units > 10:
+  + if units >= 10:

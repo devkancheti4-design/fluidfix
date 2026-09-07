@@ -1,0 +1,11 @@
+today (frame branch):   ['pkg/api.py']  evidence={"pointed": ["pkg/api.py"], "lanes": {"FRAMED": ["pkg/api.py"]}}
+escalation (limit=999): ['pkg/api.py']  capped0 grows? False
+coverage tier + SIGHT:  ['pkg/api.py', 'pkg/core.py']  evidence={"pointed": ["pkg/api.py", "pkg/core.py"], "lanes": {"FRAMED": [], "SCARCE": ["pkg/api.py", "pkg/core.py"], "LITERAL": []}}
+per-file byte as measured on the blinded output, and the byte the law WOULD see with FRAMED restored for api.py:
+   pkg/api.py     measured=0x5a SCARCE|FAILONLY|NAMED|SMALL p=0   with FRAMED: 0x5b FRAMED|SCARCE|FAILONLY|NAMED|SMALL p=0
+   pkg/core.py    measured=0x4a SCARCE|FAILONLY|SMALL    p=0   with FRAMED: 0x4a SCARCE|FAILONLY|SMALL    p=0
+
+FRAMED reachability inside the SIGHT branch (frame rewritten to a non-existent zzz/api.py):
+   order=['pkg/api.py', 'pkg/core.py']  evidence={"pointed": ["pkg/api.py", "pkg/core.py"], "lanes": {"FRAMED": ["pkg/api.py"], "SCARCE": ["pkg/api.py", "pkg/core.py"], "LITERAL": []}}
+   pkg/api.py     byte=0x5b FRAMED|SCARCE|FAILONLY|NAMED|SMALL p=0
+   pkg/core.py    byte=0x4a SCARCE|FAILONLY|SMALL              p=0

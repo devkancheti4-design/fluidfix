@@ -1,0 +1,54 @@
+{
+ "id": 25,
+ "lineno": 67,
+ "kind": 3,
+ "kind_name": "flipped-additive",
+ "act": 8,
+ "orig": "    return (lo + hi) / 2",
+ "mutant": "    return (lo - hi) / 2",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 67,\n \"old_line\": \"    return (lo - hi) / 2\",\n \"new_line\": \"    return (lo + hi) / 2\",\n \"acts_tried\": [\n  6,\n  7,\n  8\n ],\n \"suite_runs\": 3,\n \"seconds\": 1.4970638751983643,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return (lo + hi) / 2\"\n ],\n \"tried_log\": [\n  {\n   \"at\": \"weakpkg2/core.py:67\",\n   \"tried\": \"    return (lo - hi) / 1\",\n   \"why\": \"FAILED tests/test_core.py::test_midpoint_between - assert 0 <= -10.0\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:67\",\n   \"tried\": \"    return hi) / 2 - (lo\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  }\n ],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 67,
+  "old_line": "    return (lo - hi) / 2",
+  "new_line": "    return (lo + hi) / 2",
+  "acts_tried": [
+   6,
+   7,
+   8
+  ],
+  "suite_runs": 3,
+  "seconds": 1.4970638751983643,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return (lo + hi) / 2"
+  ],
+  "tried_log": [
+   {
+    "at": "weakpkg2/core.py:67",
+    "tried": "    return (lo - hi) / 1",
+    "why": "FAILED tests/test_core.py::test_midpoint_between - assert 0 <= -10.0"
+   },
+   {
+    "at": "weakpkg2/core.py:67",
+    "tried": "    return hi) / 2 - (lo",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   }
+  ],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "    return (lo + hi) / 2",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "    return (lo + hi) / 2"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

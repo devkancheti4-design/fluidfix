@@ -1,0 +1,50 @@
+== all 256 inputs ==
+priority histogram over all 256: {0: 64, 1: 32, 2: 16, 3: 8, 4: 4, 5: 2, 6: 1, 7: 129}
+distinct priorities over all 256: [0, 1, 2, 3, 4, 5, 6, 7]
+
+== the body's pinned lanes ==
+SIGNALED: guard.py:409  signaled=bool(obs.kinds)  -> 1 whenever an observation exists
+FAILONLY: never measured (guard.py:351-354 docstring)          -> always 0
+RETRIED : neither rank_observations call site passes retried=   -> always 0
+
+bytes the body can construct today: 32
+their priority histogram: {0: 16, 2: 8, 3: 8}
+distinct priorities reachable today: [0, 2, 3]
+  priority 0: 16 bytes, e.g. FRAME+NAMED+SIGNALED ... FRAME+SIGNALED+RECENT+DENSE
+  priority 2: 8 bytes, e.g. NAMED+SIGNALED ... NAMED+SIGNALED+RECENT+DENSE
+  priority 3: 8 bytes, e.g. SIGNALED ... SIGNALED+RECENT+DENSE
+
+== which free lanes can move the priority at all, given SIGNALED=1 ==
+  FRAME    : flipping it changes rank() on 32 of the 32 reachable bytes
+  NAMED    : flipping it changes rank() on 16 of the 32 reachable bytes
+  RECENT   : flipping it changes rank() on  0 of the 32 reachable bytes
+  CHEAP    : flipping it changes rank() on  0 of the 32 reachable bytes
+  DENSE    : flipping it changes rank() on  0 of the 32 reachable bytes
+
+== what measuring FAILONLY would add (SIGNALED=1, RETRIED=0) ==
+bytes: 64 distinct priorities: [0, 1, 2, 3]
+reachable bytes whose priority FAILONLY would change: 16/32
+   SIGNALED                                 3 -> 1
+   NAMED+SIGNALED                           2 -> 1
+   SIGNALED+RECENT                          3 -> 1
+   NAMED+SIGNALED+RECENT                    2 -> 1
+   SIGNALED+CHEAP                           3 -> 1
+   NAMED+SIGNALED+CHEAP                     2 -> 1
+   SIGNALED+RECENT+CHEAP                    3 -> 1
+   NAMED+SIGNALED+RECENT+CHEAP              2 -> 1
+   SIGNALED+DENSE                           3 -> 1
+   NAMED+SIGNALED+DENSE                     2 -> 1
+   SIGNALED+RECENT+DENSE                    3 -> 1
+   NAMED+SIGNALED+RECENT+DENSE              2 -> 1
+   SIGNALED+CHEAP+DENSE                     3 -> 1
+   NAMED+SIGNALED+CHEAP+DENSE               2 -> 1
+   SIGNALED+RECENT+CHEAP+DENSE              3 -> 1
+   NAMED+SIGNALED+RECENT+CHEAP+DENSE        2 -> 1
+
+== what passing RETRIED would add (the veto) ==
+reachable bytes whose priority RETRIED would change: 32/32
+rank(x|RETRIED) values: [7] (7 = the floor; the veto sends every reachable byte there)
+
+== the law's own tie structure ==
+The law returns a CLASS, not a score. Inside one class guard.py:425-427 orders by
+  (priority, -shared name tokens, input index)  -- i.e. line order when tokens tie.

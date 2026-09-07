@@ -1,0 +1,181 @@
+[
+ {
+  "name": "17-cr-only-eol",
+  "note": "CR-only (classic Mac) line endings \u2014 the whole file is one line to src.split('\\n')",
+  "seconds": 5.4,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 1,
+  "suite_runs": 6,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 1 in 6 suite runs (2.7s):\n  - def count_above(xs, t):\r    n = 0\r    for x in xs:\r        if x >= t:\r            n += 1\r    return n\n  + def count_above(xs, t):\r    n = 0\r    for x in xs:\r        if x > t:\r            n += 1\r    return n",
+  "restored_original": null,
+  "greens": [
+   "def count_above(xs, t):\r    n = 0\r    for x in xs:\r        if x > t:\r            n += 1\r    return n"
+  ],
+  "old_line": "def count_above(xs, t):\r    n = 0\r    for x in xs:\r        if x >= t:\r            n += 1\r    return n",
+  "new_line": "def count_above(xs, t):\r    n = 0\r    for x in xs:\r        if x > t:\r            n += 1\r    return n",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 0,
+   "lone_cr": 6,
+   "final_newline": true,
+   "bom": false,
+   "len": 101
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 0,
+   "lone_cr": 6,
+   "final_newline": true,
+   "bom": false,
+   "len": 101
+  },
+  "line_diff": []
+ },
+ {
+  "name": "18-strictness-trailing-ws",
+  "note": "trailing whitespace ON the repaired line, kind 0 (slice-based act)",
+  "seconds": 4.7,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 4,
+  "suite_runs": 6,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 4 in 6 suite runs (2.9s):\n  - if x >= t:\n  + if x > t:",
+  "restored_original": null,
+  "greens": [
+   "        if x > t:  "
+  ],
+  "old_line": "        if x >= t:  ",
+  "new_line": "        if x > t:  ",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 6,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 103
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 6,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 103
+  },
+  "line_diff": []
+ },
+ {
+  "name": "19-swapret-trailing-comment",
+  "note": "kind 2 with a trailing comment: the act moves the comment across the operator, commenting out the rest of the expression",
+  "seconds": 5.0,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 2,
+  "suite_runs": 3,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 2 in 3 suite runs (2.9s):\n  - return b - a  # signed difference\n  + return a  # signed difference - b",
+  "restored_original": null,
+  "greens": [
+   "    return a  # signed difference - b",
+   "    return b + a  # signed difference"
+  ],
+  "old_line": "    return b - a  # signed difference",
+  "new_line": "    return a  # signed difference - b",
+  "error": null,
+  "byte_exact": false,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": 30,
+  "eol_pristine": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 55
+  },
+  "eol_after": {
+   "crlf": 0,
+   "lone_lf": 2,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 55
+  },
+  "line_diff": [
+   {
+    "line": 2,
+    "pristine": "b'    return a - b  # signed difference'",
+    "on_disk": "b'    return a  # signed difference - b'"
+   }
+  ]
+ },
+ {
+  "name": "20-crlf-last-line",
+  "note": "CRLF, kind 11 reversed-minus on the final line",
+  "seconds": 4.9,
+  "pre_green": true,
+  "post_green": true,
+  "status": "repaired",
+  "file": "mod.py",
+  "lineno": 2,
+  "suite_runs": 3,
+  "reason": "engine law: BUILT -> SHIP",
+  "summary": "mod.py: repaired line 2 in 3 suite runs (2.9s):\n  - return a - b\n  + return b - a",
+  "restored_original": null,
+  "greens": [
+   "    return b - a"
+  ],
+  "old_line": "    return a - b",
+  "new_line": "    return b - a",
+  "error": null,
+  "byte_exact": true,
+  "unchanged_from_defect": false,
+  "mode_pristine": "0o644",
+  "mode_after": "0o644",
+  "mode_preserved": true,
+  "first_diff_offset": null,
+  "eol_pristine": {
+   "crlf": 2,
+   "lone_lf": 0,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 34
+  },
+  "eol_after": {
+   "crlf": 2,
+   "lone_lf": 0,
+   "lone_cr": 0,
+   "final_newline": true,
+   "bom": false,
+   "len": 34
+  },
+  "line_diff": []
+ }
+]

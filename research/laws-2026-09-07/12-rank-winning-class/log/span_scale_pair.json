@@ -1,0 +1,197 @@
+{
+ "name": "span_scale_pair",
+ "src": "tests/test_span_edits.py test_span_fixes_two_coordinated_wrong_lines",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "scale-pair"
+ },
+ "status": "repaired",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 5.4,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 2,
+   "input_order": [
+    2,
+    3
+   ],
+   "ranked_order": [
+    2,
+    3
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      1,
+      4
+     ],
+     "classes": [
+      "literal-off-by-one",
+      "scale-pair"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "a = x * 3"
+    },
+    {
+     "lineno": 3,
+     "kinds": [
+      1,
+      3
+     ],
+     "classes": [
+      "literal-off-by-one",
+      "flipped-additive"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "b = a + 5"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    4
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    a = x * 2"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    4
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "SPAN[2-3]    a = x * 2\n    b = a + 7"
+   ]
+  },
+  {
+   "lineno": 3,
+   "kinds": [
+    1,
+    3
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    b = a + 4"
+   ]
+  },
+  {
+   "lineno": 3,
+   "kinds": [
+    1,
+    3
+   ],
+   "act": 8,
+   "kind": 3,
+   "n": 1,
+   "cands": [
+    "    b = a - 5"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "a = x * 2"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-3",
+     "new": "a = x * 2\\nb = a + 7"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-3",
+     "new": "a = x * 2\\nb = a + 7"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "3-3",
+     "new": "b = a + 4"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "3-3",
+     "new": "b = a - 5"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 5,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    a = x * 2\n    b = a + 7",
+  "old_line": "    a = x * 3\n    b = a + 5",
+  "kind": 4,
+  "class": "scale-pair",
+  "act": 9,
+  "first_green_check": 2,
+  "suite_runs": 5,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 3,
+  "bits": "SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 2,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 2,
+  "kinds_on_line": 2,
+  "class_slot_position": 2,
+  "class_slots_total": 4
+ }
+}

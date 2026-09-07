@@ -1,0 +1,199 @@
+{
+ "name": "proof_member4_cart",
+ "src": "docs/proof_one_example.py MEMBERS[3]",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "missing-get-default"
+ },
+ "status": "repaired",
+ "file": "cart.py",
+ "candidate_files": [
+  "cart.py"
+ ],
+ "evidence": {},
+ "seconds": 4.1,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "cart.py",
+   "n_obs": 2,
+   "input_order": [
+    2,
+    4
+   ],
+   "ranked_order": [
+    4,
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 4,
+     "kinds": [
+      3,
+      4,
+      9
+     ],
+     "classes": [
+      "flipped-additive",
+      "missing-get-default",
+      "flipped-augmented-assign"
+     ],
+     "byte": 45,
+     "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+     "priority": 0,
+     "text": "t += it[\"price\"] + it.get(\"shipping\")"
+    },
+    {
+     "lineno": 2,
+     "kinds": [
+      1
+     ],
+     "classes": [
+      "literal-off-by-one"
+     ],
+     "byte": 44,
+     "bits": "NAMED+SIGNALED+CHEAP",
+     "priority": 2,
+     "text": "t = 0"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 4,
+   "kinds": [
+    3,
+    4,
+    9
+   ],
+   "act": 8,
+   "kind": 3,
+   "n": 1,
+   "cands": [
+    "        t += it[\"price\"] - it.get(\"shipping\")"
+   ]
+  },
+  {
+   "lineno": 4,
+   "kinds": [
+    3,
+    4,
+    9
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "        t += it[\"price\"] + it.get(\"shipping\", 0)"
+   ]
+  },
+  {
+   "lineno": 4,
+   "kinds": [
+    3,
+    4,
+    9
+   ],
+   "act": 14,
+   "kind": 9,
+   "n": 1,
+   "cands": [
+    "        t -= it[\"price\"] + it.get(\"shipping\")"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    t = -1"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "cart.py",
+     "old_lines": "4-4",
+     "new": "t += it[\"price\"] - it.get(\"shipping\")"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "cart.py",
+     "old_lines": "4-4",
+     "new": "t += it[\"price\"] + it.get(\"shipping\", 0)"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": true,
+   "changed": [
+    {
+     "file": "cart.py",
+     "old_lines": "4-4",
+     "new": "t += it[\"price\"] + it.get(\"shipping\", 0)"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": false,
+   "changed": [
+    {
+     "file": "cart.py",
+     "old_lines": "4-4",
+     "new": "t -= it[\"price\"] + it.get(\"shipping\")"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ok": false,
+   "changed": [
+    {
+     "file": "cart.py",
+     "old_lines": "2-2",
+     "new": "t = -1"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 5,
+ "winner": {
+  "lineno": 4,
+  "new_line": "        t += it[\"price\"] + it.get(\"shipping\", 0)",
+  "old_line": "        t += it[\"price\"] + it.get(\"shipping\")",
+  "kind": 4,
+  "class": "missing-get-default",
+  "act": 9,
+  "first_green_check": 2,
+  "suite_runs": 5,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 0,
+  "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 2,
+  "position_input": 2,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 2,
+  "kinds_on_line": 3,
+  "class_slot_position": 2,
+  "class_slots_total": 4
+ }
+}

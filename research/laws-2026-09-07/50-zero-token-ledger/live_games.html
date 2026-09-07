@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="fluidfix for games: autonomous regression maintenance for engine and gameplay code. Your tests are the judge. Measured byte-exact repairs on Box2D and cglm.">
+<meta property="og:title" content="fluidfix for Games">
+<meta property="og:description" content="Your tests caught it. fluidfix puts it back — byte-exact, unattended, with no model in the decision path.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><text y=%2213%22 font-size=%2213%22>🎮</text></svg>">
+<title>fluidfix for Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  /* Committed single-theme: a dark instrument panel lit like a game trailer.
+     Every colour is painted explicitly so the page holds on any host ground. */
+  :root{
+    --void:#08090C; --deck:#0E1014; --panel:#13161C; --rail:#1E232C; --rail2:#2A313D;
+    --ink:#F2F4F8; --mute:#9AA3B2; --faint:#626D7E;
+    --hot:#FF2E7E;          /* the accent: one place only */
+    --amber:#FFB020;        /* caution / honest limits */
+    --verify:#3ECDB4;       /* fluidfix teal — reserved for VERIFIED */
+    --red:#FF5C5C;
+    --disp:"Archivo Black","Archivo",Impact,sans-serif;
+    --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--void); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px}
+  a{color:var(--verify)}
+  *:focus-visible{outline:2px solid var(--hot); outline-offset:3px}
+
+  /* ---------------- hero ---------------- */
+  .hero{
+    position:relative; overflow:hidden; background:var(--deck);
+    border-bottom:1px solid var(--rail); padding:64px 0 0;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:-40% -10% auto -10%; height:70%;
+    background:radial-gradient(60% 100% at 50% 0%, rgba(255,46,126,.16), transparent 70%);
+    pointer-events:none;
+  }
+  .kicker{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--hot); margin:0 0 18px;
+  }
+  h1{
+    font-family:var(--disp); font-size:clamp(2.6rem,7.4vw,5.4rem);
+    line-height:.94; letter-spacing:-.03em; margin:0; text-transform:uppercase;
+    text-wrap:balance; max-width:15ch;
+  }
+  h1 span{color:var(--hot)}
+  .sub{
+    margin:22px 0 0; max-width:56ch; font-size:1.12rem; color:var(--mute);
+  }
+  .sub b{color:var(--ink); font-weight:600}
+
+  /* the hero art IS the product's output */
+  .filmstrip{
+    margin:44px 0 0; border-top:1px solid var(--rail);
+    background:var(--void); padding:26px 0 30px;
+  }
+  .slug{
+    font-family:var(--mono); font-size:.7rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--faint); margin:0 0 14px;
+  }
+  .bigdiff{font-family:var(--mono); font-size:clamp(.78rem,1.9vw,1.15rem); line-height:1.85}
+  .bigdiff div{white-space:pre; overflow-x:auto}
+  .minus{color:var(--red)}
+  .plus{color:var(--verify)}
+  .verdict{
+    margin-top:18px; font-family:var(--mono); font-size:.82rem; color:var(--faint);
+  }
+  .verdict b{color:var(--verify)}
+
+  /* ---------------- sections ---------------- */
+  section{padding:76px 0; border-bottom:1px solid var(--rail)}
+  h2{
+    font-family:var(--disp); text-transform:uppercase; letter-spacing:-.02em;
+    font-size:clamp(1.7rem,3.6vw,2.5rem); line-height:1.02; margin:0 0 12px;
+    text-wrap:balance;
+  }
+  .lead{color:var(--mute); max-width:64ch; margin:0 0 34px; font-size:1.02rem}
+  .lead b{color:var(--ink); font-weight:600}
+
+  /* ---------------- case files ---------------- */
+  .cases{display:flex; flex-direction:column; gap:1px; background:var(--rail)}
+  .case{background:var(--panel); padding:26px 28px}
+  .case-top{display:flex; flex-wrap:wrap; gap:12px; align-items:baseline; margin-bottom:4px}
+  .repo{font-family:var(--disp); text-transform:uppercase; font-size:1.15rem; letter-spacing:-.01em}
+  .what{color:var(--faint); font-family:var(--mono); font-size:.78rem}
+  .stamp{
+    margin-left:auto; font-family:var(--mono); font-size:.7rem; font-weight:600;
+    letter-spacing:.12em; text-transform:uppercase; padding:4px 10px;
+    color:var(--void); background:var(--verify);
+  }
+  .stamp.hard{background:var(--amber)}
+  .diff{
+    font-family:var(--mono); font-size:.84rem; line-height:1.75; margin:14px 0 16px;
+    background:var(--void); border-left:2px solid var(--rail2); padding:12px 14px;
+    overflow-x:auto; white-space:pre;
+  }
+  .facts{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr));
+    gap:1px; background:var(--rail); border:1px solid var(--rail);
+  }
+  .f{background:var(--panel); padding:11px 13px}
+  .f .n{
+    display:block; font-family:var(--mono); font-size:1.02rem; font-weight:600;
+    color:var(--ink); font-variant-numeric:tabular-nums;
+  }
+  .f .l{
+    font-family:var(--mono); font-size:.66rem; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--faint);
+  }
+  .note{margin:14px 0 0; color:var(--mute); font-size:.9rem; max-width:70ch}
+  .note b{color:var(--ink); font-weight:600}
+
+  /* ---------------- trust ---------------- */
+  .trust{
+    background:var(--panel); border:1px solid var(--rail2);
+    border-left:3px solid var(--hot); padding:30px 32px;
+  }
+  .trust h3{
+    font-family:var(--disp); text-transform:uppercase; font-size:1.25rem;
+    margin:0 0 12px; letter-spacing:-.01em;
+  }
+  .trust p{color:var(--mute); margin:0 0 12px; max-width:70ch}
+  .trust p:last-child{margin-bottom:0}
+  .trust b{color:var(--ink); font-weight:600}
+
+  /* ---------------- grid of three ---------------- */
+  .trio{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:var(--rail)}
+  .cell{background:var(--panel); padding:24px 26px}
+  .cell h3{font-family:var(--disp); text-transform:uppercase; font-size:1.02rem; margin:0 0 8px}
+  .cell p{margin:0; color:var(--mute); font-size:.92rem}
+  .cell b{color:var(--ink); font-weight:600}
+
+  table{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:.86rem}
+  .scroll{overflow-x:auto}
+  th{
+    text-align:left; font-weight:500; color:var(--faint); font-size:.68rem;
+    letter-spacing:.11em; text-transform:uppercase; padding:9px 14px 9px 0;
+    border-bottom:1px solid var(--rail2); white-space:nowrap;
+  }
+  td{padding:10px 14px 10px 0; border-bottom:1px solid var(--rail); color:var(--mute); vertical-align:top}
+  td.k{color:var(--ink)} td.ok{color:var(--verify)} td.no{color:var(--amber)}
+
+  .cta{display:flex; flex-wrap:wrap; gap:14px; margin-top:28px; align-items:center}
+  .btn{
+    font-family:var(--mono); font-size:.84rem; font-weight:600; letter-spacing:.06em;
+    text-transform:uppercase; padding:13px 22px; text-decoration:none;
+    background:var(--hot); color:#12040A; border:1px solid var(--hot);
+  }
+  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--rail2)}
+  code{
+    font-family:var(--mono); background:var(--void); border:1px solid var(--rail);
+    padding:3px 8px; color:var(--verify); font-size:.86rem;
+  }
+
+
+
+
+  /* ---------- tokens ---------- */
+  .zero{
+    font-family:var(--disp); font-size:clamp(3rem,9vw,6rem); line-height:.9;
+    color:var(--verify); letter-spacing:-.03em; margin:0;
+  }
+  .zerolab{
+    font-family:var(--mono); font-size:.78rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--faint); margin:8px 0 0;
+  }
+  .tok{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:.84rem}
+  .tok th{
+    text-align:right; font-weight:500; color:var(--faint); font-size:.66rem;
+    letter-spacing:.1em; text-transform:uppercase; padding:9px 14px 9px 0;
+    border-bottom:1px solid var(--rail2); white-space:nowrap;
+  }
+  .tok th:first-child, .tok td:first-child{text-align:left}
+  .tok td{padding:10px 14px 10px 0; border-bottom:1px solid var(--rail);
+    color:var(--mute); text-align:right; font-variant-numeric:tabular-nums}
+  .tok td:first-child{color:var(--ink)}
+  .tok td.big{color:var(--verify)}
+  /* ---------- derivation ---------- */
+  .derive{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1px; background:var(--rail)}
+  .dcell{background:var(--panel); padding:24px 26px}
+  .dcell .tag{font-family:var(--mono); font-size:.66rem; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--void); padding:3px 8px; display:inline-block; margin-bottom:12px}
+  .dcell h3{font-family:var(--disp); text-transform:uppercase; font-size:1rem; margin:0 0 10px}
+  .dcell p{margin:0; color:var(--mute); font-size:.92rem}
+  .dcell b{color:var(--ink); font-weight:600}
+  .absent{
+    margin-top:22px; font-family:var(--mono); font-size:.82rem; color:var(--faint);
+    border:1px dashed var(--rail2); padding:14px 16px;
+  }
+  .absent b{color:var(--verify)}
+
+  /* ---------- hotspots ---------- */
+  .cmd{
+    font-family:var(--mono); font-size:.9rem; background:var(--void);
+    border:1px solid var(--rail2); border-left:2px solid var(--hot);
+    padding:12px 16px; margin:0 0 20px; color:var(--ink); overflow-x:auto;
+  }
+  .buy{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:.86rem}
+  .buy th{
+    text-align:left; font-weight:500; color:var(--faint); font-size:.68rem;
+    letter-spacing:.11em; text-transform:uppercase; padding:9px 16px 9px 0;
+    border-bottom:1px solid var(--rail2); white-space:nowrap;
+  }
+  .buy td{padding:10px 16px 10px 0; border-bottom:1px solid var(--rail); color:var(--mute)}
+  .buy td.big{color:var(--verify); font-weight:600}
+  .buy tr.key td{color:var(--ink)}
+  .buy tr.key td.big{color:var(--verify)}
+  /* ---------- upstream receipt ---------- */
+  .receipt{
+    margin-top:26px; background:var(--panel); border:1px solid var(--rail2);
+    border-left:3px solid var(--verify); padding:24px 26px;
+  }
+  .receipt h3{font-family:var(--disp); text-transform:uppercase; font-size:1.05rem; margin:0 0 10px}
+  .receipt p{margin:0 0 10px; color:var(--mute); font-size:.94rem; max-width:72ch}
+  .receipt p:last-child{margin-bottom:0}
+  .receipt b{color:var(--ink); font-weight:600}
+  .receipt a{color:var(--verify); text-decoration:none; border-bottom:1px solid var(--rail2)}
+  .receipt .ref{font-family:var(--mono); font-size:.78rem; color:var(--faint); margin-bottom:12px; display:block}
+  /* ---------- maintenance log ---------- */
+  .log{
+    font-family:var(--mono); font-size:.82rem; line-height:1.9; background:var(--void);
+    border:1px solid var(--rail); padding:18px 20px; overflow-x:auto; white-space:pre;
+  }
+  .log .dev{color:var(--mute)}
+  .log .fix{color:var(--verify)}
+  .log .miss{color:var(--amber)}
+  .axes{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px; background:var(--rail); margin-top:8px}
+  .axis{background:var(--panel); padding:24px 26px}
+  .axis h3{font-family:var(--disp); text-transform:uppercase; font-size:1rem; margin:0 0 10px}
+  .axis .tag{font-family:var(--mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--void); padding:3px 8px; display:inline-block; margin-bottom:10px}
+  .axis p{margin:0; color:var(--mute); font-size:.92rem}
+  .axis b{color:var(--ink); font-weight:600}
+  .bar{height:8px; background:var(--rail); margin:16px 0 6px; overflow:hidden}
+  .bar i{display:block; height:100%; background:var(--verify)}
+  .barlab{font-family:var(--mono); font-size:.72rem; color:var(--faint)}
+  footer{padding:52px 0 72px; color:var(--faint); font-size:.88rem}
+  footer p{margin:0 0 10px; max-width:72ch}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div style="background:#08090C;border-bottom:1px solid #1E232C">
+  <div style="max-width:1120px;margin:0 auto;padding:12px 28px;display:flex;gap:20px;align-items:center;
+              font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.78rem">
+    <a href="./" style="color:#3ECDB4;text-decoration:none;font-weight:600">fluidfix</a>
+    <span style="color:#626D7E">/</span><span style="color:#F2F4F8">for games</span>
+    <a href="./" style="margin-left:auto;color:#9AA3B2;text-decoration:none">&larr; main site</a>
+  </div>
+</div>
+
+
+<div class="hero"><div class="wrap">
+  <p class="kicker">automated regression repair · for engine &amp; gameplay code</p>
+  <h1>Your tests caught it.<br><span>fluidfix puts it back.</span></h1>
+  <p class="sub">A machine-authored kernel decides the repair. <b>Your own test suite is the only
+  judge.</b> No model in the decision path, nothing leaves the build machine, and every candidate
+  that fails is rolled back byte-for-byte. Below are real repairs on real engine code — the diffs
+  are verbatim.</p>
+
+  <div class="filmstrip">
+    <p class="slug">Box2D · include/box2d/math_functions.h:212 · b2Cross</p>
+    <div class="bigdiff">
+      <div class="minus">- return a.x * b.y + a.y * b.x;</div>
+      <div class="plus">+ return a.x * b.y - a.y * b.x;</div>
+    </div>
+    <p class="verdict">46 suite runs · 82.8s · <b>BYTE-EXACT</b> — identical to upstream, all tests
+    green. No rules written: this class ships in the box.</p>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <h2>Four repairs. Three languages. Zero kernel changes.</h2>
+  <p class="lead">Every number here was measured on a clean clone of the real repository, with the
+  defect injected, the guard run to completion, and the result checked against
+  <b>git diff</b> — not against "the tests pass". The kernels never learned a language: adding one
+  is an adapter, and for C# it was not even that.</p>
+
+  <div class="cases">
+
+    <div class="case">
+      <div class="case-top">
+        <span class="repo">Box2D</span>
+        <span class="what">the physics engine behind thousands of shipped titles</span>
+        <span class="stamp">byte-exact</span>
+      </div>
+      <div class="diff"><span class="minus">- return a.x * b.y + a.y * b.x;</span>
+<span class="plus">+ return a.x * b.y - a.y * b.x;</span></div>
+      <div class="facts">
+        <div class="f"><span class="n">46</span><span class="l">suite runs</span></div>
+        <div class="f"><span class="n">82.8s</span><span class="l">wall clock</span></div>
+        <div class="f"><span class="n">0</span><span class="l">rules written</span></div>
+        <div class="f"><span class="n">100%</span><span class="l">tests restored</span></div>
+      </div>
+      <p class="note">A sign flip in the 2D cross product — the bug that makes everything rotate the
+      wrong way. It broke tests across contacts, joints and determinism.
+      <b>No teaching required</b>: the fault class ships with fluidfix.</p>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <span class="repo">cglm</span>
+        <span class="what">OpenGL mathematics for C — 1,131 tests</span>
+        <span class="stamp">byte-exact</span>
+      </div>
+      <div class="diff"><span class="minus">- dest[0] = a[0] - b[0];</span>
+<span class="plus">+ dest[0] = a[0] + b[0];</span></div>
+      <div class="facts">
+        <div class="f"><span class="n">100</span><span class="l">suite runs</span></div>
+        <div class="f"><span class="n">326.7s</span><span class="l">wall clock</span></div>
+        <div class="f"><span class="n">22</span><span class="l">tests broken</span></div>
+        <div class="f"><span class="n">1,131</span><span class="l">tests restored</span></div>
+      </div>
+      <p class="note">A defect in <b>vec3_add</b> whose failing tests were mostly named for ray and
+      quaternion code — because those call it. fluidfix had to search past the callers to reach the
+      callee.</p>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <span class="repo">C# / .NET</span>
+        <span class="what">a game-math class library, xunit — no adapter written</span>
+        <span class="stamp">byte-exact</span>
+      </div>
+      <div class="diff"><span class="minus">- return a.X * b.Y + a.Y * b.X;</span>
+<span class="plus">+ return a.X * b.Y - a.Y * b.X;</span></div>
+      <div class="facts">
+        <div class="f"><span class="n">14</span><span class="l">suite runs</span></div>
+        <div class="f"><span class="n">20.8s</span><span class="l">wall clock</span></div>
+        <div class="f"><span class="n">1.63s</span><span class="l">per candidate</span></div>
+        <div class="f"><span class="n">2</span><span class="l">lines to support it</span></div>
+      </div>
+      <p class="note">We had this listed as <b>unsupported</b>. That was an assumption, not a
+      measurement — so we tested it. <span style="font-family:var(--mono)">cguard</span> is generic
+      over its build and test commands, so <span style="font-family:var(--mono)">dotnet build</span>
+      and <span style="font-family:var(--mono)">dotnet test</span> slot straight in. Supporting C#
+      cost <b>one file extension and one regex</b> for the failure shape dotnet prints. No adapter,
+      no kernel change.</p>
+      <p class="note"><b>Unity is not the same as C#.</b> This was plain .NET with xunit. Unity's
+      own test framework generally needs the Editor in batch mode, which is a harder oracle — the
+      language works, a Unity project is untested, and we are not going to claim otherwise.</p>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <span class="repo">Box2D — hard mode</span>
+        <span class="what">pointer arithmetic in a 2,100-line solver</span>
+        <span class="stamp hard">byte-exact · hardest</span>
+      </div>
+      <div class="diff"><span class="minus">- b2ContactConstraintWide* c = constraints - wideIndex;</span>
+<span class="plus">+ b2ContactConstraintWide* c = constraints + wideIndex;</span></div>
+      <div class="facts">
+        <div class="f"><span class="n">428</span><span class="l">suite runs</span></div>
+        <div class="f"><span class="n">1,479s</span><span class="l">wall clock</span></div>
+        <div class="f"><span class="n">0</span><span class="l">usable frames</span></div>
+        <div class="f"><span class="n">3.5s</span><span class="l">per candidate</span></div>
+      </div>
+      <p class="note">Deliberately the worst case we could build: <b>no traceback frame</b> (the
+      runner prints no file or line at all), <b>no name affinity</b> (the failing tests are
+      <span style="font-family:var(--mono)">MultithreadingTest</span> and
+      <span style="font-family:var(--mono)">DeterminismTest</span>, which match no source file), and
+      not math. Without coverage evidence it <b>refused after an hour</b>. With a gcov tier feeding
+      it executed-line evidence, it repaired byte-exact — and got <b>5× cheaper per candidate</b>
+      at the same time.</p>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <span class="repo">C# / .NET</span>
+        <span class="what">a gameplay math library, xunit</span>
+        <span class="stamp">byte-exact</span>
+      </div>
+      <div class="diff"><span class="minus">- return a.X * b.Y + a.Y * b.X;</span>
+<span class="plus">+ return a.X * b.Y - a.Y * b.X;</span></div>
+      <div class="facts">
+        <div class="f"><span class="n">14</span><span class="l">suite runs</span></div>
+        <div class="f"><span class="n">20.8s</span><span class="l">wall clock</span></div>
+        <div class="f"><span class="n">1.63s</span><span class="l">per candidate</span></div>
+        <div class="f"><span class="n">2</span><span class="l">lines to support it</span></div>
+      </div>
+      <p class="note">The same cross-product sign flip as the Box2D case, in C#. It needed
+      <b>no new adapter</b> — the C guard is generic over your build and test commands, so
+      <span style="font-family:var(--mono)">dotnet build</span> and
+      <span style="font-family:var(--mono)">dotnet test</span> slot straight in. Supporting the
+      language cost <b>one file extension and one regex</b> for the failure shape dotnet prints.
+      <b>Unity is not the same as C#</b>: the language works, but Unity's own test framework
+      generally needs the Editor in batch mode, which is a harder oracle and is untested.</p>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>It derives the fix from your codebase</h2>
+  <p class="lead">Teaching is one worked example. The interesting question is what happens when a
+  <b>different</b> instance of that class breaks — one whose correct answer was never in the
+  example. We tested it on Box2D's rigid-body core.</p>
+
+  <div class="derive">
+    <div class="dcell">
+      <span class="tag" style="background:var(--mute)">what it was taught</span>
+      <h3>One example. Different file, different fields.</h3>
+      <div class="diff" style="margin:0"><span class="minus">- shape->density = def->friction;</span>
+<span class="plus">+ shape->density = def->density;</span></div>
+      <p style="margin-top:12px">A class described only by its <b>shape</b>: "a struct field access
+      naming the wrong member; the right name is already used elsewhere in this file."</p>
+    </div>
+    <div class="dcell">
+      <span class="tag" style="background:var(--hot)">what broke, later</span>
+      <h3>Mass accumulation, in another file.</h3>
+      <div class="diff" style="margin:0"><span class="minus">- body->mass += massData.mass;</span>
+<span class="plus">+ body->inertia += massData.mass;</span></div>
+      <p style="margin-top:12px">Compiles clean. Silently corrupts every mass computation in the
+      engine. Broke <b>DeterminismTest</b> and <b>MultithreadingTest</b>.</p>
+    </div>
+  </div>
+
+  <div class="absent">
+    the correct field name <b>mass</b> appears in the worked example: <b>never</b>
+    &nbsp;·&nbsp; in the taught transform: <b>never</b>
+    &nbsp;·&nbsp; it was mined from <b>your source</b> and chosen by <b>your tests</b>
+  </div>
+
+  <div class="facts" style="margin-top:20px">
+    <div class="f"><span class="n">34</span><span class="l">suite runs</span></div>
+    <div class="f"><span class="n">116s</span><span class="l">to derive it</span></div>
+    <div class="f"><span class="n">0</span><span class="l">times shown the answer</span></div>
+    <div class="f"><span class="n">byte-exact</span><span class="l">restoration</span></div>
+  </div>
+
+  <p class="note" style="margin-top:18px">The taught class supplied the <b>shape</b>. Your
+  codebase supplied the <b>value</b>. Your suite decided. That is what "derives" means here — and
+  what it does not mean: this is a search over values your repository already contains, not
+  invention. If the right field existed nowhere in that file, no amount of teaching would conjure
+  it, and fluidfix would refuse.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Left running. Nobody watching.</h2>
+  <p class="lead">A guard on a 20-second cycle, with <b>--commit</b>. A developer lands three
+  regressions over sixteen minutes. fluidfix is never told a regression happened, never told which
+  file, never told which line. This is the real git log:</p>
+
+  <div class="log"><span class="dev">608cd3b  Gameplay Dev          perf: micro-optimise b2CrossVS</span>
+<span class="fix">41cdfb2  fluidfix              restore math_functions.h:206   ← autonomous</span>
+<span class="dev">2da9958  Gameplay Dev          perf: micro-optimise b2Dot</span>
+<span class="fix">45e70e2  fluidfix              restore math_functions.h:212   ← autonomous</span>
+<span class="dev">136bc7e  Gameplay Dev          perf: micro-optimise b2Cross</span></div>
+
+  <div class="facts" style="margin-top:20px">
+    <div class="f"><span class="n">16 min</span><span class="l">unattended</span></div>
+    <div class="f"><span class="n">2 of 3</span><span class="l">restored</span></div>
+    <div class="f"><span class="n">79.9s</span><span class="l">first repair</span></div>
+    <div class="f"><span class="n">81.2s</span><span class="l">second repair</span></div>
+    <div class="f"><span class="n">0</span><span class="l">humans involved</span></div>
+  </div>
+
+  <p class="note" style="margin-top:18px"><b>The third one shipped.</b> The
+  <span style="font-family:var(--mono)">b2CrossVS</span> regression is still in that tree, because
+  no test in Box2D references it — the suite stayed green and fluidfix correctly did nothing. We
+  are showing you the miss because it is the whole point of the next section.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>It maintains exactly what your tests cover</h2>
+  <p class="lead">Not more, not less. We measured Box2D's own suite against its own engine, with
+  the same coverage tier fluidfix uses to localise:</p>
+
+  <div class="bar"><i style="width:56%"></i></div>
+  <p class="barlab">13,418 of 23,963 engine code lines exercised — <b style="color:var(--ink)">56%
+  guardable today</b> · 15 of 52 files under 25%</p>
+
+  <p class="lead" style="margin-top:28px"><b>So we took the worst file in the engine.</b>
+  <span style="font-family:var(--mono)">src/mover.c</span> — the character controller's plane
+  solver — <b>0% covered</b>. We broke it with a sign flip and watched what happened.</p>
+
+  <div class="axes">
+    <div class="axis">
+      <span class="tag" style="background:var(--amber)">before · no test</span>
+      <h3>Suite green. Nothing to do.</h3>
+      <p>The defect was a <b>shipped fault class</b> — fluidfix already had the exact act that
+      repairs it. It changed nothing, because no test went red. <b>A rule cannot create a failing
+      test.</b> The bug would have shipped.</p>
+    </div>
+    <div class="axis">
+      <span class="tag" style="background:var(--verify)">after · one 20-line test</span>
+      <h3>Repaired in 18.7 seconds.</h3>
+      <p>Same defect. Same vocabulary. <b>Nothing taught.</b> 29 suite runs, byte-exact — the
+      <b>fastest repair we recorded</b>, on the file that was invisible ten minutes earlier.</p>
+    </div>
+  </div>
+
+
+
+  <div class="cmd">$ fluidfix hotspots .</div>
+  <p class="lead" style="margin:0 0 18px">Your repository already knows which files to test,
+  because <b>every bug fix in its history names the file that broke</b>. fluidfix ranks them by
+  defect density against current coverage — and tells you what testing them buys. Run on Box2D's
+  own 1,383 commits:</p>
+
+  <div class="scroll"><table class="buy">
+    <tr><th>guard this share of past defects</th><th>files to test</th><th>of the files that ever broke</th></tr>
+    <tr><td>30%</td><td class="big">17</td><td>5%</td></tr>
+    <tr><td>50%</td><td class="big">40</td><td>12%</td></tr>
+    <tr class="key"><td><b>60%</b></td><td class="big">58</td><td><b>18%</b></td></tr>
+    <tr><td>80%</td><td class="big">138</td><td>42%</td></tr>
+  </table></div>
+
+  <p class="note" style="margin-top:18px"><b>60% of the defects costs 18% of the files.</b>
+  Defects cluster, so coverage aimed at the cluster is worth roughly twice coverage spread evenly.
+  "Get to 60% coverage" is a year nobody funds. <b>"Test the 58 files your own history already
+  named"</b> is a sprint — and for a live-service title you do not even need the git archaeology:
+  three months of incidents <i>is</i> that ranking, and every incident is a test that pays twice,
+  once as a regression guard and once as a worked example a class can be taught from.</p>
+
+  <div class="receipt">
+    <span class="ref">upstream · erincatto/box2d · issue #1103 · open</span>
+    <h3>We reported the gap to Box2D</h3>
+    <p>The coverage analysis above is not a marketing exercise — it found a real hole in a real
+    engine, so we wrote the missing test and
+    <a href="https://github.com/erincatto/box2d/issues/1103">filed it upstream</a>. The test is
+    public, and it fails on <b>two independent seeded defects</b> in the plane solver while passing
+    on unmodified sources.</p>
+    <p>We filed an issue rather than a pull request because Box2D's own template asks for that, and
+    we did not mention this product in it. Whether the maintainer takes the test is entirely his
+    call. <b>The point is that the analysis is checkable by anyone</b> — click the link and read
+    what we actually found.</p>
+  </div>
+
+  <p class="note" style="margin-top:22px">Two different things fail two different ways, and only
+  one of them is ours. <b>Shown or not shown</b> is vocabulary: teach a class once from one worked
+  example and every future member is repaired free, forever. <b>Covered or not covered</b> is your
+  oracle: one test unlocks an entire file. That 56% is not a ceiling — it is a
+  <b>roadmap</b>, and fluidfix can tell you exactly which files are one test away from being
+  maintained.</p>
+</div></section>
+
+<section><div class="wrap">
+  <p class="kicker" style="color:var(--verify)">what it costs to run</p>
+  <h2>Zero tokens. And the extra suite runs are the proof.</h2>
+
+  <p class="zero">0</p>
+  <p class="zerolab">tokens — every repair on this page, and the one below</p>
+
+  <p class="lead" style="margin-top:28px">We ran a blind head-to-head. A fresh repository, a
+  defect drawn at random from 33 mechanically-enumerated sites and withheld from both sides, a
+  red suite. An LLM agent repaired it first; then fluidfix repaired the identical defect.</p>
+
+  <div class="scroll"><table class="tok">
+    <tr><th>same defect</th><th>tokens</th><th>suite runs</th><th>candidates that passed</th><th>uniqueness proven</th></tr>
+    <tr><td>LLM agent</td><td>795</td><td>3</td><td>1 — the first it found</td><td style="color:var(--amber)">no</td></tr>
+    <tr><td><b>fluidfix</b></td><td class="big"><b>0</b></td><td>126</td><td>1 — of 126 tried</td><td class="big">yes</td></tr>
+  </table></div>
+
+  <p class="note" style="margin-top:18px"><b>Read the last two columns, not the middle one.</b>
+  The agent stopped at the first candidate that turned the suite green. fluidfix tried 126 and
+  found that exactly one passes — so the ruling to ship rests on 125 measured rejections.
+  <b>The agent was faster because it skipped that proof.</b> Stopping at the first green is
+  precisely the behaviour that, on the Unity case above, shipped a change that broke vector
+  addition to cancel the real bug. The fused law refused it; an agent has nothing to refuse
+  with.</p>
+
+  <p class="note"><b>What the zero buys.</b> The decision is six integer laws and your own
+  suite; there is no step a model could be inserted into. So it runs air-gapped, your source
+  never leaves the building, no vendor sits in the decision path, and the same input rules the
+  same way in ten years. The 126 suite runs are 54 seconds of your own CPU — unmetered, local,
+  free at any scale. <b>fluidfix converts a token cost into a compute cost, and pays in the
+  currency you already own.</b></p>
+
+  <p class="note"><b>Honesty about the measurement.</b> One defect, one trial; the agent was a
+  strong model with the repository in its training data, and the defect was the kind agents are
+  best at — an exception whose traceback names the line. On harder cases the gap widens in
+  fluidfix's favour: <span style="font-family:var(--mono)">contact_solver.c</span> needed 428
+  suite runs and cost zero tokens, where an agent pays for every round of read-propose-retry.
+  We are not printing a token-ratio, because on this trial the honest ratio is 795 to 0 and no
+  ratio survives division by zero.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>In a C build, the compiler works for you</h2>
+  <p class="lead">This is the one thing C changes, and it changes it in your favour.</p>
+  <div class="trio">
+    <div class="cell">
+      <h3>Two oracles, not one</h3>
+      <p>In a scripting language a nonsense candidate still runs and has to be rejected by a full
+      suite. In C most nonsense <b>does not compile</b>, and the toolchain says so in milliseconds —
+      rejected before a single test executes.</p>
+    </div>
+    <div class="cell">
+      <h3>Coverage, not guesswork</h3>
+      <p>A gcov tier builds a separate instrumented tree beside your fast one, so the repair loop
+      never pays for instrumentation. It anchors the search on the lines your failing tests
+      <b>actually executed</b> — measured at 0.5s.</p>
+    </div>
+    <div class="cell">
+      <h3>Your bill is your build</h3>
+      <p>Repair time is <b>candidates × (build + test)</b>. Nothing else costs measurable wall
+      clock: the kernels decide in nanoseconds. Measured 0.8s per candidate in a .c, 4.15s when a
+      header forces a wider rebuild.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="trust"><div class="wrap">
+  <h2>What is guaranteed, and what is not</h2>
+  <p class="lead">This architecture is unlike the tools it sits beside, so it is worth being exact
+  about where the guarantee starts and stops — <b>over-expecting it and dismissing it are the same
+  mistake made from opposite directions.</b></p>
+
+  <div class="derive">
+    <div class="dcell">
+      <span class="tag" style="background:var(--verify)">guaranteed</span>
+      <h3>The law rules. It does not repair.</h3>
+      <p>Every decision comes from a machine-authored integer law, exhaustively verified over its
+      entire input domain and re-derivable on your machine in about a second. Audited against
+      <b>every incident this project has recorded</b>: nine so far, and the number whose defect
+      lived in a <i>ruling</i> is <b>zero</b>. A test in the repo fails the build if that ever
+      stops being true.</p>
+    </div>
+    <div class="dcell">
+      <span class="tag" style="background:var(--amber)">not guaranteed</span>
+      <h3>It cannot out-think your tests.</h3>
+      <p>The law rules on a <b>situation</b> — and the situation is measured from your suite. Give
+      it a suite that does not hold still and it will rule correctly on a false observation.
+      Measured: against a test that skipped its assert half the time, fluidfix accepted
+      <span style="font-family:var(--mono)">return b - a</span> for
+      <span style="font-family:var(--mono)">return a + b</span> in <b>14% of searches</b>.</p>
+    </div>
+  </div>
+
+  <div class="absent" style="border-style:solid;border-color:var(--rail2)">
+    every defect this project has found lived in <b>observation</b> (4) ·
+    <b>actuation</b> (1) · <b>the wording of a report</b> (1) ·
+    <span style="color:var(--amber)">the ruling itself (0)</span>
+  </div>
+
+  <p class="note" style="margin-top:20px"><b>So the fix is never to patch the decision.</b> It is
+  to measure the situation properly and ask the law again. When a suite was found to be unstable,
+  the remedy was not a special case bolted on — the law already had a ruling for it
+  (<span style="font-family:var(--mono)">HIDDEN &rarr; CHANGE_GRANULARITY</span>: when fine records
+  disagree with a coarse one, stop judging at that granularity), sitting in a lane fluidfix had
+  never measured. Wiring it took the false-repair rate from <b>14% to 0%</b> — and produced
+  <b>more</b> correct repairs, because a candidate that was only ever green by luck stops
+  occupying the answer.</p>
+
+  <p class="note"><b>What this means when you evaluate us.</b> Do not expect a tool that is right
+  about code your tests are wrong about — nothing can be. Do expect one whose reasoning you can
+  audit offline in a second, that refuses rather than guesses, and whose failures are published
+  with numbers rather than discovered by you. <b>Correctness is bounded by your suite, not by
+  us</b> — which is the honest boundary, and the only one you can do something about.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>It is not allowed to touch your tests</h2>
+  <p class="lead">The question every engineer asks second, right after "does it work".</p>
+  <div class="trust">
+    <h3>We found it cheating. Then we made it impossible.</h3>
+    <p>During development, given a test runner it was permitted to edit, fluidfix "repaired" the
+    harness instead of the code:</p>
+    <div class="diff" style="margin:14px 0"><span class="minus">- { printf("test failed: AddTest\n"); return 1; }</span>
+<span class="plus">+ { printf("test failed: AddTest\n"); return 0; }</span></div>
+    <p>It changed the failure exit code. The defect was untouched, the output still said
+    <b>test failed</b> — and it reported success. <b>It silenced the alarm instead of putting out
+    the fire.</b></p>
+    <p>Any repair tool that can reach its own judge will find that edit, because it is the cheapest
+    path to green. So there are now two defences: test and harness files can never be candidates,
+    and <b>a green exit code is no longer sufficient</b> — the suite's output is cross-examined
+    against it, and a run that still reports failures is red no matter what it returns. Both are
+    pinned by tests, including one that disables the first defence to prove the second holds
+    alone.</p>
+    <p>We are telling you this because you would have found it eventually, and because a tool that
+    hides its worst moment cannot be trusted about its best one.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>What it will and won't do</h2>
+  <p class="lead">Alpha for C/C++. Here is the boundary, stated before you install it.</p>
+  <div class="scroll"><table>
+    <tr><th>claim</th><th>status</th><th>evidence</th></tr>
+    <tr><td class="k">Restores the original line, not just a green suite</td><td class="ok">measured</td>
+        <td>all three repairs verified with git diff against upstream</td></tr>
+    <tr><td class="k">No model, no network, nothing leaves your machine</td><td class="ok">by design</td>
+        <td>five integer kernels; re-derive them offline in ~1s</td></tr>
+    <tr><td class="k">A rejected candidate cannot corrupt your tree</td><td class="ok">measured</td>
+        <td>byte-exact rollback held across 192 rejected candidates</td></tr>
+    <tr><td class="k">Maintains code your tests never run</td><td class="no">no</td>
+        <td>measured: a defect in Box2D's 0%-covered mover.c left the suite green and was ignored —
+        one 20-line test made it repairable in 18.7s</td></tr>
+    <tr><td class="k">Works unattended, on a schedule</td><td class="ok">measured</td>
+        <td>16 minutes, three landed regressions, two restored and committed with no human</td></tr>
+    <tr><td class="k">Finds anything, however the failure reports</td><td class="no">not free</td>
+        <td>when nothing points at a file, search cost rises sharply — one case needed 1,479s</td></tr>
+    <tr><td class="k">Repairs novel logic it was never shown</td><td class="no">no</td>
+        <td>outside its taught vocabulary it refuses loudly, tree untouched</td></tr>
+    <tr><td class="k">Works on your engine's language</td><td class="ok">C, C++, C#, Java, Python</td>
+        <td>measured byte-exact in C and C#; the kernels never learn a language, so adding one is
+        an adapter — Java took 223 lines, C ~450, C# took two</td></tr>
+    <tr><td class="k">Works inside Unity</td><td class="no">untested</td>
+        <td>the C# language works; Unity's test framework generally needs the Editor in batch
+        mode, which is a harder oracle and we have not measured it</td></tr>
+  </table></div>
+  <div class="cta">
+    <a class="btn" href="mailto:devkancheti4@gmail.com?subject=fluidfix%20for%20our%20engine">Talk to us about your engine</a>
+    <a class="btn ghost" href="https://github.com/devkancheti4-design/fluidfix">Read the source</a>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Almost all of it comes down to how you show it</h2>
+  <p class="lead">A fault class is taught from <b>one worked example</b>. How that example is
+  shaped decides almost everything downstream — and the gap between a good shape and a careless
+  one is not subtle. We measured both, on the same defect, in the same engine:</p>
+
+  <div class="derive">
+    <div class="dcell">
+      <span class="tag" style="background:var(--amber)">shown carelessly</span>
+      <h3>38 files. 1,063 candidates. Refused.</h3>
+      <p>We taught a class whose signal matched
+      <span style="font-family:var(--mono)">-&gt;anything</span> — which is nearly every statement
+      in C. Nothing could point anywhere, the search space exploded, and after
+      <b>30 minutes</b> it refused. The class was correct. <b>The shape was not.</b></p>
+    </div>
+    <div class="dcell">
+      <span class="tag" style="background:var(--verify)">shown well</span>
+      <h3>One line. 34 runs. Byte-exact.</h3>
+      <p>Same engine, same defect, a class shaped to what actually distinguishes it — and it
+      derived a field name it had never been shown, in <b>116 seconds</b>, restoring the original
+      bytes exactly.</p>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:20px"><b>That was our mistake, not a customer's</b> — and it
+  is the single biggest lever on what this thing is worth to you. A class shaped to the way your
+  regressions actually look is repaired forever, at zero tokens, on every future instance. A class
+  shaped carelessly burns your build machine and refuses. <b>Same law, same engine, opposite
+  outcome.</b></p>
+
+  <p class="note">One thing shaping cannot buy: a test that does not exist. Teaching decides what
+  fluidfix <i>can</i> repair; your suite decides what it is ever <i>asked</i> to. Those are two
+  different levers and we will tell you which one is binding on your repo before you pay for
+  anything.</p>
+
+  <div class="trust" style="margin-top:28px">
+    <h3>If you are not sure whether your codebase fits — ask</h3>
+    <p>Send us the repo (or just run <span style="font-family:var(--mono)">fluidfix hotspots</span>
+    yourself and send the output). We will tell you which files carry your defects, how much of
+    them your suite actually reaches, and whether your regressions are the shape this repairs —
+    <b>including when the answer is no</b>. That answer is free and it is about your code, so it
+    is worth having whether or not you ever buy anything.</p>
+    <div class="cta" style="margin-top:18px">
+      <a class="btn" href="mailto:devkancheti4@gmail.com?subject=Does%20fluidfix%20fit%20our%20codebase%3F">Ask us about your codebase</a>
+      <a class="btn ghost" href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/TEACHING.md">How teaching works</a>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p>Point it at your repo and it will tell you what it costs before you commit to anything:</p>
+  <p><code>fluidfix cguard . --build-dir build</code> &nbsp;·&nbsp; <code>fluidfix selfcheck</code></p>
+  <p style="margin-top:18px">Adding a language is an adapter, not a rewrite — the kernels route
+  integers and edit lines of text, and never learn the language. <b>Java took 223 lines, C took
+  ~450, and C# took two</b> (one file extension, one regex for the failure shape dotnet prints).
+  <b style="color:var(--mute)">Your tests are the entire bill.</b></p>
+</div></footer>
+
+</body>
+</html>

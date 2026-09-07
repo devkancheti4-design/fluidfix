@@ -1,5 +1,79 @@
 # Changelog
 
+## 0.15.0 — 2026-09-07
+
+**0.14.0 was never released.** Its central change — measuring ambiguity across
+the whole search — was the defect a red team then exploited seven times. This
+release replaces that reasoning and ships the audit's findings with it.
+
+- **EVERY EXIT NOW CONSULTS THE LAW.** `loop._rule` returned `None` whenever
+  nothing went green, and the caller printed a hardcoded sentence, so *a refusal
+  could not carry a ruling at all*. Measured 2026-09-07: five `cguard` runs on
+  cglm produced five refusals and **zero** engine-law rulings; five on Box2D
+  produced 403 candidates, 2,233 kernel invocations and **one** ruling; and on
+  the Python path three refusals in ten reached the law as an **empty byte**,
+  which the law can only answer SHIP.
+
+  The loop now measures five bits on every exit and acts on the answer.
+  `coracle.py` and `javaoracle.py` — which **imported no law module at all** —
+  ask at both of their refusal sites. Both bits they needed were already sitting
+  in their own local variables.
+
+- **REFUTED now means what `engine.py` says it means.** The guard measured it as
+  "candidates were generated"; the definition is "candidates were generated AND
+  the suite rejected **every one**". The guard never read `result.greens` — the
+  datum supplying the second half — so a pass **holding a candidate that passed
+  the suite** told the user every candidate had been rejected, and skipped the
+  escalation the law had just ruled for. Four independent agents reproduced it.
+  The guard now tracks greens across files, carries the loop's wall-clock cap
+  into its own byte, and has a **third branch** for the outcome that previously
+  fell through: a green under a cut-short search.
+
+- **AMB is measured on PROGRAM IDENTITY, not on provenance.** The law asks
+  whether one input carries two outputs. The body asked which candidate set a
+  green came from and which line it sat on — a different question, answered
+  wrongly in both directions. Measured by a red team: two different programs
+  reachable at ONE line from two candidate sets were **shipped 12 times out of
+  12 and wrong 6 times**, with output byte-identical inside each matched pair,
+  so the choice was provably blind to correctness; cross-file greens were blind
+  by construction, 5 of 5 wrong; and a correct repair was refused for being
+  reachable twice.
+
+  `fluidfix.differ` runs the greens against inputs harvested from the repo's own
+  suite and looks for one they disagree on. On the 12 fixtures that produced the
+  worst outcome: **12/12 separated, 6 wrong repairs to 0, zero extra suite runs,
+  0.10 s per site**. Handed `units >= 10` and `units > 9` — one program spelled
+  twice — it correctly finds nothing.
+
+  **Where it cannot read the language, nothing regresses and nothing is
+  overclaimed.** Refusing every unmeasurable pair was tried first and is wrong:
+  the two greens for the Java boundary flip are `units >= 10` and `units > 9`,
+  and blanket refusal turned a correct byte-exact repair into a denial. So the
+  loop falls back to the old measure and records `amb_measured = False`; a
+  repair shipped that way says in its own reason that **uniqueness was not
+  measured here**. The gap is real and not closed: on compiled source the two
+  shapes are indistinguishable, and closing it means compiling and running both
+  candidates, which is the C and Java oracle's job.
+
+- **ADD_STATE is actuated.** It was wording only — interpolated into a refusal
+  while the loop held every candidate's full file content in memory. A refusal
+  now names the input the candidates disagree on and what each returns, and
+  writes `.fluidfix/pin_me_test.py` with **one commented assertion per
+  candidate**. fluidfix does not pick; the user uncomments the one they meant.
+  `last_refusal.json` also carries the ruling, the greens and the cap, so a
+  machine never has to infer the act from prose.
+
+- **A bug this change introduced, caught by the suite and kept as a test.** An
+  observation can name fault kinds that route to no applier, so nothing is
+  generated while the vocabulary did technically "name" something. A draft read
+  that as UNREAD-is-false and handed the law byte 512 — which rules SHIP, with
+  no candidate to ship. UNREAD is now measured as "nothing was generated to
+  judge, and the clock is not the reason", and SHIP with an empty hand refuses
+  loudly instead of raising `IndexError`.
+
+- Corrections to earlier releases' published numbers are recorded in the 0.13.0
+  section below. `pytest` is now scoped to `tests/`.
+
 ## 0.14.0 — 2026-09-07
 
 - **The PAIR law is fused — the sixth machine-authored kernel.** It rules,
@@ -51,6 +125,35 @@
   the earlier version skipped, and it is the reason a blind head-to-head
   against an LLM agent on the same defect read **795 tokens over 3 suite
   runs vs 0 tokens over 126**.
+
+- **CORRECTION to the 0.13.0 flaky-suite claim below.** That entry says wiring
+  HIDDEN took the false-accept rate "to 0 of 49 and 0 of 46". Those runs used a
+  flake that skipped its assert AT RANDOM. Re-measured 2026-09-07 over 300 runs
+  against a harder flake, one whose failures CORRELATE with the code under test:
+  the rate went from 52% to **7%** at the default `FLUIDFIX_CONFIRM=1` and **4%**
+  at 2 — not to zero. On a flake INDEPENDENT of the code, confirmation also cut
+  correct repairs, from 50% to 3.3% over 90 runs. The 0.13.0 numbers are real for
+  the flake they were measured on and must not be quoted as the general result.
+
+  The same measurement found the lane is **not actuated**: the law rules
+  `CHANGE_GRANULARITY`, and the body rejects the candidate instead. `loop.py:391`
+  is the only site that sets HIDDEN and it is discarded per candidate, so no
+  search-ending situation carries it. The ruling was available and never asked.
+
+- **CORRECTION to the "a hanging candidate is killed, not orphaned" claim
+  below.** Two things are wrong with it. The headline is unscoped: only the C
+  oracle ever grew a process-group kill. `oracle.py:157` (Python) and
+  `javaoracle.py:53` (Java) have **no group kill at all**, so on those paths a
+  hanging candidate is not killed and the claim does not apply. And the C
+  implementation does not work either: `coracle.py:200` derives the process
+  group id from a pid that has already been reaped, so `killpg` silently
+  degrades to a no-op. There are no rlimits anywhere.
+
+  Measured 2026-09-07: a real `fluidfix guard` run printed *"repaired line 5 in
+  9 suite runs"*, and one second later the user's own suite showed 3 errors,
+  because a hang produced by fluidfix's own `_flip_augmented` act had leaked an
+  orphan process (ppid 1) still holding a port. The repair itself was correct
+  and the law ruled correctly — the engine law has no bit for process lifetime.
 
 ## 0.13.0 — 2026-09-04
 

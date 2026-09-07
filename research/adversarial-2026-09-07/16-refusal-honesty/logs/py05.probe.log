@@ -1,0 +1,12 @@
+{
+ "repaired": false,
+ "ambiguous": false,
+ "reason_repair_produced": "a candidate passes, but the search was cut short before it could be shown unique \u2014 shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)",
+ "greens_len": 1,
+ "greens": [
+  "    r = b - a"
+ ],
+ "rejected": 9,
+ "suite_runs": 11,
+ "seconds": 7.86
+}

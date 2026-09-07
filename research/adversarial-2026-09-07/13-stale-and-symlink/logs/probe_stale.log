@@ -1,0 +1,6 @@
+A  binary newer than all sources                           stale_binary() -> False
+B  src/geom.c edited after the build (true positive)       stale_binary() -> True
+C  vendor/third_party.h mtime = +1 year, never compiled    stale_binary() -> True
+C2 ... after rebuilding the binary (the advised fix)       stale_binary() -> True
+D  src/shared.h -> OUTSIDE the root, mtime = +1 year       stale_binary() -> True
+E  ... same symlink, sane mtime (control)                  stale_binary() -> False

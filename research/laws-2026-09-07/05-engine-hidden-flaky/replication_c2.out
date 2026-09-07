@@ -1,0 +1,4 @@
+n 50 Counter({'CORRECT': 46, 'FALSE_ACCEPT': 4})
+hidden fired 22
+b-a rejected at coarse check (plain red): 24
+=> b-a coarse-green count = 26

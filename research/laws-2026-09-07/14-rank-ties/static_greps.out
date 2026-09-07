@@ -1,0 +1,48 @@
+$ grep -n "order = sorted\|-_tokens\|def _tokens\|retried=ln in retried\|retried: set\|retried = retried" src/fluidfix/guard.py
+342:                      retried: set | None = None) -> list:
+394:    retried = retried or set()
+413:            retried=ln in retried,
+422:    def _tokens(obs):
+425:    order = sorted(range(len(observations)),
+427:                                  -_tokens(observations[i]), i))
+
+$ grep -n "rank_observations(\|attempts += result.tried_log\|rel in full_sight" src/fluidfix/guard.py
+340:def rank_observations(src: str, observations: list, failing_output: str,
+511:        observations = rank_observations("\n".join(packet.src_lines),
+518:        attempts += result.tried_log
+574:            if rel in full_sight:
+585:            observations = rank_observations("\n".join(packet.src_lines),
+598:            attempts += result.tried_log
+
+$ grep -rn "retried=" src/fluidfix/ | grep -v "rank.py"
+src/fluidfix/guard.py:413:            retried=ln in retried,
+
+$ git log --oneline -S"retried=" -- src/fluidfix/guard.py
+eb4b1b8 fuse the ranking law — fourth machine-authored kernel
+
+$ git log -p -- src/fluidfix/guard.py | grep -c "^+.*rank_observations(.*retried"
+0
+
+$ grep -n "if kinds:\|obs.append" src/fluidfix/observers.py
+39:                if kinds:
+40:                    obs.append(Observation(lineno=l, kinds=kinds))
+
+$ grep -n "observer.observe(\[packet\])\[0\]" -A1 src/fluidfix/coracle.py src/fluidfix/javaoracle.py src/fluidfix/cli.py
+src/fluidfix/javaoracle.py:211:        observations = observer.observe([packet])[0]
+src/fluidfix/javaoracle.py-212-        result = repair(oracle, rel, observations,
+src/fluidfix/coracle.py:758:        observations = observer.observe([packet])[0]
+src/fluidfix/coracle.py-759-        result = repair(oracle, rel, observations,
+src/fluidfix/cli.py:76:        observations = MechanicalObserver().observe([packet])[0]
+src/fluidfix/cli.py-77-    result = repair(oracle, args.file, observations,
+
+$ grep -n "tried: set\|^def repair" src/fluidfix/loop.py
+163:def repair(oracle: Oracle, defect_file: str,
+185:    tried: set[tuple[int, str]] = set()
+
+$ grep -n "lines: list\[int\]\|sorted(frames | expanded)" src/fluidfix/localize.py
+38:    lines: list[int]          # 1-based anchor lines, sorted
+162:    lo = [l for l in sorted(frames | expanded) if 1 <= l <= len(src_lines)]
+
+$ grep -n "^def EMIT" -A1 src/fluidfix/lanes.py
+20:def EMIT(m: int) -> int:
+21-    return m & (-m)

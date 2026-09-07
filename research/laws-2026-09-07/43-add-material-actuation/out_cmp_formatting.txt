@@ -1,0 +1,24 @@
+========================================================================
+FIXTURE C-formatting  defect file: shop/formatting.py
+  arm          baseline
+  searched     ['shop/support/expect.py']
+  status       refused
+  runs         9
+  secs         3.83
+  hint         every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it
+  ------------------------------------------------------------
+  arm          WIDENED
+  carriers     ['shop/support/expect.py']
+  UNREAD       True
+  ruling       ADD_MATERIAL
+  searched     ['shop/formatting.py', 'shop/discount.py', 'shop/shipping.py', 'shop/cart.py', 'shop/tax.py', 'shop/support/expect.py']
+  defect_rank  1
+  status       repaired
+  edited       shop/formatting.py
+  correct_file True
+  runs         11
+  secs         4.31
+  hint         shop/formatting.py: repaired line 5 in 2 suite runs (1.8s):
+  - return "%.3f" % x
+  + return "%.2f" % x
+  ------------------------------------------------------------

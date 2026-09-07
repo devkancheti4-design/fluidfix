@@ -1,0 +1,26 @@
+=== UNREAD lane (guard.py:491) — both conjuncts true ===
+
+--- pytest-cov ABSENT  (expected: UNREAD asked)
+  interpreter                : /usr/bin/python3
+  find_candidate_files       : []  (empty => `not candidates` True)
+  _has_pytest_cov(oracle)    : False
+  law asked                  : [(4, 'UNREAD', 'ADD_MATERIAL'), (0, '<empty>', 'SHIP')]
+  guard status               : refused
+  hint                       : 'pytest-cov is not installed in the target interpreter, so coverage-based localisation was unavailable — install it (/usr/bin/python3 -m pip install py'
+
+=== control: same repo, an interpreter that HAS pytest-cov ===
+
+--- pytest-cov PRESENT (expected: UNREAD not asked)
+  interpreter                : /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python
+  find_candidate_files       : []  (empty => `not candidates` True)
+  _has_pytest_cov(oracle)    : True
+  law asked                  : [(0, '<empty>', 'SHIP')]
+  guard status               : refused
+  hint                       : ''
+
+=== verdict ===
+  x=4 UNREAD asked with pytest-cov absent : True
+  x=4 UNREAD asked with pytest-cov present: False
+  lane guard.py:491 is REACHABLE and gated by the measurement: True
+  law rules on x=4: ADD_MATERIAL
+  hint mentions the ruling: True

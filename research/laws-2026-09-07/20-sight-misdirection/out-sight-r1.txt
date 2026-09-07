@@ -1,0 +1,8 @@
+framed bytes: 128   non-framed bytes: 128
+pairs where a FRAMED file loses to a non-framed file: 0
+distinct priorities a FRAMED byte can take: [0]
+sight(FRAMED|UBIQUITOUS)      = 0
+sight(every bit set)          = 0
+sight(UBIQUITOUS alone)       = 7
+priority histogram over all 256 inputs: {0: 224, 2: 8, 3: 12, 4: 6, 5: 3, 6: 2, 7: 1}
+priority 1 emitted: False

@@ -1,0 +1,3 @@
+status=repaired file=pkg/core.py seconds=5.3
+lineno=33 old='return a - b                    # DEFECT: should be a + b' new='return a + b                    # DEFECT: should be a + b' suite_runs=6 reason='engine law: BUILT -> SHIP'
+green after: True

@@ -1,0 +1,23 @@
+loop kind order (lanes.EMIT over KINDS): [(0, 'strictness'), (1, 'literal-off-by-one'), (2, 'swapped-return-operands'), (3, 'flipped-additive'), (8, 'minmax-swap'), (9, 'flipped-augmented-assign'), (10, 'flipped-comparison-direction'), (11, 'reversed-minus-operands'), (12, 'flipped-boolean')]
+
+=== box2d: scanned 1377 commits, 576 match _FIX, 29 are one-line/one-file source fixes ===
+coarse one-token labels: {'multi-token': 26, 'other-token': 3}
+reachable by a shipped class: 0 of 29
+winning class frequency: []
+
+=== cglm: scanned 1856 commits, 341 match _FIX, 39 are one-line/one-file source fixes ===
+coarse one-token labels: {'other-token': 18, 'multi-token': 18, 'off-by-one': 2, 'other-literal': 1}
+reachable by a shipped class: 1 of 39
+winning class frequency: [('literal-off-by-one', 1)]
+
+=== per-fix replay on the defect line (reachable fixes) ===
+repo   sha        coarse       win kind                     kinds on line          pos(loop) pos(best) pos(recur-LOO)
+cglm   40458be41b off-by-one   literal-off-by-one           [1]                            5         5              5
+
+suite runs on the defect line, summed over reachable fixes:
+  box2d: n=0 loop-order=0 recurrence-order(LOO)=0 winner-first(bound)=0
+  cglm: n=1 loop-order=5 recurrence-order(LOO)=5 winner-first(bound)=5
+candidates spent on NON-winning kinds ahead of the winner (loop order): {}
+reachable fixes whose winning kind is outside kinds[:2] (the CHEAP slice in guard.rank_observations): 0 of 1
+
+wrote /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/13-rank-vs-recurrence/scan_results.json

@@ -1,0 +1,3 @@
+usage: fluidfix [-h] [--version]
+                {guard,repair,packet,init,jguard,cguard,hotspots,kinds,estimate,selfcheck} ...
+fluidfix: error: unrecognized arguments: tests/

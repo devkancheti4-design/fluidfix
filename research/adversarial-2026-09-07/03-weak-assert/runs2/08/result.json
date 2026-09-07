@@ -1,0 +1,12 @@
+{
+ "id": 8,
+ "lineno": 25,
+ "kind": 3,
+ "kind_name": "flipped-additive",
+ "act": 8,
+ "orig": "    return limit - used",
+ "mutant": "    return limit + used",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

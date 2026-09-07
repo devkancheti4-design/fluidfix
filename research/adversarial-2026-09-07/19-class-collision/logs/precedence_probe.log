@@ -1,0 +1,10 @@
+line:     return max(a, b) if enabled else min(a, b)
+
+BEFORE teaching anything:
+   kinds [8] -> tried in order ['8:minmax-swap']
+
+AFTER one register(4, ...) -- the taught class did nothing but exist:
+   kinds [4, 8] -> tried in order ['4:toy-taught-class', '8:minmax-swap']
+
+   every shipped kind >= 8 now runs AFTER the taught class on this line,
+   and loop.py ships greens[0] -- the FIRST green found.

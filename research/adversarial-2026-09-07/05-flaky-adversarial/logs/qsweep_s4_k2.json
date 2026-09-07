@@ -1,0 +1,58 @@
+{
+ "repaired": false,
+ "refused": true,
+ "lineno": null,
+ "old_line": null,
+ "new_line": null,
+ "acts_tried": [
+  7,
+  8,
+  5,
+  6,
+  15
+ ],
+ "suite_runs": 8,
+ "seconds": 4.453914165496826,
+ "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+ "ambiguous": false,
+ "greens": [],
+ "tried_log": [
+  {
+   "at": "money.py:5",
+   "tried": "    return b - a",
+   "why": "FAILED tests/test_money.py::test_combined - assert 1 == 12"
+  },
+  {
+   "at": "money.py:5",
+   "tried": "    return a + b",
+   "why": "green on one run, RED on re-check \u2014 the suite does not hold still here, so a single run cannot judge this candidate (engine law: HIDDEN -> CHANGE_GRANULARITY). last failure: FAILED tests/test_money.py::test_combined - assert 7 == 12"
+  },
+  {
+   "at": "money.py:9",
+   "tried": "    return 5 if weight <= 10 else 12",
+   "why": "FAILED tests/test_money.py::test_combined - assert -1 == 12"
+  },
+  {
+   "at": "money.py:9",
+   "tried": "    return 4 if weight < 10 else 12",
+   "why": "FAILED tests/test_money.py::test_combined - assert -1 == 12"
+  },
+  {
+   "at": "money.py:9",
+   "tried": "    return 5 if weight < 9 else 12",
+   "why": "FAILED tests/test_money.py::test_combined - assert -1 == 12"
+  },
+  {
+   "at": "money.py:9",
+   "tried": "    return 5 if weight < 10 else 11",
+   "why": "green on one run, RED on re-check \u2014 the suite does not hold still here, so a single run cannot judge this candidate (engine law: HIDDEN -> CHANGE_GRANULARITY). last failure: FAILED tests/test_money.py::test_combined - assert -1 == 12"
+  },
+  {
+   "at": "money.py:9",
+   "tried": "    return 5 if weight > 10 else 12",
+   "why": "FAILED tests/test_money.py::test_combined - assert -1 == 12"
+  }
+ ],
+ "tried_more": 0,
+ "restored_original": null
+}

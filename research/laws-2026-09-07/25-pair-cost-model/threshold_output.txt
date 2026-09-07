@@ -1,0 +1,65 @@
+==========================================================================
+1. WHAT THE LAW DOES WITH CHEAP  (exhaustive over all 256 inputs)
+  inputs whose ruling is PAIR                  : 2/256  ['0b11011', '0b111011']
+  ... every one has CHEAP set                  : True
+  inputs with CHEAP clear                      : 128/256
+  ... any of them ruling PAIR                  : False
+  rulings reachable with CHEAP forced 0        : {'SINGLE': 16, 'TEACH': 3, 'WIDEN': 2, 'PARTITION': 8, 'BUDGET': 3, 'REFUSE': 64, 'CAPPED': 32}
+  rulings reachable with CHEAP free            : {'SINGLE': 32, 'TEACH': 5, 'WIDEN': 4, 'PARTITION': 16, 'PAIR': 2, 'BUDGET': 3, 'REFUSE': 130, 'CAPPED': 64}
+
+==========================================================================
+2. THE DOCUMENTED BOX2D BYTE, AS THE DOCS STATE IT
+  PAIR_LAW_PROMPT.md incident 2 as written (EXH, no CHEAP/PARTIAL/DISJOINT)
+      byte=  1 EXHAUSTED  ->  3 TEACH
+  the same byte with TAUGHT, as tests/test_pair_law.py pins it
+      byte= 33 EXHAUSTED|TAUGHT  ->  4 BUDGET
+  what a 30-minute budget stop actually measures (CAPPED, not EXHAUSTED)
+      byte=160 TAUGHT|CAPPED  ->  5 CAPPED
+  ...with a taught class and partial progress
+      byte=162 PARTIAL|TAUGHT|CAPPED  ->  5 CAPPED
+
+==========================================================================
+3. THE THRESHOLD  n* = largest n with C(n,2)*t <= B
+  budget                               0.20     3.46     3.41    18.80    10.80
+  --escalate-budget default (600s)       77       19       19        8       11
+  --suite-timeout default (300s)         55       13       13        6        7
+  the recorded cguard run (3600s)       190       46       46       20       26
+  one working day (28800s)              537      129      130       55       73
+  one week (604800s)                   2459      592      595      254      335
+  the 23 days the docs quote (1987200s)     4458     1072     1079      460      607
+  (columns are seconds per candidate; cells are the largest CHEAP n)
+    t = 0.20 s  Python fixture (measured, agent 23)
+    t = 3.46 s  Box2D, CHANGELOG 1479s/428 runs
+    t = 3.41 s  Box2D, CHANGELOG 116s/34 runs
+    t = 18.80 s Box2D pre-gcov, CHANGELOG
+    t = 10.80 s Box2D, RE-MEASURED here (loaded machine)
+
+==========================================================================
+4. THE MEASURED n VALUES AGAINST THAT THRESHOLD
+  n=     5  C(n,2)=          10  at 0.20s =              2s =      0.00 d   tests/test_guard.py count_above fixture
+  n=   110  C(n,2)=       5,995  at 0.20s =          1,199s =      0.01 d   tests/test_span_edits.py budget fixture
+  n=   438  C(n,2)=      95,703  at 3.46s =        330,712s =      3.83 d   Box2D contact_solver.c, packet-capped (what cguard builds)
+  n=   463  C(n,2)=     106,953  at 10.80s =      1,155,092s =     13.37 d   Box2D contact_solver.c, coverage-anchored packet
+  n=  5041  C(n,2)=  12,703,320  at 3.46s =     43,897,688s =    508.08 d   Box2D contact_solver.c, whole file uncapped
+  n= 13523  C(n,2)=  91,429,003  at 3.46s =    315,942,746s =   3656.74 d   Box2D 38 richest files, packet-capped
+  n=  1063  C(n,2)=     564,453  at 3.50s =      1,975,586s =     22.87 d   the 1,063 the docs quote
+
+  CHEAP verdict at the 600s escalate budget:
+    n=     5 vs n*=  77  ->  CHEAP   tests/test_guard.py count_above fixture
+    n=   110 vs n*=  77  ->  NOT cheap   tests/test_span_edits.py budget fixture
+    n=   438 vs n*=  19  ->  NOT cheap   Box2D contact_solver.c, packet-capped (what cguard builds)
+    n=   463 vs n*=  11  ->  NOT cheap   Box2D contact_solver.c, coverage-anchored packet
+    n=  5041 vs n*=  19  ->  NOT cheap   Box2D contact_solver.c, whole file uncapped
+    n= 13523 vs n*=  19  ->  NOT cheap   Box2D 38 richest files, packet-capped
+    n=  1063 vs n*=  19  ->  NOT cheap   the 1,063 the docs quote
+
+==========================================================================
+5. THE DOCUMENTED ARITHMETIC, AND ITS SOURCES
+  C(1063,2)                        = 564453   (docs/PAIR_LAW_PROMPT.md:34 says 564,453 -> reproduces)
+  564453 x 3.5s                  = 1,975,586s = 22.87 days (docs say 'about 23 days' -> reproduces)
+  1063 x 3.5s                      = 3,720s = 62 min (docs:33 say '~1 hour')
+  BUT the run that produced 1,063 is recorded as refusing after
+  30 MINUTES (ghpages/games.html:728-732), i.e. 1800/1063 = 1.69s per candidate, not 3.5s.
+  The 3.5s figure comes from DIFFERENT runs in CHANGELOG.md:
+    1479s / 428 runs = 3.456s   (CHANGELOG.md:227)
+     116s /  34 runs = 3.412s   (CHANGELOG.md:201)

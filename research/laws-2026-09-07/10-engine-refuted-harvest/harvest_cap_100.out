@@ -1,0 +1,8 @@
+N=100 status=refused seconds=22.0
+attempts kept in GuardReport: 64
+GuardReport.result is None (refusal path does not attach the RepairResult)
+last_refusal.json rejected_candidates=64
+first entry: {'at': 'mod.py:1', 'tried': 'K = 998', 'why': 'FAILED test_mod.py::test_f - assert 998 == -1'}
+distinct why values: 64
+hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it
+mod.py untouched: True

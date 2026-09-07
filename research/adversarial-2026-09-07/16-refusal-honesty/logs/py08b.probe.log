@@ -1,0 +1,9 @@
+{
+ "repaired": false,
+ "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+ "suite_runs": 125,
+ "tried_log_len": 64,
+ "tried_more": 60,
+ "actually_rejected": 124,
+ "greens": 0
+}

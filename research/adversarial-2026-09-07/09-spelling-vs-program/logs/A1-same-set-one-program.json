@@ -1,0 +1,21 @@
+{
+ "repaired": false,
+ "refused": true,
+ "lineno": null,
+ "old_line": null,
+ "new_line": null,
+ "acts_tried": [
+  6
+ ],
+ "suite_runs": 3,
+ "seconds": 2.378901958465576,
+ "reason": "AMBIGUOUS: 2 candidates at 1 different lines (6) all pass the suite \u2014 the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)",
+ "ambiguous": true,
+ "greens": [
+  "    return payload + 3 + 4",
+  "    return payload + 4 + 3"
+ ],
+ "tried_log": [],
+ "tried_more": 0,
+ "restored_original": null
+}

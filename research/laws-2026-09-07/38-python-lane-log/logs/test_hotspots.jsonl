@@ -1,0 +1,9 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_hotspots.py::test_only_bugfix_commits_count"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_hotspots.py::test_tests_and_samples_are_never_recommended"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_hotspots.py::test_coverage_to_reach_reports_files_not_lines"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_hotspots.py::test_ranking_prefers_the_uncovered"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_hotspots.py::test_declaration_headers_are_not_top_recommendations"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_hotspots.py::test_statement_density_ignores_prose"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_hotspots.py::test_not_a_git_repo_answers_instead_of_raising"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_hotspots.py::test_version_is_single_source_and_current"}

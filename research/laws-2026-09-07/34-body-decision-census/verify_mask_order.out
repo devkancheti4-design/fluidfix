@@ -1,0 +1,16 @@
+acts.py:60 contract: Observation.kinds is 'most specific first'.
+loop.py:283 collapses that list to a bitmask; lanes.EMIT then takes the LOWEST LIVE BIT.
+
+  observer said kinds=[3, 1]       -> body tries kinds in order [1, 3]
+  observer said kinds=[1, 3]       -> body tries kinds in order [1, 3]
+  observer said kinds=[12, 0]      -> body tries kinds in order [0, 12]
+  observer said kinds=[0, 12]      -> body tries kinds in order [0, 12]
+  observer said kinds=[10, 0, 1]   -> body tries kinds in order [0, 1, 10]
+  observer said kinds=[8, 3]       -> body tries kinds in order [3, 8]
+  observer said kinds=[3, 8]       -> body tries kinds in order [3, 8]
+
+  duplicate-insensitive too: [1, 3] == [1, 3]
+
+  => the observer's stated priority is NOT preserved; order is ascending kind number.
+     Kind numbers come from the KINDS dict literal in acts.py:74-114 (a code decision),
+     not from any law. lanes.EMIT rules the TRAVERSAL of the mask, not the priority.

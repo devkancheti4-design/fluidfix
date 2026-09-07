@@ -1,0 +1,6 @@
+e2e_count_above              repaired   6.0s runs=6  win L4 kind=0(strictness) prio=3 bits=SIGNALED+CHEAP pos=2/3 input_pos=2 slot=2/5 kind_in_line=1/2 first_green_check=2
+regress_crlf_cmp             refused    5.2s runs=4  hint='AMBIGUOUS: 2 candidates at 2 different lines (2, 3) all pass the suite — the tes'
+demo_billing                 repaired   4.8s runs=4  win L2 kind=3(flipped-additive) prio=2 bits=NAMED+SIGNALED+CHEAP pos=1/1 input_pos=1 slot=3/4 kind_in_line=3/4 first_green_check=3
+span_guarded                 repaired   4.9s runs=5  win L2 kind=4(guarded-span) prio=3 bits=SIGNALED+CHEAP pos=1/2 input_pos=1 slot=2/4 kind_in_line=2/2 first_green_check=2
+teach_get_default            repaired   4.0s runs=5  win L4 kind=4(missing-get-default) prio=0 bits=FRAME+SIGNALED+CHEAP pos=1/2 input_pos=2 slot=2/4 kind_in_line=2/3 first_green_check=2
+proof_member2_metrics        repaired   4.1s runs=5  win L2 kind=4(missing-get-default) prio=0 bits=FRAME+NAMED+SIGNALED+CHEAP pos=1/1 input_pos=1 slot=4/4 kind_in_line=4/4 first_green_check=4

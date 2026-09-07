@@ -1,0 +1,12 @@
+{"shape": "A", "config": "g0", "k": 4, "trials": 100, "counts": {"NO_FAILING_TEST": 26, "CORRECT": 50, "FALSE_ACCEPT": 24}, "mean_invocations": 2.48, "mean_full_runs": 2.48, "mean_node_runs": 0.0, "mean_seconds": 0.55}
+{"shape": "A", "config": "g1c1", "k": 4, "trials": 100, "counts": {"CORRECT": 66, "NO_FAILING_TEST": 24, "FALSE_ACCEPT": 10}, "mean_invocations": 3.45, "mean_full_runs": 3.45, "mean_node_runs": 0.0, "mean_seconds": 0.74}
+{"shape": "A", "config": "g1c2", "k": 4, "trials": 100, "counts": {"CORRECT": 64, "NO_FAILING_TEST": 31, "FALSE_ACCEPT": 5}, "mean_invocations": 4.04, "mean_full_runs": 4.04, "mean_node_runs": 0.0, "mean_seconds": 0.88}
+{"shape": "A", "config": "g1c4", "k": 4, "trials": 100, "counts": {"CORRECT": 78, "NO_FAILING_TEST": 22}, "mean_invocations": 5.94, "mean_full_runs": 5.94, "mean_node_runs": 0.0, "mean_seconds": 1.64}
+{"shape": "B", "config": "g0", "k": 4, "trials": 30, "counts": {"CORRECT": 12, "REFUSED": 18}, "mean_invocations": 3.0, "mean_full_runs": 3.0, "mean_node_runs": 0.0, "mean_seconds": 0.71}
+{"shape": "B", "config": "g1c1", "k": 4, "trials": 30, "counts": {"REFUSED": 27, "CORRECT": 3}, "mean_invocations": 3.37, "mean_full_runs": 3.37, "mean_node_runs": 0.0, "mean_seconds": 0.81}
+{"shape": "B", "config": "g1c4", "k": 4, "trials": 30, "counts": {"REFUSED": 30}, "mean_invocations": 3.9, "mean_full_runs": 3.9, "mean_node_runs": 0.0, "mean_seconds": 0.96}
+{"shape": "B", "config": "g2", "k": 4, "trials": 30, "counts": {"CORRECT": 29, "REFUSED": 1}, "mean_invocations": 7.0, "mean_full_runs": 7.0, "mean_node_runs": 0.0, "mean_seconds": 1.65}
+{"shape": "B", "config": "g3", "k": 4, "trials": 30, "counts": {"CORRECT": 29, "REFUSED": 1}, "mean_invocations": 12.07, "mean_full_runs": 7.0, "mean_node_runs": 5.07, "mean_seconds": 3.84}
+{"shape": "A", "config": "g2", "k": 4, "trials": 30, "counts": {"CORRECT": 20, "FALSE_ACCEPT": 10}, "mean_invocations": 7.0, "mean_full_runs": 7.0, "mean_node_runs": 0.0, "mean_seconds": 2.38}
+{"shape": "A", "config": "g3", "k": 4, "trials": 30, "counts": {"CORRECT": 30}, "mean_invocations": 12.27, "mean_full_runs": 7.0, "mean_node_runs": 5.27, "mean_seconds": 3.94}
+ALL_DONE

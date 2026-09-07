@@ -1,0 +1,145 @@
+{
+ "name": "ref_amb_two_greens",
+ "src": "tests/test_engine_fusion.py test_ambiguous_greens_refuse_with_add_state",
+ "group": "refusal",
+ "expect": "refused",
+ "taught": {
+  "4": "amb-demo"
+ },
+ "status": "refused",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {
+  "pointed": [
+   "mod.py"
+  ],
+  "lanes": {
+   "FRAMED": [],
+   "SCARCE": [
+    "mod.py"
+   ],
+   "LITERAL": []
+  }
+ },
+ "seconds": 3.6,
+ "hint": "AMBIGUOUS: 2 candidates at 1 different lines (1) all pass the suite \u2014 the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB ",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 1,
+   "input_order": [
+    1
+   ],
+   "ranked_order": [
+    1
+   ],
+   "rows": [
+    {
+     "lineno": 1,
+     "kinds": [
+      1,
+      4
+     ],
+     "classes": [
+      "literal-off-by-one",
+      "amb-demo"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "K = 0"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 1,
+   "kinds": [
+    1,
+    4
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "K = -1"
+   ]
+  },
+  {
+   "lineno": 1,
+   "kinds": [
+    1,
+    4
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 2,
+   "cands": [
+    "K = 1",
+    "K = 2"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "1-1",
+     "new": "K = -1"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "1-1",
+     "new": "K = 1"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "1-1",
+     "new": "K = 1"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "1-1",
+     "new": "K = 2"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "1-1",
+     "new": "K = 2"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 4,
+ "winner": null
+}

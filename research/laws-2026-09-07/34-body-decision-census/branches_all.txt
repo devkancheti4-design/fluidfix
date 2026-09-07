@@ -1,0 +1,348 @@
+loop.py:67   if/elif        RepairResult.summary         if self.repaired:
+loop.py:134  if/elif        recover_inflight             if not os.path.exists(jp):
+loop.py:157  if/elif        _restored_original           if p.returncode != 0:
+loop.py:170  boolop(or)     repair                       cand_t = candidate_timeout or oracle.timeout
+loop.py:175  if/elif        repair                       if oracle.green():
+loop.py:201  if/elif        repair._rule                 if not greens:
+loop.py:218  boolop(or)     repair._rule                 AMB=set_amb or len(sites) > 1,
+loop.py:221  if/elif        repair._rule                 if ruling == "SHIP":
+loop.py:230  if/elif        repair._rule                 if set_amb or len(sites) > 1:
+loop.py:230  boolop(or)     repair._rule                 if set_amb or len(sites) > 1:
+loop.py:269  if/elif        repair                       if deadline is not None and time.time() > deadline:
+loop.py:269  boolop(and)    repair                       if deadline is not None and time.time() > deadline:
+loop.py:273  if/elif        repair                       if ruled is not None:
+loop.py:279  if/elif        repair                       if not (0 <= i < len(raw)):
+loop.py:283  comp-if        repair                       mask = mask_of(k for k in obs.kinds if 0 <= k <= 15)
+loop.py:284  while          repair                       while not HALT(mask):
+loop.py:285  if/elif        repair                       if deadline is not None and time.time() > deadline:
+loop.py:285  boolop(and)    repair                       if deadline is not None and time.time() > deadline:
+loop.py:292  if/elif        repair                       if ruled is not None:
+loop.py:306  if/elif        repair                       if isinstance(cand, SpanEdit):
+loop.py:312  if/elif        repair                       if not (1 <= s_ <= e_ <= len(raw)) \
+loop.py:312  boolop(or)     repair                       if not (1 <= s_ <= e_ <= len(raw)) \
+loop.py:317  if/elif        repair                       if cand.text == old_repr:            # NOPROGRESS
+loop.py:325  if/elif        repair                       if cand == body:                     # NOPROGRESS
+loop.py:332  if/elif        repair                       if key in tried:
+loop.py:335  if/elif        repair                       if not counted:
+loop.py:342  if/elif        repair                       if defect_file.endswith(".py"):
+loop.py:346  if/elif        repair                       if len(res.tried_log) < 64:
+loop.py:357  if/elif        repair                       if ok and _confirm_runs():
+loop.py:357  boolop(and)    repair                       if ok and _confirm_runs():
+loop.py:383  if/elif        repair                       if not ok2:
+loop.py:386  if/elif        repair                       if fine_disagree:
+loop.py:398  if/elif        repair                       if ok:
+loop.py:400  if/elif        repair                       if len(greens) - green_at_set_start > 1:
+loop.py:407  if/elif        repair                       elif len(res.tried_log) < 64:
+loop.py:415  if/elif        repair                       if set_amb or len({g[3] for g in greens}) > 1:
+loop.py:415  boolop(or)     repair                       if set_amb or len({g[3] for g in greens}) > 1:
+loop.py:418  if/elif        repair                       if amb_proven:
+loop.py:425  if/elif        repair                       if ruled is not None:
+loop.py:427  ternary        repair                       res.reason = ("no observation named a kind this vocabulary can repair"
+loop.py:433  if/elif        repair                       if wrote and not res.repaired:
+loop.py:433  boolop(and)    repair                       if wrote and not res.repaired:
+guard.py:58   if/elif        GuardReport.summary          if self.status == "green":
+guard.py:60   if/elif        GuardReport.summary          if self.status == "repaired":
+guard.py:69   boolop(or)     GuardReport.summary          exhausted = "budget exhausted" in (self.hint or "")
+guard.py:70   boolop(or)     GuardReport.summary          pointed = (self.evidence or {}).get("pointed") or []
+guard.py:70   boolop(or)     GuardReport.summary          pointed = (self.evidence or {}).get("pointed") or []
+guard.py:71   if/elif        GuardReport.summary          if exhausted and not pointed:
+guard.py:71   boolop(and)    GuardReport.summary          if exhausted and not pointed:
+guard.py:87   boolop(or)     GuardReport.summary          f"Files searched: {', '.join(self.candidates) or 'none'}. "
+guard.py:92   if/elif        GuardReport.summary          elif exhausted:
+guard.py:98   boolop(or)     GuardReport.summary          f"Files searched: {', '.join(self.candidates) or 'none'}; "
+guard.py:102  boolop(or)     GuardReport.summary          f"(candidate files tried: {', '.join(self.candidates) or 'none found'}). "
+guard.py:104  if/elif        GuardReport.summary          if self.attempts:
+guard.py:108  ternary        GuardReport.summary          return base + (f"\n  hint: {self.hint}" if self.hint else "")
+guard.py:114  boolop(or)     _is_test_path                return (base.startswith("test_") or base.endswith("_test.py")
+guard.py:128  if/elif        find_candidate_files         if evidence is not None:
+guard.py:134  ternary        find_candidate_files         full = p if os.path.isabs(p) else os.path.join(oracle.root, p)
+guard.py:136  if/elif        find_candidate_files         if not full.startswith(oracle.root + os.sep) or not os.path.isfile(full):
+guard.py:136  boolop(or)     find_candidate_files         if not full.startswith(oracle.root + os.sep) or not os.path.isfile(full):
+guard.py:139  if/elif        find_candidate_files         if _is_test_path(rel):
+guard.py:142  if/elif        find_candidate_files         if rel in ordered:
+guard.py:146  if/elif        find_candidate_files         if ordered:
+guard.py:147  if/elif        find_candidate_files         if evidence is not None:
+guard.py:165  if/elif        find_candidate_files._cov_counts if os.path.exists(cov_json):
+guard.py:170  if/elif        find_candidate_files._cov_counts if _is_test_path(rel) or not rel.endswith(".py"):
+guard.py:170  boolop(or)     find_candidate_files._cov_counts if _is_test_path(rel) or not rel.endswith(".py"):
+guard.py:188  if/elif        find_candidate_files         if n_fail == 0:
+guard.py:194  ternary        find_candidate_files         affinity = 1.0 if base_tokens & fail_mods else 0.0
+guard.py:225  comp-if        find_candidate_files         timeout=30).stdout.splitlines() if l.strip().endswith(".py")}
+guard.py:253  comp-if        find_candidate_files         hits = [rel for rel, b in bodies.items() if pat.search(b)]
+guard.py:254  if/elif        find_candidate_files         if 0 < len(hits) <= 2:          # discriminating, not noise
+guard.py:269  if/elif        find_candidate_files         if sig is None:
+guard.py:271  comp-if        find_candidate_files         hits = [rel for rel, b in bodies.items() if sig.search(b)]
+guard.py:272  if/elif        find_candidate_files         if 0 < len(hits) <= 2:
+guard.py:291  if/elif        find_candidate_files         if evidence is not None:
+guard.py:293  comp-if        find_candidate_files         if os.path.basename(t[3]) in framed_files]
+guard.py:307  comp-if        _name_tokens                 if len(w) >= 3 and w.lower() not in ("test", "tests")}
+guard.py:307  boolop(and)    _name_tokens                 if len(w) >= 3 and w.lower() not in ("test", "tests")}
+guard.py:317  if/elif        _recent_lines                if not recent:
+guard.py:327  if/elif        _recent_lines                if m:
+guard.py:329  if/elif        _recent_lines                if m.group(1) in recent:
+guard.py:362  ternary        rank_observations            base = os.path.basename(rel) if rel else None
+guard.py:365  if/elif        rank_observations            if base is None or os.path.basename(m.group(1)) == base:
+guard.py:365  boolop(or)     rank_observations            if base is None or os.path.basename(m.group(1)) == base:
+guard.py:377  if/elif        rank_observations            if isinstance(node, (ast.ClassDef, ast.FunctionDef,
+guard.py:380  if/elif        rank_observations            if nt:
+guard.py:382  boolop(or)     rank_observations            (node.end_lineno or node.lineno) + 1):
+guard.py:390  if/elif        rank_observations            if l.strip():
+guard.py:393  ternary        rank_observations            recent = _recent_lines(root, rel) if (root and rel) else set()
+guard.py:393  boolop(and)    rank_observations            recent = _recent_lines(root, rel) if (root and rel) else set()
+guard.py:394  boolop(or)     rank_observations            retried = retried or set()
+guard.py:398  ternary        rank_observations.priority   body = lines[ln - 1] if 0 < ln <= len(lines) else ""
+guard.py:402  boolop(or)     rank_observations.priority   for k in (obs.kinds or [])[:2])
+guard.py:463  ternary        guard_once                   total_deadline = t0 + budget if budget else None
+guard.py:468  ternary        guard_once                   first_deadline = t0 + budget / 3 if budget else None
+guard.py:474  if/elif        guard_once                   if _recovered:
+guard.py:479  if/elif        guard_once                   if not fails:
+guard.py:483  boolop(or)     guard_once                   candidates = files or find_candidate_files(oracle, out, evidence=ev)
+guard.py:489  if/elif        guard_once                   if not candidates and not _has_pytest_cov(oracle):
+guard.py:489  boolop(and)    guard_once                   if not candidates and not _has_pytest_cov(oracle):
+guard.py:491  if/elif        guard_once                   if decide(situation(UNREAD=True)) == "ADD_MATERIAL":
+guard.py:498  if/elif        guard_once                   if total_deadline is not None and time.time() > total_deadline:
+guard.py:498  boolop(and)    guard_once                   if total_deadline is not None and time.time() > total_deadline:
+guard.py:506  if/elif        guard_once                   if packet is None:
+guard.py:508  boolop(or)     guard_once                   capped0 = capped0 or packet.truncated
+guard.py:509  if/elif        guard_once                   if not packet.truncated:
+guard.py:519  boolop(or)     guard_once                   acts0 = acts0 or bool(result.acts_tried)
+guard.py:520  if/elif        guard_once                   if result.repaired:
+guard.py:525  if/elif        guard_once                   if result.ambiguous:                     # engine law: BUILT+AMB -> ADD_STATE
+guard.py:536  boolop(or)     guard_once                   all_files = files or find_candidate_files(oracle, out, limit=999,
+guard.py:538  boolop(or)     guard_once                   capped0 = capped0 or len(all_files) > len(candidates)
+guard.py:539  if/elif        guard_once                   if escalate and decide(situation(CAPPED=capped0, REFUTED=acts0)) == "RAISE_BUDGET":
+guard.py:539  boolop(and)    guard_once                   if escalate and decide(situation(CAPPED=capped0, REFUTED=acts0)) == "RAISE_BUDGET":
+guard.py:549  if/elif        guard_once                   if total_deadline is not None:
+guard.py:554  if/elif        guard_once                   if time.time() > deadline:
+guard.py:560  boolop(or)     guard_once                   _pointed = (ev or {}).get("pointed") or []
+guard.py:560  boolop(or)     guard_once                   _pointed = (ev or {}).get("pointed") or []
+guard.py:566  ternary        guard_once                   + ("raise --escalate-budget, use --observer claude, "
+guard.py:574  if/elif        guard_once                   if rel in full_sight:
+guard.py:579  if/elif        guard_once                   if packet is not None and packet.truncated \
+guard.py:579  boolop(and)    guard_once                   if packet is not None and packet.truncated \
+guard.py:583  if/elif        guard_once                   if packet is None or time.time() > deadline:
+guard.py:583  boolop(or)     guard_once                   if packet is None or time.time() > deadline:
+guard.py:591  ternary        guard_once                   file_share = ((deadline - time.time()) / 2
+guard.py:599  boolop(or)     guard_once                   any_acts = any_acts or bool(result.acts_tried)
+guard.py:600  if/elif        guard_once                   if result.repaired:
+guard.py:606  if/elif        guard_once                   if result.ambiguous:
+guard.py:611  if/elif        guard_once                   if any_acts and not hint and \
+guard.py:611  boolop(and)    guard_once                   if any_acts and not hint and \
+guard.py:617  if/elif        guard_once                   if not hint and acts0 and \
+guard.py:617  boolop(and)    guard_once                   if not hint and acts0 and \
+guard.py:639  if/elif        propose_repair               if p.returncode == 0 and p.stdout:
+guard.py:639  boolop(and)    propose_repair               if p.returncode == 0 and p.stdout:
+guard.py:645  if/elif        propose_repair               if diff is not None:
+guard.py:650  if/elif        propose_repair               if subprocess.run(["git", "-C", root, "apply", "--check", "-"],
+guard.py:656  if/elif        propose_repair               if diff is None:
+guard.py:674  if/elif        commit_repair                if report.status != "repaired":
+guard.py:677  if/elif        commit_repair                if subprocess.run(["git", "-C", root, "diff", "--quiet", "--",
+guard.py:714  boolop(or)     write_refusal                "hint": report.hint or
+acts.py:128  while          _flip_strictness             while True:
+acts.py:130  if/elif        _flip_strictness             if i < 0:
+acts.py:133  if/elif        _flip_strictness             if a in (">", "<") and line[i:i + 2] in (">=", "<="):
+acts.py:133  boolop(and)    _flip_strictness             if a in (">", "<") and line[i:i + 2] in (">=", "<="):
+acts.py:137  if/elif        _flip_strictness             if cand not in seen:
+acts.py:141  boolop(or)     _flip_strictness             return out or [line]
+acts.py:152  if/elif        _dec_at                      if val >= 0 and len(lit) > 1 and lit.startswith("0"):
+acts.py:152  boolop(and)    _dec_at                      if val >= 0 and len(lit) > 1 and lit.startswith("0"):
+acts.py:159  if/elif        _dec_at                      if new_lit == "0" and not re.match(r"[0-9.eEjJxXbBoO_]", line[m.end():m.end() + 1] or " "):
+acts.py:159  boolop(and)    _dec_at                      if new_lit == "0" and not re.match(r"[0-9.eEjJxXbBoO_]", line[m.end():m.end() + 1] or " "):
+acts.py:159  boolop(or)     _dec_at                      if new_lit == "0" and not re.match(r"[0-9.eEjJxXbBoO_]", line[m.end():m.end() + 1] or " "):
+acts.py:161  if/elif        _dec_at                      if pre:
+acts.py:170  if/elif        _reduce_literal              if not hits:
+acts.py:173  if/elif        _reduce_literal              if obs.literal_value:
+acts.py:174  comp-if        _reduce_literal              want = [h for h in hits if h.group() == str(obs.literal_value)]
+acts.py:175  boolop(or)     _reduce_literal              occ = max(1, obs.literal_occurrence or 1)
+acts.py:176  if/elif        _reduce_literal              if len(want) >= occ:
+acts.py:178  comp-if        _reduce_literal              ordered += [h for h in hits if h not in ordered]
+acts.py:182  if/elif        _reduce_literal              if cand not in seen:
+acts.py:190  ternary        _swap_return_operands        return line if not m else f"{m.group(1)}{m.group(4)}{m.group(3)}{m.group(2)}"
+acts.py:198  if/elif        _flip_additive               if not ops:
+acts.py:201  if/elif        _flip_additive               if obs.op_occurrence and 1 <= obs.op_occurrence <= len(ops):
+acts.py:201  boolop(and)    _flip_additive               if obs.op_occurrence and 1 <= obs.op_occurrence <= len(ops):
+acts.py:204  comp-if        _flip_additive               ordered.append(next((o for o in ops if o.group(1) == "+"), ops[0]))
+acts.py:205  comp-if        _flip_additive               ordered += [o for o in ops if o not in ordered]
+acts.py:208  ternary        _flip_additive               flipped = "-" if m.group(1) == "+" else "+"
+acts.py:210  if/elif        _flip_additive               if cand not in seen:
+acts.py:221  ternary        _swap_minmax                 other = "max" if m.group(1) == "min" else "min"
+acts.py:223  if/elif        _swap_minmax                 if cand not in seen:
+acts.py:226  boolop(or)     _swap_minmax                 return out or [line]
+acts.py:234  ternary        _flip_augmented              flipped = "-" if m.group(1) == "+" else "+"
+acts.py:236  if/elif        _flip_augmented              if cand not in seen:
+acts.py:239  boolop(or)     _flip_augmented              return out or [line]
+acts.py:250  while          _flip_comparison             while True:
+acts.py:252  if/elif        _flip_comparison             if i < 0:
+acts.py:256  if/elif        _flip_comparison             if line[i - 1:i] in ("-", "<", ">") or \
+acts.py:256  boolop(or)     _flip_comparison             if line[i - 1:i] in ("-", "<", ">") or \
+acts.py:257  boolop(and)    _flip_comparison             (a in ("<", ">") and line[i + 1:i + 2] in ("=", "<", ">")):
+acts.py:261  if/elif        _flip_comparison             if cand not in seen:
+acts.py:265  boolop(or)     _flip_comparison             return out or [line]
+acts.py:274  if/elif        _reverse_minus_operands      if not m:
+acts.py:281  if/elif        _reverse_minus_operands      if cand not in seen:
+acts.py:284  boolop(or)     _reverse_minus_operands      return out or [line]
+acts.py:292  ternary        _flip_boolean                flipped = "False" if m.group(1) == "True" else "True"
+acts.py:294  if/elif        _flip_boolean                if cand not in seen:
+acts.py:297  boolop(or)     _flip_boolean                return out or [line]
+acts.py:337  if/elif        register                     if not 0 <= kind <= 15:
+acts.py:339  if/elif        register                     if kind in SHIPPED_KINDS:
+acts.py:400  if/elif        candidates                   if fn is None:
+acts.py:403  if/elif        candidates                   if isinstance(out, str):
+acts.py:406  comp-if        candidates                   if isinstance(c, (str, SpanEdit))][:candidate_cap()]
+acts.py:412  ternary        apply                        return out[0] if out else line
+oracle.py:75   if/elif        _check_harness               if rc != 0 and _NO_PYTEST in out:
+oracle.py:75   boolop(and)    _check_harness               if rc != 0 and _NO_PYTEST in out:
+oracle.py:79   boolop(or)     _check_harness               f"  interpreter: {python or '(the one fluidfix runs on)'}\n"
+oracle.py:83   if/elif        _check_harness               if rc not in _EXIT_MEANING:
+oracle.py:86   if/elif        _check_harness               if rc == 5:
+oracle.py:93   boolop(or)     _check_harness               f"with {' '.join(args) or 'no extra args'}{hint}\n"
+oracle.py:113  if/elif        _still_reports_failures      if m and m.group(1) != "0":
+oracle.py:113  boolop(and)    _still_reports_failures      if m and m.group(1) != "0":
+oracle.py:123  boolop(or)     Oracle.__init__              self.python = python or sys.executable
+oracle.py:126  boolop(or)     Oracle.__init__              self.extra_args = list(extra_args or [])
+oracle.py:139  if/elif        Oracle.clear_pyc             if d == "__pycache__":
+oracle.py:146  if/elif        Oracle.run                   if not cache:
+oracle.py:148  if/elif        Oracle.run                   if self._has_timeout:
+oracle.py:154  boolop(and)    Oracle.run                   stray = (any(a.startswith("--cov") for a in cmd)
+oracle.py:158  boolop(or)     Oracle.run                   timeout=timeout or self.timeout, env=env)
+oracle.py:163  if/elif        Oracle.run                   if stray and os.path.exists(cov_data):
+oracle.py:163  boolop(and)    Oracle.run                   if stray and os.path.exists(cov_data):
+oracle.py:176  if/elif        Oracle._cov_installed        if not hasattr(self, "_cov_probe"):
+oracle.py:201  if/elif        Oracle.check                 if self._cov_installed():
+oracle.py:203  if/elif        Oracle.check                 if self._fastgate_ok:
+oracle.py:205  if/elif        Oracle.check                 if rc in _EXIT_MEANING:
+oracle.py:213  if/elif        Oracle.check                 elif rc != 0:
+oracle.py:215  comp-if        Oracle.check                 if l.startswith(("FAILED", "ERROR"))), "")
+oracle.py:216  if/elif        Oracle.check                 if not why:
+oracle.py:217  comp-if        Oracle.check                 tail = [l for l in out.strip().splitlines() if l.strip()]
+oracle.py:218  ternary        Oracle.check                 why = tail[-1] if tail else "suite run produced no output"
+oracle.py:221  if/elif        Oracle.check                 if rc in _EXIT_MEANING:
+oracle.py:227  if/elif        Oracle.check                 if rc == 0:
+oracle.py:229  if/elif        Oracle.check                 if liars:
+oracle.py:236  comp-if        Oracle.check                 if l.startswith(("FAILED", "ERROR"))), "")
+oracle.py:237  if/elif        Oracle.check                 if not why:
+oracle.py:238  comp-if        Oracle.check                 tail = [l for l in out.strip().splitlines() if l.strip()]
+oracle.py:239  ternary        Oracle.check                 why = tail[-1] if tail else "suite run produced no output"
+coracle.py:83   boolop(or)     _fail_names                  name = (m.group("n1") or m.group("n2") or m.group("n3")
+coracle.py:85   if/elif        _fail_names                  if name and name not in out:
+coracle.py:85   boolop(and)    _fail_names                  if name and name not in out:
+coracle.py:106  boolop(or)     COracle.__init__             self.build_cmd = build_cmd or f"cmake --build {build_dir} -j{jobs}"
+coracle.py:107  boolop(or)     COracle.__init__             self.test_cmd = test_cmd or self._guess_test_cmd()
+coracle.py:116  if/elif        COracle.coverage             if self._cov is None:
+coracle.py:127  if/elif        COracle._guess_test_cmd      if os.path.isfile(p) and os.access(p, os.X_OK):
+coracle.py:127  boolop(and)    COracle._guess_test_cmd      if os.path.isfile(p) and os.access(p, os.X_OK):
+coracle.py:135  ternary        COracle._binary_path         tok = self.test_cmd.split()[0] if self.test_cmd else ""
+coracle.py:136  if/elif        COracle._binary_path         if not tok.startswith("./"):
+coracle.py:139  ternary        COracle._binary_path         return p if os.path.isfile(p) else None
+coracle.py:145  comp-if        COracle._newest_source_mtime dn[:] = [d for d in dn if d not in skip and not d.startswith(".")]
+coracle.py:145  boolop(and)    COracle._newest_source_mtime dn[:] = [d for d in dn if d not in skip and not d.startswith(".")]
+coracle.py:147  if/elif        COracle._newest_source_mtime if fn.endswith(_SRC_EXT):
+coracle.py:169  if/elif        COracle.stale_binary         if binary is None:
+coracle.py:195  boolop(or)     COracle._sh                  out, _ = proc.communicate(timeout=timeout or self.timeout)
+coracle.py:196  boolop(or)     COracle._sh                  return proc.returncode, out or ""
+coracle.py:198  if/elif        COracle._sh                  if proc is not None:
+coracle.py:221  if/elif        COracle.run                  if rc != 0:
+coracle.py:223  ternary        COracle.run                  cmd = self.test_cmd + (" " + " ".join(extra) if extra else "")
+coracle.py:229  if/elif        COracle.green                if rc != 0 and out.startswith("BUILD FAILED") and not self._pristine_checked:
+coracle.py:229  boolop(and)    COracle.green                if rc != 0 and out.startswith("BUILD FAILED") and not self._pristine_checked:
+coracle.py:241  if/elif        COracle.failing_output       if rc == 0:
+coracle.py:245  if/elif        COracle.failing_output       if named:
+coracle.py:250  if/elif        COracle.failing_output       if out.startswith("BUILD FAILED") and not self._pristine_checked:
+coracle.py:250  boolop(and)    COracle.failing_output       if out.startswith("BUILD FAILED") and not self._pristine_checked:
+coracle.py:257  if/elif        COracle.failing_output       if self.stale_binary():
+coracle.py:283  if/elif        COracle.check                if rc == 0:
+coracle.py:285  if/elif        COracle.check                if liars:
+coracle.py:293  if/elif        COracle.check                if clean.startswith("BUILD FAILED"):
+coracle.py:295  comp-if        COracle.check                if "error:" in l), "candidate does not compile")
+coracle.py:298  if/elif        COracle.check                if bad:
+coracle.py:301  comp-if        COracle.check                if "fail" in l.lower()), "suite red")
+coracle.py:346  if/elif        _Coverage._ensure_build      if self._ready:
+coracle.py:348  if/elif        _Coverage._ensure_build      if not self.available():
+coracle.py:351  if/elif        _Coverage._ensure_build      if not os.path.isdir(path):
+coracle.py:361  boolop(or)     _Coverage._ensure_build      btype = self._build_type() or "Release"
+coracle.py:367  if/elif        _Coverage._ensure_build      if rc != 0:
+coracle.py:380  if/elif        _Coverage._build_type        if line.startswith("CMAKE_BUILD_TYPE:"):
+coracle.py:391  if/elif        _Coverage._test_binary       if os.path.isfile(p) and os.access(p, os.X_OK):
+coracle.py:391  boolop(and)    _Coverage._test_binary       if os.path.isfile(p) and os.access(p, os.X_OK):
+coracle.py:399  if/elif        _Coverage.lines              if not self._ensure_build(timeout):
+coracle.py:402  if/elif        _Coverage.lines              if binary is None:
+coracle.py:406  if/elif        _Coverage.lines              if fn.endswith(".gcda"):
+coracle.py:411  ternary        _Coverage.lines              self.o._sh(f"./{binary}" + (f" {test_filter}" if test_filter else ""),
+coracle.py:415  comp-if        _Coverage.lines              gcda = [f for f in fns if f.endswith(".gcda")]
+coracle.py:416  if/elif        _Coverage.lines              if not gcda:
+coracle.py:421  if/elif        _Coverage.lines              if not fn.endswith(".gcov"):
+coracle.py:428  if/elif        _Coverage.lines              if line.startswith("        -:    0:Source:"):
+coracle.py:431  if/elif        _Coverage.lines              if src.startswith(self.o.root + os.sep):
+coracle.py:436  if/elif        _Coverage.lines              if not m:
+coracle.py:439  if/elif        _Coverage.lines              if cnt and cnt[0].isdigit() and cnt != "0":
+coracle.py:439  boolop(and)    _Coverage.lines              if cnt and cnt[0].isdigit() and cnt != "0":
+coracle.py:441  if/elif        _Coverage.lines              if src_rel and hit and not _is_test_path(src_rel):
+coracle.py:441  boolop(and)    _Coverage.lines              if src_rel and hit and not _is_test_path(src_rel):
+coracle.py:483  comp-if        _c_sources                   dn[:] = [d for d in dn if d not in skip and not d.startswith(".")]
+coracle.py:483  boolop(and)    _c_sources                   dn[:] = [d for d in dn if d not in skip and not d.startswith(".")]
+coracle.py:485  if/elif        _c_sources                   if re.search(r"(^|/)(tests?|testing)(/|$)", rel_dp):
+coracle.py:488  if/elif        _c_sources                   if fn.endswith(_SRC_EXT) and not _is_harness_file(fn):
+coracle.py:488  boolop(and)    _c_sources                   if fn.endswith(_SRC_EXT) and not _is_harness_file(fn):
+coracle.py:505  boolop(or)     find_candidate_files_c       base = os.path.basename(m.group("f1") or m.group("f2") or "")
+coracle.py:507  if/elif        find_candidate_files_c       if rel and rel not in ordered:
+coracle.py:507  boolop(and)    find_candidate_files_c       if rel and rel not in ordered:
+coracle.py:524  boolop(or)     find_candidate_files_c       for name in oracle._fail_tests or _fail_names(clean):
+coracle.py:529  comp-if        find_candidate_files_c       toks = [t for t in (p.lower() for p in parts) if len(t) >= 3]
+coracle.py:531  if/elif        find_candidate_files_c       if t in ("test", "tests"):
+coracle.py:534  if/elif        find_candidate_files_c       if rel not in ordered:
+coracle.py:537  if/elif        find_candidate_files_c       if stem != t and (t in stem.split("_")   # `math_functions`
+coracle.py:537  boolop(and)    find_candidate_files_c       if stem != t and (t in stem.split("_")   # `math_functions`
+coracle.py:537  boolop(or)     find_candidate_files_c       if stem != t and (t in stem.split("_")   # `math_functions`
+coracle.py:540  if/elif        find_candidate_files_c       if rel not in ordered:
+coracle.py:553  if/elif        find_candidate_files_c       if not ordered:
+coracle.py:581  boolop(or)     build_packet_c               f = os.path.basename(m.group("f1") or m.group("f2") or "")
+coracle.py:582  if/elif        build_packet_c               if f == base:
+coracle.py:583  boolop(or)     build_packet_c               ln = int(m.group("l1") or m.group("l2"))
+coracle.py:592  boolop(or)     build_packet_c               executed = covered or set()
+coracle.py:593  ternary        build_packet_c               lo = sorted(frames) if frames else sorted(
+coracle.py:594  boolop(or)     build_packet_c               l for l in (executed or set())
+coracle.py:595  comp-if        build_packet_c               if 1 <= l <= len(src_lines) and src_lines[l - 1].strip())
+coracle.py:595  boolop(and)    build_packet_c               if 1 <= l <= len(src_lines) and src_lines[l - 1].strip())
+coracle.py:596  ternary        build_packet_c               mode = "frames" if frames else ("coverage" if lo else "affinity")
+coracle.py:596  ternary        build_packet_c               mode = "frames" if frames else ("coverage" if lo else "affinity")
+coracle.py:597  if/elif        build_packet_c               if not lo:
+coracle.py:599  comp-if        build_packet_c               if l.strip() and not l.lstrip().startswith(
+coracle.py:599  boolop(and)    build_packet_c               if l.strip() and not l.lstrip().startswith(
+coracle.py:619  if/elif        build_packet_c               if len(lo) > max_lines:
+coracle.py:622  comp-if        build_packet_c               sigs = [e[2] for e in KINDS.values() if e[2] is not None]
+coracle.py:624  comp-if        build_packet_c               if any(g.search(src_lines[l - 1]) for g in sigs)]
+coracle.py:625  if/elif        build_packet_c               if keep:
+coracle.py:635  if/elif        build_packet_c               if len(lo) > max_lines:
+coracle.py:638  comp-if        build_packet_c               n = sum(1 for l in lo if g.search(src_lines[l - 1]))
+coracle.py:639  if/elif        build_packet_c               if n:
+coracle.py:643  comp-if        build_packet_c._rarity       if g.search(src_lines[l - 1])]
+coracle.py:644  ternary        build_packet_c._rarity       return min(ns) if ns else 10 ** 6
+coracle.py:651  if/elif        build_packet_c               if len(lo) > max_lines - 30:
+coracle.py:653  boolop(or)     build_packet_c               kept = [l for l in lo if sig.search(src_lines[l - 1])] or lo
+coracle.py:653  comp-if        build_packet_c               kept = [l for l in lo if sig.search(src_lines[l - 1])] or lo
+coracle.py:654  boolop(or)     build_packet_c               filtered = filtered or len(kept) < len(lo)
+coracle.py:656  boolop(or)     build_packet_c               truncated = len(lo) > max_lines or filtered
+coracle.py:657  if/elif        build_packet_c               if len(lo) > max_lines:
+coracle.py:678  ternary        cguard_once                  deadline = t0 + budget if budget else None
+coracle.py:684  if/elif        cguard_once                  if _recovered:
+coracle.py:689  if/elif        cguard_once                  if not fails:
+coracle.py:700  if/elif        cguard_once                  if cov.available():
+coracle.py:710  boolop(or)     cguard_once                  for probe in (oracle._fail_tests or [None])[:4]:
+coracle.py:713  ternary        cguard_once                  full_cov = cov.lines() if fail_cov else {}
+coracle.py:714  comp-if        cguard_once                  real = [r for r in fail_cov if not _is_test_path(r)]
+coracle.py:715  if/elif        cguard_once                  if len(real) < 5:
+coracle.py:723  if/elif        cguard_once                  if fail_cov:
+coracle.py:731  comp-if        cguard_once                  extra = [r for r in fail_cov if r not in seen
+coracle.py:731  boolop(and)    cguard_once                  extra = [r for r in fail_cov if r not in seen
+coracle.py:741  if/elif        cguard_once                  if credible:
+coracle.py:742  comp-if        cguard_once                  touched = [c for c in candidates if c in fail_cov]
+coracle.py:743  if/elif        cguard_once                  if len(touched) >= 3:
+coracle.py:750  if/elif        cguard_once                  if deadline is not None and time.time() > deadline:
+coracle.py:750  boolop(and)    cguard_once                  if deadline is not None and time.time() > deadline:
+coracle.py:756  if/elif        cguard_once                  if packet is None:
+coracle.py:762  if/elif        cguard_once                  if result.repaired:
+coracle.py:766  if/elif        cguard_once                  if result.ambiguous:
+
+TOTAL branch points: 344
+Counter({'coracle.py': 119, 'guard.py': 98, 'acts.py': 52, 'loop.py': 42, 'oracle.py': 33})
+Counter({'if/elif': 183, 'boolop(or)': 59, 'boolop(and)': 39, 'comp-if': 31, 'ternary': 29, 'while': 3})

@@ -1,0 +1,127 @@
+{
+ "fixture": "F4-multi-traceback",
+ "route": "traceback-early-return",
+ "correct": [
+  "mod.py",
+  2,
+  "    return a + b"
+ ],
+ "shipped_file_order": [
+  "mod.py"
+ ],
+ "evidence": {
+  "pointed": [
+   "mod.py"
+  ],
+  "lanes": {
+   "FRAMED": [
+    "mod.py"
+   ]
+  }
+ },
+ "file_info": {},
+ "line_order": {
+  "mod.py": [
+   2,
+   1
+  ]
+ },
+ "line_info": {
+  "mod.py:1": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "mod.py:2": {
+   "prio": 0,
+   "byte": 41,
+   "bits": [
+    "FRAME",
+    "SIGNALED",
+    "CHEAP"
+   ]
+  }
+ },
+ "runs_to_correct": {
+  "shipped": 2,
+  "rank-first": 2,
+  "no-sight": 2,
+  "no-rank": 3
+ },
+ "traces": {
+  "shipped": [
+   [
+    1,
+    "mod.py",
+    2,
+    2,
+    "return b - a"
+   ],
+   [
+    2,
+    "mod.py",
+    2,
+    3,
+    "return a + b"
+   ]
+  ],
+  "rank-first": [
+   [
+    1,
+    "mod.py",
+    2,
+    2,
+    "return b - a"
+   ],
+   [
+    2,
+    "mod.py",
+    2,
+    3,
+    "return a + b"
+   ]
+  ],
+  "no-sight": [
+   [
+    1,
+    "mod.py",
+    2,
+    2,
+    "return b - a"
+   ],
+   [
+    2,
+    "mod.py",
+    2,
+    3,
+    "return a + b"
+   ]
+  ],
+  "no-rank": [
+   [
+    1,
+    "mod.py",
+    1,
+    1,
+    "def join1(a, b):"
+   ],
+   [
+    2,
+    "mod.py",
+    2,
+    2,
+    "return b - a"
+   ],
+   [
+    3,
+    "mod.py",
+    2,
+    3,
+    "return a + b"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,404 @@
+[
+ {
+  "rel": "mod.py",
+  "n_obs": 110,
+  "retried_kwarg": null,
+  "order_in": [
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83
+  ],
+  "order_out": [
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   13,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   28,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   43,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   58,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   73,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83,
+   83
+  ],
+  "tried_keys": [
+   [
+    "mod.py:13",
+    "    total = total   # signal line 10"
+   ],
+   [
+    "mod.py:13",
+    "    total = total + 1   # signal line 9"
+   ],
+   [
+    "mod.py:13",
+    "    total = total - 1   # signal line 10"
+   ],
+   [
+    "mod.py:28",
+    "    total = total   # signal line 25"
+   ],
+   [
+    "mod.py:28",
+    "    total = total + 1   # signal line 24"
+   ],
+   [
+    "mod.py:28",
+    "    total = total - 1   # signal line 25"
+   ],
+   [
+    "mod.py:43",
+    "    total = total   # signal line 40"
+   ],
+   [
+    "mod.py:43",
+    "    total = total + 1   # signal line 39"
+   ],
+   [
+    "mod.py:43",
+    "    total = total - 1   # signal line 40"
+   ],
+   [
+    "mod.py:58",
+    "    total = total   # signal line 55"
+   ],
+   [
+    "mod.py:58",
+    "    total = total + 1   # signal line 54"
+   ],
+   [
+    "mod.py:58",
+    "    total = total - 1   # signal line 55"
+   ],
+   [
+    "mod.py:73",
+    "    total = total   # signal line 70"
+   ],
+   [
+    "mod.py:73",
+    "    total = total + 1   # signal line 69"
+   ],
+   [
+    "mod.py:73",
+    "    total = total - 1   # signal line 70"
+   ],
+   [
+    "mod.py:83",
+    "    total = total   # signal line 80"
+   ],
+   [
+    "mod.py:83",
+    "    total = total + 1   # signal line 79"
+   ],
+   [
+    "mod.py:83",
+    "    total = total - 1   # signal line 80"
+   ]
+  ],
+  "suite_runs": 19,
+  "tried_more": 0
+ },
+ {
+  "rel": "mod.py",
+  "n_obs": 6,
+  "retried_kwarg": null,
+  "order_in": [
+   13,
+   28,
+   43,
+   58,
+   73,
+   83
+  ],
+  "order_out": [
+   13,
+   28,
+   43,
+   58,
+   73,
+   83
+  ],
+  "tried_keys": [
+   [
+    "mod.py:13",
+    "    total = total   # signal line 10"
+   ],
+   [
+    "mod.py:13",
+    "    total = total + 1   # signal line 9"
+   ],
+   [
+    "mod.py:13",
+    "    total = total - 1   # signal line 10"
+   ],
+   [
+    "mod.py:28",
+    "    total = total   # signal line 25"
+   ],
+   [
+    "mod.py:28",
+    "    total = total + 1   # signal line 24"
+   ],
+   [
+    "mod.py:28",
+    "    total = total - 1   # signal line 25"
+   ],
+   [
+    "mod.py:43",
+    "    total = total   # signal line 40"
+   ],
+   [
+    "mod.py:43",
+    "    total = total + 1   # signal line 39"
+   ],
+   [
+    "mod.py:43",
+    "    total = total - 1   # signal line 40"
+   ],
+   [
+    "mod.py:58",
+    "    total = total   # signal line 55"
+   ],
+   [
+    "mod.py:58",
+    "    total = total + 1   # signal line 54"
+   ],
+   [
+    "mod.py:58",
+    "    total = total - 1   # signal line 55"
+   ],
+   [
+    "mod.py:73",
+    "    total = total   # signal line 70"
+   ],
+   [
+    "mod.py:73",
+    "    total = total + 1   # signal line 69"
+   ],
+   [
+    "mod.py:73",
+    "    total = total - 1   # signal line 70"
+   ],
+   [
+    "mod.py:83",
+    "    total = total   # signal line 80"
+   ],
+   [
+    "mod.py:83",
+    "    total = total + 1   # signal line 79"
+   ],
+   [
+    "mod.py:83",
+    "    total = total - 1   # signal line 80"
+   ]
+  ],
+  "suite_runs": 19,
+  "tried_more": 0
+ }
+]

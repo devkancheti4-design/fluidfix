@@ -1,0 +1,16 @@
+{
+ "repaired": false,
+ "refused": true,
+ "lineno": null,
+ "old_line": null,
+ "new_line": null,
+ "acts_tried": [],
+ "suite_runs": 1,
+ "seconds": 0.2010939121246338,
+ "reason": "no failing test \u2014 nothing to repair",
+ "ambiguous": false,
+ "greens": [],
+ "tried_log": [],
+ "tried_more": 0,
+ "restored_original": null
+}

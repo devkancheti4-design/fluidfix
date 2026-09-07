@@ -1,0 +1,62 @@
+
+== R1  all 16^3 inputs vs the docstring reference
+agree 4096/4096; disagreements: []
+
+== R2  output is always in 0..15
+distinct outputs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]  (min=0 max=15)
+
+== R3  identity: route(F1, A1, F1) == A1
+holds on 256/256
+
+== R4  bijection: fixing two arguments, the third permutes 0..15
+vary F1: True   vary A1: True   vary Fq: True  (all 256 slices each)
+
+== R5  renumbering: adding t to BOTH A1 and the answer, or to F1 and Fq
+act renumbering (65536 cases): True
+kind renumbering (65536 cases): True
+
+== R6  composition: route(0,o2,route(0,o1,q)) == (q+o1+o2) mod 16
+holds on 4096/4096
+
+== R7  'Bits 12-31 cannot influence the result' -- exhaustive over payload
+4096 payloads x 20 high bits (both int32-positive and sign-extended negative): violations = 0; first = []
+
+== R7b random int32 probe, 200000 draws
+route_packed(x) != route_packed(x & 0xFFF) on 0/200000 draws
+
+== R8  out-of-domain arguments: pack masks each field to 4 bits
+  route(0, 5, 16) = 5   == reference of masked args 5: True
+  route(0, 5, 99) = 8   == reference of masked args 8: True
+  route(0, 5, -1) = 4   == reference of masked args 4: True
+  route(0, 5, -16) = 5   == reference of masked args 5: True
+  route(16, 5, 3) = 8   == reference of masked args 8: True
+  route(0, 21, 3) = 8   == reference of masked args 8: True
+  route(0, 5, 1099511627779) = 8   == reference of masked args 8: True
+
+== R9  the body's only worked example, and the act table it lands in
+WORKED_EXAMPLE = (0, 5)  -> the body only ever calls route(0, 5, kind)
+kind name                          act=route(0,5,kind)  applier
+   0 strictness                                      5  _flip_strictness
+   1 literal-off-by-one                              6  _reduce_literal
+   2 swapped-return-operands                         7  _swap_return_operands
+   3 flipped-additive                                8  _flip_additive
+   4 -- not registered --                            9  NONE -- candidates() no-ops
+   5 -- not registered --                           10  NONE -- candidates() no-ops
+   6 -- not registered --                           11  NONE -- candidates() no-ops
+   7 -- not registered --                           12  NONE -- candidates() no-ops
+   8 minmax-swap                                    13  _swap_minmax
+   9 flipped-augmented-assign                       14  _flip_augmented
+  10 flipped-comparison-direction                   15  _flip_comparison
+  11 reversed-minus-operands                         0  _reverse_minus_operands
+  12 flipped-boolean                                 1  _flip_boolean
+  13 -- not registered --                            2  NONE -- candidates() no-ops
+  14 -- not registered --                            3  NONE -- candidates() no-ops
+  15 -- not registered --                            4  NONE -- candidates() no-ops
+
+== R10 coverage of the 4096-input domain by the shipped body
+inputs the body can construct with the shipped WORKED_EXAMPLE: 16 of 4096 (0.3906%) -- F1 and A1 are frozen constants
+of those 16, kinds with a registered fault class: [0, 1, 2, 3, 8, 9, 10, 11, 12]  (9/16)
+of those, kinds whose act has an applier: [0, 1, 2, 3, 8, 9, 10, 11, 12]
+acts reachable from a shipped kind: [0, 1, 5, 6, 7, 8, 13, 14, 15]
+act codes in ACTS that NO shipped kind routes to: []
+act codes no kind 0..15 can reach at all: []

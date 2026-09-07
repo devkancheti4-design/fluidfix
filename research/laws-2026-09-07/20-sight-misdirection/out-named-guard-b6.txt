@@ -1,0 +1,46 @@
+# fixture named -> /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/20-sight-misdirection/work/named-guard-b6
+# failing: True
+# failing output (tail, ANSI stripped by the body; shown raw here):
+   | ....F
+   | =================================== FAILURES ===================================
+   | __________________________ test_render_respects_limit __________________________
+   | 
+   |     def test_render_respects_limit():
+   | >       assert shell.render(["a", "b", "c", "d"], 3) == "a b c"
+   | E       AssertionError: assert 'a b c d' == 'a b c'
+   | E         
+   | E         - a b c
+   | E         + a b c d
+   | E         ?      ++
+   | 
+   | tests/test_shell.py:5: AssertionError
+   | =========================== short test summary info ============================
+   | FAILED tests/test_shell.py::test_render_respects_limit - AssertionError: asse...
+   | !!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+   | 1 failed, 4 passed in 0.04s
+
+# find_candidate_files order (what guard_once's first pass walks):
+   1. pkg/shell.py       byte=0x58 FAILONLY|NAMED|SMALL             priority=2
+   2. pkg/__init__.py    byte=0x48 FAILONLY|SMALL                   priority=2
+   3. pkg/utils.py       byte=0x40 SMALL                            priority=5
+   4. pkg/core.py        byte=0x40 SMALL                            priority=5
+   5. pkg/parser.py      byte=0x40 SMALL                            priority=5
+   6. pkg/types.py       byte=0xc0 SMALL|UBIQUITOUS                 priority=6
+# evidence: {"pointed": [], "lanes": {"FRAMED": [], "SCARCE": [], "LITERAL": []}}
+# SIGHT consulted for 6 file(s)
+
+# per-file ledger (order walked):
+    {"file": "pkg/shell.py", "suite_runs": 1, "repair_s": 0.3, "packet_s": 0.7, "acts": [], "rejected": 0, "repaired": false, "reason": "wall-clock deadline reached mid-search \u2014 remaining observations untrie"}
+    {"file": "pkg/__init__.py", "suite_runs": 1, "repair_s": 0.3, "packet_s": 0.6, "acts": [], "rejected": 0, "repaired": false, "reason": "wall-clock deadline reached mid-search \u2014 remaining observations untrie"}
+    {"file": "pkg/utils.py", "suite_runs": 1, "repair_s": 0.3, "packet_s": 0.6, "acts": [], "rejected": 0, "repaired": false, "reason": "wall-clock deadline reached mid-search \u2014 remaining observations untrie"}
+    {"file": "pkg/core.py", "suite_runs": 1, "repair_s": 0.3, "packet_s": 0.6, "acts": [], "rejected": 0, "repaired": false, "reason": "wall-clock deadline reached mid-search \u2014 remaining observations untrie"}
+    {"file": "pkg/parser.py", "suite_runs": 1, "repair_s": 0.3, "packet_s": 0.7, "acts": [], "rejected": 0, "repaired": false, "reason": "wall-clock deadline reached mid-search \u2014 remaining observations untrie"}
+    {"file": "pkg/types.py", "suite_runs": 1, "repair_s": 0.3, "packet_s": 0.6, "acts": [], "rejected": 0, "repaired": false, "reason": "wall-clock deadline reached mid-search \u2014 remaining observations untrie"}
+# suite runs on WRONG files: 6, on the repaired file: 0
+
+# guard_once(budget=6) -> status=refused file=None seconds=7.9
+# candidates: ['pkg/shell.py', 'pkg/__init__.py', 'pkg/utils.py', 'pkg/core.py', 'pkg/parser.py', 'pkg/types.py']
+# rejected candidates by file (tried_log, capped at 64/file): {}
+# hint: ''
+# summary():
+   | REFUSED: fault is outside the taught vocabulary (candidate files tried: pkg/shell.py, pkg/__init__.py, pkg/utils.py, pkg/core.py, pkg/parser.py, pkg/types.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds)

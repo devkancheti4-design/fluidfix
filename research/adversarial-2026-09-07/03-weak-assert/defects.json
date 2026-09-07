@@ -1,0 +1,290 @@
+[
+ {
+  "id": 0,
+  "lineno": 10,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return base + shipping",
+  "mutant": "    return shipping + base"
+ },
+ {
+  "id": 1,
+  "lineno": 10,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return base + shipping",
+  "mutant": "    return base - shipping"
+ },
+ {
+  "id": 2,
+  "lineno": 15,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return revenue - cost",
+  "mutant": "    return cost - revenue"
+ },
+ {
+  "id": 3,
+  "lineno": 15,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return revenue - cost",
+  "mutant": "    return revenue + cost"
+ },
+ {
+  "id": 4,
+  "lineno": 20,
+  "kind": 8,
+  "kind_name": "minmax-swap",
+  "act": 13,
+  "orig": "    return min(requested, in_stock)",
+  "mutant": "    return max(requested, in_stock)"
+ },
+ {
+  "id": 5,
+  "lineno": 25,
+  "kind": 0,
+  "kind_name": "strictness",
+  "act": 5,
+  "orig": "    return on_hand <= threshold",
+  "mutant": "    return on_hand < threshold"
+ },
+ {
+  "id": 6,
+  "lineno": 25,
+  "kind": 10,
+  "kind_name": "flipped-comparison-direction",
+  "act": 15,
+  "orig": "    return on_hand <= threshold",
+  "mutant": "    return on_hand >= threshold"
+ },
+ {
+  "id": 7,
+  "lineno": 30,
+  "kind": 0,
+  "kind_name": "strictness",
+  "act": 5,
+  "orig": "    return units >= 10",
+  "mutant": "    return units > 10"
+ },
+ {
+  "id": 8,
+  "lineno": 30,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "    return units >= 10",
+  "mutant": "    return units >= 9"
+ },
+ {
+  "id": 9,
+  "lineno": 30,
+  "kind": 10,
+  "kind_name": "flipped-comparison-direction",
+  "act": 15,
+  "orig": "    return units >= 10",
+  "mutant": "    return units <= 10"
+ },
+ {
+  "id": 10,
+  "lineno": 35,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "    return amount + 3",
+  "mutant": "    return amount + 2"
+ },
+ {
+  "id": 11,
+  "lineno": 35,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return amount + 3",
+  "mutant": "    return 3 + amount"
+ },
+ {
+  "id": 12,
+  "lineno": 35,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return amount + 3",
+  "mutant": "    return amount - 3"
+ },
+ {
+  "id": 13,
+  "lineno": 40,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "    total = 0",
+  "mutant": "    total = -1"
+ },
+ {
+  "id": 14,
+  "lineno": 42,
+  "kind": 9,
+  "kind_name": "flipped-augmented-assign",
+  "act": 14,
+  "orig": "        total += v",
+  "mutant": "        total -= v"
+ },
+ {
+  "id": 15,
+  "lineno": 48,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "    return items[start:start + 3]",
+  "mutant": "    return items[start:start + 2]"
+ },
+ {
+  "id": 16,
+  "lineno": 48,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return items[start:start + 3]",
+  "mutant": "    return 3] + items[start:start"
+ },
+ {
+  "id": 17,
+  "lineno": 48,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return items[start:start + 3]",
+  "mutant": "    return items[start:start - 3]"
+ },
+ {
+  "id": 18,
+  "lineno": 53,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return max(values) - min(values)",
+  "mutant": "    return min(values) - max(values)"
+ },
+ {
+  "id": 19,
+  "lineno": 53,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return max(values) - min(values)",
+  "mutant": "    return max(values) + min(values)"
+ },
+ {
+  "id": 20,
+  "lineno": 53,
+  "kind": 8,
+  "kind_name": "minmax-swap",
+  "act": 13,
+  "orig": "    return max(values) - min(values)",
+  "mutant": "    return min(values) - min(values)"
+ },
+ {
+  "id": 21,
+  "lineno": 53,
+  "kind": 8,
+  "kind_name": "minmax-swap",
+  "act": 13,
+  "orig": "    return max(values) - min(values)",
+  "mutant": "    return max(values) - max(values)"
+ },
+ {
+  "id": 22,
+  "lineno": 58,
+  "kind": 8,
+  "kind_name": "minmax-swap",
+  "act": 13,
+  "orig": "    return {\"n\": len(values), \"peak\": max(values), \"floor\": min(values)}",
+  "mutant": "    return {\"n\": len(values), \"peak\": min(values), \"floor\": min(values)}"
+ },
+ {
+  "id": 23,
+  "lineno": 58,
+  "kind": 8,
+  "kind_name": "minmax-swap",
+  "act": 13,
+  "orig": "    return {\"n\": len(values), \"peak\": max(values), \"floor\": min(values)}",
+  "mutant": "    return {\"n\": len(values), \"peak\": max(values), \"floor\": max(values)}"
+ },
+ {
+  "id": 24,
+  "lineno": 63,
+  "kind": 12,
+  "kind_name": "flipped-boolean",
+  "act": 1,
+  "orig": "    return {\"strict\": strict, \"verbose\": False, \"audit\": True}",
+  "mutant": "    return {\"strict\": strict, \"verbose\": True, \"audit\": True}"
+ },
+ {
+  "id": 25,
+  "lineno": 63,
+  "kind": 12,
+  "kind_name": "flipped-boolean",
+  "act": 1,
+  "orig": "    return {\"strict\": strict, \"verbose\": False, \"audit\": True}",
+  "mutant": "    return {\"strict\": strict, \"verbose\": False, \"audit\": False}"
+ },
+ {
+  "id": 26,
+  "lineno": 68,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return first - second",
+  "mutant": "    return second - first"
+ },
+ {
+  "id": 27,
+  "lineno": 68,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return first - second",
+  "mutant": "    return first + second"
+ },
+ {
+  "id": 28,
+  "lineno": 73,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return demand - supply",
+  "mutant": "    return supply - demand"
+ },
+ {
+  "id": 29,
+  "lineno": 73,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return demand - supply",
+  "mutant": "    return demand + supply"
+ },
+ {
+  "id": 30,
+  "lineno": 78,
+  "kind": 0,
+  "kind_name": "strictness",
+  "act": 5,
+  "orig": "    return spend < budget",
+  "mutant": "    return spend <= budget"
+ },
+ {
+  "id": 31,
+  "lineno": 78,
+  "kind": 10,
+  "kind_name": "flipped-comparison-direction",
+  "act": 15,
+  "orig": "    return spend < budget",
+  "mutant": "    return spend > budget"
+ }
+]

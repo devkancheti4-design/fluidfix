@@ -1,0 +1,45 @@
+import sys
+p = "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/16-refusal-honesty/bin/make_py_fixtures.sh"
+s = open(p).read()
+start = s.index("# --------------------------------------------------------- py05_capped_green")
+end = s.index("# ------------------------------------------------------ py08_many_rejections")
+E = "EOF"
+new = (
+"# --------------------------------------------------------- py05_capped_green\n"
+"# The lead: a green is found on the FIRST observation (line 2), then 18\n"
+"# padding lines keep the search busy, so a --budget cut leaves the search\n"
+"# CAPPED with a passing candidate already in hand.\n"
+"mk py05_capped_green\n"
+"/usr/bin/python3 - \"$F/py05_capped_green/pkg/mod.py\" <<'PYGEN'\n"
+"import sys\n"
+"L = [\"def diff(a, b):\", \"    r = a - b\"]      # line 2: correct is  r = b - a\n"
+"for i in range(1, 19):\n"
+"    L.append(f\"    pad = {i} * 2 + {i}\")\n"
+"L.append(\"    return r\")\n"
+"open(sys.argv[1], \"w\").write(\"\\n\".join(L) + \"\\n\")\n"
+"PYGEN\n"
+"cat > \"$F/py05_capped_green/tests/test_mod.py\" <<'" + E + "'\n"
+"import time\n"
+"from pkg.mod import diff\n"
+"def test_diff():\n"
+"    time.sleep(0.30)\n"
+"    assert diff(2, 5) == 3\n"
++ E + "\n\n"
+"# --------------------------------------------------------------- py08b_over64\n"
+"# >64 rejected candidates, so loop.py's tried_log cap bites and tried_more>0.\n"
+"mk py08b_over64\n"
+"/usr/bin/python3 - \"$F/py08b_over64/pkg/mod.py\" <<'PYGEN'\n"
+"import sys\n"
+"L = [\"def total():\", \"    s = 0\"]\n"
+"for i in range(1, 61):\n"
+"    L.append(f\"    s = s + {i * 3}\")\n"
+"L.append(\"    return s + 1\")\n"
+"open(sys.argv[1], \"w\").write(\"\\n\".join(L) + \"\\n\")\n"
+"PYGEN\n"
+"cat > \"$F/py08b_over64/tests/test_mod.py\" <<'" + E + "'\n"
+"from pkg.mod import total\n"
+"def test_total():\n"
+"    assert total() == 424242\n"
++ E + "\n\n")
+open(p, "w").write(s[:start] + new + s[end:])
+print("patched")

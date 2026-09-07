@@ -1,0 +1,12 @@
+{
+ "id": 1,
+ "lineno": 10,
+ "kind": 2,
+ "kind_name": "swapped-return-operands",
+ "act": 7,
+ "orig": "    return subtotal + tax",
+ "mutant": "    return tax + subtotal",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

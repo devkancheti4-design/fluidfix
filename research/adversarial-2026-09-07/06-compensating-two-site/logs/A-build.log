@@ -1,0 +1,8 @@
+[ 33%] Building C object CMakeFiles/billing.dir/src/fee.c.o
+[ 33%] Building C object CMakeFiles/billing.dir/src/tier.c.o
+[ 50%] Building C object CMakeFiles/billing.dir/src/rate.c.o
+[ 66%] Linking C static library libbilling.a
+[ 66%] Built target billing
+[ 83%] Building C object CMakeFiles/tests.dir/tests/test_billing.c.o
+[100%] Linking C executable tests
+[100%] Built target tests

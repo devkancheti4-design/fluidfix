@@ -1,0 +1,13 @@
+== amb: REAL law ==
+  [real] status='refused' file='mod.py'
+  [real] hint='AMBIGUOUS: 2 candidates at 1 different lines (1) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)'
+  [real] attempts=1 result={'repaired': False, 'ambiguous': True, 'greens': ['K = 1', 'K = 2'], 'reason': 'AMBIGUOUS: 2 candidates at 1 different lines (1) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add '}
+  [real] mod.py line 1 now: 'K = 0'
+== amb: SWAPPED law {'ADD_STATE': 'SHIP'} ==
+  [swap] status='repaired' file='mod.py'
+  [swap] hint=''
+  [swap] attempts=0 result={'repaired': True, 'ambiguous': False, 'greens': ['K = 1', 'K = 2'], 'reason': 'engine law: BUILT -> SHIP'}
+  [swap] mod.py line 1 now: 'K = 1'
+  decide() calls during the swapped run (byte, real ruling, returned):
+    BUILT+AMB            ADD_STATE              -> SHIP
+-- amb: 7.2s wall

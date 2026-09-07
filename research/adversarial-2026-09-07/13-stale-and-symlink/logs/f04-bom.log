@@ -1,0 +1,37 @@
+=== fixture: f04-bom
+=== root:    /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/13-stale-and-symlink/fixtures/f04-bom
+=== extra:   
+BEFORE ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154162173 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154162173
+BEFORE ./pkg/geom.py
+  content-sha256: bcd00d1ec5e39268d2b7b392afc6afb9eb381ffc2b3a30b3e1f7575f710d7e7d
+  stat(name):     mode=-rw-r--r-- inode=154162177 nlink=1 size=115
+  lstat(name):    mode=-rw-r--r-- inode=154162177
+BEFORE ./tests/test_geom.py
+  content-sha256: 4a7765cd023ca3fbded5cb878a10cb28188aae677b93c0ff6f0fe0aa4b1535c8
+  stat(name):     mode=-rw-r--r-- inode=154162175 nlink=1 size=117
+  lstat(name):    mode=-rw-r--r-- inode=154162175
+=== guard run ===
+[14:33:41] REFUSED: fault is outside the taught vocabulary (candidate files tried: pkg/geom.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 2 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/13-stale-and-symlink/fixtures/f04-bom/.fluidfix/last_refusal.json
+=== guard exit: 2 ===
+AFTER ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154162173 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154162173
+AFTER ./pkg/geom.py
+  content-sha256: bcd00d1ec5e39268d2b7b392afc6afb9eb381ffc2b3a30b3e1f7575f710d7e7d
+  stat(name):     mode=-rw-r--r-- inode=154162177 nlink=1 size=115
+  lstat(name):    mode=-rw-r--r-- inode=154162177
+AFTER ./tests/test_geom.py
+  content-sha256: 4a7765cd023ca3fbded5cb878a10cb28188aae677b93c0ff6f0fe0aa4b1535c8
+  stat(name):     mode=-rw-r--r-- inode=154162175 nlink=1 size=117
+  lstat(name):    mode=-rw-r--r-- inode=154162175
+=== leftovers in .fluidfix ===
+total 8
+drwxr-xr-x@ 3 kanchetidevieswar  staff   96 Sep  7 14:33 .
+drwxr-xr-x@ 7 kanchetidevieswar  staff  224 Sep  7 14:33 ..
+-rw-r--r--@ 1 kanchetidevieswar  staff  611 Sep  7 14:33 last_refusal.json

@@ -1,0 +1,6 @@
+fixture_a  defect a - b: green 0/20
+fixture_a  wrong  b - a: green 12/20
+fixture_a  right  a + b: green 20/20
+fixture_b  defect a - b: green 0/20
+fixture_b  wrong  b - a: green 0/20
+fixture_b  right  a + b: green 10/20

@@ -1,0 +1,26 @@
+total basenames in the candidate-file set : 206
+...resolved into covbuild/                : 132
+...by covbuild subdirectory               : {'CMakeFiles': 4, '_deps': 128}
+sample leaked paths:
+   CMakeCCompilerId.c                 -> covbuild/CMakeFiles/4.3.3/CompilerIdC/CMakeCCompilerId.c
+   CMakeCXXCompilerId.cpp             -> covbuild/CMakeFiles/4.3.3/CompilerIdCXX/CMakeCXXCompilerId.cpp
+   apple-sdk.c                        -> covbuild/CMakeFiles/4.3.3/CompilerIdC/apple-sdk.c
+   apple-sdk.cpp                      -> covbuild/CMakeFiles/4.3.3/CompilerIdCXX/apple-sdk.cpp
+   binary_to_compressed_c.cpp         -> covbuild/_deps/imgui-src/misc/fonts/binary_to_compressed_c.cpp
+   cocoa_joystick.h                   -> covbuild/_deps/glfw-src/src/cocoa_joystick.h
+   cocoa_platform.h                   -> covbuild/_deps/glfw-src/src/cocoa_platform.h
+   cocoa_time.c                       -> covbuild/_deps/glfw-src/src/cocoa_time.c
+real src/ basenames SHADOWED by a covbuild path: 0 []
+
+no-evidence fallback (coracle.py:560) = 5 biggest sources, as it is on a SECOND pass, once covbuild/ exists:
+      958231  covbuild/_deps/imgui-src/imgui.cpp
+      581901  covbuild/_deps/imgui-src/imgui_demo.cpp
+      541366  covbuild/_deps/imgui-src/imgui_widgets.cpp
+      424209  covbuild/_deps/imgui-src/imgui.h
+      377275  covbuild/_deps/imgui-src/imgui_draw.cpp
+the same fallback on a FIRST pass (no covbuild/ yet):
+      110583  src/physics_world.c
+       93422  src/recording_replay.c
+       86534  src/contact_solver.c
+       76531  include/box2d/box2d.h
+       68845  src/solver.c

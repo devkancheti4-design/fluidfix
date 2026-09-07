@@ -1,0 +1,69 @@
+repaired fixtures: 27
+
+== red suite runs before the first green, split by dimension ==
+fixture                    win        prio ln_pos  kd_pos  pre line kind cand clean unm
+acts_minmax                L2k8      3    1/1     1/1       0    0    0    0     0   0
+ctx_attr_case1             L6k4      3    2/2     1/1       1    1    0    0     0   0
+ctx_attr_case2             L6k4      3    3/3     1/1       2    2    0    0     0   0
+ctx_median_r1              L2k4      3    1/1     1/1       0    0    0    0     0   0
+ctx_median_r2              L9k4      3    1/1     1/1       0    0    0    0     0   0
+ctx_zero_guard_r1          L2k4      0    1/2     1/1       0    0    0    0     0   0
+ctx_zero_guard_r2          L7k4      0    1/4     1/1       0    0    0    0     0   0
+demo_billing               L2k3      2    1/1     3/4       2    0    2    0     0   0
+demo_invoices_dict         L4k4      0    1/2     2/3       1    0    1    0     0   0
+demo_metrics_dict          L4k4      0    1/2     1/2       0    0    0    0     0   0
+dict_payroll               L4k4      0    1/2     2/3       1    0    1    0     0   0
+e2e_count_above            L4k0      3    2/3     1/2       1    1    0    0     0   0
+fusion_cmp_ge              L2k0      3    1/2     1/2       0    0    0    0     0   0
+guard_join2                L2k3      0    1/2     2/3       1    0    1    0     0   0
+proof_member1_billing      L2k4      0    1/1     3/3       2    0    2    0     0   0
+proof_member2_metrics      L2k4      0    1/1     4/4       3    0    3    0     0   0
+proof_member3_scoring      L2k4      0    1/1     3/4       1    0    1    0     0   0
+proof_member4_cart         L4k4      0    1/2     2/3       1    0    1    0     0   0
+proof_member5_report       L2k4      0    1/1     3/4       3    0    3    0     0   0
+regress_teach_andor        L2k4      3    1/1     1/1       0    0    0    0     0   0
+span_guarded               L2k4      3    1/2     2/2       1    0    1    0     0   0
+span_rate_block            L2k4      3    1/2     2/2       2    0    2    0     0   0
+span_scale_pair            L2k4      3    1/2     2/2       1    0    1    0     0   0
+teach_get_default          L4k4      0    1/2     2/3       1    0    1    0     0   0
+teach_round_span           L2k6      3    1/2     1/1       0    0    0    0     0   0
+teach_split                L2k4      3    1/1     1/1       0    0    0    0     0   0
+teach_wrong_attr           L6k5      3    2/2     1/1       1    1    0    0     0   0
+TOTAL                                                       25    5   20    0     0   0
+total suite runs over the 27 repaired fixtures (red precondition, every candidate, confirm): 108
+WASTED runs (a candidate applied, suite red, before the winner): 25
+  LINE dimension      (ranking law rules this)   5 = 20%
+  CLASS dimension     (no law rules this)       20 = 80%
+  CANDIDATE dimension (dictionary order)         0 = 0%
+  unmatched checks (attribution failed): 0
+
+== the CLASS dimension: what order does the body use? ==
+loop.py:283  mask = mask_of(k for k in obs.kinds if 0 <= k <= 15)
+loop.py:297  kind = kind_of(EMIT(mask));  loop.py:298  mask = ADVANCE(mask)
+EMIT is m & -m -> lowest set bit -> classes are tried in ASCENDING KIND-ID
+order. Kind id is the number the dictionary registered the class under. It
+is not evidence, and rank.py never sees it: the ranking law ranks LINES.
+
+winning class's position among the classes on its own line (body order): {'1/1': 11, '1/2': 3, '2/2': 3, '2/3': 5, '3/3': 1, '3/4': 3, '4/4': 1}
+winner was the FIRST class tried on its line in 14/27 fixtures; NOT first in 13
+
+== counterfactual: break the class tie by candidate-set size ==
+(CHEAP is measured per LINE at guard.py:401-403 over the first TWO kinds
+ only, and is never used to order kinds. Only sets the body actually tried
+ have a measured size, so this is a LOWER BOUND: a cheaper class that was
+ never reached could add runs. That part is unmeasured.)
+wasted runs spent on a same-line class whose candidate set was LARGER than the winner's: 4 of 20
+
+== which classes win, and which are tried without ever winning ==
+kind  candidates offered fixtures won
+0                      4            2
+1                     30            0
+2                      9            0
+3                     16            2
+4                     36           20
+5                      2            1
+6                      1            1
+8                      1            1
+9                      6            0
+10                     4            0
+11                     5            0

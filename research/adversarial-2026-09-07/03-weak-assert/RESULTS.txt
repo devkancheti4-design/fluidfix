@@ -1,0 +1,52 @@
+injected in-vocabulary defects            : 65
+  undetected by the weak suite (green)    : 33
+  DETECTED -> fluidfix asked to repair    : 32   <-- denominator
+    accepted repair shipped to disk       : 26
+    refused                               : 6
+
+WRONG PROGRAM SHIPPED  4/32 detected defects = 12.5%
+                       4/26 accepted repairs = 15.4%
+NOT BYTE-EXACT         5/26 accepted repairs = 19.2%  (4 wrong program + 1 equivalent respelling)
+SHIPPED WITH >1 GREEN  10/26 accepted repairs = 38.5%  (a second, different passing program was in hand and unreported)
+tree left dirty after a refusal           : 0
+
+--- every wrong program shipped ---
+  runs/01  runs/01
+     original : return base + shipping
+     defect   : return base - shipping
+     SHIPPED  : return shipping - base
+     greens   : ['return shipping - base', 'return base + shipping']
+     reason   : engine law: BUILT -> SHIP
+  runs2/02  runs2/02
+     original : return subtotal + tax
+     defect   : return subtotal - tax
+     SHIPPED  : return tax - subtotal
+     greens   : ['return tax - subtotal', 'return subtotal + tax']
+     reason   : engine law: BUILT -> SHIP
+  runs2/04  runs2/04
+     original : return travel + buffer
+     defect   : return travel - buffer
+     SHIPPED  : return buffer - travel
+     greens   : ['return buffer - travel', 'return travel + buffer']
+     reason   : engine law: BUILT -> SHIP
+  runs2/06  runs2/06
+     original : return on_hand + delivered
+     defect   : return on_hand - delivered
+     SHIPPED  : return delivered - on_hand
+     greens   : ['return delivered - on_hand', 'return on_hand + delivered']
+     reason   : engine law: BUILT -> SHIP
+
+--- byte-different but same program ---
+  runs2/26  return page * size - size  ->  return size * page - size
+
+--- shipped while holding a second, different green ---
+  runs/01 [WRONG] greens=['return shipping - base', 'return base + shipping']
+  runs/02 [ok] greens=['return revenue - cost', 'return cost + revenue']
+  runs/28 [ok] greens=['return demand - supply', 'return supply + demand']
+  runs2/02 [WRONG] greens=['return tax - subtotal', 'return subtotal + tax']
+  runs2/04 [WRONG] greens=['return buffer - travel', 'return travel + buffer']
+  runs2/06 [WRONG] greens=['return delivered - on_hand', 'return on_hand + delivered']
+  runs2/07 [ok] greens=['return limit - used', 'return used + limit']
+  runs2/26 [equiv] greens=['return size * page - size', 'return size + size * page']
+  runs2/28 [ok] greens=['return page * size - size', 'return size + page * size']
+  runs2/32 [ok] greens=['return arrivals - served', 'return served + arrivals']

@@ -1,0 +1,500 @@
+loop.py:53:            0  | suite_runs: int = 0
+loop.py:54:          0.0  | seconds: float = 0.0
+loop.py:61:            0  | tried_more: int = 0               # rejections beyond the 64-entry cap
+loop.py:104:            0  | return max(0, int(os.environ.get("FLUIDFIX_CONFIRM", "1")))
+loop.py:106:            1  | return 1
+loop.py:154:           30  | capture_output=True, text=True, timeout=30)
+loop.py:157:            0  | if p.returncode != 0:
+loop.py:160:            1  | return p.stdout.split("\n")[lineno - 1:lineno - 1 + len(new)] == new
+loop.py:177:            1  | res.suite_runs = 1
+loop.py:180:            1  | res.suite_runs += 1
+loop.py:203:            3  | sites = {g[3] for g in greens}
+loop.py:218:            1  | AMB=set_amb or len(sites) > 1,
+loop.py:220:            0  | res.greens = [g[0] for g in greens]
+loop.py:222:            0  | crepr, content, old_repr, at = greens[0]
+loop.py:230:            1  | if set_amb or len(sites) > 1:
+loop.py:278:            1  | i = obs.lineno - 1
+loop.py:279:            0  | if not (0 <= i < len(raw)):
+loop.py:283:            0  | mask = mask_of(k for k in obs.kinds if 0 <= k <= 15)
+loop.py:283:           15  | mask = mask_of(k for k in obs.kinds if 0 <= k <= 15)
+loop.py:312:            1  | if not (1 <= s_ <= e_ <= len(raw)) \
+loop.py:316:            1  | for l in raw[s_ - 1:e_])
+loop.py:320:            1  | cend = raw[e_ - 1][len(raw[e_ - 1].rstrip("\r")):]
+loop.py:321:            1  | new = raw[:s_ - 1] + [cand.text + cend] + raw[e_:]
+loop.py:346:           64  | if len(res.tried_log) < 64:
+loop.py:348:          200  | {"at": at_str, "tried": crepr[:200],
+loop.py:349:          400  | "why": f"does not compile: {e}"[:400]})
+loop.py:351:            1  | res.tried_more += 1
+loop.py:355:            1  | res.suite_runs += 1
+loop.py:400:            1  | if len(greens) - green_at_set_start > 1:
+loop.py:407:           64  | elif len(res.tried_log) < 64:
+loop.py:409:          200  | "tried": crepr[:200],
+loop.py:412:            1  | res.tried_more += 1
+loop.py:415:            1  | if set_amb or len({g[3] for g in greens}) > 1:
+loop.py:415:            3  | if set_amb or len({g[3] for g in greens}) > 1:
+guard.py:44:          0.0  | seconds: float = 0.0
+guard.py:113:            1  | base = parts[-1]
+guard.py:115:            1  | or "tests" in parts[:-1] or base == "conftest.py")
+guard.py:119:            3  | limit: int = 3, evidence: dict | None = None) -> list[str]:
+guard.py:133:            1  | p = m.group(1).replace("\\", "/")
+guard.py:183:            1  | name = m.group(1).lower()
+guard.py:188:            0  | if n_fail == 0:
+guard.py:194:          0.0  | affinity = 1.0 if base_tokens & fail_mods else 0.0
+guard.py:194:          1.0  | affinity = 1.0 if base_tokens & fail_mods else 0.0
+guard.py:218:            1  | framed_files = {os.path.basename(m.group(1))
+guard.py:225:           30  | timeout=30).stdout.splitlines() if l.strip().endswith(".py")}
+guard.py:239:            0  | assert_lits.update(re.findall(r"\d{2,}", m.group(0)))
+guard.py:243:            3  | for rel in {t[3] for t in ranked2}:
+guard.py:254:            0  | if 0 < len(hits) <= 2:          # discriminating, not noise
+guard.py:254:            2  | if 0 < len(hits) <= 2:          # discriminating, not noise
+guard.py:268:            2  | sig = entry[2]
+guard.py:272:            0  | if 0 < len(hits) <= 2:
+guard.py:272:            2  | if 0 < len(hits) <= 2:
+guard.py:284:          0.9  | failonly=specificity >= 0.9,
+guard.py:287:            0  | small=0 < n_fail < 80,
+guard.py:287:           80  | small=0 < n_fail < 80,
+guard.py:288:         0.25  | ubiquitous=specificity < 0.25,
+guard.py:292:            3  | framed_here = [t[3] for t in ranked2
+guard.py:293:            3  | if os.path.basename(t[3]) in framed_files]
+guard.py:300:            1  | ranked2.sort(key=lambda t: (file_priority2(t[3], t[1], t[2]),
+guard.py:300:            2  | ranked2.sort(key=lambda t: (file_priority2(t[3], t[1], t[2]),
+guard.py:300:            3  | ranked2.sort(key=lambda t: (file_priority2(t[3], t[1], t[2]),
+guard.py:301:            0  | -t[0], -t[1], -t[2], t[3]))
+guard.py:301:            1  | -t[0], -t[1], -t[2], t[3]))
+guard.py:301:            2  | -t[0], -t[1], -t[2], t[3]))
+guard.py:301:            3  | -t[0], -t[1], -t[2], t[3]))
+guard.py:302:            8  | return [rel for _, _, _, rel in ranked2[:max(limit, 8)]]
+guard.py:307:            3  | if len(w) >= 3 and w.lower() not in ("test", "tests")}
+guard.py:310:           40  | def _recent_lines(root: str, rel: str, depth: int = 40) -> set:
+guard.py:316:           30  | capture_output=True, text=True, timeout=30).stdout.split())
+guard.py:321:          120  | timeout=120).stdout
+guard.py:324:            0  | hit, lineno = set(), 0
+guard.py:328:            2  | lineno = int(m.group(2))
+guard.py:329:            1  | if m.group(1) in recent:
+guard.py:365:            1  | if base is None or os.path.basename(m.group(1)) == base:
+guard.py:366:            2  | framed.add(int(m.group(2)))
+guard.py:371:            1  | for part in m.group(1).split("::"):
+guard.py:372:            0  | toks |= _name_tokens(part.split("[")[0])
+guard.py:382:            1  | (node.end_lineno or node.lineno) + 1):
+guard.py:391:            0  | shapes[_shape(l)] = shapes.get(_shape(l), 0) + 1
+guard.py:391:            1  | shapes[_shape(l)] = shapes.get(_shape(l), 0) + 1
+guard.py:398:            0  | body = lines[ln - 1] if 0 < ln <= len(lines) else ""
+guard.py:398:            1  | body = lines[ln - 1] if 0 < ln <= len(lines) else ""
+guard.py:402:            2  | for k in (obs.kinds or [])[:2])
+guard.py:403:            0  | cheap = 0 < n < 8
+guard.py:403:            8  | cheap = 0 < n < 8
+guard.py:412:            0  | dense=shapes.get(_shape(body), 0) >= 8,
+guard.py:412:            8  | dense=shapes.get(_shape(body), 0) >= 8,
+guard.py:434:            0  | capture_output=True, timeout=30).returncode == 0
+guard.py:434:           30  | capture_output=True, timeout=30).returncode == 0
+guard.py:443:          600  | escalate_budget: int = 600,
+guard.py:468:            3  | first_deadline = t0 + budget / 3 if budget else None
+guard.py:512:            0  | observer.observe([packet])[0], out,
+guard.py:536:          999  | all_files = files or find_candidate_files(oracle, out, limit=999,
+guard.py:578:          990  | max_lines=990)
+guard.py:582:            9  | max_lines=10 ** 9)   # cap gone, full sight
+guard.py:582:           10  | max_lines=10 ** 9)   # cap gone, full sight
+guard.py:586:            0  | observer.observe([packet])[0], out,
+guard.py:591:            2  | file_share = ((deadline - time.time()) / 2
+guard.py:592:            2  | if total_deadline is not None else escalate_budget / 2)
+guard.py:638:           30  | capture_output=True, text=True, timeout=30)
+guard.py:639:            0  | if p.returncode == 0 and p.stdout:
+guard.py:652:            0  | timeout=30).returncode != 0:
+guard.py:652:           30  | timeout=30).returncode != 0:
+guard.py:678:            0  | report.file], timeout=30).returncode == 0:
+guard.py:678:           30  | report.file], timeout=30).returncode == 0:
+guard.py:689:           30  | check=True, capture_output=True, timeout=30)
+guard.py:691:           30  | check=True, capture_output=True, timeout=30)
+guard.py:719:          200  | "rejected_candidates": report.attempts[:200]},
+guard.py:720:            1  | open(path, "w"), indent=1)
+acts.py:53:            0  | WORKED_EXAMPLE = (0, 5)
+acts.py:53:            5  | WORKED_EXAMPLE = (0, 5)
+acts.py:75:            0  | 0: ("strictness",
+acts.py:80:            1  | 1: ("literal-off-by-one",
+acts.py:84:            2  | 2: ("swapped-return-operands",
+acts.py:87:            3  | 3: ("flipped-additive",
+acts.py:94:            8  | 8: ("minmax-swap",
+acts.py:97:            9  | 9: ("flipped-augmented-assign",
+acts.py:101:           10  | 10: ("flipped-comparison-direction",
+acts.py:106:           11  | 11: ("reversed-minus-operands",
+acts.py:110:           12  | 12: ("flipped-boolean",
+acts.py:116:            4  | USER_KINDS = range(4, 8)          # the dictionary slots KINDS leaves free
+acts.py:116:            8  | USER_KINDS = range(4, 8)          # the dictionary slots KINDS leaves free
+acts.py:127:            0  | start = 0
+acts.py:130:            0  | if i < 0:
+acts.py:133:            2  | if a in (">", "<") and line[i:i + 2] in (">=", "<="):
+acts.py:134:            2  | start = i + 2
+acts.py:146:            1  | val = int(lit) - 1
+acts.py:152:            0  | if val >= 0 and len(lit) > 1 and lit.startswith("0"):
+acts.py:152:            1  | if val >= 0 and len(lit) > 1 and lit.startswith("0"):
+acts.py:159:            1  | if new_lit == "0" and not re.match(r"[0-9.eEjJxXbBoO_]", line[m.end():m.end() + 1] or " "):
+acts.py:175:            1  | occ = max(1, obs.literal_occurrence or 1)
+acts.py:177:            1  | ordered.append(want[occ - 1])
+acts.py:190:            1  | return line if not m else f"{m.group(1)}{m.group(4)}{m.group(3)}{m.group(2)}"
+acts.py:190:            2  | return line if not m else f"{m.group(1)}{m.group(4)}{m.group(3)}{m.group(2)}"
+acts.py:190:            3  | return line if not m else f"{m.group(1)}{m.group(4)}{m.group(3)}{m.group(2)}"
+acts.py:190:            4  | return line if not m else f"{m.group(1)}{m.group(4)}{m.group(3)}{m.group(2)}"
+acts.py:201:            1  | if obs.op_occurrence and 1 <= obs.op_occurrence <= len(ops):
+acts.py:202:            1  | ordered.append(ops[obs.op_occurrence - 1])
+acts.py:204:            0  | ordered.append(next((o for o in ops if o.group(1) == "+"), ops[0]))
+acts.py:204:            1  | ordered.append(next((o for o in ops if o.group(1) == "+"), ops[0]))
+acts.py:208:            1  | flipped = "-" if m.group(1) == "+" else "+"
+acts.py:209:            1  | cand = line[:m.start(1)] + flipped + line[m.end(1):]
+acts.py:221:            1  | other = "max" if m.group(1) == "min" else "min"
+acts.py:222:            1  | cand = line[:m.start(1)] + other + line[m.end(1):]
+acts.py:234:            1  | flipped = "-" if m.group(1) == "+" else "+"
+acts.py:235:            1  | cand = line[:m.start(1)] + flipped + line[m.end(1):]
+acts.py:249:            0  | start = 0
+acts.py:252:            0  | if i < 0:
+acts.py:256:            1  | if line[i - 1:i] in ("-", "<", ">") or \
+acts.py:257:            1  | (a in ("<", ">") and line[i + 1:i + 2] in ("=", "<", ">")):
+acts.py:257:            2  | (a in ("<", ">") and line[i + 1:i + 2] in ("=", "<", ">")):
+acts.py:258:            1  | start = i + 1
+acts.py:292:            1  | flipped = "False" if m.group(1) == "True" else "True"
+acts.py:293:            1  | cand = line[:m.start(1)] + flipped + line[m.end(1):]
+acts.py:303:            5  | 5: _flip_strictness,
+acts.py:304:            6  | 6: _reduce_literal,
+acts.py:305:            7  | 7: _swap_return_operands,
+acts.py:306:            8  | 8: _flip_additive,
+acts.py:309:           13  | 13: _swap_minmax,
+acts.py:310:           14  | 14: _flip_augmented,
+acts.py:311:           15  | 15: _flip_comparison,
+acts.py:312:            0  | 0: _reverse_minus_operands,
+acts.py:313:            1  | 1: _flip_boolean,
+acts.py:319:            0  | return route(WORKED_EXAMPLE[0], WORKED_EXAMPLE[1], kind)
+acts.py:319:            1  | return route(WORKED_EXAMPLE[0], WORKED_EXAMPLE[1], kind)
+acts.py:337:            0  | if not 0 <= kind <= 15:
+acts.py:337:           15  | if not 0 <= kind <= 15:
+acts.py:342:            0  | f"{KINDS[kind][0]!r} — that class can no longer be observed or "
+acts.py:344:            1  | f"{USER_KINDS.start}..{USER_KINDS.stop - 1}",
+acts.py:345:            2  | RuntimeWarning, stacklevel=2)
+acts.py:376:           32  | _CAP_DEFAULT = 32
+acts.py:382:            1  | return max(1, int(_os.environ.get("FLUIDFIX_CANDIDATE_CAP",
+acts.py:412:            0  | return out[0] if out else line
+oracle.py:58:            3  | 3: "pytest hit an internal error",
+oracle.py:59:            4  | 4: "pytest usage/configuration error",
+oracle.py:60:            5  | 5: "pytest collected NO TESTS",
+oracle.py:75:            0  | if rc != 0 and _NO_PYTEST in out:
+oracle.py:86:            5  | if rc == 5:
+oracle.py:94:          600  | f"--- last output ---\n{out.strip()[-600:]}")
+oracle.py:111:           25  | for line in reversed(out.strip().splitlines()[-25:]):
+oracle.py:113:            1  | if m and m.group(1) != "0":
+oracle.py:114:            0  | return m.group(0)
+oracle.py:120:           60  | timeout: int = 300, per_test_timeout: int = 60,
+oracle.py:120:          300  | timeout: int = 300, per_test_timeout: int = 60,
+oracle.py:132:            0  | capture_output=True, timeout=30).returncode == 0
+oracle.py:132:           30  | capture_output=True, timeout=30).returncode == 0
+oracle.py:161:            1  | return 1, "TIMEOUT"
+oracle.py:173:            0  | return rc == 0
+oracle.py:180:            0  | capture_output=True, timeout=30).returncode == 0
+oracle.py:180:           30  | capture_output=True, timeout=30).returncode == 0
+oracle.py:213:            0  | elif rc != 0:
+oracle.py:218:            1  | why = tail[-1] if tail else "suite run produced no output"
+oracle.py:219:          400  | return False, why[:400]
+oracle.py:227:            0  | if rc == 0:
+oracle.py:239:            1  | why = tail[-1] if tail else "suite run produced no output"
+oracle.py:240:          400  | return False, why[:400]
+oracle.py:248:            0  | return rc != 0, out
+coracle.py:102:            8  | timeout: int = 600, jobs: int = 8):
+coracle.py:102:          600  | timeout: int = 600, jobs: int = 8):
+coracle.py:135:            0  | tok = self.test_cmd.split()[0] if self.test_cmd else ""
+coracle.py:138:            2  | p = os.path.join(self.root, tok[2:])
+coracle.py:142:          0.0  | newest = 0.0
+coracle.py:172:            1  | return os.path.getmtime(binary) < self._newest_source_mtime() - 1
+coracle.py:204:           10  | proc.communicate(timeout=10)
+coracle.py:207:            1  | return 1, "TIMEOUT"
+coracle.py:209:            1  | return 1, f"could not run: {e}"
+coracle.py:221:            0  | if rc != 0:
+coracle.py:229:            0  | if rc != 0 and out.startswith("BUILD FAILED") and not self._pristine_checked:
+coracle.py:235:          600  | f"--- last output ---\n{out.strip()[-600:]}")
+coracle.py:237:            0  | return rc == 0
+coracle.py:241:            0  | if rc == 0:
+coracle.py:246:           40  | self._fail_tests = named[:40]
+coracle.py:254:          600  | f"--- last output ---\n{out.strip()[-600:]}")
+coracle.py:265:           40  | self._fail_tests = _fail_names(clean)[:40]
+coracle.py:283:            0  | if rc == 0:
+coracle.py:288:            3  | f"test(s) ({', '.join(liars[:3])}) — refusing to accept a "
+coracle.py:296:          200  | return False, why[:200]
+coracle.py:299:            0  | return False, f"{len(bad)} test(s) failed, first: {bad[0]}"
+coracle.py:302:          200  | return False, why[:200]
+coracle.py:367:            0  | if rc != 0:
+coracle.py:370:            0  | self._ready = rc == 0
+coracle.py:381:            1  | return line.split("=", 1)[1].strip()
+coracle.py:429:            1  | src = line.split("Source:", 1)[1].strip()
+coracle.py:438:            1  | cnt = m.group(1).strip()
+coracle.py:439:            0  | if cnt and cnt[0].isdigit() and cnt != "0":
+coracle.py:440:            2  | hit.add(int(m.group(2)))
+coracle.py:494:            5  | limit: int = 5) -> list[str]:
+coracle.py:522:            0  | stems.setdefault(os.path.splitext(b)[0].lower(), []).append(r)
+coracle.py:529:            3  | toks = [t for t in (p.lower() for p in parts) if len(t) >= 3]
+coracle.py:535:            0  | scored[rel] = scored.get(rel, 0) + 3
+coracle.py:535:            3  | scored[rel] = scored.get(rel, 0) + 3
+coracle.py:541:            0  | scored[rel] = scored.get(rel, 0) + 1
+coracle.py:541:            1  | scored[rel] = scored.get(rel, 0) + 1
+coracle.py:549:            0  | return 0
+coracle.py:551:            0  | key=lambda kv: (-kv[1], -_size(kv[0]),
+coracle.py:551:            1  | key=lambda kv: (-kv[1], -_size(kv[0]),
+coracle.py:552:            0  | kv[0]))]
+coracle.py:565:          110  | max_lines: int = 110,
+coracle.py:584:            1  | frames.update(range(max(1, ln - 12),
+coracle.py:584:           12  | frames.update(range(max(1, ln - 12),
+coracle.py:585:            1  | min(len(src_lines), ln + 12) + 1))
+coracle.py:585:           12  | min(len(src_lines), ln + 12) + 1))
+coracle.py:595:            1  | if 1 <= l <= len(src_lines) and src_lines[l - 1].strip())
+coracle.py:598:            1  | lo = [i + 1 for i, l in enumerate(src_lines)
+coracle.py:622:            2  | sigs = [e[2] for e in KINDS.values() if e[2] is not None]
+coracle.py:624:            1  | if any(g.search(src_lines[l - 1]) for g in sigs)]
+coracle.py:638:            1  | n = sum(1 for l in lo if g.search(src_lines[l - 1]))
+coracle.py:643:            1  | if g.search(src_lines[l - 1])]
+coracle.py:644:            6  | return min(ns) if ns else 10 ** 6
+coracle.py:644:           10  | return min(ns) if ns else 10 ** 6
+coracle.py:651:           30  | if len(lo) > max_lines - 30:
+coracle.py:653:            1  | kept = [l for l in lo if sig.search(src_lines[l - 1])] or lo
+coracle.py:710:            4  | for probe in (oracle._fail_tests or [None])[:4]:
+coracle.py:715:            5  | if len(real) < 5:
+coracle.py:726:            1  | u = max(len(full_cov.get(rel, ())), f, 1)
+coracle.py:727:          1.0  | return min(f / u, 1.0)      # clamp: a filtered run can
+coracle.py:743:            3  | if len(touched) >= 3:
+coracle.py:758:            0  | observations = observer.observe([packet])[0]
+localize.py:46:            1  | if prev is not None and l > prev + 1:
+localize.py:48:            1  | excerpt.append(f"{l:4d}| {self.src_lines[l - 1].rstrip(chr(13))[:120]}")
+localize.py:48:           13  | excerpt.append(f"{l:4d}| {self.src_lines[l - 1].rstrip(chr(13))[:120]}")
+localize.py:48:          120  | excerpt.append(f"{l:4d}| {self.src_lines[l - 1].rstrip(chr(13))[:120]}")
+localize.py:63:            1  | lines = lines[starts[-1]:]
+localize.py:64:          120  | keep = [l[:120] for l in lines
+localize.py:67:           14  | txt = "\n".join(keep) or "\n".join(l[:120] for l in lines[-14:])
+localize.py:67:          120  | txt = "\n".join(keep) or "\n".join(l[:120] for l in lines[-14:])
+localize.py:68:          800  | if len(txt) > 800:
+localize.py:69:          300  | txt = txt[:300] + "\n  ...\n" + txt[-450:]
+localize.py:69:          450  | txt = txt[:300] + "\n  ...\n" + txt[-450:]
+localize.py:82:           40  | if isinstance(node, SIMPLE) and node.end_lineno - node.lineno <= 40:
+localize.py:83:            1  | for l in range(node.lineno, node.end_lineno + 1):
+localize.py:89:          110  | max_lines: int = 110) -> Packet | None:
+localize.py:124:            1  | frames.update(range(max(1, ln - 12), min(len(src_lines), ln + 12) + 1))
+localize.py:124:           12  | frames.update(range(max(1, ln - 12), min(len(src_lines), ln + 12) + 1))
+localize.py:130:            0  | seg = want.split("/")[0]
+localize.py:133:            3  | tgt = seg[:-3] if seg.endswith(".py") else seg
+localize.py:158:            0  | expanded.update(range(spans[l][0], spans[l][1] + 1))
+localize.py:158:            1  | expanded.update(range(spans[l][0], spans[l][1] + 1))
+localize.py:162:            1  | lo = [l for l in sorted(frames | expanded) if 1 <= l <= len(src_lines)]
+localize.py:164:           30  | if len(lo) > max_lines - 30:
+localize.py:166:            1  | kept = [l for l in lo if sig.search(src_lines[l - 1])] or lo
+observers.py:36:            1  | line = p.src_lines[l - 1].rstrip("\r")
+observers.py:71:            0  | "items": {"type": "integer", "minimum": 0, "maximum": 15}},
+observers.py:71:           15  | "items": {"type": "integer", "minimum": 0, "maximum": 15}},
+observers.py:92:        16000  | fallbacks: bool = True, max_tokens: int = 16000):
+hotspots.py:59:         4000  | def bugfix_churn(root: str, commits: int = 4000
+hotspots.py:72:          300  | timeout=300).stdout
+hotspots.py:74:            0  | return collections.Counter(), 0, 0
+hotspots.py:77:            0  | scanned = fixes = 0
+hotspots.py:84:            1  | scanned += 1
+hotspots.py:85:            3  | is_fix = bool(_FIX.search(line[3:]))
+hotspots.py:90:            1  | churn[line] += 1
+hotspots.py:95:          0.3  | shares=(0.3, 0.5, 0.6, 0.8)) -> list[tuple[float, int]]:
+hotspots.py:95:          0.5  | shares=(0.3, 0.5, 0.6, 0.8)) -> list[tuple[float, int]]:
+hotspots.py:95:          0.6  | shares=(0.3, 0.5, 0.6, 0.8)) -> list[tuple[float, int]]:
+hotspots.py:95:          0.8  | shares=(0.3, 0.5, 0.6, 0.8)) -> list[tuple[float, int]]:
+hotspots.py:103:            0  | out, run, targets = [], 0, sorted(shares)
+hotspots.py:104:            0  | i = 0
+hotspots.py:105:            1  | for _rank, (_f, n) in enumerate(churn.most_common(), 1):
+hotspots.py:109:            1  | i += 1
+hotspots.py:112:            1  | i += 1
+hotspots.py:117:           25  | covered: dict | None = None, limit: int = 25) -> list[dict]:
+hotspots.py:131:          1.0  | frac, gap = None, 1.0
+hotspots.py:133:          1.0  | frac = min(len(covered.get(rel, ())) / total, 1.0)
+hotspots.py:134:          1.0  | gap = 1.0 - frac
+hotspots.py:143:         0.15  | and _statement_density(os.path.join(root, rel)) < 0.15)
+hotspots.py:146:         0.25  | "priority": hits * gap * (0.25 if decl_only else 1.0)})
+hotspots.py:146:          1.0  | "priority": hits * gap * (0.25 if decl_only else 1.0)})
+hotspots.py:186:          1.0  | return 1.0
+hotspots.py:187:            1  | stmt = sum(1 for l in code
+javaoracle.py:39:          600  | def __init__(self, root: str, mvn: str = "mvn", timeout: int = 600,
+javaoracle.py:58:            1  | return 1, "TIMEOUT"
+javaoracle.py:75:            0  | if rc == 0:
+javaoracle.py:81:            0  | cls = m.group(1).split(".")[-1].split("$")[0]
+javaoracle.py:81:            1  | cls = m.group(1).split(".")[-1].split("$")[0]
+javaoracle.py:85:            0  | cls = (m.group(1) or m.group(2) or "").split(".")[-1].split("$")[0]
+javaoracle.py:85:            1  | cls = (m.group(1) or m.group(2) or "").split(".")[-1].split("$")[0]
+javaoracle.py:85:            2  | cls = (m.group(1) or m.group(2) or "").split(".")[-1].split("$")[0]
+javaoracle.py:88:           10  | self._fail_classes = classes[:10]
+javaoracle.py:93:            0  | return rc == 0
+javaoracle.py:103:          200  | return why[:200]
+javaoracle.py:108:            0  | if rc != 0:
+javaoracle.py:111:            0  | return (True, "") if rc == 0 else (False, _why(out))
+javaoracle.py:132:            5  | limit: int = 5) -> list[str]:
+javaoracle.py:138:            1  | rel = srcs.get(m.group(1))
+javaoracle.py:151:          110  | failing_output: str, max_lines: int = 110) -> Packet | None:
+javaoracle.py:164:            1  | if m.group(1) == base:
+javaoracle.py:165:            2  | ln = int(m.group(2))
+javaoracle.py:166:            1  | frames.update(range(max(1, ln - 12),
+javaoracle.py:166:           12  | frames.update(range(max(1, ln - 12),
+javaoracle.py:167:            1  | min(len(src_lines), ln + 12) + 1))
+javaoracle.py:167:           12  | min(len(src_lines), ln + 12) + 1))
+javaoracle.py:169:            1  | i + 1 for i, l in enumerate(src_lines)
+javaoracle.py:173:           30  | if len(lo) > max_lines - 30:
+javaoracle.py:175:            1  | kept = [l for l in lo if sig.search(src_lines[l - 1])] or lo
+javaoracle.py:211:            0  | observations = observer.observe([packet])[0]
+cli.py:45:            0  | timeout=30).returncode == 0
+cli.py:45:           30  | timeout=30).returncode == 0
+cli.py:65:            3  | return 3
+cli.py:69:            0  | observations = obs.observe([packet])[0]
+cli.py:76:            0  | observations = MechanicalObserver().observe([packet])[0]
+cli.py:80:            1  | print(json.dumps(result.__dict__, default=str, indent=1))
+cli.py:83:            0  | return 0 if result.repaired else 2
+cli.py:83:            2  | return 0 if result.repaired else 2
+cli.py:123:            0  | return 0
+cli.py:132:            0  | return 0 if report.status in ("green", "repaired") else 2
+cli.py:132:            2  | return 0 if report.status in ("green", "repaired") else 2
+cli.py:141:            3  | return 3
+cli.py:143:            0  | return 0
+cli.py:160:            1  | return 1
+cli.py:171:            1  | if parts and not all((os.path.exists(os.path.join(root, *parts[:i + 1],
+cli.py:180:            3  | name = ".".join(parts + [f[:-3]]) if f != "__init__.py" else ".".join(parts)
+cli.py:188:            0  | timeout=15).returncode == 0
+cli.py:188:           15  | timeout=15).returncode == 0
+cli.py:195:            1  | return 1
+cli.py:227:            0  | return 0
+cli.py:244:            0  | return 0 if report.status in ("green", "repaired") else 2
+cli.py:244:            2  | return 0 if report.status in ("green", "repaired") else 2
+cli.py:265:            1  | return 1
+cli.py:276:            0  | return 0 if report.status in ("green", "repaired") else 2
+cli.py:276:            2  | return 0 if report.status in ("green", "repaired") else 2
+cli.py:290:            1  | return 1
+cli.py:310:            1  | for i, r in enumerate(rows, 1):
+cli.py:311:          100  | cov_s = "     ?" if r["covered"] is None else f"{r['covered']*100:5.0f}%"
+cli.py:316:            1  | pct = n / max(len(churn), 1) * 100
+cli.py:316:          100  | pct = n / max(len(churn), 1) * 100
+cli.py:317:          100  | print(f"  guard {share*100:3.0f}% of past defects  ->  test {n:4d} files"
+cli.py:323:            0  | return 0
+cli.py:351:            1  | return 1
+cli.py:362:            2  | f"over {2 * args.suite_timeout // 60} minutes. Guard a fast "
+cli.py:362:           60  | f"over {2 * args.suite_timeout // 60} minutes. Guard a fast "
+cli.py:366:            1  | return 1
+cli.py:373:            1  | return 1
+cli.py:378:           70  | summary = line.strip()[:70]
+cli.py:388:            1  | return 1
+cli.py:390:          0.5  | startup = 0.5                     # pytest process startup, measured
+cli.py:397:            2  | f"  {2 * per_run:.1f}s - {10 * per_run:.0f}s")
+cli.py:397:           10  | f"  {2 * per_run:.1f}s - {10 * per_run:.0f}s")
+cli.py:399:           80  | f"  ~{80 * per_run:.0f}s")
+cli.py:400:           60  | if secs > 60:
+cli.py:405:            5  | elif secs < 5:
+cli.py:411:            0  | if rc != 0:
+cli.py:415:            0  | return 0
+cli.py:431:            0  | bad = 0
+cli.py:432:           16  | for F1 in range(16):
+cli.py:433:           16  | for A1 in range(16):
+cli.py:434:           16  | for Fq in range(16):
+cli.py:435:           16  | want = (Fq + A1 - F1) % 16
+cli.py:437:         4096  | print(f"router vs reference, all 4096 (F1,A1,Fq): {4096 - bad}/4096")
+cli.py:439:           16  | ident = sum(route(F1, A1, F1) != A1 for F1 in range(16) for A1 in range(16))
+cli.py:440:          256  | print(f"identity route(F1,A1,F1)==A1:               {256 - ident}/256")
+cli.py:442:            0  | comp = sum(route(0, o2, route(0, o1, q)) != (q + o1 + o2) % 16
+cli.py:442:           16  | comp = sum(route(0, o2, route(0, o1, q)) != (q + o1 + o2) % 16
+cli.py:443:           16  | for o1 in range(16) for o2 in range(16) for q in range(16))
+cli.py:444:         4096  | print(f"composition route(o2, route(o1, q)):        {4096 - comp}/4096")
+cli.py:446:            0  | lane_bad = 0
+cli.py:447:          256  | for m in range(256):
+cli.py:449:            1  | lane_bad += 1
+cli.py:451:            1  | lane_bad += 1
+cli.py:452:            0  | if HALT(m) != (1 if m == 0 else 0):
+cli.py:452:            1  | if HALT(m) != (1 if m == 0 else 0):
+cli.py:453:            1  | lane_bad += 1
+cli.py:456:            0  | steps = 0
+cli.py:457:          256  | for m in range(256):
+cli.py:461:            1  | steps += 1
+cli.py:462:         4096  | assert steps < 4096, "ADVANCE failed to reduce"
+cli.py:469:            0  | law_bad = 0 if (len(LAW) == 1555 and fp.startswith("48bf50bff36a2cc9")) else 1
+cli.py:469:            1  | law_bad = 0 if (len(LAW) == 1555 and fp.startswith("48bf50bff36a2cc9")) else 1
+cli.py:469:         1555  | law_bad = 0 if (len(LAW) == 1555 and fp.startswith("48bf50bff36a2cc9")) else 1
+cli.py:470:           16  | print(f"engine law fingerprint (sha256 {fp[:16]}, {len(LAW)} chars): "
+cli.py:482:            1  | if (x >> 7) & 1:
+cli.py:482:            7  | if (x >> 7) & 1:
+cli.py:483:            7  | return 7
+cli.py:484:          127  | ev = x & 0x7F
+cli.py:486:            7  | return 7
+cli.py:487:            0  | i = 0
+cli.py:488:            1  | while not ((ev >> i) & 1):
+cli.py:489:            1  | i += 1
+cli.py:492:          256  | rank_bad = sum(_rank(x) != _spec(x) for x in range(256))
+cli.py:493:            7  | veto_bad = sum(_rank(x | 128) != 7 for x in range(256))
+cli.py:493:          128  | veto_bad = sum(_rank(x | 128) != 7 for x in range(256))
+cli.py:493:          256  | veto_bad = sum(_rank(x | 128) != 7 for x in range(256))
+cli.py:494:            1  | mono_bad = sum(1 for x in range(128) for b in range(7)
+cli.py:494:            7  | mono_bad = sum(1 for x in range(128) for b in range(7)
+cli.py:494:          128  | mono_bad = sum(1 for x in range(128) for b in range(7)
+cli.py:495:            1  | if not ((x >> b) & 1) and _rank(x | (1 << b)) > _rank(x))
+cli.py:496:          256  | print(f"ranking law vs specification, all 256:       {256 - rank_bad}/256")
+cli.py:504:            7  | if x & 7:                      # any POINTING bit
+cli.py:505:            0  | return 0
+cli.py:506:            2  | for i, base in ((3, 2), (4, 3), (5, 4), (6, 5)):
+cli.py:506:            3  | for i, base in ((3, 2), (4, 3), (5, 4), (6, 5)):
+cli.py:506:            4  | for i, base in ((3, 2), (4, 3), (5, 4), (6, 5)):
+cli.py:506:            5  | for i, base in ((3, 2), (4, 3), (5, 4), (6, 5)):
+cli.py:506:            6  | for i, base in ((3, 2), (4, 3), (5, 4), (6, 5)):
+cli.py:507:            1  | if (x >> i) & 1:
+cli.py:508:            1  | return base + ((x >> 7) & 1)
+cli.py:508:            7  | return base + ((x >> 7) & 1)
+cli.py:509:            1  | return 6 + ((x >> 7) & 1)
+cli.py:509:            6  | return 6 + ((x >> 7) & 1)
+cli.py:509:            7  | return 6 + ((x >> 7) & 1)
+cli.py:511:          256  | sight_bad = sum(_sight(x) != _sspec(x) for x in range(256))
+cli.py:513:            1  | r1_bad = sum(1 for a in range(256) if a & 7
+cli.py:513:            7  | r1_bad = sum(1 for a in range(256) if a & 7
+cli.py:513:          256  | r1_bad = sum(1 for a in range(256) if a & 7
+cli.py:514:            7  | for b in range(256) if not b & 7 and not _sight(a) < _sight(b))
+cli.py:514:          256  | for b in range(256) if not b & 7 and not _sight(a) < _sight(b))
+cli.py:516:            1  | r2_bad = sum(1 for x in range(256)
+cli.py:516:          256  | r2_bad = sum(1 for x in range(256)
+cli.py:517:            7  | if x & 7 and _sight(x) != _sight(x & 0x7F))
+cli.py:517:          127  | if x & 7 and _sight(x) != _sight(x & 0x7F))
+cli.py:519:            1  | r3_bad = sum(1 for x in range(256) for b in range(7)
+cli.py:519:            7  | r3_bad = sum(1 for x in range(256) for b in range(7)
+cli.py:519:          256  | r3_bad = sum(1 for x in range(256) for b in range(7)
+cli.py:520:            1  | if not ((x >> b) & 1) and _sight(x | (1 << b)) > _sight(x))
+cli.py:521:          256  | print(f"sight law vs specification, all 256:         {256 - sight_bad}/256")
+cli.py:529:            1  | EXH, PAR, DIS, COU, CHE, TAU, CAN, CAP = (1, 2, 4, 8, 16, 32, 64, 128)
+cli.py:529:            2  | EXH, PAR, DIS, COU, CHE, TAU, CAN, CAP = (1, 2, 4, 8, 16, 32, 64, 128)
+cli.py:529:            4  | EXH, PAR, DIS, COU, CHE, TAU, CAN, CAP = (1, 2, 4, 8, 16, 32, 64, 128)
+cli.py:529:            8  | EXH, PAR, DIS, COU, CHE, TAU, CAN, CAP = (1, 2, 4, 8, 16, 32, 64, 128)
+cli.py:529:           16  | EXH, PAR, DIS, COU, CHE, TAU, CAN, CAP = (1, 2, 4, 8, 16, 32, 64, 128)
+cli.py:529:           32  | EXH, PAR, DIS, COU, CHE, TAU, CAN, CAP = (1, 2, 4, 8, 16, 32, 64, 128)
+cli.py:529:           64  | EXH, PAR, DIS, COU, CHE, TAU, CAN, CAP = (1, 2, 4, 8, 16, 32, 64, 128)
+cli.py:529:          128  | EXH, PAR, DIS, COU, CHE, TAU, CAN, CAP = (1, 2, 4, 8, 16, 32, 64, 128)
+cli.py:533:            7  | return 7
+cli.py:537:            0  | return 0
+cli.py:539:            1  | return 1
+cli.py:541:            2  | return 2
+cli.py:543:            3  | return 3
+cli.py:545:            4  | return 4
+cli.py:547:            6  | return 6
+cli.py:548:            5  | return 5 if x & CAP else 7
+cli.py:548:            7  | return 5 if x & CAP else 7
+cli.py:550:          256  | pair_bad = sum(_pair(x) != _pspec(x) for x in range(256))
+cli.py:552:            1  | p1 = sum(1 for x in range(256) if not (x & EXH) and _pair(x) <= 4)
+cli.py:552:            4  | p1 = sum(1 for x in range(256) if not (x & EXH) and _pair(x) <= 4)
+cli.py:552:          256  | p1 = sum(1 for x in range(256) if not (x & EXH) and _pair(x) <= 4)
+cli.py:554:            1  | p2 = sum(1 for x in range(256)
+cli.py:554:          256  | p2 = sum(1 for x in range(256)
+cli.py:556:            0  | and _pair(x) != 0)
+cli.py:558:            1  | p3 = sum(1 for x in range(256) if (x & CAN) and _pair(x) != 7)
+cli.py:558:            7  | p3 = sum(1 for x in range(256) if (x & CAN) and _pair(x) != 7)
+cli.py:558:          256  | p3 = sum(1 for x in range(256) if (x & CAN) and _pair(x) != 7)
+cli.py:559:            1  | reach = sum(1 for x in range(256) if _pair(x) == 1)
+cli.py:559:          256  | reach = sum(1 for x in range(256) if _pair(x) == 1)
+cli.py:560:          256  | print(f"pair law vs specification, all 256:          {256 - pair_bad}/256")
+cli.py:566:            0  | total = (bad or 0) + ident + comp + lane_bad + law_bad + rule_bad \
+cli.py:571:            0  | return 0 if not total else 1
+cli.py:571:            1  | return 0 if not total else 1
+cli.py:580:           16  | for kind in range(16):
+cli.py:585:           78  | print(textwrap.fill(desc, width=78, initial_indent="     ",
+cli.py:590:            0  | return 0
+cli.py:627:          300  | sp.add_argument("--suite-timeout", type=int, default=300,
+cli.py:629:           60  | sp.add_argument("--test-timeout", type=int, default=60,
+cli.py:643:          600  | sp.add_argument("--escalate-budget", type=int, default=600,
+cli.py:695:          600  | sp.add_argument("--suite-timeout", type=int, default=600)
+cli.py:714:          600  | sp.add_argument("--suite-timeout", type=int, default=600)
+cli.py:728:           25  | sp.add_argument("--top", type=int, default=25)
+cli.py:729:         4000  | sp.add_argument("--commits", type=int, default=4000,
+cli.py:737:          900  | sp.add_argument("--suite-timeout", type=int, default=900)
+cli.py:761:            2  | return 2

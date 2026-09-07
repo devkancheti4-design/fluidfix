@@ -1,0 +1,7 @@
+full packet: truncated=False lines=807
+repaired   = False
+ambiguous  = True
+suite_runs = 4
+greens     = ['    return grade(v - -1, limit)', '    if v >= limit:']
+reason     = AMBIGUOUS: 2 candidates at 2 different lines (5, 809) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+tree untouched = True

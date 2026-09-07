@@ -1,0 +1,14 @@
+== hidden: REAL law ==
+  [real] repaired=False refused=True greens=[] reason='every candidate left the suite red — fault is outside this vocabulary or the observations are wrong'
+  [real] tried='    return a + b' why='green on one run, RED on re-check — the suite does not hold still here, so a single run cannot judge this candidate (engine law: HIDDEN -> CHANGE_GRANULARITY). last failure: FAILED test_mod.py::test_f - flaky'
+  [real] mod.py line 2 now: '    return a - b'
+== hidden: SWAPPED law {'CHANGE_GRANULARITY': 'SHIP'} ==
+  [swap] repaired=False refused=True greens=[] reason='every candidate left the suite red — fault is outside this vocabulary or the observations are wrong'
+  [swap] tried='    return a + b' why='green on one run, RED on re-check — the suite does not hold still here, so a single run cannot judge this candidate (engine law: HIDDEN -> SHIP). last failure: FAILED test_mod.py::test_f - flaky'
+  [swap] mod.py line 2 now: '    return a - b'
+  decide() calls during the swapped run (byte, real ruling, returned):
+    HIDDEN               CHANGE_GRANULARITY     -> SHIP
+== hidden: REAL law, FLUIDFIX_CONFIRM=0 (lane switched off by env var) ==
+  [confirm0] repaired=True refused=False greens=['    return a + b'] reason='engine law: BUILT -> SHIP'
+  [confirm0] mod.py line 2 now: '    return a + b'
+-- hidden: 0.0s wall

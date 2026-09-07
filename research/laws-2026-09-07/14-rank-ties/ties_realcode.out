@@ -1,0 +1,46 @@
+== per-file priority classes on real fluidfix source ==
+file                   shape     obs  top |top class|  classes
+acts.py                assert    148    2           3  {2: 3, 3: 145}
+acts.py                trace     148    0           1  {0: 1, 2: 2, 3: 145}
+cli.py                 assert    217    2         175  {2: 175, 3: 42}
+cli.py                 trace     217    2         175  {2: 175, 3: 42}
+coracle.py             assert    205    2          19  {2: 19, 3: 186}
+coracle.py             trace     205    0           1  {0: 1, 2: 18, 3: 186}
+engine.py              assert     24    2           5  {2: 5, 3: 19}
+engine.py              trace      24    2           5  {2: 5, 3: 19}
+guard.py               assert    172    2          45  {2: 45, 3: 127}
+guard.py               trace     172    0           1  {0: 1, 2: 44, 3: 127}
+hotspots.py            assert     50    2          13  {2: 13, 3: 37}
+hotspots.py            trace      50    0           1  {0: 1, 2: 12, 3: 37}
+javaoracle.py          assert     62    2          46  {2: 46, 3: 16}
+javaoracle.py          trace      62    0           1  {0: 1, 2: 45, 3: 16}
+lanes.py               assert     20    3          20  {3: 20}
+lanes.py               trace      20    3          20  {3: 20}
+localize.py            assert     43    2          28  {2: 28, 3: 15}
+localize.py            trace      43    0           1  {0: 1, 2: 27, 3: 15}
+loop.py                assert    116    2           7  {2: 7, 3: 109}
+loop.py                trace     116    2           7  {2: 7, 3: 109}
+observers.py           assert     23    2          16  {2: 16, 3: 7}
+observers.py           trace      23    2          16  {2: 16, 3: 7}
+oracle.py              assert     72    2           2  {2: 2, 3: 70}
+oracle.py              trace      72    2           2  {2: 2, 3: 70}
+pair.py                assert     73    2          16  {2: 16, 3: 57}
+pair.py                trace      73    0           1  {0: 1, 2: 15, 3: 57}
+rank.py                assert     42    2           7  {2: 7, 3: 35}
+rank.py                trace      42    0           1  {0: 1, 2: 6, 3: 35}
+router.py              assert     23    2           2  {2: 2, 3: 21}
+router.py              trace      23    2           2  {2: 2, 3: 21}
+sight.py               assert     56    2          12  {2: 12, 3: 44}
+sight.py               trace      56    0           1  {0: 1, 2: 11, 3: 44}
+
+== summary ==
+  assert: 16 files, 1346 observations, top class size total 416, files whose top class is a SINGLETON: 0/16
+    top-class sizes min/median/max: 2/16/175
+    distinct priorities produced: [2, 3]
+  trace: 16 files, 1346 observations, top class size total 236, files whose top class is a SINGLETON: 9/16
+    top-class sizes min/median/max: 1/1/175
+    distinct priorities produced: [0, 2, 3]
+
+== how many observations are in a tie (class size > 1) ==
+  assert: 1346/1346 observations sit in a class of >1 (100.0%)
+  trace: 1337/1346 observations sit in a class of >1 (99.3%)

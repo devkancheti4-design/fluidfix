@@ -1,0 +1,5 @@
+  build: cc -O0 -o build/tests src/mathops.c tests/test_main.c
+  test:  ./build/tests
+[14:40:01] src/mathops.c: repaired line 3 in 3 suite runs (3.3s):
+  - return a - b;
+  + return a + b;

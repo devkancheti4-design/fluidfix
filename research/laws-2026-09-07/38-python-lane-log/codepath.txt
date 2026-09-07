@@ -1,0 +1,20 @@
+guard_once runs: 43
+candidate-file count histogram: {1: 39, 0: 4}
+
+repair() calls on Python fixtures: 55
+  reason carries an engine-law ruling (law consulted): 37
+  reason written by CODE, law never consulted        : 18
+  code-written reasons seen:
+      10  every candidate left the suite red — fault is outside this vocabulary or the obs
+       6  no observation named a kind this vocabulary can repair
+       1  no failing test — nothing to repair
+       1  wall-clock deadline reached mid-search — remaining observations untried
+
+law-written reasons seen:
+      34  engine law: BUILT -> SHIP
+       3  AMBIGUOUS: 2 candidates at 1 different lines (1) all pass the suite — 
+
+refusals: 10
+    5  every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTE
+    3  (no hint)
+    2  AMBIGUOUS: 2 candidates at 1 different lines (1) all pass the suite — the tests cannot tel

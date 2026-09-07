@@ -1,0 +1,35 @@
+red defects: 20   with persisted per-file bytes (`rows`): 16
+without rows (measured earlier, before the field existed): src/bitset.c, src/contact_solver.c, src/island.c, src/recording.c
+
+file                        body  A law  B law  C nolaw  D nolaw  E named
+src/aabb.c                    10      4      4        2        2        2
+src/body.c                    28      6     25       25        5        5
+src/broad_phase.c             25     10     23       22       10       10
+src/contact.c                 27      8     25       24        8        8
+src/distance.c                30      1      1       27        5        5
+src/dynamic_tree.c             1      1      2        3        3        1
+src/geometry.c                 3      4      4        3        3        3
+src/joint.c                   24     11     22       21       11       11
+src/manifold.c                26     25     25       26       26       26
+src/math_functions.c           2      1      3        3        1        1
+src/physics_world.c            1      3     26       26        3        3
+src/recording_replay.c        16      4     14       13        4        3
+src/revolute_joint.c          22     13     20       19       13       13
+src/solver.c                   3      2     31       31        1        1
+src/table.c                    1      1      7        7        1        1
+src/world_snapshot.c           4      2     16       15        2        1
+
+BODY, real candidate list                    top-1  3/16   top-3  6/16   median   13   mean 13.9   worst 30
+A  sight() + law tiebreak (-n_fail)          top-1  4/16   top-3  7/16   median    4   mean  6.0   worst 25
+B  sight() + BODY tiebreak (+n_fail)         top-1  1/16   top-3  3/16   median   18   mean 15.5   worst 31
+C  no sight(), BODY key only                 top-1  0/16   top-3  4/16   median   20   mean 16.7   worst 31
+D  no sight(), LAW tiebreak (-n_fail)        top-1  3/16   top-3  8/16   median  3.5   mean  6.1   worst 26
+E  NAMED bit only + LAW tiebreak             top-1  5/16   top-3  9/16   median    3   mean  5.9   worst 26
+
+A vs D, same tiebreak, sight()'s eight-bit tiering the only difference:
+  sight() moves the true file UP on 3/16, DOWN on 4, unchanged on 9
+  median rank 3.5 (no law) -> 4 (law)
+
+B vs C, same universe and same tiebreak, sight() the only difference:
+  sight() moves the true file UP on 3/16, DOWN on 8, unchanged on 5
+  median rank 20 -> 18   median improvement -0.5 places

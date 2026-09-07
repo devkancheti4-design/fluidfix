@@ -1,0 +1,35 @@
+PERIOD=2 OFFSET=0  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=2 OFFSET=1  REFUSED no observation named a kind this vocabulary can repair
+PERIOD=3 OFFSET=0  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=3 OFFSET=1  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=3 OFFSET=2  REFUSED no failing test — nothing to repair
+PERIOD=4 OFFSET=0  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=4 OFFSET=1  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=4 OFFSET=2  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=4 OFFSET=3  REFUSED no failing test — nothing to repair
+PERIOD=5 OFFSET=0  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=5 OFFSET=1  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=5 OFFSET=2  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=5 OFFSET=3  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=5 OFFSET=4  REFUSED no failing test — nothing to repair
+PERIOD=6 OFFSET=0  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=6 OFFSET=1  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=6 OFFSET=2  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=6 OFFSET=3  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=6 OFFSET=4  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=6 OFFSET=5  REFUSED no failing test — nothing to repair
+PERIOD=7 OFFSET=0  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=7 OFFSET=1  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=7 OFFSET=2  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=7 OFFSET=3  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=7 OFFSET=4  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=7 OFFSET=5  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=7 OFFSET=6  REFUSED no failing test — nothing to repair
+PERIOD=8 OFFSET=0  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=8 OFFSET=1  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=8 OFFSET=2  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=8 OFFSET=3  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=8 OFFSET=4  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=8 OFFSET=5  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=8 OFFSET=6  NON-JSON: suite is green — nothing to repair (refusing to search)
+PERIOD=8 OFFSET=7  REFUSED no failing test — nothing to repair

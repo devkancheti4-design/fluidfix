@@ -1,0 +1,290 @@
+{
+ "fixture": "F3-multi-assert",
+ "route": "SIGHT-law",
+ "correct": [
+  "mod.py",
+  4,
+  "        if x > t:"
+ ],
+ "shipped_file_order": [
+  "mod.py",
+  "totals.py",
+  "bounds.py",
+  "scaling.py"
+ ],
+ "evidence": {
+  "pointed": [
+   "bounds.py",
+   "mod.py",
+   "scaling.py",
+   "totals.py"
+  ],
+  "lanes": {
+   "FRAMED": [],
+   "SCARCE": [
+    "bounds.py",
+    "mod.py",
+    "scaling.py",
+    "totals.py"
+   ],
+   "LITERAL": []
+  }
+ },
+ "file_info": {
+  "bounds.py": {
+   "prio": 0,
+   "byte": 74,
+   "specificity": 1.0,
+   "n_fail": 4,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "SMALL"
+   ]
+  },
+  "mod.py": {
+   "prio": 0,
+   "byte": 90,
+   "specificity": 1.0,
+   "n_fail": 6,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "NAMED",
+    "SMALL"
+   ]
+  },
+  "scaling.py": {
+   "prio": 0,
+   "byte": 74,
+   "specificity": 1.0,
+   "n_fail": 4,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "SMALL"
+   ]
+  },
+  "totals.py": {
+   "prio": 0,
+   "byte": 74,
+   "specificity": 1.0,
+   "n_fail": 5,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "SMALL"
+   ]
+  }
+ },
+ "line_order": {
+  "mod.py": [
+   2,
+   4,
+   5
+  ],
+  "totals.py": [
+   2,
+   4
+  ],
+  "bounds.py": [
+   2,
+   4
+  ],
+  "scaling.py": [
+   2,
+   6
+  ]
+ },
+ "line_info": {
+  "mod.py:2": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "mod.py:4": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "mod.py:5": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "totals.py:2": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "totals.py:4": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "bounds.py:2": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "bounds.py:4": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "scaling.py:2": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "scaling.py:6": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  }
+ },
+ "runs_to_correct": {
+  "shipped": 2,
+  "rank-first": 2,
+  "no-sight": 6,
+  "no-rank": 2,
+  "sight-doc-tiebreak": 2
+ },
+ "traces": {
+  "shipped": [
+   [
+    1,
+    "mod.py",
+    2,
+    1,
+    "n = -1"
+   ],
+   [
+    2,
+    "mod.py",
+    4,
+    0,
+    "if x > t:"
+   ]
+  ],
+  "rank-first": [
+   [
+    1,
+    "mod.py",
+    2,
+    1,
+    "n = -1"
+   ],
+   [
+    2,
+    "mod.py",
+    4,
+    0,
+    "if x > t:"
+   ]
+  ],
+  "no-sight": [
+   [
+    1,
+    "bounds.py",
+    2,
+    0,
+    "if v <= lo:"
+   ],
+   [
+    2,
+    "bounds.py",
+    2,
+    10,
+    "if v > lo:"
+   ],
+   [
+    3,
+    "bounds.py",
+    4,
+    0,
+    "if v >= hi:"
+   ],
+   [
+    4,
+    "bounds.py",
+    4,
+    10,
+    "if v < hi:"
+   ],
+   [
+    5,
+    "mod.py",
+    2,
+    1,
+    "n = -1"
+   ],
+   [
+    6,
+    "mod.py",
+    4,
+    0,
+    "if x > t:"
+   ]
+  ],
+  "no-rank": [
+   [
+    1,
+    "mod.py",
+    2,
+    1,
+    "n = -1"
+   ],
+   [
+    2,
+    "mod.py",
+    4,
+    0,
+    "if x > t:"
+   ]
+  ],
+  "sight-doc-tiebreak": [
+   [
+    1,
+    "mod.py",
+    2,
+    1,
+    "n = -1"
+   ],
+   [
+    2,
+    "mod.py",
+    4,
+    0,
+    "if x > t:"
+   ]
+  ]
+ }
+}

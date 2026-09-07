@@ -1,0 +1,2 @@
+[14:35:44] REFUSED: fault is outside the taught vocabulary (candidate files tried: vpkg/calc.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/12-concurrent-guards/work/a4-1.0/.fluidfix/last_refusal.json

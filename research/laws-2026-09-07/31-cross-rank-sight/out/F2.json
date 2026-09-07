@@ -1,0 +1,110 @@
+{
+ "fixture": "F2-single-traceback",
+ "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/31-cross-rank-sight/work/f2",
+ "defect": "mod.py:2",
+ "status": "repaired",
+ "file": "mod.py",
+ "candidates": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 3.89,
+ "suite_runs": 4,
+ "first_law_consulted": "RANK",
+ "events": [
+  {
+   "seq": 1,
+   "kind": "FILEORD",
+   "files": [
+    "mod.py"
+   ],
+   "limit": 3,
+   "sight_calls": 0,
+   "route": "traceback-early-return"
+  },
+  {
+   "seq": 2,
+   "kind": "RANK",
+   "byte": 40,
+   "prio": 3,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 3,
+   "kind": "RANK",
+   "byte": 41,
+   "prio": 0,
+   "bits": [
+    "FRAME",
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 4,
+   "kind": "LINEORD",
+   "rel": "mod.py",
+   "lines": [
+    2,
+    1
+   ],
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ],
+    [
+     1
+    ]
+   ]
+  },
+  {
+   "seq": 5,
+   "kind": "KIND",
+   "mask": 2060,
+   "klass": 2
+  },
+  {
+   "seq": 6,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 7,
+   "kind": "KIND",
+   "mask": 2056,
+   "klass": 3
+  },
+  {
+   "seq": 8,
+   "kind": "RUN",
+   "ok": true
+  },
+  {
+   "seq": 9,
+   "kind": "RUN",
+   "ok": true
+  },
+  {
+   "seq": 10,
+   "kind": "KIND",
+   "mask": 2048,
+   "klass": 11
+  },
+  {
+   "seq": 11,
+   "kind": "KIND",
+   "mask": 2,
+   "klass": 1
+  },
+  {
+   "seq": 12,
+   "kind": "RUN",
+   "ok": false
+  }
+ ]
+}

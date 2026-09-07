@@ -1,0 +1,19 @@
+=== byte-exactness: r5_shim/lib/mod17.py vs pristine correct ===
+IDENTICAL (byte for byte)
+
+=== r4 refusal left the injected defect untouched ===
+4c4
+<         total += v * w
+---
+>         total += v
+
+=== stray artefacts across all guarded repos ===
+-- r1_shim: .fluidfix .pytest_cache pkg pytest.ini tests 
+-- r2_shim: .fluidfix .pytest_cache pkg pytest.ini tests 
+-- r4_shim: .fluidfix .pytest_cache pkg pytest.ini tests 
+-- r5_shim: .fluidfix .pytest_cache lib pytest.ini tests 
+-- r7_shim: app test_fluidfix_smoke.py 
+-- r3_shim: .fluidfix CMakeLists.txt build covbuild src test 
+
+=== no .coverage / cov json left behind ===
+(empty above = none)

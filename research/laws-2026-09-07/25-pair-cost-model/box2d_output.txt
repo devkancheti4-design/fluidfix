@@ -1,0 +1,62 @@
+==========================================================================
+A. WHOLE FILE, UNCAPPED (no 110-line packet cap)
+--- A contact_solver.c uncapped
+    file                     : src/contact_solver.c  (2500 lines)
+    anchor lines in packet   : 1769
+    observations (lines with a taught signal): 1315
+    candidate SETS (line x kind, non-empty)  : 2040
+    SINGLE-EDIT CANDIDATES n : 5041
+    naive PAIR combinations C(n,2)           : 12703320
+    by fault class           : literal-off-by-one=3977, strictness=717, flipped-additive=249, flipped-comparison-direction=67, flipped-augmented-assign=17, reversed-minus-operands=9, swapped-return-operands=5
+
+==========================================================================
+B. THE PACKET THE BODY ACTUALLY BUILDS (build_packet_c, no gcov)
+    [packet mode=affinity truncated=True lines=109]
+--- B contact_solver.c, packet-capped
+    file                     : src/contact_solver.c  (2500 lines)
+    anchor lines in packet   : 109
+    observations (lines with a taught signal): 109
+    candidate SETS (line x kind, non-empty)  : 283
+    SINGLE-EDIT CANDIDATES n : 438
+    naive PAIR combinations C(n,2)           : 95703
+    by fault class           : literal-off-by-one=165, strictness=112, flipped-comparison-direction=67, flipped-additive=64, flipped-augmented-assign=16, reversed-minus-operands=9, swapped-return-operands=5
+
+==========================================================================
+C. THE PACKET WITH GCOV COVERAGE (638 executed lines)
+    [packet mode=coverage truncated=True lines=110]
+--- C contact_solver.c, coverage-anchored
+    file                     : src/contact_solver.c  (2500 lines)
+    anchor lines in packet   : 110
+    observations (lines with a taught signal): 110
+    candidate SETS (line x kind, non-empty)  : 254
+    SINGLE-EDIT CANDIDATES n : 463
+    naive PAIR combinations C(n,2)           : 106953
+    by fault class           : literal-off-by-one=265, flipped-additive=91, strictness=81, flipped-comparison-direction=22, flipped-augmented-assign=4
+
+==========================================================================
+D. REPO-WIDE SWEEP: capped candidate count per Box2D source file
+    files considered                   : 74
+    total single-edit candidates       : 16158
+    mean per file                      : 218.4
+    top 12 files:
+        592  src/manifold.c
+        567  src/recording_replay.c
+        554  src/distance.c
+        502  src/dynamic_tree.c
+        490  src/shape.c
+        469  src/joint.c
+        466  src/geometry.c
+        438  src/contact_solver.c
+        428  src/body.c
+        422  include/box2d/box2d.h
+        397  include/box2d/math_functions.h
+        395  src/sensor.c
+    sum over the  38 richest files       : 13523   -> C(n,2) = 91,429,003
+    sum over the  74 richest files       : 16158   -> C(n,2) = 130,532,403
+
+==========================================================================
+SUMMARY  n -> C(n,2)
+    5041 ->   12,703,320   A uncapped whole file
+     438 ->       95,703   B packet-capped (what the body does)
+     463 ->      106,953   C coverage-anchored
+   16158 ->  130,532,403   D whole Box2D src, packet-capped

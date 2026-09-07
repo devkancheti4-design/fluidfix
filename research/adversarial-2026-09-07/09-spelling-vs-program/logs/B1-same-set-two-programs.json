@@ -1,0 +1,28 @@
+{
+ "repaired": false,
+ "refused": true,
+ "lineno": null,
+ "old_line": null,
+ "new_line": null,
+ "acts_tried": [
+  7,
+  8
+ ],
+ "suite_runs": 4,
+ "seconds": 3.435845136642456,
+ "reason": "AMBIGUOUS: 2 candidates at 1 different lines (6) all pass the suite \u2014 the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)",
+ "ambiguous": true,
+ "greens": [
+  "    return opening - spend + income",
+  "    return opening + spend - income"
+ ],
+ "tried_log": [
+  {
+   "at": "mod.py:6",
+   "tried": "    return spend + income + opening",
+   "why": "FAILED test_mod.py::test_one_of_each - assert 3 == 1"
+  }
+ ],
+ "tried_more": 0,
+ "restored_original": null
+}

@@ -1,0 +1,25 @@
+        for pad in range(6):   # nudge layout until the bug line is NOT sampled
+            body = filler[:400 + pad] + fn + filler[400 + pad:]
+            bug_lineno = (400 + pad) + 3
+            (tmp_path / "mod.py").write_text("\n".join(body) + "\n")
+            assert body[bug_lineno - 1].strip() == "if v > limit:"
+            pk1 = build_packet(oracle, "mod.py")
+            assert pk1 is not None and pk1.truncated            # CAPPED is real
+            if bug_lineno not in pk1.lines:
+                break
+        else:
+            pytest.skip("could not place the bug outside the round-1 sample")
+    
+        report = guard_once(oracle, MechanicalObserver())
+>       assert report.status == "repaired"
+E       AssertionError: assert 'refused' == 'repaired'
+E         
+E         - repaired
+E         + refused
+
+tests/test_engine_fusion.py:103: AssertionError
+----------------------------- Captured stdout call -----------------------------
+[cf] suppressing RAISE_BUDGET at guard.py:539 (byte 0x60)
+=========================== short test summary info ============================
+FAILED tests/test_engine_fusion.py::test_capped_escalation_raises_budget_and_repairs
+1 failed in 23.97s

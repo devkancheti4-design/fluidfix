@@ -1,0 +1,4 @@
+[run1] mode=fp expected=7 fp=2d31ae49a639 status=refused check=1 skipped=0 memo=1 seconds=2.0 new_line=None
+[run2] mode=fp expected=9 fp=5166310f9b17 status=repaired check=2 skipped=0 memo=1 seconds=2.7 new_line='LIMIT = 9'
+VERDICT mode=fp: run1=refused run2=repaired — repair still lands
+root: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/45-harvest-counterexample/safety_fp_n4kz5r40

@@ -1,0 +1,16 @@
+CONFIRM=0 COOLDOWN=2  SHIPPED 'return b - a'
+CONFIRM=0 COOLDOWN=4  SHIPPED 'return b - a'
+CONFIRM=0 COOLDOWN=6  SHIPPED 'return b - a'
+CONFIRM=0 COOLDOWN=8  SHIPPED 'return b - a'
+CONFIRM=1 COOLDOWN=2  REFUSED every candidate left the suite red — fault is outside this vocabulary or the observations are wrong
+CONFIRM=1 COOLDOWN=4  SHIPPED 'return b - a'
+CONFIRM=1 COOLDOWN=6  SHIPPED 'return b - a'
+CONFIRM=1 COOLDOWN=8  SHIPPED 'return b - a'
+CONFIRM=2 COOLDOWN=2  REFUSED every candidate left the suite red — fault is outside this vocabulary or the observations are wrong
+CONFIRM=2 COOLDOWN=4  REFUSED every candidate left the suite red — fault is outside this vocabulary or the observations are wrong
+CONFIRM=2 COOLDOWN=6  SHIPPED 'return b - a'
+CONFIRM=2 COOLDOWN=8  SHIPPED 'return b - a'
+CONFIRM=3 COOLDOWN=2  REFUSED every candidate left the suite red — fault is outside this vocabulary or the observations are wrong
+CONFIRM=3 COOLDOWN=4  REFUSED every candidate left the suite red — fault is outside this vocabulary or the observations are wrong
+CONFIRM=3 COOLDOWN=6  REFUSED every candidate left the suite red — fault is outside this vocabulary or the observations are wrong
+CONFIRM=3 COOLDOWN=8  SHIPPED 'return b - a'

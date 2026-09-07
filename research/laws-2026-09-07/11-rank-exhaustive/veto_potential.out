@@ -1,0 +1,15 @@
+guard_once: status=repaired file=mod.py total=11.6s  defect line=119
+rank() bytes seen: 40=SIGNALED+CHEAP->rank 3 x3, 104=SIGNALED+CHEAP+DENSE->rank 3 x18
+
+repair() call 0 (pass 0): mod.py observations=10 suite_runs=20 repaired=False at line None in 4.1s
+   line order handed to repair(): [2, 110, 111, 112, 113, 114, 115, 116, 117, 118]
+   defect line in order: False
+   rejected candidates logged: 19 (+0 beyond the 64-entry cap)
+
+repair() call 1 (pass escalation): mod.py observations=11 suite_runs=22 repaired=True at line 119 in 5.0s
+   line order handed to repair(): [2, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119]
+   defect line in order: True  position 10
+   rejected candidates logged: 20 (+0 beyond the 64-entry cap)
+
+RE-TRIED in escalation (already rejected in pass 0): 19 candidates on 10 lines (pass-0 log capped at 64: 19+0)
+   escalation suite runs = 22; of which repeats = 19. NOTE: an earlier version of this script projected that the veto would cut the pass to about 3 runs. That projection is WRONG -- veto_measured.py measures 22 vs 22 (no saving on a completed search, because repair() never stops at the first green). See REPORT.md findings 8-9.

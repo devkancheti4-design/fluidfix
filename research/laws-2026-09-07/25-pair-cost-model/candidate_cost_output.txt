@@ -1,0 +1,13 @@
+load before: 14:56  up 1 day,  8:04, 2 users, load averages: 13.64 13.01 11.05
+  candidate 1: 11.655s
+  candidate 2: 11.493s
+  candidate 3: 10.513s
+  candidate 4: 11.384s
+  candidate 5: 11.736s
+  candidate 6: 11.624s
+mean per candidate: 11.401s over 6
+load after:  14:57  up 1 day,  8:05, 2 users, load averages: 23.12 16.41 12.51
+load: 14:57  up 1 day,  8:05, 2 users, load averages: 22.47 16.62 12.66
+  rep 1: build=0.804s  test=10.507s  total=11.310s
+  rep 2: build=0.867s  test=9.597s  total=10.463s
+  rep 3: build=0.624s  test=9.954s  total=10.579s

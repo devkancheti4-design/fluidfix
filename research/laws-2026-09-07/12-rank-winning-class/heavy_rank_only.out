@@ -1,0 +1,16 @@
+defect line: 403  ('if v > limit:')
+candidate files: ['mod.py']
+
+max_lines=110: packet lines=110 truncated=True observations=110 kinds histogram={12: 109, 1: 1}
+  priority histogram: {3: 110}
+  defect line 403 in packet: NO (outside the spread sample) -> first pass cannot repair; CAPPED lane
+
+max_lines=990: packet lines=803 truncated=False observations=802 kinds histogram={12: 800, 0: 1, 10: 1, 1: 1}
+  priority histogram: {3: 802}
+  defect line 403 in packet: yes; ranked position 401/802; priority 3 bits=SIGNALED+CHEAP; same-priority lines ahead: 400; candidate sets (one suite run each, all red) ahead of it: 400
+  defect line kinds: [[0, 10]]
+
+max_lines=1000000000: packet lines=803 truncated=False observations=802 kinds histogram={12: 800, 0: 1, 10: 1, 1: 1}
+  priority histogram: {3: 802}
+  defect line 403 in packet: yes; ranked position 401/802; priority 3 bits=SIGNALED+CHEAP; same-priority lines ahead: 400; candidate sets (one suite run each, all red) ahead of it: 400
+  defect line kinds: [[0, 10]]

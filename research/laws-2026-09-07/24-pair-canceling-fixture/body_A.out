@@ -1,0 +1,6 @@
+== A_unity
+repaired=False refused=True ambiguous=True
+suite_runs=8 acts_tried=[6, 6, 7, 8, 6, 7, 6, 7, 7, 8] seconds=2.9
+greens=['        return Vec3(*[a - b for a, b in zip(self.c, o.c)])', '    return v - scale(n, d)']
+reason: AMBIGUOUS: 2 candidates at 2 different lines (14, 36) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+file restored byte-exactly: True

@@ -1,0 +1,41 @@
+{
+ "id": 9,
+ "lineno": 30,
+ "kind": 8,
+ "kind_name": "minmax-swap",
+ "act": 13,
+ "orig": "    return min(pending, worker_cap)",
+ "mutant": "    return max(pending, worker_cap)",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 30,\n \"old_line\": \"    return max(pending, worker_cap)\",\n \"new_line\": \"    return min(pending, worker_cap)\",\n \"acts_tried\": [\n  13\n ],\n \"suite_runs\": 2,\n \"seconds\": 1.1358888149261475,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return min(pending, worker_cap)\"\n ],\n \"tried_log\": [],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 30,
+  "old_line": "    return max(pending, worker_cap)",
+  "new_line": "    return min(pending, worker_cap)",
+  "acts_tried": [
+   13
+  ],
+  "suite_runs": 2,
+  "seconds": 1.1358888149261475,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return min(pending, worker_cap)"
+  ],
+  "tried_log": [],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "    return min(pending, worker_cap)",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "    return min(pending, worker_cap)"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

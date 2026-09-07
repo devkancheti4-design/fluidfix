@@ -1,0 +1,41 @@
+========================================================================
+STEP A  why the body never opens the second fault file
+  oracle.failing_output() runs pytest with -x; failing tests it names: ['tests/test_billing.py::test_invoice_total']
+  (the suite actually has 3 failing tests — see measure.out STEP 1)
+  build_packet(billing.py   ) -> mode=coverage anchor_lines=[8, 12, 13, 16]   fault line 13 in packet: True
+  build_packet(inventory.py ) -> mode=coverage anchor_lines=[]   fault line 11 in packet: False
+========================================================================
+STEP B  the COMPLETE single-edit space over both fault files
+  billing.py      8 candidates (5 distinct lines)
+  inventory.py   10 candidates (4 distinct lines)
+  TOTAL single-edit candidates: 18
+========================================================================
+STEP C  run every one of them (this is 'EXHAUSTED', measured)
+  baseline failing: 3
+    billing.py:13  kind 3  return subtotal + tax                      3 -> 1  REDUCES ['tests/test_billing.py::test_invoice_total', 'tests/test_billing.py::test_rounded_total']
+    inventory.py:11  kind 10 return on_hand < reorder_point             3 -> 2  REDUCES ['tests/test_inventory.py::test_needs_reorder']
+  18 candidates run in 3.6s (0.20s each)
+  greens (a single edit that repairs the suite): 0
+  strict reducers: 2 at sites [('billing.py', 13), ('inventory.py', 11)]
+  tests each reducing site repairs: {'billing.py:13': ['tests/test_billing.py::test_invoice_total', 'tests/test_billing.py::test_rounded_total'], 'inventory.py:11': ['tests/test_inventory.py::test_needs_reorder']}
+  failing tests NO single edit anywhere repairs: []
+========================================================================
+STEP D  cost of the two answers, measured
+  PARTITION (linear): 18 single-edit runs = 3.6s measured
+  naive PAIR (quadratic): 153 combinations ~ 30s at the measured 0.20s/run
+  cross-site pairs only: 80 combinations ~ 16s
+========================================================================
+STEP E  cross-site pair sweep: how many pairs are GREEN, and
+        is any of them CANCELING (members reduce nothing)?
+  swept 80 cross-site pairs in 15.7s
+  green pairs: 1
+    return subtotal + tax                  + return on_hand < reorder_point         members reduce alone: (True, True)
+  CANCELING pairs (green jointly, neither member reduces): 0 []
+========================================================================
+STEP F  the byte from the COMPLETED search, and the ruling
+  EXHAUSTED=True (no single edit anywhere greens the suite)
+  PARTIAL=True (2 single edits strictly reduce)
+  DISJOINT=True (2 reducing sites [('billing.py', 13), ('inventory.py', 11)]; groups pairwise disjoint=True; together they repair 3 of the 3 failing tests; unrepaired-by-any-single-edit: [])
+  COUPLED=False, CANCELING=False, CAPPED=False, TAUGHT=False
+  byte=23 (0b00010111) EXHAUSTED|PARTIAL|DISJOINT|CHEAP -> 0 PARTITION
+wrote /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/23-pair-two-bug-fixture/measured2.json

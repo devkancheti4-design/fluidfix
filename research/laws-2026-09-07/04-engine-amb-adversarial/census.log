@@ -1,0 +1,9 @@
+/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix
+  code lines 3590, >=1 kind signal 1194, >=2 kind signals 345 (28.9% of signal lines)
+  top kind pairs: (1,3)x140, (0,1)x137, (0,10)x111, (1,10)x69, (3,11)x54, (1,11)x52, (0,3)x37, (2,3)x25
+/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a9bf7d26-7aef-4c1e-a919-68bc40ac2e97/scratchpad/box2d/src
+  code lines 27697, >=1 kind signal 17537, >=2 kind signals 7012 (40.0% of signal lines)
+  top kind pairs: (0,1)x5989, (0,10)x1161, (1,3)x1099, (1,10)x994, (0,3)x755, (1,9)x266, (0,9)x169, (3,11)x152
+/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a9bf7d26-7aef-4c1e-a919-68bc40ac2e97/scratchpad/cglm/include
+  code lines 19808, >=1 kind signal 10812, >=2 kind signals 1564 (14.5% of signal lines)
+  top kind pairs: (1,3)x1134, (3,11)x517, (1,11)x510, (1,9)x288, (0,10)x235, (0,1)x230, (1,10)x205, (3,9)x108

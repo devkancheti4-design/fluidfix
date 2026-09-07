@@ -1,0 +1,190 @@
+{
+ "fixture": "F3-multi-assert",
+ "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/31-cross-rank-sight/work/f3",
+ "defect": "mod.py:4",
+ "status": "repaired",
+ "file": "mod.py",
+ "candidates": [
+  "mod.py",
+  "totals.py",
+  "bounds.py",
+  "scaling.py"
+ ],
+ "evidence": {},
+ "seconds": 4.59,
+ "suite_runs": 6,
+ "first_law_consulted": "SIGHT",
+ "events": [
+  {
+   "seq": 1,
+   "kind": "SIGHT",
+   "byte": 74,
+   "prio": 0,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "SMALL"
+   ]
+  },
+  {
+   "seq": 2,
+   "kind": "SIGHT",
+   "byte": 90,
+   "prio": 0,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "NAMED",
+    "SMALL"
+   ]
+  },
+  {
+   "seq": 3,
+   "kind": "SIGHT",
+   "byte": 74,
+   "prio": 0,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "SMALL"
+   ]
+  },
+  {
+   "seq": 4,
+   "kind": "SIGHT",
+   "byte": 74,
+   "prio": 0,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "SMALL"
+   ]
+  },
+  {
+   "seq": 5,
+   "kind": "FILEORD",
+   "files": [
+    "mod.py",
+    "totals.py",
+    "bounds.py",
+    "scaling.py"
+   ],
+   "limit": 3,
+   "sight_calls": 4,
+   "route": "SIGHT-law"
+  },
+  {
+   "seq": 6,
+   "kind": "RANK",
+   "byte": 40,
+   "prio": 3,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 7,
+   "kind": "RANK",
+   "byte": 40,
+   "prio": 3,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 8,
+   "kind": "RANK",
+   "byte": 40,
+   "prio": 3,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 9,
+   "kind": "LINEORD",
+   "rel": "mod.py",
+   "lines": [
+    2,
+    4,
+    5
+   ],
+   "kinds": [
+    [
+     1
+    ],
+    [
+     0,
+     10
+    ],
+    [
+     1,
+     9
+    ]
+   ]
+  },
+  {
+   "seq": 10,
+   "kind": "KIND",
+   "mask": 2,
+   "klass": 1
+  },
+  {
+   "seq": 11,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 12,
+   "kind": "KIND",
+   "mask": 1025,
+   "klass": 0
+  },
+  {
+   "seq": 13,
+   "kind": "RUN",
+   "ok": true
+  },
+  {
+   "seq": 14,
+   "kind": "RUN",
+   "ok": true
+  },
+  {
+   "seq": 15,
+   "kind": "KIND",
+   "mask": 1024,
+   "klass": 10
+  },
+  {
+   "seq": 16,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 17,
+   "kind": "KIND",
+   "mask": 514,
+   "klass": 1
+  },
+  {
+   "seq": 18,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 19,
+   "kind": "KIND",
+   "mask": 512,
+   "klass": 9
+  },
+  {
+   "seq": 20,
+   "kind": "RUN",
+   "ok": false
+  }
+ ]
+}

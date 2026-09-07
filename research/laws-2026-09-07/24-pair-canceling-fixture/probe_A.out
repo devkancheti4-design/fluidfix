@@ -1,0 +1,34 @@
+== fixture A_unity
+baseline failing tests (1): ['test_vec.py::test_project_removes_the_normal_component']
+baseline hidden property (not in the suite): VIOLATED: AssertionError: project
+observations: 6 [(9, [1]), (14, [1, 2, 3]), (23, [1]), (27, [2]), (31, [1, 2]), (36, [2, 3])]
+single-edit candidates: 10
+  [ 0] line   9 kind  1 red   fail=1 | class Vec2:
+  [ 1] line  14 kind  1 red   fail=1 | return Vec2(*[a + b for a, b in zip(self.c, o.c)])
+  [ 2] line  14 kind  2 red   fail=1 | return b for a, b in zip(self.c, o.c)]) + Vec3(*[a
+  [ 3] line  14 kind  3 GREEN fail=0 | return Vec3(*[a - b for a, b in zip(self.c, o.c)])
+  [ 4] line  23 kind  1 red   fail=1 | return "Vec2%r" % (self.c,)
+  [ 5] line  27 kind  2 red   fail=1 | return b for a, b in zip(u.c, w.c)) * sum(a
+  [ 6] line  31 kind  1 red   fail=1 | return Vec2(*[a * k for a in v.c])
+  [ 7] line  31 kind  2 red   fail=1 | return k for a in v.c]) * Vec3(*[a
+  [ 8] line  36 kind  2 red   fail=1 | return scale(n, d) + v
+  [ 9] line  36 kind  3 GREEN fail=0 | return v - scale(n, d)
+  PAIR GREEN [1,9] lines 14+36 | return Vec2(*[a + b for a, b in zip(self || return v - scale(n, d) | hidden property VIOLATED
+  PAIR GREEN [3,4] lines 14+23 | return Vec3(*[a - b for a, b in zip(self || return "Vec2%r" % (self.c,) | hidden property VIOLATED
+  PAIR GREEN [3,9] lines 14+36 | return Vec3(*[a - b for a, b in zip(self || return v - scale(n, d) | hidden property VIOLATED
+  PAIR GREEN [4,9] lines 23+36 | return "Vec2%r" % (self.c,) || return v - scale(n, d) | hidden property holds
+pair suite runs: 40; jointly green: 4
+
+-- measured observation byte --
+  EXHAUSTED  False
+  PARTIAL    False
+  DISJOINT   False
+  COUPLED    True
+  CANCELING  False
+  CHEAP      unmeasured (no threshold exists in the body); singles=10, distinct-line pairs=40
+  TAUGHT     unmeasured (no body code sets it); kinds used = [1, 2, 3] (all shipped classes)
+  CAPPED     False (no budget given to this probe)
+  CHEAP=0 TAUGHT=0  byte=  8 -> SINGLE    | without CANCELING: byte=  8 -> SINGLE
+  CHEAP=0 TAUGHT=1  byte= 40 -> SINGLE    | without CANCELING: byte= 40 -> SINGLE
+  CHEAP=1 TAUGHT=0  byte= 24 -> SINGLE    | without CANCELING: byte= 24 -> SINGLE
+  CHEAP=1 TAUGHT=1  byte= 56 -> SINGLE    | without CANCELING: byte= 56 -> SINGLE

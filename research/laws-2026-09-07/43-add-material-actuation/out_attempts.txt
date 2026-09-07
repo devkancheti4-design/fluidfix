@@ -1,0 +1,5 @@
+{'at': 'shop/support/expect.py:13', 'tried': '    assert abs(got - want) < tol', 'why': 'FAILED tests/test_discount.py::test_tier_bulk - AssertionError'}
+{'at': 'shop/support/expect.py:13', 'tried': '    assert abs(got + want) <= tol', 'why': 'FAILED tests/test_discount.py::test_tier_bulk - AssertionError'}
+{'at': 'shop/support/expect.py:13', 'tried': '    assert abs(got - want) >= tol', 'why': 'FAILED tests/test_discount.py::test_tier_standard - AssertionError'}
+{'at': 'shop/support/expect.py:12', 'tried': 'def expect_close(got, want, tol=0e-9):', 'why': 'FAILED tests/test_discount.py::test_tier_bulk - AssertionError'}
+{'at': 'shop/support/expect.py:12', 'tried': 'def expect_close(got, want, tol=1e-8):', 'why': 'FAILED tests/test_discount.py::test_tier_bulk - AssertionError'}

@@ -1,0 +1,31 @@
+== fixture E_only_canceling
+baseline failing tests (1): ['test_vec.py::test_project_removes_the_normal_component']
+baseline hidden property (not in the suite): VIOLATED: AssertionError: project
+observations: 6 [(14, [1]), (19, [1, 2, 3]), (28, [1]), (32, [2]), (36, [1, 2]), (40, [1, 3])]
+single-edit candidates: 10
+  [ 0] line  14 kind  1 red   fail=1 | class Vec2:
+  [ 1] line  19 kind  1 red   fail=1 | return Vec2(*[a + b for a, b in zip(self.c, o.c)])
+  [ 2] line  19 kind  2 red   fail=1 | return b for a, b in zip(self.c, o.c)]) + Vec3(*[a
+  [ 3] line  19 kind  3 red   fail=1 | return Vec3(*[a - b for a, b in zip(self.c, o.c)])
+  [ 4] line  28 kind  1 red   fail=1 | return "Vec2%r" % (self.c,)
+  [ 5] line  32 kind  2 red   fail=1 | return b for a, b in zip(u.c, w.c)) * sum(a
+  [ 6] line  36 kind  1 red   fail=1 | return Vec2(*[a * k for a in v.c])
+  [ 7] line  36 kind  2 red   fail=1 | return k for a in v.c]) * Vec3(*[a
+  [ 8] line  40 kind  1 red   fail=1 | d = dot(v, n)
+  [ 9] line  40 kind  3 red   fail=1 | d = dot(v, n) - 1
+  PAIR GREEN [3,8] lines 19+40 | return Vec3(*[a - b for a, b in zip(self || d = dot(v, n) | hidden property VIOLATED
+pair suite runs: 40; jointly green: 1
+
+-- measured observation byte --
+  EXHAUSTED  True
+  PARTIAL    False
+  DISJOINT   False
+  COUPLED    True
+  CANCELING  True
+  CHEAP      unmeasured (no threshold exists in the body); singles=10, distinct-line pairs=40
+  TAUGHT     unmeasured (no body code sets it); kinds used = [1, 2, 3] (all shipped classes)
+  CAPPED     False (no budget given to this probe)
+  CHEAP=0 TAUGHT=0  byte= 73 -> REFUSE    | without CANCELING: byte=  9 -> TEACH
+  CHEAP=0 TAUGHT=1  byte=105 -> REFUSE    | without CANCELING: byte= 41 -> BUDGET
+  CHEAP=1 TAUGHT=0  byte= 89 -> REFUSE    | without CANCELING: byte= 25 -> TEACH
+  CHEAP=1 TAUGHT=1  byte=121 -> REFUSE    | without CANCELING: byte= 57 -> REFUSE

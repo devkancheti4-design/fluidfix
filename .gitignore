@@ -7,3 +7,25 @@ build/
 _fluidfix*.json
 .fluidfix/
 .venv/
+
+# Agent working directories from the 2026-09-07 audit. The REPORT.md/ATTACK.md
+# files, the scripts that produced them and their .out/.json logs are kept; the
+# copied repositories and build trees under them are hundreds of megabytes and
+# are reproducible from the scripts beside them.
+research/**/*box2d*/
+research/**/*cglm*/
+research/**/repo/
+research/**/repo-*/
+research/**/repos/
+research/**/build/
+research/**/covbuild/
+research/**/fixtures/
+research/**/fixtures_basetemp/
+research/**/runs/
+research/**/limits_runs/
+research/**/work/
+research/**/.venv/
+research/**/*.gcda
+research/**/*.gcno
+research/**/*.o
+research/**/*.a

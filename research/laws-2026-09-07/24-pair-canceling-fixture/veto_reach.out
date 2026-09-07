@@ -1,0 +1,25 @@
+== 1. the veto's reach: pair_law(x) vs pair_law(x without CANCELING)
+   inputs with CANCELING set:            128
+   ...where the veto CHANGES the ruling: 126
+   ...where it changes nothing:          2 (already REFUSE without it)
+   what those would have been ruled without CANCELING:
+     CAPPED     64
+     SINGLE     32
+     PARTITION  16
+     TEACH      5
+     WIDEN      4
+     BUDGET     3
+     PAIR       2
+   inputs where the veto overrules an actual PAIR: 2 -> bytes [91, 123]
+
+== 2. bytes measured on the fixtures in this directory
+   A_unity        (CHEAP=1,TAUGHT=1): byte= 56 -> SINGLE    | without CANCELING -> SINGLE
+   C_canceling    (CHEAP=1,TAUGHT=1): byte=121 -> REFUSE    | without CANCELING -> REFUSE
+   D_partition... (CHEAP=1,TAUGHT=1): byte= 57 -> REFUSE    | without CANCELING -> REFUSE
+   E_only_cancel  (CHEAP=1,TAUGHT=1): byte=121 -> REFUSE    | without CANCELING -> REFUSE
+
+== 3. what the ENGINE law would rule on fixture E's single green pair
+   fixture E has exactly ONE jointly-green pair and it corrupts Vec3.__add__;
+   one green at one site is not ambiguous, so:
+   decide(BUILT=1, AMB=0) = SHIP
+   decide(BUILT=1, AMB=1) = ADD_STATE   (fixture A and C: two greens at two sites)

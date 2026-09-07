@@ -1,0 +1,19 @@
+FRAMED (what the body searches today): ['shop/support/expect.py']
+assertion carriers                   : ['shop/support/expect.py']
+UNREAD measured                      : True
+engine law ruling on UNREAD          : ADD_MATERIAL
+widened set (SIGHT tier 2)           : ['shop/discount.py', 'shop/shipping.py', 'shop/cart.py', 'shop/tax.py', 'shop/formatting.py', 'shop/support/expect.py']
+sight evidence                       : {'pointed': [], 'lanes': {'FRAMED': [], 'SCARCE': [], 'LITERAL': []}}
+search order handed to guard_once    : ['shop/discount.py', 'shop/shipping.py', 'shop/cart.py', 'shop/tax.py', 'shop/formatting.py', 'shop/support/expect.py']
+defect file rank in widened set      : 1
+suite runs: failing_output=1 framed=0 widening=2
+----------------------------------------------------------------------
+status     : refused
+file       : shop/discount.py
+hint       : AMBIGUOUS: 2 candidates at 2 different lines (3, 10) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+summary    : REFUSED: fault is outside the taught vocabulary (candidate files tried: shop/discount.py, shop/shipping.py, shop/cart.py, shop/tax.py, shop/formatting.py, shop/support/expect.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 4 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: AMBIGUOUS: 2 candidates at 2 different lines (3, 10) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+TOTAL SUITE RUNS: 19
+seconds    : 5.95
+defect still on disk (`qty > BULK_QTY`): True
+helper assertions intact (`assert got >= want` present): False

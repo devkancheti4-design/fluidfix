@@ -1,0 +1,102 @@
+{
+ "id": 11,
+ "lineno": 35,
+ "kind": 2,
+ "kind_name": "swapped-return-operands",
+ "act": 7,
+ "orig": "    return list(range(count + 1))",
+ "mutant": "    return 1)) + list(range(count",
+ "suite_red": true,
+ "baseline_rc": 2,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 35,\n \"old_line\": \"    return 1)) + list(range(count\",\n \"new_line\": \"    return list(range(count + 1))\",\n \"acts_tried\": [\n  7,\n  8,\n  13,\n  6,\n  6,\n  7,\n  8,\n  6,\n  5,\n  6,\n  15\n ],\n \"suite_runs\": 2,\n \"seconds\": 1.2476649284362793,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return list(range(count + 1))\"\n ],\n \"tried_log\": [\n  {\n   \"at\": \"weakpkg2/core.py:25\",\n   \"tried\": \"    return used - limit\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:25\",\n   \"tried\": \"    return limit + used\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:30\",\n   \"tried\": \"    return max(pending, worker_cap)\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:34\",\n   \"tried\": \"    \\\"\\\"\\\"Slot numbers -1..count inclusive.\\\"\\\"\\\"\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:35\",\n   \"tried\": \"    return 0)) + list(range(count\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:35\",\n   \"tried\": \"    return 1)) - list(range(count\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:40\",\n   \"tried\": \"    return sorted(scores)[-2:]\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:45\",\n   \"tried\": \"    if n >= 5:\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:45\",\n   \"tried\": \"    if n > 4:\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:45\",\n   \"tried\": \"    if n < 5:\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  }\n ],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 35,
+  "old_line": "    return 1)) + list(range(count",
+  "new_line": "    return list(range(count + 1))",
+  "acts_tried": [
+   7,
+   8,
+   13,
+   6,
+   6,
+   7,
+   8,
+   6,
+   5,
+   6,
+   15
+  ],
+  "suite_runs": 2,
+  "seconds": 1.2476649284362793,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return list(range(count + 1))"
+  ],
+  "tried_log": [
+   {
+    "at": "weakpkg2/core.py:25",
+    "tried": "    return used - limit",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   },
+   {
+    "at": "weakpkg2/core.py:25",
+    "tried": "    return limit + used",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   },
+   {
+    "at": "weakpkg2/core.py:30",
+    "tried": "    return max(pending, worker_cap)",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   },
+   {
+    "at": "weakpkg2/core.py:34",
+    "tried": "    \"\"\"Slot numbers -1..count inclusive.\"\"\"",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   },
+   {
+    "at": "weakpkg2/core.py:35",
+    "tried": "    return 0)) + list(range(count",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   },
+   {
+    "at": "weakpkg2/core.py:35",
+    "tried": "    return 1)) - list(range(count",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   },
+   {
+    "at": "weakpkg2/core.py:40",
+    "tried": "    return sorted(scores)[-2:]",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   },
+   {
+    "at": "weakpkg2/core.py:45",
+    "tried": "    if n >= 5:",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   },
+   {
+    "at": "weakpkg2/core.py:45",
+    "tried": "    if n > 4:",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   },
+   {
+    "at": "weakpkg2/core.py:45",
+    "tried": "    if n < 5:",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   }
+  ],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "    return list(range(count + 1))",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "    return list(range(count + 1))"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

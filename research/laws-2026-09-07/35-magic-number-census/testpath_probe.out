@@ -1,0 +1,23 @@
+path                         really a test?  whitelisted?  verdict
+tests/test_foo.py            True            True          ok          pytest default
+src/foo_test.py              True            True          ok          google python style
+tests/helpers.py             True            True          ok          dir named `tests`
+conftest.py                  True            True          ok          pytest conftest
+test/foo.py                  True            False         ESCAPES     dir named `test` (singular)
+testing/foo.py               True            False         ESCAPES     django/numpy `testing`
+spec/foo_spec.py             True            False         ESCAPES     rspec-style
+t/harness.py                 True            False         ESCAPES     perl-ish `t/`
+unit_tests/runner.py         True            False         ESCAPES     coracle.py:125 knows this one
+check/main.c                 True            False         ESCAPES     coracle.py:125 knows this one
+src/test_util.c              False           True          over-broad  C: test_ prefix, .c not .py
+test/joint_test.c            True            False         ESCAPES     Box2D-shaped C test
+test/main.c                  True            False         ESCAPES     cglm-shaped C test
+unit/vec3_test.c             True            False         ESCAPES     C `_test.c` suffix
+src/main_test.go             True            False         ESCAPES     go convention
+Tests/FooTests.py            True            False         ESCAPES     capitalised `Tests` dir
+src/tests_helper.py          True            False         ESCAPES     prefix `tests_`
+
+12 of 17 layouts are real test files that ESCAPE the whitelist
+
+the four clauses, verbatim (guard.py:114-115):
+  base.startswith("test_") | base.endswith("_test.py") | "tests" in parts[:-1] | base == "conftest.py"

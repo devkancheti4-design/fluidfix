@@ -1,0 +1,31 @@
+== configure ==
+configure rc=0
+== build (pristine) ==
+build rc=0
+user 0.45
+sys 0.19
+== pristine run ==
+pristine rc=0
+112
+All Box2D tests passed!
+== inject defect at src/contact_solver.c:2032 ==
+		b2ContactConstraintWide* c = constraints + wideIndex;
+		b2ContactConstraintWide* c = constraints - wideIndex;
+== rebuild + run (defect) ==
+build rc=0
+defect run rc=1
+--- defect run output (fail lines / tail) ---
+46:condition false: data.sleepStep == EXPECTED_SLEEP_STEP
+47:condition false: result == 0
+48:  subtest failed: MultithreadingTest
+49:test failed: DeterminismTest
+  subtest failed: MultithreadingTest
+test failed: DeterminismTest
+real 0.72
+user 0.05
+sys 0.01
+== what COracle.check() would harvest as 'why' ==
+fail names parsed: ['MultithreadingTest', 'DeterminismTest']
+harvest why = '2 test(s) failed, first: MultithreadingTest'
+== restore ==
+		b2ContactConstraintWide* c = constraints + wideIndex;

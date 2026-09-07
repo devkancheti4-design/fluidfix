@@ -1,0 +1,118 @@
+{
+  "baseline_failing": [
+    "tests/test_billing.py::test_invoice_total",
+    "tests/test_billing.py::test_rounded_total",
+    "tests/test_inventory.py::test_needs_reorder"
+  ],
+  "fix_alone": {
+    "A": [
+      "tests/test_inventory.py::test_needs_reorder"
+    ],
+    "B": [
+      "tests/test_billing.py::test_invoice_total",
+      "tests/test_billing.py::test_rounded_total"
+    ]
+  },
+  "fix_pair_failing": [],
+  "search": {
+    "status": "refused",
+    "seconds": 2.8826451301574707,
+    "n_rejected": 2,
+    "attempts": [
+      {
+        "at": "billing.py:13",
+        "tried": "    return tax - subtotal",
+        "why": "FAILED tests/test_billing.py::test_invoice_total - assert -93 == 107"
+      },
+      {
+        "at": "billing.py:13",
+        "tried": "    return subtotal + tax",
+        "why": "FAILED tests/test_inventory.py::test_needs_reorder - assert False is True"
+      }
+    ]
+  },
+  "replay": [
+    {
+      "at": "billing.py:13",
+      "tried": "    return tax - subtotal",
+      "n_failing": 3,
+      "fixed": [],
+      "new_failures": []
+    },
+    {
+      "at": "billing.py:13",
+      "tried": "    return subtotal + tax",
+      "n_failing": 1,
+      "fixed": [
+        "tests/test_billing.py::test_invoice_total",
+        "tests/test_billing.py::test_rounded_total"
+      ],
+      "new_failures": []
+    }
+  ],
+  "sites": {
+    "tests/test_billing.py::test_invoice_total": [
+      "billing.py:12",
+      "billing.py:13",
+      "billing.py:16",
+      "billing.py:8"
+    ],
+    "tests/test_billing.py::test_rounded_total": [
+      "billing.py:12",
+      "billing.py:13",
+      "billing.py:16",
+      "billing.py:17",
+      "billing.py:8"
+    ],
+    "tests/test_inventory.py::test_needs_reorder": [
+      "inventory.py:10",
+      "inventory.py:11",
+      "inventory.py:14"
+    ]
+  },
+  "groups_by_site": [
+    [
+      "tests/test_billing.py::test_invoice_total",
+      "tests/test_billing.py::test_rounded_total"
+    ],
+    [
+      "tests/test_inventory.py::test_needs_reorder"
+    ]
+  ],
+  "groups_by_fix": {
+    "billing.py:13": [
+      "tests/test_billing.py::test_invoice_total",
+      "tests/test_billing.py::test_rounded_total"
+    ]
+  },
+  "rulings": [
+    {
+      "taught": false,
+      "cheap": true,
+      "byte": 23,
+      "act": 0,
+      "act_name": "PARTITION"
+    },
+    {
+      "taught": false,
+      "cheap": false,
+      "byte": 7,
+      "act": 0,
+      "act_name": "PARTITION"
+    },
+    {
+      "taught": true,
+      "cheap": true,
+      "byte": 55,
+      "act": 0,
+      "act_name": "PARTITION"
+    },
+    {
+      "taught": true,
+      "cheap": false,
+      "byte": 39,
+      "act": 0,
+      "act_name": "PARTITION"
+    }
+  ]
+}

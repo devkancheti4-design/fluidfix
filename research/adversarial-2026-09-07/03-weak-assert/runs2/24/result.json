@@ -1,0 +1,119 @@
+{
+ "id": 24,
+ "lineno": 67,
+ "kind": 2,
+ "kind_name": "swapped-return-operands",
+ "act": 7,
+ "orig": "    return (lo + hi) / 2",
+ "mutant": "    return hi) / 2 + (lo",
+ "suite_red": true,
+ "baseline_rc": 2,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 67,\n \"old_line\": \"    return hi) / 2 + (lo\",\n \"new_line\": \"    return (lo + hi) / 2\",\n \"acts_tried\": [\n  5,\n  15,\n  1,\n  6,\n  7,\n  8,\n  6,\n  7,\n  8,\n  0,\n  6,\n  6,\n  14\n ],\n \"suite_runs\": 2,\n \"seconds\": 1.389362096786499,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return (lo + hi) / 2\"\n ],\n \"tried_log\": [\n  {\n   \"at\": \"weakpkg2/core.py:57\",\n   \"tried\": \"    return age_days > ttl\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:57\",\n   \"tried\": \"    return age_days <= ttl\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:62\",\n   \"tried\": \"    return {\\\"cache\\\": False, \\\"trace\\\": False}\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:62\",\n   \"tried\": \"    return {\\\"cache\\\": True, \\\"trace\\\": True}\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:67\",\n   \"tried\": \"    return hi) / 1 + (lo\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:67\",\n   \"tried\": \"    return hi) / 2 - (lo\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:71\",\n   \"tried\": \"    \\\"\\\"\\\"Zero-based offset of a 0-based page.\\\"\\\"\\\"\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:72\",\n   \"tried\": \"    return size - size * page\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:72\",\n   \"tried\": \"    return page * size + size\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:72\",\n   \"tried\": \"    return size - page * size\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:77\",\n   \"tried\": \"    counts = -1\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:79\",\n   \"tried\": \"        counts += 0\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:79\",\n   \"tried\": \"        counts -= 1\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 67)\"\n  }\n ],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 67,
+  "old_line": "    return hi) / 2 + (lo",
+  "new_line": "    return (lo + hi) / 2",
+  "acts_tried": [
+   5,
+   15,
+   1,
+   6,
+   7,
+   8,
+   6,
+   7,
+   8,
+   0,
+   6,
+   6,
+   14
+  ],
+  "suite_runs": 2,
+  "seconds": 1.389362096786499,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return (lo + hi) / 2"
+  ],
+  "tried_log": [
+   {
+    "at": "weakpkg2/core.py:57",
+    "tried": "    return age_days > ttl",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:57",
+    "tried": "    return age_days <= ttl",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:62",
+    "tried": "    return {\"cache\": False, \"trace\": False}",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:62",
+    "tried": "    return {\"cache\": True, \"trace\": True}",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:67",
+    "tried": "    return hi) / 1 + (lo",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:67",
+    "tried": "    return hi) / 2 - (lo",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:71",
+    "tried": "    \"\"\"Zero-based offset of a 0-based page.\"\"\"",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:72",
+    "tried": "    return size - size * page",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:72",
+    "tried": "    return page * size + size",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:72",
+    "tried": "    return size - page * size",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:77",
+    "tried": "    counts = -1",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:79",
+    "tried": "        counts += 0",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   },
+   {
+    "at": "weakpkg2/core.py:79",
+    "tried": "        counts -= 1",
+    "why": "does not compile: unmatched ')' (core.py, line 67)"
+   }
+  ],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "    return (lo + hi) / 2",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "    return (lo + hi) / 2"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

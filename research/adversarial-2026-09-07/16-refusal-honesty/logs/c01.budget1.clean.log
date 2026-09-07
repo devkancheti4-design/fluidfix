@@ -1,0 +1,4 @@
+  build: cc -O0 -o build/tests src/mathops.c tests/test_main.c
+  test:  ./build/tests
+[14:40:39] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/mathops.c). teach it once: docs/TEACHING.md (or run: fluidfix kinds)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/16-refusal-honesty/fixtures/c/c01_frame/.fluidfix/last_refusal.json

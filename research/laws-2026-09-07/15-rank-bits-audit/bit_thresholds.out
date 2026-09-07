@@ -1,0 +1,69 @@
+== DENSE (shape count >= 8) over fluidfix src + tests
+  src/fluidfix/__init__.py                 dense    0/  32 =  0.0%
+  src/fluidfix/acts.py                     dense   50/ 356 = 14.0%
+  src/fluidfix/cli.py                      dense  103/ 679 = 15.2%
+  src/fluidfix/coracle.py                  dense   91/ 704 = 12.9%
+  src/fluidfix/engine.py                   dense    0/  44 =  0.0%
+  src/fluidfix/guard.py                    dense   66/ 662 = 10.0%
+  src/fluidfix/hotspots.py                 dense    8/ 166 =  4.8%
+  src/fluidfix/javaoracle.py               dense    0/ 199 =  0.0%
+  src/fluidfix/lanes.py                    dense    0/  32 =  0.0%
+  src/fluidfix/localize.py                 dense    8/ 159 =  5.0%
+  src/fluidfix/loop.py                     dense   49/ 406 = 12.1%
+  src/fluidfix/observers.py                dense    0/ 146 =  0.0%
+  src/fluidfix/oracle.py                   dense    0/ 221 =  0.0%
+  src/fluidfix/pair.py                     dense    0/ 126 =  0.0%
+  src/fluidfix/rank.py                     dense    0/  73 =  0.0%
+  src/fluidfix/router.py                   dense    0/  38 =  0.0%
+  src/fluidfix/sight.py                    dense    0/ 102 =  0.0%
+  tests/test_acts.py                       dense   21/ 147 = 14.3%
+  tests/test_c_adapter.py                  dense   44/ 328 = 13.4%
+  tests/test_cli.py                        dense    0/  67 =  0.0%
+  tests/test_context_transforms.py         dense    9/ 173 =  5.2%
+  tests/test_demo_walkthrough.py           dense    0/ 100 =  0.0%
+  tests/test_dictionary.py                 dense    0/  32 =  0.0%
+  tests/test_dry_run.py                    dense    0/  74 =  0.0%
+  tests/test_e2e.py                        dense    0/  62 =  0.0%
+  tests/test_engine_fusion.py              dense   24/ 204 = 11.8%
+  tests/test_estimate.py                   dense    0/  34 =  0.0%
+  tests/test_guard.py                      dense    8/  95 =  8.4%
+  tests/test_harness_errors.py             dense    0/  80 =  0.0%
+  tests/test_hotspots.py                   dense    0/ 103 =  0.0%
+  tests/test_init.py                       dense    0/  44 =  0.0%
+  tests/test_java.py                       dense    8/  80 = 10.0%
+  tests/test_lanes.py                      dense    0/  22 =  0.0%
+  tests/test_law_never_ruled_wrong.py      dense    0/  65 =  0.0%
+  tests/test_one_example_generalises.py    dense    0/  18 =  0.0%
+  tests/test_packaging.py                  dense    0/  40 =  0.0%
+  tests/test_pair_law.py                   dense   25/ 101 = 24.8%
+  tests/test_rank_law.py                   dense    0/  47 =  0.0%
+  tests/test_refusal_diagnosis.py          dense    0/  48 =  0.0%
+  tests/test_regressions.py                dense   26/ 195 = 13.3%
+  tests/test_router_law.py                 dense   12/  34 = 35.3%
+  tests/test_sight_law.py                  dense   13/  93 = 14.0%
+  tests/test_span_edits.py                 dense   41/ 203 = 20.2%
+  tests/test_teaching.py                   dense    0/  83 =  0.0%
+  TOTAL dense 606/6717 = 9.0%
+  most common DENSE shapes:
+       82  'N N'
+       58  'N N():'
+       52  'N:'
+       44  'N'
+       36  'N #'
+       31  'N N N N:'
+       30  'N N:'
+       30  '(N / "N.N").N('
+       27  'N N(N):'
+       24  'N.N(N)'
+       22  'N N(N, N):'
+       16  'N = N'
+
+== RECENT (blamed to last 40 commits) on the shared clones, body's _recent_lines
+  box2d  src/contact_solver.c             recent  1103/ 2500 = 44.1%
+  box2d  src/body.c                       recent   679/ 2137 = 31.8%
+  box2d  src/math_functions.c             recent    26/  195 = 13.3%
+  box2d  src/shape.c                      recent   547/ 2036 = 26.9%
+  cglm   include/cglm/vec3.h              recent    13/ 1278 =  1.0%
+  cglm   include/cglm/mat4.h              recent    29/  832 =  3.5%
+  cglm   include/cglm/frustum.h           recent     0/  256 =  0.0%
+  cglm   include/cglm/euler.h             recent     0/  583 =  0.0%

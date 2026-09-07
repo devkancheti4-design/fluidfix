@@ -1,0 +1,338 @@
+[
+ {
+  "name": "A1_index_vs_strict__pristine_is_index",
+  "module": "gate.py",
+  "pristine": "    return readings[0] > limit",
+  "defect": "    return readings[1] > limit",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return readings[1] >= limit",
+   "    return readings[0] > limit"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return readings[1] >= limit",
+  "suite_runs": 4,
+  "acts_tried": [
+   5,
+   6,
+   15
+  ],
+  "shipped_equals_pristine": false,
+  "probe": "alarm([9, 1], 5)",
+  "probe_pristine": "True",
+  "probe_shipped": "False",
+  "probe_differs": true
+ },
+ {
+  "name": "A2_index_vs_strict__pristine_is_strict",
+  "module": "gate.py",
+  "pristine": "    return readings[1] >= limit",
+  "defect": "    return readings[1] > limit",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return readings[1] >= limit",
+   "    return readings[0] > limit"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return readings[1] >= limit",
+  "suite_runs": 4,
+  "acts_tried": [
+   5,
+   6,
+   15
+  ],
+  "shipped_equals_pristine": true,
+  "probe": "alarm([9, 1], 5)",
+  "probe_pristine": "False",
+  "probe_shipped": "False",
+  "probe_differs": false
+ },
+ {
+  "name": "B1_threshold_vs_strict__pristine_is_literal",
+  "module": "parcel.py",
+  "pristine": "    return weight_kg > 20",
+  "defect": "    return weight_kg > 21",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return weight_kg >= 21",
+   "    return weight_kg > 20"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return weight_kg >= 21",
+  "suite_runs": 4,
+  "acts_tried": [
+   5,
+   6,
+   15
+  ],
+  "shipped_equals_pristine": false,
+  "probe": "surcharge(20.5)",
+  "probe_pristine": "True",
+  "probe_shipped": "False",
+  "probe_differs": true
+ },
+ {
+  "name": "B2_threshold_vs_strict__pristine_is_strict",
+  "module": "parcel.py",
+  "pristine": "    return weight_kg >= 21",
+  "defect": "    return weight_kg > 21",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return weight_kg >= 21",
+   "    return weight_kg > 20"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return weight_kg >= 21",
+  "suite_runs": 4,
+  "acts_tried": [
+   5,
+   6,
+   15
+  ],
+  "shipped_equals_pristine": true,
+  "probe": "surcharge(20.5)",
+  "probe_pristine": "False",
+  "probe_shipped": "False",
+  "probe_differs": false
+ },
+ {
+  "name": "C1_slice_vs_strict__pristine_is_slice",
+  "module": "report.py",
+  "pristine": "    return sum(values[0:]) > threshold",
+  "defect": "    return sum(values[1:]) > threshold",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return sum(values[1:]) >= threshold",
+   "    return sum(values[0:]) > threshold"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return sum(values[1:]) >= threshold",
+  "suite_runs": 4,
+  "acts_tried": [
+   5,
+   6,
+   15
+  ],
+  "shipped_equals_pristine": false,
+  "probe": "over_budget([6, 2], 5)",
+  "probe_pristine": "True",
+  "probe_shipped": "False",
+  "probe_differs": true
+ },
+ {
+  "name": "C2_slice_vs_strict__pristine_is_strict",
+  "module": "report.py",
+  "pristine": "    return sum(values[1:]) >= threshold",
+  "defect": "    return sum(values[1:]) > threshold",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return sum(values[1:]) >= threshold",
+   "    return sum(values[0:]) > threshold"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return sum(values[1:]) >= threshold",
+  "suite_runs": 4,
+  "acts_tried": [
+   5,
+   6,
+   15
+  ],
+  "shipped_equals_pristine": true,
+  "probe": "over_budget([6, 2], 5)",
+  "probe_pristine": "False",
+  "probe_shipped": "False",
+  "probe_differs": false
+ },
+ {
+  "name": "D1_minmax_vs_strict__pristine_is_max",
+  "module": "window.py",
+  "pristine": "    return max(a, b) > limit",
+  "defect": "    return min(a, b) > limit",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return min(a, b) >= limit",
+   "    return max(a, b) > limit"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return min(a, b) >= limit",
+  "suite_runs": 4,
+  "acts_tried": [
+   5,
+   13,
+   15
+  ],
+  "shipped_equals_pristine": false,
+  "probe": "passes(4, 10, 6)",
+  "probe_pristine": "True",
+  "probe_shipped": "False",
+  "probe_differs": true
+ },
+ {
+  "name": "D2_minmax_vs_strict__pristine_is_min_ge",
+  "module": "window.py",
+  "pristine": "    return min(a, b) >= limit",
+  "defect": "    return min(a, b) > limit",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return min(a, b) >= limit",
+   "    return max(a, b) > limit"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return min(a, b) >= limit",
+  "suite_runs": 4,
+  "acts_tried": [
+   5,
+   13,
+   15
+  ],
+  "shipped_equals_pristine": true,
+  "probe": "passes(4, 10, 6)",
+  "probe_pristine": "False",
+  "probe_shipped": "False",
+  "probe_differs": false
+ },
+ {
+  "name": "E1_index_vs_additive__pristine_is_index",
+  "module": "payout.py",
+  "pristine": "    return values[0] + bonus",
+  "defect": "    return values[1] + bonus",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return values[0] + bonus",
+   "    return values[1] - bonus"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return values[0] + bonus",
+  "suite_runs": 4,
+  "acts_tried": [
+   6,
+   7,
+   8
+  ],
+  "shipped_equals_pristine": true,
+  "probe": "total([1, 2], 1)",
+  "probe_pristine": "2",
+  "probe_shipped": "2",
+  "probe_differs": false
+ },
+ {
+  "name": "E2_index_vs_additive__pristine_is_minus",
+  "module": "payout.py",
+  "pristine": "    return values[1] - bonus",
+  "defect": "    return values[1] + bonus",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return values[0] + bonus",
+   "    return values[1] - bonus"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return values[0] + bonus",
+  "suite_runs": 4,
+  "acts_tried": [
+   6,
+   7,
+   8
+  ],
+  "shipped_equals_pristine": false,
+  "probe": "total([1, 2], 1)",
+  "probe_pristine": "1",
+  "probe_shipped": "2",
+  "probe_differs": true
+ },
+ {
+  "name": "F1_index_vs_reversal__pristine_is_index",
+  "module": "offsetcalc.py",
+  "pristine": "    return items[0] - offset",
+  "defect": "    return items[1] - offset",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return items[0] - offset",
+   "    return offset - items[1]"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return items[0] - offset",
+  "suite_runs": 4,
+  "acts_tried": [
+   6,
+   7,
+   8
+  ],
+  "shipped_equals_pristine": true,
+  "probe": "adjust([3, 4], 1)",
+  "probe_pristine": "2",
+  "probe_shipped": "2",
+  "probe_differs": false
+ },
+ {
+  "name": "F2_index_vs_reversal__pristine_is_reversed",
+  "module": "offsetcalc.py",
+  "pristine": "    return offset - items[1]",
+  "defect": "    return items[1] - offset",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "fluidfix_status": "repaired",
+  "fluidfix_reason": "engine law: BUILT -> SHIP",
+  "fluidfix_ambiguous": false,
+  "greens": [
+   "    return items[0] - offset",
+   "    return offset - items[1]"
+  ],
+  "n_greens": 2,
+  "shipped_line": "    return items[0] - offset",
+  "suite_runs": 4,
+  "acts_tried": [
+   6,
+   7,
+   8
+  ],
+  "shipped_equals_pristine": false,
+  "probe": "adjust([3, 4], 1)",
+  "probe_pristine": "-3",
+  "probe_shipped": "2",
+  "probe_differs": true
+ }
+]

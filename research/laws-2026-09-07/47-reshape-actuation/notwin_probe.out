@@ -1,0 +1,82 @@
+==========================================================================
+G1_bug_committed   -- the ordinary case: the defect is IN HEAD (fluidfix's whole purpose)
+==========================================================================
+  HEAD line 2                : '    if n > 10:'
+  repaired                   : True   suite_runs=3  2.6s
+  shipped line               : 'if n >= 10:'
+  all greens found           : ['if n >= 10:', 'if n > 9:']
+  ambiguous (body's AMB)     : False
+  restored_original          : False
+  pin says the program is    : CORRECT
+  law today   BUILT=1 AMB=0              -> SHIP
+  law proposed  + NOTWIN=1                      -> RESHAPE
+  proposed reading vs the pin : DISAGREES with the pin
+
+==========================================================================
+G2_uncommitted_exact   -- provenance case: defect never committed, repair reproduces HEAD
+==========================================================================
+  HEAD line 2                : '    if n >= 10:'
+  repaired                   : True   suite_runs=2  1.2s
+  shipped line               : 'if n >= 10:'
+  all greens found           : ['if n >= 10:']
+  ambiguous (body's AMB)     : False
+  restored_original          : True
+  pin says the program is    : CORRECT
+  law today   BUILT=1 AMB=0              -> SHIP
+  law proposed  + NOTWIN=0                      -> SHIP
+  proposed reading vs the pin : agrees
+
+==========================================================================
+G3_uncommitted_respelled   -- defect never committed; first green is the SAME PROGRAM SPELLED DIFFERENTLY from HEAD
+==========================================================================
+  HEAD line 2                : '    if n > 9:'
+  repaired                   : True   suite_runs=3  2.0s
+  shipped line               : 'if n >= 10:'
+  all greens found           : ['if n >= 10:', 'if n > 9:']
+  ambiguous (body's AMB)     : False
+  restored_original          : False
+  pin says the program is    : CORRECT
+  law today   BUILT=1 AMB=0              -> SHIP
+  law proposed  + NOTWIN=1                      -> RESHAPE
+  proposed reading vs the pin : DISAGREES with the pin
+
+==========================================================================
+G4_no_git   -- no git repository at all
+==========================================================================
+  HEAD line 2                : None
+  repaired                   : True   suite_runs=3  2.0s
+  shipped line               : 'if n >= 10:'
+  all greens found           : ['if n >= 10:', 'if n > 9:']
+  ambiguous (body's AMB)     : False
+  restored_original          : None
+  pin says the program is    : CORRECT
+  law today   BUILT=1 AMB=0              -> SHIP
+  law proposed  + NOTWIN=0                      -> SHIP
+  proposed reading vs the pin : agrees
+
+==========================================================================
+G5_wrong_program   -- weak suite: first green is a DIFFERENT PROGRAM at the same site
+==========================================================================
+  HEAD line 2                : '    return base + delta'
+  repaired                   : True   suite_runs=3  3.2s
+  shipped line               : 'return delta - base'
+  all greens found           : ['return delta - base', 'return base + delta']
+  ambiguous (body's AMB)     : False
+  restored_original          : False
+  pin says the program is    : False
+  law today   BUILT=1 AMB=0              -> SHIP
+  law proposed  + NOTWIN=1                      -> RESHAPE
+  proposed reading vs the pin : agrees
+
+==========================================================================
+SUMMARY
+==========================================================================
+scenario                   rest_orig  program   today         proposed   verdict
+G1_bug_committed           False      CORRECT   SHIP          RESHAPE    DISAGREES with the pin
+G2_uncommitted_exact       True       CORRECT   SHIP          SHIP       agrees
+G3_uncommitted_respelled   False      CORRECT   SHIP          RESHAPE    DISAGREES with the pin
+G4_no_git                  None       CORRECT   SHIP          SHIP       agrees
+G5_wrong_program           False      WRONG     SHIP          RESHAPE    agrees
+
+scenarios where TODAY's ruling matches the pin    : 4/5
+scenarios where the PROPOSED ruling matches the pin: 3/5

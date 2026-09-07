@@ -1,0 +1,417 @@
+{
+ "src/contact_solver.c": [
+  {
+   "file": "src/contact_solver.c",
+   "line": 1673,
+   "old": " <= ",
+   "new": " < ",
+   "text": "while ( spans[colorIndex + 1].start <= wideIndex )"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 1679,
+   "old": " < ",
+   "new": " > ",
+   "text": "while ( wideIndex < endWideIndex )"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 1702,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( contactIndex < colorContactCount )"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 1934,
+   "old": " > ",
+   "new": " < ",
+   "text": "buffer[lane] = contactLanes[lane]->manifold.pointCount > 1 ? 1.0f : 0.0f;"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 2427,
+   "old": " <= ",
+   "new": " < ",
+   "text": "while ( spans[colorIndex + 1].start <= wideIndex )"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 2432,
+   "old": " < ",
+   "new": " > ",
+   "text": "while ( wideIndex < endWideIndex )"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 2456,
+   "old": " >= ",
+   "new": " > ",
+   "text": "if ( contactIndex >= colorContactCount )"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 2481,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( mp->normalVelocity < negHitThreshold && mp->totalNormalImpulse > 0.0f )"
+  }
+ ],
+ "src/joint.c": [
+  {
+   "file": "src/joint.c",
+   "line": 167,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( bodyA->contactCount < bodyB->contactCount )"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 292,
+   "old": " && ",
+   "new": " || ",
+   "text": "else if ( bodyA->type != b2_dynamicBody && bodyB->type != b2_dynamicBody )"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 309,
+   "old": " >= ",
+   "new": " > ",
+   "text": "if ( maxSetIndex >= b2_firstSleepingSet )"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 382,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( joint->setIndex > b2_disabledSet )"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 1604,
+   "old": " <= ",
+   "new": " < ",
+   "text": "while ( spans[colorIndex + 1].start <= index )"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 1610,
+   "old": " < ",
+   "new": " > ",
+   "text": "while ( index < endIndex )"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 1663,
+   "old": " && ",
+   "new": " || ",
+   "text": "if ( useBias && ( joint->forceThreshold < FLT_MAX || joint->torqueThreshold < FLT_MAX ) &&"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 124,
+   "old": " - ",
+   "new": " + ",
+   "text": "int id = jointId.index1 - 1;"
+  }
+ ],
+ "src/solver_set.c": [
+  {
+   "file": "src/solver_set.c",
+   "line": 161,
+   "old": " && ",
+   "new": " || ",
+   "text": "if ( island->constraintRemoveCount > 0 && island->bodies.count > 1 )"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 47,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodySim* simSrc = set->bodySims.data + i;"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 49,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2Body* body = bodies + simSrc->bodyId;"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 108,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ContactSim* contactSim = set->contactSims.data + i;"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 124,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2JointSim* jointSim = set->jointSims.data + i;"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 140,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2IslandSim* islandSrc = set->islandSims.data + i;"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 283,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ContactSim* movedContactSim = awakeSet->contactSims.data + localIndex;"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 297,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ContactLink* link = island->contacts.data + i;"
+  }
+ ],
+ "src/constraint_graph.c": [
+  {
+   "file": "src/constraint_graph.c",
+   "line": 86,
+   "old": " && ",
+   "new": " || ",
+   "text": "if ( typeA == b2_dynamicBody && typeB == b2_dynamicBody )"
+  },
+  {
+   "file": "src/constraint_graph.c",
+   "line": 222,
+   "old": " && ",
+   "new": " || ",
+   "text": "if ( typeA == b2_dynamicBody && typeB == b2_dynamicBody )"
+  },
+  {
+   "file": "src/constraint_graph.c",
+   "line": 37,
+   "old": " + ",
+   "new": " - ",
+   "text": "int bodyCapacity = b2MaxInt( capacity->staticBodyCount + capacity->dynamicBodyCount, 16 );"
+  },
+  {
+   "file": "src/constraint_graph.c",
+   "line": 43,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + i;"
+  },
+  {
+   "file": "src/constraint_graph.c",
+   "line": 54,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + i;"
+  },
+  {
+   "file": "src/constraint_graph.c",
+   "line": 91,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + i;"
+  },
+  {
+   "file": "src/constraint_graph.c",
+   "line": 108,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + i;"
+  },
+  {
+   "file": "src/constraint_graph.c",
+   "line": 124,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + i;"
+  }
+ ],
+ "src/sensor.c": [
+  {
+   "file": "src/sensor.c",
+   "line": 293,
+   "old": " && ",
+   "new": " || ",
+   "text": "while ( index1 < count1 && index2 < count2 )"
+  },
+  {
+   "file": "src/sensor.c",
+   "line": 343,
+   "old": " < ",
+   "new": " > ",
+   "text": "while ( index1 < count1 )"
+  },
+  {
+   "file": "src/sensor.c",
+   "line": 353,
+   "old": " < ",
+   "new": " > ",
+   "text": "while ( index2 < count2 )"
+  },
+  {
+   "file": "src/sensor.c",
+   "line": 140,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2SensorTaskContext* taskContext = world->sensorTaskContexts.data + threadIndex;"
+  },
+  {
+   "file": "src/sensor.c",
+   "line": 204,
+   "old": " - ",
+   "new": " + ",
+   "text": "if ( uniqueCount == 0 || overlapData[i].shapeId != overlapData[uniqueCount - 1].shapeId )"
+  },
+  {
+   "file": "src/sensor.c",
+   "line": 223,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2Visitor* s1 = sensor->overlaps1.data + i;"
+  },
+  {
+   "file": "src/sensor.c",
+   "line": 224,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2Visitor* s2 = sensor->overlaps2.data + i;"
+  },
+  {
+   "file": "src/sensor.c",
+   "line": 279,
+   "old": " + ",
+   "new": " - ",
+   "text": "int sensorIndex = (int)( 64 * k + ctz );"
+  }
+ ],
+ "src/recording.c": [
+  {
+   "file": "src/recording.c",
+   "line": 23,
+   "old": " <= ",
+   "new": " < ",
+   "text": "if ( size <= 0 )"
+  },
+  {
+   "file": "src/recording.c",
+   "line": 35,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( buf->size + size > buf->capacity )"
+  },
+  {
+   "file": "src/recording.c",
+   "line": 38,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( newCap < buf->size + size + 64 )"
+  },
+  {
+   "file": "src/recording.c",
+   "line": 246,
+   "old": " < ",
+   "new": " > ",
+   "text": "while ( s[len] != '\\0' && len < 65534 )"
+  },
+  {
+   "file": "src/recording.c",
+   "line": 251,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( len > 0 )"
+  },
+  {
+   "file": "src/recording.c",
+   "line": 476,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( count < 0 )"
+  },
+  {
+   "file": "src/recording.c",
+   "line": 478,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( count > B2_MAX_POLYGON_VERTICES )"
+  },
+  {
+   "file": "src/recording.c",
+   "line": 721,
+   "old": " > ",
+   "new": " < ",
+   "text": "int initCap = byteCapacity > 0 ? byteCapacity : 65536;"
+  }
+ ],
+ "src/recording_replay.c": [
+  {
+   "file": "src/recording_replay.c",
+   "line": 31,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( size < 0 || (int64_t)rdr->cursor + (int64_t)size > (int64_t)rdr->size )"
+  },
+  {
+   "file": "src/recording_replay.c",
+   "line": 302,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( n > B2_NAME_LENGTH )"
+  },
+  {
+   "file": "src/recording_replay.c",
+   "line": 307,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( rdr->ok && n > 0 )"
+  },
+  {
+   "file": "src/recording_replay.c",
+   "line": 374,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( count < 0 )"
+  },
+  {
+   "file": "src/recording_replay.c",
+   "line": 390,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( materialCount < 0 )"
+  },
+  {
+   "file": "src/recording_replay.c",
+   "line": 590,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( count < 0 )"
+  },
+  {
+   "file": "src/recording_replay.c",
+   "line": 592,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( count > B2_MAX_POLYGON_VERTICES )"
+  },
+  {
+   "file": "src/recording_replay.c",
+   "line": 658,
+   "old": " <= ",
+   "new": " < ",
+   "text": "if ( need <= *cap )"
+  }
+ ],
+ "src/arena_allocator.c": [
+  {
+   "file": "src/arena_allocator.c",
+   "line": 33,
+   "old": " + ",
+   "new": " - ",
+   "text": "int size32 = ( ( size - 1 ) | 0x1F ) + 1;"
+  }
+ ]
+}

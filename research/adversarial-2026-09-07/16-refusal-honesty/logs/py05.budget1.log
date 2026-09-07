@@ -1,0 +1,3 @@
+[14:37:35] REFUSED: ran out of budget before the fault was found — this is a SEARCH limit, not a gap in the taught vocabulary. The failure pointed at pkg/mod.py, so more clock genuinely helps. Files searched: pkg/mod.py; the defect may be in a file the ranking never reached.
+  hint: --budget exhausted (1s) during the first pass — raise --budget, tighten taught-class signals, or fix by hand
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/16-refusal-honesty/fixtures/py/py05_capped_green/.fluidfix/last_refusal.json

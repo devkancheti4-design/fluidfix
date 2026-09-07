@@ -1,0 +1,27 @@
+
+== all 256 inputs: 256 bytes ==
+bit         flips ruling   of  best promotion  ever demotes
+FRAMED                32  128              -7             0
+SCARCE                32  128              -7             0
+LITERAL               32  128              -7             0
+FAILONLY              16  128              -4             0
+NAMED                  8  128              -3             0
+TOUCHED                4  128              -2             0
+SMALL                  2  128              -1             0
+UBIQUITOUS            16  128               0            16
+
+== bytes the body reaches on the law path: 96 bytes ==
+bit         flips ruling   of  best promotion  ever demotes
+FRAMED                 0    0               0             0
+SCARCE                24   48              -7             0
+LITERAL               24   48              -7             0
+FAILONLY               8   32              -4             0
+NAMED                  8   48              -3             0
+TOUCHED                4   48              -2             0
+SMALL                  2   48              -1             0
+UBIQUITOUS             8   32               0             8
+
+== priorities emitted ==
+  all 256 inputs                : [0, 2, 3, 4, 5, 6, 7]
+  law-path-reachable bytes      : [0, 2, 3, 4, 5, 6, 7]
+  FRAMED-carrying bytes         : [0]

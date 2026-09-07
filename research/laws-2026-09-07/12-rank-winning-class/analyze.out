@@ -1,0 +1,85 @@
+fixtures logged: 34  (heavy group excluded here)
+repaired: 27   refused: 7
+outcome != what the source test expects: [('regress_crlf_cmp', 'repaired', 'refused')]
+
+== per-observation bits over every rank_observations call (all fixtures) ==
+observations ranked: 57
+bit set count: {'SIGNALED': 57, 'CHEAP': 54, 'FRAME': 12, 'NAMED': 12}
+priority histogram: {0: 12, 2: 4, 3: 41}
+
+== rank of the winner (repaired fixtures) ==
+law priority of winner line: {0: 12, 2: 1, 3: 14}
+winner bits: {'SIGNALED+CHEAP': 11, 'FRAME+NAMED+SIGNALED+CHEAP': 8, 'FRAME+SIGNALED+CHEAP': 4, 'SIGNALED': 3, 'NAMED+SIGNALED+CHEAP': 1}
+position of winner line in RANKED order: {1: 23, 2: 3, 3: 1}
+position of winner line in INPUT (line) order: {1: 16, 2: 9, 3: 1, 4: 1}
+observations in the winner's packet: {1: 10, 2: 14, 3: 2, 4: 1}
+same-priority lines ahead of winner: {0: 23, 1: 3, 2: 1}
+better-priority lines ahead of winner: {0: 27}
+winning kind's position among kinds on its line: {'1/1': 11, '1/2': 3, '2/2': 3, '2/3': 5, '3/3': 1, '3/4': 3, '4/4': 1}
+class-slot position (line,kind) in body order: {'1/1': 5, '1/2': 2, '1/3': 2, '1/4': 1, '2/2': 2, '2/4': 7, '2/5': 2, '3/3': 2, '3/4': 3, '4/4': 1}
+fixtures where the law moved the winner line (input_pos -> ranked_pos): [('ctx_zero_guard_r2', 4, 1), ('demo_invoices_dict', 2, 1), ('demo_metrics_dict', 2, 1), ('dict_payroll', 2, 1), ('guard_join2', 2, 1), ('proof_member4_cart', 2, 1), ('teach_get_default', 2, 1)]
+
+== suite checks spent before the winner's first green ==
+fixture                    runs wasted  other_line other_kind same_kind
+acts_minmax                   2      0           0          0         0
+ctx_attr_case1                3      1           1          0         0
+ctx_attr_case2                4      2           2          0         0
+ctx_median_r1                 2      0           0          0         0
+ctx_median_r2                 2      0           0          0         0
+ctx_zero_guard_r1             3      0           0          0         0
+ctx_zero_guard_r2             5      0           0          0         0
+demo_billing                  4      2           0          2         0
+demo_invoices_dict            5      1           0          1         0
+demo_metrics_dict             4      0           0          0         0
+dict_payroll                  5      1           0          1         0
+e2e_count_above               6      1           1          0         0
+fusion_cmp_ge                 4      0           0          0         0
+guard_join2                   4      1           0          1         0
+proof_member1_billing         4      2           0          2         0
+proof_member2_metrics         5      3           0          3         0
+proof_member3_scoring         3      1           0          1         0
+proof_member4_cart            5      1           0          1         0
+proof_member5_report          6      3           0          3         0
+regress_teach_andor           2      0           0          0         0
+span_guarded                  5      1           0          1         0
+span_rate_block               7      2           0          2         0
+span_scale_pair               5      1           0          1         0
+teach_get_default             5      1           0          1         0
+teach_round_span              3      0           0          0         0
+teach_split                   2      0           0          0         0
+teach_wrong_attr              3      1           1          0         0
+TOTAL wasted checks before winner: 25 = other line 5 + other kind on winner line 20 + earlier candidate of winning kind 0
+total suite runs (incl. red precondition + confirm): 108
+
+== per class: how the law ranked its observation slots, and wins ==
+kind:class                     slots  prio-hist        cand-sets-tried wins
+0:strictness                       4  {3: 4}                  4        2
+1:literal-off-by-one              29  {0: 1, 2: 4, 3: 24}       29        0
+2:swapped-return-operands          9  {0: 5, 2: 2, 3: 2}        9        0
+3:flipped-additive                15  {0: 9, 2: 1, 3: 5}       15        2
+4:wrong-attribute                  2  {3: 2}                  2        2
+4:mean-where-median                2  {3: 2}                  2        2
+4:missing-zero-guard               4  {0: 2, 3: 2}            4        2
+4:missing-get-default              9  {0: 9}                  9        9
+4:amb-demo                         1  {3: 1}                  1        0
+4:lit-neighborhood                 2  {3: 2}                  2        0
+4:logic-flip                       1  {3: 1}                  1        1
+4:guarded-span                     1  {3: 1}                  1        1
+4:rate-block                       1  {3: 1}                  1        1
+4:scale-pair                       1  {3: 1}                  1        1
+4:split-lost-separator             1  {3: 1}                  1        1
+5:wrong-attribute                  1  {3: 1}                  1        1
+6:round-before-accumulate          1  {3: 1}                  1        1
+8:minmax-swap                      1  {3: 1}                  1        1
+9:flipped-augmented-assign         6  {0: 5, 3: 1}            6        0
+10:flipped-comparison-direction     4  {3: 4}                  4        0
+11:reversed-minus-operands         4  {0: 3, 2: 1}            4        0
+
+== refusals: what the law ruled ==
+ref_amb_two_greens         runs=4 hint='AMBIGUOUS: 2 candidates at 1 different lines (1) all pass the suite — the tests cannot tell them apart, and on'
+ref_andor_untaught         runs=None hint=''
+ref_cmp_unsatisfiable      runs=None hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refu'
+ref_mul_out_of_vocab       runs=None hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refu'
+ref_proof_control          runs=None hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refu'
+ref_two_lines_single_edit  runs=None hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refu'
+regress_crlf_cmp           runs=4 hint='AMBIGUOUS: 2 candidates at 2 different lines (2, 3) all pass the suite — the tests cannot tell them apart, and'

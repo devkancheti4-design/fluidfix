@@ -1,0 +1,3 @@
+[14:32:05] test/helpers.py: repaired line 8 in 2 suite runs (1.1s):
+  - STRICT = True
+  + STRICT = False

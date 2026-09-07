@@ -1,0 +1,1287 @@
+[
+ {
+  "repo": "box2d",
+  "sha": "eb8b5356cb",
+  "subject": "Typo fix (#684)",
+  "file": "src/dynamics/b2_world.cpp",
+  "old": "\t\t\t\t// Don't simulate joints connected to diabled bodies.",
+  "new": "\t\t\t\t// Don't simulate joints connected to disabled bodies.",
+  "coarse": "other-token",
+  "tok": [
+   "diabled",
+   "disabled"
+  ],
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "box2d",
+  "sha": "d17b1eb6b0",
+  "subject": "fixed typo (#594)",
+  "file": "include/box2d/b2_collision.h",
+  "old": "/// Compute the collision manifold between an edge and a circle.",
+  "new": "/// Compute the collision manifold between an edge and a polygon.",
+  "coarse": "other-token",
+  "tok": [
+   "circle",
+   "polygon"
+  ],
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "box2d",
+  "sha": "20c85e2665",
+  "subject": "fix minimum vertex distance check",
+  "file": "Box2D/Box2D/Collision/Shapes/b2PolygonShape.cpp",
+  "old": "\t\t\tif (b2DistanceSquared(v, ps[j]) < 0.5f * b2_linearSlop)",
+  "new": "\t\t\tif (b2DistanceSquared(v, ps[j]) < ((0.5f * b2_linearSlop) * (0.5f * b2_linearSlop)))",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 1,
+   "1": 4,
+   "10": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "e13cd8de10",
+  "subject": "fix minimum vertex distance check",
+  "file": "Box2D/Box2D/Collision/Shapes/b2PolygonShape.cpp",
+  "old": "\t\t\tif (b2DistanceSquared(v, ps[j]) < 0.5f * b2_linearSlop)",
+  "new": "\t\t\tif (b2DistanceSquared(v, ps[j]) < ((0.5f * b2_linearSlop) * (0.5f * b2_linearSlop)))",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 1,
+   "1": 4,
+   "10": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "b1e702302f",
+  "subject": "- Fixed Issue 226:\t[PATCH] b2Body: fix SetGravityScale documentation string",
+  "file": "Box2D/Box2D/Dynamics/b2Body.h",
+  "old": "\t/// Set the angular damping of the body.",
+  "new": "\t/// Set the gravity scale of the body.",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "box2d",
+  "sha": "0a08a399b4",
+  "subject": "- Fixed Issue 226:\t[PATCH] b2Body: fix SetGravityScale documentation string",
+  "file": "Box2D/Box2D/Dynamics/b2Body.h",
+  "old": "\t/// Set the angular damping of the body.",
+  "new": "\t/// Set the gravity scale of the body.",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "box2d",
+  "sha": "1a1e423676",
+  "subject": "Fixed Issue 219:\tRaycast closest point fail case",
+  "file": "Box2D/Box2D/Collision/Shapes/b2EdgeShape.cpp",
+  "old": "\tif (t < 0.0f || 1.0f < t)",
+  "new": "\tif (t < 0.0f || input.maxFraction < t)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 2,
+   "1": 4,
+   "10": 2
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "d7578c51cb",
+  "subject": "Fixed Issue 219:\tRaycast closest point fail case",
+  "file": "Box2D/Box2D/Collision/Shapes/b2EdgeShape.cpp",
+  "old": "\tif (t < 0.0f || 1.0f < t)",
+  "new": "\tif (t < 0.0f || input.maxFraction < t)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 2,
+   "1": 4,
+   "10": 2
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "e7b858f789",
+  "subject": "Fixed Issue 219:\tRaycast closest point fail case",
+  "file": "Box2D/Box2D/Collision/Shapes/b2EdgeShape.cpp",
+  "old": "\tif (t < 0.0f || 1.0f < t)",
+  "new": "\tif (t < 0.0f || input.maxFraction < t)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 2,
+   "1": 4,
+   "10": 2
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "782161786b",
+  "subject": "Fixed Issue 219:\tRaycast closest point fail case",
+  "file": "Box2D/Box2D/Collision/Shapes/b2EdgeShape.cpp",
+  "old": "\tif (t < 0.0f || 1.0f < t)",
+  "new": "\tif (t < 0.0f || input.maxFraction < t)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 2,
+   "1": 4,
+   "10": 2
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "33d4116b2e",
+  "subject": "Fixed issue 117. Overlap with kinematic bodies is now resolved in the TOI solver. Thanks toucansam99",
+  "file": "Box2D/Box2D/Dynamics/b2World.cpp",
+  "old": "\t\tif (type != b2_staticBody)",
+  "new": "\t\tif (type == b2_dynamicBody)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "9c65dbf08b",
+  "subject": "Fixed issue 117. Overlap with kinematic bodies is now resolved in the TOI solver. Thanks toucansam99",
+  "file": "Box2D/Box2D/Dynamics/b2World.cpp",
+  "old": "\t\tif (type != b2_staticBody)",
+  "new": "\t\tif (type == b2_dynamicBody)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "0a2e2a668a",
+  "subject": "- Fixed issue 108. Box2D no longer calls PreSolve when shapes are not touching.",
+  "file": "Box2D/Box2D/Dynamics/Contacts/b2Contact.cpp",
+  "old": "\tif (sensor == false && listener)",
+  "new": "\tif (sensor == false && touching && listener)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "box2d",
+  "sha": "35c1737efd",
+  "subject": "- Fixed issue 108. Box2D no longer calls PreSolve when shapes are not touching.",
+  "file": "Box2D/Box2D/Dynamics/Contacts/b2Contact.cpp",
+  "old": "\tif (sensor == false && listener)",
+  "new": "\tif (sensor == false && touching && listener)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "box2d",
+  "sha": "de6705c2a8",
+  "subject": "- Fixed issue 108. Box2D no longer calls PreSolve when shapes are not touching.",
+  "file": "Box2D/Box2D/Dynamics/Contacts/b2Contact.cpp",
+  "old": "\tif (sensor == false && listener)",
+  "new": "\tif (sensor == false && touching && listener)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "box2d",
+  "sha": "6b9b72dc4c",
+  "subject": "- Fixed issue 108. Box2D no longer calls PreSolve when shapes are not touching.",
+  "file": "Box2D/Box2D/Dynamics/Contacts/b2Contact.cpp",
+  "old": "\tif (sensor == false && listener)",
+  "new": "\tif (sensor == false && touching && listener)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "box2d",
+  "sha": "e4011d1600",
+  "subject": "- Fixed issue 75, unsigned warning.",
+  "file": "Box2D/Box2D/Collision/b2Distance.cpp",
+  "old": "\t\tb2Assert(0 <= cache->count && cache->count <= 3);",
+  "new": "\t\tb2Assert(cache->count <= 3);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 4,
+   "1": 3,
+   "10": 2
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "e490a29d87",
+  "subject": "- Fixed issue 75, unsigned warning.",
+  "file": "Box2D/Box2D/Collision/b2Distance.cpp",
+  "old": "\t\tb2Assert(0 <= cache->count && cache->count <= 3);",
+  "new": "\t\tb2Assert(cache->count <= 3);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 4,
+   "1": 3,
+   "10": 2
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "02306f38d1",
+  "subject": "- Fixed issue 75, unsigned warning.",
+  "file": "Box2D/Box2D/Collision/b2Distance.cpp",
+  "old": "\t\tb2Assert(0 <= cache->count && cache->count <= 3);",
+  "new": "\t\tb2Assert(cache->count <= 3);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 4,
+   "1": 3,
+   "10": 2
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "1dcaad4e90",
+  "subject": "- Fixed issue 75, unsigned warning.",
+  "file": "Box2D/Box2D/Collision/b2Distance.cpp",
+  "old": "\t\tb2Assert(0 <= cache->count && cache->count <= 3);",
+  "new": "\t\tb2Assert(cache->count <= 3);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 4,
+   "1": 3,
+   "10": 2
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "5046a9d2f8",
+  "subject": "- Fixed issue 44. Thanks daniele.benegiamo.",
+  "file": "Box2D/Box2D/Common/b2Settings.h",
+  "old": "#define B2_NOT_USED(x) x",
+  "new": "#define B2_NOT_USED(x) ((void)(x))",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "9bbbe923de",
+  "subject": "- Fixed issue 44. Thanks daniele.benegiamo.",
+  "file": "Box2D/Box2D/Common/b2Settings.h",
+  "old": "#define B2_NOT_USED(x) x",
+  "new": "#define B2_NOT_USED(x) ((void)(x))",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "eb4cbd9489",
+  "subject": "- Fixed issue 44. Thanks daniele.benegiamo.",
+  "file": "Box2D/Box2D/Common/b2Settings.h",
+  "old": "#define B2_NOT_USED(x) x",
+  "new": "#define B2_NOT_USED(x) ((void)(x))",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "978dd7a1b9",
+  "subject": "- Fixed issue 44. Thanks daniele.benegiamo.",
+  "file": "Box2D/Box2D/Common/b2Settings.h",
+  "old": "#define B2_NOT_USED(x) x",
+  "new": "#define B2_NOT_USED(x) ((void)(x))",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "18aff6dacd",
+  "subject": "- Fixed bug in b2Fixture::SetSensor.",
+  "file": "Box2D/Box2D/Dynamics/b2Fixture.cpp",
+  "old": "\t\t\tcontact->SetSensor(m_isSensor);",
+  "new": "\t\t\tcontact->SetSensor(fixtureA->IsSensor() || fixtureB->IsSensor());",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "f3d407e1bf",
+  "subject": "- Fixed bug in b2Fixture::SetSensor.",
+  "file": "Box2D/Box2D/Dynamics/b2Fixture.cpp",
+  "old": "\t\t\tcontact->SetSensor(m_isSensor);",
+  "new": "\t\t\tcontact->SetSensor(fixtureA->IsSensor() || fixtureB->IsSensor());",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "653afe8cba",
+  "subject": "- Fixed bug in b2Fixture::SetSensor.",
+  "file": "Box2D/Box2D/Dynamics/b2Fixture.cpp",
+  "old": "\t\t\tcontact->SetSensor(m_isSensor);",
+  "new": "\t\t\tcontact->SetSensor(fixtureA->IsSensor() || fixtureB->IsSensor());",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "f384104a19",
+  "subject": "- Fixed bug in b2Fixture::SetSensor.",
+  "file": "Box2D/Box2D/Dynamics/b2Fixture.cpp",
+  "old": "\t\t\tcontact->SetSensor(m_isSensor);",
+  "new": "\t\t\tcontact->SetSensor(fixtureA->IsSensor() || fixtureB->IsSensor());",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 1
+  }
+ },
+ {
+  "repo": "box2d",
+  "sha": "7352f358e2",
+  "subject": "- Fixed: Issue 11:\tbreak instead of continue",
+  "file": "Box2D/Box2D/Dynamics/b2World.cpp",
+  "old": "\t\t\t\t\tcontinue;",
+  "new": "\t\t\t\t\tbreak;",
+  "coarse": "other-token",
+  "tok": [
+   "continue",
+   "break"
+  ],
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "cglm",
+  "sha": "4b3e9bb779",
+  "subject": "mat3x2: fix scale comment",
+  "file": "include/cglm/mat3x2.h",
+  "old": " * @brief Multiply mat2x4 (m) by scalar constant (s).",
+  "new": " * @brief Multiply mat3x2 (m) by scalar constant (s).",
+  "coarse": "other-token",
+  "tok": [
+   "mat2x4",
+   "mat3x2"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 2
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "70a1a946ee",
+  "subject": "arm: use glmm_div where possible to fix ARMv7 <-> ARM64",
+  "file": "include/cglm/vec4.h",
+  "old": "#if defined(__wasm__) && defined(__wasm_simd128__)",
+  "new": "  glmm_store(dest, glmm_div(glmm_load(v), glmm_set1(s)));",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "bd941ed7fb",
+  "subject": "arm, neon: fix neon support on GCC ARM",
+  "file": "include/cglm/simd/intrin.h",
+  "old": "#    if defined(__ARM_NEON_FP)",
+  "new": "#    if defined(__ARM_NEON_FP) || defined(__ARM_FP)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "cglm",
+  "sha": "87350f809b",
+  "subject": "msvc bug: dont align types due to \"ARM32 = C2719: formal parameter with requested alignment of 16 won't be aligned.\" on ARM32/MSVC",
+  "file": "include/cglm/types.h",
+  "old": "#  if _MSC_VER < 1913 /*  Visual Studio 2017 version 15.6  */",
+  "new": "#  if _MSC_VER < 1913 || _M_ARM /*  Visual Studio 2017 version 15.6  */",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   0,
+   1,
+   10
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "0": 1,
+   "1": 4,
+   "10": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "2fced7181a",
+  "subject": "Struct API glms_ray_at incorrect dir param.",
+  "file": "include/cglm/struct/ray.h",
+  "old": "  glm_ray_at(orig.raw, orig.raw, t, r.raw);",
+  "new": "  glm_ray_at(orig.raw, dir.raw, t, r.raw);",
+  "coarse": "other-token",
+  "tok": [
+   "orig",
+   "dir"
+  ],
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "cglm",
+  "sha": "fd661d1b43",
+  "subject": "aabb2d: Fix struct api.",
+  "file": "include/cglm/struct/aabb2d.h",
+  "old": "#define glms_aabb2d_(NAME) CGLM_STRUCTAPI(aabb, NAME)",
+  "new": "#define glms_aabb2d_(NAME) CGLM_STRUCTAPI(aabb2d, NAME)",
+  "coarse": "other-token",
+  "tok": [
+   "aabb",
+   "aabb2d"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "97575bdcd6",
+  "subject": "fix glmm_fmsub() on arm-neon: https://github.com/recp/cglm/pull/364 thanks to @gottfriedleibniz",
+  "file": "include/cglm/simd/arm.h",
+  "old": "  return glmm_fmadd(vnegq_f32(c), a, b);",
+  "new": "  return glmm_fmadd(a, b, vnegq_f32(c));",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "8a1d1cf35d",
+  "subject": "fix glmm_fmsub() on arm-neon",
+  "file": "include/cglm/simd/arm.h",
+  "old": "  return vmlsq_f32(c, a, b);",
+  "new": "  return vmlsq_f32(vnegq_f32(c), a, b);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "15f29e05eb",
+  "subject": "Fixed missed function",
+  "file": "include/cglm/call/vec4.h",
+  "old": "glmc_vec4_subadd(vec4 a, vec4 b, vec4 dest);",
+  "new": "glmc_vec4_addsub(vec4 a, vec4 b, vec4 dest);",
+  "coarse": "other-token",
+  "tok": [
+   "glmc_vec4_subadd",
+   "glmc_vec4_addsub"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 4
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "ab684b7c66",
+  "subject": "Fix definition logic misspell in 'glm_quat_normalize_to' -> cglm/quat.h",
+  "file": "include/cglm/quat.h",
+  "old": "#elif defined( __SSE2__ ) || defined( __SSE2__ )",
+  "new": "#elif defined( __SSE__ ) || defined( __SSE2__ )",
+  "coarse": "other-token",
+  "tok": [
+   "__SSE2__",
+   "__SSE__"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 2
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "e62b782039",
+  "subject": "simd128: fix a const in glm_mat4_inv_fast_wasm",
+  "file": "include/cglm/simd/wasm/mat4.h",
+  "old": "  x8 = wasm_f32x4_const(-0.f, 0.f, -0.f, 0.f);",
+  "new": "  x8 = wasm_f32x4_const(0.f, -0.f, 0.f, -0.f);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 7
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "5d60c17435",
+  "subject": "simd128: fix tests for vec4_norm_one and vec4_norm_inf",
+  "file": "include/cglm/simd/wasm.h",
+  "old": "  return wasm_v128_andnot(wasm_f32x4_splat(-0.0f), x);",
+  "new": "  return wasm_v128_andnot(x, wasm_f32x4_splat(-0.0f));",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 5
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "7fba424f64",
+  "subject": "Fixed glm_mat4_mulv3",
+  "file": "include/cglm/mat4.h",
+  "old": "   CGLM_INLINE void  glm_mat4_mulv3(mat4 m, vec3 v, vec3 dest);",
+  "new": "   CGLM_INLINE void  glm_mat4_mulv3(mat4 m, vec3 v, float last, vec3 dest);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 5
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "d2957e6275",
+  "subject": "Fix ivec2 function list comment",
+  "file": "include/cglm/ivec2.h",
+  "old": "  CGLM_INLINE voidglm_ivec2_zero(ivec2 v)",
+  "new": "  CGLM_INLINE void glm_ivec2_zero(ivec2 v)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 2
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "7e211e1f49",
+  "subject": "Fix bug in view_lh.h #2",
+  "file": "include/cglm/clipspace/view_lh.h",
+  "old": "  glm_vec3_cross(s, f, u);",
+  "new": "  glm_vec3_cross(f, s, u);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "7d47b7f1fd",
+  "subject": "Fix a bug in glm_lookat_lh",
+  "file": "include/cglm/clipspace/view_lh.h",
+  "old": "  glm_vec3_crossn(f, up, s);",
+  "new": "  glm_vec3_crossn(up, f, s);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "eddaf464ff",
+  "subject": "style: fix missing whitespace for alignment",
+  "file": "include/cglm/call/clipspace/ortho_lh_no.h",
+  "old": "                 float nearZ, float farZ,",
+  "new": "                 float nearZ,   float farZ,",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "cglm",
+  "sha": "13269f4af8",
+  "subject": "fix typo: vec3 -> vec4",
+  "file": "include/cglm/call/vec4.h",
+  "old": "glmc_vec4_scale_as(vec3 v, float s, vec3 dest);",
+  "new": "glmc_vec4_scale_as(vec4 v, float s, vec4 dest);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 3
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "2de1133012",
+  "subject": "fix enabling FMA macro for MSVC",
+  "file": "include/cglm/simd/x86.h",
+  "old": "#if !defined(__FMA__) && defined(__AVX2__)",
+  "new": "#if defined(_MSC_VER) && !defined(__FMA__) && defined(__AVX2__)",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "bddcfedead",
+  "subject": "docs: fix simple typo, asume -> assume",
+  "file": "include/cglm/affine.h",
+  "old": "  /* Note from Apple Open Source (asume that the matrix is orthonormal):",
+  "new": "  /* Note from Apple Open Source (assume that the matrix is orthonormal):",
+  "coarse": "other-token",
+  "tok": [
+   "asume",
+   "assume"
+  ],
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "cglm",
+  "sha": "f49e8f9991",
+  "subject": "neon: fix vec4_muladds (critical)",
+  "file": "include/cglm/vec4.h",
+  "old": "                            vsubq_f32(vld1q_f32(a),",
+  "new": "                            vmulq_f32(vld1q_f32(a),",
+  "coarse": "other-token",
+  "tok": [
+   "vsubq_f32",
+   "vmulq_f32"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 3
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "9af0ebd142",
+  "subject": "win: fix glms_quat_imagn if use struct option is disabled",
+  "file": "include/cglm/struct/quat.h",
+  "old": "  glm_normalize_to(q.imag.raw, dest.raw);",
+  "new": "  glm_normalize_to(q.raw, dest.raw);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "cglm",
+  "sha": "af7f8a5436",
+  "subject": "vec4: fix parameter name for NEON",
+  "file": "include/cglm/vec4-ext.h",
+  "old": "  vst1q_f32(dest, vabsq_f32(vld1q_f32(a)));",
+  "new": "  vst1q_f32(dest, vabsq_f32(vld1q_f32(v)));",
+  "coarse": "other-token",
+  "tok": [
+   "a",
+   "v"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 5
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "2ea9308361",
+  "subject": "quat: fix glmc_quat_normalize()",
+  "file": "src/quat.c",
+  "old": "  glm_quat_norm(q);",
+  "new": "  glm_quat_normalize(q);",
+  "coarse": "other-token",
+  "tok": [
+   "glm_quat_norm",
+   "glm_quat_normalize"
+  ],
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "cglm",
+  "sha": "20a2312351",
+  "subject": "fix versor alignment",
+  "file": "include/cglm/quat.h",
+  "old": "  CGLM_ALIGN(8) versor conj;",
+  "new": "  CGLM_ALIGN(16) versor conj;",
+  "coarse": "other-literal",
+  "tok": [
+   "8",
+   "16"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "c148eacdc2",
+  "subject": "fix unproject's parameters",
+  "file": "include/cglm/project.h",
+  "old": "glm_unproject(mat4 m, vec2 vp, vec3 coord, vec3 dest) {",
+  "new": "glm_unproject(mat4 m, vec4 vp, vec3 coord, vec4 dest) {",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 4
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "40458be41b",
+  "subject": "frustum: fix array index",
+  "file": "include/cglm/frustum.h",
+  "old": "  glm_vec4_scale(c[0], 1.0f / c[1][3], dest[0]);",
+  "new": "  glm_vec4_scale(c[0], 1.0f / c[0][3], dest[0]);",
+  "coarse": "off-by-one",
+  "tok": [
+   "1",
+   "0"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": 1,
+  "pos_loop": 5,
+  "per": {
+   "1": 5
+  },
+  "pos_recur_loo": 5,
+  "pos_best": 5,
+  "recur_order": [
+   0,
+   1,
+   2,
+   3,
+   8,
+   9,
+   10,
+   11,
+   12
+  ]
+ },
+ {
+  "repo": "cglm",
+  "sha": "02ec0a1948",
+  "subject": "Fixed missing alignment on MinGW + GCC",
+  "file": "include/cglm/types.h",
+  "old": "#if defined(_WIN32)",
+  "new": "#if defined(_MSC_VER)",
+  "coarse": "other-token",
+  "tok": [
+   "_WIN32",
+   "_MSC_VER"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "991833ab77",
+  "subject": "fix precise matrix inv",
+  "file": "include/cglm-mat.h",
+  "old": "  glm_mat4_inv_precise(mat, dest);",
+  "new": "  glm_mat4_inv(mat, dest);",
+  "coarse": "other-token",
+  "tok": [
+   "glm_mat4_inv_precise",
+   "glm_mat4_inv"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "95cedccbd0",
+  "subject": "fix ending statement",
+  "file": "include/cglm-mat3.h",
+  "old": "        b20 = m2[2][0], b21 = m2[2][1], b22 = m2[2][2],",
+  "new": "        b20 = m2[2][0], b21 = m2[2][1], b22 = m2[2][2];",
+  "coarse": "other-token",
+  "tok": [
+   ",",
+   ";"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 12
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "fb444203b6",
+  "subject": "fix inlining exported function",
+  "file": "src/cglm-vec.c",
+  "old": "CGLM_INLINE",
+  "new": "CGLM_EXPORT",
+  "coarse": "other-token",
+  "tok": [
+   "CGLM_INLINE",
+   "CGLM_EXPORT"
+  ],
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "cglm",
+  "sha": "86c585b9e5",
+  "subject": "vec-ext: fix vec4 min",
+  "file": "include/cglm-vec-ext.h",
+  "old": "  min = glm_vec_max(v);",
+  "new": "  min = glm_vec_min(v);",
+  "coarse": "other-token",
+  "tok": [
+   "glm_vec_max",
+   "glm_vec_min"
+  ],
+  "kinds_on_line": [],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {}
+ },
+ {
+  "repo": "cglm",
+  "sha": "d6cae07602",
+  "subject": "vec-ext: fix vec param type",
+  "file": "include/cglm-vec-ext.h",
+  "old": "glm_vec4_broadcast(float val, vec3 d) {",
+  "new": "glm_vec4_broadcast(float val, vec4 d) {",
+  "coarse": "other-token",
+  "tok": [
+   "vec3",
+   "vec4"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 2
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "072ccf5d63",
+  "subject": "vec: fix assignment op",
+  "file": "include/cglm-vec.h",
+  "old": "    dest[0] = dest[1] = dest[2] = dest[3] == 0.0f;",
+  "new": "    dest[0] = dest[1] = dest[2] = dest[3] = 0.0f;",
+  "coarse": "other-token",
+  "tok": [
+   "==",
+   "="
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 6
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "cd1f1796ac",
+  "subject": "fix rotate make",
+  "file": "include/cglm-affine.h",
+  "old": "  glm_vec_scale(axis_ndc, v[1], m[2]);",
+  "new": "  glm_vec_scale(axis_ndc, v[2], m[2]);",
+  "coarse": "off-by-one",
+  "tok": [
+   "1",
+   "2"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 2
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "e6ba9d6ab0",
+  "subject": "opengl: fix type cast",
+  "file": "include/cglm-opengl.h",
+  "old": "  glUniformMatrix4fv(location, 1, GL_FALSE, (GLfloat *)m);",
+  "new": "  glUniformMatrix4fv(location, 1, GL_FALSE, m[0]);",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 2
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "18a12763d0",
+  "subject": "fix fn call",
+  "file": "include/cglm-cam.h",
+  "old": "  glm_vec_sub3(center, eye, f);",
+  "new": "  glm_vec_sub(center, eye, f);",
+  "coarse": "other-token",
+  "tok": [
+   "glm_vec_sub3",
+   "glm_vec_sub"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 1
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "99481985d4",
+  "subject": "fix print mat4",
+  "file": "include/cglm-util.h",
+  "old": "      fprintf(ostream, \"\\t%0.2f,\", matrix[i][j]);;",
+  "new": "      fprintf(ostream, \"\\t%0.2f,\", matrix[j][i]);;",
+  "coarse": "multi-token",
+  "tok": null,
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 2
+  }
+ },
+ {
+  "repo": "cglm",
+  "sha": "a95ee3423d",
+  "subject": "fix mat3 base type",
+  "file": "include/cglm.h",
+  "old": "typedef float mat3[3];",
+  "new": "typedef vec3 mat3[3];",
+  "coarse": "other-token",
+  "tok": [
+   "float",
+   "vec3"
+  ],
+  "kinds_on_line": [
+   1
+  ],
+  "win_kind": null,
+  "pos_loop": null,
+  "per": {
+   "1": 2
+  }
+ }
+]

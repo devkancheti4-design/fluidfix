@@ -1,0 +1,160 @@
+{
+ "fixture": "F1-single-assert",
+ "route": "SIGHT-law",
+ "correct": [
+  "mod.py",
+  4,
+  "        if x > t:"
+ ],
+ "shipped_file_order": [
+  "mod.py"
+ ],
+ "evidence": {
+  "pointed": [
+   "mod.py"
+  ],
+  "lanes": {
+   "FRAMED": [],
+   "SCARCE": [
+    "mod.py"
+   ],
+   "LITERAL": []
+  }
+ },
+ "file_info": {
+  "mod.py": {
+   "prio": 0,
+   "byte": 90,
+   "specificity": 1.0,
+   "n_fail": 6,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "NAMED",
+    "SMALL"
+   ]
+  }
+ },
+ "line_order": {
+  "mod.py": [
+   2,
+   4,
+   5
+  ]
+ },
+ "line_info": {
+  "mod.py:2": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "mod.py:4": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  "mod.py:5": {
+   "prio": 3,
+   "byte": 40,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  }
+ },
+ "runs_to_correct": {
+  "shipped": 2,
+  "rank-first": 2,
+  "no-sight": 2,
+  "no-rank": 2,
+  "sight-doc-tiebreak": 2
+ },
+ "traces": {
+  "shipped": [
+   [
+    1,
+    "mod.py",
+    2,
+    1,
+    "n = -1"
+   ],
+   [
+    2,
+    "mod.py",
+    4,
+    0,
+    "if x > t:"
+   ]
+  ],
+  "rank-first": [
+   [
+    1,
+    "mod.py",
+    2,
+    1,
+    "n = -1"
+   ],
+   [
+    2,
+    "mod.py",
+    4,
+    0,
+    "if x > t:"
+   ]
+  ],
+  "no-sight": [
+   [
+    1,
+    "mod.py",
+    2,
+    1,
+    "n = -1"
+   ],
+   [
+    2,
+    "mod.py",
+    4,
+    0,
+    "if x > t:"
+   ]
+  ],
+  "no-rank": [
+   [
+    1,
+    "mod.py",
+    2,
+    1,
+    "n = -1"
+   ],
+   [
+    2,
+    "mod.py",
+    4,
+    0,
+    "if x > t:"
+   ]
+  ],
+  "sight-doc-tiebreak": [
+   [
+    1,
+    "mod.py",
+    2,
+    1,
+    "n = -1"
+   ],
+   [
+    2,
+    "mod.py",
+    4,
+    0,
+    "if x > t:"
+   ]
+  ]
+ }
+}

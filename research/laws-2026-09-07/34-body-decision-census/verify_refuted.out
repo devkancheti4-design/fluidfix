@@ -1,0 +1,29 @@
+baseline suite green? False
+
+elapsed 3.7s
+  repaired : False
+  ambiguous: False
+  greens   : ['    return a + b']
+  acts_tried: [8]
+  reason   : a candidate passes, but the search was cut short before it could be shown unique — shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)
+
+--- now guard_once's own expressions, verbatim, on this result ---
+  guard.py:519  acts0 = acts0 or bool(result.acts_tried)  -> True
+                but a candidate PASSED the suite: res.greens = ['    return a + b']
+                engine.py:24 defines REFUTED as 'candidates were generated
+                AND the suite rejected every one'. Not every one was.
+
+  guard.py:538  capped0 -> False   (the DEADLINE cap that repair()
+                just ruled RAISE_BUDGET on is never propagated here)
+  guard.py:539  decide(situation(CAPPED=False, REFUTED=True)) = HARVEST_COUNTEREXAMPLE
+                == 'RAISE_BUDGET'? False  -> escalation SKIPPED
+  guard.py:617  acts0 and decide(situation(REFUTED=True))=='HARVEST_COUNTEREXAMPLE' -> True
+
+  => guard would return status='refused' with hint:
+     "every generated candidate was rejected by the suite
+      (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE)"
+
+  TRUTH: 1 candidate(s) passed; the engine law had already ruled
+         RAISE_BUDGET inside repair(). GuardReport carries no `greens`
+         field and result=None on that return path (guard.py:622), so the
+         passing candidate never reaches the user at all.

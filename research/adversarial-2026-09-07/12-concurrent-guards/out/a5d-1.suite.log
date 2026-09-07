@@ -1,0 +1,26 @@
+.FF..                                                                    [100%]
+=================================== FAILURES ===================================
+_______________________________ test_grade_fail ________________________________
+
+    def test_grade_fail():
+>       assert grade(50) == "F"
+E       AssertionError: assert 'P' == 'F'
+E         
+E         - F
+E         + P
+
+work/a5d-1/tests/test_calc.py:10: AssertionError
+_______________________________ test_grade_pass ________________________________
+
+    def test_grade_pass():
+>       assert grade(70) == "P"
+E       AssertionError: assert 'F' == 'P'
+E         
+E         - P
+E         + F
+
+work/a5d-1/tests/test_calc.py:14: AssertionError
+=========================== short test summary info ============================
+FAILED work/a5d-1/tests/test_calc.py::test_grade_fail - AssertionError: asser...
+FAILED work/a5d-1/tests/test_calc.py::test_grade_pass - AssertionError: asser...
+2 failed, 3 passed in 3.02s

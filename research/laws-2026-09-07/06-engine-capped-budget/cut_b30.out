@@ -1,0 +1,7 @@
+FIXTURE: 76 lines, bug at mod.py:73, first-pass packet lines=73 truncated=False bug_in_packet=True
+RUN: budget=30  first_deadline=10s
+  RULING t=  10.7s           REFUTED (0x40) -> HARVEST_COUNTEREXAMPLE at guard.py:539  [suite runs so far: 41]
+  RULING t=  10.7s           REFUTED (0x40) -> HARVEST_COUNTEREXAMPLE at guard.py:618  [suite runs so far: 41]
+RESULT: budget=30 status=refused elapsed=10.7s suite_runs=41 of 73 candidates
+  hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it'
+  summary='REFUSED: fault is outside the taught vocabulary (candidate files tried: mod.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 41 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it'

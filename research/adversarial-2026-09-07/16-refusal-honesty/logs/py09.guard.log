@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/Users/kanchetidevieswar/neo/fluidfix/.venv/bin/fluidfix", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/cli.py", line 762, in main
+    return args.fn(args)
+           ~~~~~~~^^^^^^
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/cli.py", line 111, in cmd_guard
+    report = guard_once(oracle, observer, coverage_target=args.cov,
+                        candidate_timeout=args.candidate_timeout,
+                        escalate_budget=args.escalate_budget,
+                        budget=args.budget)
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/guard.py", line 478, in guard_once
+    fails, out = oracle.failing_output()
+                 ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/oracle.py", line 247, in failing_output
+    _check_harness(rc, self.extra_args, out, self.root, self.python)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/oracle.py", line 91, in _check_harness
+    raise HarnessError(
+    ...<2 lines>...
+        f"--- last output ---\n{out.strip()[-600:]}")
+fluidfix.oracle.HarnessError: pytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/16-refusal-honesty/fixtures/py/py09_no_tests with no extra args — the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.
+--- last output ---
+no tests ran in 0.00s

@@ -1,0 +1,81 @@
+========================================================================
+A. Does the engine DOCSTRING define RESHAPE or NOTWIN at all?
+========================================================================
+  occurrences of 'RESHAPE' in engine.py __doc__ : 0
+  occurrences of 'NOTWIN'  in engine.py __doc__ : 1
+  the only line mentioning either: 'NOTWIN, HIDDEN and SELF are not yet measured by fluidfix and are never set'
+  bit -> act pairs the docstring states outright: [('BUILT', 'SHIP'), ('AMB', 'ADD_STATE')]
+  bits with NO stated act: ['UNREAD', 'NOTWIN', 'HIDDEN', 'CAPPED', 'REFUTED', 'SELF']
+
+========================================================================
+B. The law's own pairing: single bit i  ->  ACTS[i]?
+========================================================================
+  BUILT    (bit 0) -> SHIP                   ACTS[0]=SHIP                   same-index
+  AMB      (bit 1) -> ADD_STATE              ACTS[1]=ADD_STATE              same-index
+  UNREAD   (bit 2) -> ADD_MATERIAL           ACTS[2]=ADD_MATERIAL           same-index
+  NOTWIN   (bit 3) -> RESHAPE                ACTS[3]=RESHAPE                same-index
+  HIDDEN   (bit 4) -> CHANGE_GRANULARITY     ACTS[4]=CHANGE_GRANULARITY     same-index
+  CAPPED   (bit 5) -> RAISE_BUDGET           ACTS[5]=RAISE_BUDGET           same-index
+  REFUTED  (bit 6) -> HARVEST_COUNTEREXAMPLE ACTS[6]=HARVEST_COUNTEREXAMPLE same-index
+  SELF     (bit 7) -> SHIP                   ACTS[7]=AUTHOR_SUCCESSOR       DIFFERS
+  same-index holds for 7/8 single-bit inputs
+
+========================================================================
+C. Every byte that rules RESHAPE
+========================================================================
+  count: 17 of 256
+  all have NOTWIN set: True
+  all have AMB clear:  True
+  all have UNREAD clear: True
+    x=  8  NOTWIN
+    x=  9  BUILT+NOTWIN
+    x= 25  BUILT+NOTWIN+HIDDEN
+    x= 41  BUILT+NOTWIN+CAPPED
+    x= 57  BUILT+NOTWIN+HIDDEN+CAPPED
+    x= 73  BUILT+NOTWIN+REFUTED
+    x= 89  BUILT+NOTWIN+HIDDEN+REFUTED
+    x=105  BUILT+NOTWIN+CAPPED+REFUTED
+    x=121  BUILT+NOTWIN+HIDDEN+CAPPED+REFUTED
+    x=137  BUILT+NOTWIN+SELF
+    x=153  BUILT+NOTWIN+HIDDEN+SELF
+    x=169  BUILT+NOTWIN+CAPPED+SELF
+    x=185  BUILT+NOTWIN+HIDDEN+CAPPED+SELF
+    x=201  BUILT+NOTWIN+REFUTED+SELF
+    x=217  BUILT+NOTWIN+HIDDEN+REFUTED+SELF
+    x=233  BUILT+NOTWIN+CAPPED+REFUTED+SELF
+    x=249  BUILT+NOTWIN+HIDDEN+CAPPED+REFUTED+SELF
+
+========================================================================
+D. Every byte that MENTIONS NOTWIN, and what it rules
+========================================================================
+  bytes with NOTWIN set: 128
+  their rulings: {'RESHAPE': 17, 'ADD_STATE': 64, 'ADD_MATERIAL': 32, 'AUTHOR_SUCCESSOR': 15}
+  -> RESHAPE requires NOTWIN, but NOTWIN does not imply RESHAPE:
+     AMB and UNREAD outrank it (lowest set bit among bits 1..6 wins).
+
+========================================================================
+E. What NOTWIN would do to the bytes the body actually builds
+========================================================================
+  site                   byte                               ruling                 -> with NOTWIN
+  loop.py:217 _rule      BUILT                              SHIP                   -> RESHAPE
+  loop.py:217 _rule      BUILT+CAPPED                       RAISE_BUDGET           -> RESHAPE
+  loop.py:217 _rule      BUILT+AMB                          ADD_STATE              -> ADD_STATE
+  loop.py:217 _rule      BUILT+AMB+CAPPED                   ADD_STATE              -> ADD_STATE
+  loop.py:391 HIDDEN     HIDDEN                             CHANGE_GRANULARITY     -> AUTHOR_SUCCESSOR
+  guard.py:491 UNREAD    UNREAD                             ADD_MATERIAL           -> ADD_MATERIAL
+  guard.py:612/618       REFUTED                            HARVEST_COUNTEREXAMPLE -> AUTHOR_SUCCESSOR
+  guard.py:539           (empty)                            SHIP                   -> RESHAPE
+  guard.py:539           CAPPED                             RAISE_BUDGET           -> AUTHOR_SUCCESSOR
+  guard.py:539           CAPPED+REFUTED                     RAISE_BUDGET           -> AUTHOR_SUCCESSOR
+  distinct body-constructible bytes here: 10
+  bytes whose ruling CHANGES when NOTWIN is added: 7/10
+
+========================================================================
+F. The one that matters: the shipping byte
+========================================================================
+  BUILT            -> SHIP
+  BUILT+NOTWIN     -> RESHAPE
+  BUILT+AMB        -> ADD_STATE
+  BUILT+AMB+NOTWIN -> ADD_STATE   (AMB outranks NOTWIN: NOTWIN is INVISIBLE once AMB holds)
+  BUILT+CAPPED        -> RAISE_BUDGET
+  BUILT+NOTWIN+CAPPED -> RESHAPE

@@ -1,0 +1,176 @@
+========================================================================
+PART 1  all 256 rulings from decide(situation(...))
+========================================================================
+  SHIP                      4/256
+  ADD_STATE               113/256
+  ADD_MATERIAL             64/256
+  RESHAPE                  17/256
+  CHANGE_GRANULARITY       16/256
+  RAISE_BUDGET             23/256
+  HARVEST_COUNTEREXAMPLE    4/256
+  AUTHOR_SUCCESSOR         15/256
+
+========================================================================
+PART 2  algebraic model  act = (T1 + T2) mod 8
+        T2 = ntz over bits AMB..REFUTED (SELF cleared by x+(x&128)); 0 if none
+        T1 = 4 iff borrow of x-7 lands the lowest set bit at index >= 4:
+             (BUILT=AMB=UNREAD=0 and NOTWIN=1 and any of HIDDEN/CAPPED/REFUTED/SELF)
+          or (BUILT=AMB=UNREAD=1 and NOTWIN=0 and any of HIDDEN/CAPPED/REFUTED/SELF)
+========================================================================
+  model == decide on 256/256 bytes; mismatches: []
+  (4 & ntz(x-7)) + ntz(x+(x&128)) mod 8 == decide on 256/256; mismatches: []
+  job-invariance (bits 8-9 = 0..3): 0/256 bytes differ
+
+========================================================================
+PART 3  precedence ladder: lowest set bit among AMB<UNREAD<NOTWIN<HIDDEN<CAPPED<REFUTED wins
+        BUILT and SELF never win when any of those six is set
+========================================================================
+  single-bit rulings:
+    BUILT    -> SHIP
+    AMB      -> ADD_STATE
+    UNREAD   -> ADD_MATERIAL
+    NOTWIN   -> RESHAPE
+    HIDDEN   -> CHANGE_GRANULARITY
+    CAPPED   -> RAISE_BUDGET
+    REFUTED  -> HARVEST_COUNTEREXAMPLE
+    SELF     -> SHIP
+    (none)   -> SHIP
+  ladder predicts decide on 226/256; exceptions: 30
+  family A (no BUILT/AMB/UNREAD, NOTWIN + any of HIDDEN/CAPPED/REFUTED/SELF): 15
+    NOTWIN+HIDDEN                                 ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+CAPPED                                 ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+HIDDEN+CAPPED                          ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+REFUTED                                ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+HIDDEN+REFUTED                         ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+CAPPED+REFUTED                         ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+HIDDEN+CAPPED+REFUTED                  ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+SELF                                   ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+HIDDEN+SELF                            ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+CAPPED+SELF                            ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+HIDDEN+CAPPED+SELF                     ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+REFUTED+SELF                           ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+HIDDEN+REFUTED+SELF                    ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+CAPPED+REFUTED+SELF                    ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+    NOTWIN+HIDDEN+CAPPED+REFUTED+SELF             ladder=RESHAPE    law=AUTHOR_SUCCESSOR
+  family B (BUILT+AMB+UNREAD, no NOTWIN, + any of HIDDEN/CAPPED/REFUTED/SELF): 15
+    BUILT+AMB+UNREAD+HIDDEN                       ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+CAPPED                       ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+HIDDEN+CAPPED                ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+REFUTED                      ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+HIDDEN+REFUTED               ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+CAPPED+REFUTED               ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+HIDDEN+CAPPED+REFUTED        ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+SELF                         ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+HIDDEN+SELF                  ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+CAPPED+SELF                  ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+HIDDEN+CAPPED+SELF           ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+REFUTED+SELF                 ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+HIDDEN+REFUTED+SELF          ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+CAPPED+REFUTED+SELF          ladder=ADD_STATE  law=RAISE_BUDGET
+    BUILT+AMB+UNREAD+HIDDEN+CAPPED+REFUTED+SELF   ladder=ADD_STATE  law=RAISE_BUDGET
+  exceptions outside A/B: []
+  bytes ruling SHIP: ['(none)', 'BUILT', 'SELF', 'BUILT+SELF']
+  BUILT set but ruling != SHIP: 126/128 (every one has some bit of AMB..REFUTED set: True)
+
+========================================================================
+PART 4  every pair of bits: ruling, and which single-bit ruling it equals
+========================================================================
+  BUILT+AMB          -> ADD_STATE               wins: AMB
+  BUILT+UNREAD       -> ADD_MATERIAL            wins: UNREAD
+  BUILT+NOTWIN       -> RESHAPE                 wins: NOTWIN
+  BUILT+HIDDEN       -> CHANGE_GRANULARITY      wins: HIDDEN
+  BUILT+CAPPED       -> RAISE_BUDGET            wins: CAPPED
+  BUILT+REFUTED      -> HARVEST_COUNTEREXAMPLE  wins: REFUTED
+  BUILT+SELF         -> SHIP                    wins: BUILT/SELF
+  AMB+UNREAD         -> ADD_STATE               wins: AMB
+  AMB+NOTWIN         -> ADD_STATE               wins: AMB
+  AMB+HIDDEN         -> ADD_STATE               wins: AMB
+  AMB+CAPPED         -> ADD_STATE               wins: AMB
+  AMB+REFUTED        -> ADD_STATE               wins: AMB
+  AMB+SELF           -> ADD_STATE               wins: AMB
+  UNREAD+NOTWIN      -> ADD_MATERIAL            wins: UNREAD
+  UNREAD+HIDDEN      -> ADD_MATERIAL            wins: UNREAD
+  UNREAD+CAPPED      -> ADD_MATERIAL            wins: UNREAD
+  UNREAD+REFUTED     -> ADD_MATERIAL            wins: UNREAD
+  UNREAD+SELF        -> ADD_MATERIAL            wins: UNREAD
+  NOTWIN+HIDDEN      -> AUTHOR_SUCCESSOR        wins: NEITHER
+  NOTWIN+CAPPED      -> AUTHOR_SUCCESSOR        wins: NEITHER
+  NOTWIN+REFUTED     -> AUTHOR_SUCCESSOR        wins: NEITHER
+  NOTWIN+SELF        -> AUTHOR_SUCCESSOR        wins: NEITHER
+  HIDDEN+CAPPED      -> CHANGE_GRANULARITY      wins: HIDDEN
+  HIDDEN+REFUTED     -> CHANGE_GRANULARITY      wins: HIDDEN
+  HIDDEN+SELF        -> CHANGE_GRANULARITY      wins: HIDDEN
+  CAPPED+REFUTED     -> RAISE_BUDGET            wins: CAPPED
+  CAPPED+SELF        -> RAISE_BUDGET            wins: CAPPED
+  REFUTED+SELF       -> HARVEST_COUNTEREXAMPLE  wins: REFUTED
+
+========================================================================
+PART 5  every triple containing BUILT (the target's named cases first)
+========================================================================
+  BUILT+AMB+CAPPED             -> ADD_STATE               wins: AMB
+  BUILT+AMB+HIDDEN             -> ADD_STATE               wins: AMB
+  BUILT+AMB+UNREAD             -> ADD_STATE               wins: AMB
+  BUILT+AMB+NOTWIN             -> ADD_STATE               wins: AMB
+  BUILT+AMB+REFUTED            -> ADD_STATE               wins: AMB
+  BUILT+AMB+SELF               -> ADD_STATE               wins: AMB
+  BUILT+UNREAD+NOTWIN          -> ADD_MATERIAL            wins: UNREAD
+  BUILT+UNREAD+HIDDEN          -> ADD_MATERIAL            wins: UNREAD
+  BUILT+UNREAD+CAPPED          -> ADD_MATERIAL            wins: UNREAD
+  BUILT+UNREAD+REFUTED         -> ADD_MATERIAL            wins: UNREAD
+  BUILT+UNREAD+SELF            -> ADD_MATERIAL            wins: UNREAD
+  BUILT+NOTWIN+HIDDEN          -> RESHAPE                 wins: NOTWIN
+  BUILT+NOTWIN+CAPPED          -> RESHAPE                 wins: NOTWIN
+  BUILT+NOTWIN+REFUTED         -> RESHAPE                 wins: NOTWIN
+  BUILT+NOTWIN+SELF            -> RESHAPE                 wins: NOTWIN
+  BUILT+HIDDEN+CAPPED          -> CHANGE_GRANULARITY      wins: HIDDEN
+  BUILT+HIDDEN+REFUTED         -> CHANGE_GRANULARITY      wins: HIDDEN
+  BUILT+HIDDEN+SELF            -> CHANGE_GRANULARITY      wins: HIDDEN
+  BUILT+CAPPED+REFUTED         -> RAISE_BUDGET            wins: CAPPED
+  BUILT+CAPPED+SELF            -> RAISE_BUDGET            wins: CAPPED
+  BUILT+REFUTED+SELF           -> HARVEST_COUNTEREXAMPLE  wins: REFUTED
+
+========================================================================
+PART 6  situations the body can construct today (from the six call sites)
+========================================================================
+  distinct constructible bytes: 10/256
+    (none)                 -> SHIP                    via guard.py:539 escalation gate
+    BUILT                  -> SHIP                    via loop.py:217 _rule()
+    BUILT+AMB              -> ADD_STATE               via loop.py:217 _rule()
+    UNREAD                 -> ADD_MATERIAL            via guard.py:491 no candidates, no pytest-cov
+    HIDDEN                 -> CHANGE_GRANULARITY      via loop.py:391 re-check
+    CAPPED                 -> RAISE_BUDGET            via guard.py:539 escalation gate
+    BUILT+CAPPED           -> RAISE_BUDGET            via loop.py:217 _rule()
+    BUILT+AMB+CAPPED       -> ADD_STATE               via loop.py:217 _rule()
+    REFUTED                -> HARVEST_COUNTEREXAMPLE  via guard.py:539 escalation gate (+1 more site)
+    CAPPED+REFUTED         -> RAISE_BUDGET            via guard.py:539 escalation gate
+  multi-bit constructible bytes (precedence actually exercised): ['BUILT+AMB', 'BUILT+CAPPED', 'BUILT+AMB+CAPPED', 'CAPPED+REFUTED']
+
+========================================================================
+PART 7  intended rulings stated in docstrings/tests/CHANGELOG vs the law
+========================================================================
+  BUILT              intended SHIP                    law SHIP                    OK   [engine.py docstring]
+  BUILT+AMB          intended ADD_STATE               law ADD_STATE               OK   [engine.py docstring; test_rulings_fluidfix_depends_on; CHANGELOG 0.6.0]
+  BUILT+CAPPED       intended RAISE_BUDGET            law RAISE_BUDGET            OK   [loop.py _rule docstring; CHANGELOG 2026-09-04]
+  BUILT+AMB+CAPPED   intended ADD_STATE               law ADD_STATE               OK   [loop.py:236 message cites BUILT+AMB -> ruling on this 3-bit byte]
+  CAPPED+REFUTED     intended RAISE_BUDGET            law RAISE_BUDGET            OK   [test_rulings_fluidfix_depends_on]
+  HIDDEN             intended CHANGE_GRANULARITY      law CHANGE_GRANULARITY      OK   [loop.py:355 comment; CHANGELOG 0.13.0]
+  UNREAD             intended ADD_MATERIAL            law ADD_MATERIAL            OK   [engine.py docstring; guard.py:491]
+  REFUTED            intended HARVEST_COUNTEREXAMPLE  law HARVEST_COUNTEREXAMPLE  OK   [engine.py docstring; guard.py:612]
+  CAPPED             intended RAISE_BUDGET            law RAISE_BUDGET            OK   [engine.py docstring; guard.py:539]
+  9/9 intended rulings match the law
+
+========================================================================
+PART 8  which multi-bit citations the fusion-integrity regex actually audits
+        (tests/test_engine_fusion.py::test_every_cited_ruling_in_the_source_is_a_real_ruling)
+========================================================================
+  guard.py:496  'UNREAD -> ADD_MATERIAL'  law=ADD_MATERIAL            AUDITED
+  guard.py:525  'BUILT+AMB -> ADD_STATE'  law=ADD_STATE               AUDITED
+  guard.py:601  'CAPPED -> RAISE_BUDGET'  law=RAISE_BUDGET            AUDITED
+  guard.py:614  'REFUTED -> HARVEST_COUNTEREXAMPLE'  law=HARVEST_COUNTEREXAMPLE  AUDITED
+  guard.py:620  'REFUTED -> HARVEST_COUNTEREXAMPLE'  law=HARVEST_COUNTEREXAMPLE  AUDITED
+  guard.py:717  'REFUTED -> HARVEST_COUNTEREXAMPLE'  law=HARVEST_COUNTEREXAMPLE  AUDITED
+  loop.py:228  'BUILT -> {ruling}'  law=SHIP                    NOT audited (f-string placeholder)
+  loop.py:237  'BUILT+AMB -> {ruling}'  law=ADD_STATE               NOT audited (f-string placeholder)
+  loop.py:242  'BUILT+CAPPED -> {ruling}'  law=RAISE_BUDGET            NOT audited (f-string placeholder)
+  loop.py:396  'HIDDEN -> {ruling}'  law=CHANGE_GRANULARITY      NOT audited (f-string placeholder)
+  oracle.py:191  'REFUTED -> HARVEST_COUNTEREXAMPLE'  law=HARVEST_COUNTEREXAMPLE  AUDITED

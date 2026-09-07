@@ -1,0 +1,32 @@
+def total():
+    s = 0
+    s = s + 3
+    s = s + 6
+    s = s + 9
+    s = s + 12
+    s = s + 15
+    s = s + 18
+    s = s + 21
+    s = s + 24
+    s = s + 27
+    s = s + 30
+    s = s + 33
+    s = s + 36
+    s = s + 39
+    s = s + 42
+    s = s + 45
+    s = s + 48
+    s = s + 51
+    s = s + 54
+    s = s + 57
+    s = s + 60
+    s = s + 63
+    s = s + 66
+    s = s + 69
+    s = s + 72
+    s = s + 75
+    s = s + 78
+    s = s + 81
+    s = s + 84
+    s = s + 87
+    return s + 1

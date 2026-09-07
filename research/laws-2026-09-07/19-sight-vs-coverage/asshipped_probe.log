@@ -1,0 +1,7 @@
+fast-build test_cmd: ./build/tests | build type mirrored: Release
+_ensure_build ok=True in 2.2s; _test_binary() -> None
+cov.lines() -> 0 files in 0.00s
+  cache: CGLM_USE_TEST:BOOL=OFF
+  cache: CMAKE_BUILD_TYPE:STRING=Release
+  cache: CMAKE_C_FLAGS:STRING=--coverage -O0
+  fast-build cache: CGLM_USE_TEST:BOOL=ON

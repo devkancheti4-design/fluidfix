@@ -1,0 +1,767 @@
+{
+ "shape": "B",
+ "config": "g3",
+ "cfg": {
+  "rung": 3,
+  "confirm": 0
+ },
+ "k": 4,
+ "trials": 30,
+ "counts": {
+  "CORRECT": 29,
+  "REFUSED": 1
+ },
+ "mean_invocations": 12.07,
+ "mean_full_runs": 7.0,
+ "mean_node_runs": 5.07,
+ "mean_seconds": 3.84,
+ "records": [
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 2.92,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 2.96,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 2.73,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.48,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.42,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.55,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 4.07,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.57,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 4.77,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.22,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 6.07,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.57,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 13,
+   "full_runs": 7,
+   "node_runs": 6,
+   "seconds": 4.58,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine",
+     "test_it.py::test_resource"
+    ],
+    "mixed": [],
+    "hidden": false
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.39,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.73,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 4.73,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 4.52,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.21,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 13,
+   "full_runs": 7,
+   "node_runs": 6,
+   "seconds": 5.08,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [],
+    "hidden": false
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.29,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 3.89,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 4.42,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 2.88,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 4.38,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 2.95,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 4.26,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 4.1,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 12,
+   "full_runs": 7,
+   "node_runs": 5,
+   "seconds": 4.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ],
+   "profile": {
+    "always_fail": [
+     "test_it.py::test_combine"
+    ],
+    "mixed": [
+     "test_it.py::test_resource"
+    ],
+    "hidden": true
+   }
+  }
+ ]
+}

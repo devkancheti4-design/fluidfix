@@ -1,0 +1,14 @@
+== unread: REAL law ==
+  [real] status='refused' file=None
+  [real] hint='pytest-cov is not installed in the target interpreter, so coverage-based localisation was unavailable — install it (/Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python -m pip install pytest-cov) and re-run; on large codebases it is how the fault file gets found. (engine law: UNREAD -> ADD_MATERIAL)'
+  [real] attempts=0 result=None
+  [real] candidates=[] (nothing was added in either run)
+== unread: SWAPPED law {'ADD_MATERIAL': 'RESHAPE'} ==
+  [swap] status='refused' file=None
+  [swap] hint=''
+  [swap] attempts=0 result=None
+  [swap] candidates=[] (nothing was added in either run)
+  decide() calls during the swapped run (byte, real ruling, returned):
+    (none)               SHIP                   -> SHIP
+    UNREAD               ADD_MATERIAL           -> RESHAPE
+-- unread: 0.6s wall

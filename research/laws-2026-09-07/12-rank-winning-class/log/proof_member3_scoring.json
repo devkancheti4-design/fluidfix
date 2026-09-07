@@ -1,0 +1,170 @@
+{
+ "name": "proof_member3_scoring",
+ "src": "docs/proof_one_example.py MEMBERS[2]",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "missing-get-default"
+ },
+ "status": "repaired",
+ "file": "scoring.py",
+ "candidate_files": [
+  "scoring.py"
+ ],
+ "evidence": {},
+ "seconds": 2.8,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "scoring.py",
+   "n_obs": 1,
+   "input_order": [
+    2
+   ],
+   "ranked_order": [
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      2,
+      3,
+      4,
+      11
+     ],
+     "classes": [
+      "swapped-return-operands",
+      "flipped-additive",
+      "missing-get-default",
+      "reversed-minus-operands"
+     ],
+     "byte": 45,
+     "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+     "priority": 0,
+     "text": "return round(base - cfg.get(\"penalty\"))"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    2,
+    3,
+    4,
+    11
+   ],
+   "act": 7,
+   "kind": 2,
+   "n": 1,
+   "cands": [
+    "    return cfg.get(\"penalty\")) - round(base"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    2,
+    3,
+    4,
+    11
+   ],
+   "act": 8,
+   "kind": 3,
+   "n": 1,
+   "cands": [
+    "    return round(base + cfg.get(\"penalty\"))"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    2,
+    3,
+    4,
+    11
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "    return round(base - cfg.get(\"penalty\", 0))"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    2,
+    3,
+    4,
+    11
+   ],
+   "act": 0,
+   "kind": 11,
+   "n": 1,
+   "cands": [
+    "    return cfg.get(\"penalty\")) - round(base"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "scoring.py",
+     "old_lines": "2-2",
+     "new": "return round(base + cfg.get(\"penalty\"))"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "scoring.py",
+     "old_lines": "2-2",
+     "new": "return round(base - cfg.get(\"penalty\", 0))"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": true,
+   "changed": [
+    {
+     "file": "scoring.py",
+     "old_lines": "2-2",
+     "new": "return round(base - cfg.get(\"penalty\", 0))"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 3,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    return round(base - cfg.get(\"penalty\", 0))",
+  "old_line": "    return round(base - cfg.get(\"penalty\"))",
+  "kind": 4,
+  "class": "missing-get-default",
+  "act": 9,
+  "first_green_check": 2,
+  "suite_runs": 3,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 0,
+  "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 1,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 3,
+  "kinds_on_line": 4,
+  "class_slot_position": 3,
+  "class_slots_total": 4
+ }
+}

@@ -1,0 +1,7 @@
+ M README.md
+ M include/cglm/bezier.h
+M  src/vec3.c
+?? .fluidfix/
+?? NOTES_WIP.txt
+?? covbuild/
+?? include/cglm/.hostile_scratch

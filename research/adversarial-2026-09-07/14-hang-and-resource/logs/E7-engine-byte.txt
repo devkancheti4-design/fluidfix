@@ -1,0 +1,6 @@
+candidate green, unambiguous (the E6 run)
+  byte = 513 = 0b1000000001  (low 8 = 00000001)  act = SHIP
+same, but if a leaked-process bit existed and were set
+  byte = 521 = 0b1000001001  (low 8 = 00001001)  act = RESHAPE
+
+BITS: ['BUILT', 'AMB', 'UNREAD', 'NOTWIN', 'HIDDEN', 'CAPPED', 'REFUTED', 'SELF']

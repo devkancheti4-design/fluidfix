@@ -1,0 +1,9 @@
+candidates: ['src/rate.c', 'include/rate.h']
+packet mode: affinity lines: [8, 9, 10, 11, 16, 17, 18, 19]
+line 10 kinds=[1, 2]  src='    return units * 8;'
+   kind 1 -> act 6: ['    return units * 7;']
+   kind 2 -> act 7: ['    return 8; * units']
+line 18 kinds=[1, 2, 3]  src='    return fee_for(units) + 25;'
+   kind 1 -> act 6: ['    return fee_for(units) + 24;']
+   kind 2 -> act 7: ['    return 25; + fee_for(units)']
+   kind 3 -> act 8: ['    return fee_for(units) - 25;']

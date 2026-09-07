@@ -1,0 +1,64 @@
+=== every situation the body's call sites can PACK ===
+  x=  1 ['BUILT']                                -> SHIP                   @ loop.py:217  _rule()  [reachable]
+  x=  3 ['BUILT', 'AMB']                         -> ADD_STATE              @ loop.py:217  _rule()  [reachable]
+  x= 33 ['BUILT', 'CAPPED']                      -> RAISE_BUDGET           @ loop.py:217  _rule()  [reachable]
+  x= 35 ['BUILT', 'AMB', 'CAPPED']               -> ADD_STATE              @ loop.py:217  _rule()  [UNREACHABLE]
+  x= 16 ['HIDDEN']                               -> CHANGE_GRANULARITY     @ loop.py:391  HIDDEN re-check  [reachable]
+  x=  4 ['UNREAD']                               -> ADD_MATERIAL           @ guard.py:491 UNREAD pytest-cov  [reachable]
+  x=  0 ['<empty>']                              -> SHIP                   @ guard.py:539 escalation gate  [reachable]
+  x= 32 ['CAPPED']                               -> RAISE_BUDGET           @ guard.py:539 escalation gate  [reachable]
+  x= 64 ['REFUTED']                              -> HARVEST_COUNTEREXAMPLE @ guard.py:539 escalation gate  [reachable]
+  x= 96 ['CAPPED', 'REFUTED']                    -> RAISE_BUDGET           @ guard.py:539 escalation gate  [reachable]
+  x= 64 ['REFUTED']                              -> HARVEST_COUNTEREXAMPLE @ guard.py:612 REFUTED (escalated)  [reachable]
+  x= 64 ['REFUTED']                              -> HARVEST_COUNTEREXAMPLE @ guard.py:618 REFUTED (pass 0)  [reachable]
+
+distinct situations packed:    10/256
+distinct situations reachable: 9/256 -> [0, 1, 3, 4, 16, 32, 33, 64, 96]
+
+=== bits the body can set ===
+  BUILT    SET by body
+  AMB      SET by body
+  UNREAD   SET by body
+  NOTWIN   NEVER SET
+  HIDDEN   SET by body
+  CAPPED   SET by body
+  REFUTED  SET by body
+  SELF     NEVER SET
+
+=== acts the law rules on reachable situations ===
+  SHIP                   ruled on a reachable situation
+  ADD_STATE              ruled on a reachable situation
+  ADD_MATERIAL           ruled on a reachable situation
+  RESHAPE                NEVER RULED for the body
+  CHANGE_GRANULARITY     ruled on a reachable situation
+  RAISE_BUDGET           ruled on a reachable situation
+  HARVEST_COUNTEREXAMPLE ruled on a reachable situation
+  AUTHOR_SUCCESSOR       NEVER RULED for the body
+
+=== full 256 table: which act each situation rules, and how many of each act's situations the body can reach ===
+  SHIP                   rules   4/256 situations; body reaches 2 of them: [0, 1]
+  ADD_STATE              rules 113/256 situations; body reaches 1 of them: [3]
+  ADD_MATERIAL           rules  64/256 situations; body reaches 1 of them: [4]
+  RESHAPE                rules  17/256 situations; body reaches 0 of them: []
+  CHANGE_GRANULARITY     rules  16/256 situations; body reaches 1 of them: [16]
+  RAISE_BUDGET           rules  23/256 situations; body reaches 3 of them: [32, 33, 96]
+  HARVEST_COUNTEREXAMPLE rules   4/256 situations; body reaches 1 of them: [64]
+  AUTHOR_SUCCESSOR       rules  15/256 situations; body reaches 0 of them: []
+
+=== single-bit rulings (the docstring's spec) ===
+  BUILT    (x=  1) -> SHIP
+  AMB      (x=  2) -> ADD_STATE
+  UNREAD   (x=  4) -> ADD_MATERIAL
+  NOTWIN   (x=  8) -> RESHAPE
+  HIDDEN   (x= 16) -> CHANGE_GRANULARITY
+  CAPPED   (x= 32) -> RAISE_BUDGET
+  REFUTED  (x= 64) -> HARVEST_COUNTEREXAMPLE
+  SELF     (x=128) -> SHIP
+
+=== reachable situations, per-site verdict the body branches on ===
+  loop.py:217  _rule(): == "SHIP" (else refuse; message keyed on AMB/CAPPED)
+  loop.py:391  HIDDEN re-check: not branched on: ok=False regardless; ruling interpolated into `why`
+  guard.py:491 UNREAD pytest-cov: == "ADD_MATERIAL" (hint text only)
+  guard.py:539 escalation gate: == "RAISE_BUDGET" (gates depth-first escalation)
+  guard.py:612 REFUTED (escalated): == "HARVEST_COUNTEREXAMPLE" (hint text only)
+  guard.py:618 REFUTED (pass 0): == "HARVEST_COUNTEREXAMPLE" (hint text only)

@@ -1,0 +1,14 @@
+status=repaired file=pkg/render.py seconds=4.2
+candidates (first-pass order): ['pkg/__init__.py', 'pkg/render.py', 'pkg/decoder.py']
+evidence: {}
+bytes handed to the law (first call per file):
+   pkg/__init__.py         75 prio 0  FRAMED|SCARCE|FAILONLY|SMALL
+   pkg/decoder.py          65 prio 0  FRAMED|SMALL
+   pkg/render.py           74 prio 0  SCARCE|FAILONLY|SMALL
+attempts logged: 0
+result: repaired line 3 in 4 suite runs (1.6s):
+  - return s[1:]
+  + return s[0:]
+summary: pkg/render.py: repaired line 3 in 4 suite runs (1.6s):
+  - return s[1:]
+  + return s[0:]

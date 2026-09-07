@@ -1,0 +1,22 @@
+{
+ "repaired": true,
+ "refused": false,
+ "lineno": 5,
+ "old_line": "    return a - b",
+ "new_line": "    return b - a",
+ "acts_tried": [
+  7,
+  8
+ ],
+ "suite_runs": 3,
+ "seconds": 1.940338134765625,
+ "reason": "engine law: BUILT -> SHIP",
+ "ambiguous": false,
+ "greens": [
+  "    return b - a",
+  "    return a + b"
+ ],
+ "tried_log": [],
+ "tried_more": 0,
+ "restored_original": null
+}

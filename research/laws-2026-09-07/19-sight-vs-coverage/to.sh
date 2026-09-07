@@ -1,0 +1,3 @@
+#!/bin/sh
+# timeout substitute for macOS (no coreutils): ./to.sh SECONDS cmd args...
+exec perl -e 'alarm shift; exec @ARGV' "$@"

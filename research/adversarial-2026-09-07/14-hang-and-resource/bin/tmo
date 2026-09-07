@@ -1,0 +1,24 @@
+#!/bin/sh
+# tmo SECONDS CMD... -- no coreutils `timeout` on this host.
+# Runs CMD under nice -n 15 in its OWN process group, and SIGKILLs that whole
+# group after SECONDS. Exit 124 on timeout (coreutils convention).
+S="$1"; shift
+exec perl -e '
+  my $s = shift @ARGV;
+  my $pid = fork();
+  die "fork: $!" unless defined $pid;
+  if ($pid == 0) { setpgrp(0,0); exec("nice","-n","15",@ARGV) or exit 127; }
+  my $rc;
+  eval {
+    local $SIG{ALRM} = sub { die "TMO\n" };
+    alarm $s; waitpid($pid,0); alarm 0; $rc = $?;
+  };
+  if ($@ eq "TMO\n") {
+    kill(9, -$pid); kill(9, $pid);
+    waitpid($pid,0);
+    print STDERR "\n[tmo] TIMEOUT after ${s}s - process group $pid SIGKILLed\n";
+    exit 124;
+  }
+  exit($rc >> 8) if ($rc & 127) == 0;
+  exit(128 + ($rc & 127));
+' "$S" "$@"

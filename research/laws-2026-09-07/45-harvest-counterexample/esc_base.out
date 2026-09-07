@@ -1,0 +1,7 @@
+probe: pass0 packet truncated=True lines=110; escalation packet truncated=False lines=175; lines pass 0 never sees=65
+probe: defect at body line 170 (file line 175), in pass-0 packet: False; decoy file lines: [6, 7, 9, 10, 12, 13, 15, 16]
+tree_fingerprint cost on this fixture: 0.0001s
+RESULT memo=False status=repaired file=acc.py lineno=175 new_line='t = t + 1'
+RESULT memo=False candidates adjudicated (oracle.check)=35 pytest invocations=44 seconds=14.6 suite_runs(RepairResult)=19 memo_skipped=0
+RESULT memo=False on-disk line now: 't = t + 1'
+root: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/45-harvest-counterexample/esc_base_48khjlxv

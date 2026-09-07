@@ -1,0 +1,3 @@
+kinds on the defect line (MechanicalObserver order): [(0, 'strictness'), (10, 'flipped-comparison-direction')]
+kinds given as [0, 10]: repaired=True suite_runs=3 acts_tried=[5, 15] tried_log=['if x <= t:'] greens=['    if x > t:'] new_line='    if x > t:'
+kinds given as [10, 0]: repaired=True suite_runs=3 acts_tried=[5, 15] tried_log=['if x <= t:'] greens=['    if x > t:'] new_line='    if x > t:'

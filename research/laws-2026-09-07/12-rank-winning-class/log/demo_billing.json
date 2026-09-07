@@ -1,0 +1,179 @@
+{
+ "name": "demo_billing",
+ "src": "tests/test_demo_walkthrough.py step3 (no git here)",
+ "group": "shipped",
+ "expect": "repaired",
+ "taught": {},
+ "status": "repaired",
+ "file": "billing.py",
+ "candidate_files": [
+  "billing.py"
+ ],
+ "evidence": {},
+ "seconds": 4.8,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "billing.py",
+   "n_obs": 1,
+   "input_order": [
+    2
+   ],
+   "ranked_order": [
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      1,
+      2,
+      3,
+      11
+     ],
+     "classes": [
+      "literal-off-by-one",
+      "swapped-return-operands",
+      "flipped-additive",
+      "reversed-minus-operands"
+     ],
+     "byte": 44,
+     "bits": "NAMED+SIGNALED+CHEAP",
+     "priority": 2,
+     "text": "return p * (1 - rate)"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    2,
+    3,
+    11
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    return p * (0 - rate)"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    2,
+    3,
+    11
+   ],
+   "act": 7,
+   "kind": 2,
+   "n": 1,
+   "cands": [
+    "    return (1 - rate) * p"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    2,
+    3,
+    11
+   ],
+   "act": 8,
+   "kind": 3,
+   "n": 1,
+   "cands": [
+    "    return p * (1 + rate)"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    2,
+    3,
+    11
+   ],
+   "act": 0,
+   "kind": 11,
+   "n": 1,
+   "cands": [
+    "    return rate) - p * (1"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "billing.py",
+     "old_lines": "2-2",
+     "new": "return p * (0 - rate)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": false,
+   "changed": [
+    {
+     "file": "billing.py",
+     "old_lines": "2-2",
+     "new": "return (1 - rate) * p"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": true,
+   "changed": [
+    {
+     "file": "billing.py",
+     "old_lines": "2-2",
+     "new": "return p * (1 + rate)"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": true,
+   "changed": [
+    {
+     "file": "billing.py",
+     "old_lines": "2-2",
+     "new": "return p * (1 + rate)"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 4,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    return p * (1 + rate)",
+  "old_line": "    return p * (1 - rate)",
+  "kind": 3,
+  "class": "flipped-additive",
+  "act": 8,
+  "first_green_check": 3,
+  "suite_runs": 4,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 2,
+  "bits": "NAMED+SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 1,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 3,
+  "kinds_on_line": 4,
+  "class_slot_position": 3,
+  "class_slots_total": 4
+ }
+}

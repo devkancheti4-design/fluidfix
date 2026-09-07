@@ -1,0 +1,28 @@
+
+=== A1-same-set-one-program
+    green: return payload + 3 + 4
+    green: return payload + 4 + 3
+    VERDICT: ONE PROGRAM   -- identical on all 1005 inputs
+    probe cost: 0.0001s, 1005 evaluations, 0 suite runs
+    fluidfix said: REFUSED as AMBIGUOUS
+
+=== A2-cross-set-one-program
+    green: return units >= 10
+    green: return units > 9
+    VERDICT: ONE PROGRAM   -- identical on all 1005 inputs
+    probe cost: 0.0001s, 1005 evaluations, 0 suite runs
+    fluidfix said: REPAIRED (shipped greens[0])
+
+=== B1-same-set-two-programs
+    green: return opening - spend + income
+    green: return opening + spend - income
+    VERDICT: TWO PROGRAMS  -- balance(-97, -97, -3) = -3 vs -191
+    probe cost: 0.0000s, 2 evaluations, 0 suite runs
+    fluidfix said: REFUSED as AMBIGUOUS
+
+=== B2-cross-set-two-programs
+    green: return tax - subtotal
+    green: return subtotal + tax
+    VERDICT: TWO PROGRAMS  -- total_due(-97, -97) = 0 vs -194
+    probe cost: 0.0000s, 1 evaluations, 0 suite runs
+    fluidfix said: REPAIRED (shipped greens[0])

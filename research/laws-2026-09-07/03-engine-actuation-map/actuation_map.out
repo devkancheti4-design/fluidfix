@@ -1,0 +1,80 @@
+== 1. decide() call sites in the body, and every act each can return ==
+  fluidfix/cli.py:474  selfcheck: five single-bit rulings it pins
+      source: rule_bad = sum(decide(situation(**{k: True})) != v for k, v in rulings.items())
+      can return: ADD_MATERIAL, ADD_STATE, HARVEST_COUNTEREXAMPLE, RAISE_BUDGET, SHIP
+  fluidfix/guard.py:491  no candidate files and pytest-cov absent
+      source: if decide(situation(UNREAD=True)) == "ADD_MATERIAL":
+      can return: ADD_MATERIAL
+  fluidfix/guard.py:539  escalation gate; CAPPED=capped0, REFUTED=acts0
+      source: if escalate and decide(situation(CAPPED=capped0, REFUTED=acts0)) == "RAISE_BUDGET":
+      can return: HARVEST_COUNTEREXAMPLE, RAISE_BUDGET, SHIP
+  fluidfix/guard.py:612  post-escalation refusal wording
+      source: decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
+      can return: HARVEST_COUNTEREXAMPLE
+  fluidfix/guard.py:618  first-pass refusal wording
+      source: decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
+      can return: HARVEST_COUNTEREXAMPLE
+  fluidfix/loop.py:217  _rule(): BUILT always true; AMB = set_amb or len(sites)>1; CAPPED arg
+      source: ruling = decide(situation(BUILT=True,
+      can return: ADD_STATE, RAISE_BUDGET, SHIP
+  fluidfix/loop.py:391  confirm re-runs disagree with the first green
+      source: ruling = decide(situation(HIDDEN=True))
+      can return: CHANGE_GRANULARITY
+
+== 2. every occurrence of each act name in the body ==
+  --- SHIP
+      [str    ] fluidfix/loop.py:199  is BUILT+CAPPED, and the law rules RAISE_BUDGET, not SHIP. Discarding
+      [str    ] fluidfix/loop.py:221  if ruling == "SHIP":
+      [str    ] fluidfix/cli.py:472  rulings = {"BUILT": "SHIP", "AMB": "ADD_STATE", "UNREAD": "ADD_MATERIAL",
+      [comment] fluidfix/loop.py:377  # its own check" and SHIP is the right act for it —
+  --- ADD_STATE
+      [str    ] fluidfix/guard.py:525  if result.ambiguous:                     # engine law: BUILT+AMB -> ADD_STATE
+      [str    ] fluidfix/cli.py:472  rulings = {"BUILT": "SHIP", "AMB": "ADD_STATE", "UNREAD": "ADD_MATERIAL",
+      [comment] fluidfix/loop.py:257  # Both are green, so AMB held and the law's ruling was ADD_STATE: refuse
+  --- ADD_MATERIAL
+      [str    ] fluidfix/guard.py:491  if decide(situation(UNREAD=True)) == "ADD_MATERIAL":
+      [str    ] fluidfix/guard.py:496  "(engine law: UNREAD -> ADD_MATERIAL)")
+      [str    ] fluidfix/cli.py:472  rulings = {"BUILT": "SHIP", "AMB": "ADD_STATE", "UNREAD": "ADD_MATERIAL",
+  --- RESHAPE
+      (no occurrence anywhere in the body)
+  --- CHANGE_GRANULARITY
+      [str    ] fluidfix/loop.py:99  lane fires and rules CHANGE_GRANULARITY — a single run is the wrong
+      [comment] fluidfix/loop.py:307  # the engine law's CHANGE_GRANULARITY act, actuated:
+      [comment] fluidfix/loop.py:363  # CHANGE_GRANULARITY: stop judging at the granularity
+  --- RAISE_BUDGET
+      [str    ] fluidfix/loop.py:199  is BUILT+CAPPED, and the law rules RAISE_BUDGET, not SHIP. Discarding
+      [str    ] fluidfix/guard.py:447  RAISE_BUDGET and the pass retries DEPTH-FIRST — each candidate file in
+      [str    ] fluidfix/guard.py:539  if escalate and decide(situation(CAPPED=capped0, REFUTED=acts0)) == "RAISE_BUDGET":
+      [str    ] fluidfix/guard.py:565  "with CAPPED still ruling RAISE_BUDGET — "
+      [str    ] fluidfix/guard.py:601  result.reason += " (engine law: CAPPED -> RAISE_BUDGET, depth-first)"
+      [str    ] fluidfix/cli.py:473  "CAPPED": "RAISE_BUDGET", "REFUTED": "HARVEST_COUNTEREXAMPLE"}
+      [comment] fluidfix/guard.py:533  # RAISE_BUDGET retries; everything else is an honest, specific stop.
+      [comment] fluidfix/coracle.py:660  # packet is why RAISE_BUDGET exists.
+  --- HARVEST_COUNTEREXAMPLE
+      [str    ] fluidfix/guard.py:612  decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
+      [str    ] fluidfix/guard.py:614  "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — "
+      [str    ] fluidfix/guard.py:618  decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
+      [str    ] fluidfix/guard.py:620  "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the "
+      [str    ] fluidfix/oracle.py:191  harvested (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE). Only a
+      [str    ] fluidfix/cli.py:473  "CAPPED": "RAISE_BUDGET", "REFUTED": "HARVEST_COUNTEREXAMPLE"}
+      [comment] fluidfix/loop.py:58  # the engine law's HARVEST_COUNTEREXAMPLE act, actuated: every rejected
+      [comment] fluidfix/guard.py:50  # engine law HARVEST_COUNTEREXAMPLE, actuated: every candidate rejected
+      [comment] fluidfix/guard.py:717  # engine law: REFUTED -> HARVEST_COUNTEREXAMPLE — what was
+  --- AUTHOR_SUCCESSOR
+      (no occurrence anywhere in the body)
+
+== 3. THE TABLE: act -> actuation status ==
+  ACT                    STATUS        PRODUCIBLE AT                     JUSTIFICATION
+  SHIP                   BEHAVIOURAL   fluidfix/cli.py:474, fluidfix/gu  loop.py:221 `if ruling == "SHIP"` gates _write(path,content) at loop.py:223 -- the only place a repair is committed
+  ADD_STATE              WORDING       fluidfix/cli.py:474, fluidfix/lo  never compared. loop.py:230 `if set_amb or len(sites)>1` is the CODE re-testing the same facts it fed the law; the ruling only fills the message at loop.py:237
+  ADD_MATERIAL           WORDING       fluidfix/cli.py:474, fluidfix/gu  guard.py:491 comparison gates ONLY `hint = ...` (guard.py:492-496). No material is ever added
+  RESHAPE                NONE          -- no call site can return it --  appears only in engine.py:38's ACTS list
+  CHANGE_GRANULARITY     WORDING       fluidfix/loop.py:391              loop.py:391 computes it; loop.py:392 `ok = False` is UNCONDITIONAL; the ruling only fills `why` at loop.py:396. loop.py:307's SpanEdit comment claims the act but consults no ruling
+  RAISE_BUDGET           BEHAVIOURAL   fluidfix/cli.py:474, fluidfix/gu  guard.py:539 `if escalate and decide(...)=="RAISE_BUDGET"` gates the whole depth-first escalation pass (guard.py:540-616). loop.py:242 is wording only
+  HARVEST_COUNTEREXAMPLE WORDING       fluidfix/cli.py:474, fluidfix/gu  guard.py:612 and 618 gate ONLY `hint`. The harvest itself (loop.py:407-410 tried_log) is unconditional and never consults a ruling
+  AUTHOR_SUCCESSOR       NONE          -- no call site can return it --  appears only in engine.py:39's ACTS list
+
+== 4. cross-check: acts.py, named in engine.py's docstring as 'the actuation table' ==
+  engine ACTS names occurring in acts.py: NONE
+  acts.py defines its own ACTS dict of 9 kind->applier entries, keyed by ROUTER act codes 0..15 -- a different namespace from the engine law's 8 process acts.
+  => acts.py actuates ZERO of the engine law's 8 acts.

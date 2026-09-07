@@ -1,0 +1,30 @@
+{
+ "repaired": false,
+ "refused": true,
+ "lineno": null,
+ "old_line": null,
+ "new_line": null,
+ "acts_tried": [
+  7,
+  8
+ ],
+ "suite_runs": 3,
+ "seconds": 1.267507791519165,
+ "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+ "ambiguous": false,
+ "greens": [],
+ "tried_log": [
+  {
+   "at": "money.py:5",
+   "tried": "    return b - a",
+   "why": "FAILED tests/test_money.py::test_combined - assert 1 == 12"
+  },
+  {
+   "at": "money.py:5",
+   "tried": "    return a + b",
+   "why": "FAILED tests/test_money.py::test_combined - assert 7 == 12"
+  }
+ ],
+ "tried_more": 0,
+ "restored_original": null
+}

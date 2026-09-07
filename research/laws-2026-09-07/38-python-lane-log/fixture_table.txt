@@ -1,0 +1,48 @@
+test file              test                                         outcome  fil cnd  engine bytes -> rulings (site)     sight      rank    
+--------------------------------------------------------------------------------------------------------------------------------------------
+acts                   test_guard_repairs_minmax_swap_end_to_end    repaired   2   1  0x01->SHIP@l217                    0          3       
+context_transforms     test_multiline_logic_fix_from_one_example    repaired   2   1  0x01->SHIP@l217                    -          0,3     
+context_transforms     test_multiline_logic_fix_from_one_example    repaired   2   1  0x01->SHIP@l217                    -          0,3     
+context_transforms     test_whole_algorithm_fix_from_one_example    repaired   2   1  0x01->SHIP@l217                    0          3       
+context_transforms     test_whole_algorithm_fix_from_one_example    repaired   2   1  0x01->SHIP@l217                    0          3       
+context_transforms     test_two_coordinated_wrong_lines_refuse      refused    2   1  0x40->HARV@g539, 0x40->HARV@g618   0          3       
+demo_walkthrough       test_step2_green_suite_untouched             green      4   0  - (law never consulted)            -          -       
+demo_walkthrough       test_step3_guard_repairs_and_commits_without repaired   4   1  0x01->SHIP@l217                    0          2       
+demo_walkthrough       test_step4_novel_class_refused_with_signal   refused    4   1  0x40->HARV@g539, 0x40->HARV@g618   -          0,2     
+demo_walkthrough       test_step5_and_6_dictionary_frees_the_class  repaired   5   1  0x01->SHIP@l217                    -          0,2     
+demo_walkthrough       test_step5_and_6_dictionary_frees_the_class  repaired   7   1  0x01->SHIP@l217                    -          0,3     
+demo_walkthrough       test_step7_library_api                       repaired   5   1  0x01->SHIP@l217                    -          0,2     
+dictionary             test_dictionary_teaches_a_class_the_cli_can_ repaired   3   1  0x01->SHIP@l217                    -          0,3     
+dry_run                test_dry_run_proposes_restores_and_patch_app repaired   2   1  0x01->SHIP@l217                    0          3       
+dry_run                test_dry_run_without_git_falls_back_to_diffl repaired   2   1  0x01->SHIP@l217                    0          3       
+dry_run                test_dry_run_refusal_behaves_exactly_as_toda refused    2   1  0x00->SHIP@g539                    2          -       
+dry_run                test_dry_run_returns_after_proposing_even_wi repaired   2   1  0x01->SHIP@l217                    0          3       
+engine_fusion          test_ambiguous_greens_refuse_with_add_state  refused    2   1  0x03->ADD_@l217                    0          3       
+engine_fusion          test_unambiguous_single_green_still_ships    repaired   2   1  0x01->SHIP@l217                    0          3       
+engine_fusion          test_capped_escalation_raises_budget_and_rep repaired   2   1  0x01->SHIP@l217, 0x60->RAIS@g539   0          3       
+engine_fusion          test_refuted_refusal_does_not_escalate       refused    2   1  0x40->HARV@g539, 0x40->HARV@g618   2          3       
+guard                  test_guard_finds_file_and_repairs_without_be repaired   2   1  0x01->SHIP@l217                    0          3       
+guard                  test_guard_follows_traceback_frames          repaired   2   1  0x01->SHIP@l217                    -          0,3     
+guard                  test_guard_green_touches_nothing             green      2   0  - (law never consulted)            -          -       
+guard                  test_guard_refuses_novel_class_loudly_and_un refused    2   1  0x00->SHIP@g539                    2          -       
+guard                  test_guard_commit_records_the_restoration    repaired   2   1  0x01->SHIP@l217                    0          3       
+guard                  test_repair_reports_restored_original_proven repaired   2   1  0x01->SHIP@l217                    0          3       
+guard                  test_stale_refusal_cleared_on_green_or_repai repaired   2   1  0x01->SHIP@l217                    0          3       
+guard                  test_stale_refusal_cleared_on_green_or_repai green      2   0  - (law never consulted)            -          -       
+init                   test_init_generates_suite_and_guard_repairs  green      4   0  - (law never consulted)            -          -       
+init                   test_init_generates_suite_and_guard_repairs  repaired   4   1  0x01->SHIP@l217                    -          0,3     
+span_edits             test_span_fixes_two_coordinated_wrong_lines  repaired   2   1  0x01->SHIP@l217                    0          3       
+span_edits             test_span_leaves_no_dead_code                repaired   2   1  0x01->SHIP@l217                    0          3       
+span_edits             test_span_rejection_rolls_back_byte_exact_cr refused    2   1  0x40->HARV@g539, 0x40->HARV@g618   0          3       
+span_edits             test_span_bounds_and_anchor_safety           repaired   2   1  0x01->SHIP@l217                    0          3       
+span_edits             test_two_green_spans_refuse_ambiguous        refused    2   1  0x03->ADD_@l217                    0          3       
+span_edits             test_refusal_logs_why_each_candidate_failed  refused    2   1  0x40->HARV@g539, 0x40->HARV@g618   0          3       
+span_edits             test_global_budget_is_an_honest_stop         refused    2   1  0x00->SHIP@g539                    0          3       
+span_edits             test_budget_hands_first_pass_over_to_escalat repaired   2   1  0x01->SHIP@l217, 0x60->RAIS@g539   0          3       
+teaching               test_walkthrough_dictionary_repairs_the_inci repaired   3   1  0x01->SHIP@l217                    0          3       
+teaching               test_example_rule_class_missing_get_default  repaired   2   1  0x01->SHIP@l217                    -          0,3     
+teaching               test_example_repo_mined_class_wrong_attribut repaired   2   1  0x01->SHIP@l217                    0          3       
+teaching               test_example_span_class_round_before_accumul repaired   2   1  0x01->SHIP@l217                    0          3       
+
+outcomes: {'repaired': 29, 'refused': 10, 'green': 4}
+total guard wall seconds: 527.1

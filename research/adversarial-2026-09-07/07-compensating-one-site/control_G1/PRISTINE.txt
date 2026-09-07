@@ -1,0 +1,4 @@
+    return matrix[0][1]
+CONTROL: the SAME kind of two-different-programs situation, but both greens
+land inside ONE candidate set (kind 1 proposes matrix[0][1] and matrix[1][0]).
+set_amb is then provable and fluidfix must refuse.

@@ -1,0 +1,162 @@
+[
+ {
+  "repo": "01-py-flat-green",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/01-py-flat-green",
+  "extra": "",
+  "rc": 0,
+  "wall": 1.1,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  2 passed in 0.07s\n  suite runtime: 0.56s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  2.1s - 11s\n  harder localisation (up to 80 runs):             ~85s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "02-py-flat-red",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/02-py-flat-red",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.64,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed, 1 passed in 0.02s\n  suite runtime: 0.31s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.6s - 8s\n  harder localisation (up to 80 runs):             ~65s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "03-py-src-layout-uninstalled",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/03-py-src-layout-uninstalled",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.65,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 error in 0.17s\n  suite runtime: 0.46s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.9s - 10s\n  harder localisation (up to 80 runs):             ~77s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "04-py-no-tests",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/04-py-no-tests",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.83,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/04-py-no-tests with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\nno tests ran in 0.04s\n"
+ },
+ {
+  "repo": "05-py-unittest-nonglob",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/05-py-unittest-nonglob",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.72,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/05-py-unittest-nonglob with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\nno tests ran in 0.02s\n"
+ },
+ {
+  "repo": "06-py-all-skipped",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/06-py-all-skipped",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.58,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/06-py-all-skipped with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\n1 skipped in 0.02s\n"
+ },
+ {
+  "repo": "07-py-bad-addopts",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/07-py-bad-addopts",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.49,
+  "verdict": "REFUSAL",
+  "missing": "a pytest invocation this repo's config accepts",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest usage/configuration error (exit 4) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/07-py-bad-addopts with no extra args\n--- last output ---\nERROR: usage: python -m pytest [options] [file_or_dir] [file_or_dir] [...]\npython -m pytest: error: unrecognized arguments: --nonexistent-option\n  inifile: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/07-py-bad-addopts/pytest.ini\n  rootdir: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/07-py-bad-addopts\n"
+ },
+ {
+  "repo": "08-py-slow-suite",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/08-py-slow-suite",
+  "extra": "--suite-timeout 5",
+  "rc": 1,
+  "wall": 5.2,
+  "verdict": "REFUSAL",
+  "missing": "suite runtime (suite exceeded --suite-timeout)",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  your suite did not finish within --suite-timeout (5s).\n\nEXPECTED REPAIR TIME on this repo\n  unmeasurable here, and that IS the answer: at >5s per run even a\n  2-run repair costs over 0 minutes. Guard a fast subset instead --\n  pass test paths after the root, or raise --suite-timeout if the suite\n  really is that long and you accept the cost.\n"
+ },
+ {
+  "repo": "09-js-node",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/09-js-node",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.46,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/09-js-node with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\nno tests ran in 0.01s\n"
+ },
+ {
+  "repo": "10-c-cmake",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/10-c-cmake",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.39,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/10-c-cmake with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\nno tests ran in 0.01s\n"
+ },
+ {
+  "repo": "11-java-maven",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/11-java-maven",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.39,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/11-java-maven with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\nno tests ran in 0.01s\n"
+ },
+ {
+  "repo": "12-py-midsize",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/12-py-midsize",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.38,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed, 42 passed in 0.03s\n  suite runtime: 0.22s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~58s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "13-py-all-skipped-runtime",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/13-py-all-skipped-runtime",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.36,
+  "verdict": "REFUSAL",
+  "missing": "a summary line naming passed/failed/error counts",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  pytest ran but reported no test results, so this repo has nothing\n  for fluidfix to be judged by yet. Run `fluidfix init` to generate a\n  starter smoke suite, then estimate again.\n"
+ },
+ {
+  "repo": "01-py-flat-green",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/01-py-flat-green",
+  "extra": "--python /usr/bin/python3",
+  "rc": 1,
+  "wall": 0.19,
+  "verdict": "REFUSAL",
+  "missing": "a pytest importable by the target interpreter",
+  "out": "timing your suite (one run, /usr/bin/python3)...\n  the suite did not run, so there is nothing to time.\n\nthe interpreter running your suite has no pytest, so no test has been judged.\n  interpreter: /usr/bin/python3\n  fix: point fluidfix at your project's interpreter --\n       fluidfix ... --python /path/to/venv/bin/python\n  (or install pytest into the interpreter above)\n"
+ },
+ {
+  "repo": "15-go-module",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/15-go-module",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.36,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/15-go-module with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\nno tests ran in 0.01s\n"
+ },
+ {
+  "repo": "16-rust-crate",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/16-rust-crate",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.37,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/repos/16-rust-crate with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\nno tests ran in 0.01s\n"
+ }
+]

@@ -1,0 +1,16 @@
+records: 16  from the body: 6  direct from tests: 10
+
+tests during which the BODY consulted the law: 6
+   tests/test_regressions.py::test_crlf_file_untouched_on_refusal_and_preserved_on_repair
+   tests/test_regressions.py::test_teach_a_new_class_from_one_registration
+   tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies
+   tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib
+   tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today
+   tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval
+
+body consultations: site, x, bits -> act (count)
+  guard.py:539   x=  0 <empty>              -> SHIP                   x1
+  loop.py:217    x=  1 BUILT                -> SHIP                   x5
+
+distinct situations the body constructed: [0, 1]
+distinct sites: ['guard.py:539', 'loop.py:217']

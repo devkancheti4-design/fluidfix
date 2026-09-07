@@ -1,0 +1,45 @@
+# fixture framed -> /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/20-sight-misdirection/work/framed-guard
+# failing: True
+# failing output (tail, ANSI stripped by the body; shown raw here):
+   | F
+   | =================================== FAILURES ===================================
+   | __________________________________ test_total __________________________________
+   | 
+   |     def test_total():
+   | >       assert api.total(2, 5) == 7
+   |                ^^^^^^^^^^^^^^^
+   | 
+   | tests/test_api.py:5: 
+   | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+   | 
+   | a = 2, b = 5
+   | 
+   |     def total(a, b):
+   |         value = core.combine(a, b)
+   |         if value < 0:
+   | >           raise ValueError("total went negative: " + str(value))
+   | E           ValueError: total went negative: -3
+   | 
+   | pkg/api.py:35: ValueError
+   | =========================== short test summary info ============================
+   | FAILED tests/test_api.py::test_total - ValueError: total went negative: -3
+   | !!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+   | 1 failed in 0.02s
+
+# find_candidate_files order (what guard_once's first pass walks):
+   1. pkg/api.py         SIGHT NOT CONSULTED (traceback-frame branch)
+# evidence: {"pointed": ["pkg/api.py"], "lanes": {"FRAMED": ["pkg/api.py"]}}
+# SIGHT consulted for 0 file(s)
+
+# per-file ledger (order walked):
+    {"file": "pkg/api.py", "suite_runs": 12, "repair_s": 2.4, "packet_s": 0.5, "acts": [8, 5, 6, 15, 6, 1, 1, 7, 8, 7, 8], "rejected": 11, "repaired": false, "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary "}
+# suite runs on WRONG files: 12, on the repaired file: 0
+
+# guard_once(budget=None) -> status=refused file=None seconds=3.1
+# candidates: ['pkg/api.py']
+# rejected candidates by file (tried_log, capped at 64/file): {"pkg/api.py": 11}
+# first rejected candidate record: {"at": "pkg/api.py:35", "tried": "        raise ValueError(\"total went negative: \" - str(value))", "why": "FAILED tests/test_api.py::test_total - TypeError: unsupported operand type(s)..."}
+# hint: 'every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it'
+# summary():
+   | REFUSED: fault is outside the taught vocabulary (candidate files tried: pkg/api.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 11 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+   |   hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it

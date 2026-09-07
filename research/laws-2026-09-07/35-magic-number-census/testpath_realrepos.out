@@ -1,0 +1,13 @@
+
+box2d: oracle source files under its test tree: 18
+  recognised by _is_test_path: 17
+  ESCAPE (fluidfix may edit its own oracle): 1
+    test/main.c
+
+cglm: oracle source files under its test tree: 42
+  recognised by _is_test_path: 38
+  ESCAPE (fluidfix may edit its own oracle): 4
+    test/runner.c
+    test/tests.h
+    test/include/common.h
+    test/src/tests.c

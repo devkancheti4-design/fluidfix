@@ -1,0 +1,12 @@
+{
+ "id": 17,
+ "lineno": 52,
+ "kind": 0,
+ "kind_name": "strictness",
+ "act": 5,
+ "orig": "    return attempts < limit",
+ "mutant": "    return attempts <= limit",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

@@ -1,0 +1,16 @@
+byte  bits                   ruling                   ruling with SELF         sites
+   0  (none)                 SHIP                     SHIP                     guard.py:539
+   1  BUILT                  SHIP                     SHIP                     cli.py:474, loop.py:217
+   2  AMB                    ADD_STATE                ADD_STATE                cli.py:474
+   3  BUILT+AMB              ADD_STATE                ADD_STATE                loop.py:217
+   4  UNREAD                 ADD_MATERIAL             ADD_MATERIAL             cli.py:474, guard.py:491
+  16  HIDDEN                 CHANGE_GRANULARITY       CHANGE_GRANULARITY       loop.py:391
+  32  CAPPED                 RAISE_BUDGET             RAISE_BUDGET             cli.py:474, guard.py:539
+  33  BUILT+CAPPED           RAISE_BUDGET             RAISE_BUDGET             loop.py:217
+  35  BUILT+AMB+CAPPED       ADD_STATE                ADD_STATE                loop.py:217
+  64  REFUTED                HARVEST_COUNTEREXAMPLE   HARVEST_COUNTEREXAMPLE   cli.py:474, guard.py:539, guard.py:612/618
+  96  CAPPED+REFUTED         RAISE_BUDGET             RAISE_BUDGET             guard.py:539
+
+constructible bytes today: 11; rulings SELF would change: 0
+bytes on which SELF is live (from algebra_check): 7 (BUILT+AMB+UNREAD) and 8 (NOTWIN)
+  byte 7 constructible today: False   byte 8 constructible today: False

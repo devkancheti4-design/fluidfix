@@ -1,0 +1,10 @@
+trial 1: [14:35:36] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h,
+trial 2: [14:35:47] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h,
+trial 3: [14:35:54] src/fee.c: repaired line 9 in 3 suite runs (1.1s):
+trial 4: [14:36:03] src/fee.c: repaired line 9 in 3 suite runs (0.9s):
+trial 5: [14:36:11] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h,
+trial 6: [14:36:26] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h,
+trial 7: [14:36:33] src/fee.c: repaired line 9 in 3 suite runs (1.5s):
+trial 8: [14:36:47] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h,
+trial 9: [14:36:54] src/fee.c: repaired line 9 in 3 suite runs (1.7s):
+trial 10: [14:37:06] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h,

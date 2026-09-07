@@ -1,0 +1,38 @@
+=== fixture: f09-symlink-out
+=== root:    /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/13-stale-and-symlink/fixtures/f09-symlink-out/repo
+=== extra:   
+BEFORE ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154162215 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154162215
+BEFORE ./pkg/geom.py
+  content-sha256: 2e8ddced48d3bbb0f6e58b907720bb4da5d2cbb1b3c908713eaf4a77845cb41c
+  stat(name):     mode=lrwxr-xr-x inode=154162222 nlink=1 size=21
+  lstat(name):    mode=lrwxr-xr-x inode=154162222
+  symlink -> ../../outside/geom.py
+BEFORE ./tests/test_geom.py
+  content-sha256: 4a7765cd023ca3fbded5cb878a10cb28188aae677b93c0ff6f0fe0aa4b1535c8
+  stat(name):     mode=-rw-r--r-- inode=154162217 nlink=1 size=117
+  lstat(name):    mode=-rw-r--r-- inode=154162217
+=== guard run ===
+[14:35:04] REFUSED: fault is outside the taught vocabulary (candidate files tried: none found). teach it once: docs/TEACHING.md (or run: fluidfix kinds)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/13-stale-and-symlink/fixtures/f09-symlink-out/repo/.fluidfix/last_refusal.json
+=== guard exit: 2 ===
+AFTER ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154162215 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154162215
+AFTER ./pkg/geom.py
+  content-sha256: 2e8ddced48d3bbb0f6e58b907720bb4da5d2cbb1b3c908713eaf4a77845cb41c
+  stat(name):     mode=lrwxr-xr-x inode=154162222 nlink=1 size=21
+  lstat(name):    mode=lrwxr-xr-x inode=154162222
+  symlink -> ../../outside/geom.py
+AFTER ./tests/test_geom.py
+  content-sha256: 4a7765cd023ca3fbded5cb878a10cb28188aae677b93c0ff6f0fe0aa4b1535c8
+  stat(name):     mode=-rw-r--r-- inode=154162217 nlink=1 size=117
+  lstat(name):    mode=-rw-r--r-- inode=154162217
+=== leftovers in .fluidfix ===
+total 8
+drwxr-xr-x@ 3 kanchetidevieswar  staff   96 Sep  7 14:35 .
+drwxr-xr-x@ 7 kanchetidevieswar  staff  224 Sep  7 14:35 ..
+-rw-r--r--@ 1 kanchetidevieswar  staff  208 Sep  7 14:35 last_refusal.json

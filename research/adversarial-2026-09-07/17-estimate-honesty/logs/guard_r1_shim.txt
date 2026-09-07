@@ -1,0 +1,3 @@
+[14:36:15] pkg/billing.py: repaired line 2 in 3 suite runs (1.6s):
+  - return amount >= limit
+  + return amount > limit

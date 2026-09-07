@@ -1,0 +1,15 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "engine", "site": "test_law_never_ruled_wrong.py:57", "sit": 513, "byte": 1, "bits": ["BUILT"], "ruling": "SHIP", "test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record"}
+{"law": "engine", "site": "test_law_never_ruled_wrong.py:57", "sit": 513, "byte": 1, "bits": ["BUILT"], "ruling": "SHIP", "test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record"}
+{"law": "engine", "site": "test_law_never_ruled_wrong.py:57", "sit": 515, "byte": 3, "bits": ["BUILT", "AMB"], "ruling": "ADD_STATE", "test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record"}
+{"law": "engine", "site": "test_law_never_ruled_wrong.py:57", "sit": 544, "byte": 32, "bits": ["CAPPED"], "ruling": "RAISE_BUDGET", "test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record"}
+{"law": "engine", "site": "test_law_never_ruled_wrong.py:57", "sit": 576, "byte": 64, "bits": ["REFUTED"], "ruling": "HARVEST_COUNTEREXAMPLE", "test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record"}
+{"law": "engine", "site": "test_law_never_ruled_wrong.py:57", "sit": 516, "byte": 4, "bits": ["UNREAD"], "ruling": "ADD_MATERIAL", "test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record"}
+{"law": "engine", "site": "test_law_never_ruled_wrong.py:57", "sit": 528, "byte": 16, "bits": ["HIDDEN"], "ruling": "CHANGE_GRANULARITY", "test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record"}
+{"law": "engine", "site": "test_law_never_ruled_wrong.py:57", "sit": 576, "byte": 64, "bits": ["REFUTED"], "ruling": "HARVEST_COUNTEREXAMPLE", "test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_law_never_ruled_wrong.py::test_no_defect_has_ever_lived_in_the_ruling"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_law_never_ruled_wrong.py::test_the_audit_carries_real_incidents_not_only_clean_cases"}
+{"law": "engine", "site": "test_law_never_ruled_wrong.py:76", "sit": 513, "byte": 1, "bits": ["BUILT"], "ruling": "SHIP", "test": "tests/test_law_never_ruled_wrong.py::test_ship_is_not_a_veto_and_amb_is_the_brake"}
+{"law": "engine", "site": "test_law_never_ruled_wrong.py:77", "sit": 515, "byte": 3, "bits": ["BUILT", "AMB"], "ruling": "ADD_STATE", "test": "tests/test_law_never_ruled_wrong.py::test_ship_is_not_a_veto_and_amb_is_the_brake"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_law_never_ruled_wrong.py::test_ship_is_not_a_veto_and_amb_is_the_brake"}

@@ -1,0 +1,12 @@
+file-level (what the body measures)   n_fail  n_full  specificity
+  pkg/__init__.py             1       1   1.00
+  pkg/core.py                 7      12   0.58
+  pkg/parser.py               7      14   0.50
+  pkg/shell.py                9       9   1.00
+  pkg/types.py               18      99   0.18
+  pkg/utils.py                7       9   0.78
+
+function-level (unmeasured by the body today)
+  function                         n_fail  n_full  spec   verdict
+  pkg/shell.py:render                   3       3   1.00   FAILONLY (>=0.9)
+  pkg/types.py:truncate                 5       5   1.00   FAILONLY (>=0.9)

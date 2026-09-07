@@ -1,0 +1,111 @@
+{
+ "name": "ref_proof_control",
+ "src": "docs/proof_one_example.py CONTROL",
+ "group": "refusal",
+ "expect": "refused",
+ "taught": {
+  "4": "missing-get-default"
+ },
+ "status": "refused",
+ "file": null,
+ "candidate_files": [
+  "shipping.py"
+ ],
+ "evidence": {
+  "pointed": [
+   "shipping.py"
+  ],
+  "lanes": {
+   "FRAMED": [],
+   "SCARCE": [
+    "shipping.py"
+   ],
+   "LITERAL": []
+  }
+ },
+ "seconds": 2.8,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists each one with the test that killed it",
+ "rank_calls": [
+  {
+   "rel": "shipping.py",
+   "n_obs": 1,
+   "input_order": [
+    2
+   ],
+   "ranked_order": [
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      1,
+      2
+     ],
+     "classes": [
+      "literal-off-by-one",
+      "swapped-return-operands"
+     ],
+     "byte": 44,
+     "bits": "NAMED+SIGNALED+CHEAP",
+     "priority": 2,
+     "text": "return w * 3"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    2
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    return w * 2"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    2
+   ],
+   "act": 7,
+   "kind": 2,
+   "n": 1,
+   "cands": [
+    "    return 3 * w"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "shipping.py",
+     "old_lines": "2-2",
+     "new": "return w * 2"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": false,
+   "changed": [
+    {
+     "file": "shipping.py",
+     "old_lines": "2-2",
+     "new": "return 3 * w"
+    }
+   ]
+  }
+ ],
+ "suite_runs": null,
+ "winner": null
+}

@@ -1,0 +1,919 @@
+[
+ [
+  {
+   "file": "src/aabb.c",
+   "line": 45,
+   "old": " - ",
+   "new": " + ",
+   "text": "float t1 = ( a.lowerBound.x - p.x ) * inv_d;"
+  },
+  {
+   "file": "src/aabb.c",
+   "line": 46,
+   "old": " - ",
+   "new": " + ",
+   "text": "float t2 = ( a.upperBound.x - p.x ) * inv_d;"
+  },
+  {
+   "file": "src/aabb.c",
+   "line": 88,
+   "old": " - ",
+   "new": " + ",
+   "text": "float t1 = ( a.lowerBound.y - p.y ) * inv_d;"
+  },
+  {
+   "file": "src/aabb.c",
+   "line": 89,
+   "old": " - ",
+   "new": " + ",
+   "text": "float t2 = ( a.upperBound.y - p.y ) * inv_d;"
+  }
+ ],
+ [
+  {
+   "file": "src/bitset.c",
+   "line": 33,
+   "old": " + ",
+   "new": " - ",
+   "text": "uint32_t newBitCapacity = bitCount + ( bitCount >> 1 );"
+  },
+  {
+   "file": "src/bitset.c",
+   "line": 47,
+   "old": " + ",
+   "new": " - ",
+   "text": "bitSet->blockCapacity = blockCount + blockCount / 2;"
+  }
+ ],
+ [
+  {
+   "file": "src/distance.c",
+   "line": 84,
+   "old": " + ",
+   "new": " - ",
+   "text": "float f2 = ( d12 * f1 + rd2 ) / dd2;"
+  },
+  {
+   "file": "src/distance.c",
+   "line": 302,
+   "old": " + ",
+   "new": " - ",
+   "text": "float inv_d12 = 1.0f / ( d12_1 + d12_2 );"
+  },
+  {
+   "file": "src/distance.c",
+   "line": 373,
+   "old": " + ",
+   "new": " - ",
+   "text": "float inv_d13 = 1.0f / ( d13_1 + d13_2 );"
+  },
+  {
+   "file": "src/distance.c",
+   "line": 402,
+   "old": " + ",
+   "new": " - ",
+   "text": "float inv_d23 = 1.0f / ( d23_1 + d23_2 );"
+  }
+ ],
+ [
+  {
+   "file": "src/dynamic_tree.c",
+   "line": 67,
+   "old": " + ",
+   "new": " - ",
+   "text": "tree.nodes[i].next = i + 1;"
+  },
+  {
+   "file": "src/dynamic_tree.c",
+   "line": 120,
+   "old": " + ",
+   "new": " - ",
+   "text": "tree->nodes[i].next = i + 1;"
+  },
+  {
+   "file": "src/dynamic_tree.c",
+   "line": 129,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2TreeNode* node = tree->nodes + nodeIndex;"
+  },
+  {
+   "file": "src/dynamic_tree.c",
+   "line": 192,
+   "old": " + ",
+   "new": " - ",
+   "text": "float cost = directCost + inheritedCost;"
+  }
+ ],
+ [
+  {
+   "file": "src/geometry.c",
+   "line": 38,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2Vec2 e2 = b2Sub( vertices[i + 1], origin );"
+  },
+  {
+   "file": "src/geometry.c",
+   "line": 248,
+   "old": " + ",
+   "new": " - ",
+   "text": "massData.mass = circleMass + boxMass;"
+  },
+  {
+   "file": "src/geometry.c",
+   "line": 249,
+   "old": " + ",
+   "new": " - ",
+   "text": "massData.center.x = 0.5f * ( p1.x + p2.x );"
+  },
+  {
+   "file": "src/geometry.c",
+   "line": 250,
+   "old": " + ",
+   "new": " - ",
+   "text": "massData.center.y = 0.5f * ( p1.y + p2.y );"
+  }
+ ],
+ [
+  {
+   "file": "src/hull.c",
+   "line": 236,
+   "old": " + ",
+   "new": " - ",
+   "text": "int i2 = ( i + 1 ) % hull.count;"
+  },
+  {
+   "file": "src/hull.c",
+   "line": 237,
+   "old": " + ",
+   "new": " - ",
+   "text": "int i3 = ( i + 2 ) % hull.count;"
+  },
+  {
+   "file": "src/hull.c",
+   "line": 156,
+   "old": " - ",
+   "new": " + ",
+   "text": "ps[f1] = ps[n - 1];"
+  },
+  {
+   "file": "src/hull.c",
+   "line": 157,
+   "old": " - ",
+   "new": " + ",
+   "text": "n = n - 1;"
+  }
+ ],
+ [
+  {
+   "file": "src/manifold.c",
+   "line": 136,
+   "old": " + ",
+   "new": " - ",
+   "text": "float radius = radiusA + radiusB;"
+  },
+  {
+   "file": "src/manifold.c",
+   "line": 59,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2LocalManifoldPoint* mp = manifold.points + 0;"
+  },
+  {
+   "file": "src/manifold.c",
+   "line": 119,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2LocalManifoldPoint* mp = manifold.points + 0;"
+  },
+  {
+   "file": "src/manifold.c",
+   "line": 136,
+   "old": " + ",
+   "new": " - ",
+   "text": "float radius = radiusA + radiusB;"
+  },
+  {
+   "file": "src/manifold.c",
+   "line": 206,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2LocalManifoldPoint* mp = manifold.points + 0;"
+  }
+ ],
+ [
+  {
+   "file": "src/math_functions.c",
+   "line": 114,
+   "old": " + ",
+   "new": " - ",
+   "text": "float r = 0.024840285f * q + 0.18681418f;"
+  },
+  {
+   "file": "src/math_functions.c",
+   "line": 116,
+   "old": " + ",
+   "new": " - ",
+   "text": "r = r * s + t;"
+  },
+  {
+   "file": "src/math_functions.c",
+   "line": 117,
+   "old": " + ",
+   "new": " - ",
+   "text": "r = r * c + a;"
+  },
+  {
+   "file": "src/math_functions.c",
+   "line": 151,
+   "old": " + ",
+   "new": " - ",
+   "text": "float y = x + B2_PI;"
+  }
+ ],
+ [
+  {
+   "file": "src/revolute_joint.c",
+   "line": 268,
+   "old": " + ",
+   "new": " - ",
+   "text": "float k = iA + iB;"
+  },
+  {
+   "file": "src/revolute_joint.c",
+   "line": 296,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateA = joint->indexA == B2_NULL_INDEX ? &dummyState : context->states + joint->indexA;"
+  },
+  {
+   "file": "src/revolute_joint.c",
+   "line": 297,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateB = joint->indexB == B2_NULL_INDEX ? &dummyState : context->states + joint->indexB;"
+  },
+  {
+   "file": "src/revolute_joint.c",
+   "line": 331,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateA = joint->indexA == B2_NULL_INDEX ? &dummyState : context->states + joint->indexA;"
+  }
+ ],
+ [
+  {
+   "file": "src/shape.c",
+   "line": 44,
+   "old": " + ",
+   "new": " - ",
+   "text": "margin = 0.5f * b2Distance( shape->capsule.center2, shape->capsule.center1 ) + shape->capsule.radius;"
+  },
+  {
+   "file": "src/shape.c",
+   "line": 103,
+   "old": " + ",
+   "new": " - ",
+   "text": "fatAABB.upperBound.x = aabb.upperBound.x + margin;"
+  },
+  {
+   "file": "src/shape.c",
+   "line": 104,
+   "old": " + ",
+   "new": " - ",
+   "text": "fatAABB.upperBound.y = aabb.upperBound.y + margin;"
+  },
+  {
+   "file": "src/shape.c",
+   "line": 241,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ShapeId id = { shape->id + 1, bodyId.world0, shape->generation };"
+  }
+ ],
+ [
+  {
+   "file": "src/constraint_graph.c",
+   "line": 37,
+   "old": " + ",
+   "new": " - ",
+   "text": "int bodyCapacity = b2MaxInt( capacity->staticBodyCount + capacity->dynamicBodyCount, 16 );"
+  },
+  {
+   "file": "src/constraint_graph.c",
+   "line": 43,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + i;"
+  },
+  {
+   "file": "src/constraint_graph.c",
+   "line": 54,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + i;"
+  },
+  {
+   "file": "src/constraint_graph.c",
+   "line": 91,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + i;"
+  }
+ ],
+ [
+  {
+   "file": "src/broad_phase.c",
+   "line": 230,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( proxyKey < queryProxyKey )"
+  },
+  {
+   "file": "src/broad_phase.c",
+   "line": 108,
+   "old": " + ",
+   "new": " - ",
+   "text": "int proxyId = b2DynamicTree_CreateProxy( bp->trees + proxyType, aabb, categoryBits, shapeIndex );"
+  },
+  {
+   "file": "src/broad_phase.c",
+   "line": 301,
+   "old": " + ",
+   "new": " - ",
+   "text": "pair = broadPhase->movePairs + pairIndex;"
+  },
+  {
+   "file": "src/broad_phase.c",
+   "line": 348,
+   "old": " + ",
+   "new": " - ",
+   "text": "queryContext.moveResult = bp->moveResults + i;"
+  },
+  {
+   "file": "src/broad_phase.c",
+   "line": 363,
+   "old": " + ",
+   "new": " - ",
+   "text": "const b2DynamicTree* baseTree = bp->trees + proxyType;"
+  }
+ ],
+ [
+  {
+   "file": "src/contact.c",
+   "line": 599,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( pointCount > 0 )"
+  },
+  {
+   "file": "src/contact.c",
+   "line": 384,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ContactEdge* edgeA = contact->edges + 0;"
+  },
+  {
+   "file": "src/contact.c",
+   "line": 385,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ContactEdge* edgeB = contact->edges + 1;"
+  },
+  {
+   "file": "src/contact.c",
+   "line": 401,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ShapeId shapeIdA = { shapeA->id + 1, worldId, shapeA->generation };"
+  },
+  {
+   "file": "src/contact.c",
+   "line": 402,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ShapeId shapeIdB = { shapeB->id + 1, worldId, shapeB->generation };"
+  }
+ ],
+ [
+  {
+   "file": "src/distance_joint.c",
+   "line": 397,
+   "old": " - ",
+   "new": " + ",
+   "text": "float c = length - joint->length;"
+  },
+  {
+   "file": "src/distance_joint.c",
+   "line": 328,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateA = joint->indexA == B2_NULL_INDEX ? &dummyState : context->states + joint->indexA;"
+  },
+  {
+   "file": "src/distance_joint.c",
+   "line": 329,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateB = joint->indexB == B2_NULL_INDEX ? &dummyState : context->states + joint->indexB;"
+  },
+  {
+   "file": "src/distance_joint.c",
+   "line": 367,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateA = joint->indexA == B2_NULL_INDEX ? &dummyState : context->states + joint->indexA;"
+  },
+  {
+   "file": "src/distance_joint.c",
+   "line": 368,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateB = joint->indexB == B2_NULL_INDEX ? &dummyState : context->states + joint->indexB;"
+  }
+ ],
+ [
+  {
+   "file": "src/physics_world.c",
+   "line": 961,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( timeStep > 0.0f )"
+  },
+  {
+   "file": "src/physics_world.c",
+   "line": 50,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2World* world = b2_worlds + ( id.index1 - 1 );"
+  },
+  {
+   "file": "src/physics_world.c",
+   "line": 66,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2World* world = b2_worlds + ( id.index1 - 1 );"
+  },
+  {
+   "file": "src/physics_world.c",
+   "line": 75,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2World* world = b2_worlds + index;"
+  },
+  {
+   "file": "src/physics_world.c",
+   "line": 83,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2World* world = b2_worlds + index;"
+  }
+ ],
+ [
+  {
+   "file": "src/prismatic_joint.c",
+   "line": 456,
+   "old": " - ",
+   "new": " + ",
+   "text": "float C = translation - joint->targetTranslation;"
+  },
+  {
+   "file": "src/prismatic_joint.c",
+   "line": 367,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateA = joint->indexA == B2_NULL_INDEX ? &dummyState : context->states + joint->indexA;"
+  },
+  {
+   "file": "src/prismatic_joint.c",
+   "line": 368,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateB = joint->indexB == B2_NULL_INDEX ? &dummyState : context->states + joint->indexB;"
+  },
+  {
+   "file": "src/prismatic_joint.c",
+   "line": 421,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateA = joint->indexA == B2_NULL_INDEX ? &dummyState : context->states + joint->indexA;"
+  },
+  {
+   "file": "src/prismatic_joint.c",
+   "line": 422,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateB = joint->indexB == B2_NULL_INDEX ? &dummyState : context->states + joint->indexB;"
+  }
+ ],
+ [
+  {
+   "file": "src/body.c",
+   "line": 28,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( v2 > maxLinearSpeed * maxLinearSpeed )"
+  },
+  {
+   "file": "src/body.c",
+   "line": 71,
+   "old": " + ",
+   "new": " - ",
+   "text": "return (b2BodyId){ bodyId + 1, world->worldId, body->generation };"
+  },
+  {
+   "file": "src/body.c",
+   "line": 327,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyId id = { bodyId + 1, world->worldId, body->generation };"
+  },
+  {
+   "file": "src/body.c",
+   "line": 611,
+   "old": " + ",
+   "new": " - ",
+   "text": "float inertia = massData.rotationalInertia + massData.mass * b2Dot( offset, offset );"
+  },
+  {
+   "file": "src/body.c",
+   "line": 751,
+   "old": " + ",
+   "new": " - ",
+   "text": "fatAABB.upperBound.x = aabb.upperBound.x + margin;"
+  }
+ ],
+ [
+  {
+   "file": "src/contact_solver.c",
+   "line": 2481,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( mp->normalVelocity < negHitThreshold && mp->totalNormalImpulse > 0.0f )"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 30,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + B2_OVERFLOW_INDEX;"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 145,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + B2_OVERFLOW_INDEX;"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 222,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + B2_OVERFLOW_INDEX;"
+  },
+  {
+   "file": "src/contact_solver.c",
+   "line": 410,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = graph->colors + B2_OVERFLOW_INDEX;"
+  }
+ ],
+ [
+  {
+   "file": "src/island.c",
+   "line": 108,
+   "old": " >= ",
+   "new": " < ",
+   "text": "if ( islandA->bodies.count >= islandB->bodies.count )"
+  },
+  {
+   "file": "src/island.c",
+   "line": 141,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ContactLink* link = smallIsland->contacts.data + i;"
+  },
+  {
+   "file": "src/island.c",
+   "line": 156,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2JointLink* link = smallIsland->joints.data + i;"
+  },
+  {
+   "file": "src/island.c",
+   "line": 251,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ContactLink* movedLink = island->contacts.data + removeIndex;"
+  },
+  {
+   "file": "src/island.c",
+   "line": 436,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2Body* bodyA = bodies + bodyIdA;"
+  }
+ ],
+ [
+  {
+   "file": "src/joint.c",
+   "line": 167,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( bodyA->contactCount < bodyB->contactCount )"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 135,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2GraphColor* color = world->constraintGraph.colors + joint->colorIndex;"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 255,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2JointEdge* edgeA = jointA->edges + ( bodyA->headJointKey & 1 );"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 270,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2JointEdge* edgeB = jointB->edges + ( bodyB->headJointKey & 1 );"
+  },
+  {
+   "file": "src/joint.c",
+   "line": 431,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2JointId jointId = { joint->jointId + 1, world->worldId, pair.joint->generation };"
+  }
+ ],
+ [
+  {
+   "file": "src/solver.c",
+   "line": 140,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( b2Dot( v, v ) > maxLinearSpeedSquared )"
+  },
+  {
+   "file": "src/solver.c",
+   "line": 80,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodySim* sim = sims + i;"
+  },
+  {
+   "file": "src/solver.c",
+   "line": 81,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* state = states + i;"
+  },
+  {
+   "file": "src/solver.c",
+   "line": 94,
+   "old": " + ",
+   "new": " - ",
+   "text": "float linearDamping = 1.0f / ( 1.0f + h * sim->linearDamping );"
+  },
+  {
+   "file": "src/solver.c",
+   "line": 95,
+   "old": " + ",
+   "new": " - ",
+   "text": "float angularDamping = 1.0f / ( 1.0f + h * sim->angularDamping );"
+  }
+ ],
+ [
+  {
+   "file": "src/table.c",
+   "line": 105,
+   "old": " + ",
+   "new": " - ",
+   "text": "index = ( index + 1 ) & ( capacity - 1 );"
+  },
+  {
+   "file": "src/table.c",
+   "line": 138,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2SetItem* item = oldItems + i;"
+  },
+  {
+   "file": "src/table.c",
+   "line": 216,
+   "old": " + ",
+   "new": " - ",
+   "text": "j = ( j + 1 ) & ( capacity - 1 );"
+  },
+  {
+   "file": "src/table.c",
+   "line": 98,
+   "old": " - ",
+   "new": " + ",
+   "text": "uint32_t index = (uint32_t)hash & ( capacity - 1 );"
+  }
+ ],
+ [
+  {
+   "file": "src/world_snapshot.c",
+   "line": 239,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( bs->blockCount > 0 )"
+  },
+  {
+   "file": "src/world_snapshot.c",
+   "line": 519,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ChainShape* chain = world->chainShapes.data + i;"
+  },
+  {
+   "file": "src/world_snapshot.c",
+   "line": 540,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2Sensor* s = world->sensors.data + i;"
+  },
+  {
+   "file": "src/world_snapshot.c",
+   "line": 552,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2Island* island = world->islands.data + i;"
+  },
+  {
+   "file": "src/world_snapshot.c",
+   "line": 590,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ChainShape* chain = world->chainShapes.data + i;"
+  }
+ ],
+ [
+  {
+   "file": "src/sensor.c",
+   "line": 140,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2SensorTaskContext* taskContext = world->sensorTaskContexts.data + threadIndex;"
+  },
+  {
+   "file": "src/sensor.c",
+   "line": 223,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2Visitor* s1 = sensor->overlaps1.data + i;"
+  },
+  {
+   "file": "src/sensor.c",
+   "line": 224,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2Visitor* s2 = sensor->overlaps2.data + i;"
+  },
+  {
+   "file": "src/sensor.c",
+   "line": 279,
+   "old": " + ",
+   "new": " - ",
+   "text": "int sensorIndex = (int)( 64 * k + ctz );"
+  }
+ ],
+ [
+  {
+   "file": "src/wheel_joint.c",
+   "line": 267,
+   "old": " + ",
+   "new": " - ",
+   "text": "float km = iA + iB;"
+  },
+  {
+   "file": "src/wheel_joint.c",
+   "line": 294,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateA = joint->indexA == B2_NULL_INDEX ? &dummyState : context->states + joint->indexA;"
+  },
+  {
+   "file": "src/wheel_joint.c",
+   "line": 295,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateB = joint->indexB == B2_NULL_INDEX ? &dummyState : context->states + joint->indexB;"
+  },
+  {
+   "file": "src/wheel_joint.c",
+   "line": 310,
+   "old": " + ",
+   "new": " - ",
+   "text": "float axialImpulse = joint->springImpulse + joint->lowerImpulse - joint->upperImpulse;"
+  }
+ ],
+ [
+  {
+   "file": "src/weld_joint.c",
+   "line": 194,
+   "old": " + ",
+   "new": " - ",
+   "text": "float ka = iA + iB;"
+  },
+  {
+   "file": "src/weld_joint.c",
+   "line": 234,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateA = joint->indexA == B2_NULL_INDEX ? &dummyState : context->states + joint->indexA;"
+  },
+  {
+   "file": "src/weld_joint.c",
+   "line": 235,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateB = joint->indexB == B2_NULL_INDEX ? &dummyState : context->states + joint->indexB;"
+  },
+  {
+   "file": "src/weld_joint.c",
+   "line": 267,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateA = joint->indexA == B2_NULL_INDEX ? &dummyState : context->states + joint->indexA;"
+  }
+ ],
+ [
+  {
+   "file": "src/motor_joint.c",
+   "line": 239,
+   "old": " + ",
+   "new": " - ",
+   "text": "float ka = iA + iB;"
+  },
+  {
+   "file": "src/motor_joint.c",
+   "line": 265,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateA = joint->indexA == B2_NULL_INDEX ? &dummyState : context->states + joint->indexA;"
+  },
+  {
+   "file": "src/motor_joint.c",
+   "line": 266,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodyState* stateB = joint->indexB == B2_NULL_INDEX ? &dummyState : context->states + joint->indexB;"
+  },
+  {
+   "file": "src/motor_joint.c",
+   "line": 272,
+   "old": " + ",
+   "new": " - ",
+   "text": "float angularImpulse = joint->angularVelocityImpulse + joint->angularSpringImpulse;"
+  }
+ ],
+ [
+  {
+   "file": "src/solver_set.c",
+   "line": 161,
+   "old": " > 1 ",
+   "new": " < 1 ",
+   "text": "if ( island->constraintRemoveCount > 0 && island->bodies.count > 1 )"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 47,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2BodySim* simSrc = set->bodySims.data + i;"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 49,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2Body* body = bodies + simSrc->bodyId;"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 108,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2ContactSim* contactSim = set->contactSims.data + i;"
+  },
+  {
+   "file": "src/solver_set.c",
+   "line": 124,
+   "old": " + ",
+   "new": " - ",
+   "text": "b2JointSim* jointSim = set->jointSims.data + i;"
+  }
+ ]
+]

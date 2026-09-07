@@ -1,0 +1,986 @@
+[
+ {
+  "name": "A1_index_vs_strict__pristine_is_index",
+  "module": "gate.py",
+  "pristine": "    return readings[0] > limit",
+  "defect": "    return readings[1] > limit",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return readings[1] >= limit",
+   "    return readings[0] > limit"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return readings[1] >= limit",
+  "baseline_correct": false,
+  "gen": {
+   "file": "gate.py",
+   "lineno": 5,
+   "candidates": [
+    "    return readings[1] >= limit",
+    "    return readings[0] > limit"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "alarm"
+   ],
+   "attempts": [
+    {
+     "function": "alarm",
+     "params": [
+      "readings",
+      "limit"
+     ],
+     "n_seeds": 3,
+     "n_pool": 56,
+     "n_unstable": 0,
+     "n_error": 9,
+     "n_separating": 5,
+     "witness_call": "alarm([3, 7], 3)",
+     "witness_values": [
+      "True",
+      "False"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "alarm",
+   "n_seeds": 3,
+   "n_pool": 56,
+   "n_unstable": 0,
+   "n_separating": 5,
+   "witness_call": "alarm([3, 7], 3)",
+   "witness_values": [
+    "True",
+    "False"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 1,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return readings[0] > limit"
+  ],
+  "after_shipped": "    return readings[0] > limit",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "A2_index_vs_strict__pristine_is_strict",
+  "module": "gate.py",
+  "pristine": "    return readings[1] >= limit",
+  "defect": "    return readings[1] > limit",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return readings[1] >= limit",
+   "    return readings[0] > limit"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return readings[1] >= limit",
+  "baseline_correct": true,
+  "gen": {
+   "file": "gate.py",
+   "lineno": 5,
+   "candidates": [
+    "    return readings[1] >= limit",
+    "    return readings[0] > limit"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "alarm"
+   ],
+   "attempts": [
+    {
+     "function": "alarm",
+     "params": [
+      "readings",
+      "limit"
+     ],
+     "n_seeds": 3,
+     "n_pool": 56,
+     "n_unstable": 0,
+     "n_error": 9,
+     "n_separating": 5,
+     "witness_call": "alarm([3, 7], 3)",
+     "witness_values": [
+      "True",
+      "False"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "alarm",
+   "n_seeds": 3,
+   "n_pool": 56,
+   "n_unstable": 0,
+   "n_separating": 5,
+   "witness_call": "alarm([3, 7], 3)",
+   "witness_values": [
+    "True",
+    "False"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 0,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return readings[1] >= limit"
+  ],
+  "after_shipped": "    return readings[1] >= limit",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "B1_threshold_vs_strict__pristine_is_literal",
+  "module": "parcel.py",
+  "pristine": "    return weight_kg > 20",
+  "defect": "    return weight_kg > 21",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return weight_kg >= 21",
+   "    return weight_kg > 20"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return weight_kg >= 21",
+  "baseline_correct": false,
+  "gen": {
+   "file": "parcel.py",
+   "lineno": 5,
+   "candidates": [
+    "    return weight_kg >= 21",
+    "    return weight_kg > 20"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "surcharge"
+   ],
+   "attempts": [
+    {
+     "function": "surcharge",
+     "params": [
+      "weight_kg"
+     ],
+     "n_seeds": 3,
+     "n_pool": 21,
+     "n_unstable": 0,
+     "n_error": 0,
+     "n_separating": 1,
+     "witness_call": "surcharge(20.5)",
+     "witness_values": [
+      "False",
+      "True"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "surcharge",
+   "n_seeds": 3,
+   "n_pool": 21,
+   "n_unstable": 0,
+   "n_separating": 1,
+   "witness_call": "surcharge(20.5)",
+   "witness_values": [
+    "False",
+    "True"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 1,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return weight_kg > 20"
+  ],
+  "after_shipped": "    return weight_kg > 20",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "B2_threshold_vs_strict__pristine_is_strict",
+  "module": "parcel.py",
+  "pristine": "    return weight_kg >= 21",
+  "defect": "    return weight_kg > 21",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return weight_kg >= 21",
+   "    return weight_kg > 20"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return weight_kg >= 21",
+  "baseline_correct": true,
+  "gen": {
+   "file": "parcel.py",
+   "lineno": 5,
+   "candidates": [
+    "    return weight_kg >= 21",
+    "    return weight_kg > 20"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "surcharge"
+   ],
+   "attempts": [
+    {
+     "function": "surcharge",
+     "params": [
+      "weight_kg"
+     ],
+     "n_seeds": 3,
+     "n_pool": 21,
+     "n_unstable": 0,
+     "n_error": 0,
+     "n_separating": 1,
+     "witness_call": "surcharge(20.5)",
+     "witness_values": [
+      "False",
+      "True"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "surcharge",
+   "n_seeds": 3,
+   "n_pool": 21,
+   "n_unstable": 0,
+   "n_separating": 1,
+   "witness_call": "surcharge(20.5)",
+   "witness_values": [
+    "False",
+    "True"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 0,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return weight_kg >= 21"
+  ],
+  "after_shipped": "    return weight_kg >= 21",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "C1_slice_vs_strict__pristine_is_slice",
+  "module": "report.py",
+  "pristine": "    return sum(values[0:]) > threshold",
+  "defect": "    return sum(values[1:]) > threshold",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return sum(values[1:]) >= threshold",
+   "    return sum(values[0:]) > threshold"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return sum(values[1:]) >= threshold",
+  "baseline_correct": false,
+  "gen": {
+   "file": "report.py",
+   "lineno": 5,
+   "candidates": [
+    "    return sum(values[1:]) >= threshold",
+    "    return sum(values[0:]) > threshold"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "over_budget"
+   ],
+   "attempts": [
+    {
+     "function": "over_budget",
+     "params": [
+      "values",
+      "threshold"
+     ],
+     "n_seeds": 4,
+     "n_pool": 75,
+     "n_unstable": 0,
+     "n_error": 0,
+     "n_separating": 15,
+     "witness_call": "over_budget([4, 4], 7)",
+     "witness_values": [
+      "False",
+      "True"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "over_budget",
+   "n_seeds": 4,
+   "n_pool": 75,
+   "n_unstable": 0,
+   "n_separating": 15,
+   "witness_call": "over_budget([4, 4], 7)",
+   "witness_values": [
+    "False",
+    "True"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 1,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return sum(values[0:]) > threshold"
+  ],
+  "after_shipped": "    return sum(values[0:]) > threshold",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "C2_slice_vs_strict__pristine_is_strict",
+  "module": "report.py",
+  "pristine": "    return sum(values[1:]) >= threshold",
+  "defect": "    return sum(values[1:]) > threshold",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return sum(values[1:]) >= threshold",
+   "    return sum(values[0:]) > threshold"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return sum(values[1:]) >= threshold",
+  "baseline_correct": true,
+  "gen": {
+   "file": "report.py",
+   "lineno": 5,
+   "candidates": [
+    "    return sum(values[1:]) >= threshold",
+    "    return sum(values[0:]) > threshold"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "over_budget"
+   ],
+   "attempts": [
+    {
+     "function": "over_budget",
+     "params": [
+      "values",
+      "threshold"
+     ],
+     "n_seeds": 4,
+     "n_pool": 75,
+     "n_unstable": 0,
+     "n_error": 0,
+     "n_separating": 15,
+     "witness_call": "over_budget([4, 4], 7)",
+     "witness_values": [
+      "False",
+      "True"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "over_budget",
+   "n_seeds": 4,
+   "n_pool": 75,
+   "n_unstable": 0,
+   "n_separating": 15,
+   "witness_call": "over_budget([4, 4], 7)",
+   "witness_values": [
+    "False",
+    "True"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 0,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return sum(values[1:]) >= threshold"
+  ],
+  "after_shipped": "    return sum(values[1:]) >= threshold",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "D1_minmax_vs_strict__pristine_is_max",
+  "module": "window.py",
+  "pristine": "    return max(a, b) > limit",
+  "defect": "    return min(a, b) > limit",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return min(a, b) >= limit",
+   "    return max(a, b) > limit"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return min(a, b) >= limit",
+  "baseline_correct": false,
+  "gen": {
+   "file": "window.py",
+   "lineno": 5,
+   "candidates": [
+    "    return min(a, b) >= limit",
+    "    return max(a, b) > limit"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "passes"
+   ],
+   "attempts": [
+    {
+     "function": "passes",
+     "params": [
+      "a",
+      "b",
+      "limit"
+     ],
+     "n_seeds": 3,
+     "n_pool": 68,
+     "n_unstable": 0,
+     "n_error": 0,
+     "n_separating": 12,
+     "witness_call": "passes(4, 8, 5)",
+     "witness_values": [
+      "False",
+      "True"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "passes",
+   "n_seeds": 3,
+   "n_pool": 68,
+   "n_unstable": 0,
+   "n_separating": 12,
+   "witness_call": "passes(4, 8, 5)",
+   "witness_values": [
+    "False",
+    "True"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 1,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return max(a, b) > limit"
+  ],
+  "after_shipped": "    return max(a, b) > limit",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "D2_minmax_vs_strict__pristine_is_min_ge",
+  "module": "window.py",
+  "pristine": "    return min(a, b) >= limit",
+  "defect": "    return min(a, b) > limit",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return min(a, b) >= limit",
+   "    return max(a, b) > limit"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return min(a, b) >= limit",
+  "baseline_correct": true,
+  "gen": {
+   "file": "window.py",
+   "lineno": 5,
+   "candidates": [
+    "    return min(a, b) >= limit",
+    "    return max(a, b) > limit"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "passes"
+   ],
+   "attempts": [
+    {
+     "function": "passes",
+     "params": [
+      "a",
+      "b",
+      "limit"
+     ],
+     "n_seeds": 3,
+     "n_pool": 68,
+     "n_unstable": 0,
+     "n_error": 0,
+     "n_separating": 12,
+     "witness_call": "passes(4, 8, 5)",
+     "witness_values": [
+      "False",
+      "True"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "passes",
+   "n_seeds": 3,
+   "n_pool": 68,
+   "n_unstable": 0,
+   "n_separating": 12,
+   "witness_call": "passes(4, 8, 5)",
+   "witness_values": [
+    "False",
+    "True"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 0,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return min(a, b) >= limit"
+  ],
+  "after_shipped": "    return min(a, b) >= limit",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "E1_index_vs_additive__pristine_is_index",
+  "module": "payout.py",
+  "pristine": "    return values[0] + bonus",
+  "defect": "    return values[1] + bonus",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return values[0] + bonus",
+   "    return values[1] - bonus"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return values[0] + bonus",
+  "baseline_correct": true,
+  "gen": {
+   "file": "payout.py",
+   "lineno": 5,
+   "candidates": [
+    "    return values[0] + bonus",
+    "    return values[1] - bonus"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "total"
+   ],
+   "attempts": [
+    {
+     "function": "total",
+     "params": [
+      "values",
+      "bonus"
+     ],
+     "n_seeds": 3,
+     "n_pool": 50,
+     "n_unstable": 0,
+     "n_error": 8,
+     "n_separating": 36,
+     "witness_call": "total([9, 5], 2)",
+     "witness_values": [
+      "11",
+      "3"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "total",
+   "n_seeds": 3,
+   "n_pool": 50,
+   "n_unstable": 0,
+   "n_separating": 36,
+   "witness_call": "total([9, 5], 2)",
+   "witness_values": [
+    "11",
+    "3"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 0,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return values[0] + bonus"
+  ],
+  "after_shipped": "    return values[0] + bonus",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "E2_index_vs_additive__pristine_is_minus",
+  "module": "payout.py",
+  "pristine": "    return values[1] - bonus",
+  "defect": "    return values[1] + bonus",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return values[0] + bonus",
+   "    return values[1] - bonus"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return values[0] + bonus",
+  "baseline_correct": false,
+  "gen": {
+   "file": "payout.py",
+   "lineno": 5,
+   "candidates": [
+    "    return values[0] + bonus",
+    "    return values[1] - bonus"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "total"
+   ],
+   "attempts": [
+    {
+     "function": "total",
+     "params": [
+      "values",
+      "bonus"
+     ],
+     "n_seeds": 3,
+     "n_pool": 50,
+     "n_unstable": 0,
+     "n_error": 8,
+     "n_separating": 36,
+     "witness_call": "total([9, 5], 2)",
+     "witness_values": [
+      "11",
+      "3"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "total",
+   "n_seeds": 3,
+   "n_pool": 50,
+   "n_unstable": 0,
+   "n_separating": 36,
+   "witness_call": "total([9, 5], 2)",
+   "witness_values": [
+    "11",
+    "3"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 1,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return values[1] - bonus"
+  ],
+  "after_shipped": "    return values[1] - bonus",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "F1_index_vs_reversal__pristine_is_index",
+  "module": "offsetcalc.py",
+  "pristine": "    return items[0] - offset",
+  "defect": "    return items[1] - offset",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return items[0] - offset",
+   "    return offset - items[1]"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return items[0] - offset",
+  "baseline_correct": true,
+  "gen": {
+   "file": "offsetcalc.py",
+   "lineno": 5,
+   "candidates": [
+    "    return items[0] - offset",
+    "    return offset - items[1]"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "adjust"
+   ],
+   "attempts": [
+    {
+     "function": "adjust",
+     "params": [
+      "items",
+      "offset"
+     ],
+     "n_seeds": 3,
+     "n_pool": 55,
+     "n_unstable": 0,
+     "n_error": 8,
+     "n_separating": 39,
+     "witness_call": "adjust([2, 7], 4)",
+     "witness_values": [
+      "-2",
+      "-3"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "adjust",
+   "n_seeds": 3,
+   "n_pool": 55,
+   "n_unstable": 0,
+   "n_separating": 39,
+   "witness_call": "adjust([2, 7], 4)",
+   "witness_values": [
+    "-2",
+    "-3"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 0,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return items[0] - offset"
+  ],
+  "after_shipped": "    return items[0] - offset",
+  "after_correct": true,
+  "after_suite_runs": 4
+ },
+ {
+  "name": "F2_index_vs_reversal__pristine_is_reversed",
+  "module": "offsetcalc.py",
+  "pristine": "    return offset - items[1]",
+  "defect": "    return items[1] - offset",
+  "sanity_pristine_green": true,
+  "sanity_defect_red": true,
+  "baseline_status": "repaired",
+  "baseline_ambiguous": false,
+  "greens": [
+   "    return items[0] - offset",
+   "    return offset - items[1]"
+  ],
+  "n_greens": 2,
+  "baseline_lineno": 5,
+  "baseline_shipped": "    return items[0] - offset",
+  "baseline_correct": false,
+  "gen": {
+   "file": "offsetcalc.py",
+   "lineno": 5,
+   "candidates": [
+    "    return items[0] - offset",
+    "    return offset - items[1]"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "adjust"
+   ],
+   "attempts": [
+    {
+     "function": "adjust",
+     "params": [
+      "items",
+      "offset"
+     ],
+     "n_seeds": 3,
+     "n_pool": 55,
+     "n_unstable": 0,
+     "n_error": 8,
+     "n_separating": 39,
+     "witness_call": "adjust([2, 7], 4)",
+     "witness_values": [
+      "-2",
+      "-3"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "adjust",
+   "n_seeds": 3,
+   "n_pool": 55,
+   "n_unstable": 0,
+   "n_separating": 39,
+   "witness_call": "adjust([2, 7], 4)",
+   "witness_values": [
+    "-2",
+    "-3"
+   ]
+  },
+  "separation_matrix": [
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "separates": true,
+  "pinned_candidate": 1,
+  "after_status": "repaired",
+  "after_ambiguous": false,
+  "after_greens": [
+   "    return offset - items[1]"
+  ],
+  "after_shipped": "    return offset - items[1]",
+  "after_correct": true,
+  "after_suite_runs": 4
+ }
+]

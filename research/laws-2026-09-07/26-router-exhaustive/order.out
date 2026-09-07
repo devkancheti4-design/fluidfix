@@ -1,0 +1,9 @@
+the loop's walk order is the bitmask's, not the list's:
+  obs.kinds=[0, 1, 10]   mask=0x00403  loop walks [0, 1, 10] -> acts [5, 6, 15]
+  obs.kinds=[1, 0, 10]   mask=0x00403  loop walks [0, 1, 10] -> acts [5, 6, 15]
+  obs.kinds=[10, 1, 0]   mask=0x00403  loop walks [0, 1, 10] -> acts [5, 6, 15]
+
+and the shipped repair follows the walk, not the list:
+  obs.kinds=[0, 1, 10]   repaired=True  greens=['    if n >= 10:', '    if n > 9:']  shipped='if n >= 10:'
+  obs.kinds=[1, 0, 10]   repaired=True  greens=['    if n >= 10:', '    if n > 9:']  shipped='if n >= 10:'
+  obs.kinds=[10, 1, 0]   repaired=True  greens=['    if n >= 10:', '    if n > 9:']  shipped='if n >= 10:'

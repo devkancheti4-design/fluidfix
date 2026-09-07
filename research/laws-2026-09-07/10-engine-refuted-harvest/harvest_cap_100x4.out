@@ -1,0 +1,9 @@
+[run1] N=100 F=4 status=refused seconds=23.9 candidates_actually_tried=400
+[run1] GuardReport.attempts=64  last_refusal.json rejected_candidates=64
+[run1] summary() says: ...': docs/TEACHING.md (or run: fluidfix kinds) 64 candidate(s) were tried and rejected — each is logged with the test that '
+[run2] N=100 F=4 status=refused seconds=27.5 candidates_actually_tried=400
+[run2] GuardReport.attempts=64  last_refusal.json rejected_candidates=64
+[run2] summary() says: ...': docs/TEACHING.md (or run: fluidfix kinds) 64 candidate(s) were tried and rejected — each is logged with the test that '
+run2 harvested exactly the same rejected candidates as run1: True
+run2 suite runs (from summary timing) vs run1: see seconds above
+per-file tally of harvested entries: {'mod0.py': 64, 'mod1.py': 0, 'mod2.py': 0, 'mod3.py': 0}

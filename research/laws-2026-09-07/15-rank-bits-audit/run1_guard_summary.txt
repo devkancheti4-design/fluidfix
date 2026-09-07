@@ -1,0 +1,39 @@
+pytest rc=0  tests=['tests/test_guard.py', 'tests/test_rank_law.py']
+rank_observations calls=7  bytes=21
+
+per-bit set count (of all bytes handed to the law):
+  FRAME         4 / 21
+  FAILONLY      0 / 21
+  NAMED         0 / 21
+  SIGNALED     17 / 21
+  RECENT        5 / 21
+  CHEAP        16 / 21
+  DENSE         0 / 21
+  RETRIED       1 / 21
+
+priority histogram (rank() output):
+  p=0     3
+  p=1     0
+  p=2     0
+  p=3    15
+  p=4     0
+  p=5     0
+  p=6     0
+  p=7     3
+
+byte combinations seen:
+      9  SIGNALED+CHEAP
+      5  SIGNALED+RECENT+CHEAP
+      2  FRAME+SIGNALED+CHEAP
+      2  (none)
+      1  FRAME
+      1  SIGNALED
+      1  FRAME+RETRIED
+
+call-site facts:
+  calls with retried= passed by the body: 0 / 7
+  calls with root= passed:                6 / 7
+  calls whose failing_output had 'File "x.py", line N': 1 / 7
+  calls whose failing_output had 'x.py:N': 6 / 7
+  calls whose failing_output had FAILED/ERROR lines: 6 / 7
+  observations with empty kinds handed to the law: 0

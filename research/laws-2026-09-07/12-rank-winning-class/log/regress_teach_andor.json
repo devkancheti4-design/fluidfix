@@ -1,0 +1,105 @@
+{
+ "name": "regress_teach_andor",
+ "src": "tests/test_regressions.py test_teach_a_new_class_from_one_registration",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "logic-flip"
+ },
+ "status": "repaired",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 4.5,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 1,
+   "input_order": [
+    2
+   ],
+   "ranked_order": [
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      4
+     ],
+     "classes": [
+      "logic-flip"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "return bool(a or b)"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    4
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "    return bool(a and b)"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "return bool(a and b)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "return bool(a and b)"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 2,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    return bool(a and b)",
+  "old_line": "    return bool(a or b)",
+  "kind": 4,
+  "class": "logic-flip",
+  "act": 9,
+  "first_green_check": 1,
+  "suite_runs": 2,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 3,
+  "bits": "SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 1,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 1,
+  "kinds_on_line": 1,
+  "class_slot_position": 1,
+  "class_slots_total": 1
+ }
+}

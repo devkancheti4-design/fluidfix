@@ -1,0 +1,4 @@
+trial 1: A journalled
+  window hit: A ALIVE, journal ABSENT, disk holds:     if score > 59:
+trial=1 hit=1 journal=no line10=if score > 59:             suite_rc=1
+  *** STRANDED RED MUTATION, NO JOURNAL (trial 1) ***

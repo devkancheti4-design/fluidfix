@@ -1,0 +1,4 @@
+CONFIRM  n  mean FULL-suite runs  mean --lf fast-gate runs  mean baseline(-x)  | fluidfix reports suite_runs=
+      0  12         3.00                  3.00               1.00   | 3
+      1  12         4.33                  4.42               1.00   | 3
+      2  12         5.50                  5.75               1.00   | 3

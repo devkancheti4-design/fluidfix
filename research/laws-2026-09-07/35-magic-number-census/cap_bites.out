@@ -1,0 +1,8 @@
+candidate_cap() = 32  (acts.py:376 _CAP_DEFAULT)
+Scanning real source lines for sets the cap would truncate.
+
+lines scanned: 23194
+candidate sets a cap of 32 truncates: 0
+  none on these two trees at the default cap.
+
+And the truncation is invisible to the law: `grep -n 'CAPPED=' src/fluidfix/*.py` returns only guard.py:539, loop.py:219 and pair.py:157 -- none of them fed by candidate_cap().

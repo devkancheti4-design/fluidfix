@@ -1,0 +1,43 @@
+{
+ "id": 21,
+ "lineno": 62,
+ "kind": 12,
+ "kind_name": "flipped-boolean",
+ "act": 1,
+ "orig": "    return {\"cache\": True, \"trace\": False}",
+ "mutant": "    return {\"cache\": False, \"trace\": False}",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 2,
+ "fluidfix_out": "{\n \"repaired\": false,\n \"refused\": true,\n \"lineno\": null,\n \"old_line\": null,\n \"new_line\": null,\n \"acts_tried\": [\n  1\n ],\n \"suite_runs\": 3,\n \"seconds\": 2.4629409313201904,\n \"reason\": \"AMBIGUOUS: 2 candidates at 1 different lines (62) all pass the suite \\u2014 the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)\",\n \"ambiguous\": true,\n \"greens\": [\n  \"    return {\\\"cache\\\": True, \\\"trace\\\": False}\",\n  \"    return {\\\"cache\\\": False, \\\"trace\\\": True}\"\n ],\n \"tried_log\": [],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": false,
+  "refused": true,
+  "lineno": null,
+  "old_line": null,
+  "new_line": null,
+  "acts_tried": [
+   1
+  ],
+  "suite_runs": 3,
+  "seconds": 2.4629409313201904,
+  "reason": "AMBIGUOUS: 2 candidates at 1 different lines (62) all pass the suite \u2014 the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)",
+  "ambiguous": true,
+  "greens": [
+   "    return {\"cache\": True, \"trace\": False}",
+   "    return {\"cache\": False, \"trace\": True}"
+  ],
+  "tried_log": [],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": false,
+ "final_equals_mutant": true,
+ "final_line": "    return {\"cache\": False, \"trace\": False}",
+ "outcome": "refused-tree-restored-to-defect",
+ "greens": [
+  "    return {\"cache\": True, \"trace\": False}",
+  "    return {\"cache\": False, \"trace\": True}"
+ ],
+ "reason": "AMBIGUOUS: 2 candidates at 1 different lines (62) all pass the suite \u2014 the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)"
+}

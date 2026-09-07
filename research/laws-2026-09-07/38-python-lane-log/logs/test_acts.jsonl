@@ -1,0 +1,51 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 0], "bits": [], "ruling": 5, "test": "tests/test_acts.py::test_router_names_the_shipped_acts"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_acts.py::test_router_names_the_shipped_acts"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 2], "bits": [], "ruling": 7, "test": "tests/test_acts.py::test_router_names_the_shipped_acts"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 3], "bits": [], "ruling": 8, "test": "tests/test_acts.py::test_router_names_the_shipped_acts"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 8], "bits": [], "ruling": 13, "test": "tests/test_acts.py::test_router_names_the_shipped_acts"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 9], "bits": [], "ruling": 14, "test": "tests/test_acts.py::test_router_names_the_shipped_acts"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 10], "bits": [], "ruling": 15, "test": "tests/test_acts.py::test_router_names_the_shipped_acts"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 11], "bits": [], "ruling": 0, "test": "tests/test_acts.py::test_router_names_the_shipped_acts"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 12], "bits": [], "ruling": 1, "test": "tests/test_acts.py::test_router_names_the_shipped_acts"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_router_names_the_shipped_acts"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 4], "bits": [], "ruling": 9, "test": "tests/test_acts.py::test_user_kind_slots_stay_free"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 5], "bits": [], "ruling": 10, "test": "tests/test_acts.py::test_user_kind_slots_stay_free"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 6], "bits": [], "ruling": 11, "test": "tests/test_acts.py::test_user_kind_slots_stay_free"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 7], "bits": [], "ruling": 12, "test": "tests/test_acts.py::test_user_kind_slots_stay_free"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_user_kind_slots_stay_free"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_flip_strictness"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_reduce_literal_first_match_legacy"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_reduce_literal_pointer_beats_first_match"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_reduce_literal_preserves_zero_padding"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_swap_return_operands"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_flip_additive_legacy_first_match"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_flip_additive_pointer_closes_the_measured_miss"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_unknown_act_is_noprogress"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_swap_minmax_both_directions"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_swap_minmax_every_occurrence"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_flip_augmented_assign_both_directions"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_flip_comparison_both_directions"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_flip_comparison_every_occurrence_skips_arrows_and_shifts"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_reverse_minus_operands_both_directions"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_reverse_minus_every_occurrence"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_flip_boolean_both_directions"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_flip_boolean_every_occurrence"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_signals_fire_for_the_new_kinds"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 8], "bits": [], "ruling": 13, "test": "tests/test_acts.py::test_register_warns_loudly_when_clobbering_a_shipped_kind"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 4], "bits": [], "ruling": 9, "test": "tests/test_acts.py::test_register_warns_loudly_when_clobbering_a_shipped_kind"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_register_warns_loudly_when_clobbering_a_shipped_kind"}
+{"law": "-", "event": "guard_once:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-19/test_guard_repairs_minmax_swap0", "files": {"test_mod.py": "from mod import largest\n\ndef test_l():\n    assert largest([3, 9, 4]) == 9\n", "mod.py": "def largest(xs):\n    return min(xs)\n"}, "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "sight", "site": "guard.py:280", "byte": 90, "bits": ["SCARCE", "FAILONLY", "NAMED", "SMALL"], "ruling": 0, "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 8], "bits": [], "ruling": 13, "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "rank", "site": "guard.py:406", "byte": 40, "bits": ["SIGNALED", "CHEAP"], "ruling": 3, "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "-", "event": "repair:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-19/test_guard_repairs_minmax_swap0", "file": "mod.py", "n_obs": 1, "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 256, "bits": [], "ruling": 0, "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 256, "bits": [], "ruling": 256, "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 256, "bits": [], "ruling": 0, "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 8], "bits": [], "ruling": 13, "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "engine", "site": "loop.py:217", "sit": 513, "byte": 1, "bits": ["BUILT"], "ruling": "SHIP", "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "-", "event": "repair:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-19/test_guard_repairs_minmax_swap0", "file": "mod.py", "repaired": true, "ambiguous": false, "acts_tried": [13], "reason": "engine law: BUILT -> SHIP", "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "-", "event": "guard_once:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-19/test_guard_repairs_minmax_swap0", "status": "repaired", "file": "mod.py", "candidates": ["mod.py"], "seconds": 3.3512771129608154, "hint": "", "reason": "engine law: BUILT -> SHIP", "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end"}

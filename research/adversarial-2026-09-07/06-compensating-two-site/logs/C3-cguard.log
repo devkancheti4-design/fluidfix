@@ -1,0 +1,5 @@
+  build: cmake --build build -j8
+  test:  ./build/tests
+[14:34:57] src/fee.c: repaired line 9 in 3 suite runs (1.3s):
+  - return units * 8;
+  + return units * 7;

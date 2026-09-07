@@ -1,0 +1,11 @@
+
+== count_above (assertion only, no frame): status=repaired file=mod.py rank() calls=3
+   byte  40 = SIGNALED+CHEAP                   -> rank 3   x3
+
+== join2 (raising fault, traceback frames mod.py): status=repaired file=mod.py rank() calls=2
+   byte  40 = SIGNALED+CHEAP                   -> rank 3   x1
+   byte  41 = FRAME+SIGNALED+CHEAP             -> rank 0   x1
+
+== both (novel class -> refusal): status=refused file=None rank() calls=0
+
+Bits ever set across all three fixtures: ['FRAME', 'SIGNALED', 'CHEAP']

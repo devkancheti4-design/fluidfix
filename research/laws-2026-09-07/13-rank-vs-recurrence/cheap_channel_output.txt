@@ -1,0 +1,16 @@
+unique history lines carrying >=3 kinds (so the [:2] slice can differ): 231
+  FLIPS  box2d  9f3c5c90d1 kinds=[0, 1, 10] | CHEAP=True at [:2]=[0, 10] n=4; CHEAP=False at [:2]=[0, 1] n=8
+         line: if ( separationA > 0.1f * B2_LINEAR_SLOP || separationB > 0.1f * B2_LINEAR_SLO
+  FLIPS  box2d  d1581fb721 kinds=[1, 3, 11] | CHEAP=True at [:2]=[1, 11] n=7; CHEAP=False at [:2]=[1, 3] n=8
+         line: q.c = -( pi2 - 4.0f * y2 ) / ( pi2 + y2 );
+  FLIPS  box2d  d1581fb721 kinds=[1, 3, 11] | CHEAP=True at [:2]=[1, 11] n=7; CHEAP=False at [:2]=[1, 3] n=8
+         line: q.c = ( pi2 - 4.0f * y2 ) / ( pi2 + y2 );
+  FLIPS  box2d  d1581fb721 kinds=[1, 3, 11] | CHEAP=True at [:2]=[3, 11] n=6; CHEAP=False at [:2]=[1, 3] n=12
+         line: q.s = -16.0f * y * ( b2_pi - y ) / ( 5.0f * pi2 - 4.0f * y * ( b2_pi - y ) );
+  FLIPS  box2d  d1581fb721 kinds=[1, 3, 11] | CHEAP=True at [:2]=[3, 11] n=6; CHEAP=False at [:2]=[1, 3] n=12
+         line: q.s = 16.0f * x * ( b2_pi - x ) / ( 5.0f * pi2 - 4.0f * x * ( b2_pi - x ) );
+
+lines (of the 40 examined) where kind ORDER alone flips the CHEAP bit: 5
+CHEAP is bit 5 of the ranking law's byte; flipping it can move a line's
+priority, i.e. the ORDER LINES ARE SEARCHED IN — never the order the
+classes are tried in, which loop.py:283 makes unrepresentable.

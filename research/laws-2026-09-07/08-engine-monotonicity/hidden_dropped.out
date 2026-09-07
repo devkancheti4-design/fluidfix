@@ -1,0 +1,33 @@
+FLUIDFIX_CONFIRM=(unset -> 1), trials=24
+run_00: status=repaired hidden_seen=True greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_01: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_02: status=repaired hidden_seen=True greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_03: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_04: status=repaired hidden_seen=True greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_05: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_06: status=repaired hidden_seen=True greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_07: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_08: status=refused hidden_seen=False greens=2 new_line='' reason='AMBIGUOUS: 2 candidates at 1 different lines (1) all pass the suite — the tests cannot tel'
+run_09: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_10: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_11: status=repaired hidden_seen=True greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_12: status=refused hidden_seen=False greens=2 new_line='' reason='AMBIGUOUS: 2 candidates at 1 different lines (1) all pass the suite — the tests cannot tel'
+run_13: status=repaired hidden_seen=True greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_14: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_15: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_16: status=repaired hidden_seen=True greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_17: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_18: status=repaired hidden_seen=True greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_19: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_20: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_21: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_22: status=repaired hidden_seen=True greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+run_23: status=repaired hidden_seen=False greens=1 new_line='K = 1' reason='engine law: BUILT -> SHIP'
+
+tally (status, HIDDEN observed in tried_log?, shipped line):
+    2  ('refused', 'no HIDDEN', '-')
+    9  ('repaired', 'HIDDEN observed', 'K = 1')
+   13  ('repaired', 'no HIDDEN', 'K = 1')
+
+one HIDDEN `why` as logged (the ruling reaches only this string):
+  green on one run, RED on re-check — the suite does not hold still here, so a single run cannot judge this candidate (engine law: HIDDEN -> CHANGE_GRANULARITY). last failure: FAILED test_mod.py::test_f - AssertionError: flake

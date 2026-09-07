@@ -1,0 +1,22 @@
+build: cmake --build build -j4 | test: ./build/bin/test
+baseline green: True
+  src/contact_solver.c: 2032   1.2s ok=False why='2 test(s) failed, first: MultithreadingTest'
+  src/contact_solver.c: 2032   1.5s ok=False why='suite red'
+  src/contact_solver.c: 2032   1.2s ok=False why='2 test(s) failed, first: MultithreadingTest'
+  src/contact_solver.c:  101   0.2s ok=False why='2 test(s) failed, first: MultithreadingTest'
+  src/contact_solver.c:  126   8.2s ok=True why=''
+  src/contact_solver.c:  131   7.6s ok=True why=''
+  src/contact_solver.c:  159   7.9s ok=True why=''
+  src/contact_solver.c:  160   7.4s ok=True why=''
+  src/contact_solver.c:  243   8.4s ok=True why=''
+  src/contact_solver.c:  244   6.7s ok=True why=''
+  src/contact_solver.c:  283   7.3s ok=True why=''
+  src/contact_solver.c:  302   7.7s ok=True why=''
+restored src/contact_solver.c byte-exact: True
+
+candidates checked: 12
+green (accidentally passing): 8
+rejections: 4  DISTINCT why values: 2
+    3  '2 test(s) failed, first: MultithreadingTest'
+    1  'suite red'
+total wall time 65.4s, mean per candidate 5.45s

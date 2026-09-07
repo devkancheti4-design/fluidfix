@@ -1,0 +1,35 @@
+{
+ "name": "ref_andor_untaught",
+ "src": "tests/test_e2e.py test_failed_repair_restores_source",
+ "group": "refusal",
+ "expect": "refused",
+ "taught": {},
+ "status": "refused",
+ "file": null,
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {
+  "pointed": [],
+  "lanes": {
+   "FRAMED": [],
+   "SCARCE": [],
+   "LITERAL": []
+  }
+ },
+ "seconds": 2.7,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 0,
+   "input_order": [],
+   "ranked_order": [],
+   "rows": []
+  }
+ ],
+ "candidate_calls": [],
+ "checks": [],
+ "suite_runs": null,
+ "winner": null
+}

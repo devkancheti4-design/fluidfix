@@ -1,0 +1,43 @@
+{
+ "id": 13,
+ "lineno": 40,
+ "kind": 1,
+ "kind_name": "literal-off-by-one",
+ "act": 6,
+ "orig": "    return sorted(scores)[-3:]",
+ "mutant": "    return sorted(scores)[-2:]",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 2,
+ "fluidfix_out": "{\n \"repaired\": false,\n \"refused\": true,\n \"lineno\": null,\n \"old_line\": null,\n \"new_line\": null,\n \"acts_tried\": [\n  6\n ],\n \"suite_runs\": 2,\n \"seconds\": 0.7485921382904053,\n \"reason\": \"every candidate left the suite red \\u2014 fault is outside this vocabulary or the observations are wrong\",\n \"ambiguous\": false,\n \"greens\": [],\n \"tried_log\": [\n  {\n   \"at\": \"weakpkg2/core.py:40\",\n   \"tried\": \"    return sorted(scores)[-1:]\",\n   \"why\": \"FAILED tests/test_core.py::test_top_scores_type_and_length - assert (True and...\"\n  }\n ],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": false,
+  "refused": true,
+  "lineno": null,
+  "old_line": null,
+  "new_line": null,
+  "acts_tried": [
+   6
+  ],
+  "suite_runs": 2,
+  "seconds": 0.7485921382904053,
+  "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+  "ambiguous": false,
+  "greens": [],
+  "tried_log": [
+   {
+    "at": "weakpkg2/core.py:40",
+    "tried": "    return sorted(scores)[-1:]",
+    "why": "FAILED tests/test_core.py::test_top_scores_type_and_length - assert (True and..."
+   }
+  ],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": false,
+ "final_equals_mutant": true,
+ "final_line": "    return sorted(scores)[-2:]",
+ "outcome": "refused-tree-restored-to-defect",
+ "greens": [],
+ "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong"
+}

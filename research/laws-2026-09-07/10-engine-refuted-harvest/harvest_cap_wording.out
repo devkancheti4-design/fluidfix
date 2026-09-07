@@ -1,0 +1,15 @@
+N=100 status=refused seconds=34.9
+candidates ACTUALLY tried (oracle.check calls): 101
+GuardReport.attempts (harvest kept):            64
+RepairResult.tried_more (rejections dropped):   unavailable (refusal path attaches no RepairResult)
+last_refusal.json rejected_candidates:          64
+
+summary() tail:
+  ...64 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it
+
+is 'tried_more' mentioned anywhere the user can see it?
+  in summary(): False
+  in last_refusal.json keys: ['candidates', 'hint', 'rejected_candidates', 'seconds', 'status']
+
+fixture root: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/10-engine-refuted-harvest/capword_8zo3xaz6

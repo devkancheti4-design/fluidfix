@@ -745,20 +745,40 @@ def cguard_once(oracle: COracle, observer, candidate_timeout=None,
     except Exception:                                       # noqa: BLE001
         fail_cov = {}
 
+    from .engine import decide, situation
+
     attempts: list = []
+    # The same two bits guard.py packs on the Python path. Both are already in
+    # this function's locals; before 0.15.0 neither was ever handed to the law,
+    # and five cguard runs on cglm produced five refusals and ZERO rulings while
+    # five on Box2D produced one. `packet.truncated` IS the CAPPED bit — the
+    # comment at build_packet_c already said so — and a non-empty `attempts`
+    # with nothing green IS REFUTED.
+    capped = False
+    greens_seen = False
     for rel in candidates:
         if deadline is not None and time.time() > deadline:
+            # the clock stopped the search: CAPPED, whatever else is true
+            ruling = decide(situation(CAPPED=True,
+                                      REFUTED=bool(attempts) and not greens_seen))
             return GuardReport(status="refused", candidates=candidates,
                                seconds=time.time() - t0, attempts=attempts,
-                               hint=f"--budget exhausted ({budget}s)")
+                               hint=(f"--budget exhausted ({budget}s) with "
+                                     f"{len(candidates)} candidate file(s) in "
+                                     f"hand — what it did not try is unknown. "
+                                     f"Raise --budget and re-run "
+                                     f"(engine law: CAPPED -> {ruling})"))
         packet = build_packet_c(oracle, rel, out,
                                 covered=fail_cov.get(rel))
         if packet is None:
             continue
+        capped = capped or packet.truncated
         observations = observer.observe([packet])[0]
         result = repair(oracle, rel, observations,
                         candidate_timeout=candidate_timeout, deadline=deadline)
         attempts += result.tried_log
+        greens_seen = greens_seen or bool(result.greens)
+        capped = capped or result.capped
         if result.repaired:
             return GuardReport(status="repaired", file=rel, result=result,
                                candidates=candidates, seconds=time.time() - t0,
@@ -767,5 +787,26 @@ def cguard_once(oracle: COracle, observer, candidate_timeout=None,
             return GuardReport(status="refused", file=rel, result=result,
                                candidates=candidates, seconds=time.time() - t0,
                                hint=result.reason, attempts=attempts)
+        if result.greens and result.ruling == "RAISE_BUDGET":
+            # the third outcome: a candidate passed and the law said the search
+            # was not finished. Carry its reason rather than dropping it.
+            return GuardReport(status="refused", file=rel, result=result,
+                               candidates=candidates, seconds=time.time() - t0,
+                               hint=result.reason, attempts=attempts)
+    # every candidate file searched and nothing shipped. Ask, do not assert.
+    ruling = decide(situation(CAPPED=capped,
+                              REFUTED=bool(attempts) and not greens_seen))
+    if ruling == "RAISE_BUDGET":
+        hint = ("the packet for at least one candidate file was truncated, so "
+                "the defect line may never have been looked at — raise --budget "
+                f"(engine law: CAPPED -> {ruling})")
+    elif ruling == "HARVEST_COUNTEREXAMPLE":
+        hint = (f"every candidate this vocabulary generated left the suite red "
+                f"({len(attempts)} rejected, each listed with the test that "
+                f"killed it) — the fault is outside it, or the observations are "
+                f"wrong (engine law: REFUTED -> {ruling})")
+    else:
+        hint = (f"nothing in the failure pointed at a repairable line "
+                f"(engine law: {ruling})")
     return GuardReport(status="refused", candidates=candidates,
-                       seconds=time.time() - t0, attempts=attempts)
+                       seconds=time.time() - t0, attempts=attempts, hint=hint)

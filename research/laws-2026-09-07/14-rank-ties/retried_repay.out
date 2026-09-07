@@ -1,0 +1,11 @@
+== guard result ==
+  status=refused file=None seconds=60.9 budget=90 defect_line=265
+  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists what was tried; teach the class o
+== rank_observations calls ==
+  call 0 at +  1.4s: retried kwarg=None n_obs=110 defect at position 109 first10=[2, 3, 4, 6, 8, 12, 14, 16, 18, 22]
+  call 1 at + 31.5s: retried kwarg=None n_obs=135 defect at position 133 first10=[2, 3, 4, 6, 8, 10, 12, 14, 16, 18]
+== suite runs across both passes (report.attempts, capped 64/pass) ==
+  logged rejected candidates: 128
+  distinct (line, candidate) pairs: 76
+  RE-PAID: same (line, candidate) rejected again in a later pass: 52
+  lines touched: 27; most-hit: [('mod.py:4', 6), ('mod.py:6', 6), ('mod.py:8', 6)]

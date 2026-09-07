@@ -1,0 +1,28 @@
+package dir under test: /Users/kanchetidevieswar/neo/fluidfix/src/fluidfix
+
+case                                      S1  S2  S3  SELF
+ordinary repo, source file                 0   0   0     0
+ordinary repo, its OWN test file           0   1   0     1
+fluidfix pointed at itself, src            1   0   0     1
+fluidfix pointed at itself, LAW            1   0   1     1
+Box2D-style repo (no fluidfix inside)      0   0   0     0
+
+If SELF were measured and OR-ed into every byte the body can build today:
+ byte  bits                     ruling                   ruling|SELF              changed
+    0  (none)                   SHIP                     SHIP                     no
+    1  BUILT                    SHIP                     SHIP                     no
+    2  AMB                      ADD_STATE                ADD_STATE                no
+    3  BUILT+AMB                ADD_STATE                ADD_STATE                no
+    4  UNREAD                   ADD_MATERIAL             ADD_MATERIAL             no
+   16  HIDDEN                   CHANGE_GRANULARITY       CHANGE_GRANULARITY       no
+   32  CAPPED                   RAISE_BUDGET             RAISE_BUDGET             no
+   33  BUILT+CAPPED             RAISE_BUDGET             RAISE_BUDGET             no
+   35  BUILT+AMB+CAPPED         ADD_STATE                ADD_STATE                no
+   64  REFUTED                  HARVEST_COUNTEREXAMPLE   HARVEST_COUNTEREXAMPLE   no
+   96  CAPPED+REFUTED           RAISE_BUDGET             RAISE_BUDGET             no
+rulings changed: 0 of 11
+
+The only two bytes where SELF changes the ruling, and what the body
+would additionally have to observe to construct each:
+  byte   7 BUILT+AMB+UNREAD     ADD_STATE -> RAISE_BUDGET   needs: BUILT and AMB and UNREAD in ONE situation() call (no call site sets all three today)
+  byte   8 NOTWIN               RESHAPE -> AUTHOR_SUCCESSOR   needs: NOTWIN — measured nowhere in src/

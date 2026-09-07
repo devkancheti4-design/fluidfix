@@ -1,0 +1,5 @@
+tests/test_teaching.py::test_example_rule_class_missing_get_default
+tests/test_teaching.py::test_example_repo_mined_class_wrong_attribute
+tests/test_teaching.py::test_example_span_class_round_before_accumulate
+
+195 tests collected in 0.05s

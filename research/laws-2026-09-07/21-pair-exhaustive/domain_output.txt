@@ -1,0 +1,21 @@
+1. the documented domain, 0..255
+   masks equal to zero (would hang the port's ctz loop): []
+   outputs outside 0..7: []
+
+2. outside the documented domain (a caller bypassing situation()/observe_bits())
+   inputs probed                     : 8199
+   inputs whose mask is zero         : 35 -> [-768, -766, -764, -762, -760, -758, -756, -754, -752, -750, -748, -746]
+   NOTE: mask==0 means the port's `while low >> 1` loop is entered with
+   low==0 and exits immediately returning 0 == PARTITION; C's
+   __builtin_ctz(0) is undefined behaviour on the same input.
+      x=-768  port returns 0 (PARTITION)
+      x=-766  port returns 0 (PARTITION)
+      x=-764  port returns 0 (PARTITION)
+      x=-762  port returns 0 (PARTITION)
+      x=-760  port returns 0 (PARTITION)
+      x=-758  port returns 0 (PARTITION)
+   inputs returning a NON-ACT index  : 284 -> [(-3840, 8), (-3838, 8), (-3836, 8), (-3834, 8), (-3832, 8), (-3830, 8), (-3828, 8), (-3826, 8), (-3824, 8), (-3822, 8), (-3820, 8), (-3818, 8)]
+
+3. the two documented entry points cannot leave 0..255
+   situation(**all eight bits) = 255
+   observe_bits(all true)      = 255

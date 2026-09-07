@@ -1,0 +1,41 @@
+$ grep -rn "rank_observations" src/ tests/
+src/fluidfix/guard.py:33:           "rank_observations"]
+src/fluidfix/guard.py:340:def rank_observations(src: str, observations: list, failing_output: str,
+src/fluidfix/guard.py:511:        observations = rank_observations("\n".join(packet.src_lines),
+src/fluidfix/guard.py:585:            observations = rank_observations("\n".join(packet.src_lines),
+tests/test_rank_law.py:56:    from fluidfix.guard import rank_observations
+tests/test_rank_law.py:60:    out = rank_observations(src, obs, 'File "mod.py", line 2, in a')
+tests/test_engine_fusion.py:154:def test_rank_observations_failing_test_names_its_subject():
+tests/test_engine_fusion.py:160:    from fluidfix.guard import rank_observations
+tests/test_engine_fusion.py:176:    ranked = rank_observations(src, obs, out)
+tests/test_engine_fusion.py:179:    assert [o.lineno for o in rank_observations(src, obs, "1 failed")] \
+
+$ grep -rn "rank_observations([^)]*retried" src/ tests/
+  (no match)
+
+$ grep -rn "Observation(" src/fluidfix/ | grep -v "def \|class "
+src/fluidfix/observers.py:40:                    obs.append(Observation(lineno=l, kinds=kinds))
+src/fluidfix/observers.py:159:            out.append([Observation(
+
+$ sed -n "37,41p" src/fluidfix/observers.py
+                kinds = [k for k, (_, _, sig) in sorted(KINDS.items())
+                         if sig.search(line)]
+                if kinds:
+                    obs.append(Observation(lineno=l, kinds=kinds))
+            out.append(obs)
+
+$ sed -n "156,160p" src/fluidfix/observers.py   # ClaudeObserver: ONE Observation per packet
+        out = []
+        for i, _ in enumerate(packets):
+            o = raw[i]
+            out.append([Observation(
+                lineno=int(o["lineno"]),
+
+$ grep -n "attempts += result.tried_log\|tried: set\|tried_log) < 64\|tried_more += 1" src/fluidfix/guard.py src/fluidfix/loop.py
+518:        attempts += result.tried_log
+598:            attempts += result.tried_log
+185:    tried: set[tuple[int, str]] = set()
+346:                            if len(res.tried_log) < 64:
+351:                                res.tried_more += 1
+407:                    elif len(res.tried_log) < 64:
+412:                        res.tried_more += 1

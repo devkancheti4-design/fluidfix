@@ -1,0 +1,43 @@
+== raw bytes claimed in the session logs ==
+OK  07 byte passed 513                                         decide(513) = SHIP   (claimed SHIP)
+OK  07 byte owed   515                                         decide(515) = ADD_STATE   (claimed ADD_STATE)
+OK  01 delivered   513                                         decide(513) = SHIP   (claimed SHIP)
+OK  01 owed        517                                         decide(517) = ADD_MATERIAL   (claimed ADD_MATERIAL)
+OK  08 delivered   513                                         decide(513) = SHIP   (claimed SHIP)
+OK  08 measured    545                                         decide(545) = RAISE_BUDGET   (claimed RAISE_BUDGET)
+OK  02 delivered 0x201                                         decide(513) = SHIP   (claimed SHIP)
+OK  02 owed      0x203                                         decide(515) = ADD_STATE   (claimed ADD_STATE)
+OK  03 passed    0x201                                         decide(513) = SHIP   (claimed SHIP)
+OK  03 supported 0x203                                         decide(515) = ADD_STATE   (claimed ADD_STATE)
+OK  05 passed      513                                         decide(513) = SHIP   (claimed SHIP)
+OK  04 byte      0x201                                         decide(513) = SHIP   (claimed SHIP)
+OK  09 byte        513                                         decide(513) = SHIP   (claimed SHIP)
+OK  09 correct     515                                         decide(515) = ADD_STATE   (claimed ADD_STATE)
+OK  04L byte 0x201                                             decide(513) = SHIP   (claimed SHIP)
+OK  04L byte 0x203                                             decide(515) = ADD_STATE   (claimed ADD_STATE)
+OK  06L byte 0x21                                              decide(33) = RAISE_BUDGET   (claimed RAISE_BUDGET)
+OK  01L byte 0 (UNREAD-owed situation packed as no-blocker)    decide(0) = SHIP   (claimed SHIP)
+
+== the same situations packed through situation(**obs) ==
+OK  BUILT                      situation=513   decide = SHIP   (claimed SHIP)
+OK  BUILT+AMB                  situation=515   decide = ADD_STATE   (claimed ADD_STATE)
+OK  BUILT+UNREAD               situation=517   decide = ADD_MATERIAL   (claimed ADD_MATERIAL)
+OK  BUILT+CAPPED               situation=545   decide = RAISE_BUDGET   (claimed RAISE_BUDGET)
+OK  CAPPED                     situation=544   decide = RAISE_BUDGET   (claimed RAISE_BUDGET)
+OK  REFUTED                    situation=576   decide = HARVEST_COUNTEREXAMPLE   (claimed HARVEST_COUNTEREXAMPLE)
+OK  REFUTED+HIDDEN             situation=592   decide = CHANGE_GRANULARITY   (claimed CHANGE_GRANULARITY)
+OK  UNREAD                     situation=516   decide = ADD_MATERIAL   (claimed ADD_MATERIAL)
+OK  HIDDEN                     situation=528   decide = CHANGE_GRANULARITY   (claimed CHANGE_GRANULARITY)
+OK  BUILT+SELF                 situation=641   decide = SHIP   (claimed SHIP)
+OK  empty                      situation=512   decide = SHIP   (claimed SHIP)
+
+== bit->byte identities the logs assert ==
+situation(BUILT=True) = 513
+situation(AMB=True) = 514
+situation(UNREAD=True) = 516
+situation(CAPPED=True) = 544
+situation(BUILT=True, AMB=True)    = 515
+situation(BUILT=True, UNREAD=True) = 517
+situation(BUILT=True, CAPPED=True) = 545
+
+mismatches: 0

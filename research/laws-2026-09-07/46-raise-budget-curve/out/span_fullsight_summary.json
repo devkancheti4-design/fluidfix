@@ -1,0 +1,10 @@
+{
+ "stopped": "FIRST GREEN",
+ "seconds": 120.52244520187378,
+ "rows": 401,
+ "pass0_packet_lines": 110,
+ "fullsight_packet_lines": 803,
+ "n_obs": 802,
+ "bug_lineno": 403,
+ "bug_obs_rank": 400
+}

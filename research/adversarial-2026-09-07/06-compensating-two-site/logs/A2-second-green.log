@@ -1,0 +1,7 @@
+suite red: True
+observations on src/fee.c: [(9, [1, 2])]
+repaired: True | line 9
+  - return units * 8;
+  + return units * 7;
+greens found in src/fee.c: ['    return units * 7;']
+reason: engine law: BUILT -> SHIP

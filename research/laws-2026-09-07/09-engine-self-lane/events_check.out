@@ -1,0 +1,36 @@
+events in upstream ENGINE_LAW.py: 22
+       WRITE_CODE BUILT            want SHIP                   got SHIP                   ok
+       WRITE_CODE UNREAD           want ADD_MATERIAL           got ADD_MATERIAL           ok
+       WRITE_CODE CAPPED           want RAISE_BUDGET           got RAISE_BUDGET           ok
+       WRITE_CODE NOTWIN           want RESHAPE                got RESHAPE                ok
+       ANSWER     BUILT            want SHIP                   got SHIP                   ok
+       ANSWER     UNREAD           want ADD_MATERIAL           got ADD_MATERIAL           ok
+       ANSWER     AMB              want ADD_STATE              got ADD_STATE              ok
+       DEBUG      REFUTED          want HARVEST_COUNTEREXAMPLE got HARVEST_COUNTEREXAMPLE ok
+       DEBUG      HIDDEN           want CHANGE_GRANULARITY     got CHANGE_GRANULARITY     ok
+       DEBUG      UNREAD           want ADD_MATERIAL           got ADD_MATERIAL           ok
+       DEBUG      CAPPED           want RAISE_BUDGET           got RAISE_BUDGET           ok
+       REVIEW_PR  BUILT            want SHIP                   got SHIP                   ok
+       REVIEW_PR  REFUTED          want HARVEST_COUNTEREXAMPLE got HARVEST_COUNTEREXAMPLE ok
+       REVIEW_PR  AMB              want ADD_STATE              got ADD_STATE              ok
+       WRITE_CODE BUILT+REFUTED    want HARVEST_COUNTEREXAMPLE got HARVEST_COUNTEREXAMPLE ok
+       DEBUG      UNREAD+CAPPED    want ADD_MATERIAL           got ADD_MATERIAL           ok
+       DEBUG      BUILT+AMB        want ADD_STATE              got ADD_STATE              ok
+  SELF REVIEW_PR  BUILT+SELF       want SHIP                   got SHIP                   ok
+  SELF REVIEW_PR  REFUTED+SELF     want HARVEST_COUNTEREXAMPLE got HARVEST_COUNTEREXAMPLE ok
+  SELF DEBUG      CAPPED+SELF      want RAISE_BUDGET           got RAISE_BUDGET           ok
+  SELF DEBUG      UNREAD+SELF      want ADD_MATERIAL           got ADD_MATERIAL           ok
+  SELF WRITE_CODE NOTWIN+SELF      want AUTHOR_SUCCESSOR       got AUTHOR_SUCCESSOR       ok
+reproduced under fluidfix's vendored law: 22/22
+
+the SELF events, with the authoring note:
+  REVIEW_PR  BUILT+SELF       -> SHIP
+      the certificate's own self-test passed and it shipped     [8/8]
+  REVIEW_PR  REFUTED+SELF     -> HARVEST_COUNTEREXAMPLE
+      the audit refuted verify_witness, the module's OWN checker [audit]
+  DEBUG      CAPPED+SELF      -> RAISE_BUDGET
+      the harness hit its own 5GB ceiling -> raised to 6GB       [tight3]
+  DEBUG      UNREAD+SELF      -> ADD_MATERIAL
+      the harness lacked the shift primitives it had to supply   [duel_supply]
+  WRITE_CODE NOTWIN+SELF      -> AUTHOR_SUCCESSOR
+      Law-C exists but not in a form covering four jobs -> AUTHOR THIS SUCCESSOR

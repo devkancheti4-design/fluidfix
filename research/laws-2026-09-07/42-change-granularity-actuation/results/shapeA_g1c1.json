@@ -1,0 +1,1621 @@
+{
+ "shape": "A",
+ "config": "g1c1",
+ "cfg": {
+  "rung": 1,
+  "confirm": 1
+ },
+ "k": 4,
+ "trials": 100,
+ "counts": {
+  "CORRECT": 66,
+  "NO_FAILING_TEST": 24,
+  "FALSE_ACCEPT": 10
+ },
+ "mean_invocations": 3.45,
+ "mean_full_runs": 3.45,
+ "mean_node_runs": 0.0,
+ "mean_seconds": 0.74,
+ "records": [
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.87,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.86,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.25,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "FALSE_ACCEPT",
+   "new_line": "    return b - a",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.03,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.25,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "FALSE_ACCEPT",
+   "new_line": "    return b - a",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.05,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.86,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.05,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.86,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.87,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.86,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.05,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.87,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.25,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.87,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 1.19,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.36,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.97,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "FALSE_ACCEPT",
+   "new_line": "    return b - a",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.04,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.86,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.25,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.81,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.82,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.82,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.02,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.04,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "FALSE_ACCEPT",
+   "new_line": "    return b - a",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.05,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "FALSE_ACCEPT",
+   "new_line": "    return b - a",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.03,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.25,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.06,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "FALSE_ACCEPT",
+   "new_line": "    return b - a",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.03,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "FALSE_ACCEPT",
+   "new_line": "    return b - a",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.03,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "FALSE_ACCEPT",
+   "new_line": "    return b - a",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.04,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.86,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "FALSE_ACCEPT",
+   "new_line": "    return b - a",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.04,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.81,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.04,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.03,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "FALSE_ACCEPT",
+   "new_line": "    return b - a",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 5,
+   "full_runs": 5,
+   "node_runs": 0,
+   "seconds": 1.04,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.86,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.86,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.86,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "NO_FAILING_TEST",
+   "new_line": null,
+   "why": "no failing test \u2014 nothing to repair",
+   "invocations": 1,
+   "full_runs": 1,
+   "node_runs": 0,
+   "seconds": 0.24,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  }
+ ]
+}

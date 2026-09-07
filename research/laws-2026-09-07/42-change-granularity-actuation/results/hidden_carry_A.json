@@ -1,0 +1,362 @@
+[
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return b - a"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return b - a"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return b - a"
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": false,
+  "reason": "no failing test \u2014 nothing to repair",
+  "new_line": null
+ },
+ {
+  "saw_hidden": true,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ },
+ {
+  "saw_hidden": false,
+  "repaired": true,
+  "reason": "engine law: BUILT -> SHIP",
+  "new_line": "    return a + b"
+ }
+]

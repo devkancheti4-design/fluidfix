@@ -1,0 +1,14 @@
+rev=HEAD  scanned=1377  bugfix_commits=576  files_touched=322  total_touches=2029
+module bugfix_churn agrees: True
+
+independent walk vs hotspots.coverage_to_reach:
+  30%: mine=  17  module=  17  agree=True
+  50%: mine=  40  module=  40  agree=True
+  60%: mine=  57  module=  57  agree=True
+  80%: mine= 136  module= 136  agree=True
+
+60% costs 57 files.  denominators:
+  files that have ever broken (what the CLI prints): 322  -> 18%
+  code files in the CURRENT tree (the 'engine'):      75  -> 76%
+  of those 57 files, still present on disk: 3  (5%);  vanished: 54
+  vanished sample: ['Box2D/Box2D/Dynamics/b2World.h', 'Box2D/Box2D/Dynamics/b2Body.cpp', 'Box2D/Box2D/Dynamics/b2World.cpp', 'Box2D/Box2D/Collision/Shapes/b2PolygonShape.cpp', 'Box2D/Box2D/Dynamics/b2Fixture.cpp', 'Box2D/Box2D/Common/b2Settings.cpp', 'Box2D/Box2D/Common/b2Settings.h', 'Box2D/Box2D/Dynamics/b2ContactManager.cpp']

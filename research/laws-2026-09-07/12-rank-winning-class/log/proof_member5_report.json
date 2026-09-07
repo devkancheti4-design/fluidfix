@@ -1,0 +1,205 @@
+{
+ "name": "proof_member5_report",
+ "src": "docs/proof_one_example.py MEMBERS[4]",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "missing-get-default"
+ },
+ "status": "repaired",
+ "file": "report.py",
+ "candidate_files": [
+  "report.py"
+ ],
+ "evidence": {},
+ "seconds": 3.2,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "report.py",
+   "n_obs": 1,
+   "input_order": [
+    2
+   ],
+   "ranked_order": [
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      2,
+      3,
+      4,
+      11
+     ],
+     "classes": [
+      "swapped-return-operands",
+      "flipped-additive",
+      "missing-get-default",
+      "reversed-minus-operands"
+     ],
+     "byte": 45,
+     "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+     "priority": 0,
+     "text": "return row[\"gross\"] - row.get(\"fee\") - row.get(\"tax\")"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    2,
+    3,
+    4,
+    11
+   ],
+   "act": 7,
+   "kind": 2,
+   "n": 1,
+   "cands": [
+    "    return row.get(\"fee\") - row.get(\"tax\") - row[\"gross\"]"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    2,
+    3,
+    4,
+    11
+   ],
+   "act": 8,
+   "kind": 3,
+   "n": 2,
+   "cands": [
+    "    return row[\"gross\"] + row.get(\"fee\") - row.get(\"tax\")",
+    "    return row[\"gross\"] - row.get(\"fee\") + row.get(\"tax\")"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    2,
+    3,
+    4,
+    11
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "    return row[\"gross\"] - row.get(\"fee\", 0) - row.get(\"tax\", 0)"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    2,
+    3,
+    4,
+    11
+   ],
+   "act": 0,
+   "kind": 11,
+   "n": 2,
+   "cands": [
+    "    return row.get(\"fee\") - row.get(\"tax\") - row[\"gross\"]",
+    "    return row.get(\"tax\") - row[\"gross\"] - row.get(\"fee\")"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "report.py",
+     "old_lines": "2-2",
+     "new": "return row.get(\"fee\") - row.get(\"tax\") - row[\"gross\"]"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": false,
+   "changed": [
+    {
+     "file": "report.py",
+     "old_lines": "2-2",
+     "new": "return row[\"gross\"] + row.get(\"fee\") - row.get(\"tax\")"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": false,
+   "changed": [
+    {
+     "file": "report.py",
+     "old_lines": "2-2",
+     "new": "return row[\"gross\"] - row.get(\"fee\") + row.get(\"tax\")"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": true,
+   "changed": [
+    {
+     "file": "report.py",
+     "old_lines": "2-2",
+     "new": "return row[\"gross\"] - row.get(\"fee\", 0) - row.get(\"tax\", 0)"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ok": true,
+   "changed": [
+    {
+     "file": "report.py",
+     "old_lines": "2-2",
+     "new": "return row[\"gross\"] - row.get(\"fee\", 0) - row.get(\"tax\", 0)"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "ok": false,
+   "changed": [
+    {
+     "file": "report.py",
+     "old_lines": "2-2",
+     "new": "return row.get(\"tax\") - row[\"gross\"] - row.get(\"fee\")"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 6,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    return row[\"gross\"] - row.get(\"fee\", 0) - row.get(\"tax\", 0)",
+  "old_line": "    return row[\"gross\"] - row.get(\"fee\") - row.get(\"tax\")",
+  "kind": 4,
+  "class": "missing-get-default",
+  "act": 9,
+  "first_green_check": 4,
+  "suite_runs": 6,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 0,
+  "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 1,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 3,
+  "kinds_on_line": 4,
+  "class_slot_position": 3,
+  "class_slots_total": 4
+ }
+}

@@ -1,0 +1,7 @@
+probe: pass0 packet truncated=True lines=110; escalation packet truncated=False lines=175; lines pass 0 never sees=65
+probe: defect at body line 170 (file line 175), in pass-0 packet: False; decoy file lines: [6, 7, 9, 10, 12, 13, 15, 16]
+tree_fingerprint cost on this fixture: 0.0001s
+RESULT pass0_only=True memo=False status=refused file=None lineno=None new_line=None
+RESULT memo=False candidates adjudicated (oracle.check)=16 pytest invocations=20 seconds=6.4 suite_runs(RepairResult)=None memo_skipped=0
+RESULT memo=False on-disk line now: ''
+root: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/45-harvest-counterexample/esc_base_x1afxxrv

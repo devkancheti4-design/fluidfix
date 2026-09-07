@@ -1,0 +1,9 @@
+[run1] N=100 F=4 status=refused seconds=98.7 MEASURED candidates tried (oracle.check calls)=404
+[run1] GuardReport.attempts=256  last_refusal.json rejected_candidates=200
+[run1] summary() says: ' 256 candidate(s) were tried and rejected — each is logged with the test that failed it in'
+[run2] N=100 F=4 status=refused seconds=118.9 MEASURED candidates tried (oracle.check calls)=404
+[run2] GuardReport.attempts=256  last_refusal.json rejected_candidates=200
+[run2] summary() says: ' 256 candidate(s) were tried and rejected — each is logged with the test that failed it in'
+run2 re-tried the same number of candidates as run1: True (404 vs 404)
+run2 persisted exactly the same rejected list as run1: True
+per-file tally of PERSISTED entries: {'mod0.py': 64, 'mod1.py': 64, 'mod2.py': 64, 'mod3.py': 8}

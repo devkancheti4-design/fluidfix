@@ -1,0 +1,11 @@
+{
+ "baseline_n": 1,
+ "baseline_nodes": [
+  "test_mod.py::test_both"
+ ],
+ "tried": [],
+ "enumerated": 0,
+ "byte": 1,
+ "ruling": "TEACH",
+ "cap": 32
+}

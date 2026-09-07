@@ -1,0 +1,4 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/19-class-collision/runs/A_guard/rules_vat4_net5.py: 2 fault class(es) registered
+[14:43:03] pricing.py: repaired line 15 in 9 suite runs (3.5s):
+  - price = gross_rate_for(region) * units
+  + price = gross_rate_for(region) * units / VAT

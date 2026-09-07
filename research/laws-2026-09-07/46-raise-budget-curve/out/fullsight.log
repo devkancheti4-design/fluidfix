@@ -1,0 +1,6 @@
+pass0 packet: lines=110 truncated=True bug_in=False
+full-sight packet: lines=803 truncated=False bug_in=True
+observations: 802 ; rank of the bug line 403: 400
+STOP FIRST GREEN  after 120.5s  candidates judged=401
+last candidate site: line 403 at t=122.2
+DONE

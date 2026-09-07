@@ -1,0 +1,12 @@
+{
+ "id": 3,
+ "lineno": 15,
+ "kind": 2,
+ "kind_name": "swapped-return-operands",
+ "act": 7,
+ "orig": "    return travel + buffer",
+ "mutant": "    return buffer + travel",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

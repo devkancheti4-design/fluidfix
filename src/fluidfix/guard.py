@@ -483,6 +483,11 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     candidates = files or find_candidate_files(oracle, out, evidence=ev)
     hint = ""
     capped0 = acts0 = False
+    # engine.py defines REFUTED as "candidates were generated AND the suite
+    # rejected every one". This tracks the second half, which guard.py did not
+    # read before 0.15.0 — it measured only the first, so a pass holding a
+    # suite-passing candidate reported that every candidate had been rejected.
+    greens_seen = False
     attempts: list = []
     full_sight: set[str] = set()      # pass-0 packet was complete: nothing
                                       # a bigger budget could add for this file
@@ -517,6 +522,9 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                         deadline=first_deadline)
         attempts += result.tried_log
         acts0 = acts0 or bool(result.acts_tried)
+        greens_seen = greens_seen or bool(result.greens)
+        # the loop measured a wall-clock cap this pass could not see
+        capped0 = capped0 or result.capped
         if result.repaired:
             clear_refusal(oracle.root)
             return GuardReport(status="repaired", file=rel, result=result,
@@ -527,6 +535,13 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                                candidates=candidates, result=result,
                                seconds=time.time() - t0,
                                hint=result.reason, attempts=attempts, evidence=ev)
+        if result.greens and result.ruling == "RAISE_BUDGET":
+            # THE THIRD OUTCOME. `repair()` holds a candidate that passed the
+            # suite and the law ruled RAISE_BUDGET on it. Before 0.15.0 this
+            # pass had no branch for it: it fell through, the ruling was
+            # discarded, and the refusal claimed every candidate was rejected.
+            # Do not ship it — the law did not say SHIP — but carry its reason.
+            hint = result.reason
 
     # ---- the engine law rules on the refusal -------------------------------
     # Measure what actually blocked, then do what the law says. Only
@@ -536,7 +551,12 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     all_files = files or find_candidate_files(oracle, out, limit=999,
                                               evidence=ev)
     capped0 = capped0 or len(all_files) > len(candidates)
-    if escalate and decide(situation(CAPPED=capped0, REFUTED=acts0)) == "RAISE_BUDGET":
+    # REFUTED needs BOTH halves of the law's definition. `acts0` alone read
+    # "candidates were generated"; with a green in hand that byte ruled
+    # HARVEST_COUNTEREXAMPLE, the escalation never ran, and the user was told
+    # the opposite of what happened.
+    refuted0 = acts0 and not greens_seen
+    if escalate and decide(situation(CAPPED=capped0, REFUTED=refuted0)) == "RAISE_BUDGET":
         # DEPTH-FIRST: the budget belongs to the best-ranked file first.
         # Measured (arrow locales.py:5468): breadth-first factor rounds spent
         # the whole clock re-grinding truncated packets across 24 files and
@@ -597,6 +617,8 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                                          time.time() + file_share))
             attempts += result.tried_log
             any_acts = any_acts or bool(result.acts_tried)
+            greens_seen = greens_seen or bool(result.greens)
+            capped0 = capped0 or result.capped
             if result.repaired:
                 result.reason += " (engine law: CAPPED -> RAISE_BUDGET, depth-first)"
                 clear_refusal(oracle.root)
@@ -608,13 +630,15 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                                    candidates=candidates, result=result,
                                    seconds=time.time() - t0,
                                    hint=result.reason, attempts=attempts, evidence=ev)
-        if any_acts and not hint and \
+            if result.greens and result.ruling == "RAISE_BUDGET":
+                hint = result.reason          # the third outcome, again
+        if any_acts and not greens_seen and not hint and \
                 decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
             hint = ("every generated candidate was rejected by the suite "
                     "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — "
                     "the refusal report lists what was tried; teach the "
                     "class or fix by hand")
-    if not hint and acts0 and \
+    if not hint and acts0 and not greens_seen and \
             decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
         hint = ("every generated candidate was rejected by the suite "
                 "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the "
@@ -709,13 +733,27 @@ def write_refusal(root: str, report: GuardReport) -> str:
     d = os.path.join(root, ".fluidfix")
     os.makedirs(d, exist_ok=True)
     path = os.path.join(d, "last_refusal.json")
-    json.dump({"status": report.status, "candidates": report.candidates,
-               "seconds": report.seconds,
-               "hint": report.hint or
-                       "fault class is outside the taught vocabulary; "
-                       "register() it once and its family becomes free",
-               # engine law: REFUTED -> HARVEST_COUNTEREXAMPLE — what was
-               # tried, and the exact failing test that rejected each
-               "rejected_candidates": report.attempts[:200]},
-              open(path, "w"), indent=1)
+    res = report.result
+    rec = {"status": report.status, "candidates": report.candidates,
+           "seconds": report.seconds,
+           "hint": report.hint or
+                   "fault class is outside the taught vocabulary; "
+                   "register() it once and its family becomes free",
+           # engine law: REFUTED -> HARVEST_COUNTEREXAMPLE — what was
+           # tried, and the exact failing test that rejected each
+           "rejected_candidates": report.attempts[:200]}
+    # the ruling itself, so a reader never has to infer it from prose
+    if res is not None and getattr(res, "ruling", ""):
+        rec["ruling"] = res.ruling
+        rec["greens"] = list(getattr(res, "greens", []) or [])
+        rec["capped"] = bool(getattr(res, "capped", False))
+    json.dump(rec, open(path, "w"), indent=1)
+    # ADD_STATE, actuated: the law asked for ONE pinning test, so write it out
+    # next to the refusal instead of only naming it. fluidfix does not choose
+    # between the candidates — the file has one commented assertion per
+    # candidate and the user uncomments the one they meant.
+    if res is not None and getattr(res, "pinning_test", ""):
+        with open(os.path.join(d, "pin_me_test.py"), "w",
+                  encoding="utf-8") as f:
+            f.write(res.pinning_test)
     return path

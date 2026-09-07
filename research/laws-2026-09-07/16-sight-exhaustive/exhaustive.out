@@ -1,0 +1,123 @@
+
+========================================================================
+A  all 256 inputs: Python port vs sight.c specification
+========================================================================
+mismatches vs spec_c            : 0  []
+mismatches vs my closed form    : 0
+outputs outside 0..7            : []
+how many inputs land on each priority: {0: 224, 1: 0, 2: 8, 3: 12, 4: 6, 5: 3, 6: 2, 7: 1}
+table written to table_256.txt
+
+========================================================================
+B  lane algebra: each authored lane is one bit of x (all 256)
+========================================================================
+  OK   _POINT1(x)   == (x & 7 != 0)
+  OK   _FAILONLY(x) == 4  * bit3
+  OK   _NAMED(x)    == 8  * bit4
+  OK   _TOUCHED(x)  == 16 * bit5
+  OK   _SMALL(x)    == 32 * bit6
+  OK   _UBIQ(x)     == bit7
+  OK   circ sum     == (x>>1) & 0x3C (disjoint powers of two, sum == OR)
+  OK   _EMIT(m)     == lowest set bit, m in 1..255
+  OK   _POINT1 identity on -65536..65535 (signed, Python port)
+  OK   mask == 65 on pointing inputs, == circ|64 on non-pointing
+  therefore sight(x) == 0 (pointing) or ctz(circ|64) + bit7 (non-pointing)
+
+========================================================================
+C  R1 algebraically and exhaustively
+========================================================================
+pointing inputs: 224   non-pointing inputs: 32
+max sight over pointing     : 0
+min sight over non-pointing : 2
+  gap is the reserved priority 1: pointing -> mask bit 0 (ctz 0); non-pointing -> lowest circumstantial slot is mask bit 2 (ctz >= 2)
+R1 pairs checked: 7168   violations: 0
+
+========================================================================
+D  R2 algebraically and exhaustively
+========================================================================
+gate values on pointing inputs    : {0}   (0 kills circ AND penalty)
+gate values on non-pointing inputs: {-1}   (-1 = all ones passes both)
+R2 pointing inputs checked: 224   violations: 0
+converse: non-pointing inputs where UBIQ does NOT add exactly 1: []
+
+========================================================================
+E  UBIQUITOUS penalty on every input (128 lower-byte pairs)
+========================================================================
+delta histogram over the 128 pairs: {1: 16, 0: 112}
+the 16 non-pointing pairs (the only ones the penalty touches):
+   low bits                                w/o with
+     0 -                                     6    7
+     8 FAILONLY                              2    3
+    16 NAMED                                 3    4
+    24 FAILONLY+NAMED                        2    3
+    32 TOUCHED                               4    5
+    40 FAILONLY+TOUCHED                      2    3
+    48 NAMED+TOUCHED                         3    4
+    56 FAILONLY+NAMED+TOUCHED                2    3
+    64 SMALL                                 5    6
+    72 FAILONLY+SMALL                        2    3
+    80 NAMED+SMALL                           3    4
+    88 FAILONLY+NAMED+SMALL                  2    3
+    96 TOUCHED+SMALL                         4    5
+   104 FAILONLY+TOUCHED+SMALL                2    3
+   112 NAMED+TOUCHED+SMALL                   3    4
+   120 FAILONLY+NAMED+TOUCHED+SMALL          2    3
+
+cross-tier ties the penalty creates (a|UBIQ ties b, a != b, both non-pointing):
+  43 ordered pairs; distinct (prio(a), prio(a|UBIQ)==prio(b)) classes: [(2, 3, 3), (3, 4, 4), (4, 5, 5), (5, 6, 6)]
+    FAILONLY+UBIQUITOUS -> 3  ==  NAMED -> 3
+    NAMED+UBIQUITOUS -> 4  ==  TOUCHED -> 4
+    TOUCHED+UBIQUITOUS -> 5  ==  SMALL -> 5
+    SMALL+UBIQUITOUS -> 6  ==  - -> 6
+
+order flips: a ahead of b without the penalty, behind it with the penalty on a:
+  0 ordered pairs (a, b)  -- the penalty is exactly one tier, so a flip needs prio(b) == prio(a)+1 ... : []
+
+========================================================================
+F  inputs the body's caller cannot construct (guard.py file_priority2)
+========================================================================
+  failonly   = specificity >= 0.9
+  ubiquitous = specificity < 0.25       -- same variable, so both set is impossible
+inputs with FAILONLY and UBIQUITOUS both set : 64 of 256
+  of which pointing (rule 0 regardless)      : 56
+  of which non-pointing                      : 8  -> rulings [3]
+  the non-pointing eight: [(136, 'FAILONLY+UBIQUITOUS', 3), (152, 'FAILONLY+NAMED+UBIQUITOUS', 3), (168, 'FAILONLY+TOUCHED+UBIQUITOUS', 3), (184, 'FAILONLY+NAMED+TOUCHED+UBIQUITOUS', 3), (200, 'FAILONLY+SMALL+UBIQUITOUS', 3), (216, 'FAILONLY+NAMED+SMALL+UBIQUITOUS', 3), (232, 'FAILONLY+TOUCHED+SMALL+UBIQUITOUS', 3), (248, 'FAILONLY+NAMED+TOUCHED+SMALL+UBIQUITOUS', 3)]
+inputs constructible w.r.t. this constraint  : 192
+priority 3 is emitted for 12 inputs; body-constructible: 4
+  constructible priority-3 inputs: [(16, 'NAMED'), (48, 'NAMED+TOUCHED'), (80, 'NAMED+SMALL'), (112, 'NAMED+TOUCHED+SMALL')]
+  priority 0: 224 inputs, 168 body-constructible
+  priority 1:   0 inputs,   0 body-constructible
+  priority 2:   8 inputs,   8 body-constructible
+  priority 3:  12 inputs,   4 body-constructible
+  priority 4:   6 inputs,   6 body-constructible
+  priority 5:   3 inputs,   3 body-constructible
+  priority 6:   2 inputs,   2 body-constructible
+  priority 7:   1 inputs,   1 body-constructible
+
+========================================================================
+G  out-of-byte inputs (domain note; situation()/observe_bits() cannot produce them)
+========================================================================
+  sight(  256) =    8   (x>>7 = 2)
+  sight(  384) =    9   (x>>7 = 3)
+  sight(  512) =   10   (x>>7 = 4)
+  sight( 1024) =   14   (x>>7 = 8)
+  sight(   -1) =    0   (x>>7 = -1)
+  sight( -128) =    5   (x>>7 = -1)
+  max packable by situation(): 255
+  observe_bits(all True)     : 255
+
+========================================================================
+H  inputs pinned by a NAMED assertion in tests/test_sight_law.py
+========================================================================
+    0 -                              -> 6   incident 3: sight(0) == 6; r2-demote: sight(0|UBIQ) > sight(0)
+    1 FRAMED                         -> 0   equal-rank: sight(FRAMED) == 0
+    2 SCARCE                         -> 0   equal-rank: sight(SCARCE) == 0
+    4 LITERAL                        -> 0   incident 1: sight(LITERAL) == 0
+   16 NAMED                          -> 3   incident 2 / r2-demote: sight(NAMED) reference
+  112 NAMED+TOUCHED+SMALL            -> 3   incident 2: shell_completion_py situation
+  128 UBIQUITOUS                     -> 7   r2-demote: sight(0|UBIQ) > sight(0)
+  130 SCARCE+UBIQUITOUS              -> 0   incident 2: sight(SCARCE|UBIQ) == 0 and < sight(NAMED)
+  144 NAMED+UBIQUITOUS               -> 4   r2-demote: sight(NAMED|UBIQ) > sight(NAMED)
+  9 inputs pinned by name; the other 247 only by the exhaustive loop test_matches_specification_on_all_256_situations (which pins all 256)
+
+DONE

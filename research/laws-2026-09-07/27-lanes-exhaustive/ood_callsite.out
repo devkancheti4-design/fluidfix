@@ -1,0 +1,11 @@
+WORKED_EXAMPLE = (0, 5)  ACTS keys = [0, 1, 5, 6, 7, 8, 13, 14, 15]
+  act_for( -1) =   4   in ACTS: False
+  act_for(  0) =   5   in ACTS: True
+  act_for(  1) =   6   in ACTS: True
+  act_for( 12) =   1   in ACTS: True
+  act_for( 15) =   4   in ACTS: False
+  act_for( 16) =   5   in ACTS: True
+  act_for( 64) =   5   in ACTS: True
+kind_of(0) = -1 -> act_for(kind_of(0)) = 4
+  candidates('return a + b', act=4) -> ['return a + b']
+  candidates('return a + b', act=4) -> ['return a + b']

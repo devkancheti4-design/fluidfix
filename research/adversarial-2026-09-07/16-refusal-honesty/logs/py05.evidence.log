@@ -1,0 +1,18 @@
+{
+ "candidates": [
+  "pkg/mod.py"
+ ],
+ "evidence": {
+  "pointed": [
+   "pkg/mod.py"
+  ],
+  "lanes": {
+   "FRAMED": [],
+   "SCARCE": [
+    "pkg/mod.py"
+   ],
+   "LITERAL": []
+  }
+ },
+ "raw_failing_output_has_source_frame": false
+}

@@ -1,0 +1,18 @@
+mechanical observer: 32/256 bytes constructible by the body; priorities reachable = [0, 2, 3]; unreachable = [1, 4, 5, 6, 7]
+   p=0: 16 bytes, e.g. 0x09 = FRAME+SIGNALED
+   p=2:  8 bytes, e.g. 0x0c = NAMED+SIGNALED
+   p=3:  8 bytes, e.g. 0x08 = SIGNALED
+claude observer: 64/256 bytes constructible by the body; priorities reachable = [0, 2, 3, 4, 5, 6, 7]; unreachable = [1]
+   p=0: 32 bytes, e.g. 0x01 = FRAME
+   p=2: 16 bytes, e.g. 0x04 = NAMED
+   p=3:  8 bytes, e.g. 0x08 = SIGNALED
+   p=4:  4 bytes, e.g. 0x10 = RECENT
+   p=5:  2 bytes, e.g. 0x20 = CHEAP
+   p=6:  1 bytes, e.g. 0x40 = DENSE
+   p=7:  1 bytes, e.g. 0x00 = (none)
+
+On the mechanical path the ruling is decided by:
+   FRAME set            -> p=0
+   else NAMED set       -> p=2
+   else (SIGNALED)      -> p=3   (RECENT/CHEAP/DENSE never reach the ruling)
+   verified exhaustively over the constructible bytes: True

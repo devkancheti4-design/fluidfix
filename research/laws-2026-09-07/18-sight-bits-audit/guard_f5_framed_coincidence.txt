@@ -1,0 +1,17 @@
+status=repaired file=pkg/geom.py seconds=5.6
+candidates (first-pass order): ['pkg/__init__.py', 'pkg/decoder.py', 'pkg/geom.py', 'pkg/fmtx.py', 'pkg/poolx.py', 'pkg/tablex.py']
+evidence: {}
+bytes handed to the law (first call per file):
+   pkg/__init__.py         73 prio 0  FRAMED|FAILONLY|SMALL
+   pkg/decoder.py         193 prio 0  FRAMED|SMALL|UBIQUITOUS
+   pkg/fmtx.py             72 prio 2  FAILONLY|SMALL
+   pkg/geom.py             72 prio 2  FAILONLY|SMALL
+   pkg/poolx.py            72 prio 2  FAILONLY|SMALL
+   pkg/tablex.py           72 prio 2  FAILONLY|SMALL
+attempts logged: 0
+result: repaired line 12 in 8 suite runs (2.0s):
+  - return wrap(emit(3))[1:]
+  + return wrap(emit(3))[0:]
+summary: pkg/geom.py: repaired line 12 in 8 suite runs (2.0s):
+  - return wrap(emit(3))[1:]
+  + return wrap(emit(3))[0:]

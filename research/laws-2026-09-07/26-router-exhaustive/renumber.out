@@ -1,0 +1,26 @@
+registered kinds: [0, 1, 2, 3, 8, 9, 10, 11, 12]
+shipped act codes: [0, 1, 5, 6, 7, 8, 13, 14, 15]
+
+  t  router right   frozen table right
+  0         9/9                9/9
+  1         9/9                0/9
+  2         9/9                0/9
+  3         9/9                0/9
+  4         9/9                0/9
+  5         9/9                0/9
+  6         9/9                0/9
+  7         9/9                0/9
+  8         9/9                0/9
+  9         9/9                0/9
+ 10         9/9                0/9
+ 11         9/9                0/9
+ 12         9/9                0/9
+ 13         9/9                0/9
+ 14         9/9                0/9
+ 15         9/9                0/9
+
+renumberings on which the ROUTER is fully right: 16/16
+renumberings on which a FROZEN TABLE is fully right: 1/16
+
+NOTE: the router needs A1 in acts.py:53 WORKED_EXAMPLE moved with the vocabulary; router.py itself is untouched. With A1 left at 5 the router is right on:
+  1/16 renumberings -- i.e. it degenerates to the frozen table.

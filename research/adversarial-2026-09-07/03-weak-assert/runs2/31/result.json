@@ -1,0 +1,54 @@
+{
+ "id": 31,
+ "lineno": 79,
+ "kind": 9,
+ "kind_name": "flipped-augmented-assign",
+ "act": 14,
+ "orig": "        counts += 1",
+ "mutant": "        counts -= 1",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 79,\n \"old_line\": \"        counts -= 1\",\n \"new_line\": \"        counts += 1\",\n \"acts_tried\": [\n  6,\n  6,\n  14\n ],\n \"suite_runs\": 4,\n \"seconds\": 2.3704609870910645,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"        counts += 1\"\n ],\n \"tried_log\": [\n  {\n   \"at\": \"weakpkg2/core.py:77\",\n   \"tried\": \"    counts = -1\",\n   \"why\": \"FAILED tests/test_core.py::test_tally_counts_something - assert -4 > 0\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:79\",\n   \"tried\": \"        counts -= 0\",\n   \"why\": \"FAILED tests/test_core.py::test_tally_counts_something - assert 0 > 0\"\n  }\n ],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 79,
+  "old_line": "        counts -= 1",
+  "new_line": "        counts += 1",
+  "acts_tried": [
+   6,
+   6,
+   14
+  ],
+  "suite_runs": 4,
+  "seconds": 2.3704609870910645,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "        counts += 1"
+  ],
+  "tried_log": [
+   {
+    "at": "weakpkg2/core.py:77",
+    "tried": "    counts = -1",
+    "why": "FAILED tests/test_core.py::test_tally_counts_something - assert -4 > 0"
+   },
+   {
+    "at": "weakpkg2/core.py:79",
+    "tried": "        counts -= 0",
+    "why": "FAILED tests/test_core.py::test_tally_counts_something - assert 0 > 0"
+   }
+  ],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "        counts += 1",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "        counts += 1"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

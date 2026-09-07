@@ -1,0 +1,11 @@
+files scanned                              44
+lines scanned                              7872
+lines the mechanical observer signals      2249
+lines where MECH prunes anything vs ALL    0
+
+candidates ALL  (no routing law)           5232
+candidates MECH (routed, mech observer)    5232
+candidates TRUE (routed, one-kind observer)3786
+
+routing saves vs ALL, mechanical observer: 0 / 5232 = 0.0000%
+routing saves vs ALL, one-kind observer:   1446 / 5232 = 27.6376%

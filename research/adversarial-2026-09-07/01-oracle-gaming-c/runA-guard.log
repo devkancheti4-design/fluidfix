@@ -1,0 +1,5 @@
+  build: ./build.sh
+  test:  ./build/tests
+[14:27:59] unittest/main.c: repaired line 39 in 12 suite runs (8.2s):
+  - for (i = 0; i < ntests; i++)
+  + for (i = 0; i > ntests; i++)

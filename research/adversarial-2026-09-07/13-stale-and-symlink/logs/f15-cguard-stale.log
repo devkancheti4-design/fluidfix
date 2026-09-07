@@ -1,0 +1,5 @@
+  build: true
+  test:  ./build/tests
+fluidfix: the test binary in build is older than your sources, so the suite that just ran is not the code on disk.
+  Every verdict from here would be noise — a candidate cannot be judged against a binary that does not contain it.
+  fix: rebuild from scratch (remove build and re-configure), then re-run.

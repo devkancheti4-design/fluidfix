@@ -1,0 +1,170 @@
+{
+ "name": "demo_metrics_dict",
+ "src": "tests/test_demo_walkthrough.py step5 second member (metrics.py; no git here)",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "missing-get-default"
+ },
+ "status": "repaired",
+ "file": "metrics.py",
+ "candidate_files": [
+  "metrics.py"
+ ],
+ "evidence": {},
+ "seconds": 3.5,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "metrics.py",
+   "n_obs": 2,
+   "input_order": [
+    2,
+    4
+   ],
+   "ranked_order": [
+    4,
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 4,
+     "kinds": [
+      4,
+      9
+     ],
+     "classes": [
+      "missing-get-default",
+      "flipped-augmented-assign"
+     ],
+     "byte": 41,
+     "bits": "FRAME+SIGNALED+CHEAP",
+     "priority": 0,
+     "text": "acc += s.get(\"ms\")"
+    },
+    {
+     "lineno": 2,
+     "kinds": [
+      1
+     ],
+     "classes": [
+      "literal-off-by-one"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "acc = 0"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 4,
+   "kinds": [
+    4,
+    9
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "        acc += s.get(\"ms\", 0)"
+   ]
+  },
+  {
+   "lineno": 4,
+   "kinds": [
+    4,
+    9
+   ],
+   "act": 14,
+   "kind": 9,
+   "n": 1,
+   "cands": [
+    "        acc -= s.get(\"ms\")"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    acc = -1"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": true,
+   "changed": [
+    {
+     "file": "metrics.py",
+     "old_lines": "4-4",
+     "new": "acc += s.get(\"ms\", 0)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "metrics.py",
+     "old_lines": "4-4",
+     "new": "acc += s.get(\"ms\", 0)"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": false,
+   "changed": [
+    {
+     "file": "metrics.py",
+     "old_lines": "4-4",
+     "new": "acc -= s.get(\"ms\")"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": false,
+   "changed": [
+    {
+     "file": "metrics.py",
+     "old_lines": "2-2",
+     "new": "acc = -1"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 4,
+ "winner": {
+  "lineno": 4,
+  "new_line": "        acc += s.get(\"ms\", 0)",
+  "old_line": "        acc += s.get(\"ms\")",
+  "kind": 4,
+  "class": "missing-get-default",
+  "act": 9,
+  "first_green_check": 1,
+  "suite_runs": 4,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 0,
+  "bits": "FRAME+SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 2,
+  "position_input": 2,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 1,
+  "kinds_on_line": 2,
+  "class_slot_position": 1,
+  "class_slots_total": 3
+ }
+}

@@ -1,0 +1,15 @@
+reset to defect: '    return readings[1] > limit\n'
+status   : repaired
+reason   : engine law: BUILT -> SHIP
+ambiguous: False
+greens   : ['    return readings[1] >= limit', '    return readings[0] > limit']
+shipped  : '    return readings[1] >= limit\n'
+pristine : '    return readings[0] > limit\n'
+shipped_equals_pristine: False
+
+byte PASSED  : situation(BUILT=True, AMB=False) = 513 -> SHIP
+byte OWED    : situation(BUILT=True, AMB=True ) = 515 -> ADD_STATE
+greens held at ruling time: 2 (AMB owed True iff the two greens are different programs)
+  alarm([9, 1], 5): pristine=True shipped=False
+  alarm([0, 9], 5): pristine=False shipped=True
+  alarm([7, 3], 3): pristine=True shipped=True

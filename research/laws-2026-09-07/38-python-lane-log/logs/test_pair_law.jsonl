@@ -1,0 +1,18 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_matches_specification_on_all_256_situations"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_output_is_always_an_act_index"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_r1_no_multi_edit_before_a_single_edit_is_exhausted"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_r2_a_partition_always_outranks_a_pair"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_r3_canceling_is_a_veto_not_a_weak_signal"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_r4_a_pair_requires_partial_progress"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_r5_a_pair_never_starts_without_an_affordable_space"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_incident_unity_compensating_pair_is_never_attempted"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_incident_box2d_refuses_and_names_the_budget"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_incident_two_independent_bugs_partition_first"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_incident_the_only_shape_that_earns_a_pair"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_incident_no_evidence_invents_no_search"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_a_pair_is_reachable_from_almost_nothing"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_observe_bits_and_situation_agree"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_observe_bits_rejects_an_unmeasured_lane"}
+{"law": "engine", "site": "test_pair_law.py:138", "sit": 515, "byte": 3, "bits": ["BUILT", "AMB"], "ruling": "ADD_STATE", "test": "tests/test_pair_law.py::test_this_law_does_not_decide_whether_a_repair_ships"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_pair_law.py::test_this_law_does_not_decide_whether_a_repair_ships"}

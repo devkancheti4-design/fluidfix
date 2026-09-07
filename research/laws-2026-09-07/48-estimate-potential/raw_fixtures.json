@@ -1,0 +1,312 @@
+[
+ {
+  "repo": "test_a_real_failing_suite_is_s0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_a_real_failing_suite_is_s0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.39,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.01s\n  suite runtime: 0.22s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~58s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_budget_hands_first_pass_o0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_budget_hands_first_pass_o0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.36,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.01s\n  suite runtime: 0.21s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~57s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_candidate_caused_harness_0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_candidate_caused_harness_0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.47,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.02s\n  suite runtime: 0.31s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.6s - 8s\n  harder localisation (up to 80 runs):             ~65s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_dictionary_teaches_a_clas0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_dictionary_teaches_a_clas0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.79,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 passed in 0.02s\n  suite runtime: 0.37s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.7s - 9s\n  harder localisation (up to 80 runs):             ~70s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_estimate_projects_from_th0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_estimate_projects_from_th0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.7,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 passed in 0.01s\n  suite runtime: 0.35s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.7s - 8s\n  harder localisation (up to 80 runs):             ~68s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_estimate_says_so_when_the0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_estimate_says_so_when_the0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.55,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.02s\n  suite runtime: 0.34s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.7s - 8s\n  harder localisation (up to 80 runs):             ~68s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_failed_repair_restores_so0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_failed_repair_restores_so0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.38,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.01s\n  suite runtime: 0.22s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~58s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_global_budget_is_an_hones0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_global_budget_is_an_hones0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.38,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.01s\n  suite runtime: 0.20s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~56s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_green_raises_but_check_re0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_green_raises_but_check_re0/",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.36,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_green_raises_but_check_re0 with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\nno tests ran in 0.01s\n"
+ },
+ {
+  "repo": "test_green_suite_refuses_befor0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_green_suite_refuses_befor0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.4,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 passed in 0.01s\n  suite runtime: 0.25s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.5s - 8s\n  harder localisation (up to 80 runs):             ~60s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_init_generates_suite_and_0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_init_generates_suite_and_0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.54,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  2 passed in 0.02s\n  suite runtime: 0.31s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.6s - 8s\n  harder localisation (up to 80 runs):             ~65s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_init_refuses_to_clobber_w0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_init_refuses_to_clobber_w0/",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.51,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_init_refuses_to_clobber_w0 with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\nno tests ran in 0.01s\n"
+ },
+ {
+  "repo": "test_multiline_logic_fix_from_0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_multiline_logic_fix_from_0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.49,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  2 passed in 0.02s\n  suite runtime: 0.28s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.6s - 8s\n  harder localisation (up to 80 runs):             ~63s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_no_tests_collected_raises0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_no_tests_collected_raises0/",
+  "extra": "",
+  "rc": 1,
+  "wall": 0.48,
+  "verdict": "REFUSAL",
+  "missing": "any collectable pytest test in this root",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  the suite did not run, so there is nothing to time.\n\npytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_no_tests_collected_raises0 with no extra args \u2014 the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.\n--- last output ---\nno tests ran in 0.01s\n"
+ },
+ {
+  "repo": "test_refusal_logs_why_each_can0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_refusal_logs_why_each_can0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.88,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.10s\n  suite runtime: 0.56s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  2.1s - 11s\n  harder localisation (up to 80 runs):             ~85s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_repairs_strictness_bug_by0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_repairs_strictness_bug_by0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.71,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 passed in 0.02s\n  suite runtime: 0.40s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.8s - 9s\n  harder localisation (up to 80 runs):             ~72s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_span_bounds_and_anchor_sa0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_span_bounds_and_anchor_sa0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.55,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 passed in 0.02s\n  suite runtime: 0.33s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.7s - 8s\n  harder localisation (up to 80 runs):             ~66s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_span_fixes_two_coordinate0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_span_fixes_two_coordinate0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.43,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 passed in 0.01s\n  suite runtime: 0.22s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~57s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_span_leaves_no_dead_code0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_span_leaves_no_dead_code0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.39,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 passed in 0.01s\n  suite runtime: 0.22s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~58s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_span_rejection_rolls_back0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_span_rejection_rolls_back0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.39,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.01s\n  suite runtime: 0.23s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.5s - 7s\n  harder localisation (up to 80 runs):             ~58s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_step2_green_suite_untouch0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_step2_green_suite_untouch0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.39,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  2 passed in 0.02s\n  suite runtime: 0.22s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~58s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_step3_guard_repairs_and_c0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_step3_guard_repairs_and_c0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.39,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  2 passed in 0.01s\n  suite runtime: 0.22s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~58s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_step4_novel_class_refused0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_step4_novel_class_refused0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.38,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed, 1 passed in 0.01s\n  suite runtime: 0.22s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~57s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_step5_and_6_dictionary_fr0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_step5_and_6_dictionary_fr0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.38,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  3 passed in 0.02s\n  suite runtime: 0.22s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s\n  harder localisation (up to 80 runs):             ~57s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_step7_library_api0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_step7_library_api0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.42,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  2 passed in 0.02s\n  suite runtime: 0.25s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.5s - 7s\n  harder localisation (up to 80 runs):             ~60s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_two_coordinated_wrong_lin0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_two_coordinated_wrong_lin0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.51,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.02s\n  suite runtime: 0.30s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.6s - 8s\n  harder localisation (up to 80 runs):             ~64s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_two_green_spans_refuse_am0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_two_green_spans_refuse_am0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.76,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.04s\n  suite runtime: 0.50s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  2.0s - 10s\n  harder localisation (up to 80 runs):             ~80s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_value_found_in_repo_case10",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_value_found_in_repo_case10/",
+  "extra": "",
+  "rc": 0,
+  "wall": 1.01,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 passed in 0.09s\n  suite runtime: 0.59s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  2.2s - 11s\n  harder localisation (up to 80 runs):             ~87s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_value_found_in_repo_case20",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_value_found_in_repo_case20/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.73,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 passed in 0.02s\n  suite runtime: 0.39s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.8s - 9s\n  harder localisation (up to 80 runs):             ~71s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ },
+ {
+  "repo": "test_value_not_in_repo_still_r0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_value_not_in_repo_still_r0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.69,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  1 failed in 0.02s\n  suite runtime: 0.42s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.8s - 9s\n  harder localisation (up to 80 runs):             ~74s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n\n  NOTE: your suite is currently RED, so this timing includes failing\n  tests. fluidfix only acts on a red suite, so this is the realistic\n  number.\n"
+ },
+ {
+  "repo": "test_whole_algorithm_fix_from_0",
+  "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/48-estimate-potential/fixtures/test_whole_algorithm_fix_from_0/",
+  "extra": "",
+  "rc": 0,
+  "wall": 0.51,
+  "verdict": "NUMBER",
+  "missing": "-",
+  "out": "timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python)...\n  2 passed in 0.02s\n  suite runtime: 0.28s  (+~0.5s pytest startup per run)\n\nEXPECTED REPAIR TIME on this repo\n  typical in-vocabulary defect (2-10 suite runs):  1.6s - 8s\n  harder localisation (up to 80 runs):             ~62s\n\n  Fast suite: repairs will land in seconds. Ideal for the GitHub Action\n  on every push.\n\n  The arithmetic: time ~= runs x (suite time + startup). Nothing else\n  in fluidfix costs measurable wall clock \u2014 the kernels decide in\n  nanoseconds; your tests are the entire bill.\n"
+ }
+]

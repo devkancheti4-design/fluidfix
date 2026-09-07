@@ -1,0 +1,50 @@
+loop.py:42: NAMELIST(2) ['RepairResult', 'repair'] | __all__ = ["RepairResult", "repair"]
+guard.py:32: NAMELIST(4) ['GuardReport', 'find_candidate_files', 'guard_once', 'rank_observations'] | __all__ = ["GuardReport", "find_candidate_files", "guard_once",
+guard.py:307: NAMELIST(2) ['test', 'tests'] | if len(w) >= 3 and w.lower() not in ("test", "tests")}
+acts.py:26: NAMELIST(8) ['Observation', 'KINDS', 'ACTS', 'WORKED_EXAMPLE', 'SpanEdit', 'apply', 'act_for', 'candidate_cap'] | __all__ = ["Observation", "KINDS", "ACTS", "WORKED_EXAMPLE", "SpanEdit",
+acts.py:44: NAMELIST(3) ['start', 'end', 'text'] | __slots__ = ("start", "end", "text")
+acts.py:126: NAMELIST(2) ['<', '<='] | for a, b in ((">=", ">"), ("<=", "<"), (">", ">="), ("<", "<=")):
+acts.py:126: NAMELIST(2) ['<=', '<'] | for a, b in ((">=", ">"), ("<=", "<"), (">", ">="), ("<", "<=")):
+acts.py:126: NAMELIST(2) ['>', '>='] | for a, b in ((">=", ">"), ("<=", "<"), (">", ">="), ("<", "<=")):
+acts.py:126: NAMELIST(2) ['>=', '>'] | for a, b in ((">=", ">"), ("<=", "<"), (">", ">="), ("<", "<=")):
+acts.py:133: NAMELIST(2) ['>', '<'] | if a in (">", "<") and line[i:i + 2] in (">=", "<="):
+acts.py:133: NAMELIST(2) ['>=', '<='] | if a in (">", "<") and line[i:i + 2] in (">=", "<="):
+acts.py:248: NAMELIST(2) ['<', '>'] | for a, b in (("<=", ">="), (">=", "<="), ("<", ">"), (">", "<")):
+acts.py:248: NAMELIST(2) ['<=', '>='] | for a, b in (("<=", ">="), (">=", "<="), ("<", ">"), (">", "<")):
+acts.py:248: NAMELIST(2) ['>', '<'] | for a, b in (("<=", ">="), (">=", "<="), ("<", ">"), (">", "<")):
+acts.py:248: NAMELIST(2) ['>=', '<='] | for a, b in (("<=", ">="), (">=", "<="), ("<", ">"), (">", "<")):
+acts.py:256: NAMELIST(3) ['-', '<', '>'] | if line[i - 1:i] in ("-", "<", ">") or \
+acts.py:257: NAMELIST(2) ['<', '>'] | (a in ("<", ">") and line[i + 1:i + 2] in ("=", "<", ">")):
+acts.py:257: NAMELIST(3) ['=', '<', '>'] | (a in ("<", ">") and line[i + 1:i + 2] in ("=", "<", ">")):
+oracle.py:35: NAMELIST(2) ['Oracle', 'HarnessError'] | __all__ = ["Oracle", "HarnessError"]
+oracle.py:147: NAMELIST(2) ['-p', 'no:cacheprovider'] | cmd += ["-p", "no:cacheprovider"]
+oracle.py:200: NAMELIST(2) ['--lf', '--tb=no'] | fast = ["--lf", "--tb=no"]
+oracle.py:215: NAMELIST(2) ['FAILED', 'ERROR'] | if l.startswith(("FAILED", "ERROR"))), "")
+oracle.py:236: NAMELIST(2) ['FAILED', 'ERROR'] | if l.startswith(("FAILED", "ERROR"))), "")
+oracle.py:246: NAMELIST(2) ['-x', '--tb=long'] | rc, out = self.run(["-x", "--tb=long"], cache=True)
+coracle.py:54: NAMELIST(5) ['COracle', 'CBuildError', 'find_candidate_files_c', 'build_packet_c', 'cguard_once'] | __all__ = ["COracle", "CBuildError", "find_candidate_files_c",
+coracle.py:88: NAMELIST(8) ['.c', '.h', '.cc', '.cpp', '.hpp', '.cxx', '.hh', '.cs'] | _SRC_EXT = (".c", ".h", ".cc", ".cpp", ".hpp", ".cxx", ".hh", ".cs")
+coracle.py:125: NAMELIST(5) ['tests', 'test', 'unit_tests', 'run_tests', 'check'] | for name in ("tests", "test", "unit_tests", "run_tests", "check"):
+coracle.py:388: NAMELIST(3) ['bin', '', 'test'] | for sub in ("bin", "", "test"):
+coracle.py:389: NAMELIST(4) ['tests', 'test', 'unit_tests', 'run_tests'] | for name in ("tests", "test", "unit_tests", "run_tests"):
+coracle.py:531: NAMELIST(2) ['test', 'tests'] | if t in ("test", "tests"):
+coracle.py:600: NAMELIST(8) ['//', '*', '/*', '#include', '#ifndef', '#define', '#endif', '#ifdef'] | ("//", "*", "/*", "#include", "#ifndef", "#define",
+localize.py:29: NAMELIST(2) ['Packet', 'build_packet'] | __all__ = ["Packet", "build_packet"]
+localize.py:65: NAMELIST(5) ['E ', '>', '____', 'FAILED', 'ERROR'] | if l.startswith(("E ", ">", "____", "FAILED", "ERROR"))
+observers.py:25: NAMELIST(3) ['MechanicalObserver', 'ClaudeObserver', 'observer_prompt'] | __all__ = ["MechanicalObserver", "ClaudeObserver", "observer_prompt"]
+observers.py:76: NAMELIST(6) ['id', 'lineno', 'kinds', 'literal_value', 'literal_occurrence', 'op_occurrence'] | "required": ["id", "lineno", "kinds", "literal_value",
+hotspots.py:43: NAMELIST(3) ['bugfix_churn', 'rank_hotspots', 'coverage_to_reach'] | __all__ = ["bugfix_churn", "rank_hotspots", "coverage_to_reach"]
+hotspots.py:55: NAMELIST(14) ['.c', '.h', '.cc', '.cpp', '.cxx', '.hpp', '.hh', '.py', '.java', '.cs', '.rs', '.go', '.ts', '.js'] | _CODE = (".c", ".h", ".cc", ".cpp", ".cxx", ".hpp", ".hh", ".py", ".java",
+hotspots.py:142: NAMELIST(3) ['.h', '.hpp', '.hh'] | decl_only = (rel.endswith((".h", ".hpp", ".hh"))
+hotspots.py:173: NAMELIST(9) ['//', '*', '#include', '#ifndef', '#define', '#endif', '#ifdef', '#pragma', '}'] | if t.startswith(("//", "*", "#include", "#ifndef", "#define",
+hotspots.py:188: NAMELIST(4) ['return', 'if', 'for', 'while'] | if ("=" in l or l.startswith(("return", "if", "for", "while")))
+javaoracle.py:27: NAMELIST(4) ['JavaOracle', 'find_candidate_files_java', 'build_packet_java', 'jguard_once'] | __all__ = ["JavaOracle", "find_candidate_files_java", "build_packet_java",
+javaoracle.py:121: NAMELIST(3) ['.git', 'target', 'node_modules'] | dn[:] = [d for d in dn if d not in (".git", "target", "node_modules")]
+javaoracle.py:170: NAMELIST(5) ['//', '*', '/*', 'import ', 'package '] | if l.strip() and not l.lstrip().startswith(("//", "*", "/*", "import ",
+cli.py:132: NAMELIST(2) ['green', 'repaired'] | return 0 if report.status in ("green", "repaired") else 2
+cli.py:162: NAMELIST(12) ['.git', '__pycache__', 'tests', 'test', 'venv', '.venv', 'env', '.tox', 'build', 'dist', 'node_modules', '.fluidfix'] | skip_dirs = {".git", "__pycache__", "tests", "test", "venv", ".venv",
+cli.py:178: NAMELIST(3) ['setup.py', 'conftest.py', 'test_fluidfix_smoke.py'] | or f in ("setup.py", "conftest.py", "test_fluidfix_smoke.py")):
+cli.py:244: NAMELIST(2) ['green', 'repaired'] | return 0 if report.status in ("green", "repaired") else 2
+cli.py:276: NAMELIST(2) ['green', 'repaired'] | return 0 if report.status in ("green", "repaired") else 2
+cli.py:638: NAMELIST(2) ['mechanical', 'claude'] | sp.add_argument("--observer", choices=["mechanical", "claude"],
+cli.py:670: NAMELIST(2) ['mechanical', 'claude'] | sp.add_argument("--observer", choices=["mechanical", "claude"],

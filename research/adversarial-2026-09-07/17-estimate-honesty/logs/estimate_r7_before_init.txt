@@ -1,0 +1,6 @@
+timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python3.14)...
+  the suite did not run, so there is nothing to time.
+
+pytest collected NO TESTS (exit 5) while running pytest in /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/17-estimate-honesty/repos/r7_smoke with no extra args — the suite collected nothing, so nothing can be judged. Common causes: wrong --python (project deps missing), a testpaths/plugin interaction (SQLAlchemy collects 0 unless `-p no:cacheprovider` is passed), or no tests in this root.
+--- last output ---
+no tests ran in 0.01s

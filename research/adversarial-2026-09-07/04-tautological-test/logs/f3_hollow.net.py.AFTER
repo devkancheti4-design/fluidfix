@@ -1,0 +1,15 @@
+"""Invoicing and payroll arithmetic."""
+
+BONUS = 7
+
+
+def gross(units, price):
+    return units * price + units
+
+
+def invoice(units, price):
+    return gross(units, price) + BONUS
+
+
+def payslip(hours):
+    return hours * BONUS

@@ -1,0 +1,48 @@
+== 1. all 256 bytes: size of each priority (tie) class ==
+  priority 0:  64 bytes tie
+  priority 1:  32 bytes tie
+  priority 2:  16 bytes tie
+  priority 3:   8 bytes tie
+  priority 4:   4 bytes tie
+  priority 5:   2 bytes tie
+  priority 6:   1 bytes tie
+  priority 7: 129 bytes tie
+  distinct bytes that tie pairwise: 10923 of 32640 pairs
+
+== 2. the law discards every bit above the lowest set evidence bit ==
+  rank(x) == rank(x & -x) for all 1<=x<128: True
+  evidence bits set but not read across the 127 evidenced bytes: 321
+
+== 3. bytes the BODY can construct today (guard.rank_observations) ==
+  FAILONLY never measured (docstring), RETRIED never passed by a caller
+  reachable bytes: 64; priorities reachable: [0, 2, 3, 4, 5, 6, 7]
+  priority 0:  32 reachable bytes tie
+  priority 2:  16 reachable bytes tie
+  priority 3:   8 reachable bytes tie
+  priority 4:   4 reachable bytes tie
+  priority 5:   2 reachable bytes tie
+  priority 6:   1 reachable bytes tie
+  priority 7:   1 reachable bytes tie
+  priority 1 (FAILONLY) reachable: False
+  priority 7 reachable only by the all-zero byte: True
+
+== 4. bytes under the MechanicalObserver (SIGNALED always 1) ==
+  observers.py:39-40 emits an Observation only `if kinds:` -> SIGNALED=1
+  reachable bytes: 32; priorities reachable: [0, 2, 3]
+  priority 0:  16 bytes tie
+  priority 2:   8 bytes tie
+  priority 3:   8 bytes tie
+  RECENT/CHEAP/DENSE never change the priority when SIGNALED=1: True
+  concrete ties (same priority, different evidence):
+    p=0: FRAME+SIGNALED  ==  FRAME+NAMED+SIGNALED+RECENT+CHEAP+DENSE
+    p=2: NAMED+SIGNALED  ==  NAMED+SIGNALED+RECENT+CHEAP+DENSE
+    p=3: SIGNALED  ==  SIGNALED+RECENT+CHEAP+DENSE
+
+== 5. monotone but not strict: adding evidence can only tie or improve ==
+  bit additions that improve priority: 127
+  bit additions that leave it tied:    321
+
+== 6. the tie-break the body uses is not in the byte ==
+  guard.py:411-427 key = (rank(byte), -shared_name_tokens, incoming index)
+  shared_name_tokens is a DEGREE of NAMED; the law reads NAMED as 0/1 only
+  incoming index = Packet.lines order = ascending line number (localize.py:38)

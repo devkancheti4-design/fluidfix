@@ -1,0 +1,39 @@
+== fixture: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/15-rank-bits-audit/retried_fixture (mod.py 88 lines, one failing test)
+== guard_once(files=['mod.py'], escalate=True, escalate_budget=120, budget=240)
+== status=refused  seconds=11.6  attempts_logged=36
+
+rank_observations calls (the body's ONLY ranking path): 2
+  call 0: rel='mod.py'  n_obs=110  retried kwarg = None
+           order out = [13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 73, 73, 73, 73, 73, 73, 73, 73, 73, 73, 73, 73, 73, 73, 73, 73, 73, 73, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83]
+           suite_runs = 19  distinct rejected candidates = 18  (+0 beyond the 64-entry log cap)
+  call 1: rel='mod.py'  n_obs=6  retried kwarg = None
+           order out = [13, 28, 43, 58, 73, 83]
+           suite_runs = 19  distinct rejected candidates = 18  (+0 beyond the 64-entry log cap)
+
+OVERLAP between pass 0 and the escalation pass over the SAME file:
+  pass 0 rejected      : 18 distinct candidates
+  escalation rejected  : 18 distinct candidates
+  IDENTICAL (file:line, candidate text) in both: 18
+  -> 18/18 = 100% of the escalation pass's rejected candidates were already rejected in pass 0
+  each such candidate costs one full suite run (loop.py:355 res.suite_runs += 1)
+
+  first 8 duplicated candidates (at, text):
+    mod.py:13      '    total = total   # signal line 10'
+    mod.py:13      '    total = total + 1   # signal line 9'
+    mod.py:13      '    total = total - 1   # signal line 10'
+    mod.py:28      '    total = total   # signal line 25'
+    mod.py:28      '    total = total + 1   # signal line 24'
+    mod.py:28      '    total = total - 1   # signal line 25'
+    mod.py:43      '    total = total   # signal line 40'
+    mod.py:43      '    total = total + 1   # signal line 39'
+
+  the `retried` set the body COULD have passed at guard.py:585, derived from pass 0's own result.tried_log: [13, 28, 43, 58, 73, 83]
+  what the law would have ruled for those lines with that set:
+    line  13: byte 0x28 -> rank 3 (today)   byte 0xa8 -> rank 7 (with RETRIED)
+    line  28: byte 0x28 -> rank 3 (today)   byte 0xa8 -> rank 7 (with RETRIED)
+    line  43: byte 0x28 -> rank 3 (today)   byte 0xa8 -> rank 7 (with RETRIED)
+    line  58: byte 0x28 -> rank 3 (today)   byte 0xa8 -> rank 7 (with RETRIED)
+    line  73: byte 0x28 -> rank 3 (today)   byte 0xa8 -> rank 7 (with RETRIED)
+    line  83: byte 0x28 -> rank 3 (today)   byte 0xa8 -> rank 7 (with RETRIED)
+
+report.hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists what was tried; teach the class or fix by hand

@@ -1,0 +1,10 @@
+in-vocab trials: 18  oov trials: 3
+  click: trials=6 exact=3 green-only=1 refused=2
+  arrow: trials=6 exact=5 green-only=0 refused=1
+  sortedcontainers: trials=6 exact=6 green-only=0 refused=0
+TOTAL exact: 14 green-only: 1 refused: 3
+OOV refused: 3 / 3
+exact pct 14/18 = 78%
+accepted repairs: 15 min 18.1 max 890.6 median 187.8
+all in-vocab trials: min 18.1 max 890.6 median 219.35
+byte-exact of accepted: 14 / 15 = 93%

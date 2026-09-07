@@ -1,0 +1,69 @@
+--- [0] src/aabb.c:45 ' - '->' + '
+    status=refused body_rank=10 law_rank=2 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': True, 'ubiquitous': False} fails=['AABBRayCastTest', 'CollisionTest'] 4.0s 
+--- [1] src/bitset.c:33 ' + '->' - '
+    status=refused body_rank=None law_rank=None bits=None fails=[] 7.7s 
+--- [2] src/distance.c:84 ' + '->' - '
+    status=refused body_rank=30 law_rank=1 bits={'framed': False, 'scarce': True, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 4.1s 
+--- [3] src/dynamic_tree.c:67 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [4] src/geometry.c:38 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [5] src/hull.c:236 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [6] src/manifold.c:136 ' + '->' - '
+    status=refused body_rank=26 law_rank=25 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': False, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['LargeWorldBulletTest', 'LargeWorldTest'] 11.8s 
+--- [7] src/math_functions.c:114 ' + '->' - '
+    status=refused body_rank=2 law_rank=1 bits={'framed': False, 'scarce': True, 'literal': False, 'failonly': True, 'named': True, 'touched': True, 'small': True, 'ubiquitous': False} fails=['MathTest'] 3.7s 
+--- [8] src/revolute_joint.c:268 ' + '->' - '
+    status=refused body_rank=22 law_rank=13 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 3.9s 
+--- [9] src/shape.c:44 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [10] src/constraint_graph.c:37 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [11] src/broad_phase.c:230 ' < '->' > '
+    status=refused body_rank=25 law_rank=10 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 6.9s 
+--- [12] src/contact.c:599 ' > '->' < '
+    status=refused body_rank=27 law_rank=8 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 6.3s 
+--- [13] src/distance_joint.c:397 ' - '->' + '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [14] src/physics_world.c:961 ' > '->' < '
+    status=refused body_rank=1 law_rank=3 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 4.0s 
+--- [15] src/prismatic_joint.c:456 ' - '->' + '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [16] src/body.c:28 ' > '->' < '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [17] src/contact_solver.c:2481 ' < '->' > '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [18] src/island.c:108 ' >= '->' < '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [19] src/joint.c:167 ' < '->' > '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [20] src/solver.c:140 ' > '->' < '
+    status=refused body_rank=3 law_rank=2 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 5.7s 
+--- [21] src/table.c:105 ' + '->' - '
+    status=refused body_rank=1 law_rank=1 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': True, 'touched': True, 'small': False, 'ubiquitous': False} fails=['HashSetStressTest', 'TableTest'] 7.3s 
+--- [22] src/world_snapshot.c:239 ' > '->' < '
+    status=refused body_rank=4 law_rank=2 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': True, 'touched': True, 'small': False, 'ubiquitous': False} fails=['LargeWorldRecordingTest', 'LargeWorldTest'] 11.6s 
+--- [23] src/sensor.c:140 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [24] src/wheel_joint.c:267 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [25] src/weld_joint.c:194 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [26] src/motor_joint.c:239 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [27] src/solver_set.c:161 ' > 1 '->' < 1 '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [retry src/dynamic_tree.c alt 0] L196 ' < '->' > '
+    status=refused body_rank=1 law_rank=1 fails=['TreeGridMovementTest', 'DynamicTreeTest'] 10.1s
+--- [retry src/geometry.c alt 0] L61 ' < '->' > '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry src/geometry.c alt 1] L323 ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry src/geometry.c alt 2] L597 ' > '->' < '
+    status=refused body_rank=3 law_rank=4 fails=['RayCastShapeTest', 'ShapeTest'] 23.9s
+--- [retry src/hull.c alt 0] L32 ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry src/hull.c alt 1] L40 ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry src/hull.c alt 2] L46 ' > '->' < '

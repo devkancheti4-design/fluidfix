@@ -1,0 +1,13 @@
+every situation(...) the body builds, with the bits it passes:
+  loop.py:217  situation(BUILT, AMB, CAPPED)
+  loop.py:391  situation(HIDDEN)   <-- HIDDEN
+  guard.py:491  situation(UNREAD)
+  guard.py:539  situation(CAPPED, REFUTED)
+  guard.py:618  situation(REFUTED)
+  guard.py:612  situation(REFUTED)
+
+what the law rules for the two situations a rejected-by-re-check search could be described by:
+  REFUTED alone            -> HARVEST_COUNTEREXAMPLE    (what guard.py:612/618 asks today)
+  REFUTED+HIDDEN           -> CHANGE_GRANULARITY    (the situation as measured)
+  BUILT+HIDDEN             -> CHANGE_GRANULARITY
+  BUILT alone              -> SHIP    (what loop.py:217 asks when a coarse green survives)

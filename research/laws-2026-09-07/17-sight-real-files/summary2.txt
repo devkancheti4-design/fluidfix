@@ -1,0 +1,106 @@
+A. PER-FILE  (last attempt per file; 'tries' = injections needed to turn the suite red)
+file                       tries   line status   bodyN bodyR lawN lawR cred failing tests
+src/aabb.c                     2     45 refused     12    10    4    4 Fals AABBRayCastTest,CollisionTest
+src/bitset.c                   1     33 refused      5  MISS    0 MISS Fals -
+src/body.c                     2    594 refused     33    28   33    6 True MultithreadingTest,DeterminismTest
+src/broad_phase.c              2    230 refused     34    25   34   10 True MultithreadingTest,DeterminismTest
+src/constraint_graph.c         1     37 green        -     -    -    -    - -
+src/contact.c                  1    599 refused     34    27   34    8 True MultithreadingTest,DeterminismTest
+src/contact_solver.c           3   1679 refused      5     3    0 MISS Fals -
+src/distance.c                 2     84 refused     34    30   34    1 True MultithreadingTest,DeterminismTest
+src/distance_joint.c           6    397 green        -     -    -    -    - -
+src/dynamic_tree.c             2    196 refused      5     1    5    1 True TreeGridMovementTest,DynamicTreeTest
+src/geometry.c                 4    597 refused      6     3    6    4 True RayCastShapeTest,ShapeTest
+src/hull.c                     7    236 green        -     -    -    -    - -
+src/island.c                   2    135 refused      5  MISS    0 MISS Fals -
+src/joint.c                    4    382 refused     34    24   34   11 True MultithreadingTest,DeterminismTest
+src/manifold.c                 2    136 refused     32    26   32   25 True LargeWorldBulletTest,LargeWorldTest
+src/math_functions.c           2    114 refused      9     2    3    1 Fals MathTest
+src/motor_joint.c              6    239 green        -     -    -    -    - -
+src/physics_world.c            1    961 refused     32     1   32    3 True MultithreadingTest,DeterminismTest
+src/prismatic_joint.c          6    456 green        -     -    -    -    - -
+src/recording.c                2     35 refused      5  MISS    0 MISS Fals -
+src/recording_replay.c         1     31 refused     38    16   38    4 True LargeWorldRecordingTest,LargeWorldTest
+src/revolute_joint.c           2    268 refused     34    22   34   13 True MultithreadingTest,DeterminismTest
+src/sensor.c                   1    140 green        -     -    -    -    - -
+src/shape.c                    6     44 green        -     -    -    -    - -
+src/solver.c                   1    140 refused     34     3   34    2 True MultithreadingTest,DeterminismTest
+src/solver_set.c               1    161 green        -     -    -    -    - -
+src/table.c                    1    105 refused      7     1    7    1 True HashSetStressTest,TableTest
+src/weld_joint.c               5    194 green        -     -    -    -    - -
+src/wheel_joint.c              6    267 green        -     -    -    -    - -
+src/world_snapshot.c           1    239 refused     38     4   38    2 True LargeWorldRecordingTest,LargeWorldTest
+
+files injected: 30   red (observable): 20   green (defect invisible to the suite): 10
+green files: src/constraint_graph.c, src/distance_joint.c, src/hull.c, src/motor_joint.c, src/prismatic_joint.c, src/sensor.c, src/shape.c, src/solver_set.c, src/weld_joint.c, src/wheel_joint.c
+
+B. RANKINGS
+
+BODY file order (coracle.find_candidate_files_c)  over 20 red defects
+  true file ranked at all : 17/20   not in the list at all: 3
+  top-1 : 3/20  (15% of red defects)
+  top-3 : 7/20  (35%)
+  top-5 : 8/20  (40%)
+  median rank among the 17 ranked: 10   mean 13.3   worst 30
+  ranks: [1, 1, 1, 2, 3, 3, 3, 4, 10, 16, 22, 24, 25, 26, 27, 28, 30]
+
+SIGHT law order (sight() on the same coverage)  over 20 red defects
+  true file ranked at all : 16/20   not in the list at all: 4
+  top-1 : 4/20  (20% of red defects)
+  top-3 : 7/20  (35%)
+  top-5 : 10/20  (50%)
+  median rank among the 16 ranked: 4   mean 6.0   worst 25
+  ranks: [1, 1, 1, 1, 2, 2, 3, 4, 4, 4, 6, 8, 10, 11, 13, 25]
+
+C. OBSERVATION QUALITY
+  red defects with >=1 NAMED failing test : 16/20
+  red defects with NO named failing test  : 4/20  -> src/bitset.c, src/contact_solver.c, src/island.c, src/recording.c
+  red defects the body called 'credible'  : 14/20   (coracle floor: >=5 non-test files in the failing tests' coverage)
+  on the named subset only:
+
+  BODY  over 16 red defects
+  true file ranked at all : 16/16   not in the list at all: 0
+  top-1 : 3/16  (19% of red defects)
+  top-3 : 6/16  (38%)
+  top-5 : 7/16  (44%)
+  median rank among the 16 ranked: 13   mean 13.9   worst 30
+  ranks: [1, 1, 1, 2, 3, 3, 4, 10, 16, 22, 24, 25, 26, 27, 28, 30]
+
+  LAW   over 16 red defects
+  true file ranked at all : 16/16   not in the list at all: 0
+  top-1 : 4/16  (25% of red defects)
+  top-3 : 7/16  (44%)
+  top-5 : 10/16  (62%)
+  median rank among the 16 ranked: 4   mean 6.0   worst 25
+  ranks: [1, 1, 1, 1, 2, 2, 3, 4, 4, 4, 6, 8, 10, 11, 13, 25]
+
+D. WHERE THE TWO ORDERS DISAGREE (named subset)
+file                        body   law  delta  bits set
+src/aabb.c                    10     4     +6  FAILONLY,TOUCHED,SMALL
+src/body.c                    28     6    +22  FAILONLY,TOUCHED
+src/broad_phase.c             25    10    +15  FAILONLY,TOUCHED
+src/contact.c                 27     8    +19  FAILONLY,TOUCHED
+src/distance.c                30     1    +29  SCARCE,FAILONLY,TOUCHED
+src/dynamic_tree.c             1     1     +0  SCARCE,FAILONLY,NAMED,TOUCHED
+src/geometry.c                 3     4     -1  TOUCHED
+src/joint.c                   24    11    +13  FAILONLY,TOUCHED
+src/manifold.c                26    25     +1  TOUCHED
+src/math_functions.c           2     1     +1  SCARCE,FAILONLY,NAMED,TOUCHED,SMALL
+src/physics_world.c            1     3     -2  FAILONLY,TOUCHED
+src/recording_replay.c        16     4    +12  FAILONLY,NAMED,TOUCHED
+src/revolute_joint.c          22    13     +9  FAILONLY,TOUCHED
+src/solver.c                   3     2     +1  FAILONLY,TOUCHED
+src/table.c                    1     1     +0  FAILONLY,NAMED,TOUCHED
+src/world_snapshot.c           4     2     +2  FAILONLY,NAMED,TOUCHED
+
+  law ranks the true file HIGHER than the body on 12/16 defects, lower on 2, tied on 2; median delta +4
+
+E. SIGHT BITS ACTUALLY SET on the true file (named subset)
+  FRAMED      set on  0/16 true files
+  SCARCE      set on  3/16 true files
+  LITERAL     set on  0/16 true files
+  FAILONLY    set on 14/16 true files
+  NAMED       set on  5/16 true files
+  TOUCHED     set on 16/16 true files
+  SMALL       set on  2/16 true files
+  UBIQUITOUS  set on  0/16 true files

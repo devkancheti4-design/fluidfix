@@ -1,0 +1,10 @@
+fixture_b: 90 runs
+CONFIRM   N  CORRECT FALSE_ACC REF_AMB REFUSED GREEN_AB other | hidden fired mean suite_runs mean wall s
+      0  30       15         0       0      15        0     0 |            0            3.00        1.47
+        false-accept rate = 0/30 = 0.0%   correct-repair rate = 15/30 = 50.0%
+      1  30        3         0       0      27        0     0 |           13            3.00        1.59
+        false-accept rate = 0/30 = 0.0%   correct-repair rate = 3/30 = 10.0%
+        HIDDEN fired on: {'return a + b': 13}
+      2  30        1         0       0      29        0     0 |           12            3.00        2.33
+        false-accept rate = 0/30 = 0.0%   correct-repair rate = 1/30 = 3.3%
+        HIDDEN fired on: {'return a + b': 12}

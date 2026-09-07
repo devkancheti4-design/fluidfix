@@ -1,0 +1,14 @@
+== ship: REAL law ==
+  [real] status='repaired' file='mod.py'
+  [real] hint=''
+  [real] attempts=0 result={'repaired': True, 'ambiguous': False, 'greens': ['    if x >= t:'], 'reason': 'engine law: BUILT -> SHIP'}
+  [real] mod.py line 2 now: '    if x >= t:'
+== ship: SWAPPED law {'SHIP': 'RESHAPE'} ==
+  [swap] status='refused' file=None
+  [swap] hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it'
+  [swap] attempts=2 result=None
+  [swap] mod.py line 2 now: '    if x > t:'
+  decide() calls during the swapped run (byte, real ruling, returned):
+    BUILT                SHIP                   -> RESHAPE
+    REFUTED              HARVEST_COUNTEREXAMPLE -> HARVEST_COUNTEREXAMPLE
+-- ship: 6.7s wall

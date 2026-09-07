@@ -1,0 +1,11 @@
+total touches = 2029;  60% target = 1217.4
+  rank  53  + 10 -> cum  1181  share 0.5821  Box2D/Box2D/Collision/b2Distance.h
+  rank  54  + 10 -> cum  1191  share 0.5870  Box2D/Box2D/Collision/b2TimeOfImpact.h
+  rank  55  +  9 -> cum  1200  share 0.5914  include/box2d/types.h
+  rank  56  +  9 -> cum  1209  share 0.5959  src/body.c
+  rank  57  +  9 -> cum  1218  share 0.6003  src/world.c
+  rank  58  +  8 -> cum  1226  share 0.6042  Box2D/glfw/config.h
+  rank  59  +  8 -> cum  1234  share 0.6082  Box2D/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp
+  rank  60  +  8 -> cum  1242  share 0.6121  Box2D/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp
+  rank  61  +  8 -> cum  1250  share 0.6161  Box2D/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp
+  rank  62  +  8 -> cum  1258  share 0.6200  Box2D/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp

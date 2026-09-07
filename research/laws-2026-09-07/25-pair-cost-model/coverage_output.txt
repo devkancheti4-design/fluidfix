@@ -1,0 +1,3 @@
+gcov available: True
+full-suite coverage in 110.3s; files=54
+src/contact_solver.c executed lines: 638

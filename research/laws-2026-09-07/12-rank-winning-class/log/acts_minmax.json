@@ -1,0 +1,103 @@
+{
+ "name": "acts_minmax",
+ "src": "tests/test_acts.py test_guard_repairs_minmax_swap_end_to_end",
+ "group": "shipped",
+ "expect": "repaired",
+ "taught": {},
+ "status": "repaired",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 2.9,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 1,
+   "input_order": [
+    2
+   ],
+   "ranked_order": [
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      8
+     ],
+     "classes": [
+      "minmax-swap"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "return min(xs)"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    8
+   ],
+   "act": 13,
+   "kind": 8,
+   "n": 1,
+   "cands": [
+    "    return max(xs)"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "return max(xs)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "return max(xs)"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 2,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    return max(xs)",
+  "old_line": "    return min(xs)",
+  "kind": 8,
+  "class": "minmax-swap",
+  "act": 13,
+  "first_green_check": 1,
+  "suite_runs": 2,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 3,
+  "bits": "SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 1,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 1,
+  "kinds_on_line": 1,
+  "class_slot_position": 1,
+  "class_slots_total": 1
+ }
+}

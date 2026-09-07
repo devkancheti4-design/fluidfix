@@ -1,0 +1,199 @@
+{
+ "name": "demo_invoices_dict",
+ "src": "tests/test_demo_walkthrough.py step5 (docs/DEMO.md dict; no git here)",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "missing-get-default"
+ },
+ "status": "repaired",
+ "file": "invoices.py",
+ "candidate_files": [
+  "invoices.py"
+ ],
+ "evidence": {},
+ "seconds": 3.0,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "invoices.py",
+   "n_obs": 2,
+   "input_order": [
+    2,
+    4
+   ],
+   "ranked_order": [
+    4,
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 4,
+     "kinds": [
+      3,
+      4,
+      9
+     ],
+     "classes": [
+      "flipped-additive",
+      "missing-get-default",
+      "flipped-augmented-assign"
+     ],
+     "byte": 45,
+     "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+     "priority": 0,
+     "text": "due += inv[\"amount\"] + inv.get(\"tax\")"
+    },
+    {
+     "lineno": 2,
+     "kinds": [
+      1
+     ],
+     "classes": [
+      "literal-off-by-one"
+     ],
+     "byte": 44,
+     "bits": "NAMED+SIGNALED+CHEAP",
+     "priority": 2,
+     "text": "due = 0"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 4,
+   "kinds": [
+    3,
+    4,
+    9
+   ],
+   "act": 8,
+   "kind": 3,
+   "n": 1,
+   "cands": [
+    "        due += inv[\"amount\"] - inv.get(\"tax\")"
+   ]
+  },
+  {
+   "lineno": 4,
+   "kinds": [
+    3,
+    4,
+    9
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "        due += inv[\"amount\"] + inv.get(\"tax\", 0)"
+   ]
+  },
+  {
+   "lineno": 4,
+   "kinds": [
+    3,
+    4,
+    9
+   ],
+   "act": 14,
+   "kind": 9,
+   "n": 1,
+   "cands": [
+    "        due -= inv[\"amount\"] + inv.get(\"tax\")"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    due = -1"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "invoices.py",
+     "old_lines": "4-4",
+     "new": "due += inv[\"amount\"] - inv.get(\"tax\")"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "invoices.py",
+     "old_lines": "4-4",
+     "new": "due += inv[\"amount\"] + inv.get(\"tax\", 0)"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": true,
+   "changed": [
+    {
+     "file": "invoices.py",
+     "old_lines": "4-4",
+     "new": "due += inv[\"amount\"] + inv.get(\"tax\", 0)"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": false,
+   "changed": [
+    {
+     "file": "invoices.py",
+     "old_lines": "4-4",
+     "new": "due -= inv[\"amount\"] + inv.get(\"tax\")"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ok": false,
+   "changed": [
+    {
+     "file": "invoices.py",
+     "old_lines": "2-2",
+     "new": "due = -1"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 5,
+ "winner": {
+  "lineno": 4,
+  "new_line": "        due += inv[\"amount\"] + inv.get(\"tax\", 0)",
+  "old_line": "        due += inv[\"amount\"] + inv.get(\"tax\")",
+  "kind": 4,
+  "class": "missing-get-default",
+  "act": 9,
+  "first_green_check": 2,
+  "suite_runs": 5,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 0,
+  "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 2,
+  "position_input": 2,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 2,
+  "kinds_on_line": 3,
+  "class_slot_position": 2,
+  "class_slots_total": 4
+ }
+}

@@ -43,3 +43,10 @@ Documentation = "https://github.com/devkancheti4-design/fluidfix/blob/master/doc
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+# Only the project's own tests. `research/` holds agent working directories with
+# their own fixture repos and copies of Box2D/cglm; collecting them pulls in
+# ~1,000 unrelated files.
+testpaths = ["tests"]
+norecursedirs = ["research", ".venv", "build", "covbuild", ".git"]

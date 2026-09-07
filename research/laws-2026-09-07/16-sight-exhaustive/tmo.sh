@@ -1,0 +1,3 @@
+#!/bin/sh
+# timeout(1) is absent on this macOS; perl alarm is the equivalent: tmo.sh SECONDS cmd...
+exec perl -e 'my $s = shift; alarm $s; exec @ARGV or die "exec: $!"' -- "$@"

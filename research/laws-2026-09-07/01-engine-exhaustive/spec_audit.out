@@ -1,0 +1,51 @@
+=== A. docstring per-bit table: BITS[i] alone -> ACTS[i]? ===
+    bit 0 BUILT    table says SHIP                   law rules SHIP                   OK
+    bit 1 AMB      table says ADD_STATE              law rules ADD_STATE              OK
+    bit 2 UNREAD   table says ADD_MATERIAL           law rules ADD_MATERIAL           OK
+    bit 3 NOTWIN   table says RESHAPE                law rules RESHAPE                OK
+    bit 4 HIDDEN   table says CHANGE_GRANULARITY     law rules CHANGE_GRANULARITY     OK
+    bit 5 CAPPED   table says RAISE_BUDGET           law rules RAISE_BUDGET           OK
+    bit 6 REFUTED  table says HARVEST_COUNTEREXAMPLE law rules HARVEST_COUNTEREXAMPLE OK
+    bit 7 SELF     table says AUTHOR_SUCCESSOR       law rules SHIP                   DEVIATES
+    per-bit table holds on 7/8 bits; deviations: [('SELF', 'AUTHOR_SUCCESSOR', 'SHIP')]
+    AUTHOR_SUCCESSOR is instead reached by 15 bytes, all of which have NOTWIN set: True
+      e.g. ['NOTWIN+HIDDEN', 'NOTWIN+CAPPED', 'NOTWIN+HIDDEN+CAPPED']
+
+=== B. docstring claim vs the call sites in src/fluidfix/*.py ===
+    engine.py docstring says: NOTWIN, HIDDEN and SELF are not yet measured by fluidfix and are never set (documented limitation, not an omission by accident).
+    BUILT    SET at loop.py:217 (BUILT=True)
+    AMB      SET at loop.py:217 (AMB=set_amb or len(sites) > 1)
+    UNREAD   SET at guard.py:491 (UNREAD=True)
+    NOTWIN   never passed to decide() anywhere in src/
+    HIDDEN   SET at loop.py:391 (HIDDEN=True)
+    CAPPED   SET at guard.py:539 (CAPPED=capped0); loop.py:217 (CAPPED=capped)
+    REFUTED  SET at guard.py:539 (REFUTED=acts0); guard.py:612 (REFUTED=True); guard.py:618 (REFUTED=True)
+    SELF     never passed to decide() anywhere in src/
+    bits the docstring calls 'never set' that the body DOES set: ['HIDDEN']
+    bits genuinely never passed to decide(): ['NOTWIN', 'SELF']
+
+=== C. entry condition for each act (minimal bytes that reach it) ===
+    SHIP                     4 bytes; smallest observation = 0 bit(s): ['(none)']
+        bits required in EVERY byte that reaches it: (none)
+    ADD_STATE              113 bytes; smallest observation = 1 bit(s): ['AMB']
+        bits required in EVERY byte that reaches it: ['AMB']
+    ADD_MATERIAL            64 bytes; smallest observation = 1 bit(s): ['UNREAD']
+        bits required in EVERY byte that reaches it: ['UNREAD']
+    RESHAPE                 17 bytes; smallest observation = 1 bit(s): ['NOTWIN']
+        bits required in EVERY byte that reaches it: ['NOTWIN']
+    CHANGE_GRANULARITY      16 bytes; smallest observation = 1 bit(s): ['HIDDEN']
+        bits required in EVERY byte that reaches it: ['HIDDEN']
+    RAISE_BUDGET            23 bytes; smallest observation = 1 bit(s): ['CAPPED']
+        bits required in EVERY byte that reaches it: (none)
+    HARVEST_COUNTEREXAMPLE   4 bytes; smallest observation = 1 bit(s): ['REFUTED']
+        bits required in EVERY byte that reaches it: ['REFUTED']
+    AUTHOR_SUCCESSOR        15 bytes; smallest observation = 2 bit(s): ['NOTWIN+HIDDEN', 'NOTWIN+CAPPED', 'NOTWIN+REFUTED', 'NOTWIN+SELF']
+        bits required in EVERY byte that reaches it: ['NOTWIN']
+
+=== D. what the never-measured bits cost, act by act ===
+    never-measured bits: ['NOTWIN', 'SELF']
+    NOTWIN   is REQUIRED by acts ['RESHAPE', 'AUTHOR_SUCCESSOR'] (32 of 256 bytes) -> those acts are unreachable while NOTWIN is never measured
+    SELF     is REQUIRED by acts [] (0 of 256 bytes) -> those acts are unreachable while SELF is never measured
+    bits the body CAN set: ['BUILT', 'AMB', 'UNREAD', 'HIDDEN', 'CAPPED', 'REFUTED'] (mask=119)
+    acts reachable from ANY combination of those bits: ['ADD_MATERIAL', 'ADD_STATE', 'CHANGE_GRANULARITY', 'HARVEST_COUNTEREXAMPLE', 'RAISE_BUDGET', 'SHIP']
+    acts unreachable no matter how those bits combine: ['RESHAPE', 'AUTHOR_SUCCESSOR']

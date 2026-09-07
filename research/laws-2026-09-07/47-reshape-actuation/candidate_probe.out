@@ -1,0 +1,15 @@
+line '    if n > 10:'
+   kind 0 -> act 5 -> ['    if n >= 10:']
+   kind 1 -> act 6 -> ['    if n > 9:']
+   kind 2 -> act 7 -> ['    if n > 10:']
+   kind 3 -> act 8 -> ['    if n > 10:']
+line '    if n >= 11:'
+   kind 0 -> act 5 -> ['    if n > 11:']
+   kind 1 -> act 6 -> ['    if n >= 10:']
+   kind 2 -> act 7 -> ['    if n >= 11:']
+   kind 3 -> act 8 -> ['    if n >= 11:']
+line '    return base - delta'
+   kind 0 -> act 5 -> ['    return base - delta']
+   kind 1 -> act 6 -> ['    return base - delta']
+   kind 2 -> act 7 -> ['    return delta - base']
+   kind 3 -> act 8 -> ['    return base + delta']

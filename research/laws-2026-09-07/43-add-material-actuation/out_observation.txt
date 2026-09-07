@@ -1,0 +1,8 @@
+helper carries the assert (fixture A/B shape)        carriers=['shop/support/expect.py']     expected=['shop/support/expect.py']     OK
+    UNREAD given framed=['shop/support/expect.py'] -> True
+test carries the assert (ordinary case)              carriers=[]                             expected=[]                             OK
+    UNREAD given framed=['<none>'] -> False
+the DEFECT FILE itself raises on an assert (false-positive probe) carriers=['shop/discount.py']           expected=['shop/discount.py']           OK
+    UNREAD given framed=['shop/discount.py'] -> True
+exception, not an assert, inside a source file       carriers=[]                             expected=[]                             OK
+    UNREAD given framed=['<none>'] -> False

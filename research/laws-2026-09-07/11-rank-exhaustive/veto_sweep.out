@@ -1,0 +1,57 @@
+############ ESC_BUDGET=5 ############
+  guard status = refused   file=None   wall=11.0s   defect line=119
+  repair call 0 (pass 0): runs=20 repaired=False at=None
+    defect line position in order: None of 10
+    reason: every candidate left the suite red — fault is outside this vocabulary or the observations 
+  repair call 1 (escalation): runs=10 repaired=False at=None
+    defect line position in order: 10 of 11
+    reason: wall-clock deadline reached mid-search — remaining observations untried
+  guard status = refused   file=None   wall=10.9s   defect line=119
+  repair call 0 (pass 0): runs=20 repaired=False at=None
+    defect line position in order: None of 10
+    reason: every candidate left the suite red — fault is outside this vocabulary or the observations 
+  repair call 1 (escalation): runs=5 repaired=False at=None
+    defect line position in order: 0 of 11
+    reason: a candidate passes, but the search was cut short before it could be shown unique — shippin
+  A baseline      status=refused    wall=11.0s
+  B with veto     status=refused    wall=10.9s
+  defect repaired A=False   B=False
+  => same outcome in both arms at this budget; see positions above for the ordering difference
+############ ESC_BUDGET=8 ############
+  guard status = refused   file=None   wall=15.0s   defect line=119
+  repair call 0 (pass 0): runs=20 repaired=False at=None
+    defect line position in order: None of 10
+    reason: every candidate left the suite red — fault is outside this vocabulary or the observations 
+  repair call 1 (escalation): runs=11 repaired=False at=None
+    defect line position in order: 10 of 11
+    reason: wall-clock deadline reached mid-search — remaining kinds untried
+  guard status = refused   file=None   wall=14.6s   defect line=119
+  repair call 0 (pass 0): runs=20 repaired=False at=None
+    defect line position in order: None of 10
+    reason: every candidate left the suite red — fault is outside this vocabulary or the observations 
+  repair call 1 (escalation): runs=10 repaired=False at=None
+    defect line position in order: 0 of 11
+    reason: a candidate passes, but the search was cut short before it could be shown unique — shippin
+  A baseline      status=refused    wall=15.0s
+  B with veto     status=refused    wall=14.6s
+  defect repaired A=False   B=False
+  => same outcome in both arms at this budget; see positions above for the ordering difference
+############ ESC_BUDGET=12 ############
+  guard status = refused   file=None   wall=17.6s   defect line=119
+  repair call 0 (pass 0): runs=20 repaired=False at=None
+    defect line position in order: None of 10
+    reason: every candidate left the suite red — fault is outside this vocabulary or the observations 
+  repair call 1 (escalation): runs=21 repaired=False at=None
+    defect line position in order: 10 of 11
+    reason: a candidate passes, but the search was cut short before it could be shown unique — shippin
+  guard status = refused   file=None   wall=14.7s   defect line=119
+  repair call 0 (pass 0): runs=20 repaired=False at=None
+    defect line position in order: None of 10
+    reason: every candidate left the suite red — fault is outside this vocabulary or the observations 
+  repair call 1 (escalation): runs=20 repaired=False at=None
+    defect line position in order: 0 of 11
+    reason: a candidate passes, but the search was cut short before it could be shown unique — shippin
+  A baseline      status=refused    wall=17.6s
+  B with veto     status=refused    wall=14.7s
+  defect repaired A=False   B=False
+  => same outcome in both arms at this budget; see positions above for the ordering difference

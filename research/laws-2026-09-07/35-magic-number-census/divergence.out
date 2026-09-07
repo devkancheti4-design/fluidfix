@@ -1,0 +1,64 @@
+========================================================================
+D1  guard.py:591-592 -- is 'one file gets at most half the escalation
+    budget' true?  Replay the exact expression at 591-597.
+========================================================================
+  no --budget  (total_deadline is None; file_share = escalate_budget/2)
+  t (s into escalation)    clock left  file_share   ACTUAL slice = min(deadline, now+share)
+  0                               600         300                                       300
+  100                             500         300                                       300   <- NOT half of what is left
+  299                             301         300                                       300   <- NOT half of what is left
+  300                             300         300                                       300   <- NOT half of what is left
+  301                             299         300                                       299   <- NOT half of what is left
+  450                             150         300                                       150   <- NOT half of what is left
+  599                               1         300                                         1   <- NOT half of what is left
+  with --budget (total_deadline set; file_share = (deadline-now)/2)
+  0                               600         300                                       300
+  300                             300         150                                       150
+  450                             150          75                                        75
+  599                               1           0                                         0
+  => the starvation cap is EXACTLY half only while >= escalate_budget/2
+     of the clock remains.  After the halfway point the *next* file
+     takes the entire remainder, which is the starvation the comment
+     at 588-590 says it prevents.  --budget mode does not have this.
+
+========================================================================
+D2  SIGHT circumstantial thresholds -- guard.py:284, 287, 288.
+    Which of them can change the law's ruling, and by how much?
+========================================================================
+  situation                                       byte  sight()
+  nothing set (specificity 0.5, 300 lines)           0        6
+  FAILONLY only (specificity >= 0.9)                 8        2
+  SMALL only (0 < n_fail < 80)                      64        5
+  NAMED only                                        16        3
+  TOUCHED only (last 40 commits)                    32        4
+  UBIQUITOUS only (specificity < 0.25)             128        7
+  FAILONLY+NAMED+TOUCHED+SMALL                     120        2
+  all circumstantial + UBIQUITOUS                  248        3
+  FRAMED only (POINTING)                             1        0
+  FRAMED + UBIQUITOUS                              129        0
+  => every circumstantial threshold moves a file by at most one
+     priority class, and none of them can beat a POINTING bit (R1).
+     The 0.9 / 0.25 / 80 numbers therefore reorder files only WITHIN
+     the circumstantial tier -- but that tier is the whole search
+     order whenever no POINTING lane fired (guard.py:82-91's third
+     refusal cause).
+
+========================================================================
+D3  RANK thresholds -- guard.py:403 (CHEAP < 8) and :412 (DENSE >= 8).
+    rank.py:19 SPECIFIES '< 8' for CHEAP; rank.py:20 specifies NO
+    number for DENSE.  Do they change the ruling?
+========================================================================
+  nothing                     byte=   0  rank()=7
+  CHEAP only                  byte=  32  rank()=5
+  DENSE only                  byte=  64  rank()=6
+  SIGNALED                    byte=   8  rank()=3
+  SIGNALED+CHEAP              byte=  40  rank()=3
+  SIGNALED+DENSE              byte=  72  rank()=3
+  FRAME+DENSE                 byte=  65  rank()=0
+  FRAME+RETRIED (veto)        byte= 129  rank()=7
+  => DENSE alone never changes a rank in these situations, but it is
+     an input the law reads; its threshold (>= 8) exists ONLY in
+     guard.py:412 and is pinned by no spec line and no test.
+  => the '[:2]' at guard.py:402 is a THIRD hidden constant: CHEAP is
+     computed from the first two kinds only, so a line whose third
+     kind explodes the candidate set still measures as CHEAP.

@@ -1,0 +1,12 @@
+--- decide patched for HIDDEN: False ---
+  repaired: False | refused: True | greens: []
+  rejected: return b - a | green on one run, RED on re-check — the suite does not hold still here, so a single run cannot judge this candidate (engine law: HIDDEN -> CHANGE_GRAN
+  rejected: return a + b | green on one run, RED on re-check — the suite does not hold still here, so a single run cannot judge this candidate (engine law: HIDDEN -> CHANGE_GRAN
+  oracle.check() calls: [('return b - a', True), ('return b - a', False), ('return a + b', True), ('return a + b', False)]
+--- decide patched for HIDDEN: True ---
+  repaired: False | refused: True | greens: []
+  rejected: return b - a | green on one run, RED on re-check — the suite does not hold still here, so a single run cannot judge this candidate (engine law: HIDDEN -> SHIP). last
+  rejected: return a + b | green on one run, RED on re-check — the suite does not hold still here, so a single run cannot judge this candidate (engine law: HIDDEN -> SHIP). last
+  oracle.check() calls: [('return b - a', True), ('return b - a', False), ('return a + b', True), ('return a + b', False)]
+
+VERDICT: with the HIDDEN ruling forced to SHIP the candidate is STILL REJECTED -> the body branches on fine_disagree; the ruling only reaches the message.

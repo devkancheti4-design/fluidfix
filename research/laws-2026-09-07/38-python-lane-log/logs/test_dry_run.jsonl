@@ -1,0 +1,124 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "guard_once:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_proposes_restores0", "files": {".gitignore": ".fluidfix/\n__pycache__/\n.coverage\n.pytest_cache/\n", "test_mod.py": "from mod import count_above\n\ndef test_c():\n    assert count_above([1, 5, 5, 9], 5) == 1\n", "mod.py": "def count_above(xs, t):\n    n = 0\n    for x in xs:\n        if x >= t:\n            n += 1\n    return n\n"}, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "sight", "site": "guard.py:280", "byte": 122, "bits": ["SCARCE", "FAILONLY", "NAMED", "TOUCHED", "SMALL"], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "rank", "site": "guard.py:406", "byte": 56, "bits": ["SIGNALED", "RECENT", "CHEAP"], "ruling": 3, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 0], "bits": [], "ruling": 5, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 10], "bits": [], "ruling": 15, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "rank", "site": "guard.py:406", "byte": 56, "bits": ["SIGNALED", "RECENT", "CHEAP"], "ruling": 3, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 9], "bits": [], "ruling": 14, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "rank", "site": "guard.py:406", "byte": 56, "bits": ["SIGNALED", "RECENT", "CHEAP"], "ruling": 3, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "-", "event": "repair:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_proposes_restores0", "file": "mod.py", "n_obs": 3, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 2, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 2, "bits": [], "ruling": 2, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 2, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 1025, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 1025, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 1025, "bits": [], "ruling": 1024, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 0], "bits": [], "ruling": 5, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 1024, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 1024, "bits": [], "ruling": 1024, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 1024, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 10], "bits": [], "ruling": 15, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 514, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 514, "bits": [], "ruling": 2, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 514, "bits": [], "ruling": 512, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 512, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 512, "bits": [], "ruling": 512, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 512, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 9], "bits": [], "ruling": 14, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "engine", "site": "loop.py:217", "sit": 513, "byte": 1, "bits": ["BUILT"], "ruling": "SHIP", "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "-", "event": "repair:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_proposes_restores0", "file": "mod.py", "repaired": true, "ambiguous": false, "acts_tried": [6, 5, 15, 6, 14], "reason": "engine law: BUILT -> SHIP", "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "-", "event": "guard_once:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_proposes_restores0", "status": "repaired", "file": "mod.py", "candidates": ["mod.py"], "seconds": 3.194063901901245, "hint": "", "reason": "engine law: BUILT -> SHIP", "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies"}
+{"law": "-", "event": "guard_once:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_without_git_falls0", "files": {"test_mod.py": "from mod import count_above\n\ndef test_c():\n    assert count_above([1, 5, 5, 9], 5) == 1\n", "mod.py": "def count_above(xs, t):\n    n = 0\n    for x in xs:\n        if x >= t:\n            n += 1\n    return n\n"}, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "sight", "site": "guard.py:280", "byte": 90, "bits": ["SCARCE", "FAILONLY", "NAMED", "SMALL"], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "rank", "site": "guard.py:406", "byte": 40, "bits": ["SIGNALED", "CHEAP"], "ruling": 3, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 0], "bits": [], "ruling": 5, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 10], "bits": [], "ruling": 15, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "rank", "site": "guard.py:406", "byte": 40, "bits": ["SIGNALED", "CHEAP"], "ruling": 3, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 9], "bits": [], "ruling": 14, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "rank", "site": "guard.py:406", "byte": 40, "bits": ["SIGNALED", "CHEAP"], "ruling": 3, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "-", "event": "repair:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_without_git_falls0", "file": "mod.py", "n_obs": 3, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 2, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 2, "bits": [], "ruling": 2, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 2, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 1025, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 1025, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 1025, "bits": [], "ruling": 1024, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 0], "bits": [], "ruling": 5, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 1024, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 1024, "bits": [], "ruling": 1024, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 1024, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 10], "bits": [], "ruling": 15, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 514, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 514, "bits": [], "ruling": 2, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 514, "bits": [], "ruling": 512, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 512, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 512, "bits": [], "ruling": 512, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 512, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 9], "bits": [], "ruling": 14, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "engine", "site": "loop.py:217", "sit": 513, "byte": 1, "bits": ["BUILT"], "ruling": "SHIP", "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "-", "event": "repair:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_without_git_falls0", "file": "mod.py", "repaired": true, "ambiguous": false, "acts_tried": [6, 5, 15, 6, 14], "reason": "engine law: BUILT -> SHIP", "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "-", "event": "guard_once:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_without_git_falls0", "status": "repaired", "file": "mod.py", "candidates": ["mod.py"], "seconds": 3.1686840057373047, "hint": "", "reason": "engine law: BUILT -> SHIP", "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib"}
+{"law": "-", "event": "guard_once:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_refusal_behaves_e0", "files": {"test_mod.py": "from mod import both\n\ndef test_b():\n    assert both(True, False) is False\n", "mod.py": "def both(a, b):\n    return bool(a or b)\n"}, "test": "tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today"}
+{"law": "sight", "site": "guard.py:280", "byte": 88, "bits": ["FAILONLY", "NAMED", "SMALL"], "ruling": 2, "test": "tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today"}
+{"law": "-", "event": "repair:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_refusal_behaves_e0", "file": "mod.py", "n_obs": 0, "test": "tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today"}
+{"law": "-", "event": "repair:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_refusal_behaves_e0", "file": "mod.py", "repaired": false, "ambiguous": false, "acts_tried": [], "reason": "no observation named a kind this vocabulary can repair", "test": "tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today"}
+{"law": "sight", "site": "guard.py:280", "byte": 88, "bits": ["FAILONLY", "NAMED", "SMALL"], "ruling": 2, "test": "tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today"}
+{"law": "engine", "site": "guard.py:539", "sit": 512, "byte": 0, "bits": [], "ruling": "SHIP", "test": "tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today"}
+{"law": "-", "event": "guard_once:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_refusal_behaves_e0", "status": "refused", "file": null, "candidates": ["mod.py"], "seconds": 2.033095121383667, "hint": "", "reason": "", "test": "tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_dry_run.py::test_commit_and_dry_run_are_mutually_exclusive"}
+{"law": "-", "event": "guard_once:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_returns_after_pro0", "files": {".gitignore": ".fluidfix/\n__pycache__/\n.coverage\n.pytest_cache/\n", "test_mod.py": "from mod import count_above\n\ndef test_c():\n    assert count_above([1, 5, 5, 9], 5) == 1\n", "mod.py": "def count_above(xs, t):\n    n = 0\n    for x in xs:\n        if x >= t:\n            n += 1\n    return n\n"}, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "sight", "site": "guard.py:280", "byte": 122, "bits": ["SCARCE", "FAILONLY", "NAMED", "TOUCHED", "SMALL"], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "rank", "site": "guard.py:406", "byte": 56, "bits": ["SIGNALED", "RECENT", "CHEAP"], "ruling": 3, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 0], "bits": [], "ruling": 5, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 10], "bits": [], "ruling": 15, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "rank", "site": "guard.py:406", "byte": 56, "bits": ["SIGNALED", "RECENT", "CHEAP"], "ruling": 3, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 9], "bits": [], "ruling": 14, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "rank", "site": "guard.py:406", "byte": 56, "bits": ["SIGNALED", "RECENT", "CHEAP"], "ruling": 3, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "-", "event": "repair:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_returns_after_pro0", "file": "mod.py", "n_obs": 3, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 2, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 2, "bits": [], "ruling": 2, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 2, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 1025, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 1025, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 1025, "bits": [], "ruling": 1024, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 0], "bits": [], "ruling": 5, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 1024, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 1024, "bits": [], "ruling": 1024, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 1024, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 10], "bits": [], "ruling": 15, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 514, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 514, "bits": [], "ruling": 2, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 514, "bits": [], "ruling": 512, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 512, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 512, "bits": [], "ruling": 512, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 512, "bits": [], "ruling": 0, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 9], "bits": [], "ruling": 14, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "engine", "site": "loop.py:217", "sit": 513, "byte": 1, "bits": ["BUILT"], "ruling": "SHIP", "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "-", "event": "repair:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_returns_after_pro0", "file": "mod.py", "repaired": true, "ambiguous": false, "acts_tried": [6, 5, 15, 6, 14], "reason": "engine law: BUILT -> SHIP", "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "-", "event": "guard_once:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-22/test_dry_run_returns_after_pro0", "status": "repaired", "file": "mod.py", "candidates": ["mod.py"], "seconds": 3.477252960205078, "hint": "", "reason": "engine law: BUILT -> SHIP", "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval"}

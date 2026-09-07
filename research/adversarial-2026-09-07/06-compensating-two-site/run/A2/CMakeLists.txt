@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(billing C)
+set(CMAKE_C_STANDARD 99)
+add_library(billing src/fee.c src/rate.c src/tier.c)
+target_include_directories(billing PUBLIC include)
+add_executable(tests tests/test_billing.c)
+target_link_libraries(tests billing)
+set_target_properties(tests PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})

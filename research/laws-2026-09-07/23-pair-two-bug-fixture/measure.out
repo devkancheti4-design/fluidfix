@@ -1,0 +1,75 @@
+========================================================================
+STEP 1  baseline: the fixture as shipped (two independent faults)
+  rc=1  failing=3
+    tests/test_billing.py::test_invoice_total
+    tests/test_billing.py::test_rounded_total
+    tests/test_inventory.py::test_needs_reorder
+  tail: 3 failed, 2 passed in 0.01s
+========================================================================
+STEP 2  each true single fix alone, and the pair (R4 / CANCELING)
+  fix A alone (billing.py:13): failing 3 -> 1  ['tests/test_inventory.py::test_needs_reorder']
+  fix B alone (inventory.py:11): failing 3 -> 2  ['tests/test_billing.py::test_invoice_total', 'tests/test_billing.py::test_rounded_total']
+  fix A+B jointly: rc=0 failing=0
+========================================================================
+STEP 3  the COMPLETED single-edit search (guard_once over both
+        implicated files) — this is the PAIR law's input contract
+  status=refused  seconds=2.9
+  summary: REFUSED: fault is outside the taught vocabulary (candidate files tried: billing.py, inventory.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 2 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: every generated candidate wa
+  candidates tried and rejected: 2
+       billing.py:13  return tax - subtotal                          <- FAILED tests/test_billing.py::test_invoice_total - assert -93 == 107
+       billing.py:13  return subtotal + tax                          <- FAILED tests/test_inventory.py::test_needs_reorder - assert False is T
+========================================================================
+STEP 4  replay every rejected candidate: failing count per edit
+        (PARTIAL = some single edit STRICTLY reduced the count)
+       billing.py:13  return tax - subtotal                      failing 3 -> 3
+       billing.py:13  return subtotal + tax                      failing 3 -> 1  REDUCES; repairs tests/test_billing.py::test_invoice_total,tests/test_billing.py::test_rounded_total
+========================================================================
+STEP 5  DISJOINT / COUPLED: do the failing tests partition?
+  5a. by execution site (per-failing-test coverage)
+    tests/test_billing.py::test_invoice_total
+      sites: ['billing.py:12', 'billing.py:13', 'billing.py:16', 'billing.py:8']
+    tests/test_billing.py::test_rounded_total
+      sites: ['billing.py:12', 'billing.py:13', 'billing.py:16', 'billing.py:17', 'billing.py:8']
+    tests/test_inventory.py::test_needs_reorder
+      sites: ['inventory.py:10', 'inventory.py:11', 'inventory.py:14']
+    shared sites  tests/test_billing.py::test_invoice_total & tests/test_billing.py::test_rounded_total: ['billing.py:12', 'billing.py:13', 'billing.py:16', 'billing.py:8']
+    shared sites  tests/test_billing.py::test_invoice_total & tests/test_inventory.py::test_needs_reorder: NONE (disjoint)
+    shared sites  tests/test_billing.py::test_rounded_total & tests/test_inventory.py::test_needs_reorder: NONE (disjoint)
+    partition by execution site: [['tests/test_billing.py::test_invoice_total', 'tests/test_billing.py::test_rounded_total'], ['tests/test_inventory.py::test_needs_reorder']]
+  5b. by repair attribution (which candidate greens which test)
+    site billing.py:13 repairs ['tests/test_billing.py::test_invoice_total', 'tests/test_billing.py::test_rounded_total']
+    failing tests no single edit in the search repaired: ['tests/test_inventory.py::test_needs_reorder']
+========================================================================
+STEP 6  CANCELING: is there a pair green jointly whose members
+        each leave the suite red AND reduce nothing?
+    member A: alone -> 1 failing (REDUCES)
+    member B: alone -> 2 failing (REDUCES)
+    pair A+B jointly: 0 failing (GREEN)
+    CANCELING requires each member to reduce NOTHING -> False
+========================================================================
+STEP 7  CHEAP / CAPPED / TAUGHT / EXHAUSTED
+    single-edit candidates the search ran: 2
+    measured search wall clock: 2.9s (~1.44s per candidate, includes localisation)
+    naive pair space over the same candidates: 1 combinations ~ 1s
+    CHEAP: no code in the body owns a threshold for this (unmeasured elsewhere); set True here because the whole pair space is seconds, and reported both ways below
+    EXHAUSTED (search ran to the end of its candidate space over both implicated files, no budget/deadline stop): True
+    CAPPED: no --budget was given and no deadline fired -> False
+    TAUGHT: no dictionary was loaded; both classes are SHIPPED vocabulary (kinds 3 and 10), not taught from a worked example -> reported both ways
+========================================================================
+STEP 8  the observation byte and the law's ruling
+    TAUGHT=False CHEAP=True  byte= 23 (0b00010111) EXHAUSTED|PARTIAL|DISJOINT|CHEAP  ->  0 PARTITION
+    TAUGHT=False CHEAP=False byte=  7 (0b00000111) EXHAUSTED|PARTIAL|DISJOINT  ->  0 PARTITION
+    TAUGHT=True  CHEAP=True  byte= 55 (0b00110111) EXHAUSTED|PARTIAL|DISJOINT|CHEAP|TAUGHT  ->  0 PARTITION
+    TAUGHT=True  CHEAP=False byte= 39 (0b00100111) EXHAUSTED|PARTIAL|DISJOINT|TAUGHT  ->  0 PARTITION
+  sensitivity — what each unmeasured bit would cost:
+    drop/add EXHAUSTED  byte  23 ->  22: PARTITION -> SINGLE
+    drop/add PARTIAL    byte  23 ->  21: PARTITION -> PARTITION
+    drop/add DISJOINT   byte  23 ->  19: PARTITION -> WIDEN
+    drop/add COUPLED    byte  23 ->  31: PARTITION -> PARTITION
+    drop/add CHEAP      byte  23 ->   7: PARTITION -> PARTITION
+    drop/add TAUGHT     byte  23 ->  55: PARTITION -> PARTITION
+    drop/add CANCELING  byte  23 ->  87: PARTITION -> REFUSE
+    drop/add CAPPED     byte  23 -> 151: PARTITION -> CAPPED
+========================================================================
+wrote /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/23-pair-two-bug-fixture/measured.json

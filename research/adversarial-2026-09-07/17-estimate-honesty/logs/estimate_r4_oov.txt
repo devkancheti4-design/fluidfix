@@ -1,0 +1,14 @@
+timing your suite (one run, /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python3.14)...
+  2 passed in 0.00s
+  suite runtime: 0.20s  (+~0.5s pytest startup per run)
+
+EXPECTED REPAIR TIME on this repo
+  typical in-vocabulary defect (2-10 suite runs):  1.4s - 7s
+  harder localisation (up to 80 runs):             ~56s
+
+  Fast suite: repairs will land in seconds. Ideal for the GitHub Action
+  on every push.
+
+  The arithmetic: time ~= runs x (suite time + startup). Nothing else
+  in fluidfix costs measurable wall clock — the kernels decide in
+  nanoseconds; your tests are the entire bill.

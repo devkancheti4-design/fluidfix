@@ -1,0 +1,331 @@
+{
+ "status": "refused",
+ "candidates": [
+  "include/cglm/bezier.h",
+  "src/bezier.c"
+ ],
+ "seconds": 604.9794280529022,
+ "hint": "--budget exhausted (600s)",
+ "rejected_candidates": [
+  {
+   "at": "include/cglm/bezier.h:14",
+   "tried": "                              { 2.0f, -6.0f,  3.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:14",
+   "tried": "                              { 3.-1f, -6.0f,  3.0f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:14",
+   "tried": "                              { 3.0f, -5.0f,  3.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:14",
+   "tried": "                              { 3.0f, -6.-1f,  3.0f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:14",
+   "tried": "                              { 3.0f, -6.0f,  2.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:14",
+   "tried": "                              { 3.0f, -6.0f,  3.-1f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:14",
+   "tried": "                              { 3.0f, -6.0f,  3.0f,  -1.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:14",
+   "tried": "                              { 3.0f, -6.0f,  3.0f,  0.-1f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:15",
+   "tried": "                              {-2.0f,  3.0f,  0.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:15",
+   "tried": "                              {-3.-1f,  3.0f,  0.0f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:15",
+   "tried": "                              {-3.0f,  2.0f,  0.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:15",
+   "tried": "                              {-3.0f,  3.-1f,  0.0f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:15",
+   "tried": "                              {-3.0f,  3.0f,  -1.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:15",
+   "tried": "                              {-3.0f,  3.0f,  0.-1f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:15",
+   "tried": "                              {-3.0f,  3.0f,  0.0f,  -1.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:15",
+   "tried": "                              {-3.0f,  3.0f,  0.0f,  0.-1f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:16",
+   "tried": "                              { 0.0f,  0.0f,  0.0f,  0.0f}}",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:16",
+   "tried": "                              { 1.-1f,  0.0f,  0.0f,  0.0f}}",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:16",
+   "tried": "                              { 1.0f,  -1.0f,  0.0f,  0.0f}}",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:16",
+   "tried": "                              { 1.0f,  0.-1f,  0.0f,  0.0f}}",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:16",
+   "tried": "                              { 1.0f,  0.0f,  -1.0f,  0.0f}}",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:16",
+   "tried": "                              { 1.0f,  0.0f,  0.-1f,  0.0f}}",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:16",
+   "tried": "                              { 1.0f,  0.0f,  0.0f,  -1.0f}}",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:16",
+   "tried": "                              { 1.0f,  0.0f,  0.0f,  0.-1f}}",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:48:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:18",
+   "tried": "                              {-1.0f,  3.0f,  0.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:18",
+   "tried": "                              {-2.-1f,  3.0f,  0.0f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:18",
+   "tried": "                              {-2.0f,  2.0f,  0.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:18",
+   "tried": "                              {-2.0f,  3.-1f,  0.0f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:18",
+   "tried": "                              {-2.0f,  3.0f,  -1.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:18",
+   "tried": "                              {-2.0f,  3.0f,  0.-1f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:18",
+   "tried": "                              {-2.0f,  3.0f,  0.0f,  -1.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:18",
+   "tried": "                              {-2.0f,  3.0f,  0.0f,  0.-1f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:19",
+   "tried": "                              { 0.0f, -2.0f,  1.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:19",
+   "tried": "                              { 1.-1f, -2.0f,  1.0f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:19",
+   "tried": "                              { 1.0f, -1.0f,  1.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:19",
+   "tried": "                              { 1.0f, -2.-1f,  1.0f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:19",
+   "tried": "                              { 1.0f, -2.0f,  0.0f,  0.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:19",
+   "tried": "                              { 1.0f, -2.0f,  1.-1f,  0.0f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:19",
+   "tried": "                              { 1.0f, -2.0f,  1.0f,  -1.0f},                   \\",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:19",
+   "tried": "                              { 1.0f, -2.0f,  1.0f,  0.-1f},                   \\",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:20",
+   "tried": "                              { 0.0f, -1.0f,  0.0f,  0.0f}}",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:20",
+   "tried": "                              { 1.-1f, -1.0f,  0.0f,  0.0f}}",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:20",
+   "tried": "                              { 1.0f, -0.0f,  0.0f,  0.0f}}",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:20",
+   "tried": "                              { 1.0f, -1.-1f,  0.0f,  0.0f}}",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:20",
+   "tried": "                              { 1.0f, -1.0f,  -1.0f,  0.0f}}",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:20",
+   "tried": "                              { 1.0f, -1.0f,  0.-1f,  0.0f}}",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:20",
+   "tried": "                              { 1.0f, -1.0f,  0.0f,  -1.0f}}",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:20",
+   "tried": "                              { 1.0f, -1.0f,  0.0f,  0.-1f}}",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/test/src/test_bezier.c:57:25: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:50",
+   "tried": "glm_bezier(float s, float p-1, float c0, float c1, float p1) {",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:50:28: error: expected ')'"
+  },
+  {
+   "at": "include/cglm/bezier.h:50",
+   "tried": "glm_bezier(float s, float p0, float c-1, float c1, float p1) {",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:50:38: error: expected ')'"
+  },
+  {
+   "at": "include/cglm/bezier.h:50",
+   "tried": "glm_bezier(float s, float p0, float c0, float c0, float p1) {",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:50:47: error: redefinition of parameter 'c0'"
+  },
+  {
+   "at": "include/cglm/bezier.h:50",
+   "tried": "glm_bezier(float s, float p0, float c0, float c1, float p0) {",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:50:57: error: redefinition of parameter 'p0'"
+  },
+  {
+   "at": "include/cglm/bezier.h:51",
+   "tried": "  float x, xx, ss, xs2, a;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:56:3: error: use of undeclared identifier 'xs3'; did you mean 'xs2'?"
+  },
+  {
+   "at": "include/cglm/bezier.h:53",
+   "tried": "  x   = 0.0f + s;",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:53",
+   "tried": "  x   = 1.-1f + s;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:53:13: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:56",
+   "tried": "  xs2 = (s - ss) * 3.0f;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:56:3: error: use of undeclared identifier 'xs2'; did you mean 'xs3'?"
+  },
+  {
+   "at": "include/cglm/bezier.h:56",
+   "tried": "  xs3 = (s - ss) * 2.0f;",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:56",
+   "tried": "  xs3 = (s - ss) * 3.-1f;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:56:24: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/bezier.h:56",
+   "tried": "  xs3 = (s + ss) * 3.0f;",
+   "why": "1 test(s) failed, first: bezier"
+  },
+  {
+   "at": "include/cglm/bezier.h:56",
+   "tried": "  xs3 = ss) * 3.0f; - (s",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:56:11: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/bezier.h:57",
+   "tried": "  a   = p-1 * xx + c0 * xs3;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:57:9: error: use of undeclared identifier 'p'"
+  },
+  {
+   "at": "include/cglm/bezier.h:57",
+   "tried": "  a   = p0 * xx + c-1 * xs3;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:57:19: error: use of undeclared identifier 'c'"
+  },
+  {
+   "at": "include/cglm/bezier.h:57",
+   "tried": "  a   = p0 * xx + c0 * xs2;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/src/../include/cglm/bezier.h:57:24: error: use of undeclared identifier 'xs2'; did you mean 'xs3'?"
+  },
+  {
+   "at": "include/cglm/bezier.h:57",
+   "tried": "  a   = p0 * xx - c0 * xs3;",
+   "why": "1 test(s) failed, first: bezier"
+  }
+ ]
+}

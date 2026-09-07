@@ -1,0 +1,44 @@
+=== fixture: f07-hardlink
+=== root:    /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/13-stale-and-symlink/fixtures/f07-hardlink
+=== extra:   
+BEFORE ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154162194 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154162194
+BEFORE ./pkg/geom.py
+  content-sha256: 2e8ddced48d3bbb0f6e58b907720bb4da5d2cbb1b3c908713eaf4a77845cb41c
+  stat(name):     mode=-rw-r--r-- inode=154162198 nlink=2 size=112
+  lstat(name):    mode=-rw-r--r-- inode=154162198
+BEFORE ./tests/test_geom.py
+  content-sha256: 4a7765cd023ca3fbded5cb878a10cb28188aae677b93c0ff6f0fe0aa4b1535c8
+  stat(name):     mode=-rw-r--r-- inode=154162196 nlink=1 size=117
+  lstat(name):    mode=-rw-r--r-- inode=154162196
+BEFORE ./vendor/geom_hardlink.py
+  content-sha256: 2e8ddced48d3bbb0f6e58b907720bb4da5d2cbb1b3c908713eaf4a77845cb41c
+  stat(name):     mode=-rw-r--r-- inode=154162198 nlink=2 size=112
+  lstat(name):    mode=-rw-r--r-- inode=154162198
+=== guard run ===
+[14:34:26] pkg/geom.py: repaired line 3 in 3 suite runs (1.6s):
+  - return a - b
+  + return a + b
+=== guard exit: 0 ===
+AFTER ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154162194 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154162194
+AFTER ./pkg/geom.py
+  content-sha256: 4a0e16238f6ed16702a149c6eba93fdb127207e5bcf8fe594baaf470eecab496
+  stat(name):     mode=-rw-r--r-- inode=154162198 nlink=2 size=112
+  lstat(name):    mode=-rw-r--r-- inode=154162198
+AFTER ./tests/test_geom.py
+  content-sha256: 4a7765cd023ca3fbded5cb878a10cb28188aae677b93c0ff6f0fe0aa4b1535c8
+  stat(name):     mode=-rw-r--r-- inode=154162196 nlink=1 size=117
+  lstat(name):    mode=-rw-r--r-- inode=154162196
+AFTER ./vendor/geom_hardlink.py
+  content-sha256: 4a0e16238f6ed16702a149c6eba93fdb127207e5bcf8fe594baaf470eecab496
+  stat(name):     mode=-rw-r--r-- inode=154162198 nlink=2 size=112
+  lstat(name):    mode=-rw-r--r-- inode=154162198
+=== leftovers in .fluidfix ===
+total 0
+drwxr-xr-x@ 2 kanchetidevieswar  staff   64 Sep  7 14:34 .
+drwxr-xr-x@ 8 kanchetidevieswar  staff  256 Sep  7 14:34 ..

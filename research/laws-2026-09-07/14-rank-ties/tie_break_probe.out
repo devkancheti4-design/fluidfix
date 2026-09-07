@@ -1,0 +1,31 @@
+
+== A: identical bytes -> incoming index (line order) breaks the tie ==
+  line  3 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  line  5 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  line  7 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  line 10 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  line 11 kinds=[9] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  order chosen: [3, 5, 7, 10, 11]
+
+== B: same bytes, list reversed -> the order flips with the index ==
+  line 11 kinds=[9] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  line 10 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  line  7 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  line  5 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  line  3 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  order chosen: [11, 10, 7, 5, 3]
+
+== C: equal priority, token DEGREE breaks the tie (Odia incident shape) ==
+  line  3 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  line  7 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  order chosen: [7, 3]
+
+== D: DENSE line 2 vs CHEAP line 10, both SIGNALED -> same priority, index wins ==
+  line  2 kinds=[3] byte=01101100 -> priority 2  [NAMED+SIGNALED+CHEAP+DENSE]
+  line 10 kinds=[0] byte=00101100 -> priority 2  [NAMED+SIGNALED+CHEAP]
+  order chosen: [2, 10]
+
+== E: retried={10} passed explicitly -> the veto works at the API ==
+  line  2 kinds=[3] byte=01101100 -> priority 2  [NAMED+SIGNALED+CHEAP+DENSE]
+  line 10 kinds=[0] byte=10101100 -> priority 7  [NAMED+SIGNALED+CHEAP+RETRIED]
+  order chosen: [2, 10]

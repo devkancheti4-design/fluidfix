@@ -1,0 +1,54 @@
+{
+ "id": 16,
+ "lineno": 45,
+ "kind": 10,
+ "kind_name": "flipped-comparison-direction",
+ "act": 15,
+ "orig": "    if n > 5:",
+ "mutant": "    if n < 5:",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 45,\n \"old_line\": \"    if n < 5:\",\n \"new_line\": \"    if n > 5:\",\n \"acts_tried\": [\n  5,\n  6,\n  15\n ],\n \"suite_runs\": 4,\n \"seconds\": 2.092506170272827,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    if n > 5:\"\n ],\n \"tried_log\": [\n  {\n   \"at\": \"weakpkg2/core.py:45\",\n   \"tried\": \"    if n <= 5:\",\n   \"why\": \"FAILED tests/test_core.py::test_label_for_smoke - AssertionError: assert 'few...\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:45\",\n   \"tried\": \"    if n < 4:\",\n   \"why\": \"FAILED tests/test_core.py::test_label_for_smoke - AssertionError: assert 'few...\"\n  }\n ],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 45,
+  "old_line": "    if n < 5:",
+  "new_line": "    if n > 5:",
+  "acts_tried": [
+   5,
+   6,
+   15
+  ],
+  "suite_runs": 4,
+  "seconds": 2.092506170272827,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    if n > 5:"
+  ],
+  "tried_log": [
+   {
+    "at": "weakpkg2/core.py:45",
+    "tried": "    if n <= 5:",
+    "why": "FAILED tests/test_core.py::test_label_for_smoke - AssertionError: assert 'few..."
+   },
+   {
+    "at": "weakpkg2/core.py:45",
+    "tried": "    if n < 4:",
+    "why": "FAILED tests/test_core.py::test_label_for_smoke - AssertionError: assert 'few..."
+   }
+  ],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "    if n > 5:",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "    if n > 5:"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

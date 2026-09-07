@@ -1,0 +1,319 @@
+[
+ {
+  "name": "L1_spelling_only",
+  "expect": "no-separate",
+  "candidates": [
+   "    return units >= 10",
+   "    return units > 9"
+  ],
+  "sites": [
+   5
+  ],
+  "candidates_green": [
+   true,
+   true
+  ],
+  "is_real_amb": true,
+  "separated": false,
+  "as_expected": true,
+  "gen": {
+   "file": "stock.py",
+   "lineno": 5,
+   "candidates": [
+    "    return units >= 10",
+    "    return units > 9"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "reorder"
+   ],
+   "attempts": [
+    {
+     "function": "reorder",
+     "params": [
+      "units"
+     ],
+     "n_seeds": 3,
+     "n_pool": 21,
+     "n_unstable": 0,
+     "n_error": 0,
+     "n_separating": 0,
+     "failed": "no stable, exception-free input of 21 separates the candidates"
+    }
+   ],
+   "separated": false,
+   "failed": "no witness on any of reorder: no stable, exception-free input of 21 separates the candidates"
+  }
+ },
+ {
+  "name": "L2_distant_literal",
+  "expect": "separate",
+  "candidates": [
+   "    return w > 20",
+   "    return w > 120"
+  ],
+  "sites": [
+   5
+  ],
+  "candidates_green": [
+   true,
+   true
+  ],
+  "is_real_amb": true,
+  "separated": true,
+  "as_expected": true,
+  "gen": {
+   "file": "fee.py",
+   "lineno": 5,
+   "candidates": [
+    "    return w > 20",
+    "    return w > 120"
+   ],
+   "sites": [
+    5
+   ],
+   "targets_tried": [
+    "fee"
+   ],
+   "attempts": [
+    {
+     "function": "fee",
+     "params": [
+      "w"
+     ],
+     "n_seeds": 3,
+     "n_pool": 21,
+     "n_unstable": 0,
+     "n_error": 0,
+     "n_separating": 1,
+     "witness_call": "fee(105.0)",
+     "witness_values": [
+      "True",
+      "False"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "fee",
+   "n_seeds": 3,
+   "n_pool": 21,
+   "n_unstable": 0,
+   "n_separating": 1,
+   "witness_call": "fee(105.0)",
+   "witness_values": [
+    "True",
+    "False"
+   ]
+  },
+  "witness_call": "fee(105.0)",
+  "witness_values": [
+   "True",
+   "False"
+  ]
+ },
+ {
+  "name": "L3_c_source",
+  "expect": "separate",
+  "candidates": [
+   "    if (v > hi) return hi;",
+   "    if (v >= hi) return hi;"
+  ],
+  "sites": [
+   6
+  ],
+  "candidates_green": "not checked (see note)",
+  "separated": false,
+  "as_expected": false,
+  "gen": {
+   "file": "clamp.c",
+   "lineno": 6,
+   "candidates": [
+    "    if (v > hi) return hi;",
+    "    if (v >= hi) return hi;"
+   ],
+   "sites": [
+    6
+   ],
+   "targets_tried": [],
+   "separated": false,
+   "failed": "no enclosing function at the disputed line and no test-called function in this file (non-Python source parses to nothing)"
+  }
+ },
+ {
+  "name": "L4_nondeterministic",
+  "expect": "no-separate",
+  "candidates": [
+   "    return n + random.randint(0, 3)",
+   "    return n + random.randint(1, 3)"
+  ],
+  "sites": [
+   6
+  ],
+  "candidates_green": "not checked (see note)",
+  "separated": false,
+  "as_expected": true,
+  "gen": {
+   "file": "jitter.py",
+   "lineno": 6,
+   "candidates": [
+    "    return n + random.randint(0, 3)",
+    "    return n + random.randint(1, 3)"
+   ],
+   "sites": [
+    6
+   ],
+   "targets_tried": [
+    "score"
+   ],
+   "attempts": [
+    {
+     "function": "score",
+     "params": [
+      "n"
+     ],
+     "n_seeds": 1,
+     "n_pool": 8,
+     "n_unstable": 8,
+     "n_error": 8,
+     "n_separating": 0,
+     "failed": "no stable, exception-free input of 8 separates the candidates"
+    }
+   ],
+   "separated": false,
+   "failed": "no witness on any of score: no stable, exception-free input of 8 separates the candidates"
+  }
+ },
+ {
+  "name": "L5_object_argument",
+  "expect": "separate",
+  "candidates": [
+   "    return box.w * box.h",
+   "    return box.w + box.h"
+  ],
+  "sites": [
+   10
+  ],
+  "candidates_green": [
+   true,
+   true
+  ],
+  "is_real_amb": true,
+  "separated": false,
+  "as_expected": false,
+  "gen": {
+   "file": "shape.py",
+   "lineno": 10,
+   "candidates": [
+    "    return box.w * box.h",
+    "    return box.w + box.h"
+   ],
+   "sites": [
+    10
+   ],
+   "targets_tried": [
+    "area"
+   ],
+   "attempts": [
+    {
+     "function": "area",
+     "params": [
+      "box"
+     ],
+     "n_seeds": 0,
+     "n_pool": 16,
+     "n_unstable": 0,
+     "n_error": 16,
+     "n_separating": 0,
+     "failed": "no stable, exception-free input of 16 separates the candidates"
+    }
+   ],
+   "separated": false,
+   "failed": "no witness on any of area: no stable, exception-free input of 16 separates the candidates"
+  }
+ },
+ {
+  "name": "L6_two_site_compensating",
+  "expect": "separate",
+  "candidates": [
+   "    return add(v, [k, k])",
+   "    return [a[0] - b[0], a[1] - b[1]]"
+  ],
+  "sites": [
+   5,
+   9
+  ],
+  "candidates_green": [
+   true,
+   true
+  ],
+  "is_real_amb": true,
+  "separated": true,
+  "as_expected": true,
+  "gen": {
+   "file": "geom.py",
+   "lineno": 5,
+   "candidates": [
+    "    return add(v, [k, k])",
+    "    return [a[0] - b[0], a[1] - b[1]]"
+   ],
+   "sites": [
+    5,
+    9
+   ],
+   "targets_tried": [
+    "project",
+    "add"
+   ],
+   "attempts": [
+    {
+     "function": "project",
+     "params": [
+      "v",
+      "k"
+     ],
+     "n_seeds": 2,
+     "n_pool": 35,
+     "n_unstable": 0,
+     "n_error": 6,
+     "n_separating": 0,
+     "failed": "no stable, exception-free input of 35 separates the candidates"
+    },
+    {
+     "function": "add",
+     "params": [
+      "a",
+      "b"
+     ],
+     "n_seeds": 0,
+     "n_pool": 256,
+     "n_unstable": 0,
+     "n_error": 247,
+     "n_separating": 9,
+     "witness_call": "add([1, 2], [1, 2])",
+     "witness_values": [
+      "[2, 4]",
+      "[0, 0]"
+     ]
+    }
+   ],
+   "separated": true,
+   "function": "add",
+   "n_seeds": 0,
+   "n_pool": 256,
+   "n_unstable": 0,
+   "n_separating": 9,
+   "witness_call": "add([1, 2], [1, 2])",
+   "witness_values": [
+    "[2, 4]",
+    "[0, 0]"
+   ]
+  },
+  "witness_call": "add([1, 2], [1, 2])",
+  "witness_values": [
+   "[2, 4]",
+   "[0, 0]"
+  ]
+ }
+]

@@ -1,0 +1,145 @@
+{
+ "name": "teach_round_span",
+ "src": "tests/test_teaching.py test_example_span_class_round_before_accumulate",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "missing-get-default",
+  "5": "wrong-attribute",
+  "6": "round-before-accumulate"
+ },
+ "status": "repaired",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 3.2,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 2,
+   "input_order": [
+    2,
+    3
+   ],
+   "ranked_order": [
+    2,
+    3
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      6
+     ],
+     "classes": [
+      "round-before-accumulate"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "total = round(subtotal)"
+    },
+    {
+     "lineno": 3,
+     "kinds": [
+      3
+     ],
+     "classes": [
+      "flipped-additive"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "total = total + surcharge"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    6
+   ],
+   "act": 11,
+   "kind": 6,
+   "n": 1,
+   "cands": [
+    "SPAN[2-3]    total = subtotal + surcharge\n    total = round(total)"
+   ]
+  },
+  {
+   "lineno": 3,
+   "kinds": [
+    3
+   ],
+   "act": 8,
+   "kind": 3,
+   "n": 1,
+   "cands": [
+    "    total = total - surcharge"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-3",
+     "new": "total = subtotal + surcharge\\ntotal = round(total)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-3",
+     "new": "total = subtotal + surcharge\\ntotal = round(total)"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "3-3",
+     "new": "total = total - surcharge"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 3,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    total = subtotal + surcharge\n    total = round(total)",
+  "old_line": "    total = round(subtotal)\n    total = total + surcharge",
+  "kind": 6,
+  "class": "round-before-accumulate",
+  "act": 11,
+  "first_green_check": 1,
+  "suite_runs": 3,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 3,
+  "bits": "SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 2,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 1,
+  "kinds_on_line": 1,
+  "class_slot_position": 1,
+  "class_slots_total": 2
+ }
+}

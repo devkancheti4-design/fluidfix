@@ -1,0 +1,5 @@
+  build: ./build.sh
+  test:  ./build/tests
+[14:30:51] check.c: repaired line 30 in 16 suite runs (10.2s):
+  - failures = failures + 1;
+  + failures = failures;

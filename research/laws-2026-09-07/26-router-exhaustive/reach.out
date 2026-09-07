@@ -1,0 +1,33 @@
+
+== B1  every kind the MECHANICAL observer can report
+observers.py:37 draws from sorted(KINDS) = [0, 1, 2, 3, 8, 9, 10, 11, 12]
+-> acts the loop can therefore reach: [0, 1, 5, 6, 7, 8, 13, 14, 15]
+
+== B2  the loop's filter drops out-of-range kinds; the ranker's does not
+  obs.kinds=[0, 3]       loop tries kinds [0, 3]     (acts [5, 8]      )   guard priority() calls act_for on [(0, 5), (3, 8)]
+  obs.kinds=[99]         loop tries kinds []         (acts []          )   guard priority() calls act_for on [(99, 8)]
+  obs.kinds=[-1, 1]      loop tries kinds [1]        (acts [6]         )   guard priority() calls act_for on [(-1, 4), (1, 6)]
+  obs.kinds=[16]         loop tries kinds []         (acts []          )   guard priority() calls act_for on [(16, 5)]
+  obs.kinds=[3, 99]      loop tries kinds [3]        (acts [8]         )   guard priority() calls act_for on [(3, 8), (99, 8)]
+
+== B3  a kind the loop DROPS still buys a candidate count in the ranker
+  line          = '    total = a + b'
+  obs.kinds     = [99]   (99 & 15 == 3 -> kind 3 = 'flipped-additive')
+  act_for(99)   = 8  -> applier _flip_additive
+  guard CHEAP n = 1  -> cheap = True
+  loop kinds    = []  <- the loop tries NOTHING
+  guard SIGNALED bit = bool(obs.kinds) = True  <- claims a signal the loop cannot act on
+
+== B4  no two distinct fault classes can share an applier
+  route(0,5,.) is a bijection on 0..15 (exhaustive.py R4), so act_for is injective:
+  len({act_for(k) for k in range(16)}) = 16 / 16
+
+== B5  free kind slots vs the reserved range the docstring names
+  kinds with no registered class: [4, 5, 6, 7, 13, 14, 15]
+  acts.py:89 comment reserves 4..7; slots 13,14,15 are ALSO free
+  their act codes: [(4, 9), (5, 10), (6, 11), (7, 12), (13, 2), (14, 3), (15, 4)]
+  act codes with no applier: [2, 3, 4, 9, 10, 11, 12]
+
+== B6  what an unrouted act does downstream (no suite run)
+  candidates(line, act=2) -> ['    total = a + b']  == [line]: True  -> NOPROGRESS, ADVANCE, 0 suite runs
+  (identical for every act code with no applier: acts.py:399-400 `if fn is None: return [line]`)

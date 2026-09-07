@@ -1,0 +1,28 @@
+==============================================================================
+F4c-F4-plus-one-pinning-test
+  F4 with the ONE pinning test ADD_STATE would ask for (apply_delta(10, 5) ==
+  15) added to the suite. Measures what the law's ruling, had AMB been
+  measured, would have bought.
+  spec ruling: SHIP
+  [direct] ruling=SHIP matches_spec=True pin=PASS suite_runs=3
+    observations: [(2, [2, 3, 11])]
+    greens (1): ['return base + delta']
+    shipped: 'return base + delta' at line 2
+    law consulted with: ['0x201=BUILT->SHIP']
+    reason: engine law: BUILT -> SHIP
+  [guard] ruling=SHIP matches_spec=True pin=PASS suite_runs=3
+    guard status: repaired file=mod.py
+    greens (1): ['return base + delta']
+    shipped: 'return base + delta' at line 2
+    law consulted with: ['0x201=BUILT->SHIP']
+    reason: engine law: BUILT -> SHIP
+==============================================================================
+fixture                                          spec       direct     guard      pin(direct/guard)
+F1-spelled-twice-one-site                        SHIP       SHIP       SHIP       PASS/PASS
+F2-two-programs-one-set                          ADD_STATE  ADD_STATE  ADD_STATE  n/a (refused)/n/a (refused)
+F3-two-programs-two-sites                        ADD_STATE  ADD_STATE  ADD_STATE  n/a (refused)/n/a (refused)
+F4-two-programs-one-site-two-acts                ADD_STATE  SHIP       SHIP       FAIL/FAIL
+F4b-two-programs-one-site-two-acts-swapped-roles ADD_STATE  SHIP       SHIP       PASS/PASS
+F4c-F4-plus-one-pinning-test                     SHIP       SHIP       SHIP       PASS/PASS
+F5-one-program-twice-in-one-set                  SHIP       ADD_STATE  ADD_STATE  n/a (refused)/n/a (refused)
+F6-one-program-two-sites                         ADD_STATE  ADD_STATE  ADD_STATE  n/a (refused)/n/a (refused)

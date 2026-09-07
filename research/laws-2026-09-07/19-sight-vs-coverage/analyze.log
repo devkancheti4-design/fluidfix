@@ -1,0 +1,38 @@
+/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/include/cglm/vec2.h:143: * REF: http://allenchou.net/2013/07/cross-product-of-2d-vectors/
+/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/include/cglm/ivec2.h:135: * REF: http://allenchou.net/2013/07/cross-product-of-2d-vectors/
+=== F1  rank of the true defect file, 13 injected defects, cglm ===
+  BODY   (shipped C path)  top1=10/13 top3=12/13 top5=12/13 median= 1.0 worst=42
+  PURECOV(gcov tier alone)  top1= 0/13 top3= 0/13 top5= 0/13 median=38.0 worst=76
+  SIGHT  (law + cov bits)  top1= 2/13 top3= 7/13 top5= 9/13 median= 3.0 worst=40
+  SIGHT0 (law, no cov)  top1= 2/13 top3=10/13 top5=12/13 median= 3.0 worst=43
+  PREFIX (find_candidate_files_c only, no coverage)  top1=10/13 top3=12/13  ranks=[1, 1, 1, 1, 1, None, 1, 1, 1, 1, 1, 3, 2]
+  BODY ranks  =[1, 1, 1, 1, 1, 42, 1, 1, 1, 1, 1, 3, 2]
+  -> coverage tier changes the true file's rank in exactly 1/13 defects
+
+=== F2  the gcov tier is a constant on cglm ===
+  files with fail_cov == full_cov (specificity exactly 1.0): 13/13 true files
+  spec_hist (files with spec>=0.9 / >=0.5 / >=0.25) per defect: {(76, 76, 76)} of {76} covered files
+  spec of the true file: {1.0}
+
+=== F3  cost ===
+  gcov tier                median  10.725s  total    137.0s
+  find_candidate_files_c   median   0.009s  total      0.1s
+  SIGHT 8 bits             median   0.131s  total      1.9s
+  suite (oracle)           median   7.418s  total     96.8s
+
+=== F4  which SIGHT lanes fire on C ===
+  FRAMED on a production file : 0/13
+  SCARCE fired at all         : 0/13
+  LITERAL fired               : 13/13, always on [('include/cglm/ivec2.h', 'include/cglm/vec2.h')]
+  priority histogram          : [(('0', 2), ('1', 0), ('2', 74), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0))]
+
+=== F5  LITERAL is harvested from the absolute path ===
+  digits >=2 in the __FILE__ path cglm's ASSERT prints: ['07', '09', '19', '2026']
+  runs where all of them appear in assert_lits: 13/13
+  `07` matches only the URL comment 2013/07 in vec2.h and ivec2.h:
+
+=== F6  SIGHT with the path excluded from LITERAL ===
+  vec3_add         rank body= 1 sight= 8 sight_FIX= 6 | discriminating literals left: {} | priorities {'0': 2, '2': 74} -> {'2': 76}
+  vec4_sub_neon    rank body= 1 sight= 9 sight_FIX= 8 | discriminating literals left: {} | priorities {'0': 2, '2': 74} -> {'2': 76}
+  util_lerp        rank body=42 sight=40 sight_FIX=40 | discriminating literals left: {} | priorities {'0': 2, '2': 74} -> {'2': 76}
+  mat4_scale_p     rank body= 1 sight= 4 sight_FIX= 2 | discriminating literals left: {} | priorities {'0': 2, '2': 74} -> {'2': 76}

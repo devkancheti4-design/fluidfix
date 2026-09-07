@@ -1,0 +1,238 @@
+{
+ "name": "span_rate_block",
+ "src": "tests/test_span_edits.py test_span_leaves_no_dead_code",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "rate-block"
+ },
+ "status": "repaired",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 4.4,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 2,
+   "input_order": [
+    2,
+    3
+   ],
+   "ranked_order": [
+    2,
+    3
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      1,
+      4
+     ],
+     "classes": [
+      "literal-off-by-one",
+      "rate-block"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "r = p * 0.5"
+    },
+    {
+     "lineno": 3,
+     "kinds": [
+      1,
+      2,
+      3
+     ],
+     "classes": [
+      "literal-off-by-one",
+      "swapped-return-operands",
+      "flipped-additive"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "return r + 1"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    4
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 2,
+   "cands": [
+    "    r = p * -1.5",
+    "    r = p * 0.4"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    4
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "SPAN[2-3]    r = p * 0.18\n    return r"
+   ]
+  },
+  {
+   "lineno": 3,
+   "kinds": [
+    1,
+    2,
+    3
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    return r"
+   ]
+  },
+  {
+   "lineno": 3,
+   "kinds": [
+    1,
+    2,
+    3
+   ],
+   "act": 7,
+   "kind": 2,
+   "n": 1,
+   "cands": [
+    "    return 1 + r"
+   ]
+  },
+  {
+   "lineno": 3,
+   "kinds": [
+    1,
+    2,
+    3
+   ],
+   "act": 8,
+   "kind": 3,
+   "n": 1,
+   "cands": [
+    "    return r - 1"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "r = p * -1.5"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "r = p * 0.4"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-3",
+     "new": "r = p * 0.18\\nreturn r"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-3",
+     "new": "r = p * 0.18\\nreturn r"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "3-3",
+     "new": "return r"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "3-3",
+     "new": "return 1 + r"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "3-3",
+     "new": "return r - 1"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 7,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    r = p * 0.18\n    return r",
+  "old_line": "    r = p * 0.5\n    return r + 1",
+  "kind": 4,
+  "class": "rate-block",
+  "act": 9,
+  "first_green_check": 3,
+  "suite_runs": 7,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 3,
+  "bits": "SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 2,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 2,
+  "kinds_on_line": 2,
+  "class_slot_position": 2,
+  "class_slots_total": 5
+ }
+}

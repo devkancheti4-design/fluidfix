@@ -1,0 +1,9 @@
+closed form vs decide(), 256 inputs: 256/256 agree
+max ruling index seen: 7 (so ACTS[...%8] never wraps)
++4 family A (x%16==7, x>=23: BUILT+AMB+UNREAD set, NOTWIN clear, >=1 of HIDDEN/CAPPED/REFUTED/SELF): 15 inputs, all rule {'RAISE_BUDGET'}
++4 family B (x%16==8, x>=24: NOTWIN set, BUILT/AMB/UNREAD clear, >=1 of HIDDEN/CAPPED/REFUTED/SELF): 15 inputs, all rule {'AUTHOR_SUCCESSOR'}
+without the +4 term the ruling is the lowest set bit, i.e. precedence AMB > UNREAD > NOTWIN > HIDDEN > CAPPED > REFUTED; BUILT and SELF never change a ruling except through the +4 term.
+setting BUILT changes the ruling on 30/128 inputs: [22, 24, 38, 40, 54, 56, 70, 72, 86, 88, 102, 104, 118, 120, 134, 136, 150, 152, 166, 168, 182, 184, 198, 200, 214, 216, 230, 232, 246, 248]
+setting SELF changes the ruling on 2/128 inputs: [7, 8]
+one added bit turning a non-SHIP ruling into SHIP: 0 pairs []
+SHIP inputs: [0, 1, 128, 129] = ['(none)', 'BUILT', 'SELF', 'BUILT+SELF']

@@ -1,0 +1,85 @@
+========================================================================
+C1  coverage credibility floor -- coracle.py:715
+========================================================================
+  715: if len(real) < 5:
+  743: if len(touched) >= 3:   <- a SECOND, undocumented floor
+  outcome it changes: `credible` gates the candidate-set DROP at 741-744.
+  Simulating the two branches on a 4-file vs 5-file failing-coverage set:
+    len(real)= 4  credible=False -> drop-non-executed = False
+    len(real)= 5  credible=True  -> drop-non-executed = True
+
+========================================================================
+C2  default confirmation count -- loop.py:94-106 (_confirm_runs)
+========================================================================
+  104: return max(0, int(os.environ.get("FLUIDFIX_CONFIRM", "1")))
+    FLUIDFIX_CONFIRM=None   -> _confirm_runs()=1
+    FLUIDFIX_CONFIRM=0      -> _confirm_runs()=0
+    FLUIDFIX_CONFIRM=1      -> _confirm_runs()=1
+    FLUIDFIX_CONFIRM=3      -> _confirm_runs()=3
+    FLUIDFIX_CONFIRM=junk   -> _confirm_runs()=1
+  outcome: 0 disables the HIDDEN lane entirely (loop.py:357 `and _confirm_runs()`),
+  so a one-run green is SHIPped -- the lane that dropped the measured
+  14% false-accept rate to 0 is switched off by an env var.
+
+========================================================================
+C3  file_share escalation cap -- guard.py:591-592
+========================================================================
+  589: # one file gets at most half the escalation budget (adversarial
+  590: # review, 2026-08-31 — depth-first starvation)
+  591: file_share = ((deadline - time.time()) / 2
+  592: if total_deadline is not None else escalate_budget / 2)
+  596: deadline=min(deadline,
+  597: time.time() + file_share))
+  outcome: caps ONE file's escalation slice. Two different formulas:
+    --budget given      -> (remaining wall clock) / 2
+    --budget not given  -> escalate_budget / 2  (a CONSTANT 300s,
+                           independent of how much clock is left)
+  escalate_budget default = 600
+  Divergence, measured by substitution (no clock consumed):
+      0s spent, 600s left: budget-mode share=300.0s   no-budget-mode share=300.0s
+    300s spent, 300s left: budget-mode share=150.0s   no-budget-mode share=300.0s
+    550s spent,  50s left: budget-mode share= 25.0s   no-budget-mode share=300.0s   <- exceeds the clock left
+
+========================================================================
+C4  harvest cap -- loop.py:346 and loop.py:407 (per REPAIR CALL)
+========================================================================
+  61: tried_more: int = 0               # rejections beyond the 64-entry cap
+  346: if len(res.tried_log) < 64:
+  351: res.tried_more += 1
+  407: elif len(res.tried_log) < 64:
+  412: res.tried_more += 1
+  guard.py:719: "rejected_candidates": report.attempts[:200]},   <- a SECOND cap on the same data
+  outcome: HARVEST_COUNTEREXAMPLE's payload. Note the cap is per
+  repair() call, but guard_once CONCATENATES tried_log across files
+  (guard.py:518, 598), so the report cap is 200 while each file
+  contributes at most 64.
+
+========================================================================
+C5  SIGHT SMALL bound -- guard.py:287  (spec: sight.py:21)
+========================================================================
+  287: small=0 < n_fail < 80,
+  sight.py:21 spec: 6  SMALL       0 < executed lines < 80                 circumstantial
+  Does the bound change the LAW's ruling? Sweep n_fail with every
+  other circumstantial bit off and specificity in the middle band:
+    n_fail=   1  SMALL=True  byte= 64  sight()=5
+    n_fail=  79  SMALL=True  byte= 64  sight()=5
+    n_fail=  80  SMALL=False byte=  0  sight()=6  <-- ruling changes here
+    n_fail=  81  SMALL=False byte=  0  sight()=6
+    n_fail= 300  SMALL=False byte=  0  sight()=6
+  and with a POINTING bit set, the same sweep:
+    n_fail=  79  FRAMED=True byte= 65  sight()=0   (R1: pointing dominates, bound is inert)
+    n_fail=  80  FRAMED=True byte=  1  sight()=0   (R1: pointing dominates, bound is inert)
+
+========================================================================
+C6  test-path whitelist -- guard.py:111-115
+========================================================================
+  111: def _is_test_path(rel: str) -> bool:
+  112: parts = rel.replace("\\", "/").split("/")
+  113: base = parts[-1]
+  114: return (base.startswith("test_") or base.endswith("_test.py")
+  115: or "tests" in parts[:-1] or base == "conftest.py")
+  see testpath_probe.out and testpath_realrepos.out
+
+BONUS: the candidate cap the coordinator did not name
+  acts.py:376: _CAP_DEFAULT = 32
+  candidate_cap() = 32  (env FLUIDFIX_CANDIDATE_CAP)

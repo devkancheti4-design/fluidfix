@@ -1,0 +1,64 @@
+records: 140  from the body: 90  direct from tests: 50
+
+tests during which the BODY consulted the law: 45
+   tests/test_engine_fusion.py::test_ambiguous_greens_refuse_with_add_state
+   tests/test_engine_fusion.py::test_unambiguous_single_green_still_ships
+   tests/test_engine_fusion.py::test_capped_escalation_raises_budget_and_repairs
+   tests/test_engine_fusion.py::test_deadline_never_ships_unproven_ambiguity
+   tests/test_engine_fusion.py::test_refuted_refusal_does_not_escalate
+   tests/test_guard.py::test_guard_finds_file_and_repairs_without_being_told
+   tests/test_guard.py::test_guard_follows_traceback_frames
+   tests/test_guard.py::test_guard_refuses_novel_class_loudly_and_untouched
+   tests/test_guard.py::test_guard_commit_records_the_restoration
+   tests/test_guard.py::test_repair_reports_restored_original_provenance
+   tests/test_guard.py::test_stale_refusal_cleared_on_green_or_repaired_pass
+   tests/test_e2e.py::test_repairs_strictness_bug_byte_exact
+   tests/test_span_edits.py::test_span_fixes_two_coordinated_wrong_lines
+   tests/test_span_edits.py::test_span_leaves_no_dead_code
+   tests/test_span_edits.py::test_span_rejection_rolls_back_byte_exact_crlf
+   tests/test_span_edits.py::test_span_bounds_and_anchor_safety
+   tests/test_span_edits.py::test_two_green_spans_refuse_ambiguous
+   tests/test_span_edits.py::test_refusal_logs_why_each_candidate_failed
+   tests/test_span_edits.py::test_global_budget_is_an_honest_stop
+   tests/test_span_edits.py::test_budget_hands_first_pass_over_to_escalation
+   tests/test_regressions.py::test_crlf_file_untouched_on_refusal_and_preserved_on_repair
+   tests/test_regressions.py::test_teach_a_new_class_from_one_registration
+   tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies
+   tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib
+   tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today
+   tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval
+   tests/test_acts.py::test_guard_repairs_minmax_swap_end_to_end
+   tests/test_c_adapter.py::test_repairs_a_real_c_defect_end_to_end
+   tests/test_c_adapter.py::test_will_not_repair_by_editing_the_harness_even_if_reachable
+   tests/test_c_adapter.py::test_journal_covers_every_mutation_not_just_the_first
+   tests/test_context_transforms.py::test_value_found_in_repo_case1
+   tests/test_context_transforms.py::test_value_found_in_repo_case2
+   tests/test_context_transforms.py::test_multiline_logic_fix_from_one_example
+   tests/test_context_transforms.py::test_whole_algorithm_fix_from_one_example
+   tests/test_context_transforms.py::test_two_coordinated_wrong_lines_refuse
+   tests/test_demo_walkthrough.py::test_step1_selfcheck_passes
+   tests/test_demo_walkthrough.py::test_step3_guard_repairs_and_commits_without_being_told_the_file
+   tests/test_demo_walkthrough.py::test_step4_novel_class_refused_with_signal
+   tests/test_demo_walkthrough.py::test_step5_and_6_dictionary_frees_the_class
+   tests/test_demo_walkthrough.py::test_step7_library_api
+   tests/test_dictionary.py::test_dictionary_teaches_a_class_the_cli_can_use
+   tests/test_teaching.py::test_walkthrough_dictionary_repairs_the_incident
+   tests/test_teaching.py::test_example_rule_class_missing_get_default
+   tests/test_teaching.py::test_example_repo_mined_class_wrong_attribute
+   tests/test_teaching.py::test_example_span_class_round_before_accumulate
+
+body consultations: site, x, bits -> act (count)
+  cli.py:474     x=  1 BUILT                -> SHIP                   x2
+  cli.py:474     x=  2 AMB                  -> ADD_STATE              x2
+  cli.py:474     x=  4 UNREAD               -> ADD_MATERIAL           x2
+  cli.py:474     x= 32 CAPPED               -> RAISE_BUDGET           x2
+  cli.py:474     x= 64 REFUTED              -> HARVEST_COUNTEREXAMPLE x2
+  guard.py:539   x=  0 <empty>              -> SHIP                   x5
+  guard.py:539   x= 64 REFUTED              -> HARVEST_COUNTEREXAMPLE x7
+  guard.py:539   x= 96 CAPPED+REFUTED       -> RAISE_BUDGET           x3
+  guard.py:618   x= 64 REFUTED              -> HARVEST_COUNTEREXAMPLE x7
+  loop.py:217    x=  1 BUILT                -> SHIP                   x53
+  loop.py:217    x=  3 BUILT+AMB            -> ADD_STATE              x5
+
+distinct situations the body constructed: [0, 1, 2, 3, 4, 32, 64, 96]
+distinct sites: ['cli.py:474', 'guard.py:539', 'guard.py:618', 'loop.py:217']

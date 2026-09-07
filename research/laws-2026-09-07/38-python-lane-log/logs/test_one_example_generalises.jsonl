@@ -1,0 +1,2 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_one_example_generalises.py::test_one_example_heals_five_different_members_and_refuses_the_control"}

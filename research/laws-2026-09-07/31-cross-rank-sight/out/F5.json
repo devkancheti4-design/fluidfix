@@ -1,0 +1,260 @@
+{
+ "fixture": "F5-named-misdirection",
+ "root": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/31-cross-rank-sight/work/f5",
+ "defect": "mod.py:4",
+ "status": "repaired",
+ "file": "mod.py",
+ "candidates": [
+  "bounds.py",
+  "mod.py",
+  "totals.py"
+ ],
+ "evidence": {},
+ "seconds": 12.49,
+ "suite_runs": 10,
+ "first_law_consulted": "SIGHT",
+ "events": [
+  {
+   "seq": 1,
+   "kind": "SIGHT",
+   "byte": 90,
+   "prio": 0,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "NAMED",
+    "SMALL"
+   ]
+  },
+  {
+   "seq": 2,
+   "kind": "SIGHT",
+   "byte": 74,
+   "prio": 0,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "SMALL"
+   ]
+  },
+  {
+   "seq": 3,
+   "kind": "SIGHT",
+   "byte": 74,
+   "prio": 0,
+   "bits": [
+    "SCARCE",
+    "FAILONLY",
+    "SMALL"
+   ]
+  },
+  {
+   "seq": 4,
+   "kind": "FILEORD",
+   "files": [
+    "bounds.py",
+    "mod.py",
+    "totals.py"
+   ],
+   "limit": 3,
+   "sight_calls": 3,
+   "route": "SIGHT-law"
+  },
+  {
+   "seq": 5,
+   "kind": "RANK",
+   "byte": 40,
+   "prio": 3,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 6,
+   "kind": "RANK",
+   "byte": 40,
+   "prio": 3,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 7,
+   "kind": "LINEORD",
+   "rel": "bounds.py",
+   "lines": [
+    2,
+    4
+   ],
+   "kinds": [
+    [
+     0,
+     10
+    ],
+    [
+     0,
+     10
+    ]
+   ]
+  },
+  {
+   "seq": 8,
+   "kind": "KIND",
+   "mask": 1025,
+   "klass": 0
+  },
+  {
+   "seq": 9,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 10,
+   "kind": "KIND",
+   "mask": 1024,
+   "klass": 10
+  },
+  {
+   "seq": 11,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 12,
+   "kind": "KIND",
+   "mask": 1025,
+   "klass": 0
+  },
+  {
+   "seq": 13,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 14,
+   "kind": "KIND",
+   "mask": 1024,
+   "klass": 10
+  },
+  {
+   "seq": 15,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 16,
+   "kind": "RANK",
+   "byte": 40,
+   "prio": 3,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 17,
+   "kind": "RANK",
+   "byte": 40,
+   "prio": 3,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 18,
+   "kind": "RANK",
+   "byte": 40,
+   "prio": 3,
+   "bits": [
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 19,
+   "kind": "LINEORD",
+   "rel": "mod.py",
+   "lines": [
+    2,
+    4,
+    5
+   ],
+   "kinds": [
+    [
+     1
+    ],
+    [
+     0,
+     10
+    ],
+    [
+     1,
+     9
+    ]
+   ]
+  },
+  {
+   "seq": 20,
+   "kind": "KIND",
+   "mask": 2,
+   "klass": 1
+  },
+  {
+   "seq": 21,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 22,
+   "kind": "KIND",
+   "mask": 1025,
+   "klass": 0
+  },
+  {
+   "seq": 23,
+   "kind": "RUN",
+   "ok": true
+  },
+  {
+   "seq": 24,
+   "kind": "RUN",
+   "ok": true
+  },
+  {
+   "seq": 25,
+   "kind": "KIND",
+   "mask": 1024,
+   "klass": 10
+  },
+  {
+   "seq": 26,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 27,
+   "kind": "KIND",
+   "mask": 514,
+   "klass": 1
+  },
+  {
+   "seq": 28,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 29,
+   "kind": "KIND",
+   "mask": 512,
+   "klass": 9
+  },
+  {
+   "seq": 30,
+   "kind": "RUN",
+   "ok": false
+  }
+ ]
+}

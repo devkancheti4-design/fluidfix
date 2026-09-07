@@ -1,0 +1,233 @@
+{
+ "name": "e2e_count_above",
+ "src": "tests/test_e2e.py BUGGY/TEST; tests/test_guard.py",
+ "group": "shipped",
+ "expect": "repaired",
+ "taught": {},
+ "status": "repaired",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 6.0,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 3,
+   "input_order": [
+    2,
+    4,
+    5
+   ],
+   "ranked_order": [
+    2,
+    4,
+    5
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      1
+     ],
+     "classes": [
+      "literal-off-by-one"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "n = 0"
+    },
+    {
+     "lineno": 4,
+     "kinds": [
+      0,
+      10
+     ],
+     "classes": [
+      "strictness",
+      "flipped-comparison-direction"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "if x >= t:"
+    },
+    {
+     "lineno": 5,
+     "kinds": [
+      1,
+      9
+     ],
+     "classes": [
+      "literal-off-by-one",
+      "flipped-augmented-assign"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "n += 1"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    1
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    n = -1"
+   ]
+  },
+  {
+   "lineno": 4,
+   "kinds": [
+    0,
+    10
+   ],
+   "act": 5,
+   "kind": 0,
+   "n": 1,
+   "cands": [
+    "        if x > t:"
+   ]
+  },
+  {
+   "lineno": 4,
+   "kinds": [
+    0,
+    10
+   ],
+   "act": 15,
+   "kind": 10,
+   "n": 1,
+   "cands": [
+    "        if x <= t:"
+   ]
+  },
+  {
+   "lineno": 5,
+   "kinds": [
+    1,
+    9
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "            n += 0"
+   ]
+  },
+  {
+   "lineno": 5,
+   "kinds": [
+    1,
+    9
+   ],
+   "act": 14,
+   "kind": 9,
+   "n": 1,
+   "cands": [
+    "            n -= 1"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "n = -1"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "4-4",
+     "new": "if x > t:"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "4-4",
+     "new": "if x > t:"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "4-4",
+     "new": "if x <= t:"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "5-5",
+     "new": "n += 0"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "5-5",
+     "new": "n -= 1"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 6,
+ "winner": {
+  "lineno": 4,
+  "new_line": "        if x > t:",
+  "old_line": "        if x >= t:",
+  "kind": 0,
+  "class": "strictness",
+  "act": 5,
+  "first_green_check": 2,
+  "suite_runs": 6,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 3,
+  "bits": "SIGNALED+CHEAP",
+  "position_ranked": 2,
+  "n_obs": 3,
+  "position_input": 2,
+  "same_priority_ahead": 1,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 1,
+  "kinds_on_line": 2,
+  "class_slot_position": 2,
+  "class_slots_total": 5
+ }
+}

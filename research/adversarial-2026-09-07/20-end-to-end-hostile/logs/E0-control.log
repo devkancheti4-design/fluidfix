@@ -1,0 +1,6 @@
+  build: cmake --build build -j8
+  test:  ./build/tests
+[14:43:40] REFUSED: nothing in the failure pointed at a file — no traceback frame, no discriminating literal, no taught signal narrow enough to localise. The ranking had only circumstantial evidence, so a bigger budget searches the same files in the same order. Files searched: include/cglm/bezier.h, src/bezier.c. What helps, in order: name the file yourself (--file <path>); make the failing assertion carry a value that occurs in few files; or teach a narrower signal for this class. 64 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: --budget exhausted (600s)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo/.fluidfix/last_refusal.json
+"$D/bin/tmo" 900 /Users/kanchetidevieswar/neo/fluidfix/.venv/bin/fluidfix  .   1090.42s user 236.29s system 219% cpu 10:05.05 total

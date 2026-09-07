@@ -1,0 +1,8 @@
+commits scanned: 1377
+bug-fix commits: 576
+engine files touched by bug fixes: 322
+total bugfix file-touches: 2029
+  to guard 30% of past defects -> test  17 files  (5% of the 322 implicated files)
+  to guard 50% of past defects -> test  40 files  (12% of the 322 implicated files)
+  to guard 60% of past defects -> test  57 files  (18% of the 322 implicated files)
+  to guard 80% of past defects -> test 136 files  (42% of the 322 implicated files)

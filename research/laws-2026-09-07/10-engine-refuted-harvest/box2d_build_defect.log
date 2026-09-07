@@ -1,0 +1,10 @@
+[  1%] Building C object src/CMakeFiles/box2d.dir/contact_solver.c.o
+[  3%] Linking C static library libbox2d.a
+[ 64%] Built target box2d
+[ 71%] Built target shared
+[ 73%] Linking C executable ../bin/test
+ld: warning: ignoring duplicate libraries: '../src/libbox2d.a'
+[100%] Built target test
+real 0.99
+user 0.64
+sys 0.28

@@ -1,0 +1,45 @@
+{
+ "repaired": true,
+ "refused": false,
+ "lineno": 3,
+ "old_line": "BONUS = 8",
+ "new_line": "BONUS = 7",
+ "acts_tried": [
+  6,
+  7,
+  8,
+  7,
+  8
+ ],
+ "suite_runs": 6,
+ "seconds": 2.178795099258423,
+ "reason": "engine law: BUILT -> SHIP",
+ "ambiguous": false,
+ "greens": [
+  "BONUS = 7"
+ ],
+ "tried_log": [
+  {
+   "at": "net.py:7",
+   "tried": "    return price + units * units",
+   "why": "FAILED tests/test_invoice.py::test_invoice_one_unit - assert 19 == 18"
+  },
+  {
+   "at": "net.py:7",
+   "tried": "    return units * price - units",
+   "why": "FAILED tests/test_invoice.py::test_invoice_one_unit - assert 17 == 18"
+  },
+  {
+   "at": "net.py:11",
+   "tried": "    return BONUS + gross(units, price)",
+   "why": "FAILED tests/test_invoice.py::test_invoice_one_unit - assert 19 == 18"
+  },
+  {
+   "at": "net.py:11",
+   "tried": "    return gross(units, price) - BONUS",
+   "why": "FAILED tests/test_invoice.py::test_invoice_one_unit - assert 3 == 18"
+  }
+ ],
+ "tried_more": 0,
+ "restored_original": null
+}

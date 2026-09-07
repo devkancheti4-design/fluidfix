@@ -1,0 +1,12 @@
+{
+ "id": 5,
+ "lineno": 20,
+ "kind": 2,
+ "kind_name": "swapped-return-operands",
+ "act": 7,
+ "orig": "    return on_hand + delivered",
+ "mutant": "    return delivered + on_hand",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

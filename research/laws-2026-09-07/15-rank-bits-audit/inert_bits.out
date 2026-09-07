@@ -1,0 +1,21 @@
+== 1. exhaustive: with SIGNALED forced on and FAILONLY/RETRIED forced
+      off (the mechanical path's constraint set), can RECENT, CHEAP or
+      DENSE ever change the ruling?
+   bytes checked: 32   (byte, bit) pairs where flipping RECENT/CHEAP/DENSE changes rank(): 0
+   -> NONE. all three are inert on this path.
+
+   and the same three CAN decide when SIGNALED is off (Claude observer,
+   kinds=[]):
+     rank(0)=7  rank(1<<4)=4  (RECENT)
+     rank(0)=7  rank(1<<5)=5  (CHEAP)
+     rank(0)=7  rank(1<<6)=6  (DENSE)
+
+== 2. cost of computing CHEAP, which cannot decide on the mechanical path
+   110 observations, kinds=[1,3]
+   rank_observations WITH CHEAP measured : 3.0 ms
+   same call with candidates() raising   : 1.7 ms
+   share of the ranking call spent on a bit that cannot decide: 42%
+
+   NOTE: guard.py:399-405 wraps the CHEAP measurement in a bare
+   `except Exception: cheap = False`, so a genuine failure inside
+   candidates() is indistinguishable from 'this line is not cheap'.

@@ -1,0 +1,105 @@
+{
+ "name": "ctx_median_r1",
+ "src": "tests/test_context_transforms.py test_whole_algorithm_fix_from_one_example (r1)",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "mean-where-median"
+ },
+ "status": "repaired",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 2.5,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 1,
+   "input_order": [
+    2
+   ],
+   "ranked_order": [
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      4
+     ],
+     "classes": [
+      "mean-where-median"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "return sum(xs) / len(xs)"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    4
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "    ys = sorted(xs)\n    n = len(ys)\n    if n % 2:\n        return ys[n // 2]\n    return (ys[n // 2 - 1] + ys[n // 2]) / 2"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "ys = sorted(xs)\\nn = len(ys)\\nif n % 2:\\nreturn ys[n // 2]\\nreturn (ys[n // 2 - 1] + ys[n "
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "ys = sorted(xs)\\nn = len(ys)\\nif n % 2:\\nreturn ys[n // 2]\\nreturn (ys[n // 2 - 1] + ys[n "
+    }
+   ]
+  }
+ ],
+ "suite_runs": 2,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    ys = sorted(xs)\n    n = len(ys)\n    if n % 2:\n        return ys[n // 2]\n    return (ys[n // 2 - 1] + ys[n // 2]) / 2",
+  "old_line": "    return sum(xs) / len(xs)",
+  "kind": 4,
+  "class": "mean-where-median",
+  "act": 9,
+  "first_green_check": 1,
+  "suite_runs": 2,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 3,
+  "bits": "SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 1,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 1,
+  "kinds_on_line": 1,
+  "class_slot_position": 1,
+  "class_slots_total": 1
+ }
+}

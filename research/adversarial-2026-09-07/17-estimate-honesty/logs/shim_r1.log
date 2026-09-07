@@ -1,0 +1,14 @@
+1788771971.091582000 -c pass
+1788771971.132786000 -c import pytest_timeout
+1788771971.187811000 -m pytest -q --no-header -p no:benchmark -x --tb=long
+1788771971.414697000 -m pytest -q --no-header -p no:benchmark --lf --tb=no --cov=. --cov-report=json:/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/17-estimate-honesty/repos/r1_shim/_fluidfix_guard_cov.json
+1788771971.756041000 -m pytest -q --no-header -p no:benchmark --tb=no --cov=. --cov-report=json:/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/17-estimate-honesty/repos/r1_shim/_fluidfix_guard_cov.json
+1788771972.655906000 -m pytest -q --no-header -p no:benchmark -x --tb=long
+1788771973.075243000 -m pytest -q --no-header -p no:benchmark --lf --tb=no --cov=pkg --cov-report=json:/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/17-estimate-honesty/repos/r1_shim/_fluidfix_cov.json
+1788771973.581925000 -m pytest -q --no-header -p no:benchmark -p no:cacheprovider --tb=no
+1788771973.851502000 -c import pytest_cov
+1788771974.005016000 -m pytest -q --no-header -p no:benchmark --lf --tb=no --cov-fail-under=0
+1788771974.192651000 -m pytest -q --no-header -p no:benchmark -p no:cacheprovider --tb=no
+1788771974.430559000 -m pytest -q --no-header -p no:benchmark --lf --tb=no --cov-fail-under=0
+1788771974.663322000 -m pytest -q --no-header -p no:benchmark -p no:cacheprovider --tb=no
+1788771974.888203000 -m pytest -q --no-header -p no:benchmark --lf --tb=no --cov-fail-under=0

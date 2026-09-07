@@ -1,0 +1,217 @@
+{
+ "status": "refused",
+ "seconds": 258.43249583244324,
+ "file": null,
+ "candidates": [
+  "include/cglm/vec3.h",
+  "src/vec3.c"
+ ],
+ "hint": "--budget exhausted (240s)",
+ "attempts": [
+  {
+   "at": "include/cglm/vec3.h:10",
+   "tried": "   GLM_VEC2_ONE_INIT",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:11",
+   "tried": "   GLM_VEC2_ZERO_INIT",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:12",
+   "tried": "   GLM_VEC2_ONE",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:13",
+   "tried": "   GLM_VEC2_ZERO",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:19",
+   "tried": "   CGLM_INLINE void  glm_vec2(vec4 v4, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:19",
+   "tried": "   CGLM_INLINE void  glm_vec3(vec3 v4, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:19",
+   "tried": "   CGLM_INLINE void  glm_vec3(vec4 v3, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:19",
+   "tried": "   CGLM_INLINE void  glm_vec3(vec4 v4, vec2 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:20",
+   "tried": "   CGLM_INLINE void  glm_vec2_copy(vec3 a, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:20",
+   "tried": "   CGLM_INLINE void  glm_vec3_copy(vec2 a, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:20",
+   "tried": "   CGLM_INLINE void  glm_vec3_copy(vec3 a, vec2 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:21",
+   "tried": "   CGLM_INLINE void  glm_vec2_zero(vec3 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:21",
+   "tried": "   CGLM_INLINE void  glm_vec3_zero(vec2 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:22",
+   "tried": "   CGLM_INLINE void  glm_vec2_one(vec3 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:22",
+   "tried": "   CGLM_INLINE void  glm_vec3_one(vec2 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:23",
+   "tried": "   CGLM_INLINE float glm_vec2_dot(vec3 a, vec3 b);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:23",
+   "tried": "   CGLM_INLINE float glm_vec3_dot(vec2 a, vec3 b);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:23",
+   "tried": "   CGLM_INLINE float glm_vec3_dot(vec3 a, vec2 b);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:24",
+   "tried": "   CGLM_INLINE float glm_vec2_norm2(vec3 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:24",
+   "tried": "   CGLM_INLINE float glm_vec3_norm1(vec3 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:24",
+   "tried": "   CGLM_INLINE float glm_vec3_norm2(vec2 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:25",
+   "tried": "   CGLM_INLINE float glm_vec2_norm(vec3 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:25",
+   "tried": "   CGLM_INLINE float glm_vec3_norm(vec2 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:26",
+   "tried": "   CGLM_INLINE float glm_vec2_norm_one(vec3 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:26",
+   "tried": "   CGLM_INLINE float glm_vec3_norm_one(vec2 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:27",
+   "tried": "   CGLM_INLINE float glm_vec2_norm_inf(vec3 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:27",
+   "tried": "   CGLM_INLINE float glm_vec3_norm_inf(vec2 v);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:28",
+   "tried": "   CGLM_INLINE void  glm_vec2_add(vec3 a, vec3 b, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:28",
+   "tried": "   CGLM_INLINE void  glm_vec3_add(vec2 a, vec3 b, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:28",
+   "tried": "   CGLM_INLINE void  glm_vec3_add(vec3 a, vec2 b, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:28",
+   "tried": "   CGLM_INLINE void  glm_vec3_add(vec3 a, vec3 b, vec2 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:29",
+   "tried": "   CGLM_INLINE void  glm_vec2_adds(vec3 a, float s, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:29",
+   "tried": "   CGLM_INLINE void  glm_vec3_adds(vec2 a, float s, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:29",
+   "tried": "   CGLM_INLINE void  glm_vec3_adds(vec3 a, float s, vec2 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:30",
+   "tried": "   CGLM_INLINE void  glm_vec2_sub(vec3 a, vec3 b, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:30",
+   "tried": "   CGLM_INLINE void  glm_vec3_sub(vec2 a, vec3 b, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:30",
+   "tried": "   CGLM_INLINE void  glm_vec3_sub(vec3 a, vec2 b, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:30",
+   "tried": "   CGLM_INLINE void  glm_vec3_sub(vec3 a, vec3 b, vec2 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:31",
+   "tried": "   CGLM_INLINE void  glm_vec2_subs(vec3 a, float s, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:31",
+   "tried": "   CGLM_INLINE void  glm_vec3_subs(vec2 a, float s, vec3 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  },
+  {
+   "at": "include/cglm/vec3.h:31",
+   "tried": "   CGLM_INLINE void  glm_vec3_subs(vec3 a, float s, vec2 dest);",
+   "why": "3 test(s) failed, first: clamp"
+  }
+ ]
+}

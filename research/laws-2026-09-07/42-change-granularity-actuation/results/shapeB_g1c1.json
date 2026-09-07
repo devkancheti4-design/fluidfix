@@ -1,0 +1,500 @@
+{
+ "shape": "B",
+ "config": "g1c1",
+ "cfg": {
+  "rung": 1,
+  "confirm": 1
+ },
+ "k": 4,
+ "trials": 30,
+ "counts": {
+  "REFUSED": 27,
+  "CORRECT": 3
+ },
+ "mean_invocations": 3.37,
+ "mean_full_runs": 3.37,
+ "mean_node_runs": 0.0,
+ "mean_seconds": 0.81,
+ "records": [
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.63,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.88,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.76,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.64,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.91,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.77,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "CORRECT",
+   "new_line": "    return a + b",
+   "why": "engine law: BUILT -> SHIP",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 1.32,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.91,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.9,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.65,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.64,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.88,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.98,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.64,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.67,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.76,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 1.0,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.85,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.68,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.63,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.84,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.63,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 0.83,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 4,
+   "full_runs": 4,
+   "node_runs": 0,
+   "seconds": 1.3,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.94,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.74,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.68,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  },
+  {
+   "outcome": "REFUSED",
+   "new_line": null,
+   "why": "every candidate left the suite red \u2014 fault is outside this vocabulary or the observations are wrong",
+   "invocations": 3,
+   "full_runs": 3,
+   "node_runs": 0,
+   "seconds": 0.65,
+   "kinds": [
+    [
+     2,
+     3,
+     11
+    ]
+   ]
+  }
+ ]
+}

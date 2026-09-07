@@ -1,0 +1,23 @@
+build: cc -O0 -I. -o build/test scale.c test_scale.c
+test : ./build/test
+
+status=refused  seconds=8.5
+candidate files: ['scale.c', 'scale.h']
+attempts (harvested rejections): 2
+hint: ''
+
+--- report.summary() (what the user is told) ---
+REFUSED: fault is outside the taught vocabulary (candidate files tried: scale.c, scale.h). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 2 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+
+--- .fluidfix/last_refusal.json ---
+hint: 'fault class is outside the taught vocabulary; register() it once and its family becomes free'
+rejected_candidates: 2
+   {'at': 'scale.c:3', 'tried': '\treturn x * 2;', 'why': '1 test(s) failed, first: ScaleTest'}
+   {'at': 'scale.c:3', 'tried': '\treturn 3; * x', 'why': "scale.c:3:12: error: indirection requires pointer operand ('int' invalid)"}
+
+--- what the engine law rules on this situation ---
+decide(situation(REFUTED=True)) = HARVEST_COUNTEREXAMPLE
+Python-path wording for the same ruling is set in guard.py:611-621;
+grep for it in coracle.cguard_once: 0
+
+fixture root kept at: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/10-engine-refuted-harvest/crefuted_x9zxbmy2

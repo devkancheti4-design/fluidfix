@@ -1,0 +1,79 @@
+LAW length=1555 sha256[:16]=48bf50bff36a2cc9  (matches the 1555/48bf50bff36a2cc9 claim)
+formula (docstring) vs raw LAW, 256 inputs: 256/256 agree
+job-invariance (bits 8-9 in 0..3), 256 inputs: 256/256 invariant
+raw LAW values seen: [0, 1, 2, 3, 4, 5, 6, 7]; inputs where raw >= 8 (ACTS[...%8] wraps): 0
+ruling census over 256 inputs:
+    SHIP                     4 inputs
+    ADD_STATE              113 inputs
+    ADD_MATERIAL            64 inputs
+    RESHAPE                 17 inputs
+    CHANGE_GRANULARITY      16 inputs
+    RAISE_BUDGET            23 inputs
+    HARVEST_COUNTEREXAMPLE   4 inputs
+    AUTHOR_SUCCESSOR        15 inputs
+single-bit rulings (BITS[i] alone) vs ACTS[i]:
+    BUILT    -> SHIP                   == ACTS[0]
+    AMB      -> ADD_STATE              == ACTS[1]
+    UNREAD   -> ADD_MATERIAL           == ACTS[2]
+    NOTWIN   -> RESHAPE                == ACTS[3]
+    HIDDEN   -> CHANGE_GRANULARITY     == ACTS[4]
+    CAPPED   -> RAISE_BUDGET           == ACTS[5]
+    REFUTED  -> HARVEST_COUNTEREXAMPLE == ACTS[6]
+    SELF     -> SHIP                   != ACTS[7]=AUTHOR_SUCCESSOR
+no bits set (x=0) -> SHIP
+docstring spec lines vs law:
+    BUILT          spec=SHIP                   law=SHIP                   OK
+    BUILT+AMB      spec=ADD_STATE              law=ADD_STATE              OK
+    AMB            spec=ADD_STATE              law=ADD_STATE              OK
+    UNREAD         spec=ADD_MATERIAL           law=ADD_MATERIAL           OK
+    CAPPED         spec=RAISE_BUDGET           law=RAISE_BUDGET           OK
+    REFUTED        spec=HARVEST_COUNTEREXAMPLE law=HARVEST_COUNTEREXAMPLE OK
+    HIDDEN         spec=CHANGE_GRANULARITY     law=CHANGE_GRANULARITY     OK
+citations the fusion-integrity test re-derives (engine law: X -> Y in src):
+    guard.py:496     UNREAD         -> ADD_MATERIAL
+    guard.py:525     BUILT+AMB      -> ADD_STATE
+    guard.py:601     CAPPED         -> RAISE_BUDGET
+    guard.py:614     REFUTED        -> HARVEST_COUNTEREXAMPLE
+    guard.py:620     REFUTED        -> HARVEST_COUNTEREXAMPLE
+    guard.py:717     REFUTED        -> HARVEST_COUNTEREXAMPLE
+    oracle.py:191    REFUTED        -> HARVEST_COUNTEREXAMPLE
+bytes pinned by a direct decide() assertion in tests/test_engine_fusion.py: 6
+    x=  1 BUILT                pinned=['SHIP'] law=SHIP
+    x=  3 BUILT+AMB            pinned=['ADD_STATE'] law=ADD_STATE
+    x=  4 UNREAD               pinned=['ADD_MATERIAL', 'ADD_MATERIAL'] law=ADD_MATERIAL
+    x= 32 CAPPED               pinned=['RAISE_BUDGET'] law=RAISE_BUDGET
+    x= 64 REFUTED              pinned=['HARVEST_COUNTEREXAMPLE', 'HARVEST_COUNTEREXAMPLE'] law=HARVEST_COUNTEREXAMPLE
+    x= 96 CAPPED+REFUTED       pinned=['RAISE_BUDGET'] law=RAISE_BUDGET
+bytes pinned anywhere (tests/*.py direct asserts + INCIDENTS + selfcheck + src citations): 8
+    x=  1 BUILT                law=SHIP                   OK  test_c_adapter.py:379=SHIP; test_engine_fusion.py:25=SHIP; test_law_never_ruled_wrong.py:76=SHIP; test_law_never_ruled_wrong.py:27 (INCIDENTS)=SHIP; test_law_never_ruled_wrong.py:30 (INCIDENTS)=SHIP; cli.py selfcheck=SHIP
+    x=  2 AMB                  law=ADD_STATE              OK  cli.py selfcheck=ADD_STATE
+    x=  3 BUILT+AMB            law=ADD_STATE              OK  test_engine_fusion.py:26=ADD_STATE; test_law_never_ruled_wrong.py:77=ADD_STATE; test_law_never_ruled_wrong.py:33 (INCIDENTS)=ADD_STATE; test_pair_law.py:138=ADD_STATE; guard.py:525 (citation, checked by test_every_cited_ruling...)=ADD_STATE
+    x=  4 UNREAD               law=ADD_MATERIAL           OK  test_engine_fusion.py:27=ADD_MATERIAL; test_engine_fusion.py:240=ADD_MATERIAL; test_law_never_ruled_wrong.py:41 (INCIDENTS)=ADD_MATERIAL; cli.py selfcheck=ADD_MATERIAL; guard.py:496 (citation, checked by test_every_cited_ruling...)=ADD_MATERIAL
+    x= 16 HIDDEN               law=CHANGE_GRANULARITY     OK  test_c_adapter.py:378=CHANGE_GRANULARITY; test_law_never_ruled_wrong.py:43 (INCIDENTS)=CHANGE_GRANULARITY
+    x= 32 CAPPED               law=RAISE_BUDGET           OK  test_engine_fusion.py:28=RAISE_BUDGET; test_law_never_ruled_wrong.py:36 (INCIDENTS)=RAISE_BUDGET; cli.py selfcheck=RAISE_BUDGET; guard.py:601 (citation, checked by test_every_cited_ruling...)=RAISE_BUDGET
+    x= 64 REFUTED              law=HARVEST_COUNTEREXAMPLE OK  test_engine_fusion.py:30=HARVEST_COUNTEREXAMPLE; test_engine_fusion.py:241=HARVEST_COUNTEREXAMPLE; test_law_never_ruled_wrong.py:39 (INCIDENTS)=HARVEST_COUNTEREXAMPLE; test_law_never_ruled_wrong.py:49 (INCIDENTS)=HARVEST_COUNTEREXAMPLE; cli.py selfcheck=HARVEST_COUNTEREXAMPLE; guard.py:614 (citation, checked by test_every_cited_ruling...)=HARVEST_COUNTEREXAMPLE; guard.py:620 (citation, checked by test_every_cited_ruling...)=HARVEST_COUNTEREXAMPLE; guard.py:717 (citation, checked by test_every_cited_ruling...)=HARVEST_COUNTEREXAMPLE; oracle.py:191 (citation, checked by test_every_cited_ruling...)=HARVEST_COUNTEREXAMPLE
+    x= 96 CAPPED+REFUTED       law=RAISE_BUDGET           OK  test_engine_fusion.py:29=RAISE_BUDGET
+pins that disagree with the law: 0
+bytes the body's call sites can construct: 10 -> [0, 1, 3, 4, 16, 32, 33, 35, 64, 96]
+    loop.py:217  BUILT=True, AMB=set_amb or sites>1, CAPPED=capped x=  1 BUILT                -> SHIP                   PINNED
+    loop.py:217  BUILT=True, AMB=set_amb or sites>1, CAPPED=capped x=  3 BUILT+AMB            -> ADD_STATE              PINNED
+    loop.py:217  BUILT=True, AMB=set_amb or sites>1, CAPPED=capped x= 33 BUILT+CAPPED         -> RAISE_BUDGET           UNPINNED
+    loop.py:217  BUILT=True, AMB=set_amb or sites>1, CAPPED=capped x= 35 BUILT+AMB+CAPPED     -> ADD_STATE              UNPINNED
+    loop.py:391  HIDDEN=True                                     x= 16 HIDDEN               -> CHANGE_GRANULARITY     PINNED
+    guard.py:491 UNREAD=True                                     x=  4 UNREAD               -> ADD_MATERIAL           PINNED
+    guard.py:539 CAPPED=capped0, REFUTED=acts0                   x=  0 (none)               -> SHIP                   UNPINNED
+    guard.py:539 CAPPED=capped0, REFUTED=acts0                   x= 32 CAPPED               -> RAISE_BUDGET           PINNED
+    guard.py:539 CAPPED=capped0, REFUTED=acts0                   x= 64 REFUTED              -> HARVEST_COUNTEREXAMPLE PINNED
+    guard.py:539 CAPPED=capped0, REFUTED=acts0                   x= 96 CAPPED+REFUTED       -> RAISE_BUDGET           PINNED
+    guard.py:612,618 REFUTED=True                                x= 64 REFUTED              -> HARVEST_COUNTEREXAMPLE PINNED
+inputs no test pins: 248/256
+unpinned inputs grouped by ruling:
+    SHIP                     3: 0 128 129
+    ADD_STATE              111: 6 7 10 11 14 15 18 19 22 26 27 30 31 34 35 38 42 43 46 47 50 51 54 58 59 62 63 66 67 70 74 75 78 79 82 83 86 90 91 94 95 98 99 102 106 107 110 111 114 115 118 122 123 126 127 130 131 134 138 139 142 143 146 147 150 154 155 158 159 162 163 166 170 171 174 175 178 179 182 186 187 190 191 194 195 198 202 203 206 207 210 211 214 218 219 222 223 226 227 230 234 235 238 239 242 243 246 250 251 254 255
+    ADD_MATERIAL            63: 5 12 13 20 21 28 29 36 37 44 45 52 53 60 61 68 69 76 77 84 85 92 93 100 101 108 109 116 117 124 125 132 133 140 141 148 149 156 157 164 165 172 173 180 181 188 189 196 197 204 205 212 213 220 221 228 229 236 237 244 245 252 253
+    RESHAPE                 17: 8 9 25 41 57 73 89 105 121 137 153 169 185 201 217 233 249
+    CHANGE_GRANULARITY      15: 17 48 49 80 81 112 113 144 145 176 177 208 209 240 241
+    RAISE_BUDGET            21: 23 33 39 55 71 87 97 103 119 135 151 160 161 167 183 199 215 224 225 231 247
+    HARVEST_COUNTEREXAMPLE   3: 65 192 193
+    AUTHOR_SUCCESSOR        15: 24 40 56 72 88 104 120 136 152 168 184 200 216 232 248
+unpinned AND body-constructible: [0, 33, 35] -> (none)=SHIP, BUILT+CAPPED=RAISE_BUDGET, BUILT+AMB+CAPPED=ADD_STATE

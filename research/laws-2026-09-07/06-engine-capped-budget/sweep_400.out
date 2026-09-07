@@ -1,0 +1,14 @@
+FIXTURE: pad=0 bug_lineno=403 packet_lines=110 truncated=True bug_in_packet=False
+RUN: budget=400s  first_deadline=budget/3=133s  FLUIDFIX_CONFIRM=(default 1)  start=13:54:37
+  RULING t=   24.1s          CAPPED+REFUTED (0x60) -> RAISE_BUDGET           at guard.py:539  [suite runs so far: 110]
+  GREEN  t=  104.8s  suite run #511 passed
+  GREEN  t=  105.2s  suite run #512 passed
+  RULING t=  185.4s                   BUILT (0x01) -> SHIP                   at loop.py:217  [suite runs so far: 914]
+RESULT: budget=400 status=repaired elapsed=185.4s suite_runs(check)=914 greens=2 green()=2 failing_output()=3
+  file=mod.py tree_changed=True
+  result.reason='engine law: BUILT -> SHIP (engine law: CAPPED -> RAISE_BUDGET, depth-first)'
+  result.suite_runs=804 acts_tried=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1] greens=['    if v >= limit:'] ambiguous=False
+  new_line='if v >= limit:' lineno=403
+  hint=''
+  summary='mod.py: repaired line 403 in 804 suite runs (160.7s):\n  - if v > limit:\n  + if v >= limit:'
+  attempts logged=0

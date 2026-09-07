@@ -1,0 +1,3 @@
+[14:37:39] REFUSED: fault is outside the taught vocabulary (candidate files tried: mod.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 1 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: AMBIGUOUS: 2 candidates at 1 different lines (6) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/09-spelling-vs-program/work/guard-B1/.fluidfix/last_refusal.json

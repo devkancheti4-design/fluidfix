@@ -1,0 +1,3 @@
+[14:36:08] pkg/mod.py: repaired line 2 in 75 suite runs (41.5s):
+  - r = a - b
+  + r = b - a

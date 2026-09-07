@@ -1,0 +1,11 @@
+fixture                                          spec       body AMB  disagree/N   witness
+F1-spelled-twice-one-site                        SHIP       False         0/2000   None
+F2-two-programs-one-set                          ADD_STATE  True       1955/2000   net(-4, -19, 10): ('ok', -33) vs ('ok', 25)
+F3-two-programs-two-sites                        ADD_STATE  True        993/2000   g(1,): ('ok', 2) vs ('ok', 3)
+F4-two-programs-one-site-two-acts                ADD_STATE  False       974/2000   apply_delta(-10, -5): ('ok', 5) vs ('ok', -15)
+F4b-two-programs-one-site-two-acts-swapped-roles ADD_STATE  False       956/2000   apply_delta(-13, 3): ('ok', 16) vs ('ok', -10)
+F5-one-program-twice-in-one-set                  SHIP       True          0/2000   None
+F6-one-program-two-sites                         ADD_STATE  True          0/2000   None
+
+fixtures where the observation matches the spec's 'different program' reading: probe 6/7, body today 4/7
+(F6 is the exception by design: CHANGELOG defines two SITES as AMB regardless of program identity — the probe says 'one program', the sites rule says 'two claims about where'.)

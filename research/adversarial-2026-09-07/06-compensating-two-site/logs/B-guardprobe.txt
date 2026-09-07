@@ -1,0 +1,12 @@
+candidate files: ['src/rate.c', 'include/rate.h']
+
+=== src/rate.c (mode=affinity) obs=[(10, [1, 2]), (18, [1, 2, 3])]
+  repaired=False ambiguous=True runs=4 acts=[6, 7, 6]
+  greens=['    return units * 7;', '    return fee_for(units) + 24;']
+  reason=AMBIGUOUS: 2 candidates at 2 different lines (10, 18) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+   rejected: src/rate.c:10     return 8; * units | /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/
+
+=== include/rate.h (mode=affinity) obs=[]
+  repaired=False ambiguous=False runs=1 acts=[]
+  greens=[]
+  reason=no observation named a kind this vocabulary can repair

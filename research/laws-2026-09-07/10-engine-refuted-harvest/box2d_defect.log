@@ -1,0 +1,52 @@
+Starting Box2D unit tests
+======================================
+  subtest passed: BasicHashSetTest
+  subtest passed: HashSetCapacityTest
+  subtest passed: HashSetAddRemoveTest
+  subtest passed: HashSetClearTest
+  subtest passed: HashSetGrowthTest
+  subtest passed: HashSetEdgeCasesTest
+  subtest passed: HashSetRemovalReorganizationTest
+  subtest passed: HashSetStressTest
+  subtest passed: HashSetShapePairKeyTest
+  subtest passed: HashSetBytesTest
+set: count = 50086, b2ContainsKey = 0.43017 ms, ave = 0.00859 us
+  subtest passed: HashSetTest
+test passed: TableTest after 0.00 s
+test passed: MathTest after 0.00 s
+test passed: BitSetTest after 0.00 s
+  subtest passed: AABBTest
+  subtest passed: AABBRayCastTest
+  subtest passed: LargeWorldManifoldTest
+  subtest passed: LargeWorldAABBTest
+test passed: CollisionTest after 0.00 s
+  subtest passed: TestCreateDestroy
+  subtest passed: TestAccess
+  subtest passed: TestIteration
+  subtest passed: TestArrayOfStruct
+  subtest passed: TestStructWithArray
+  subtest passed: TestArrayEmplace
+  subtest passed: TestArrayRemove
+  subtest passed: TestArrayPop
+  subtest passed: TestEmptyArrayProperties
+  subtest passed: TestArrayReserveNoop
+  subtest passed: TestArrayResizeDown
+  subtest passed: TestArrayResizeUp
+  subtest passed: TestArrayPopOrder
+  subtest passed: TestArrayRemoveSwapContents
+  subtest passed: TestArrayRemoveSwapAllFromEnd
+  subtest passed: TestArrayGrowthIntegrity
+  subtest passed: TestArrayInterleavedPushPop
+  subtest passed: TestArrayEmplaceStruct
+  subtest passed: TestArrayPushAfterReserve
+  subtest passed: TestArraySingleElement
+  subtest passed: TestArrayCreateN
+test passed: ContainerTest after 0.00 s
+  workers=1 sleepStep=303 hash=0x39DAAB2B
+condition false: data.sleepStep == EXPECTED_SLEEP_STEP
+condition false: result == 0
+  subtest failed: MultithreadingTest
+test failed: DeterminismTest
+real 0.72
+user 0.05
+sys 0.01

@@ -1,0 +1,3 @@
+[14:29:46] ledger/testing.py: repaired line 8 in 8 suite runs (2.3s):
+  - def _compare(actual, expected, what, exact=True):
+  + def _compare(actual, expected, what, exact=False):

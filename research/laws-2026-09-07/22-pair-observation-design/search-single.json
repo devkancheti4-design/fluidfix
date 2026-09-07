@@ -1,0 +1,55 @@
+{
+ "baseline_n": 1,
+ "baseline_nodes": [
+  "test_mod.py::test_count_above"
+ ],
+ "tried": [
+  {
+   "site": 2,
+   "text": "    n = -1",
+   "green": false,
+   "n": 1,
+   "nodes": [
+    "test_mod.py::test_count_above"
+   ]
+  },
+  {
+   "site": 4,
+   "text": "        if x > t:",
+   "green": true,
+   "n": 0,
+   "nodes": []
+  },
+  {
+   "site": 4,
+   "text": "        if x <= t:",
+   "green": false,
+   "n": 1,
+   "nodes": [
+    "test_mod.py::test_count_above"
+   ]
+  },
+  {
+   "site": 5,
+   "text": "            n += 0",
+   "green": false,
+   "n": 1,
+   "nodes": [
+    "test_mod.py::test_count_above"
+   ]
+  },
+  {
+   "site": 5,
+   "text": "            n -= 1",
+   "green": false,
+   "n": 1,
+   "nodes": [
+    "test_mod.py::test_count_above"
+   ]
+  }
+ ],
+ "enumerated": 5,
+ "byte": 56,
+ "ruling": "SINGLE",
+ "cap": 32
+}

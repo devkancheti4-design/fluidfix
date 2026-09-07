@@ -1,0 +1,53 @@
+==========================================================================
+THE CONSTRUCTIBLE SET — every engine byte the body can build
+==========================================================================
+
+guard.py:491   situation(UNREAD=True)
+     0x04  UNREAD                   -> ADD_MATERIAL
+
+guard.py:539   situation(CAPPED=capped0, REFUTED=acts0)
+     0x00  (none)                   -> SHIP
+     0x20  CAPPED                   -> RAISE_BUDGET
+     0x40  REFUTED                  -> HARVEST_COUNTEREXAMPLE
+     0x60  CAPPED|REFUTED           -> RAISE_BUDGET
+
+guard.py:612   situation(REFUTED=True)
+     0x40  REFUTED                  -> HARVEST_COUNTEREXAMPLE
+
+guard.py:618   situation(REFUTED=True)
+     0x40  REFUTED                  -> HARVEST_COUNTEREXAMPLE
+
+loop.py:217    situation(BUILT=True, AMB=set_amb or sites>1, CAPPED=capped)
+     0x01  BUILT                    -> SHIP
+     0x03  BUILT|AMB                -> ADD_STATE
+     0x21  BUILT|CAPPED             -> RAISE_BUDGET
+     0x23  BUILT|AMB|CAPPED         -> ADD_STATE
+
+loop.py:391    situation(HIDDEN=True)
+     0x10  HIDDEN                   -> CHANGE_GRANULARITY
+
+==========================================================================
+SUMMARY
+==========================================================================
+distinct bytes constructible : 10 of 256 (3.9%)
+bytes                        : ['0x00', '0x01', '0x03', '0x04', '0x10', '0x20', '0x21', '0x23', '0x40', '0x60']
+distinct rulings reachable   : 6 of 8 -> ['ADD_MATERIAL', 'ADD_STATE', 'CHANGE_GRANULARITY', 'HARVEST_COUNTEREXAMPLE', 'RAISE_BUDGET', 'SHIP']
+acts NEVER reachable         : ['RESHAPE', 'AUTHOR_SUCCESSOR']
+
+==========================================================================
+TAUTOLOGY / DECORATION CHECK (what the comparison at each site can do)
+==========================================================================
+guard.py:491   TAUTOLOGY: single literal byte, ruling is always ADD_MATERIAL, the == test can never be False
+guard.py:539   LIVE: 3 distinct rulings possible -> ['HARVEST_COUNTEREXAMPLE', 'RAISE_BUDGET', 'SHIP']
+guard.py:612   TAUTOLOGY: single literal byte, ruling is always HARVEST_COUNTEREXAMPLE, the == test can never be False
+guard.py:618   TAUTOLOGY: single literal byte, ruling is always HARVEST_COUNTEREXAMPLE, the == test can never be False
+loop.py:217    LIVE: 3 distinct rulings possible -> ['ADD_STATE', 'RAISE_BUDGET', 'SHIP']
+loop.py:391    DECORATIVE: ruling is interpolated into a message, nothing branches
+
+==========================================================================
+BYTES THE BODY NEEDS BUT NEVER BUILDS (precedence handled in code)
+==========================================================================
+0x44  UNREAD|REFUTED         -> law rules ADD_MATERIAL              (guard.py: UNREAD hint set at :491, REFUTED hint at :618 is gated by `if not hint` — code precedence, law never asked)
+0x41  BUILT|REFUTED          -> law rules HARVEST_COUNTEREXAMPLE    (a green plus other rejected candidates: loop never sets REFUTED alongside BUILT)
+0x24  UNREAD|CAPPED          -> law rules ADD_MATERIAL              (blind localisation AND a truncated search)
+0x11  BUILT|HIDDEN           -> law rules CHANGE_GRANULARITY        (a flaky green: loop.py:391 asks with HIDDEN alone)

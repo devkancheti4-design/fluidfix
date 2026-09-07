@@ -1,0 +1,40 @@
+== failing output lines the ranker's regexes read ==
+    E       assert 31 == 40
+    tests/test_util_core.py:4: AssertionError
+    FAILED tests/test_util_core.py::test_compute - assert 31 == 40
+
+== sight() calls: 7  (0 means the law was never consulted) ==
+file                         byte  prio   spec n_fail  bits
+pkg/consts.py                  12     0   1.00    120  LITERAL|FAILONLY
+pkg/core.py                    90     0   1.00      3  SCARCE|FAILONLY|NAMED|SMALL
+pkg/mid.py                      6     0   0.50    101  SCARCE|LITERAL
+pkg/util.py                    82     0   0.25      1  SCARCE|NAMED|SMALL
+pkg/__init__.py                72     2   1.00      6  FAILONLY|SMALL
+pkg/fmt.py                     96     4   0.33      1  TOUCHED|SMALL
+pkg/big.py                    192     6   0.04      1  SMALL|UBIQUITOUS
+
+== order returned by find_candidate_files ==
+   1. pkg/core.py
+   2. pkg/util.py
+   3. pkg/consts.py
+   4. pkg/mid.py
+   5. pkg/__init__.py
+   6. pkg/fmt.py
+   7. pkg/big.py
+
+== evidence dict ==
+   pointed: ['pkg/consts.py', 'pkg/core.py', 'pkg/mid.py', 'pkg/util.py']
+   lanes[FRAMED]: []
+   lanes[SCARCE]: ['pkg/core.py', 'pkg/mid.py', 'pkg/util.py']
+   lanes[LITERAL]: ['pkg/consts.py', 'pkg/mid.py']
+
+== per-signal hits over candidate bodies (SCARCE fires on 1..2) ==
+   kind  0 strictness                   '[<>]=?'                                      0 []
+   kind  1 literal-off-by-one           '\\d'                                         6 ['pkg/__init__.py', 'pkg/big.py', 'pkg/consts.py', 'pkg/core.py', 'pkg/fmt.py', 'pkg/mid.py']
+   kind  2 swapped-return-operands      '^\\s*return\\s+.*\\s(?://|[-+*])\\s'         0 []
+   kind  3 flipped-additive             '\\s[-+]\\s'                                  2 ['pkg/core.py', 'pkg/mid.py']  <- SCARCE
+   kind  8 minmax-swap                  '\\b(?:min|max)\\('                           2 ['pkg/core.py', 'pkg/util.py']  <- SCARCE
+   kind  9 flipped-augmented-assign     '[-+]=(?!=)'                                  0 []
+   kind 10 flipped-comparison-direction '(?<![-<>])[<>](?![<>])'                      0 []
+   kind 11 reversed-minus-operands      '^\\s*(?:return\\s|[A-Za-z_][\\w.\\[\\]\'\\"]*\\s*=\\s*(?![=<>])).*\\s-\\s' 0 []
+   kind 12 flipped-boolean              '\\b(?:True|False)\\b'                        0 []

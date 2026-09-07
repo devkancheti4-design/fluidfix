@@ -1,0 +1,29 @@
+tests found in tests/test_rank_law.py:
+    test_all_256_situations_match_the_specification
+    test_guard_orders_a_framed_line_first
+    test_monotone_in_evidence
+    test_the_orderings_fluidfix_depends_on
+    test_veto_dominates_every_other_bit
+
+baseline (no mutation): all tests green
+
+PINNED   : 256/256 inputs
+UNPINNED : 0/256 inputs -> []
+
+inputs caught by each test:
+   test_all_256_situations_match_the_specification    catches 256   sole pin for   0
+   test_guard_orders_a_framed_line_first              catches   2   sole pin for   0
+   test_monotone_in_evidence                          catches 127   sole pin for   0
+   test_the_orderings_fluidfix_depends_on             catches   4   sole pin for   0
+   test_veto_dominates_every_other_bit                catches 128   sole pin for   0
+
+if test_all_256_situations_match_the_specification() were deleted, 256/256 inputs would still be pinned by another test
+   rank 0: 64 inputs still pinned
+   rank 1: 32 inputs still pinned
+   rank 2: 16 inputs still pinned
+   rank 3: 8 inputs still pinned
+   rank 4: 4 inputs still pinned
+   rank 5: 2 inputs still pinned
+   rank 6: 1 inputs still pinned
+   rank 7: 129 inputs still pinned
+   rulings that would lose EVERY pin: []

@@ -1,0 +1,15 @@
+applier contradicts description              ACCEPTED -> 9  warnings=[]
+signal = re.compile('') matches everything   ACCEPTED -> 10  warnings=[]
+description is an instruction, not an obs    ACCEPTED -> 11  warnings=[]
+applier returns None                         ACCEPTED -> 12  warnings=[]
+applier raises                               ACCEPTED -> 12  warnings=[]
+signal is a plain string, not a compiled regex ACCEPTED -> 12  warnings=[]
+applier is not callable                      ACCEPTED -> 12  warnings=[]
+kind=3 clobbers shipped flipped-additive     ACCEPTED -> 8  warnings=["register(kind=3) CLOBBERS the shipped fault class 'flipped-a"]
+kind=16 out of range                         REFUSED  -> ValueError: kind must be 0..15 — the kernel routes mod 16
+second register on the same kind (silent replace) ACCEPTED -> 9  warnings=[]
+
+kind 3 is now: poison | act_for(3) = 8
+kind 4 is now: second-owner
+act 8 (was _flip_additive) is now: <lambda>
+shipped kind-3 repair on 'return a + b': ['    return a + b']

@@ -1,0 +1,5 @@
+[vec3_add] include/cglm/vec3.h n=76 rank body=1 sight=8 sight_FIX=6 | lits_path=19 lits_expr=2 | lit_hits_fix={} | prio sight={0: 2, 2: 74} fix={2: 76} named=8
+[vec4_sub_neon] include/cglm/vec4.h n=76 rank body=1 sight=9 sight_FIX=8 | lits_path=23 lits_expr=2 | lit_hits_fix={} | prio sight={0: 2, 2: 74} fix={2: 76} named=10
+[util_lerp] include/cglm/util.h n=76 rank body=42 sight=40 sight_FIX=40 | lits_path=7 lits_expr=0 | lit_hits_fix={} | prio sight={0: 2, 2: 74} fix={2: 76} named=6
+[mat4_scale_p] include/cglm/mat4.h n=76 rank body=1 sight=4 sight_FIX=2 | lits_path=5 lits_expr=0 | lit_hits_fix={} | prio sight={0: 2, 2: 74} fix={2: 76} named=2
+restored: build rc 0 tests rc 0

@@ -1,0 +1,12 @@
+{
+ "id": 19,
+ "lineno": 57,
+ "kind": 0,
+ "kind_name": "strictness",
+ "act": 5,
+ "orig": "    return age_days >= ttl",
+ "mutant": "    return age_days > ttl",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

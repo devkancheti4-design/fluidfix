@@ -1,0 +1,39 @@
+scanned 1377 commits · 576 look like bug fixes · touching 322 source files
+
+WHAT TO TEST FIRST — ranked by defect density x coverage gap
+  #  defects  covered  file
+  1        9        ?  include/box2d/types.h
+  2        9        ?  src/body.c
+  3        6        ?  src/distance.c
+  4        6        ?  src/joint.c
+  5        6        ?  src/solver.c
+  6        5        ?  src/shape.c
+  7        4        ?  src/broad_phase.c
+  8        4        ?  src/constraint_graph.c
+  9        4        ?  src/contact.c
+ 10        4        ?  src/dynamic_tree.c
+ 11        4        ?  src/table.c
+ 12        4        ?  src/types.c
+ 13        3        ?  include/box2d/math_functions.h
+ 14        3        ?  src/core.c
+ 15        3        ?  src/geometry.c
+ 16        3        ?  src/physics_world.c
+ 17        3        ?  src/prismatic_joint.c
+ 18        3        ?  src/timer.c
+ 19       10        ?  include/box2d/box2d.h
+ 20        2        ?  src/bitset.h
+ 21        2        ?  src/body.h
+ 22        2        ?  src/contact_solver.c
+ 23        2        ?  src/distance_joint.c
+ 24        2        ?  src/island.c
+ 25        2        ?  src/math_functions.c
+
+WHAT IT BUYS — share of this repo's OWN historical defects
+  guard  30% of past defects  ->  test   17 files  (5% of the files that have ever broken)
+  guard  50% of past defects  ->  test   40 files  (12% of the files that have ever broken)
+  guard  60% of past defects  ->  test   57 files  (18% of the files that have ever broken)
+  guard  80% of past defects  ->  test  136 files  (42% of the files that have ever broken)
+
+  Defects cluster, so coverage aimed at the cluster is worth roughly twice
+  coverage spread evenly. fluidfix maintains exactly what your tests cover —
+  this is the cheapest order to widen that.

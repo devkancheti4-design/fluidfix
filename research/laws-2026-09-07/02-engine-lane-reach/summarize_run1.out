@@ -1,0 +1,34 @@
+records: 37  from the body: 24  direct from tests: 13
+
+tests during which the BODY consulted the law: 20
+   tests/test_engine_fusion.py::test_ambiguous_greens_refuse_with_add_state
+   tests/test_engine_fusion.py::test_unambiguous_single_green_still_ships
+   tests/test_engine_fusion.py::test_capped_escalation_raises_budget_and_repairs
+   tests/test_engine_fusion.py::test_deadline_never_ships_unproven_ambiguity
+   tests/test_engine_fusion.py::test_refuted_refusal_does_not_escalate
+   tests/test_guard.py::test_guard_finds_file_and_repairs_without_being_told
+   tests/test_guard.py::test_guard_follows_traceback_frames
+   tests/test_guard.py::test_guard_refuses_novel_class_loudly_and_untouched
+   tests/test_guard.py::test_guard_commit_records_the_restoration
+   tests/test_guard.py::test_repair_reports_restored_original_provenance
+   tests/test_guard.py::test_stale_refusal_cleared_on_green_or_repaired_pass
+   tests/test_e2e.py::test_repairs_strictness_bug_byte_exact
+   tests/test_span_edits.py::test_span_fixes_two_coordinated_wrong_lines
+   tests/test_span_edits.py::test_span_leaves_no_dead_code
+   tests/test_span_edits.py::test_span_rejection_rolls_back_byte_exact_crlf
+   tests/test_span_edits.py::test_span_bounds_and_anchor_safety
+   tests/test_span_edits.py::test_two_green_spans_refuse_ambiguous
+   tests/test_span_edits.py::test_refusal_logs_why_each_candidate_failed
+   tests/test_span_edits.py::test_global_budget_is_an_honest_stop
+   tests/test_span_edits.py::test_budget_hands_first_pass_over_to_escalation
+
+body consultations: site, x, bits -> act (count)
+  guard.py:539   x=  0 <empty>              -> SHIP                   x2
+  guard.py:539   x= 64 REFUTED              -> HARVEST_COUNTEREXAMPLE x3
+  guard.py:539   x= 96 CAPPED+REFUTED       -> RAISE_BUDGET           x2
+  guard.py:618   x= 64 REFUTED              -> HARVEST_COUNTEREXAMPLE x3
+  loop.py:217    x=  1 BUILT                -> SHIP                   x11
+  loop.py:217    x=  3 BUILT+AMB            -> ADD_STATE              x3
+
+distinct situations the body constructed: [0, 1, 3, 64, 96]
+distinct sites: ['guard.py:539', 'guard.py:618', 'loop.py:217']

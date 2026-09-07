@@ -1,0 +1,12 @@
+#!/Users/kanchetidevieswar/neo/fluidfix/.venv/bin/python
+"""tmo SECONDS CMD... - this host has no coreutils `timeout`; kills the whole
+process group on expiry (exit 124), so a hung C test binary cannot outlive it."""
+import os, signal, subprocess, sys
+secs = float(sys.argv[1]); cmd = sys.argv[2:]
+p = subprocess.Popen(cmd, start_new_session=True)
+try:
+    sys.exit(p.wait(timeout=secs))
+except subprocess.TimeoutExpired:
+    try: os.killpg(os.getpgid(p.pid), signal.SIGKILL)
+    except OSError: p.kill()
+    p.wait(); sys.exit(124)

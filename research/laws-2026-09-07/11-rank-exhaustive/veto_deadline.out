@@ -1,0 +1,24 @@
+
+=== A  baseline  (RETRIED never supplied) (escalate_budget=8s) ===
+  guard status = refused   file=None   wall=13.1s   defect line=119
+  repair call 0 (pass 0): runs=20 repaired=False at=None
+    defect line position in order: None of 10
+    reason: every candidate left the suite red — fault is outside this vocabulary or the observations 
+  repair call 1 (escalation): runs=15 repaired=False at=None
+    defect line position in order: 10 of 11
+    reason: wall-clock deadline reached mid-search — remaining kinds untried
+
+=== B  veto supplied at the escalation call (escalate_budget=8s) ===
+  guard status = refused   file=None   wall=12.7s   defect line=119
+  repair call 0 (pass 0): runs=20 repaired=False at=None
+    defect line position in order: None of 10
+    reason: every candidate left the suite red — fault is outside this vocabulary or the observations 
+  repair call 1 (escalation): runs=13 repaired=False at=None
+    defect line position in order: 0 of 11
+    reason: a candidate passes, but the search was cut short before it could be shown unique — shippin
+
+================ RESULT (deadline-limited escalation) ================
+  A baseline      status=refused    wall=13.1s
+  B with veto     status=refused    wall=12.7s
+  defect repaired A=False   B=False
+  => same outcome in both arms at this budget; see positions above for the ordering difference

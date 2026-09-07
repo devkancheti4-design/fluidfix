@@ -1,0 +1,8 @@
+fixture A  expected false-accept rate  = q^(1+2N), q=0.5
+  CONFIRM=0: 0.5000  (50.00%)  -> expected in 50 runs: 25.0
+  CONFIRM=1: 0.1250  (12.50%)  -> expected in 50 runs: 6.2
+  CONFIRM=2: 0.0312  (3.12%)  -> expected in 50 runs: 1.6
+fixture B  expected correct-repair rate = (1-r)^(1+2N), r=0.5
+  CONFIRM=0: 0.5000  (50.00%)  -> expected in 40 runs: 20.0
+  CONFIRM=1: 0.1250  (12.50%)  -> expected in 40 runs: 5.0
+  CONFIRM=2: 0.0312  (3.12%)  -> expected in 40 runs: 1.2

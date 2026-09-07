@@ -1,0 +1,64 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/19-class-collision/runs/D_merged_one_class/rules_merged.py: 1 fault class(es) registered
+{
+ "repaired": false,
+ "refused": true,
+ "lineno": null,
+ "old_line": null,
+ "new_line": null,
+ "acts_tried": [
+  6,
+  6,
+  6,
+  9
+ ],
+ "suite_runs": 9,
+ "seconds": 3.509647846221924,
+ "reason": "AMBIGUOUS: 2 candidates at 1 different lines (15) all pass the suite \u2014 the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)",
+ "ambiguous": true,
+ "greens": [
+  "    price = gross_rate_for(region) * units / VAT",
+  "    price = net_rate_for(region) * units"
+ ],
+ "tried_log": [
+  {
+   "at": "pricing.py:1",
+   "tried": "GROSS = {\"EU\": 4.0}",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 16.0 == 8.0"
+  },
+  {
+   "at": "pricing.py:1",
+   "tried": "GROSS = {\"EU\": 5.-1}",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 16.0 == 8.0"
+  },
+  {
+   "at": "pricing.py:2",
+   "tried": "NET = {\"EU\": 1.0}",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 20.0 == 8.0"
+  },
+  {
+   "at": "pricing.py:2",
+   "tried": "NET = {\"EU\": 2.-1}",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 20.0 == 8.0"
+  },
+  {
+   "at": "pricing.py:3",
+   "tried": "VAT = 1.5",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 20.0 == 8.0"
+  },
+  {
+   "at": "pricing.py:3",
+   "tried": "VAT = 2.4",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 20.0 == 8.0"
+  }
+ ],
+ "tried_more": 0,
+ "restored_original": null
+}
+---- exit 2
+---- pricing.py:15 after the run
+    price = gross_rate_for(region) * units
+---- diff vs INTENDED program (pricing.correct.py)
+15c15
+<     price = net_rate_for(region) * units
+---
+>     price = gross_rate_for(region) * units

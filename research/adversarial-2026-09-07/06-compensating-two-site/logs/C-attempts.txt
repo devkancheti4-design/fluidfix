@@ -1,0 +1,12 @@
+src/rate.c:9 |     return fee_for(units) + 24; | 1 test(s) failed, first: RateZeroTest
+src/rate.c:9 |     return 25; + fee_for(units) | /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/06-compensating-two-site/run/C
+src/rate.c:9 |     return fee_for(units) - 25; | 2 test(s) failed, first: RateTest
+src/fee.c:9 |     return units * 7; | 2 test(s) failed, first: RateTest
+src/fee.c:9 |     return 8; * units | /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/06-compensating-two-site/run/C
+src/tier.c:6 |     if (units <= 100) | 2 test(s) failed, first: RateTest
+src/tier.c:6 |     if (units < 99) | 2 test(s) failed, first: RateTest
+src/tier.c:6 |     if (units > 100) | 2 test(s) failed, first: RateTest
+src/tier.c:8 |     if (units <= 500) | 2 test(s) failed, first: RateTest
+src/tier.c:8 |     if (units < 499) | 2 test(s) failed, first: RateTest
+src/tier.c:8 |     if (units > 500) | 3 test(s) failed, first: TierTest
+src/tier.c:9 |         return 1; | 3 test(s) failed, first: TierTest

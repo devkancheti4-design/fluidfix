@@ -1,0 +1,5 @@
+  build: cmake --build build -j8
+  test:  ./build/tests
+[14:38:01] src/clamp.c: repaired line 10 in 7 suite runs (8.3s):
+  - return amount >= limit;
+  + return amount > limit;

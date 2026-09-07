@@ -1,0 +1,29 @@
+{
+ "repaired": true,
+ "refused": false,
+ "lineno": 6,
+ "old_line": "    return units > 10",
+ "new_line": "    return units >= 10",
+ "acts_tried": [
+  5,
+  6,
+  15
+ ],
+ "suite_runs": 4,
+ "seconds": 4.203915119171143,
+ "reason": "engine law: BUILT -> SHIP",
+ "ambiguous": false,
+ "greens": [
+  "    return units >= 10",
+  "    return units > 9"
+ ],
+ "tried_log": [
+  {
+   "at": "mod.py:6",
+   "tried": "    return units < 10",
+   "why": "FAILED test_mod.py::test_ships_at_the_minimum - assert False is True"
+  }
+ ],
+ "tried_more": 0,
+ "restored_original": null
+}

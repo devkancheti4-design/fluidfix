@@ -1,0 +1,19 @@
+....................................................................     [100%]
+=== engine-law consultations observed (x, act, site) -> count ===
+  x=  1 BUILT                        -> SHIP                   @ <test-direct>  x4
+  x=  1 BUILT                        -> SHIP                   @ cli.py:474     x1
+  x=  1 BUILT                        -> SHIP                   @ loop.py:217    x12
+  x=  2 AMB                          -> ADD_STATE              @ cli.py:474     x1
+  x=  3 BUILT+AMB                    -> ADD_STATE              @ <test-direct>  x2
+  x=  4 UNREAD                       -> ADD_MATERIAL           @ <test-direct>  x1
+  x=  4 UNREAD                       -> ADD_MATERIAL           @ cli.py:474     x1
+  x= 16 HIDDEN                       -> CHANGE_GRANULARITY     @ <test-direct>  x2
+  x= 32 CAPPED                       -> RAISE_BUDGET           @ <test-direct>  x1
+  x= 32 CAPPED                       -> RAISE_BUDGET           @ cli.py:474     x1
+  x= 64 REFUTED                      -> HARVEST_COUNTEREXAMPLE @ <test-direct>  x2
+  x= 64 REFUTED                      -> HARVEST_COUNTEREXAMPLE @ cli.py:474     x1
+  x= 64 REFUTED                      -> HARVEST_COUNTEREXAMPLE @ guard.py:539   x1
+  x= 64 REFUTED                      -> HARVEST_COUNTEREXAMPLE @ guard.py:618   x1
+distinct situations observed: [1, 2, 3, 4, 16, 32, 64]
+
+68 passed in 79.80s (0:01:19)

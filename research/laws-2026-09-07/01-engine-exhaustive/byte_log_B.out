@@ -1,0 +1,7 @@
+status='refused' file=None seconds=14.8
+guard hint = 'every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it'
+tree untouched: True
+bytes handed to decide(), in order (t seconds since start):
+    t= 13.8  x= 33 BUILT+CAPPED           -> RAISE_BUDGET
+    t= 14.8  x= 64 REFUTED                -> HARVEST_COUNTEREXAMPLE
+    t= 14.8  x= 64 REFUTED                -> HARVEST_COUNTEREXAMPLE

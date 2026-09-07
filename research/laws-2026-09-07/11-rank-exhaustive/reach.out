@@ -1,0 +1,17 @@
+1. kwargs passed to observe_bits() inside guard.rank_observations:
+    ['cheap', 'dense', 'frame', 'named', 'recent', 'retried', 'signaled']
+   bits never passed (law reads 0): ['failonly']
+2. call sites of rank_observations(...) and whether they pass retried=:
+   guard.py:511  retried= passed: False
+   guard.py:585  retried= passed: False
+3. does the C path (coracle.py) consult the ranking law?
+   'rank_observations' in coracle.py: False
+   'observe_bits' in coracle.py    : False
+   'from .rank' in coracle.py      : False
+   'from .rank' in loop.py         : False
+4. constructible inputs given the bits the body can set
+   forced-zero bits: ['FAILONLY', 'RETRIED']
+   constructible inputs: 64/256
+   reachable rulings: [0, 2, 3, 4, 5, 6, 7]
+   unreachable rulings: [1]  (rank 1 needs FAILONLY; rank 7 reachable only as no-evidence, never as the veto)
+   inputs where the veto WOULD change the ruling if RETRIED were measured: 63/64

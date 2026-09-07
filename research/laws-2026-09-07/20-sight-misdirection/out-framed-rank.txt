@@ -1,0 +1,32 @@
+# fixture framed -> /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/20-sight-misdirection/work/framed-rank
+# failing: True
+# failing output (tail, ANSI stripped by the body; shown raw here):
+   | F
+   | =================================== FAILURES ===================================
+   | __________________________________ test_total __________________________________
+   | 
+   |     def test_total():
+   | >       assert api.total(2, 5) == 7
+   |                ^^^^^^^^^^^^^^^
+   | 
+   | tests/test_api.py:5: 
+   | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+   | 
+   | a = 2, b = 5
+   | 
+   |     def total(a, b):
+   |         value = core.combine(a, b)
+   |         if value < 0:
+   | >           raise ValueError("total went negative: " + str(value))
+   | E           ValueError: total went negative: -3
+   | 
+   | pkg/api.py:35: ValueError
+   | =========================== short test summary info ============================
+   | FAILED tests/test_api.py::test_total - ValueError: total went negative: -3
+   | !!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+   | 1 failed in 0.02s
+
+# find_candidate_files order (what guard_once's first pass walks):
+   1. pkg/api.py         SIGHT NOT CONSULTED (traceback-frame branch)
+# evidence: {"pointed": ["pkg/api.py"], "lanes": {"FRAMED": ["pkg/api.py"]}}
+# SIGHT consulted for 0 file(s)

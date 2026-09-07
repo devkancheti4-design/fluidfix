@@ -1,0 +1,44 @@
+=== 1. is either unreached act obtainable WITHOUT the unset bit? ===
+  RESHAPE            rules  17/256; of those, 0 have NOTWIN CLEAR -> REQUIRES NOTWIN
+  AUTHOR_SUCCESSOR   rules  15/256; of those, 7 have SELF CLEAR -> obtainable without it
+      e.g. [(24, 'NOTWIN+HIDDEN'), (40, 'NOTWIN+CAPPED'), (56, 'NOTWIN+HIDDEN+CAPPED'), (72, 'NOTWIN+REFUTED'), (88, 'NOTWIN+HIDDEN+REFUTED'), (104, 'NOTWIN+CAPPED+REFUTED')]
+
+=== 2. ruling surface each never-set bit gates ===
+  NOTWIN  flips the ruling on  47 of 128 base situations; acts reachable ONLY once NOTWIN can be set: ['AUTHOR_SUCCESSOR', 'RESHAPE']
+  SELF    flips the ruling on   2 of 128 base situations; acts reachable ONLY once SELF can be set: none
+      x=  7 BUILT+AMB+UNREAD         ADD_STATE              -> with SELF: RAISE_BUDGET
+      x=  8 NOTWIN                   RESHAPE                -> with SELF: AUTHOR_SUCCESSOR
+
+=== 3. marginal value of making one bit measurable, from today's 9 ===
+  (new situations = today's 9 with the bit added, minus the 9)
+  today: 9 situations -> acts ['ADD_MATERIAL', 'ADD_STATE', 'CHANGE_GRANULARITY', 'HARVEST_COUNTEREXAMPLE', 'RAISE_BUDGET', 'SHIP']
+  +BUILT    -> + 4 situations, new acts: none
+  +AMB      -> + 7 situations, new acts: none
+  +UNREAD   -> + 7 situations, new acts: none
+  +NOTWIN   -> + 9 situations, new acts: ['AUTHOR_SUCCESSOR', 'RESHAPE']
+  +HIDDEN   -> + 7 situations, new acts: none
+  +CAPPED   -> + 3 situations, new acts: none
+  +REFUTED  -> + 5 situations, new acts: none
+  +SELF     -> + 9 situations, new acts: none
+
+=== 4. the 9 reachable situations, ruled ===
+  x=  0 <empty>                  -> SHIP
+  x=  1 BUILT                    -> SHIP
+  x=  3 BUILT+AMB                -> ADD_STATE
+  x=  4 UNREAD                   -> ADD_MATERIAL
+  x= 16 HIDDEN                   -> CHANGE_GRANULARITY
+  x= 32 CAPPED                   -> RAISE_BUDGET
+  x= 33 BUILT+CAPPED             -> RAISE_BUDGET
+  x= 64 REFUTED                  -> HARVEST_COUNTEREXAMPLE
+  x= 96 CAPPED+REFUTED           -> RAISE_BUDGET
+
+=== 5. coverage of the law's ruling surface ===
+  SHIP                    2/  4 situations reachable
+  ADD_STATE               1/113 situations reachable
+  ADD_MATERIAL            1/ 64 situations reachable
+  RESHAPE                 0/ 17 situations reachable
+  CHANGE_GRANULARITY      1/ 16 situations reachable
+  RAISE_BUDGET            3/ 23 situations reachable
+  HARVEST_COUNTEREXAMPLE  1/  4 situations reachable
+  AUTHOR_SUCCESSOR        0/ 15 situations reachable
+  TOTAL                  9/256 situations reachable (3.5%); 6/8 acts obtainable

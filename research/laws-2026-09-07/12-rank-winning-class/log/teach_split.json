@@ -1,0 +1,105 @@
+{
+ "name": "teach_split",
+ "src": "tests/test_teaching.py test_walkthrough_dictionary_repairs_the_incident (docs/TEACHING.md dict)",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "split-lost-separator"
+ },
+ "status": "repaired",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 2.5,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 1,
+   "input_order": [
+    2
+   ],
+   "ranked_order": [
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      4
+     ],
+     "classes": [
+      "split-lost-separator"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "fields = row.split()"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    4
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "    fields = row.split(\",\")"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "fields = row.split(\",\")"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "fields = row.split(\",\")"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 2,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    fields = row.split(\",\")",
+  "old_line": "    fields = row.split()",
+  "kind": 4,
+  "class": "split-lost-separator",
+  "act": 9,
+  "first_green_check": 1,
+  "suite_runs": 2,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 3,
+  "bits": "SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 1,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 1,
+  "kinds_on_line": 1,
+  "class_slot_position": 1,
+  "class_slots_total": 1
+ }
+}

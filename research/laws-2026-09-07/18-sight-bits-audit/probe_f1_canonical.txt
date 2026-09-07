@@ -1,0 +1,28 @@
+== failing output lines the ranker's regexes read ==
+    E       assert 3 == 1
+    test_mod.py:4: AssertionError
+    FAILED test_mod.py::test_c - assert 3 == 1
+
+== sight() calls: 1  (0 means the law was never consulted) ==
+file                         byte  prio   spec n_fail  bits
+mod.py                         90     0   1.00      6  SCARCE|FAILONLY|NAMED|SMALL
+
+== order returned by find_candidate_files ==
+   1. mod.py
+
+== evidence dict ==
+   pointed: ['mod.py']
+   lanes[FRAMED]: []
+   lanes[SCARCE]: ['mod.py']
+   lanes[LITERAL]: []
+
+== per-signal hits over candidate bodies (SCARCE fires on 1..2) ==
+   kind  0 strictness                   '[<>]=?'                                      1 ['mod.py']  <- SCARCE
+   kind  1 literal-off-by-one           '\\d'                                         1 ['mod.py']  <- SCARCE
+   kind  2 swapped-return-operands      '^\\s*return\\s+.*\\s(?://|[-+*])\\s'         0 []
+   kind  3 flipped-additive             '\\s[-+]\\s'                                  0 []
+   kind  8 minmax-swap                  '\\b(?:min|max)\\('                           0 []
+   kind  9 flipped-augmented-assign     '[-+]=(?!=)'                                  1 ['mod.py']  <- SCARCE
+   kind 10 flipped-comparison-direction '(?<![-<>])[<>](?![<>])'                      1 ['mod.py']  <- SCARCE
+   kind 11 reversed-minus-operands      '^\\s*(?:return\\s|[A-Za-z_][\\w.\\[\\]\'\\"]*\\s*=\\s*(?![=<>])).*\\s-\\s' 0 []
+   kind 12 flipped-boolean              '\\b(?:True|False)\\b'                        0 []

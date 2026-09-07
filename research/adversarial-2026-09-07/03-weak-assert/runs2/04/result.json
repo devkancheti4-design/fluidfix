@@ -1,0 +1,44 @@
+{
+ "id": 4,
+ "lineno": 15,
+ "kind": 3,
+ "kind_name": "flipped-additive",
+ "act": 8,
+ "orig": "    return travel + buffer",
+ "mutant": "    return travel - buffer",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 15,\n \"old_line\": \"    return travel - buffer\",\n \"new_line\": \"    return buffer - travel\",\n \"acts_tried\": [\n  7,\n  8\n ],\n \"suite_runs\": 3,\n \"seconds\": 1.9332983493804932,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return buffer - travel\",\n  \"    return travel + buffer\"\n ],\n \"tried_log\": [],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 15,
+  "old_line": "    return travel - buffer",
+  "new_line": "    return buffer - travel",
+  "acts_tried": [
+   7,
+   8
+  ],
+  "suite_runs": 3,
+  "seconds": 1.9332983493804932,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return buffer - travel",
+   "    return travel + buffer"
+  ],
+  "tried_log": [],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": false,
+ "final_equals_mutant": false,
+ "final_line": "    return buffer - travel",
+ "outcome": "SHIPPED-WRONG",
+ "greens": [
+  "    return buffer - travel",
+  "    return travel + buffer"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

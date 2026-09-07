@@ -1,0 +1,27 @@
+== fixture /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/15-rank-bits-audit/retried_value_fixture  mod.py 88 lines
+== status=refused  seconds=5.7
+== ranking calls: 2
+  call 0: retried kwarg=None  distinct observed lines=[13, 28, 43]  suite_runs=7
+  call 1: retried kwarg=None  distinct observed lines=[13, 28, 43, 63, 73, 83]  suite_runs=10
+
+pass 0 actually TRIED lines : [13, 28, 43]
+escalation packet observes  : [13, 28, 43, 63, 73, 83]
+  of those, FRESH (never tried): [63, 73, 83]
+  of those, already rejected   : [13, 28, 43]
+
+TODAY the escalation order (first occurrence of each line) is:
+  [13, 28, 43, 63, 73, 83]
+  first FRESH line sits at position 3 of 6
+
+WITH retried=<pass 0's own tried_log lines> passed to the SAME function:
+  [63, 73, 83, 13, 28, 43]
+  first FRESH line sits at position 0 of 6
+
+MEASURED: the escalation pass paid 6 suite runs on already-rejected lines
+          before its first candidate on a FRESH line (total escalation suite_runs=10).
+          With the veto those 6 runs come LAST, not first.
+
+byte-level check on one fresh vs one stale line (both SIGNALED+CHEAP):
+  fresh 0x28 -> rank 3   stale 0xa8 -> rank 7
+
+report.hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists what was tried; teach the class or fix by hand

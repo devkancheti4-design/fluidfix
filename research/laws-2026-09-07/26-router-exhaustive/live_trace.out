@@ -1,0 +1,26 @@
+fixture            repaired suite runs  route calls (F1,A1,Fq)->act
+k0_strictness          True          6  ['(0,5,1)->6', '(0,5,0)->5', '(0,5,10)->15', '(0,5,3)->8']
+                   new line: 'if x > t:'
+k1_literal_off_by_one     True          3  ['(0,5,1)->6', '(0,5,2)->7']
+                   new line: 'return days * 3600'
+k2_swapped_return      True          2  ['(0,5,2)->7']
+                   new line: 'return b // a'
+k3_flipped_additive     True          3  ['(0,5,2)->7', '(0,5,3)->8']
+                   new line: 'return a - b'
+k8_minmax_swap         True          2  ['(0,5,8)->13']
+                   new line: 'return max(a, b)'
+k9_flipped_augmented     True          3  ['(0,5,1)->6', '(0,5,9)->14']
+                   new line: 'n -= 1'
+k10_flipped_comparison     True          3  ['(0,5,0)->5', '(0,5,10)->15']
+                   new line: 'if a > b:'
+k11_reversed_minus     True          3  ['(0,5,3)->8', '(0,5,11)->0']
+                   new line: 'd = b - a'
+k12_flipped_boolean     True          2  ['(0,5,12)->1']
+                   new line: 'DEBUG = False'
+out_of_vocab          False          1  []
+                   refusal: 'no observation named a kind this vocabulary can repair'
+
+-- every distinct (F1,A1) pair the body produced across all fixtures:
+   [(0, 5)]
+-- every distinct Fq (fault kind) the body produced: [0, 1, 2, 3, 8, 9, 10, 11, 12]
+-- every distinct act produced: [0, 1, 5, 6, 7, 8, 13, 14, 15]

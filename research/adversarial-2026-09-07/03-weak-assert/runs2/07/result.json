@@ -1,0 +1,44 @@
+{
+ "id": 7,
+ "lineno": 25,
+ "kind": 2,
+ "kind_name": "swapped-return-operands",
+ "act": 7,
+ "orig": "    return limit - used",
+ "mutant": "    return used - limit",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 25,\n \"old_line\": \"    return used - limit\",\n \"new_line\": \"    return limit - used\",\n \"acts_tried\": [\n  7,\n  8\n ],\n \"suite_runs\": 3,\n \"seconds\": 2.0788002014160156,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return limit - used\",\n  \"    return used + limit\"\n ],\n \"tried_log\": [],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 25,
+  "old_line": "    return used - limit",
+  "new_line": "    return limit - used",
+  "acts_tried": [
+   7,
+   8
+  ],
+  "suite_runs": 3,
+  "seconds": 2.0788002014160156,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return limit - used",
+   "    return used + limit"
+  ],
+  "tried_log": [],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "    return limit - used",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "    return limit - used",
+  "    return used + limit"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

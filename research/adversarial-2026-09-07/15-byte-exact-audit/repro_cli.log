@@ -1,0 +1,42 @@
+========================================================================
+### cli-03-trailing-ws
+[14:51:51] mod.py: repaired line 2 in 4 suite runs (1.7s):
+  - return b + a
+  + return a   + b
+
+  bytes on disk : b'def join2(a, b):\n    return a   + b\n'
+  pristine HEAD : b'def join2(a, b):\n    return a + b  \n'
+  BYTE-EXACT    : False
+  git diff      :
+ mod.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mod.py b/mod.py
+index 6115f10..8322145 100644
+--- a/mod.py
++++ b/mod.py
+@@ -2 +2 @@ def join2(a, b):
+-    return a + b  
++    return a   + b
+
+========================================================================
+### cli-19-comment
+[14:51:55] mod.py: repaired line 2 in 3 suite runs (2.0s):
+  - return b - a  # signed difference
+  + return a  # signed difference - b
+
+  bytes on disk : b'def delta(a, b):\n    return a  # signed difference - b\n'
+  pristine HEAD : b'def delta(a, b):\n    return a - b  # signed difference\n'
+  BYTE-EXACT    : False
+  git diff      :
+ mod.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mod.py b/mod.py
+index 2dddc02..8718fbc 100644
+--- a/mod.py
++++ b/mod.py
+@@ -2 +2 @@ def delta(a, b):
+-    return a - b  # signed difference
++    return a  # signed difference - b
+

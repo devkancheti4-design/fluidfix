@@ -1,0 +1,20 @@
+========================================================================
+FIXTURE D-control-direct-asserts  defect file: shop/discount.py
+  arm          baseline
+  searched     ['shop/discount.py']
+  defect_rank  1
+  status       refused
+  runs         18
+  secs         5.04
+  hint         AMBIGUOUS: 2 candidates at 2 different lines (3, 10) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+
+  ------------------------------------------------------------
+  arm          WIDENED
+  carriers     []
+  UNREAD       False
+  searched     ['shop/discount.py']
+  defect_rank  1
+  status       refused
+  runs         19
+  secs         5.14
+  hint         AMBIGUOUS: 2 candidates at 2 different lines (3, 10) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+
+  ------------------------------------------------------------

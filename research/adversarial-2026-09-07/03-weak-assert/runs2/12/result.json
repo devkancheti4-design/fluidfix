@@ -1,0 +1,54 @@
+{
+ "id": 12,
+ "lineno": 35,
+ "kind": 3,
+ "kind_name": "flipped-additive",
+ "act": 8,
+ "orig": "    return list(range(count + 1))",
+ "mutant": "    return list(range(count - 1))",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 35,\n \"old_line\": \"    return list(range(count - 1))\",\n \"new_line\": \"    return list(range(count + 1))\",\n \"acts_tried\": [\n  6,\n  7,\n  8\n ],\n \"suite_runs\": 3,\n \"seconds\": 1.4105651378631592,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return list(range(count + 1))\"\n ],\n \"tried_log\": [\n  {\n   \"at\": \"weakpkg2/core.py:35\",\n   \"tried\": \"    return list(range(count))\",\n   \"why\": \"FAILED tests/test_core.py::test_slots_length - assert 4 == 5\"\n  },\n  {\n   \"at\": \"weakpkg2/core.py:35\",\n   \"tried\": \"    return 1)) - list(range(count\",\n   \"why\": \"does not compile: unmatched ')' (core.py, line 35)\"\n  }\n ],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 35,
+  "old_line": "    return list(range(count - 1))",
+  "new_line": "    return list(range(count + 1))",
+  "acts_tried": [
+   6,
+   7,
+   8
+  ],
+  "suite_runs": 3,
+  "seconds": 1.4105651378631592,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return list(range(count + 1))"
+  ],
+  "tried_log": [
+   {
+    "at": "weakpkg2/core.py:35",
+    "tried": "    return list(range(count))",
+    "why": "FAILED tests/test_core.py::test_slots_length - assert 4 == 5"
+   },
+   {
+    "at": "weakpkg2/core.py:35",
+    "tried": "    return 1)) - list(range(count",
+    "why": "does not compile: unmatched ')' (core.py, line 35)"
+   }
+  ],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "    return list(range(count + 1))",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "    return list(range(count + 1))"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

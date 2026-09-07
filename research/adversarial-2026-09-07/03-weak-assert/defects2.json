@@ -1,0 +1,308 @@
+[
+ {
+  "id": 0,
+  "lineno": 3,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "Same rule as victim 1 -- nothing adversarial in this file. The functions are",
+  "mutant": "Same rule as victim 0 -- nothing adversarial in this file. The functions are"
+ },
+ {
+  "id": 1,
+  "lineno": 10,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return subtotal + tax",
+  "mutant": "    return tax + subtotal"
+ },
+ {
+  "id": 2,
+  "lineno": 10,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return subtotal + tax",
+  "mutant": "    return subtotal - tax"
+ },
+ {
+  "id": 3,
+  "lineno": 15,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return travel + buffer",
+  "mutant": "    return buffer + travel"
+ },
+ {
+  "id": 4,
+  "lineno": 15,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return travel + buffer",
+  "mutant": "    return travel - buffer"
+ },
+ {
+  "id": 5,
+  "lineno": 20,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return on_hand + delivered",
+  "mutant": "    return delivered + on_hand"
+ },
+ {
+  "id": 6,
+  "lineno": 20,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return on_hand + delivered",
+  "mutant": "    return on_hand - delivered"
+ },
+ {
+  "id": 7,
+  "lineno": 25,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return limit - used",
+  "mutant": "    return used - limit"
+ },
+ {
+  "id": 8,
+  "lineno": 25,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return limit - used",
+  "mutant": "    return limit + used"
+ },
+ {
+  "id": 9,
+  "lineno": 30,
+  "kind": 8,
+  "kind_name": "minmax-swap",
+  "act": 13,
+  "orig": "    return min(pending, worker_cap)",
+  "mutant": "    return max(pending, worker_cap)"
+ },
+ {
+  "id": 10,
+  "lineno": 35,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "    return list(range(count + 1))",
+  "mutant": "    return list(range(count))"
+ },
+ {
+  "id": 11,
+  "lineno": 35,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return list(range(count + 1))",
+  "mutant": "    return 1)) + list(range(count"
+ },
+ {
+  "id": 12,
+  "lineno": 35,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return list(range(count + 1))",
+  "mutant": "    return list(range(count - 1))"
+ },
+ {
+  "id": 13,
+  "lineno": 40,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "    return sorted(scores)[-3:]",
+  "mutant": "    return sorted(scores)[-2:]"
+ },
+ {
+  "id": 14,
+  "lineno": 45,
+  "kind": 0,
+  "kind_name": "strictness",
+  "act": 5,
+  "orig": "    if n > 5:",
+  "mutant": "    if n >= 5:"
+ },
+ {
+  "id": 15,
+  "lineno": 45,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "    if n > 5:",
+  "mutant": "    if n > 4:"
+ },
+ {
+  "id": 16,
+  "lineno": 45,
+  "kind": 10,
+  "kind_name": "flipped-comparison-direction",
+  "act": 15,
+  "orig": "    if n > 5:",
+  "mutant": "    if n < 5:"
+ },
+ {
+  "id": 17,
+  "lineno": 52,
+  "kind": 0,
+  "kind_name": "strictness",
+  "act": 5,
+  "orig": "    return attempts < limit",
+  "mutant": "    return attempts <= limit"
+ },
+ {
+  "id": 18,
+  "lineno": 52,
+  "kind": 10,
+  "kind_name": "flipped-comparison-direction",
+  "act": 15,
+  "orig": "    return attempts < limit",
+  "mutant": "    return attempts > limit"
+ },
+ {
+  "id": 19,
+  "lineno": 57,
+  "kind": 0,
+  "kind_name": "strictness",
+  "act": 5,
+  "orig": "    return age_days >= ttl",
+  "mutant": "    return age_days > ttl"
+ },
+ {
+  "id": 20,
+  "lineno": 57,
+  "kind": 10,
+  "kind_name": "flipped-comparison-direction",
+  "act": 15,
+  "orig": "    return age_days >= ttl",
+  "mutant": "    return age_days <= ttl"
+ },
+ {
+  "id": 21,
+  "lineno": 62,
+  "kind": 12,
+  "kind_name": "flipped-boolean",
+  "act": 1,
+  "orig": "    return {\"cache\": True, \"trace\": False}",
+  "mutant": "    return {\"cache\": False, \"trace\": False}"
+ },
+ {
+  "id": 22,
+  "lineno": 62,
+  "kind": 12,
+  "kind_name": "flipped-boolean",
+  "act": 1,
+  "orig": "    return {\"cache\": True, \"trace\": False}",
+  "mutant": "    return {\"cache\": True, \"trace\": True}"
+ },
+ {
+  "id": 23,
+  "lineno": 67,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "    return (lo + hi) / 2",
+  "mutant": "    return (lo + hi) / 1"
+ },
+ {
+  "id": 24,
+  "lineno": 67,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return (lo + hi) / 2",
+  "mutant": "    return hi) / 2 + (lo"
+ },
+ {
+  "id": 25,
+  "lineno": 67,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return (lo + hi) / 2",
+  "mutant": "    return (lo - hi) / 2"
+ },
+ {
+  "id": 26,
+  "lineno": 72,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return page * size - size",
+  "mutant": "    return size - size * page"
+ },
+ {
+  "id": 27,
+  "lineno": 72,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return page * size - size",
+  "mutant": "    return page * size + size"
+ },
+ {
+  "id": 28,
+  "lineno": 72,
+  "kind": 11,
+  "kind_name": "reversed-minus-operands",
+  "act": 0,
+  "orig": "    return page * size - size",
+  "mutant": "    return size - page * size"
+ },
+ {
+  "id": 29,
+  "lineno": 77,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "    counts = 0",
+  "mutant": "    counts = -1"
+ },
+ {
+  "id": 30,
+  "lineno": 79,
+  "kind": 1,
+  "kind_name": "literal-off-by-one",
+  "act": 6,
+  "orig": "        counts += 1",
+  "mutant": "        counts += 0"
+ },
+ {
+  "id": 31,
+  "lineno": 79,
+  "kind": 9,
+  "kind_name": "flipped-augmented-assign",
+  "act": 14,
+  "orig": "        counts += 1",
+  "mutant": "        counts -= 1"
+ },
+ {
+  "id": 32,
+  "lineno": 85,
+  "kind": 2,
+  "kind_name": "swapped-return-operands",
+  "act": 7,
+  "orig": "    return arrivals - served",
+  "mutant": "    return served - arrivals"
+ },
+ {
+  "id": 33,
+  "lineno": 85,
+  "kind": 3,
+  "kind_name": "flipped-additive",
+  "act": 8,
+  "orig": "    return arrivals - served",
+  "mutant": "    return arrivals + served"
+ }
+]

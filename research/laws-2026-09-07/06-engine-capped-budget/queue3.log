@@ -1,0 +1,5 @@
+QUEUE3 start 14:12:08 load=3.13 3.09 3.13
+sweep_900 rc=0 14:15:17
+sweep_325 rc=0 14:18:12
+sweep_750 rc=0 14:22:13
+QUEUE3 done 14:22:13

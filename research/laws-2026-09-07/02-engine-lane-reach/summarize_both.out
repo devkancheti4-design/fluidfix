@@ -1,0 +1,12 @@
+   tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval
+
+body consultations: site, x, bits -> act (count)
+  guard.py:539   x=  0 <empty>              -> SHIP                   x3
+  guard.py:539   x= 64 REFUTED              -> HARVEST_COUNTEREXAMPLE x3
+  guard.py:539   x= 96 CAPPED+REFUTED       -> RAISE_BUDGET           x2
+  guard.py:618   x= 64 REFUTED              -> HARVEST_COUNTEREXAMPLE x3
+  loop.py:217    x=  1 BUILT                -> SHIP                   x16
+  loop.py:217    x=  3 BUILT+AMB            -> ADD_STATE              x3
+
+distinct situations the body constructed: [0, 1, 3, 64, 96]
+distinct sites: ['guard.py:539', 'guard.py:618', 'loop.py:217']

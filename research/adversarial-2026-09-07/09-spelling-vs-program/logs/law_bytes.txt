@@ -1,0 +1,9 @@
+BITS = ['BUILT', 'AMB', 'UNREAD', 'NOTWIN', 'HIDDEN', 'CAPPED', 'REFUTED', 'SELF']
+ACTS = ['SHIP', 'ADD_STATE', 'ADD_MATERIAL', 'RESHAPE', 'CHANGE_GRANULARITY', 'RAISE_BUDGET', 'HARVEST_COUNTEREXAMPLE', 'AUTHOR_SUCCESSOR']
+
+fixture                      proxy AMB    byte law says   true AMB    byte law would say  verdict
+-------------------------------------------------------------------------------------------------
+A1-same-set-one-program           True     515 ADD_STATE     False     513 SHIP        WRONG  <<<
+A2-cross-set-one-program         False     513 SHIP          False     513 SHIP        OK
+B1-same-set-two-programs          True     515 ADD_STATE      True     515 ADD_STATE   OK
+B2-cross-set-two-programs        False     513 SHIP           True     515 ADD_STATE   WRONG  <<<

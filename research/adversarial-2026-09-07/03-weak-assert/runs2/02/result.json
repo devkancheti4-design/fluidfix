@@ -1,0 +1,44 @@
+{
+ "id": 2,
+ "lineno": 10,
+ "kind": 3,
+ "kind_name": "flipped-additive",
+ "act": 8,
+ "orig": "    return subtotal + tax",
+ "mutant": "    return subtotal - tax",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 10,\n \"old_line\": \"    return subtotal - tax\",\n \"new_line\": \"    return tax - subtotal\",\n \"acts_tried\": [\n  7,\n  8\n ],\n \"suite_runs\": 3,\n \"seconds\": 2.0975351333618164,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return tax - subtotal\",\n  \"    return subtotal + tax\"\n ],\n \"tried_log\": [],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 10,
+  "old_line": "    return subtotal - tax",
+  "new_line": "    return tax - subtotal",
+  "acts_tried": [
+   7,
+   8
+  ],
+  "suite_runs": 3,
+  "seconds": 2.0975351333618164,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return tax - subtotal",
+   "    return subtotal + tax"
+  ],
+  "tried_log": [],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": false,
+ "final_equals_mutant": false,
+ "final_line": "    return tax - subtotal",
+ "outcome": "SHIPPED-WRONG",
+ "greens": [
+  "    return tax - subtotal",
+  "    return subtotal + tax"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

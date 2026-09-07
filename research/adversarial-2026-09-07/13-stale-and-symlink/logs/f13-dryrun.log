@@ -1,0 +1,13 @@
+[14:37:12] pkg/geom.py: repaired line 2 in 3 suite runs (1.3s):
+  - return xs[2]
+  + return xs[1]
+--- a/pkg/geom.py
++++ b/pkg/geom.py
+@@ -1,5 +1,5 @@
+ def second(xs):
+-    return xs[2]
++    return xs[1]
+ 
+ 
+ def scale(v, k):
+PROPOSED (dry-run): apply with git apply .fluidfix/proposed.patch

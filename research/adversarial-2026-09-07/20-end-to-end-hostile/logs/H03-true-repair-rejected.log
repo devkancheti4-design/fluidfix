@@ -1,0 +1,5 @@
+line 54 = '  x   = 1.0f + s;'
+  kind 1 -> act 6: ['  x   = 0.0f + s;', '  x   = 1.-1f + s;']
+  kind 3 -> act 8: ['  x   = 1.0f - s;']
+  CANDIDATE '  x   = 1.0f - s;' -> oracle.check() ok=False why='1 test(s) failed, first: hostile_stale'
+restored; sha equal: True

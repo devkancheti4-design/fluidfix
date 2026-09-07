@@ -1,0 +1,49 @@
+# fixture named -> /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/20-sight-misdirection/work/named-guard
+# failing: True
+# failing output (tail, ANSI stripped by the body; shown raw here):
+   | ....F
+   | =================================== FAILURES ===================================
+   | __________________________ test_render_respects_limit __________________________
+   | 
+   |     def test_render_respects_limit():
+   | >       assert shell.render(["a", "b", "c", "d"], 3) == "a b c"
+   | E       AssertionError: assert 'a b c d' == 'a b c'
+   | E         
+   | E         - a b c
+   | E         + a b c d
+   | E         ?      ++
+   | 
+   | tests/test_shell.py:5: AssertionError
+   | =========================== short test summary info ============================
+   | FAILED tests/test_shell.py::test_render_respects_limit - AssertionError: asse...
+   | !!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+   | 1 failed, 4 passed in 0.03s
+
+# find_candidate_files order (what guard_once's first pass walks):
+   1. pkg/shell.py       byte=0x58 FAILONLY|NAMED|SMALL             priority=2
+   2. pkg/__init__.py    byte=0x48 FAILONLY|SMALL                   priority=2
+   3. pkg/utils.py       byte=0x40 SMALL                            priority=5
+   4. pkg/core.py        byte=0x40 SMALL                            priority=5
+   5. pkg/parser.py      byte=0x40 SMALL                            priority=5
+   6. pkg/types.py       byte=0xc0 SMALL|UBIQUITOUS                 priority=6
+# evidence: {"pointed": [], "lanes": {"FRAMED": [], "SCARCE": [], "LITERAL": []}}
+# SIGHT consulted for 6 file(s)
+
+# per-file ledger (order walked):
+    {"file": "pkg/shell.py", "suite_runs": 6, "repair_s": 1.3, "packet_s": 0.5, "acts": [5, 6, 15, 6, 1], "rejected": 5, "repaired": false, "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary "}
+    {"file": "pkg/__init__.py", "suite_runs": 2, "repair_s": 0.4, "packet_s": 0.5, "acts": [6], "rejected": 1, "repaired": false, "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary "}
+    {"file": "pkg/utils.py", "suite_runs": 3, "repair_s": 0.6, "packet_s": 0.5, "acts": [6, 1], "rejected": 2, "repaired": false, "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary "}
+    {"file": "pkg/core.py", "suite_runs": 3, "repair_s": 0.6, "packet_s": 0.5, "acts": [6, 1], "rejected": 2, "repaired": false, "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary "}
+    {"file": "pkg/parser.py", "suite_runs": 3, "repair_s": 0.6, "packet_s": 0.5, "acts": [6, 1], "rejected": 2, "repaired": false, "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary "}
+    {"file": "pkg/types.py", "suite_runs": 10, "repair_s": 2.6, "packet_s": 0.5, "acts": [6, 1, 5, 15, 6, 6], "rejected": 8, "repaired": true, "reason": "engine law: BUILT -> SHIP"}
+# suite runs on WRONG files: 17, on the repaired file: 10
+
+# guard_once(budget=None) -> status=repaired file=pkg/types.py seconds=10.0
+# candidates: ['pkg/shell.py', 'pkg/__init__.py', 'pkg/utils.py', 'pkg/core.py', 'pkg/parser.py', 'pkg/types.py']
+# rejected candidates by file (tried_log, capped at 64/file): {}
+# result: lineno=35 old='if len(out) > limit:        # DEFECT: should be >=' new='if len(out) >= limit:        # DEFECT: should be >=' suite_runs=10 reason='engine law: BUILT -> SHIP'
+# hint: ''
+# summary():
+   | pkg/types.py: repaired line 35 in 10 suite runs (2.6s):
+   |   - if len(out) > limit:        # DEFECT: should be >=
+   |   + if len(out) >= limit:        # DEFECT: should be >=

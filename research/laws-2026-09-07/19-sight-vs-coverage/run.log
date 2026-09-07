@@ -1,0 +1,19 @@
+[vec3_add] include/cglm/vec3.h:283 fails=22 credible=True covfiles=76 rank body=1 purecov=40 sight=8 sight0=3 spec_true=1.0 t_cov=10.7s t_sight=0.23s
+[vec2_dot] include/cglm/vec2.h:137 fails=18 credible=True covfiles=76 rank body=1 purecov=71 sight=1 sight0=1 spec_true=1.0 t_cov=12.5s t_sight=0.17s
+[vec4_sub_neon] include/cglm/vec4.h:398 fails=30 credible=True covfiles=76 rank body=1 purecov=45 sight=9 sight0=3 spec_true=1.0 t_cov=9.5s t_sight=0.27s
+[ivec3_add] include/cglm/ivec3.h:175 fails=2 credible=True covfiles=76 rank body=1 purecov=71 sight=3 sight0=3 spec_true=1.0 t_cov=8.5s t_sight=0.10s
+[ivec2_add] include/cglm/ivec2.h:157 fails=2 credible=True covfiles=76 rank body=1 purecov=70 sight=1 sight0=1 spec_true=1.0 t_cov=7.8s t_sight=0.11s
+[util_lerp] include/cglm/util.h:218 fails=6 credible=True covfiles=76 rank body=42 purecov=37 sight=40 sight0=43 spec_true=1.0 t_cov=13.7s t_sight=0.16s
+[mat4_scale_p] include/cglm/mat4.h:575 fails=2 credible=True covfiles=76 rank body=1 purecov=26 sight=4 sight0=3 spec_true=1.0 t_cov=11.0s t_sight=0.13s
+[mat3_det] include/cglm/mat3.h:338 fails=2 credible=True covfiles=76 rank body=1 purecov=25 sight=4 sight0=3 spec_true=1.0 t_cov=11.0s t_sight=0.13s
+[mat2_det] SKIP include/cglm/mat2.h:322 suite green
+[quat_conjugate] include/cglm/quat.h:322 fails=4 credible=True covfiles=76 rank body=1 purecov=38 sight=6 sight0=3 spec_true=1.0 t_cov=10.7s t_sight=0.10s
+[euler_xyz] SKIP include/cglm/euler.h:151 suite green
+[ray_triangle] SKIP include/cglm/ray.h:71 suite green
+[bezier] include/cglm/bezier.h:56 fails=1 credible=True covfiles=76 rank body=1 purecov=18 sight=3 sight0=3 spec_true=1.0 t_cov=8.3s t_sight=0.13s
+[sphere_merge] SKIP include/cglm/sphere.h:64 suite green
+[plane_normalize] include/cglm/plane.h:36 fails=2 credible=True covfiles=76 rank body=1 purecov=8 sight=3 sight0=3 spec_true=1.0 t_cov=11.7s t_sight=0.09s
+[project_no] include/cglm/clipspace/project_no.h:47 fails=6 credible=True covfiles=76 rank body=3 purecov=29 sight=3 sight0=4 spec_true=1.0 t_cov=12.5s t_sight=0.17s
+[aabb2d_diag] SKIP include/cglm/aabb2d.h:169 suite green
+[src_vec3_c_wrapper] src/vec3.c:91 fails=1 credible=True covfiles=76 rank body=2 purecov=76 sight=3 sight0=4 spec_true=1.0 t_cov=9.1s t_sight=0.14s
+restored: build rc 0 tests rc 0 ['\x1b[0m']

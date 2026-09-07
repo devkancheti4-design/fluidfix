@@ -1,0 +1,32 @@
+== fixture D_partition_plus_canceling
+baseline failing tests (2): ['test_vec.py::test_count_above_is_strict', 'test_vec.py::test_project_removes_the_normal_component']
+baseline hidden property (not in the suite): VIOLATED: AssertionError: project
+observations: 7 [(14, [1]), (19, [1, 2, 3]), (28, [1]), (32, [2]), (36, [1, 2]), (40, [1, 3]), (41, [2, 3])]
+single-edit candidates: 12
+  [ 0] line  14 kind  1 red   fail=1 | class Vec2:
+  [ 1] line  19 kind  1 red   fail=2 | return Vec2(*[a + b for a, b in zip(self.c, o.c)])
+  [ 2] line  19 kind  2 red   fail=1 | return b for a, b in zip(self.c, o.c)]) + Vec3(*[a
+  [ 3] line  19 kind  3 red   fail=2 | return Vec3(*[a - b for a, b in zip(self.c, o.c)])
+  [ 4] line  28 kind  1 red   fail=2 | return "Vec2%r" % (self.c,)
+  [ 5] line  32 kind  2 red   fail=1 | return b for a, b in zip(u.c, w.c)) * sum(a
+  [ 6] line  36 kind  1 red   fail=2 | return Vec2(*[a * k for a in v.c])
+  [ 7] line  36 kind  2 red   fail=1 | return k for a in v.c]) * Vec3(*[a
+  [ 8] line  40 kind  1 red   fail=2 | d = dot(v, n)
+  [ 9] line  40 kind  3 red   fail=2 | d = dot(v, n) - 1
+  [10] line  41 kind  2 red   fail=2 | return scale(n, d) + v
+  [11] line  41 kind  3 red   fail=2 | return v - scale(n, d)
+pair suite runs: 60; jointly green: 0
+
+-- measured observation byte --
+  EXHAUSTED  True
+  PARTIAL    False
+  DISJOINT   False
+  COUPLED    True
+  CANCELING  False
+  CHEAP      unmeasured (no threshold exists in the body); singles=12, distinct-line pairs=60
+  TAUGHT     unmeasured (no body code sets it); kinds used = [1, 2, 3] (all shipped classes)
+  CAPPED     False (no budget given to this probe)
+  CHEAP=0 TAUGHT=0  byte=  9 -> TEACH     | without CANCELING: byte=  9 -> TEACH
+  CHEAP=0 TAUGHT=1  byte= 41 -> BUDGET    | without CANCELING: byte= 41 -> BUDGET
+  CHEAP=1 TAUGHT=0  byte= 25 -> TEACH     | without CANCELING: byte= 25 -> TEACH
+  CHEAP=1 TAUGHT=1  byte= 57 -> REFUSE    | without CANCELING: byte= 57 -> REFUSE

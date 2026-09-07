@@ -1,0 +1,8 @@
+A plain-grandchild   rc=1 'TIMEOUT'                      4.0s  survivors=0  -> reaped
+B setsid-grandchild  rc=1 'TIMEOUT'                     14.0s  survivors=1  -> ESCAPED killpg
+      LEAKED pid/pgid/sess: 40822 40822 0
+C double-fork        rc=1 'TIMEOUT'                     14.0s  survivors=1  -> ESCAPED killpg
+      LEAKED pid/pgid/sess: 42493 42492 0
+D no-timeout-leak    rc=1 'TIMEOUT'                     13.9s  survivors=1  -> ESCAPED killpg
+      LEAKED pid/pgid/sess: 44851 44848 0
+final sweep survivors: 0

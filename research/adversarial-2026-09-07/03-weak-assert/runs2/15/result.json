@@ -1,0 +1,12 @@
+{
+ "id": 15,
+ "lineno": 45,
+ "kind": 1,
+ "kind_name": "literal-off-by-one",
+ "act": 6,
+ "orig": "    if n > 5:",
+ "mutant": "    if n > 4:",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

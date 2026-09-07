@@ -1,0 +1,26 @@
+    [packet mode=coverage truncated=False]
+--- tests/test_guard.py BUGGY (count_above, strictness)
+    file                     : mod.py  (7 lines)
+    anchor lines in packet   : 6
+    observations (lines with a taught signal): 3
+    candidate SETS (line x kind, non-empty)  : 5
+    SINGLE-EDIT CANDIDATES n : 5
+      of which free (do not compile)         : 0
+      paying a suite run                     : 5
+    naive PAIR combinations C(n,2)           : 10
+    by fault class           : literal-off-by-one=2, strictness=1, flipped-comparison-direction=1, flipped-augmented-assign=1
+    [packet mode=coverage truncated=True]
+--- tests/test_span_edits.py budget fixture (806-line mod.py)
+    file                     : mod.py  (807 lines)
+    anchor lines in packet   : 110
+    observations (lines with a taught signal): 110
+    candidate SETS (line x kind, non-empty)  : 110
+    SINGLE-EDIT CANDIDATES n : 110
+      of which free (do not compile)         : 0
+      paying a suite run                     : 110
+    naive PAIR combinations C(n,2)           : 5995
+    by fault class           : flipped-boolean=109, literal-off-by-one=1
+
+=== fixture summary: n single-edit candidates -> C(n,2) pairs ===
+       5 ->         10   tests/test_guard.py BUGGY (count_above, strictness)
+     110 ->       5995   tests/test_span_edits.py budget fixture (806-line mod.py)

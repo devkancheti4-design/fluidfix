@@ -1,0 +1,16 @@
+#!/bin/sh
+# timeout wrapper: this machine has no coreutils `timeout`.
+# usage: ./tmo SECONDS cmd args...
+# runs the command niced, kills it (SIGTERM then SIGKILL) after SECONDS.
+S="$1"; shift
+exec nice -n 15 perl -e '
+  my $s = shift @ARGV;
+  my $pid = fork();
+  die "fork failed" unless defined $pid;
+  if ($pid == 0) { exec @ARGV or die "exec failed: $!"; }
+  $SIG{ALRM} = sub { kill "TERM", $pid; sleep 2; kill "KILL", $pid; waitpid($pid,0); exit 124; };
+  alarm $s;
+  waitpid($pid, 0);
+  alarm 0;
+  exit($? >> 8);
+' "$S" "$@"

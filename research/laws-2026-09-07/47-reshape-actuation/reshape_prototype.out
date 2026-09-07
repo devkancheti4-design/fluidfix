@@ -1,0 +1,68 @@
+==========================================================================
+G1_bug_committed   -- the ordinary case: the defect is IN HEAD (fluidfix's whole purpose)
+==========================================================================
+  greens the search proved   : ['if n >= 10:', 'if n > 9:']
+  wanted shape (HEAD line)   : 'if n > 10:'
+  BASELINE (fluidfix today)  : ship 'if n >= 10:'  -> CORRECT  (3 suite runs)
+  ruling with NOTWIN=1       : RESHAPE
+  PROTOTYPE                  : REFUSED (no green has the wanted shape)
+  prototype program          : None  (3 suite runs)
+  net effect                 : DESTROYED a correct repair
+
+==========================================================================
+G2_uncommitted_exact   -- provenance case: defect never committed, repair reproduces HEAD
+==========================================================================
+  greens the search proved   : ['if n >= 10:']
+  wanted shape (HEAD line)   : 'if n >= 10:'
+  BASELINE (fluidfix today)  : ship 'if n >= 10:'  -> CORRECT  (2 suite runs)
+  ruling with NOTWIN=0       : SHIP
+  PROTOTYPE                  : SHIP 'if n >= 10:'
+  prototype program          : CORRECT  (2 suite runs)
+  net effect                 : no change
+
+==========================================================================
+G3_uncommitted_respelled   -- defect never committed; first green is the SAME PROGRAM SPELLED DIFFERENTLY from HEAD
+==========================================================================
+  greens the search proved   : ['if n >= 10:', 'if n > 9:']
+  wanted shape (HEAD line)   : 'if n > 9:'
+  BASELINE (fluidfix today)  : ship 'if n >= 10:'  -> CORRECT  (3 suite runs)
+  ruling with NOTWIN=1       : RESHAPE
+  PROTOTYPE                  : RESHAPED+SHIP 'if n > 9:'
+  prototype program          : CORRECT  (4 suite runs)
+  net effect                 : no change
+
+==========================================================================
+G4_no_git   -- no git repository at all
+==========================================================================
+  greens the search proved   : ['if n >= 10:', 'if n > 9:']
+  wanted shape (HEAD line)   : 'unavailable'
+  BASELINE (fluidfix today)  : ship 'if n >= 10:'  -> CORRECT  (3 suite runs)
+  ruling with NOTWIN=0       : SHIP
+  PROTOTYPE                  : SHIP 'if n >= 10:'
+  prototype program          : CORRECT  (3 suite runs)
+  net effect                 : no change
+
+==========================================================================
+G5_wrong_program   -- weak suite: first green is a DIFFERENT PROGRAM at the same site
+==========================================================================
+  greens the search proved   : ['return delta - base', 'return base + delta']
+  wanted shape (HEAD line)   : 'return base + delta'
+  BASELINE (fluidfix today)  : ship 'return delta - base'  -> False  (3 suite runs)
+  ruling with NOTWIN=1       : RESHAPE
+  PROTOTYPE                  : RESHAPED+SHIP 'return base + delta'
+  prototype program          : CORRECT  (4 suite runs)
+  net effect                 : RESCUED a wrong repair
+
+==========================================================================
+SUMMARY — 5 scenarios
+==========================================================================
+scenario                   baseline   prototype  runs      net
+G1_bug_committed           CORRECT    refused    3->3      DESTROYED a correct repair
+G2_uncommitted_exact       CORRECT    CORRECT    2->2      no change
+G3_uncommitted_respelled   CORRECT    CORRECT    3->4      no change
+G4_no_git                  CORRECT    CORRECT    3->3      no change
+G5_wrong_program           WRONG      CORRECT    3->4      RESCUED a wrong repair
+
+correct programs on disk, fluidfix today : 4/5
+correct programs on disk, with RESHAPE   : 4/5
+total suite runs today / with RESHAPE    : 14 / 16

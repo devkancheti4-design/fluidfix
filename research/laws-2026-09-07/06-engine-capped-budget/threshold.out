@@ -1,0 +1,27 @@
+| budget | status | first_pass_end_s | first_pass_runs | end_s | suite_runs | cut predicted by total_deadline | cut predicted by file_share/2 | last ruling |
+|---|---|---|---|---|---|---|---|---|
+| 150 | refused | 33.3 | 110 | 92.2 | 290 | 150.0 | 91.7 | REFUTED (0x40) -> HARVEST_COUNTEREXAMPLE |
+| 300 | refused | 23.4 | 110 | 162.0 | 815 | 300.0 | 161.7 | REFUTED (0x40) -> HARVEST_COUNTEREXAMPLE |
+| 325 | refused | 24.9 | 110 | 175.2 | 688 | 325.0 | 175.0 | REFUTED (0x40) -> HARVEST_COUNTEREXAMPLE |
+| 350 | repaired | 24.1 | 110 | 181.5 | 914 | 350.0 | 187.0 | BUILT (0x01) -> SHIP |
+| 400 | repaired | 24.1 | 110 | 185.4 | 914 | 400.0 | 212.0 | BUILT (0x01) -> SHIP |
+| 450 | repaired | 27.4 | 110 | 209.9 | 914 | 450.0 | 238.7 | BUILT (0x01) -> SHIP |
+| 600 | repaired | 23.4 | 110 | 179.8 | 914 | 600.0 | 311.7 | BUILT (0x01) -> SHIP |
+| 750 | repaired | 32.5 | 110 | 239.1 | 914 | 750.0 | 391.2 | BUILT (0x01) -> SHIP |
+| 900 | repaired | 24.3 | 110 | 188.2 | 914 | 900.0 | 462.2 | BUILT (0x01) -> SHIP |
+
+escalation work W = end - first_pass_end, on the runs that finished it:
+  budget=350: W=157.4s
+  budget=400: W=161.3s
+  budget=450: W=182.5s
+  budget=600: W=156.4s
+  budget=750: W=206.6s
+  budget=900: W=163.9s
+  W range on this loaded machine: 156.4s .. 206.6s (same 804 suite runs every time)
+
+file_share/2 binds when  W > (budget - t1)/2, i.e. budget < t1 + 2W.
+  t1 (first pass, 110 runs) measured range: 23.4s .. 33.3s
+  => threshold budget = t1 + 2W  in  [336s .. 446s]
+  total_deadline alone would put the threshold at t1 + W = [180s .. 240s]
+
+observed bracket: 150=refused, 300=refused, 325=refused, 350=repaired, 400=repaired, 450=repaired, 600=repaired, 750=repaired, 900=repaired

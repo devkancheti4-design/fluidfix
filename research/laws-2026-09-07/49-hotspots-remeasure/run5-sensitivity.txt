@@ -1,0 +1,22 @@
+A. headline vs how far back HEAD sits (rev = HEAD~k)
+   k  commits  fixes  files   30%   50%   60%   80%
+   0     1377    576    322    17    40    57   136
+   1     1376    576    322    17    40    57   136
+   2     1375    576    322    17    40    57   136
+   3     1374    576    322    17    40    57   136
+   4     1373    576    322    17    40    57   136
+   5     1372    576    322    17    40    57   136
+   6     1371    576    322    17    40    57   136
+   8     1369    576    322    17    40    57   136
+  10     1367    576    322    17    40    57   136
+  15     1362    576    322    17    40    57   136
+  20     1357    575    322    17    40    57   136
+  30     1347    573    320    17    39    56   133
+  50     1327    570    312    16    37    53   129
+
+B. can a narrower _FIX reproduce the docstring's 207 fixes / 201 files?
+  shipped _FIX                 fixes= 576 files= 322 60%->  57  (docstring wants fixes=207 files=201 60%->61)
+  \bfix(e[sd])?\b              fixes= 544 files= 297 60%->  48  (docstring wants fixes=207 files=201 60%->61)
+  ^fix                         fixes= 245 files= 116 60%->  28  (docstring wants fixes=207 files=201 60%->61)
+  \bfix(e[sd])?|bug\b          fixes= 544 files= 297 60%->  48  (docstring wants fixes=207 files=201 60%->61)
+  \bfix|bug|crash\b            fixes= 548 files= 297 60%->  48  (docstring wants fixes=207 files=201 60%->61)

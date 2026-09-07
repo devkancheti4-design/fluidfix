@@ -1,0 +1,3 @@
+[14:34:00] net.py: repaired line 3 in 6 suite runs (2.0s):
+  - BONUS = 8
+  + BONUS = 7

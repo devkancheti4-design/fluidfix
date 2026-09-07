@@ -1,0 +1,65 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/19-class-collision/runs/A_vat4_net5/rules_vat4_net5.py: 2 fault class(es) registered
+{
+ "repaired": true,
+ "refused": false,
+ "lineno": 15,
+ "old_line": "    price = gross_rate_for(region) * units",
+ "new_line": "    price = gross_rate_for(region) * units / VAT",
+ "acts_tried": [
+  6,
+  6,
+  6,
+  9,
+  10
+ ],
+ "suite_runs": 9,
+ "seconds": 3.346097230911255,
+ "reason": "engine law: BUILT -> SHIP",
+ "ambiguous": false,
+ "greens": [
+  "    price = gross_rate_for(region) * units / VAT",
+  "    price = net_rate_for(region) * units"
+ ],
+ "tried_log": [
+  {
+   "at": "pricing.py:1",
+   "tried": "GROSS = {\"EU\": 4.0}",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 16.0 == 8.0"
+  },
+  {
+   "at": "pricing.py:1",
+   "tried": "GROSS = {\"EU\": 5.-1}",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 16.0 == 8.0"
+  },
+  {
+   "at": "pricing.py:2",
+   "tried": "NET = {\"EU\": 1.0}",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 20.0 == 8.0"
+  },
+  {
+   "at": "pricing.py:2",
+   "tried": "NET = {\"EU\": 2.-1}",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 20.0 == 8.0"
+  },
+  {
+   "at": "pricing.py:3",
+   "tried": "VAT = 1.5",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 20.0 == 8.0"
+  },
+  {
+   "at": "pricing.py:3",
+   "tried": "VAT = 2.4",
+   "why": "FAILED test_pricing.py::test_eu_price - AssertionError: assert 20.0 == 8.0"
+  }
+ ],
+ "tried_more": 0,
+ "restored_original": null
+}
+---- exit 0
+---- pricing.py:15 after the run
+    price = gross_rate_for(region) * units / VAT
+---- diff vs INTENDED program (pricing.correct.py)
+15c15
+<     price = net_rate_for(region) * units
+---
+>     price = gross_rate_for(region) * units / VAT

@@ -1,0 +1,10 @@
+--- /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/04-tautological-test/logs/f3_hollow.net.py.pristine	2026-09-07 14:33:55
++++ /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/04-tautological-test/fixtures/f3_hollow/net.py	2026-09-07 14:34:00
+@@ -1,6 +1,6 @@
+ """Invoicing and payroll arithmetic."""
+ 
+-BONUS = 8
++BONUS = 7
+ 
+ 
+ def gross(units, price):

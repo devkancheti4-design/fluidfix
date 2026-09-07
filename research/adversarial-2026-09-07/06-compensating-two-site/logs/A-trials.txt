@@ -1,0 +1,5 @@
+trial 1: [14:41:21] src/rate.c: repaired line 9 in 4 suite runs (3.8s):
+trial 2: [14:41:25] src/rate.c: repaired line 9 in 4 suite runs (1.4s):
+trial 3: [14:41:35] src/rate.c: repaired line 9 in 4 suite runs (6.2s):
+trial 4: [14:41:44] src/rate.c: repaired line 9 in 4 suite runs (3.8s):
+trial 5: [14:41:48] src/rate.c: repaired line 9 in 4 suite runs (1.5s):

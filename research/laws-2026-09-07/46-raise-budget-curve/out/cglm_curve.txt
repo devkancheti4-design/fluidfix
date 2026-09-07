@@ -1,0 +1,29 @@
+== run: out/cglm_budget240.json
+suite runs judged (probe rows): 41
+span: 3.1s .. 249.8s
+
+-- rows per phase: {'pass0': 41}
+  pass0      n=  41  t=    3.1..  249.8  wall= 255.3s  suite-time= 255.3s (100%)  rate=0.161 cand/s  mean run=6.23s
+
+-- repeated work (identical mutated file content re-tested)
+  distinct candidate programs: 41 of 41 rows
+  repeated rows: 0 (0.0% of all suite runs)
+  wall clock burned on repeats: 0.0s of 255.3s suite time (0.0%)
+
+-- progress-rate curve (30s buckets): cum = cumulative suite-judged
+   candidates; new = cumulative DISTINCT programs
+      t_end      n    cum    new   cand/s phase(s)
+         30      6      6      6    0.200 pass0
+         60      5     11     11    0.167 pass0
+         90      5     16     16    0.167 pass0
+        120      4     20     20    0.133 pass0
+        150      6     26     26    0.200 pass0
+        180      5     31     31    0.167 pass0
+        210      5     36     36    0.167 pass0
+        240      3     39     39    0.100 pass0
+        270      2     41     41    0.067 pass0
+
+-- engine law rulings observed
+
+-- repair() calls
+   pass0      include/cglm/vec3.h      t=    2.9..  258.4 runs=  41 repaired=False obs=110 log=41 more=0

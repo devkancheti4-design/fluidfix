@@ -1,0 +1,12 @@
+trial 1: A journalled
+  window hit: A ALIVE, journal ABSENT, disk holds:     if units > 9:
+trial=1 hit=1 journal=no line10=if units > 9:              suite_rc=0
+trial 2: A journalled
+  window hit: A ALIVE, journal ABSENT, disk holds:     if units > 9:
+trial=2 hit=1 journal=no line10=if units > 9:              suite_rc=0
+trial 3: A journalled
+  window hit: A ALIVE, journal ABSENT, disk holds:     if units > 9:
+trial=3 hit=1 journal=no line10=if units > 9:              suite_rc=0
+trial 4: A journalled
+  window hit: A ALIVE, journal ABSENT, disk holds:     if units > 9:
+trial=4 hit=1 journal=no line10=if units > 9:              suite_rc=0

@@ -1,0 +1,21 @@
+status      : refused
+file        : None
+candidates  : ['shop/support/expect.py']
+evidence    : {'pointed': ['shop/support/expect.py'], 'lanes': {'FRAMED': ['shop/support/expect.py']}}
+hint        : every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it
+summary     : REFUSED: fault is outside the taught vocabulary (candidate files tried: shop/support/expect.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 5 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it
+attempts    : 5
+SUITE RUNS  : 10
+seconds     : 2.38
+   run  1: pytest -x --tb=long
+   run  2: pytest -x --tb=long
+   run  3: pytest --lf --tb=no --cov=shop --cov-report=json:/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/43-add-material-actuation/fx_base/_fluidfix_cov.json
+   run  4: pytest --tb=no
+   run  5: pytest --lf --tb=no --cov-fail-under=0
+   run  6: pytest --lf --tb=no --cov-fail-under=0
+   run  7: pytest --lf --tb=no --cov-fail-under=0
+   run  8: pytest --tb=no
+   run  9: pytest --lf --tb=no --cov-fail-under=0
+   run 10: pytest --lf --tb=no --cov-fail-under=0
+discount.py still has the defect (`qty > BULK_QTY`): True

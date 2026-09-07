@@ -1,0 +1,4 @@
+dictionary fixtures/poison_wrong.py: 1 fault class(es) registered
+[14:42:37] orders.py: repaired line 2 in 4 suite runs (2.1s):
+  - amount = used - paid
+  + amount = abs(used - paid)

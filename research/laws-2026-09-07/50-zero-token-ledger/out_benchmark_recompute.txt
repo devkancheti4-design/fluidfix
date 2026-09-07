@@ -1,0 +1,19 @@
+records: 66
+distinct bug ids: 33
+--- variant v1: 33 recs, in_vocab 27, oov 6
+   in-vocab byte-exact: 17 / 27
+   in-vocab repaired  : 17 / 27
+   in-vocab green-only: 0
+   oov refused        : 6 / 6
+   loc_correct        : 33 / 33
+   total suite_runs   : 36
+   total secs         : 25.9
+--- variant v2: 33 recs, in_vocab 27, oov 6
+   in-vocab byte-exact: 26 / 27
+   in-vocab repaired  : 26 / 27
+   in-vocab green-only: 0
+   oov refused        : 6 / 6
+   loc_correct        : 33 / 33
+   total suite_runs   : 36
+   total secs         : 25.9
+distinct bugs with loc_correct: 33 / 33

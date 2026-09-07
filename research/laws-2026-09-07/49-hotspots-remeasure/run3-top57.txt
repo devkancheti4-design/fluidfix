@@ -1,0 +1,68 @@
+rank count exists file
+   1    60 .      Box2D/Box2D/Dynamics/b2World.h
+   2    59 .      Box2D/Box2D/Dynamics/b2Body.cpp
+   3    56 .      Box2D/Box2D/Dynamics/b2World.cpp
+   4    43 .      Box2D/Box2D/Collision/Shapes/b2PolygonShape.cpp
+   5    38 .      Box2D/Box2D/Dynamics/b2Fixture.cpp
+   6    36 .      Box2D/Box2D/Common/b2Settings.cpp
+   7    36 .      Box2D/Box2D/Common/b2Settings.h
+   8    34 .      Box2D/Box2D/Dynamics/b2ContactManager.cpp
+   9    33 .      Box2D/Box2D/Collision/Shapes/b2ChainShape.cpp
+  10    32 .      Box2D/Box2D/Collision/Shapes/b2EdgeShape.cpp
+  11    30 .      Box2D/Box2D/Collision/b2TimeOfImpact.cpp
+  12    29 .      Box2D/Box2D/Collision/b2Distance.cpp
+  13    28 .      Box2D/Box2D/Dynamics/Joints/b2Joint.h
+  14    27 .      Box2D/Box2D/Dynamics/b2Body.h
+  15    26 .      Box2D/Box2D/Dynamics/Contacts/b2Contact.cpp
+  16    26 .      Box2D/Box2D/Dynamics/b2Fixture.h
+  17    24 .      Box2D/Box2D/Common/b2GrowableStack.h
+  18    24 .      Box2D/Box2D/Common/b2BlockAllocator.cpp
+  19    24 .      Box2D/Box2D/Collision/b2Collision.h
+  20    23 .      Box2D/Box2D/Dynamics/Contacts/b2ContactSolver.cpp
+  21    22 .      Box2D/Box2D/Collision/b2DynamicTree.cpp
+  22    22 .      Box2D/Box2D/Collision/b2BroadPhase.h
+  23    20 .      Box2D/Box2D/Common/b2Timer.cpp
+  24    20 .      Box2D/Box2D/Dynamics/Joints/b2DistanceJoint.h
+  25    19 .      Box2D/Box2D/Dynamics/b2Island.cpp
+  26    19 .      Box2D/Box2D/Common/b2Math.h
+  27    18 .      Box2D/Box2D/Dynamics/Contacts/b2Contact.h
+  28    18 .      Box2D/Box2D/Collision/b2CollidePolygon.cpp
+  29    18 .      Box2D/Box2D/Collision/b2DynamicTree.h
+  30    16 .      Box2D/Box2D/Dynamics/Joints/b2WeldJoint.cpp
+  31    16 .      Box2D/Box2D/Collision/b2CollideEdge.cpp
+  32    16 .      Box2D/Box2D/Collision/b2Collision.cpp
+  33    16 .      Box2D/HelloWorld/HelloWorld.cpp
+  34    16 .      Box2D/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp
+  35    14 .      Box2D/Box2D/Dynamics/Contacts/b2CircleContact.cpp
+  36    14 .      Box2D/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp
+  37    14 .      Box2D/Box2D/Dynamics/Contacts/b2PolygonContact.cpp
+  38    14 .      Box2D/Box2D/Collision/b2BroadPhase.cpp
+  39    14 .      Box2D/Box2D/Dynamics/Joints/b2GearJoint.cpp
+  40    14 .      Box2D/Box2D/Collision/Shapes/b2Shape.h
+  41    13 .      Box2D/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp
+  42    12 .      Box2D/Box2D/Collision/Shapes/b2ChainShape.h
+  43    12 .      Box2D/Box2D/Collision/Shapes/b2CircleShape.cpp
+  44    12 .      Box2D/Box2D/Dynamics/Joints/b2Joint.cpp
+  45    12 .      Box2D/Box2D/Collision/Shapes/b2PolygonShape.h
+  46    12 .      Box2D/Box2D/Dynamics/Joints/b2PrismaticJoint.h
+  47    12 .      Box2D/Box2D/Dynamics/Joints/b2RevoluteJoint.h
+  48    12 .      Box2D/Box2D/Collision/Shapes/b2EdgeShape.h
+  49    12 .      Box2D/Box2D/Dynamics/b2WorldCallbacks.h
+  50    12 .      Box2D/Box2D/Dynamics/Joints/b2LineJoint.h
+  51    12 .      Box2D/Box2D/Collision/Shapes/b2LoopShape.cpp
+  52    10 Y      include/box2d/box2d.h
+  53    10 .      Box2D/Box2D/Collision/b2Distance.h
+  54    10 .      Box2D/Box2D/Collision/b2TimeOfImpact.h
+  55     9 Y      include/box2d/types.h
+  56     9 Y      src/body.c
+  57     9 .      src/world.c
+
+all history:    322 files,  2029 touches
+  extant:        47 files,   144 touches
+  vanished:     275 files,  1885 touches
+
+same claim recomputed over EXTANT files only:
+  guard 30% -> test   6 files (13% of the 47 extant files that ever broke)
+  guard 50% -> test  12 files (26% of the 47 extant files that ever broke)
+  guard 60% -> test  16 files (34% of the 47 extant files that ever broke)
+  guard 80% -> test  28 files (60% of the 47 extant files that ever broke)

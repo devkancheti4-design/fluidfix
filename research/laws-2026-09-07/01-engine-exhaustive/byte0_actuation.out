@@ -1,0 +1,9 @@
+1. bytes handed to the engine law, in order:
+     x=  0 (none)                 -> law rules SHIP
+2. guard status='refused'  hint=''  attempts=0
+3. user-visible summary():
+     REFUSED: fault is outside the taught vocabulary (candidate files tried: mod.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds)
+4. .fluidfix/last_refusal.json hint:
+     "fault class is outside the taught vocabulary; register() it once and its family becomes free"
+5. any ACT NAME from the law present in the user-visible text? NONE
+6. tree untouched: True

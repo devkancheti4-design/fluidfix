@@ -1,0 +1,48 @@
+# fixture named -> /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/20-sight-misdirection/work/named-guard-b33
+# failing: True
+# failing output (tail, ANSI stripped by the body; shown raw here):
+   | ....F
+   | =================================== FAILURES ===================================
+   | __________________________ test_render_respects_limit __________________________
+   | 
+   |     def test_render_respects_limit():
+   | >       assert shell.render(["a", "b", "c", "d"], 3) == "a b c"
+   | E       AssertionError: assert 'a b c d' == 'a b c'
+   | E         
+   | E         - a b c
+   | E         + a b c d
+   | E         ?      ++
+   | 
+   | tests/test_shell.py:5: AssertionError
+   | =========================== short test summary info ============================
+   | FAILED tests/test_shell.py::test_render_respects_limit - AssertionError: asse...
+   | !!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+   | 1 failed, 4 passed in 0.05s
+
+# find_candidate_files order (what guard_once's first pass walks):
+   1. pkg/shell.py       byte=0x58 FAILONLY|NAMED|SMALL             priority=2
+   2. pkg/__init__.py    byte=0x48 FAILONLY|SMALL                   priority=2
+   3. pkg/utils.py       byte=0x40 SMALL                            priority=5
+   4. pkg/core.py        byte=0x40 SMALL                            priority=5
+   5. pkg/parser.py      byte=0x40 SMALL                            priority=5
+   6. pkg/types.py       byte=0xc0 SMALL|UBIQUITOUS                 priority=6
+# evidence: {"pointed": [], "lanes": {"FRAMED": [], "SCARCE": [], "LITERAL": []}}
+# SIGHT consulted for 6 file(s)
+
+# per-file ledger (order walked):
+    {"file": "pkg/shell.py", "suite_runs": 6, "repair_s": 2.1, "packet_s": 0.9, "acts": [5, 6, 15, 6, 1], "rejected": 5, "repaired": false, "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary "}
+    {"file": "pkg/__init__.py", "suite_runs": 2, "repair_s": 0.6, "packet_s": 0.8, "acts": [6], "rejected": 1, "repaired": false, "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary "}
+    {"file": "pkg/utils.py", "suite_runs": 3, "repair_s": 1.6, "packet_s": 0.7, "acts": [6, 1], "rejected": 2, "repaired": false, "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary "}
+    {"file": "pkg/core.py", "suite_runs": 3, "repair_s": 0.9, "packet_s": 0.8, "acts": [6, 1], "rejected": 2, "repaired": false, "reason": "every candidate left the suite red \u2014 fault is outside this vocabulary "}
+    {"file": "pkg/parser.py", "suite_runs": 1, "repair_s": 0.3, "packet_s": 0.8, "acts": [], "rejected": 0, "repaired": false, "reason": "wall-clock deadline reached mid-search \u2014 remaining observations untrie"}
+    {"file": "pkg/types.py", "suite_runs": 1, "repair_s": 0.3, "packet_s": 0.8, "acts": [], "rejected": 0, "repaired": false, "reason": "wall-clock deadline reached mid-search \u2014 remaining observations untrie"}
+# suite runs on WRONG files: 16, on the repaired file: 0
+
+# guard_once(budget=33) -> status=refused file=None seconds=14.0
+# candidates: ['pkg/shell.py', 'pkg/__init__.py', 'pkg/utils.py', 'pkg/core.py', 'pkg/parser.py', 'pkg/types.py']
+# rejected candidates by file (tried_log, capped at 64/file): {"pkg/shell.py": 5, "pkg/__init__.py": 1, "pkg/utils.py": 2, "pkg/core.py": 2}
+# first rejected candidate record: {"at": "pkg/shell.py:34", "tried": "    if limit <= 0:", "why": "FAILED tests/test_shell.py::test_render_respects_limit - AssertionError: asse..."}
+# hint: 'every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it'
+# summary():
+   | REFUSED: fault is outside the taught vocabulary (candidate files tried: pkg/shell.py, pkg/__init__.py, pkg/utils.py, pkg/core.py, pkg/parser.py, pkg/types.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 10 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+   |   hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it

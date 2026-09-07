@@ -1,0 +1,14 @@
+bytes the body can never build (FAILONLY & UBIQUITOUS): 64
+bytes buildable at all:                               192
+  of which FRAMED set (only via basename coincidence): 96
+  of which honestly measurable (FRAMED clear):         96
+priorities the honest bytes reach: [0, 2, 3, 4, 5, 6, 7]
+priorities reached by ANY byte:    [0, 2, 3, 4, 5, 6, 7]
+  FRAMED      set in   0 of 96 honest bytes
+  SCARCE      set in  48 of 96 honest bytes
+  LITERAL     set in  48 of 96 honest bytes
+  FAILONLY    set in  32 of 96 honest bytes
+  NAMED       set in  48 of 96 honest bytes
+  TOUCHED     set in  48 of 96 honest bytes
+  SMALL       set in  48 of 96 honest bytes
+  UBIQUITOUS  set in  32 of 96 honest bytes

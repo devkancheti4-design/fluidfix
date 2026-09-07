@@ -1,0 +1,12 @@
+FIXTURE: pad=0 bug_lineno=403 packet_lines=110 truncated=True bug_in_packet=False
+RUN: budget=325s  first_deadline=budget/3=108s  FLUIDFIX_CONFIRM=(default 1)  start=14:15:17
+  RULING t=   24.9s          CAPPED+REFUTED (0x60) -> RAISE_BUDGET           at guard.py:539  [suite runs so far: 110]
+  GREEN  t=  125.3s  suite run #511 passed
+  GREEN  t=  126.1s  suite run #512 passed
+  RULING t=  175.2s            BUILT+CAPPED (0x21) -> RAISE_BUDGET           at loop.py:217  [suite runs so far: 688]
+  RULING t=  175.2s                 REFUTED (0x40) -> HARVEST_COUNTEREXAMPLE at guard.py:612  [suite runs so far: 688]
+RESULT: budget=325 status=refused elapsed=175.2s suite_runs(check)=688 greens=2 green()=2 failing_output()=3
+  file=None tree_changed=False
+  hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists what was tried; teach the class or fix by hand'
+  summary='REFUSED: fault is outside the taught vocabulary (candidate files tried: mod.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 128 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists what was tried; teach the class or fix by hand'
+  attempts logged=128

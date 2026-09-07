@@ -1,0 +1,48 @@
+{
+ "id": 20,
+ "lineno": 57,
+ "kind": 10,
+ "kind_name": "flipped-comparison-direction",
+ "act": 15,
+ "orig": "    return age_days >= ttl",
+ "mutant": "    return age_days <= ttl",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 57,\n \"old_line\": \"    return age_days <= ttl\",\n \"new_line\": \"    return age_days >= ttl\",\n \"acts_tried\": [\n  5,\n  15\n ],\n \"suite_runs\": 3,\n \"seconds\": 1.427386999130249,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return age_days >= ttl\"\n ],\n \"tried_log\": [\n  {\n   \"at\": \"weakpkg2/core.py:57\",\n   \"tried\": \"    return age_days < ttl\",\n   \"why\": \"FAILED tests/test_core.py::test_is_expired_bool - assert False is True\"\n  }\n ],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 57,
+  "old_line": "    return age_days <= ttl",
+  "new_line": "    return age_days >= ttl",
+  "acts_tried": [
+   5,
+   15
+  ],
+  "suite_runs": 3,
+  "seconds": 1.427386999130249,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return age_days >= ttl"
+  ],
+  "tried_log": [
+   {
+    "at": "weakpkg2/core.py:57",
+    "tried": "    return age_days < ttl",
+    "why": "FAILED tests/test_core.py::test_is_expired_bool - assert False is True"
+   }
+  ],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "    return age_days >= ttl",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "    return age_days >= ttl"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

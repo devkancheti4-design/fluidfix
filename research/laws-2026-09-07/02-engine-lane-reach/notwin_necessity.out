@@ -1,0 +1,3 @@
+RESHAPE count 17 | all have NOTWIN set: True | all have SELF set: False
+AUTHOR_SUCCESSOR count 15 | all have NOTWIN set: True | all have SELF set: False
+situations with NOTWIN clear that rule RESHAPE or AUTHOR_SUCCESSOR: []

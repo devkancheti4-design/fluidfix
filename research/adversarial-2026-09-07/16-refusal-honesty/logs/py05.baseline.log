@@ -1,0 +1,3 @@
+[14:33:58] pkg/mod.py: repaired line 2 in 3 suite runs (3.5s):
+  - return a - b
+  + return b - a

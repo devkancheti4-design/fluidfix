@@ -1,0 +1,3 @@
+1788772129.714342000 -c pass
+1788772129.752970000 -c import pytest_timeout
+1788772129.804834000 -m pytest -q --no-header -p no:benchmark -x --tb=long

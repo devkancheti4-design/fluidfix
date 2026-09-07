@@ -1,0 +1,56 @@
+=== fixture: f05-readonly
+=== root:    /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/13-stale-and-symlink/fixtures/f05-readonly
+=== extra:   
+BEFORE ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154162180 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154162180
+BEFORE ./pkg/geom.py
+  content-sha256: 2e8ddced48d3bbb0f6e58b907720bb4da5d2cbb1b3c908713eaf4a77845cb41c
+  stat(name):     mode=-r--r--r-- inode=154162184 nlink=1 size=112
+  lstat(name):    mode=-r--r--r-- inode=154162184
+BEFORE ./tests/test_geom.py
+  content-sha256: 4a7765cd023ca3fbded5cb878a10cb28188aae677b93c0ff6f0fe0aa4b1535c8
+  stat(name):     mode=-rw-r--r-- inode=154162182 nlink=1 size=117
+  lstat(name):    mode=-rw-r--r-- inode=154162182
+=== guard run ===
+Traceback (most recent call last):
+  File "/Users/kanchetidevieswar/neo/fluidfix/.venv/bin/fluidfix", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/cli.py", line 762, in main
+    return args.fn(args)
+           ~~~~~~~^^^^^^
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/cli.py", line 111, in cmd_guard
+    report = guard_once(oracle, observer, coverage_target=args.cov,
+                        candidate_timeout=args.candidate_timeout,
+                        escalate_budget=args.escalate_budget,
+                        budget=args.budget)
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/guard.py", line 515, in guard_once
+    result = repair(oracle, rel, observations,
+                    candidate_timeout=candidate_timeout,
+                    deadline=first_deadline)
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/loop.py", line 353, in repair
+    _write(path, content)
+    ~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/loop.py", line 75, in _write
+    with open(path, "w", encoding="utf-8", newline="") as f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/13-stale-and-symlink/fixtures/f05-readonly/pkg/geom.py'
+=== guard exit: 1 ===
+AFTER ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154162180 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154162180
+AFTER ./pkg/geom.py
+  content-sha256: 2e8ddced48d3bbb0f6e58b907720bb4da5d2cbb1b3c908713eaf4a77845cb41c
+  stat(name):     mode=-r--r--r-- inode=154162184 nlink=1 size=112
+  lstat(name):    mode=-r--r--r-- inode=154162184
+AFTER ./tests/test_geom.py
+  content-sha256: 4a7765cd023ca3fbded5cb878a10cb28188aae677b93c0ff6f0fe0aa4b1535c8
+  stat(name):     mode=-rw-r--r-- inode=154162182 nlink=1 size=117
+  lstat(name):    mode=-rw-r--r-- inode=154162182
+=== leftovers in .fluidfix ===
+total 0
+drwxr-xr-x@ 2 kanchetidevieswar  staff   64 Sep  7 14:33 .
+drwxr-xr-x@ 7 kanchetidevieswar  staff  224 Sep  7 14:33 ..

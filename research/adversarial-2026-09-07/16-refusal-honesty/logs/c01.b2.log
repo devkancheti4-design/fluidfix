@@ -1,0 +1,5 @@
+  build: cc -O0 -o build/tests src/mathops.c src/util.c tests/test_main.c
+  test:  ./build/tests
+[14:41:40] REFUSED: nothing in the failure pointed at a file — no traceback frame, no discriminating literal, no taught signal narrow enough to localise. The ranking had only circumstantial evidence, so a bigger budget searches the same files in the same order. Files searched: src/mathops.c, src/util.c. What helps, in order: name the file yourself (--file <path>); make the failing assertion carry a value that occurs in few files; or teach a narrower signal for this class.
+  hint: --budget exhausted (2s)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/16-refusal-honesty/fixtures/c/c01_frame/.fluidfix/last_refusal.json

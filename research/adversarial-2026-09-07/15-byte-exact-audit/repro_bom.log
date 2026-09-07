@@ -1,0 +1,18 @@
+   import ok: 3
+   import ok: 3
+[repro-nobom] status=repaired suite_runs=6
+[repro-nobom] summary: mod.py: repaired line 4 in 6 suite runs (2.1s):
+  - if x >= t:
+  + if x > t:
+[repro-nobom] file == pristine-correct? True
+
+[repro-bom] status=refused suite_runs=None
+[repro-bom] summary: REFUSED: fault is outside the taught vocabulary (candidate files tried: mod.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 5 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: every generated candidate was rejected by the 
+    tried '    n = -1'                                     why='does not compile: invalid non-printable character U+FEFF (mod.py, line 1)'
+    tried '        if x > t:'                              why='does not compile: invalid non-printable character U+FEFF (mod.py, line 1)'
+    tried '        if x <= t:'                             why='does not compile: invalid non-printable character U+FEFF (mod.py, line 1)'
+    tried '            n += 0'                             why='does not compile: invalid non-printable character U+FEFF (mod.py, line 1)'
+    tried '            n -= 1'                             why='does not compile: invalid non-printable character U+FEFF (mod.py, line 1)'
+[repro-bom] file == pristine-correct? False
+

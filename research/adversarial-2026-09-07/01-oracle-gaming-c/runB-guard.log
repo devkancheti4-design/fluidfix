@@ -1,0 +1,5 @@
+  build: ./build.sh
+  test:  ./build/tests
+[14:29:22] src/geom.c: repaired line 10 in 7 suite runs (4.6s):
+  - return 2 * w - 2 * h;
+  + return 2 * w + 2 * h;

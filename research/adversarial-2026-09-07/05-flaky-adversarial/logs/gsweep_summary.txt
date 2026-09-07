@@ -1,0 +1,15 @@
+STRIKES=4 COOLDOWN=2  tree-clean | [14:37:47] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 
+STRIKES=4 COOLDOWN=4  tree-clean | [14:37:49] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 
+STRIKES=4 COOLDOWN=6  tree-clean | [14:37:52] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 
+STRIKES=5 COOLDOWN=2  tree-clean | [14:37:54] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 
+STRIKES=5 COOLDOWN=4  tree-clean | [14:37:56] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 
+STRIKES=5 COOLDOWN=6  tree-clean | [14:37:59] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 
+STRIKES=6 COOLDOWN=2  tree-clean | [14:38:02] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 
+STRIKES=6 COOLDOWN=4  TREE-CHANGED | [14:38:05] money.py: repaired line 5 in 3 suite runs (1.5s):
+STRIKES=6 COOLDOWN=6  TREE-CHANGED | [14:38:09] money.py: repaired line 5 in 3 suite runs (1.8s):
+STRIKES=7 COOLDOWN=2  tree-clean | [14:38:13] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 
+STRIKES=7 COOLDOWN=4  TREE-CHANGED | [14:38:16] money.py: repaired line 5 in 3 suite runs (1.4s):
+STRIKES=7 COOLDOWN=6  TREE-CHANGED | [14:38:19] money.py: repaired line 5 in 3 suite runs (1.5s):
+STRIKES=8 COOLDOWN=2  tree-clean | [14:38:22] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 
+STRIKES=8 COOLDOWN=4  tree-clean | [14:38:25] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 
+STRIKES=8 COOLDOWN=6  tree-clean | [14:38:28] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach 

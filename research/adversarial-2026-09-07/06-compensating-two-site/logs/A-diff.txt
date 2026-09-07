@@ -1,0 +1,9 @@
+--- fixture/billing/src/rate.c	2026-09-07 14:29:33
++++ run/A/src/rate.c	2026-09-07 14:30:35
+@@ -6,5 +6,5 @@
+  */
+ int rate_total(int units)
+ {
+-    return fee_for(units) + 25;
++    return fee_for(units) + 24;
+ }

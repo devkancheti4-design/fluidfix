@@ -1,0 +1,33 @@
+dictionary rules_personal_same_kind.py: 1 fault class(es) registered
+  0  strictness  (shipped)
+     a token containing < or > has one "=" too many or too few (a ">=" that
+     should be ">", a "<" that should be "<=", an "->" corrupted to "->=",
+     including inside strings)
+  1  literal-off-by-one  (shipped)
+     a numeric literal on the line is exactly one greater than correct (3601
+     for 3600, [2:] for [1:], group(2) for group(1))
+  2  swapped-return-operands  (shipped)
+     a "return a OP b" whose two operands are in the wrong order
+  3  flipped-additive  (shipped)
+     a binary " + " that should be " - ", or a " - " that should be " + "
+     (spaces around the operator)
+  4  wrong-rate-helper  (taught)
+     a rate helper call that names the gross helper where the net one is meant
+  5  (free for users — teach it with register() in a --dictionary file)
+  6  (free for users — teach it with register() in a --dictionary file)
+  7  (free for users — teach it with register() in a --dictionary file)
+  8  minmax-swap  (shipped)
+     a call to min( that should be max(, or a max( that should be min(
+  9  flipped-augmented-assign  (shipped)
+     an augmented assignment "+=" that should be "-=", or a "-=" that should
+     be "+="
+ 10  flipped-comparison-direction  (shipped)
+     a comparison pointing the wrong way: a "<" that should be ">" or a "<="
+     that should be ">=" (or vice versa), with the operands themselves in the
+     right order
+ 11  reversed-minus-operands  (shipped)
+     a returned or assigned subtraction "a - b" whose operands are reversed —
+     the correct expression is "b - a"
+ 12  flipped-boolean  (shipped)
+     a boolean literal True that should be False, or a False that should be
+     True

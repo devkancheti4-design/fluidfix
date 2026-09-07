@@ -1,0 +1,36 @@
+STRIKES=1 COOLDOWN=1  REFUSED no observation named a kind this vocabulary can repair
+STRIKES=1 COOLDOWN=2  REFUSED no failing test — nothing to repair
+STRIKES=1 COOLDOWN=3  REFUSED no failing test — nothing to repair
+STRIKES=1 COOLDOWN=4  REFUSED no failing test — nothing to repair
+STRIKES=1 COOLDOWN=5  REFUSED no failing test — nothing to repair
+STRIKES=1 COOLDOWN=6  REFUSED no failing test — nothing to repair
+STRIKES=2 COOLDOWN=1  REFUSED no failing test — nothing to repair
+STRIKES=2 COOLDOWN=2  REFUSED no failing test — nothing to repair
+STRIKES=2 COOLDOWN=3  REFUSED no failing test — nothing to repair
+STRIKES=2 COOLDOWN=4  REFUSED no failing test — nothing to repair
+STRIKES=2 COOLDOWN=5  REFUSED no failing test — nothing to repair
+STRIKES=2 COOLDOWN=6  REFUSED no failing test — nothing to repair
+STRIKES=3 COOLDOWN=1  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=3 COOLDOWN=2  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=3 COOLDOWN=3  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=3 COOLDOWN=4  SHIPPED-WRONG 'return b - a'
+STRIKES=3 COOLDOWN=5  SHIPPED-WRONG 'return b - a'
+STRIKES=3 COOLDOWN=6  SHIPPED-WRONG 'return b - a'
+STRIKES=4 COOLDOWN=1  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=4 COOLDOWN=2  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=4 COOLDOWN=3  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=4 COOLDOWN=4  SHIPPED-WRONG 'return a + b'
+STRIKES=4 COOLDOWN=5  SHIPPED-WRONG 'return a + b'
+STRIKES=4 COOLDOWN=6  SHIPPED-WRONG 'return a + b'
+STRIKES=5 COOLDOWN=1  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=5 COOLDOWN=2  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=5 COOLDOWN=3  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=5 COOLDOWN=4  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=5 COOLDOWN=5  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=5 COOLDOWN=6  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=6 COOLDOWN=1  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=6 COOLDOWN=2  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=6 COOLDOWN=3  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=6 COOLDOWN=4  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=6 COOLDOWN=5  REFUSED every candidate left the suite red — fault is outside this vocabulary 
+STRIKES=6 COOLDOWN=6  REFUSED every candidate left the suite red — fault is outside this vocabulary 

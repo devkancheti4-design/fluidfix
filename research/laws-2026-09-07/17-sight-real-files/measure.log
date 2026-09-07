@@ -1,0 +1,207 @@
+=== slice 0..3  11:00:19
+--- [0] src/aabb.c:45 ' - '->' + '
+    status=refused body_rank=10 law_rank=2 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': True, 'ubiquitous': False} fails=['AABBRayCastTest', 'CollisionTest'] 4.0s 
+--- [1] src/bitset.c:33 ' + '->' - '
+    status=refused body_rank=None law_rank=None bits=None fails=[] 7.7s 
+--- [2] src/distance.c:84 ' + '->' - '
+    status=refused body_rank=30 law_rank=1 bits={'framed': False, 'scarce': True, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 4.1s 
+=== slice rc=0 11:00:35
+=== slice 3..6  11:00:36
+--- [3] src/dynamic_tree.c:67 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [4] src/geometry.c:38 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [5] src/hull.c:236 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+=== slice rc=0 11:01:07
+=== slice 6..9  11:01:07
+--- [6] src/manifold.c:136 ' + '->' - '
+    status=refused body_rank=26 law_rank=25 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': False, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['LargeWorldBulletTest', 'LargeWorldTest'] 11.8s 
+--- [7] src/math_functions.c:114 ' + '->' - '
+    status=refused body_rank=2 law_rank=1 bits={'framed': False, 'scarce': True, 'literal': False, 'failonly': True, 'named': True, 'touched': True, 'small': True, 'ubiquitous': False} fails=['MathTest'] 3.7s 
+--- [8] src/revolute_joint.c:268 ' + '->' - '
+    status=refused body_rank=22 law_rank=13 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 3.9s 
+=== slice rc=0 11:01:26
+=== slice 9..12  11:01:27
+--- [9] src/shape.c:44 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [10] src/constraint_graph.c:37 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [11] src/broad_phase.c:230 ' < '->' > '
+    status=refused body_rank=25 law_rank=10 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 6.9s 
+=== slice rc=0 11:01:53
+=== slice 12..15  11:01:53
+--- [12] src/contact.c:599 ' > '->' < '
+    status=refused body_rank=27 law_rank=8 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 6.3s 
+--- [13] src/distance_joint.c:397 ' - '->' + '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [14] src/physics_world.c:961 ' > '->' < '
+    status=refused body_rank=1 law_rank=3 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 4.0s 
+=== slice rc=0 11:02:12
+=== slice 15..18  11:02:12
+--- [15] src/prismatic_joint.c:456 ' - '->' + '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [16] src/body.c:28 ' > '->' < '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [17] src/contact_solver.c:2481 ' < '->' > '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+=== slice rc=0 11:02:36
+=== slice 18..21  11:02:36
+--- [18] src/island.c:108 ' >= '->' < '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [19] src/joint.c:167 ' < '->' > '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [20] src/solver.c:140 ' > '->' < '
+    status=refused body_rank=3 law_rank=2 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': False, 'touched': True, 'small': False, 'ubiquitous': False} fails=['MultithreadingTest', 'DeterminismTest'] 5.7s 
+=== slice rc=0 11:03:03
+=== slice 21..24  11:03:03
+--- [21] src/table.c:105 ' + '->' - '
+    status=refused body_rank=1 law_rank=1 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': True, 'touched': True, 'small': False, 'ubiquitous': False} fails=['HashSetStressTest', 'TableTest'] 7.3s 
+--- [22] src/world_snapshot.c:239 ' > '->' < '
+    status=refused body_rank=4 law_rank=2 bits={'framed': False, 'scarce': False, 'literal': False, 'failonly': True, 'named': True, 'touched': True, 'small': False, 'ubiquitous': False} fails=['LargeWorldRecordingTest', 'LargeWorldTest'] 11.6s 
+--- [23] src/sensor.c:140 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+=== slice rc=0 11:03:30
+=== slice 24..27  11:03:30
+--- [24] src/wheel_joint.c:267 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [25] src/weld_joint.c:194 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+--- [26] src/motor_joint.c:239 ' + '->' - '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+=== slice rc=0 11:03:56
+=== slice 27..30  11:03:56
+--- [27] src/solver_set.c:161 ' > 1 '->' < 1 '
+    status=green body_rank=None law_rank=None bits=None fails=None Nones suite still green: defect not observable
+=== slice rc=0 11:04:03
+=== ALL DONE 11:04:03
+=== retry src/dynamic_tree.c 11:04:17
+--- [retry src/dynamic_tree.c alt 0] L196 ' < '->' > '
+    status=refused body_rank=1 law_rank=1 fails=['TreeGridMovementTest', 'DynamicTreeTest'] 10.1s
+=== slice rc=0 11:04:27
+=== retry src/geometry.c 11:04:27
+--- [retry src/geometry.c alt 0] L61 ' < '->' > '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry src/geometry.c alt 1] L323 ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry src/geometry.c alt 2] L597 ' > '->' < '
+    status=refused body_rank=3 law_rank=4 fails=['RayCastShapeTest', 'ShapeTest'] 23.9s
+=== slice rc=0 11:05:04
+=== retry src/hull.c 11:05:04
+--- [retry src/hull.c alt 0] L32 ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry src/hull.c alt 1] L40 ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry src/hull.c alt 2] L46 ' > '->' < '
+=== retry2 src/hull.c 14:16:35
+--- [retry2 src/hull.c alt L46] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/hull.c alt L52] ' < '->' > '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/hull.c alt L92] ' < '->' > '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/hull.c alt L121] ' < '->' > '
+    status=green body_rank=None law_rank=None fails=None Nones
+=== retry2 src/shape.c 14:17:37
+--- [retry2 src/shape.c alt L977] ' < '->' > '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/shape.c alt L71] '0.5f'->'0.25f'
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/shape.c alt L77] '0.5f'->'0.25f'
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/shape.c alt L710] '0.5f'->'0.25f'
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/shape.c alt L716] '0.5f'->'0.25f'
+    status=green body_rank=None law_rank=None fails=None Nones
+=== retry2 src/body.c 14:18:27
+--- [retry2 src/body.c alt L594] ' > '->' < '
+    status=refused body_rank=28 law_rank=6 fails=['MultithreadingTest', 'DeterminismTest'] 4.2s
+=== retry2 src/island.c 14:18:39
+--- [retry2 src/island.c alt L135] ' > '->' < '
+    status=refused body_rank=None law_rank=None fails=[] 3.3s
+=== retry2 src/distance_joint.c 14:18:55
+--- [retry2 src/distance_joint.c alt L389] ' < '->' > '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/distance_joint.c alt L392] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/distance_joint.c alt L444] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/distance_joint.c alt L478] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/distance_joint.c alt L402] ' + '->' - '
+    status=green body_rank=None law_rank=None fails=None Nones
+=== retry2 src/prismatic_joint.c 14:19:39
+--- [retry2 src/prismatic_joint.c alt L504] ' < '->' > '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/prismatic_joint.c alt L510] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/prismatic_joint.c alt L551] ' < '->' > '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/prismatic_joint.c alt L557] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/prismatic_joint.c alt L461] ' + '->' - '
+    status=green body_rank=None law_rank=None fails=None Nones
+=== retry2 src/wheel_joint.c 14:20:34
+--- [retry2 src/wheel_joint.c alt L411] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/wheel_joint.c alt L449] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/wheel_joint.c alt L310] ' + '->' - '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/wheel_joint.c alt L388] ' + '->' - '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/wheel_joint.c alt L389] ' + '->' - '
+    status=green body_rank=None law_rank=None fails=None Nones
+=== retry2 src/weld_joint.c 14:21:17
+--- [retry2 src/weld_joint.c alt L379] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/weld_joint.c alt L403] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/weld_joint.c alt L387] ' - '->' + '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/weld_joint.c alt L388] ' + '->' - '
+    status=green body_rank=None law_rank=None fails=None Nones
+=== retry2 src/motor_joint.c 14:21:48
+--- [retry2 src/motor_joint.c alt L333] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/motor_joint.c alt L383] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/motor_joint.c alt L399] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/motor_joint.c alt L410] ' > '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/motor_joint.c alt L272] ' + '->' - '
+    status=green body_rank=None law_rank=None fails=None Nones
+=== retry2 src/contact_solver.c alt2 14:23:49
+--- [retry2 src/contact_solver.c alt L1673] ' <= '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/contact_solver.c alt L1679] ' < '->' > '
+    status=refused body_rank=3 law_rank=None fails=[] 4.8s
+=== retry2 src/joint.c alt2 14:24:13
+--- [retry2 src/joint.c alt L292] ' && '->' || '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/joint.c alt L309] ' >= '->' > '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/joint.c alt L382] ' > '->' < '
+    status=refused body_rank=24 law_rank=11 fails=['MultithreadingTest', 'DeterminismTest'] 3.0s
+=== retry2 src/recording_replay.c alt2 14:24:34
+--- [retry2 src/recording_replay.c alt L31] ' < '->' > '
+    status=refused body_rank=16 law_rank=4 fails=['LargeWorldRecordingTest', 'LargeWorldTest'] 9.2s
+=== retry2 src/recording.c alt2 14:24:51
+--- [retry2 src/recording.c alt L23] ' <= '->' < '
+    status=green body_rank=None law_rank=None fails=None Nones
+--- [retry2 src/recording.c alt L35] ' > '->' < '
+    status=refused body_rank=None law_rank=None fails=[] 8.1s
+=== fill2 14:28:38
+--- [fill src/aabb.c] L45
+    status=refused body_rank=10 law_rank=4 3.7s
+--- [fill src/distance.c] L84
+    status=refused body_rank=30 law_rank=1 3.2s
+--- [fill src/manifold.c] L136
+    status=refused body_rank=26 law_rank=25 8.2s
+--- [fill src/math_functions.c] L114
+    status=refused body_rank=2 law_rank=1 2.6s
+--- [fill src/revolute_joint.c] L268
+    status=refused body_rank=22 law_rank=13 3.1s
+--- [fill src/broad_phase.c] L230
+    status=refused body_rank=25 law_rank=10 3.0s

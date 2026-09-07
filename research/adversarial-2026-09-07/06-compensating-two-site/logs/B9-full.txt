@@ -1,0 +1,5 @@
+  build: cmake --build build -j8
+  test:  ./build/tests
+[14:40:50] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h, src/tier.c). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 1 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: AMBIGUOUS: 2 candidates at 2 different lines (10, 18) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/06-compensating-two-site/run/B9/.fluidfix/last_refusal.json

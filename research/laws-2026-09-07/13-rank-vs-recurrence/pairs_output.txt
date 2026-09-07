@@ -1,0 +1,73 @@
+=== box2d: 6850 paired -/+ lines in fix commits ===
+coarse labels: {'multi-token': 2593, 'other-token': 1878, 'off-by-one': 22, 'other-literal': 8, 'sign': 6, 'compare': 2}
+reachable by a shipped class: 8
+winning class frequency: [('flipped-additive', 5), ('strictness', 2), ('literal-off-by-one', 1)]
+distinct fix commits among reachable: 6
+=== cglm: 2252 paired -/+ lines in fix commits ===
+coarse labels: {'multi-token': 1015, 'other-token': 910, 'off-by-one': 10, 'sign': 10, 'other-literal': 6, 'compare': 3}
+reachable by a shipped class: 44
+winning class frequency: [('literal-off-by-one', 40), ('flipped-comparison-direction', 2), ('strictness', 1), ('flipped-additive', 1)]
+distinct fix commits among reachable: 16
+
+=== replay on the defect line, reachable pairs ===
+repo   sha        coarse        win kind                     kinds               loop  best recurLOO  old => new
+box2d  d1581fb721 compare       strictness                   [0, 3, 10]             1     1        2  if ( distanceOutput.distance < target + toler => if ( distanceOutput.distance <= target + tole
+box2d  bcc834bc1d compare       strictness                   [0, 1, 10]             2     2        2  if ( 0.0f < value && value < maxFraction ) => if ( 0.0f < value && value <= maxFraction )
+box2d  e6a8a5df00 sign          flipped-additive             [2, 3]                 4     3        3  return inv_dt * (m_impulse.x * m_perp + (m_mo => return inv_dt * (m_impulse.x * m_perp + (m_mo
+box2d  b6a97c6980 other-token   literal-off-by-one           [0, 1, 10]             3     1        3  #include <GLES3/gl2ext.h> => #include <GLES2/gl2ext.h>
+box2d  8458df02ec sign          flipped-additive             [3]                    1     1        1  // c = qc * rc - qs * rs => // c = qc * rc + qs * rs
+box2d  8458df02ec sign          flipped-additive             [3, 11]                1     1        1  qr.c = q.c * r.c - q.s * r.s; => qr.c = q.c * r.c + q.s * r.s;
+box2d  0c88219142 sign          flipped-additive             [3]                    1     1        1  // c = qc * rc - qs * rs => // c = qc * rc + qs * rs
+box2d  0c88219142 sign          flipped-additive             [3, 11]                1     1        1  qr.c = q.c * r.c - q.s * r.s; => qr.c = q.c * r.c + q.s * r.s;
+cglm   2acdd1e4d0 other-token   literal-off-by-one           [1]                    1     1        1  glm_vec3_scale(g00, norm[0], g00); // g00 *=  => glm_vec2_scale(g00, norm[0], g00); // g00 *= 
+cglm   2acdd1e4d0 other-token   literal-off-by-one           [1]                    1     1        1  glm_vec3_scale(g01, norm[1], g01); // g01 *=  => glm_vec2_scale(g01, norm[1], g01); // g01 *= 
+cglm   2acdd1e4d0 other-token   literal-off-by-one           [1]                    1     1        1  glm_vec3_scale(g10, norm[2], g10); // g10 *=  => glm_vec2_scale(g10, norm[2], g10); // g10 *= 
+cglm   2acdd1e4d0 other-token   literal-off-by-one           [1]                    1     1        1  glm_vec3_scale(g11, norm[3], g11); // g11 *=  => glm_vec2_scale(g11, norm[3], g11); // g11 *= 
+cglm   45c1beff51 off-by-one    literal-off-by-one           [1]                    1     1        1  #if 1 /* TODO measure both */ => #if 0 /* TODO measure both */
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    9     9        9  glmc_mat4x3_mul(mat4x3 m1, mat3x4 m2, mat4 de => glmc_mat4x3_mul(mat4x3 m1, mat3x4 m2, mat3 de
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    9     9        9  CGLM_INLINE void glm_mat4x3_mul(mat4x3 m1, ma => CGLM_INLINE void glm_mat4x3_mul(mat4x3 m1, ma
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    7     7        7  * glm_mat4x3_mul(mat4x3, mat3x4, mat4); => * glm_mat4x3_mul(mat4x3, mat3x4, mat3);
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    1     1        1  * @param[out] dest destination matrix (mat4) => * @param[out] dest destination matrix (mat3)
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    9     9        9  glm_mat4x3_mul(mat4x3 m1, mat3x4 m2, mat4 des => glm_mat4x3_mul(mat4x3 m1, mat3x4 m2, mat3 des
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    1     1        1  CGLM_INLINE mat4s   glms_mat4x3_mul(mat4x3s m => CGLM_INLINE mat3s   glms_mat4x3_mul(mat4x3s m
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    1     1        1  * @returns destination matrix (mat4s) => * @returns destination matrix (mat3s)
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    1     1        1  mat4s => mat3s
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    1     1        1  mat4s r; => mat3s r;
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    1     1        1  vec4s => vec3s
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    1     1        1  vec4s r; => vec3s r;
+cglm   a0e3d3766f other-token   literal-off-by-one           [1]                    9     9        9  glmc_mat4x3_mul(mat4x3 m1, mat3x4 m2, mat4 de => glmc_mat4x3_mul(mat4x3 m1, mat3x4 m2, mat3 de
+cglm   1340b5d512 other-token   literal-off-by-one           [1]                    5     5        5  glms_mat3x4_(mulv)(mat3x4s m, vec4s v) { => glms_mat3x4_(mulv)(mat3x4s m, vec3s v) {
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    9     9        9  glmc_mat3x2_mul(mat3x2 m1, mat2x3 m2, mat3 de => glmc_mat3x2_mul(mat3x2 m1, mat2x3 m2, mat2 de
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    9     9        9  CGLM_INLINE void glm_mat3x2_mul(mat3x2 m1, ma => CGLM_INLINE void glm_mat3x2_mul(mat3x2 m1, ma
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    7     7        7  * glm_mat3x2_mul(mat3x2, mat2x3, mat3); => * glm_mat3x2_mul(mat3x2, mat2x3, mat2);
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    1     1        1  * @param[out] dest destination matrix (mat3) => * @param[out] dest destination matrix (mat2)
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    9     9        9  glm_mat3x2_mul(mat3x2 m1, mat2x3 m2, mat3 des => glm_mat3x2_mul(mat3x2 m1, mat2x3 m2, mat2 des
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    1     1        1  CGLM_INLINE mat3s   glms_mat3x2_mul(mat3x2s m => CGLM_INLINE mat2s   glms_mat3x2_mul(mat3x2s m
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    1     1        1  mat3s => mat2s
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    1     1        1  mat3s r; => mat2s r;
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    1     1        1  vec3s => vec2s
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    1     1        1  vec3s r; => vec2s r;
+cglm   2283c708c6 other-token   literal-off-by-one           [1]                    9     9        9  glmc_mat3x2_mul(mat3x2 m1, mat2x3 m2, mat3 de => glmc_mat3x2_mul(mat3x2 m1, mat2x3 m2, mat2 de
+cglm   050bc95264 other-token   literal-off-by-one           [1]                    5     5        5  glms_mat2x3_(mulv)(mat2x3s m, vec3s v) { => glms_mat2x3_(mulv)(mat2x3s m, vec2s v) {
+cglm   6ad0aca7e0 compare       flipped-comparison-direction [0, 1, 10]             4     1        4  if (k > 0.0f) { => if (k < 0.0f) {
+cglm   340292c0fb off-by-one    literal-off-by-one           [1]                    2     2        2  glm_vec2(m[3], v[0]); => glm_vec2(m[2], v[0]);
+cglm   340292c0fb off-by-one    literal-off-by-one           [1]                    2     2        2  glm_vec2(m[3], v[1]); => glm_vec2(m[2], v[1]);
+cglm   82892085b3 other-token   literal-off-by-one           [1]                    2     2        2  #define GLMS_MAT2_IDENTITY ((mat3s)GLMS_MAT2_ => #define GLMS_MAT2_IDENTITY ((mat2s)GLMS_MAT2_
+cglm   82892085b3 other-token   literal-off-by-one           [1]                    2     2        2  #define GLMS_MAT2_ZERO     ((mat3s)GLMS_MAT2_ => #define GLMS_MAT2_ZERO     ((mat2s)GLMS_MAT2_
+cglm   2a4748d452 other-token   literal-off-by-one           [1]                    1     1        1  glm_pickmatrix(vec3 center, vec2 size, vec4 v => glm_pickmatrix(vec2 center, vec2 size, vec4 v
+cglm   2a4748d452 other-token   literal-off-by-one           [1]                    1     1        1  glms_pickmatrix(vec3s center, vec2s size, vec => glms_pickmatrix(vec2s center, vec2s size, vec
+cglm   a610626693 other-token   literal-off-by-one           [1]                    1     1        1  CGLM_INLINE bool  glm_vec_eq_eps(vec4 v, floa => CGLM_INLINE bool  glm_vec_eq_eps(vec3 v, floa
+cglm   a610626693 other-token   literal-off-by-one           [1]                    1     1        1  glm_vec_eq_eps(vec4 v, float val) { => glm_vec_eq_eps(vec3 v, float val) {
+cglm   40458be41b off-by-one    literal-off-by-one           [1]                    5     5        5  glm_vec4_scale(c[0], 1.0f / c[1][3], dest[0]) => glm_vec4_scale(c[0], 1.0f / c[0][3], dest[0])
+cglm   3e4f52b3af compare       flipped-comparison-direction [0, 10]                2     1        2  if (a < b) => if (a > b)
+cglm   16107c4ba1 off-by-one    literal-off-by-one           [1]                    1     1        1  dest[3] = 0.0f; => dest[2] = 0.0f;
+cglm   086c1cf326 compare       strictness                   [0, 1, 3, 10]          1     1       10  path = (fabsf(a[0][0]) + fabsf(a[0][1]) + fab => path = (fabsf(a[0][0]) + fabsf(a[0][1]) + fab
+cglm   05c76fa992 sign          flipped-additive             [1, 3, 11]             3     1        3  dest[0][1] = cz * sx * sy - cx * sz; => dest[0][1] = cz * sx * sy + cx * sz;
+
+suite runs on the defect line, summed over reachable pairs:
+  box2d: n=8 loop-order=14 recurrence-order(LOO)=14 winner-first(bound)=11
+  cglm: n=44 loop-order=142 recurrence-order(LOO)=151 winner-first(bound)=136
+candidates spent on NON-winning kinds ahead of the winner (loop order): {'swapped-return-operands': 1, 'strictness': 4, 'literal-off-by-one': 4}
+reachable pairs whose winning kind is outside kinds[:2] (CHEAP slice): 1 of 52
+one-token pairs NOT reachable by any shipped class, by label: {'other-token': 2752, 'off-by-one': 27, 'other-literal': 14, 'sign': 10}
+wrote pairs_results.json

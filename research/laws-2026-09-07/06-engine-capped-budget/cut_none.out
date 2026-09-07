@@ -1,0 +1,10 @@
+FIXTURE: 76 lines, bug at mod.py:73, first-pass packet lines=73 truncated=False bug_in_packet=True
+RUN: budget=None  first_deadline=unbounded
+  GREEN  t=  19.1s  suite run #71 passed
+  GREEN  t=  19.7s  suite run #72 passed
+  RULING t=  20.3s             BUILT (0x01) -> SHIP                   at loop.py:217  [suite runs so far: 74]
+RESULT: budget=None status=repaired elapsed=20.3s suite_runs=74 of 73 candidates
+  result.reason='engine law: BUILT -> SHIP'
+  result.suite_runs=74 tried_log=64
+  hint=''
+  summary='mod.py: repaired line 73 in 74 suite runs (18.9s):\n  - if v > limit:\n  + if v >= limit:'

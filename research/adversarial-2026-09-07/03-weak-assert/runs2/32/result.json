@@ -1,0 +1,44 @@
+{
+ "id": 32,
+ "lineno": 85,
+ "kind": 2,
+ "kind_name": "swapped-return-operands",
+ "act": 7,
+ "orig": "    return arrivals - served",
+ "mutant": "    return served - arrivals",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 85,\n \"old_line\": \"    return served - arrivals\",\n \"new_line\": \"    return arrivals - served\",\n \"acts_tried\": [\n  7,\n  8\n ],\n \"suite_runs\": 3,\n \"seconds\": 2.4283549785614014,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return arrivals - served\",\n  \"    return served + arrivals\"\n ],\n \"tried_log\": [],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 85,
+  "old_line": "    return served - arrivals",
+  "new_line": "    return arrivals - served",
+  "acts_tried": [
+   7,
+   8
+  ],
+  "suite_runs": 3,
+  "seconds": 2.4283549785614014,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return arrivals - served",
+   "    return served + arrivals"
+  ],
+  "tried_log": [],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "    return arrivals - served",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "    return arrivals - served",
+  "    return served + arrivals"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

@@ -1,0 +1,144 @@
+{
+ "name": "ctx_attr_case1",
+ "src": "tests/test_context_transforms.py test_value_found_in_repo_case1",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "wrong-attribute"
+ },
+ "status": "repaired",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 2.7,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 2,
+   "input_order": [
+    3,
+    6
+   ],
+   "ranked_order": [
+    3,
+    6
+   ],
+   "rows": [
+    {
+     "lineno": 3,
+     "kinds": [
+      1
+     ],
+     "classes": [
+      "literal-off-by-one"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "s.id = 7"
+    },
+    {
+     "lineno": 6,
+     "kinds": [
+      4
+     ],
+     "classes": [
+      "wrong-attribute"
+     ],
+     "byte": 8,
+     "bits": "SIGNALED",
+     "priority": 3,
+     "text": "return u.name"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 3,
+   "kinds": [
+    1
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "        s.id = 6"
+   ]
+  },
+  {
+   "lineno": 6,
+   "kinds": [
+    4
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 2,
+   "cands": [
+    "    return u.id",
+    "    return u.name"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "3-3",
+     "new": "s.id = 6"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "6-6",
+     "new": "return u.id"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "6-6",
+     "new": "return u.id"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 3,
+ "winner": {
+  "lineno": 6,
+  "new_line": "    return u.id",
+  "old_line": "    return u.name",
+  "kind": 4,
+  "class": "wrong-attribute",
+  "act": 9,
+  "first_green_check": 2,
+  "suite_runs": 3,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 3,
+  "bits": "SIGNALED",
+  "position_ranked": 2,
+  "n_obs": 2,
+  "position_input": 2,
+  "same_priority_ahead": 1,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 1,
+  "kinds_on_line": 1,
+  "class_slot_position": 2,
+  "class_slots_total": 2
+ }
+}

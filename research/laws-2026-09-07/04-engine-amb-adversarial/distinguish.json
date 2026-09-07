@@ -1,0 +1,173 @@
+[
+ {
+  "name": "F1-spelled-twice-one-site",
+  "spec": "SHIP",
+  "body_amb": false,
+  "greens": [
+   [
+    2,
+    "if units >= 10:"
+   ],
+   [
+    2,
+    "if units > 9:"
+   ]
+  ],
+  "probe": {
+   "samples": 2000,
+   "functions": [
+    "price"
+   ],
+   "disagreements": 0,
+   "witness": null
+  },
+  "probe_amb": false
+ },
+ {
+  "name": "F2-two-programs-one-set",
+  "spec": "ADD_STATE",
+  "body_amb": true,
+  "greens": [
+   [
+    2,
+    "return a + b - c"
+   ],
+   [
+    2,
+    "return a - b + c"
+   ]
+  ],
+  "probe": {
+   "samples": 2000,
+   "functions": [
+    "net"
+   ],
+   "disagreements": 1955,
+   "witness": "net(-4, -19, 10): ('ok', -33) vs ('ok', 25)"
+  },
+  "probe_amb": true
+ },
+ {
+  "name": "F3-two-programs-two-sites",
+  "spec": "ADD_STATE",
+  "body_amb": true,
+  "greens": [
+   [
+    2,
+    "return x + 1"
+   ],
+   [
+    4,
+    "return g(x)"
+   ]
+  ],
+  "probe": {
+   "samples": 2000,
+   "functions": [
+    "g",
+    "f"
+   ],
+   "disagreements": 993,
+   "witness": "g(1,): ('ok', 2) vs ('ok', 3)"
+  },
+  "probe_amb": true
+ },
+ {
+  "name": "F4-two-programs-one-site-two-acts",
+  "spec": "ADD_STATE",
+  "body_amb": false,
+  "greens": [
+   [
+    2,
+    "return delta - base"
+   ],
+   [
+    2,
+    "return base + delta"
+   ]
+  ],
+  "probe": {
+   "samples": 2000,
+   "functions": [
+    "apply_delta",
+    "ident"
+   ],
+   "disagreements": 974,
+   "witness": "apply_delta(-10, -5): ('ok', 5) vs ('ok', -15)"
+  },
+  "probe_amb": true
+ },
+ {
+  "name": "F4b-two-programs-one-site-two-acts-swapped-roles",
+  "spec": "ADD_STATE",
+  "body_amb": false,
+  "greens": [
+   [
+    2,
+    "return delta - base"
+   ],
+   [
+    2,
+    "return base + delta"
+   ]
+  ],
+  "probe": {
+   "samples": 2000,
+   "functions": [
+    "apply_delta",
+    "ident"
+   ],
+   "disagreements": 956,
+   "witness": "apply_delta(-13, 3): ('ok', 16) vs ('ok', -10)"
+  },
+  "probe_amb": true
+ },
+ {
+  "name": "F5-one-program-twice-in-one-set",
+  "spec": "SHIP",
+  "body_amb": true,
+  "greens": [
+   [
+    2,
+    "return (n) * (n + 1) // 2"
+   ],
+   [
+    2,
+    "return (n + 1) * (n) // 2"
+   ]
+  ],
+  "probe": {
+   "samples": 2000,
+   "functions": [
+    "tri"
+   ],
+   "disagreements": 0,
+   "witness": null
+  },
+  "probe_amb": false
+ },
+ {
+  "name": "F6-one-program-two-sites",
+  "spec": "ADD_STATE",
+  "body_amb": true,
+  "greens": [
+   [
+    3,
+    "return units >= LIMIT"
+   ],
+   [
+    1,
+    "LIMIT = 9"
+   ]
+  ],
+  "probe": {
+   "samples": 2000,
+   "functions": [
+    "bulk"
+   ],
+   "disagreements": 0,
+   "witness": null
+  },
+  "probe_amb": false
+ }
+]

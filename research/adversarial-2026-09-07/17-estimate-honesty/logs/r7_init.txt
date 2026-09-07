@@ -1,0 +1,2 @@
+wrote test_fluidfix_smoke.py guarding 3 module(s)
+next: fluidfix guard . --commit

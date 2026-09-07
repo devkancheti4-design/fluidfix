@@ -1,0 +1,40 @@
+== run: out/span_budget450.json
+suite runs judged (probe rows): 901
+span: 2.2s .. 239.0s
+
+-- rows per phase: {'pass0': 110, 'escalation': 791}
+  pass0      n= 110  t=    2.2..   26.1  wall=  24.1s  suite-time=  23.8s (99%)  rate=4.561 cand/s  mean run=0.22s
+  escalation n= 791  t=   27.9..  239.0  wall= 211.4s  suite-time= 208.8s (99%)  rate=3.742 cand/s  mean run=0.26s
+
+-- repeated work (identical mutated file content re-tested)
+  distinct candidate programs: 791 of 901 rows
+  repeated rows: 110 (12.2% of all suite runs)
+  wall clock burned on repeats: 29.1s of 232.6s suite time (12.5%)
+    first tried in escalation re-tried in escalation : 1
+    first tried in pass0      re-tried in escalation : 109
+  ESCALATION: 110 of 791 of its suite runs (13.9%) re-test a program pass0 already judged
+  escalation's FIRST candidate pass0 had not already judged: t=28.1 (escalation began at t=27.9)
+
+-- progress-rate curve (20s buckets): cum = cumulative suite-judged
+   candidates; new = cumulative DISTINCT programs
+      t_end      n    cum    new   cand/s phase(s)
+         20     81     81     81    4.050 pass0
+         40     83    164    156    4.150 escalation+pass0
+         60     91    255    235    4.550 escalation
+         80     92    347    314    4.600 escalation
+        100     90    437    392    4.500 escalation
+        120     78    515    458    3.900 escalation
+        140     66    581    515    3.300 escalation
+        160     73    654    578    3.650 escalation
+        180     68    722    637    3.400 escalation
+        200     61    783    689    3.050 escalation
+        220     61    844    742    3.050 escalation
+        240     57    901    791    2.850 escalation
+
+-- engine law rulings observed
+   t=   27.0  pass0      bits=CAPPED,REFUTED               -> RAISE_BUDGET
+   t=  239.3  escalation bits=REFUTED                      -> HARVEST_COUNTEREXAMPLE
+
+-- repair() calls
+   pass0      mod.py                   t=    2.0..   26.4 runs= 110 repaired=False obs=110 log=64 more=46
+   escalation mod.py                   t=   27.7..  239.3 runs= 791 repaired=False obs=802 log=64 more=725

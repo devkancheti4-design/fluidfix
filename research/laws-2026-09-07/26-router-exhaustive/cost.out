@@ -1,0 +1,14 @@
+fixture                  kinds           routed  all-appliers   saved
+k0_strictness            [0, 1, 3, 10]        5             5       0
+k1_literal_off_by_one    [1, 2]               2             2       0
+k2_swapped_return        [2]                  1             1       0
+k3_flipped_additive      [2, 3]               2             2       0
+k8_minmax_swap           [8]                  1             1       0
+k9_flipped_augmented     [1, 9]               2             2       0
+k10_flipped_comparison   [0, 10]              2             2       0
+k11_reversed_minus       [3, 11]              2             2       0
+k12_flipped_boolean      [12]                 1             1       0
+out_of_vocab             []                   0             0       0
+TOTAL                                        18            18       0
+
+routed / unrouted candidates = 18/18 = 1.000   (each candidate is one suite run)

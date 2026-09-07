@@ -1,0 +1,13 @@
+churn: 322 files / 2029 touches
+vendored-or-demo that _SKIP missed: 80 files / 240 touches (11.8%)
+    16  Box2D/HelloWorld/HelloWorld.cpp
+     8  Box2D/glfw/config.h
+     6  Contributions/Platforms/iPhone/Classes/GLES-Render.h
+     5  Box2D/glfw/cocoa_platform.h
+     5  Box2D/glfw/cocoa_time.c
+     5  Box2D/glfw/glfw3native.h
+     5  Box2D/glfw/init.c
+     5  Box2D/glfw/input.c
+     5  Box2D/glfw/monitor.c
+     5  Box2D/glfw/win32_init.c
+inside the 57-file '60%' set: 1 such files

@@ -1,0 +1,130 @@
+{
+ "fixture": "F6-order-sensitive",
+ "forced_file_order": [
+  "mod.py",
+  "totals.py",
+  "bounds.py"
+ ],
+ "status": "repaired",
+ "file": "mod.py",
+ "seconds": 3.36,
+ "suite_runs": 6,
+ "events": [
+  {
+   "seq": 1,
+   "kind": "RANK",
+   "byte": 44,
+   "prio": 2,
+   "bits": [
+    "NAMED",
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 2,
+   "kind": "RANK",
+   "byte": 44,
+   "prio": 2,
+   "bits": [
+    "NAMED",
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 3,
+   "kind": "RANK",
+   "byte": 44,
+   "prio": 2,
+   "bits": [
+    "NAMED",
+    "SIGNALED",
+    "CHEAP"
+   ]
+  },
+  {
+   "seq": 4,
+   "kind": "LINEORD",
+   "rel": "mod.py",
+   "lines": [
+    2,
+    4,
+    5
+   ],
+   "kinds": [
+    [
+     1
+    ],
+    [
+     0,
+     10
+    ],
+    [
+     1,
+     9
+    ]
+   ]
+  },
+  {
+   "seq": 5,
+   "kind": "KIND",
+   "mask": 2,
+   "klass": 1
+  },
+  {
+   "seq": 6,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 7,
+   "kind": "KIND",
+   "mask": 1025,
+   "klass": 0
+  },
+  {
+   "seq": 8,
+   "kind": "RUN",
+   "ok": true
+  },
+  {
+   "seq": 9,
+   "kind": "RUN",
+   "ok": true
+  },
+  {
+   "seq": 10,
+   "kind": "KIND",
+   "mask": 1024,
+   "klass": 10
+  },
+  {
+   "seq": 11,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 12,
+   "kind": "KIND",
+   "mask": 514,
+   "klass": 1
+  },
+  {
+   "seq": 13,
+   "kind": "RUN",
+   "ok": false
+  },
+  {
+   "seq": 14,
+   "kind": "KIND",
+   "mask": 512,
+   "klass": 9
+  },
+  {
+   "seq": 15,
+   "kind": "RUN",
+   "ok": false
+  }
+ ]
+}

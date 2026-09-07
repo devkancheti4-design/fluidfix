@@ -1,0 +1,12 @@
+{
+ "id": 33,
+ "lineno": 85,
+ "kind": 3,
+ "kind_name": "flipped-additive",
+ "act": 8,
+ "orig": "    return arrivals - served",
+ "mutant": "    return arrivals + served",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

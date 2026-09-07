@@ -1,0 +1,48 @@
+== distribution of the rank of the winner (27 repaired fixtures) ==
+law priority of the winning line: {0: 12, 2: 1, 3: 14}
+winner's position in the law's RANKED order: {1: 23, 2: 3, 3: 1}
+winner's position in raw LINE order (what you get with no law): {1: 16, 2: 9, 3: 1, 4: 1}
+winner's bits: {'SIGNALED+CHEAP': 11, 'FRAME+NAMED+SIGNALED+CHEAP': 8, 'FRAME+SIGNALED+CHEAP': 4, 'SIGNALED': 3, 'NAMED+SIGNALED+CHEAP': 1}
+
+== does a priority class predict the winner? ==
+counted over the governing ranking table of each repaired fixture
+governing tables: 27
+priority  observations  were the winner  precision
+0         12            12               12/12 = 100%
+2         3             1                1/3 = 33%
+3         33            14               14/33 = 42%
+
+== when the law gave NO discrimination (all observations same priority) ==
+fixtures whose governing table is a single flat priority class: 19/27
+  of those, winner already first in line order: 15 / 19
+  fixture / n_obs / winner input pos: [('acts_minmax', 1, 1), ('ctx_attr_case1', 2, 2), ('ctx_attr_case2', 3, 3), ('ctx_median_r1', 1, 1), ('ctx_median_r2', 1, 1), ('demo_billing', 1, 1), ('e2e_count_above', 3, 2), ('fusion_cmp_ge', 2, 1), ('proof_member1_billing', 1, 1), ('proof_member2_metrics', 1, 1), ('proof_member3_scoring', 1, 1), ('proof_member5_report', 1, 1), ('regress_teach_andor', 1, 1), ('span_guarded', 2, 1), ('span_rate_block', 2, 1), ('span_scale_pair', 2, 1), ('teach_round_span', 2, 1), ('teach_split', 1, 1), ('teach_wrong_attr', 2, 2)]
+
+== where the law actually MOVED the winner up ==
+7/27 fixtures: [('ctx_zero_guard_r2', 4, 1), ('demo_invoices_dict', 2, 1), ('demo_metrics_dict', 2, 1), ('dict_payroll', 2, 1), ('guard_join2', 2, 1), ('proof_member4_cart', 2, 1), ('teach_get_default', 2, 1)]
+suite runs those moves saved (each skipped line costs its candidate sets):
+  ctx_zero_guard_r2        lines jumped: [2, 3, 4]  (candidate sets those lines were later asked for: 3, candidates: 3)
+  demo_invoices_dict       lines jumped: [2]  (candidate sets those lines were later asked for: 1, candidates: 1)
+  demo_metrics_dict        lines jumped: [2]  (candidate sets those lines were later asked for: 1, candidates: 1)
+  dict_payroll             lines jumped: [2]  (candidate sets those lines were later asked for: 1, candidates: 1)
+  guard_join2              lines jumped: [1]  (candidate sets those lines were later asked for: 1, candidates: 1)
+  proof_member4_cart       lines jumped: [2]  (candidate sets those lines were later asked for: 1, candidates: 1)
+  teach_get_default        lines jumped: [2]  (candidate sets those lines were later asked for: 1, candidates: 1)
+lines the law jumped over, total: 9
+NOTE: a line the law demoted below the winner is usually never asked for a
+candidate set at all, so its avoided cost is not in this log -> unmeasured.
+
+== refusals: the ranking the law produced before the engine law stopped ==
+ref_amb_two_greens         status=refused runs=4
+    mod.py: [(1, 3, 'SIGNALED+CHEAP')]
+ref_andor_untaught         status=refused runs=None
+    mod.py: []
+ref_cmp_unsatisfiable      status=refused runs=None
+    mod.py: [(2, 3, 'SIGNALED+CHEAP'), (4, 3, 'SIGNALED+CHEAP')]
+ref_mul_out_of_vocab       status=refused runs=None
+    mod.py: [(2, 3, 'SIGNALED+CHEAP')]
+ref_proof_control          status=refused runs=None
+    shipping.py: [(2, 2, 'NAMED+SIGNALED+CHEAP')]
+ref_two_lines_single_edit  status=refused runs=None
+    mod.py: [(2, 3, 'SIGNALED+CHEAP'), (3, 3, 'SIGNALED+CHEAP')]
+regress_crlf_cmp           status=refused runs=4
+    mod.py: [(2, 3, 'SIGNALED+CHEAP'), (3, 3, 'SIGNALED+CHEAP')]

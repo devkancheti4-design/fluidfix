@@ -1,0 +1,20 @@
+ERROR research/laws-2026-09-07/42-change-granularity-actuation/fixtures/shapeB/test_it.py
+ERROR research/laws-2026-09-07/42-change-granularity-actuation/work/granA3j8k1yqq/repo/test_it.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx/tests/test_cart.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx/tests/test_discount.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx/tests/test_formatting.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx/tests/test_shipping.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx/tests/test_tax.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx_base/tests/test_cart.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx_base/tests/test_discount.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx_base/tests/test_formatting.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx_base/tests/test_shipping.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx_base/tests/test_tax.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx_clean/tests/test_cart.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx_clean/tests/test_discount.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx_clean/tests/test_formatting.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx_clean/tests/test_shipping.py
+ERROR research/laws-2026-09-07/43-add-material-actuation/fx_clean/tests/test_tax.py
+ERROR research/laws-2026-09-07/45-harvest-counterexample/crossrun_base_uarva7mb/test_all.py
+!!!!!!!!!!!!!!!!!! Interrupted: 807 errors during collection !!!!!!!!!!!!!!!!!!!
+807 errors in 2.84s

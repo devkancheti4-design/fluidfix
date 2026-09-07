@@ -1,0 +1,6 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/13-stale-and-symlink/dict_span.py: 1 fault class(es) registered
+[14:38:14] pkg/geom.py: repaired line 2 in 4 suite runs (1.6s):
+  - t = a - b
+    return -t
+  + t = a + b
+    return t

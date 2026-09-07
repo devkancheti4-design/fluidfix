@@ -1,0 +1,219 @@
+{
+ "name": "ctx_zero_guard_r2",
+ "src": "tests/test_context_transforms.py test_multiline_logic_fix_from_one_example (r2)",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "missing-zero-guard"
+ },
+ "status": "repaired",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {},
+ "seconds": 2.5,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 4,
+   "input_order": [
+    2,
+    3,
+    4,
+    7
+   ],
+   "ranked_order": [
+    7,
+    2,
+    3,
+    4
+   ],
+   "rows": [
+    {
+     "lineno": 7,
+     "kinds": [
+      4
+     ],
+     "classes": [
+      "missing-zero-guard"
+     ],
+     "byte": 45,
+     "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+     "priority": 0,
+     "text": "return events / seconds"
+    },
+    {
+     "lineno": 2,
+     "kinds": [
+      1
+     ],
+     "classes": [
+      "literal-off-by-one"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "if b == 0:"
+    },
+    {
+     "lineno": 3,
+     "kinds": [
+      1
+     ],
+     "classes": [
+      "literal-off-by-one"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "return 0"
+    },
+    {
+     "lineno": 4,
+     "kinds": [
+      4
+     ],
+     "classes": [
+      "missing-zero-guard"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "return a / b"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 7,
+   "kinds": [
+    4
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "    if seconds == 0:\n        return 0\n    return events / seconds"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    if b == -1:"
+   ]
+  },
+  {
+   "lineno": 3,
+   "kinds": [
+    1
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "        return -1"
+   ]
+  },
+  {
+   "lineno": 4,
+   "kinds": [
+    4
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "    if b == 0:\n        return 0\n    return a / b"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "7-6",
+     "new": "if seconds == 0:\\nreturn 0"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "7-6",
+     "new": "if seconds == 0:\\nreturn 0"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "if b == -1:"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "3-3",
+     "new": "return -1"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-1",
+     "new": "if b == 0:\\nreturn 0"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 5,
+ "winner": {
+  "lineno": 7,
+  "new_line": "    if seconds == 0:\n        return 0\n    return events / seconds",
+  "old_line": "    return events / seconds",
+  "kind": 4,
+  "class": "missing-zero-guard",
+  "act": 9,
+  "first_green_check": 1,
+  "suite_runs": 5,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 0,
+  "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 4,
+  "position_input": 4,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 1,
+  "kinds_on_line": 1,
+  "class_slot_position": 1,
+  "class_slots_total": 4
+ }
+}

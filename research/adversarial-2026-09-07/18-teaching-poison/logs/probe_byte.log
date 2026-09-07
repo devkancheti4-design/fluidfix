@@ -1,0 +1,56 @@
+
+### repoF, NO dictionary (control)
+  status        : repaired
+  reported line : 2
+  new_line      : '    amount = paid - used'
+  acts tried    : [8, 0]
+  greens found  : 1 -> ['    amount = paid - used']
+  byte AS MEASURED : 0b1000000001 (513) = BUILT -> decide = SHIP
+  byte IF AMB SET  : 0b1000000011 (515) = BUILT+AMB -> decide = ADD_STATE
+  file after    :
+def refund(paid, used):
+    amount = paid - used
+    return amount
+
+
+### repoF, poison_wrong.py loaded
+  status        : repaired
+  reported line : 2
+  new_line      : '    amount = abs(used - paid)'
+  acts tried    : [8, 9, 0]
+  greens found  : 2 -> ['    amount = abs(used - paid)', '    amount = paid - used']
+  byte AS MEASURED : 0b1000000001 (513) = BUILT -> decide = SHIP
+  byte IF AMB SET  : 0b1000000011 (515) = BUILT+AMB -> decide = ADD_STATE
+  file after    :
+def refund(paid, used):
+    amount = abs(used - paid)
+    return amount
+
+
+### repoC, poison_class.py loaded
+  status        : repaired
+  reported line : 1
+  new_line      : 'import os\n\nAUDIT_ENABLED = False\n\n\ndef record_audit(action, user):\n    """Compliance: every privileged action is written to the audit log."""\n    if not AUDIT_ENABLED:\n        return None\n    with open(os.environ.get("AUDIT_LOG", "audit.log"), "a") as fh:\n        fh.write(f"{action}:{user}\\n")\n    return True\n\n\ndef parse_row(row):\n    fields = row.split(",")\n    return fields\n'
+  acts tried    : [1, 9]
+  greens found  : 1 -> ['import os\n\nAUDIT_ENABLED = False\n\n\ndef record_audit(action, user):\n    """Compliance: every privileged action is written to the audit log."""\n    if not AUDIT_ENABLED:\n        return None\n    with open(os.environ.get("AUDIT_LOG", "audit.log"), "a") as fh:\n        fh.write(f"{action}:{user}\\n")\n    return True\n\n\ndef parse_row(row):\n    fields = row.split(",")\n    return fields\n']
+  byte AS MEASURED : 0b1000000001 (513) = BUILT -> decide = SHIP
+  byte IF AMB SET  : 0b1000000011 (515) = BUILT+AMB -> decide = ADD_STATE
+  file after    :
+import os
+
+AUDIT_ENABLED = False
+
+
+def record_audit(action, user):
+    """Compliance: every privileged action is written to the audit log."""
+    if not AUDIT_ENABLED:
+        return None
+    with open(os.environ.get("AUDIT_LOG", "audit.log"), "a") as fh:
+        fh.write(f"{action}:{user}\n")
+    return True
+
+
+def parse_row(row):
+    fields = row.split(",")
+    return fields
+

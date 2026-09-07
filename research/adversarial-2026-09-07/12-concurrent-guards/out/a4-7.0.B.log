@@ -1,0 +1,3 @@
+  recovered vpkg/calc.py: a previous run was killed mid-candidate; original bytes restored from the journal
+[14:36:40] REFUSED: fault is outside the taught vocabulary (candidate files tried: vpkg/calc.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/12-concurrent-guards/work/a4-7.0/.fluidfix/last_refusal.json

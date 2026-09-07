@@ -1,0 +1,140 @@
+==============================================================================
+F1-spelled-twice-one-site
+  units > 10 (defect) vs correct units >= 10. Kind 0 gives `units >= 10`, kind
+  1 gives `units > 9`: ONE program spelled twice at one site, from two acts.
+  Spec: NOT AMB -> SHIP.
+  spec ruling: SHIP
+  [direct] ruling=SHIP matches_spec=True pin=PASS suite_runs=4
+    observations: [(2, [0, 1, 10])]
+    greens (2): ['if units >= 10:', 'if units > 9:']
+    shipped: 'if units >= 10:' at line 2
+    law consulted with: ['0x201=BUILT->SHIP']
+    reason: engine law: BUILT -> SHIP
+  [guard] ruling=SHIP matches_spec=True pin=PASS suite_runs=4
+    guard status: repaired file=mod.py
+    greens (2): ['if units >= 10:', 'if units > 9:']
+    shipped: 'if units >= 10:' at line 2
+    law consulted with: ['0x201=BUILT->SHIP']
+    reason: engine law: BUILT -> SHIP
+==============================================================================
+F2-two-programs-one-set
+  a - b - c (defect) vs correct a + b - c; test net(1,2,2)==1 also admits a -
+  b + c. Kind 3's ONE candidate set holds both greens: two DIFFERENT programs
+  at one site. Spec: AMB -> ADD_STATE.
+  spec ruling: ADD_STATE
+  [direct] ruling=ADD_STATE matches_spec=True pin=n/a (refused) suite_runs=4
+    observations: [(2, [2, 3, 11])]
+    greens (2): ['return a + b - c', 'return a - b + c']
+    shipped: None at line None
+    law consulted with: ['0x203=BUILT+AMB->ADD_STATE']
+    reason: AMBIGUOUS: 2 candidates at 1 different lines (2) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+  [guard] ruling=ADD_STATE matches_spec=True pin=n/a (refused) suite_runs=4
+    guard status: refused file=mod.py
+    greens (2): ['return a + b - c', 'return a - b + c']
+    shipped: None at line None
+    law consulted with: ['0x203=BUILT+AMB->ADD_STATE']
+    reason: AMBIGUOUS: 2 candidates at 1 different lines (2) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+==============================================================================
+F3-two-programs-two-sites
+  g: x + 2 (defect, correct x + 1); f: g(x) + 1 (correct). Test f(1)==3 is
+  greened by fixing g (line 2) OR by breaking f to `g(x)` so the faults cancel
+  (line 4). Two DIFFERENT programs at two sites. Spec: AMB -> ADD_STATE.
+  spec ruling: ADD_STATE
+  [direct] ruling=ADD_STATE matches_spec=True pin=n/a (refused) suite_runs=5
+    observations: [(2, [1, 2, 3]), (4, [1, 2, 3])]
+    greens (2): ['return x + 1', 'return g(x)']
+    shipped: None at line None
+    law consulted with: ['0x203=BUILT+AMB->ADD_STATE']
+    reason: AMBIGUOUS: 2 candidates at 2 different lines (2, 4) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+  [guard] ruling=ADD_STATE matches_spec=True pin=n/a (refused) suite_runs=5
+    guard status: refused file=mod.py
+    greens (2): ['return x + 1', 'return g(x)']
+    shipped: None at line None
+    law consulted with: ['0x203=BUILT+AMB->ADD_STATE']
+    reason: AMBIGUOUS: 2 candidates at 2 different lines (2, 4) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+==============================================================================
+F4-two-programs-one-site-two-acts
+  base - delta (defect) vs correct base + delta; test apply_delta(0,5)==5 also
+  admits delta - base. Kind 2 (swap operands) -> `delta - base` GREEN (wrong
+  program); kind 3 (flip additive) -> `base + delta` GREEN (right program).
+  Two DIFFERENT programs at ONE site from TWO acts. Spec: AMB -> ADD_STATE.
+  Measurement: set_amb=False, sites=1.
+  spec ruling: ADD_STATE
+  [direct] ruling=SHIP matches_spec=False pin=FAIL suite_runs=3
+    observations: [(2, [2, 3, 11])]
+    greens (2): ['return delta - base', 'return base + delta']
+    shipped: 'return delta - base' at line 2
+    law consulted with: ['0x201=BUILT->SHIP']
+    reason: engine law: BUILT -> SHIP
+  [guard] ruling=SHIP matches_spec=False pin=FAIL suite_runs=3
+    guard status: repaired file=mod.py
+    greens (2): ['return delta - base', 'return base + delta']
+    shipped: 'return delta - base' at line 2
+    law consulted with: ['0x201=BUILT->SHIP']
+    reason: engine law: BUILT -> SHIP
+==============================================================================
+F4b-two-programs-one-site-two-acts-swapped-roles
+  Same line and same weak test as F4, but now the INTENDED program is delta -
+  base (kind 2's candidate). Shows which of the two greens ships is decided by
+  kind NUMBER (EMIT = lowest bit), not by evidence.
+  spec ruling: ADD_STATE
+  [direct] ruling=SHIP matches_spec=False pin=PASS suite_runs=3
+    observations: [(2, [2, 3, 11])]
+    greens (2): ['return delta - base', 'return base + delta']
+    shipped: 'return delta - base' at line 2
+    law consulted with: ['0x201=BUILT->SHIP']
+    reason: engine law: BUILT -> SHIP
+  [guard] ruling=SHIP matches_spec=False pin=PASS suite_runs=3
+    guard status: repaired file=mod.py
+    greens (2): ['return delta - base', 'return base + delta']
+    shipped: 'return delta - base' at line 2
+    law consulted with: ['0x201=BUILT->SHIP']
+    reason: engine law: BUILT -> SHIP
+==============================================================================
+F5-one-program-twice-in-one-set
+  (n + 1) * (n + 1) // 2 (defect) vs correct n * (n + 1) // 2. Kind 1's ONE
+  candidate set yields `(n) * (n + 1) // 2` and `(n + 1) * (n) // 2`: ONE
+  program (commutative product) spelled twice, inside one set. Spec: NOT AMB
+  -> SHIP. Measurement: set_amb=True.
+  spec ruling: SHIP
+  [direct] ruling=ADD_STATE matches_spec=False pin=n/a (refused) suite_runs=3
+    observations: [(2, [1, 2, 3])]
+    greens (2): ['return (n) * (n + 1) // 2', 'return (n + 1) * (n) // 2']
+    shipped: None at line None
+    law consulted with: ['0x203=BUILT+AMB->ADD_STATE']
+    reason: AMBIGUOUS: 2 candidates at 1 different lines (2) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+  [guard] ruling=ADD_STATE matches_spec=False pin=n/a (refused) suite_runs=3
+    guard status: refused file=mod.py
+    greens (2): ['return (n) * (n + 1) // 2', 'return (n + 1) * (n) // 2']
+    shipped: None at line None
+    law consulted with: ['0x203=BUILT+AMB->ADD_STATE']
+    reason: AMBIGUOUS: 2 candidates at 1 different lines (2) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+==============================================================================
+F6-one-program-two-sites
+  LIMIT = 10 (line 1); return units > LIMIT (line 3, defect; correct >=). Kind
+  0 at line 3 -> `>=` GREEN; kind 1 at line 1 -> `LIMIT = 9` GREEN.
+  Extensionally ONE program (LIMIT has one use), but at TWO sites. Spec
+  (CHANGELOG): greens at two lines = two claims about WHERE = AMB ->
+  ADD_STATE.
+  spec ruling: ADD_STATE
+  [direct] ruling=ADD_STATE matches_spec=True pin=n/a (refused) suite_runs=4
+    observations: [(3, [0, 10]), (1, [1])]
+    greens (2): ['return units >= LIMIT', 'LIMIT = 9']
+    shipped: None at line None
+    law consulted with: ['0x203=BUILT+AMB->ADD_STATE']
+    reason: AMBIGUOUS: 2 candidates at 2 different lines (1, 3) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+  [guard] ruling=ADD_STATE matches_spec=True pin=n/a (refused) suite_runs=4
+    guard status: refused file=mod.py
+    greens (2): ['return units >= LIMIT', 'LIMIT = 9']
+    shipped: None at line None
+    law consulted with: ['0x203=BUILT+AMB->ADD_STATE']
+    reason: AMBIGUOUS: 2 candidates at 2 different lines (1, 3) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+==============================================================================
+fixture                                          spec       direct     guard      pin(direct/guard)
+F1-spelled-twice-one-site                        SHIP       SHIP       SHIP       PASS/PASS
+F2-two-programs-one-set                          ADD_STATE  ADD_STATE  ADD_STATE  n/a (refused)/n/a (refused)
+F3-two-programs-two-sites                        ADD_STATE  ADD_STATE  ADD_STATE  n/a (refused)/n/a (refused)
+F4-two-programs-one-site-two-acts                ADD_STATE  SHIP       SHIP       FAIL/FAIL
+F4b-two-programs-one-site-two-acts-swapped-roles ADD_STATE  SHIP       SHIP       PASS/PASS
+F5-one-program-twice-in-one-set                  SHIP       ADD_STATE  ADD_STATE  n/a (refused)/n/a (refused)
+F6-one-program-two-sites                         ADD_STATE  ADD_STATE  ADD_STATE  n/a (refused)/n/a (refused)

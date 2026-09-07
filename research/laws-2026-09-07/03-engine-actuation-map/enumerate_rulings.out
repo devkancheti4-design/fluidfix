@@ -1,0 +1,57 @@
+== Part A: all 256 bytes -> ruling (job=DEBUG) ==
+  SHIP                     4/256
+  ADD_STATE              113/256
+  ADD_MATERIAL            64/256
+  RESHAPE                 17/256
+  CHANGE_GRANULARITY      16/256
+  RAISE_BUDGET            23/256
+  HARVEST_COUNTEREXAMPLE   4/256
+  AUTHOR_SUCCESSOR        15/256
+  single-bit rulings:
+    BUILT    -> SHIP
+    AMB      -> ADD_STATE
+    UNREAD   -> ADD_MATERIAL
+    NOTWIN   -> RESHAPE
+    HIDDEN   -> CHANGE_GRANULARITY
+    CAPPED   -> RAISE_BUDGET
+    REFUTED  -> HARVEST_COUNTEREXAMPLE
+    SELF     -> SHIP
+    (none)   -> SHIP
+
+== Part B: situations the body can construct, per call site ==
+  loop.py:217 _rule(): BUILT=True, AMB=set_amb|sites>1, CAPPED=capped
+      BUILT                  -> SHIP
+      BUILT+CAPPED           -> RAISE_BUDGET
+      BUILT+AMB              -> ADD_STATE
+      BUILT+AMB+CAPPED       -> ADD_STATE
+  loop.py:391 confirm-runs disagree: HIDDEN=True
+      HIDDEN                 -> CHANGE_GRANULARITY
+  guard.py:491 no candidates & no pytest-cov: UNREAD=True
+      UNREAD                 -> ADD_MATERIAL
+  guard.py:539 escalation gate: CAPPED=capped0, REFUTED=acts0
+      (none)                 -> SHIP
+      REFUTED                -> HARVEST_COUNTEREXAMPLE
+      CAPPED                 -> RAISE_BUDGET
+      CAPPED+REFUTED         -> RAISE_BUDGET
+  guard.py:612/618 refusal wording: REFUTED=True
+      REFUTED                -> HARVEST_COUNTEREXAMPLE
+  cli.py:474 selfcheck: each of BUILT/AMB/UNREAD/CAPPED/REFUTED alone
+      BUILT                  -> SHIP
+      AMB                    -> ADD_STATE
+      UNREAD                 -> ADD_MATERIAL
+      CAPPED                 -> RAISE_BUDGET
+      REFUTED                -> HARVEST_COUNTEREXAMPLE
+
+== Part C: acts the body can ever receive from a decide() call ==
+  SHIP                   REACHABLE
+  ADD_STATE              REACHABLE
+  ADD_MATERIAL           REACHABLE
+  RESHAPE                never returned to the body
+  CHANGE_GRANULARITY     REACHABLE
+  RAISE_BUDGET           REACHABLE
+  HARVEST_COUNTEREXAMPLE REACHABLE
+  AUTHOR_SUCCESSOR       never returned to the body
+
+== bytes that rule each act the body never receives ==
+  RESHAPE: 17 bytes; e.g. NOTWIN, BUILT+NOTWIN, BUILT+NOTWIN+HIDDEN, BUILT+NOTWIN+CAPPED, BUILT+NOTWIN+HIDDEN+CAPPED, BUILT+NOTWIN+REFUTED
+  AUTHOR_SUCCESSOR: 15 bytes; e.g. NOTWIN+HIDDEN, NOTWIN+CAPPED, NOTWIN+HIDDEN+CAPPED, NOTWIN+REFUTED, NOTWIN+HIDDEN+REFUTED, NOTWIN+CAPPED+REFUTED

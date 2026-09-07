@@ -1,0 +1,62 @@
+[  1%] Building C object CMakeFiles/cglm.dir/src/io.c.o
+[  5%] Building C object CMakeFiles/cglm.dir/src/euler.c.o
+[  7%] Building C object CMakeFiles/cglm.dir/src/quat.c.o
+[  7%] Building C object CMakeFiles/cglm.dir/src/affine.c.o
+[  8%] Building C object CMakeFiles/cglm.dir/src/vec2.c.o
+[ 10%] Building C object CMakeFiles/cglm.dir/src/cam.c.o
+[ 12%] Building C object CMakeFiles/cglm.dir/src/vec3.c.o
+[ 14%] Building C object CMakeFiles/cglm.dir/src/ivec2.c.o
+[ 16%] Building C object CMakeFiles/cglm.dir/src/ivec3.c.o
+[ 17%] Building C object CMakeFiles/cglm.dir/src/vec4.c.o
+[ 19%] Building C object CMakeFiles/cglm.dir/src/ivec4.c.o
+[ 21%] Building C object CMakeFiles/cglm.dir/src/mat2.c.o
+[ 23%] Building C object CMakeFiles/cglm.dir/src/mat2x3.c.o
+[ 25%] Building C object CMakeFiles/cglm.dir/src/mat3x2.c.o
+[ 26%] Building C object CMakeFiles/cglm.dir/src/mat2x4.c.o
+[ 28%] Building C object CMakeFiles/cglm.dir/src/mat3.c.o
+[ 30%] Building C object CMakeFiles/cglm.dir/src/mat3x4.c.o
+[ 32%] Building C object CMakeFiles/cglm.dir/src/mat4.c.o
+[ 33%] Building C object CMakeFiles/cglm.dir/src/mat4x2.c.o
+[ 35%] Building C object CMakeFiles/cglm.dir/src/mat4x3.c.o
+[ 37%] Building C object CMakeFiles/cglm.dir/src/plane.c.o
+[ 39%] Building C object CMakeFiles/cglm.dir/src/noise.c.o
+[ 41%] Building C object CMakeFiles/cglm.dir/src/frustum.c.o
+[ 42%] Building C object CMakeFiles/cglm.dir/src/box.c.o
+[ 44%] Building C object CMakeFiles/cglm.dir/src/aabb2d.c.o
+[ 46%] Building C object CMakeFiles/cglm.dir/src/sphere.c.o
+[ 48%] Building C object CMakeFiles/cglm.dir/src/project.c.o
+[ 50%] Building C object CMakeFiles/cglm.dir/src/ease.c.o
+[ 51%] Building C object CMakeFiles/cglm.dir/src/curve.c.o
+[ 53%] Building C object CMakeFiles/cglm.dir/src/bezier.c.o
+[ 55%] Building C object CMakeFiles/cglm.dir/src/ray.c.o
+[ 57%] Building C object CMakeFiles/cglm.dir/src/affine2d.c.o
+[ 58%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_lh_no.c.o
+[ 60%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_lh_zo.c.o
+[ 62%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_rh_no.c.o
+[ 64%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_rh_zo.c.o
+[ 66%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_lh_no.c.o
+[ 67%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_lh_zo.c.o
+[ 69%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_rh_no.c.o
+[ 71%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_rh_zo.c.o
+[ 73%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_lh_no.c.o
+[ 75%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_lh_zo.c.o
+[ 76%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_rh_no.c.o
+[ 78%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_rh_zo.c.o
+[ 80%] Building C object CMakeFiles/cglm.dir/src/clipspace/project_no.c.o
+[ 82%] Building C object CMakeFiles/cglm.dir/src/clipspace/project_zo.c.o
+[ 83%] Linking C shared library libcglm.dylib
+[ 83%] Built target cglm
+[ 85%] Building C object test/CMakeFiles/tests.dir/runner.c.o
+[ 87%] Building C object test/CMakeFiles/tests.dir/src/test_bezier.c.o
+[ 89%] Building C object test/CMakeFiles/tests.dir/src/test_clamp.c.o
+[ 91%] Building C object test/CMakeFiles/tests.dir/src/test_hostile.c.o
+[ 94%] Building C object test/CMakeFiles/tests.dir/src/test_common.c.o
+[ 96%] Building C object test/CMakeFiles/tests.dir/src/test_struct.c.o
+[ 96%] Building C object test/CMakeFiles/tests.dir/src/test_euler.c.o
+[ 98%] Building C object test/CMakeFiles/tests.dir/src/tests.c.o
+/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/20-end-to-end-hostile/repo-hostile/test/runner.c:72:11: warning: implicit conversion from 'clock_t' (aka 'unsigned long') to 'double' may lose precision [-Wimplicit-int-float-conversion]
+   72 |       if (elapsed > 0.01)
+      |           ^~~~~~~ ~
+1 warning generated.
+[100%] Linking C executable ../tests
+[100%] Built target tests

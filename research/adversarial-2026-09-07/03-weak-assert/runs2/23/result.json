@@ -1,0 +1,12 @@
+{
+ "id": 23,
+ "lineno": 67,
+ "kind": 1,
+ "kind_name": "literal-off-by-one",
+ "act": 6,
+ "orig": "    return (lo + hi) / 2",
+ "mutant": "    return (lo + hi) / 1",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

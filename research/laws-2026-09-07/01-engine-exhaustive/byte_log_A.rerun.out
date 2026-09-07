@@ -1,0 +1,4 @@
+status='refused' file=None candidates=['mod.py']
+hint=''
+bytes handed to decide(), in order:
+    x=  0 (none)                 -> SHIP

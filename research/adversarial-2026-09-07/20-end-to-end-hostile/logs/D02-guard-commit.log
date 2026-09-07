@@ -1,0 +1,4 @@
+[14:57:54] billing.py: repaired line 2 in 5 suite runs (3.1s):
+  - if days >= 30:
+  + if days > 30:
+  committed

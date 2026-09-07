@@ -1,0 +1,57 @@
+=== suite runs on the defect line, summed over the 52 reachable pairs ===
+  loop (kind id, lanes.EMIT)                              box2d= 14 cglm=142 total=156
+  recurrence per line, same repo, LOO                     box2d= 14 cglm=151 total=165
+  recurrence per commit, same repo, LOO                   box2d= 14 cglm=151 total=165
+  recurrence pooled both repos, LOO                       box2d= 14 cglm=150 total=164
+  cheapest kind first (fewest candidates on this line)    box2d= 14 cglm=138 total=152
+  winner first (oracle bound)                             box2d= 11 cglm=136 total=147
+
+=== per-COMMIT view of the reachable pairs (one row per commit) ===
+repo   sha        lines winning kinds                            subject
+box2d  d1581fb721     1 strictness                               Minor fixes (#852)
+box2d  bcc834bc1d     1 strictness                               fix for skipped shape in ray cast callback (returning -1)
+box2d  e6a8a5df00     1 flipped-additive                         Joint fixes and unit test (#653)
+box2d  b6a97c6980     1 literal-off-by-one                       Upgraded to GLFW 3.3 to fix macOS build.
+box2d  8458df02ec     2 flipped-additive                         - Added a stress test. - Fixed Issue 221: Rotated static edg
+box2d  0c88219142     2 flipped-additive                         - Added a stress test. - Fixed Issue 221: Rotated static edg
+cglm   2acdd1e4d0     4 literal-off-by-one                       fix _glm_noiseDetail_gradNorm_vec2
+cglm   45c1beff51     1 literal-off-by-one                       simd: fix glmm_set1, glmm_splat
+cglm   a0e3d3766f    12 literal-off-by-one                       mat4x3: fix multiplication functions
+cglm   1340b5d512     1 literal-off-by-one                       mat3x4: fix multiplication functions
+cglm   2283c708c6    11 literal-off-by-one                       mat3x2: fix multiplication functions
+cglm   050bc95264     1 literal-off-by-one                       mat2x3: fix multiplication functions
+cglm   6ad0aca7e0     1 flipped-comparison-direction             fix refract
+cglm   340292c0fb     2 literal-off-by-one                       fix transform
+cglm   82892085b3     2 literal-off-by-one                       docs: fix mat#x# comments and documentation
+cglm   2a4748d452     2 literal-off-by-one                       fix glm_pickmatrix()'s param type
+cglm   a610626693     2 literal-off-by-one                       fix vec4 parameter type
+cglm   40458be41b     1 literal-off-by-one                       frustum: fix array index
+cglm   3e4f52b3af     1 flipped-comparison-direction             optimize operations, fix max sign
+cglm   16107c4ba1     1 literal-off-by-one                       fix extract euler angles
+cglm   086c1cf326     1 strictness                               fix euler: use ExEyEz instead of RxRyRz
+cglm   05c76fa992     1 flipped-additive                         fix euler angle
+distinct commits: Counter({'cglm': 16, 'box2d': 6})
+winning class by distinct commit: Counter({('cglm', 'literal-off-by-one'): 12, ('box2d', 'flipped-additive'): 3, ('box2d', 'strictness'): 2, ('cglm', 'flipped-comparison-direction'): 2, ('box2d', 'literal-off-by-one'): 1, ('cglm', 'strictness'): 1, ('cglm', 'flipped-additive'): 1})
+
+=== off-by-one labeled pairs: direction of the maintainer's fix ===
+  box2d  fix DECREMENTS (bug = correct+1; shipped class)      unreachable  1
+  box2d  fix INCREMENTS (bug = correct-1; NO shipped class)   unreachable  21
+  cglm   fix DECREMENTS (bug = correct+1; shipped class)      reachable    5
+  cglm   fix INCREMENTS (bug = correct-1; NO shipped class)   unreachable  5
+
+unreachable DECREMENT off-by-one pairs (why did the shipped applier miss?):
+   box2d d9840ac3ea case 3: => case 2:
+
+=== sign labeled pairs not reachable ===
+   box2d d1581fb721 [[], ['-']] | /// This uses a custom implementation designed for cros => /// This uses a custom implementation designed for cros
+   cglm 205d13aa93 ['-', '+'] | dest[0][0] = cycz - sx * sysz; => dest[0][0] =  cycz + sx * sysz;
+   cglm 16107c4ba1 [['-'], []] | dest[1] = -M_PI_2; => dest[1] = M_PI_2;
+   cglm 16107c4ba1 [[], ['-']] | dest[1] = M_PI_2; => dest[1] =-M_PI_2;
+   cglm 05c76fa992 [[], ['-']] | dest[0][2] = cx * cz * sy + sx * sz; => dest[0][2] =-cx * cz * sy + sx * sz;
+   cglm 05c76fa992 [[], ['-']] | dest[1][0] = cy * sz; => dest[1][0] =-cy * sz;
+   cglm 05c76fa992 ['+', '-'] | dest[1][1] = cx* cz + sx * sy * sz; => dest[1][1] = cx * cz - sx * sy * sz;
+   cglm 05c76fa992 [['-'], []] | dest[1][2] =-cz * sx + cx * sy * sz; => dest[1][2] = cz * sx + cx * sy * sz;
+   cglm 05c76fa992 [['-'], []] | dest[2][0] =-sy; => dest[2][0] = sy;
+   cglm 05c76fa992 [[], ['-']] | dest[2][1] = cy * sx; => dest[2][1] =-cy * sx;
+
+=== compare labeled pairs not reachable ===

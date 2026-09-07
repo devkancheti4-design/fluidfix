@@ -1,0 +1,5 @@
+trial 1: [14:38:19] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h, src/tier.c). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 1 candidate(s) were
+trial 2: [14:38:24] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h, src/tier.c). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 1 candidate(s) were
+trial 3: [14:38:29] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h, src/tier.c). teach it once: docs/TEACHING.md (or run: fluidfix kinds)
+trial 4: [14:38:34] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h, src/tier.c). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 1 candidate(s) were
+trial 5: [14:38:38] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/rate.c, include/rate.h, src/tier.c). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 1 candidate(s) were

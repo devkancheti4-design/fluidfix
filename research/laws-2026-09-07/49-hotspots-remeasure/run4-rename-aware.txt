@@ -1,0 +1,29 @@
+scanned=1377 bugfix_commits=576 rename_records=1155
+rename-aware churn: 235 files, 1895 touches
+  of which still on disk: 48 files, 158 touches
+
+headline recomputed, rename-aware, all paths:
+  guard 30% -> test  15 files (6% of 235)
+  guard 50% -> test  32 files (14% of 235)
+  guard 60% -> test  44 files (19% of 235)
+  guard 80% -> test  95 files (40% of 235)
+
+headline recomputed, rename-aware, files that EXIST today:
+  guard 30% -> test   6 files (12% of 48)
+  guard 50% -> test  12 files (25% of 48)
+  guard 60% -> test  16 files (33% of 48)
+  guard 80% -> test  27 files (56% of 48)
+
+top 12 rename-aware, extant:
+    12  src/physics_world.c
+    10  include/box2d/box2d.h
+     9  include/box2d/types.h
+     9  src/body.c
+     6  src/distance.c
+     6  src/solver.c
+     6  src/joint.c
+     5  include/box2d/collision.h
+     5  src/core.h
+     5  src/shape.c
+     4  src/constraint_graph.c
+     4  src/dynamic_tree.c

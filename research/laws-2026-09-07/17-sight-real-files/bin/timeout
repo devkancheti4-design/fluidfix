@@ -1,0 +1,17 @@
+#!/usr/bin/env perl
+# timeout(1) substitute for macOS (no coreutils here): timeout SECS CMD ARGS...
+# Runs CMD in its own process group; on expiry kills the whole group with
+# SIGKILL and exits 124, matching GNU timeout's convention.
+use strict; use warnings; use POSIX qw(setpgid WNOHANG);
+my $secs = shift @ARGV or die "usage: timeout SECS CMD...\n";
+my $pid = fork(); die "fork: $!" unless defined $pid;
+if ($pid == 0) { setpgid(0,0); exec @ARGV or die "exec: $!"; }
+setpgid($pid,$pid);
+my $deadline = time + $secs; my $st;
+while (1) {
+    my $r = waitpid($pid, WNOHANG);
+    if ($r == $pid) { $st = $?; last; }
+    if (time >= $deadline) { kill 'KILL', -$pid; waitpid($pid,0); print STDERR "timeout: killed after ${secs}s\n"; exit 124; }
+    select(undef,undef,undef,0.2);
+}
+exit(($st >> 8) || (($st & 127) ? 128 + ($st & 127) : 0));

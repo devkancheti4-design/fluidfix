@@ -1,0 +1,109 @@
+total law consultations logged: 66402
+  from the BODY  : 13746
+  from test code : 52656  (direct law unit tests)
+
+==============================================================================
+ENGINE LAW — every ruling the BODY produced, by call site and byte
+==============================================================================
+site             byte bits                         ruling                         n
+loop.py:217    0x01   BUILT                        SHIP                          34
+guard.py:539   0x40   REFUTED                      HARVEST_COUNTEREXAMPLE         5
+guard.py:618   0x40   REFUTED                      HARVEST_COUNTEREXAMPLE         5
+guard.py:539   0x00   (none)                       SHIP                           3
+loop.py:217    0x03   BUILT|AMB                    ADD_STATE                      3
+guard.py:539   0x60   CAPPED|REFUTED               RAISE_BUDGET                   2
+
+distinct engine bytes the body constructed: [0, 1, 3, 64, 96]
+distinct engine rulings the body received : ['ADD_STATE', 'HARVEST_COUNTEREXAMPLE', 'RAISE_BUDGET', 'SHIP']
+engine consultations from the body        : 52
+per-site counts: {'loop.py:217': 37, 'guard.py:539': 10, 'guard.py:618': 5}
+
+==============================================================================
+GUARD RUNS ON PYTHON FIXTURES — lanes hit vs outcome
+==============================================================================
+guard_once runs on Python fixtures: 43
+Counter({'repaired': 29, 'refused': 10, 'green': 4})
+
+test (fixture)                                 outcome   file      engine bytes -> rulings        sight prios / rank prios  
+----------------------------------------------------------------------------------------------------------------------------
+test_guard_repairs_minmax_swap_end_to_end      repaired  test_acts 0x01->SHIP                     S:0 R:3
+test_multiline_logic_fix_from_one_example      repaired  test_cont 0x01->SHIP                     S:- R:03
+test_multiline_logic_fix_from_one_example      repaired  test_cont 0x01->SHIP                     S:- R:03
+test_whole_algorithm_fix_from_one_example      repaired  test_cont 0x01->SHIP                     S:0 R:3
+test_whole_algorithm_fix_from_one_example      repaired  test_cont 0x01->SHIP                     S:0 R:3
+test_two_coordinated_wrong_lines_refuse        refused   test_cont 0x40->HARVEST_COUNTEREXAMPLE   S:0 R:3
+test_step2_green_suite_untouched               green     test_demo -                              S:- R:-
+test_step3_guard_repairs_and_commits_without_b repaired  test_demo 0x01->SHIP                     S:0 R:2
+test_step4_novel_class_refused_with_signal     refused   test_demo 0x40->HARVEST_COUNTEREXAMPLE   S:- R:02
+test_step5_and_6_dictionary_frees_the_class    repaired  test_demo 0x01->SHIP                     S:- R:02
+test_step5_and_6_dictionary_frees_the_class    repaired  test_demo 0x01->SHIP                     S:- R:03
+test_step7_library_api                         repaired  test_demo 0x01->SHIP                     S:- R:02
+test_dictionary_teaches_a_class_the_cli_can_us repaired  test_dict 0x01->SHIP                     S:- R:03
+test_dry_run_proposes_restores_and_patch_appli repaired  test_dry_ 0x01->SHIP                     S:0 R:3
+test_dry_run_without_git_falls_back_to_difflib repaired  test_dry_ 0x01->SHIP                     S:0 R:3
+test_dry_run_refusal_behaves_exactly_as_today  refused   test_dry_ 0x00->SHIP                     S:2 R:-
+test_dry_run_returns_after_proposing_even_with repaired  test_dry_ 0x01->SHIP                     S:0 R:3
+test_ambiguous_greens_refuse_with_add_state    refused   test_engi 0x03->ADD_STATE                S:0 R:3
+test_unambiguous_single_green_still_ships      repaired  test_engi 0x01->SHIP                     S:0 R:3
+test_capped_escalation_raises_budget_and_repai repaired  test_engi 0x01->SHIP, 0x60->RAISE_BUDGET S:0 R:3
+test_refuted_refusal_does_not_escalate         refused   test_engi 0x40->HARVEST_COUNTEREXAMPLE   S:2 R:3
+test_guard_finds_file_and_repairs_without_bein repaired  test_guar 0x01->SHIP                     S:0 R:3
+test_guard_follows_traceback_frames            repaired  test_guar 0x01->SHIP                     S:- R:03
+test_guard_green_touches_nothing               green     test_guar -                              S:- R:-
+test_guard_refuses_novel_class_loudly_and_unto refused   test_guar 0x00->SHIP                     S:2 R:-
+test_guard_commit_records_the_restoration      repaired  test_guar 0x01->SHIP                     S:0 R:3
+test_repair_reports_restored_original_provenan repaired  test_guar 0x01->SHIP                     S:0 R:3
+test_stale_refusal_cleared_on_green_or_repaire repaired  test_guar 0x01->SHIP                     S:0 R:3
+test_stale_refusal_cleared_on_green_or_repaire green     test_guar -                              S:- R:-
+test_init_generates_suite_and_guard_repairs    green     test_init -                              S:- R:-
+test_init_generates_suite_and_guard_repairs    repaired  test_init 0x01->SHIP                     S:- R:03
+test_span_fixes_two_coordinated_wrong_lines    repaired  test_span 0x01->SHIP                     S:0 R:3
+test_span_leaves_no_dead_code                  repaired  test_span 0x01->SHIP                     S:0 R:3
+test_span_rejection_rolls_back_byte_exact_crlf refused   test_span 0x40->HARVEST_COUNTEREXAMPLE   S:0 R:3
+test_span_bounds_and_anchor_safety             repaired  test_span 0x01->SHIP                     S:0 R:3
+test_two_green_spans_refuse_ambiguous          refused   test_span 0x03->ADD_STATE                S:0 R:3
+test_refusal_logs_why_each_candidate_failed    refused   test_span 0x40->HARVEST_COUNTEREXAMPLE   S:0 R:3
+test_global_budget_is_an_honest_stop           refused   test_span 0x00->SHIP                     S:0 R:3
+test_budget_hands_first_pass_over_to_escalatio repaired  test_span 0x01->SHIP, 0x60->RAISE_BUDGET S:0 R:3
+test_walkthrough_dictionary_repairs_the_incide repaired  test_teac 0x01->SHIP                     S:0 R:3
+test_example_rule_class_missing_get_default    repaired  test_teac 0x01->SHIP                     S:- R:03
+test_example_repo_mined_class_wrong_attribute  repaired  test_teac 0x01->SHIP                     S:0 R:3
+test_example_span_class_round_before_accumulat repaired  test_teac 0x01->SHIP                     S:0 R:3
+
+==============================================================================
+SIGHT LAW — bytes the body constructed (guard.py:280)
+==============================================================================
+guard.py:280   0x5a  SCARCE|FAILONLY|NAMED|SMALL                    prio=0   n=22
+guard.py:280   0x58  FAILONLY|NAMED|SMALL                           prio=2   n=6
+guard.py:280   0x7a  SCARCE|FAILONLY|NAMED|TOUCHED|SMALL            prio=0   n=5
+guard.py:280   0x1a  SCARCE|FAILONLY|NAMED                          prio=0   n=4
+guard.py:280   0x52  SCARCE|NAMED|SMALL                             prio=0   n=1
+SIGHT bits never observed set: ['FRAMED', 'LITERAL', 'UBIQUITOUS']
+distinct sight priorities emitted: [0, 2]
+
+==============================================================================
+RANKING LAW — bytes the body constructed (guard.py:406)
+==============================================================================
+guard.py:406   0x68  SIGNALED|CHEAP|DENSE                           prio=3   n=1818
+guard.py:406   0x28  SIGNALED|CHEAP                                 prio=3   n=50
+guard.py:406   0x38  SIGNALED|RECENT|CHEAP                          prio=3   n=13
+guard.py:406   0x3c  NAMED|SIGNALED|RECENT|CHEAP                    prio=2   n=4
+guard.py:406   0x29  FRAME|SIGNALED|CHEAP                           prio=0   n=4
+guard.py:406   0x00  (none)                                         prio=7   n=4
+guard.py:406   0x2d  FRAME|NAMED|SIGNALED|CHEAP                     prio=0   n=3
+guard.py:406   0x3d  FRAME|NAMED|SIGNALED|RECENT|CHEAP              prio=0   n=2
+guard.py:406   0x39  FRAME|SIGNALED|RECENT|CHEAP                    prio=0   n=2
+guard.py:406   0x04  NAMED                                          prio=2   n=2
+guard.py:406   0x08  SIGNALED                                       prio=3   n=2
+RANK bits never observed set: ['FAILONLY', 'RETRIED']
+distinct rank priorities emitted: [0, 2, 3, 7]
+
+==============================================================================
+FLUID-ROUTER (acts.py:319) and LANES (loop.py:284/297/298)
+==============================================================================
+route() calls from the body: 3956
+distinct (F1,A1,Fq) queried: [(0, 5, 0), (0, 5, 1), (0, 5, 2), (0, 5, 3), (0, 5, 4), (0, 5, 5), (0, 5, 6), (0, 5, 7), (0, 5, 8), (0, 5, 9), (0, 5, 10), (0, 5, 11), (0, 5, 12), (0, 5, 14)]
+distinct act codes returned: [0, 1, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+lanes calls from the body: {'lanes.HALT': 3870, 'lanes.EMIT': 1963, 'lanes.ADVANCE': 1963}
+distinct HALT results: [0, 1]
+distinct EMIT results: [1, 2, 4, 8, 16, 32, 64, 256, 512, 1024, 2048, 4096, 16384]

@@ -1,0 +1,428 @@
+{
+ "src/dynamic_tree.c": [
+  {
+   "file": "src/dynamic_tree.c",
+   "line": 196,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( cost < bestCost )"
+  },
+  {
+   "file": "src/dynamic_tree.c",
+   "line": 220,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( cost1 < bestCost )"
+  },
+  {
+   "file": "src/dynamic_tree.c",
+   "line": 248,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( cost2 < bestCost )"
+  },
+  {
+   "file": "src/dynamic_tree.c",
+   "line": 285,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( lowerCost1 < lowerCost2 && leaf1 == false )"
+  },
+  {
+   "file": "src/dynamic_tree.c",
+   "line": 322,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( A->height < 2 )"
+  },
+  {
+   "file": "src/dynamic_tree.c",
+   "line": 364,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( costBF < costBG )"
+  }
+ ],
+ "src/geometry.c": [
+  {
+   "file": "src/geometry.c",
+   "line": 61,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( hull->count < 3 )"
+  },
+  {
+   "file": "src/geometry.c",
+   "line": 323,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( radius > 0.0f )"
+  },
+  {
+   "file": "src/geometry.c",
+   "line": 597,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( cc > rr )"
+  },
+  {
+   "file": "src/geometry.c",
+   "line": 775,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( offset < 0.0f )"
+  },
+  {
+   "file": "src/geometry.c",
+   "line": 837,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( numerator > 0.0f )"
+  },
+  {
+   "file": "src/geometry.c",
+   "line": 881,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( numerator < 0.0f )"
+  }
+ ],
+ "src/hull.c": [
+  {
+   "file": "src/hull.c",
+   "line": 32,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( bestDistance > 0.0f )"
+  },
+  {
+   "file": "src/hull.c",
+   "line": 40,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( distance > bestDistance )"
+  },
+  {
+   "file": "src/hull.c",
+   "line": 46,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( distance > 0.0f )"
+  },
+  {
+   "file": "src/hull.c",
+   "line": 52,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( bestDistance < 2.0f * B2_LINEAR_SLOP )"
+  },
+  {
+   "file": "src/hull.c",
+   "line": 92,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( count < 3 || count > B2_MAX_POLYGON_VERTICES )"
+  },
+  {
+   "file": "src/hull.c",
+   "line": 121,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( distSqr < tolSqr )"
+  }
+ ],
+ "src/shape.c": [
+  {
+   "file": "src/shape.c",
+   "line": 977,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( b2Cross( r, edge ) < 0.0f )"
+  },
+  {
+   "file": "src/shape.c",
+   "line": 44,
+   "old": "0.5f",
+   "new": "0.25f",
+   "text": "margin = 0.5f * b2Distance( shape->capsule.center2, shape->capsule.center1 ) + shape->capsule.radius;"
+  },
+  {
+   "file": "src/shape.c",
+   "line": 71,
+   "old": "0.5f",
+   "new": "0.25f",
+   "text": "margin = 0.5f * b2Distance( shape->segment.point1, shape->segment.point2 );"
+  },
+  {
+   "file": "src/shape.c",
+   "line": 77,
+   "old": "0.5f",
+   "new": "0.25f",
+   "text": "margin = 0.5f * b2Distance( shape->chainSegment.segment.point1, shape->chainSegment.segment.point2 );"
+  },
+  {
+   "file": "src/shape.c",
+   "line": 710,
+   "old": "0.5f",
+   "new": "0.25f",
+   "text": "return b2Lerp( shape->capsule.center1, shape->capsule.center2, 0.5f );"
+  },
+  {
+   "file": "src/shape.c",
+   "line": 716,
+   "old": "0.5f",
+   "new": "0.25f",
+   "text": "return b2Lerp( shape->segment.point1, shape->segment.point2, 0.5f );"
+  }
+ ],
+ "src/constraint_graph.c": [],
+ "src/distance_joint.c": [
+  {
+   "file": "src/distance_joint.c",
+   "line": 389,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( joint->enableSpring && ( joint->minLength < joint->maxLength || joint->enableLimit == false ) )"
+  },
+  {
+   "file": "src/distance_joint.c",
+   "line": 392,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( joint->hertz > 0.0f )"
+  },
+  {
+   "file": "src/distance_joint.c",
+   "line": 444,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( c > 0.0f )"
+  },
+  {
+   "file": "src/distance_joint.c",
+   "line": 478,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( C > 0.0f )"
+  },
+  {
+   "file": "src/distance_joint.c",
+   "line": 402,
+   "old": " + ",
+   "new": " - ",
+   "text": "float impulse = -m * ( cdot + bias ) - joint->distanceSoftness.impulseScale * oldImpulse;"
+  }
+ ],
+ "src/prismatic_joint.c": [
+  {
+   "file": "src/prismatic_joint.c",
+   "line": 504,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( C < speculativeDistance )"
+  },
+  {
+   "file": "src/prismatic_joint.c",
+   "line": 510,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( C > 0.0f )"
+  },
+  {
+   "file": "src/prismatic_joint.c",
+   "line": 551,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( C < speculativeDistance )"
+  },
+  {
+   "file": "src/prismatic_joint.c",
+   "line": 557,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( C > 0.0f )"
+  },
+  {
+   "file": "src/prismatic_joint.c",
+   "line": 461,
+   "old": " + ",
+   "new": " - ",
+   "text": "float Cdot = b2Dot( axisA, b2Sub( vB, vA ) ) + a2 * wB - a1 * wA;"
+  }
+ ],
+ "src/body.c": [
+  {
+   "file": "src/body.c",
+   "line": 594,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( body->mass > 0.0f )"
+  },
+  {
+   "file": "src/body.c",
+   "line": 620,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( body->inertia > 0.0f && ( body->flags & b2_fixedRotation ) == 0 )"
+  },
+  {
+   "file": "src/body.c",
+   "line": 803,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( b2LengthSquared( linearVelocity ) > 0.0f )"
+  },
+  {
+   "file": "src/body.c",
+   "line": 2085,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( bodyA->jointCount < bodyB->jointCount )"
+  },
+  {
+   "file": "src/body.c",
+   "line": 611,
+   "old": " + ",
+   "new": " - ",
+   "text": "float inertia = massData.rotationalInertia + massData.mass * b2Dot( offset, offset );"
+  }
+ ],
+ "src/contact_solver.c": [],
+ "src/island.c": [
+  {
+   "file": "src/island.c",
+   "line": 135,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( smallIsland->contacts.count > 0 )"
+  },
+  {
+   "file": "src/island.c",
+   "line": 150,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( smallIsland->joints.count > 0 )"
+  },
+  {
+   "file": "src/island.c",
+   "line": 365,
+   "old": " < ",
+   "new": " > ",
+   "text": "if ( ranks[root1] < ranks[root2] )"
+  },
+  {
+   "file": "src/island.c",
+   "line": 371,
+   "old": " > ",
+   "new": " < ",
+   "text": "else if ( ranks[root1] > ranks[root2] )"
+  }
+ ],
+ "src/joint.c": [],
+ "src/sensor.c": [],
+ "src/wheel_joint.c": [
+  {
+   "file": "src/wheel_joint.c",
+   "line": 411,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( C > 0.0f )"
+  },
+  {
+   "file": "src/wheel_joint.c",
+   "line": 449,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( C > 0.0f )"
+  },
+  {
+   "file": "src/wheel_joint.c",
+   "line": 310,
+   "old": " + ",
+   "new": " - ",
+   "text": "float axialImpulse = joint->springImpulse + joint->lowerImpulse - joint->upperImpulse;"
+  },
+  {
+   "file": "src/wheel_joint.c",
+   "line": 388,
+   "old": " + ",
+   "new": " - ",
+   "text": "float Cdot = b2Dot( axisA, b2Sub( vB, vA ) ) + a2 * wB - a1 * wA;"
+  },
+  {
+   "file": "src/wheel_joint.c",
+   "line": 389,
+   "old": " + ",
+   "new": " - ",
+   "text": "float impulse = -massScale * joint->axialMass * ( Cdot + bias ) - impulseScale * joint->springImpulse;"
+  }
+ ],
+ "src/weld_joint.c": [
+  {
+   "file": "src/weld_joint.c",
+   "line": 379,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( useBias || joint->angularHertz > 0.0f )"
+  },
+  {
+   "file": "src/weld_joint.c",
+   "line": 403,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( useBias || joint->linearHertz > 0.0f )"
+  },
+  {
+   "file": "src/weld_joint.c",
+   "line": 387,
+   "old": " - ",
+   "new": " + ",
+   "text": "float Cdot = wB - wA;"
+  },
+  {
+   "file": "src/weld_joint.c",
+   "line": 388,
+   "old": " + ",
+   "new": " - ",
+   "text": "float impulse = -massScale * joint->axialMass * ( Cdot + bias ) - impulseScale * joint->angularImpulse;"
+  }
+ ],
+ "src/motor_joint.c": [
+  {
+   "file": "src/motor_joint.c",
+   "line": 333,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( joint->maxVelocityTorque > 0.0f )"
+  },
+  {
+   "file": "src/motor_joint.c",
+   "line": 383,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( b2LengthSquared( joint->linearSpringImpulse ) > maxImpulse * maxImpulse )"
+  },
+  {
+   "file": "src/motor_joint.c",
+   "line": 399,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( joint->maxVelocityForce > 0.0f )"
+  },
+  {
+   "file": "src/motor_joint.c",
+   "line": 410,
+   "old": " > ",
+   "new": " < ",
+   "text": "if ( b2LengthSquared( joint->linearVelocityImpulse ) > maxImpulse * maxImpulse )"
+  },
+  {
+   "file": "src/motor_joint.c",
+   "line": 272,
+   "old": " + ",
+   "new": " - ",
+   "text": "float angularImpulse = joint->angularVelocityImpulse + joint->angularSpringImpulse;"
+  }
+ ],
+ "src/solver_set.c": []
+}

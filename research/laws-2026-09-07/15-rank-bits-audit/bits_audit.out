@@ -1,0 +1,74 @@
+==========================================================================
+A. CALL-SITE CENSUS — which guard entry points consult the ranking law
+==========================================================================
+  src/fluidfix/guard.py:33: "rank_observations"]
+  src/fluidfix/guard.py:340: def rank_observations(src: str, observations: list, failing_output: str,
+  src/fluidfix/guard.py:511: observations = rank_observations("\n".join(packet.src_lines),
+  src/fluidfix/guard.py:512: observer.observe([packet])[0], out,
+  src/fluidfix/guard.py:585: observations = rank_observations("\n".join(packet.src_lines),
+  src/fluidfix/guard.py:586: observer.observe([packet])[0], out,
+  src/fluidfix/coracle.py:758: observations = observer.observe([packet])[0]
+  src/fluidfix/javaoracle.py:211: observations = observer.observe([packet])[0]
+
+==========================================================================
+B. PER-BIT PROBE — PYTHON fixture (guard_once is the only ranking path)
+==========================================================================
+-- python, traceback names mod.py:2
+   rel='mod.py'  order in=[2, 6, 10] out=[2, 6, 10]
+   line    2  byte 0x2d = FRAME+NAMED+SIGNALED+CHEAP               rank=0
+   line    6  byte 0x28 = SIGNALED+CHEAP                           rank=3
+   line   10  byte 0x28 = SIGNALED+CHEAP                           rank=3
+
+-- python, SAME inputs + retried={2} (a kwarg no body call site passes)
+   rel='mod.py'  order in=[2, 6, 10] out=[6, 10, 2]
+   line    2  byte 0xad = FRAME+NAMED+SIGNALED+CHEAP+RETRIED       rank=7
+   line    6  byte 0x28 = SIGNALED+CHEAP                           rank=3
+   line   10  byte 0x28 = SIGNALED+CHEAP                           rank=3
+
+==========================================================================
+C. PER-BIT PROBE — C fixture (the Box2D / cglm language)
+==========================================================================
+-- C source, real C failing-output shape
+   rel='math_functions.c'  order in=[3, 8] out=[3, 8]
+   line    3  byte 0x28 = SIGNALED+CHEAP                           rank=3
+   line    8  byte 0x28 = SIGNALED+CHEAP                           rank=3
+
+-- CONTROL: same C source, output rewritten to name a .py file
+   rel='math_functions.py'  order in=[3, 8] out=[3, 8]
+   line    3  byte 0x29 = FRAME+SIGNALED+CHEAP                     rank=0
+   line    8  byte 0x28 = SIGNALED+CHEAP                           rank=3
+
+   FRAME regex in guard.py:364 (verbatim):
+     ([\w./\\-]+\.py)[\":,]+\s*(?:line\s+)?(\d+)
+   -> the literal '.py' means no non-Python path can ever set FRAME.
+   matches in the real C failing output: []
+
+   NAMED needs ast.parse(src) (guard.py:375). On the C source above:
+     SyntaxError: invalid syntax (<unknown>, line 1) -> line_toks stays empty, NAMED=0
+   NAMED also needs pytest's '^FAILED <path>::<name>' line (guard.py:370):
+     tokens from the C output: []
+
+==========================================================================
+D. THE RETRIED LANE — is the data present, is it passed?
+==========================================================================
+  guard.py:511 call site kwargs -> NO retried kwarg
+  guard.py:585 call site kwargs -> NO retried kwarg
+  loop.py:185: tried: set[tuple[int, str]] = set()
+  loop.py:323: at_str = f"{defect_file}:{s_}-{e_}"
+  loop.py:331: at_str = f"{defect_file}:{obs.lineno}"
+  loop.py:347: res.tried_log.append(
+  loop.py:408: res.tried_log.append({"at": at_str,
+
+  So: loop.py records every rejected candidate as '<file>:<lineno>' in result.tried_log, guard_once accumulates them
+  into `attempts`, and neither rank_observations call site turns that
+  into the `retried` set the law's veto lane reads.
+
+  Does a second pass over the SAME file happen? guard.py:509-510 adds a
+  file to full_sight ONLY when its packet was untruncated; guard.py:574
+  skips only files in full_sight. A TRUNCATED pass-0 file is therefore
+  re-ranked at guard.py:585 with retried=None.
+
+  loop.repair()'s own dedupe set is per-call (loop.py:185), so the
+  escalation pass re-tries pass-0 candidates and pays the suite runs
+  again. Demonstrated below by construction:
+    loop.py:185 -> tried: set[tuple[int, str]] = set()

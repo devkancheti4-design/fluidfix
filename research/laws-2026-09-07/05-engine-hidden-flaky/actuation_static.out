@@ -1,0 +1,8 @@
+loop.py:391  in repair(): `ruling = decide(...)`
+   reaches an if/while test at: NOWHERE
+   reaches an f-string at     : [393]
+   => NOT ACTUATED: the ruling reaches the WORDING only
+loop.py:217  in _rule(): `ruling = decide(...)`
+   reaches an if/while test at: [221]
+   reaches an f-string at     : [228, 233, 240]
+   => ACTUATED: control flow depends on the ruling

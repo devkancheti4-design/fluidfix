@@ -1,0 +1,9 @@
+  pkg/types.py               bits=74  sight=0  affinity=0.0 specificity=1.0 n_fail=40
+  pkg/shell_completion.py    bits=20  sight=0  affinity=1.0 specificity=0.3 n_fail=500
+
+order under the key AS WRITTEN (guard.py:300-301, affinity first):
+    pkg/shell_completion.py
+    pkg/types.py
+order under the key AS DOCUMENTED (sight.py:61-62, specificity first):
+    pkg/types.py
+    pkg/shell_completion.py

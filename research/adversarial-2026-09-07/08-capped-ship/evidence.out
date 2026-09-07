@@ -1,0 +1,38 @@
+========================================================================
+GUARD RESULT : repaired -> pkg/geom.py: repaired line 15 in 6 suite runs (2.0s):
+  - return ceiling + peak(low, high)
+  + return ceiling - peak(low, high)
+========================================================================
+
+guard.py:508 measured
+    rel                = pkg/geom.py
+    packet.truncated   = True
+    capped0            = True
+
+loop.py:217 byte handed to the law
+    BUILT              = True
+    AMB                = False
+    CAPPED             = False
+    greens             = [(15, 'return ceiling - peak(low, high)')]
+
+loop.py:217 byte handed to the law
+    BUILT              = True
+    AMB                = False
+    CAPPED             = False
+    greens             = [(15, 'return ceiling - peak(low, high)')]
+
+========================================================================
+byte ACTUALLY asked   BUILT              = 513 (0x201) -> SHIP
+byte the guard HAD    BUILT+CAPPED       = 545 (0x221) -> RAISE_BUDGET
+========================================================================
+
+CONTROL: the same file, same observer, FULL SIGHT (max_lines=10**9) -- i.e. what the law's RAISE_BUDGET escalation reaches.
+
+  packet.truncated = False  anchors=118
+  repaired=False refused=True ambiguous=True
+  greens found: ['return max(low, high)', 'return ceiling - peak(low, high)']
+  reason: AMBIGUOUS: 2 candidates at 2 different lines (10, 15) all pass the suite — the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+AMB -> ADD_STATE, never guess)
+
+(fixture rebuilt to its as-found broken state)
+BITS: ['BUILT', 'AMB', 'UNREAD', 'NOTWIN', 'HIDDEN', 'CAPPED', 'REFUTED', 'SELF']
+ACTS: ['SHIP', 'ADD_STATE', 'ADD_MATERIAL', 'RESHAPE', 'CHANGE_GRANULARITY', 'RAISE_BUDGET', 'HARVEST_COUNTEREXAMPLE', 'AUTHOR_SUCCESSOR']

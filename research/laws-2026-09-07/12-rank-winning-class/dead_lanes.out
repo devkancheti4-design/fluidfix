@@ -1,0 +1,12 @@
+bytes with SIGNALED=1, RETRIED=0: 64; of those, clearing RECENT/CHEAP/DENSE changes rank() on 0: []
+bytes with SIGNALED=0, RETRIED=0 where those lanes change rank(): 7
+
+bits measured in the logged runs (every observation the body ranked):
+observations: 57; SIGNALED set on 57; RECENT 0; CHEAP 54; DENSE 0; FAILONLY 0; RETRIED 0; FRAME 12; NAMED 12
+
+RECENT measurement path (read-only git on the fluidfix repo, not a fixture):
+_recent_lines(fluidfix, src/fluidfix/rank.py) -> 95 lines touched by the last 40 commits
+
+rank_observations call sites in guard.py and whether `retried=` is passed:
+  guard.py:511: retried passed = False
+  guard.py:585: retried passed = False

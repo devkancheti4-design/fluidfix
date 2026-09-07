@@ -1,0 +1,14 @@
+BITS = ['BUILT', 'AMB', 'UNREAD', 'NOTWIN', 'HIDDEN', 'CAPPED', 'REFUTED', 'SELF']
+ACTS = ['SHIP', 'ADD_STATE', 'ADD_MATERIAL', 'RESHAPE', 'CHANGE_GRANULARITY', 'RAISE_BUDGET', 'HARVEST_COUNTEREXAMPLE', 'AUTHOR_SUCCESSOR']
+
+run A byte: 0x0201 (513)  -> decide = SHIP
+run B byte: 0x0201 (513)  -> decide = SHIP   <-- IDENTICAL
+
+correct byte (AMB set): 0x0203 (515) -> decide = ADD_STATE
+
+loop.py:283  mask_of() over every permutation of kinds [4,5]:
+   observer said kinds=[4, 5]   -> mask 0b110000 -> tried [4, 5]
+   observer said kinds=[5, 4]   -> mask 0b110000 -> tried [4, 5]
+
+six-kind line, all 720 permutations:
+   distinct masks = 1 out of 720 permutations: ['0b1000111011']

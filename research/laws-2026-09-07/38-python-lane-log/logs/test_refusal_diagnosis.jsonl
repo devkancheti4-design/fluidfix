@@ -1,0 +1,7 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_refusal_diagnosis.py::test_vocabulary_gap_says_teach_it"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_refusal_diagnosis.py::test_search_limit_when_something_pointed"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_refusal_diagnosis.py::test_evidence_gap_does_not_blame_the_budget"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_refusal_diagnosis.py::test_evidence_gap_and_search_limit_are_mutually_exclusive"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_refusal_diagnosis.py::test_attempts_are_still_reported_in_every_cause"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_refusal_diagnosis.py::test_green_and_repaired_are_untouched"}

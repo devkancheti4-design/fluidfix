@@ -1,0 +1,18 @@
+kinds on the line: [(0, 'strictness'), (1, 'literal-off-by-one'), (2, 'swapped-return-operands'), (3, 'flipped-additive'), (10, 'flipped-comparison-direction'), (11, 'reversed-minus-operands')]
+
+Part 0  mask_of over all 720 permutations of [0, 1, 2, 3, 10, 11]: 1 distinct mask(s) -> {3087}
+        (one mask => the order in obs.kinds is not representable)
+
+Part 1  acts_tried per permutation (of 720 possible, 5 run end to end)
+   kinds=[0, 1, 2, 3, 10, 11] -> acts_tried=[5, 6, 7, 8, 15] suite_runs=7 repaired=True
+   kinds=[2, 0, 1, 3, 10, 11] -> acts_tried=[5, 6, 7, 8, 15] suite_runs=7 repaired=True
+   kinds=[10, 0, 1, 2, 3, 11] -> acts_tried=[5, 6, 7, 8, 15] suite_runs=7 repaired=True
+   kinds=[11, 10, 3, 2, 1, 0] -> acts_tried=[5, 6, 7, 8, 15] suite_runs=7 repaired=True
+   kinds=[11, 10, 3, 2, 1, 0] -> acts_tried=[5, 6, 7, 8, 15] suite_runs=7 repaired=True
+   distinct (acts_tried, suite_runs, repaired, new_line) outcomes: 1
+
+Part 2  deadline=0.95s (full search 2.11s), 5 repeats per order
+   winner FIRST order=[3, 0, 1, 2, 10, 11]
+      (repaired, suite_runs) x5 = [(False, 4), (False, 4), (False, 4), (False, 4), (False, 4)]
+   winner LAST  order=[0, 1, 2, 10, 11, 3]
+      (repaired, suite_runs) x5 = [(False, 4), (False, 4), (False, 4), (False, 4), (False, 4)]

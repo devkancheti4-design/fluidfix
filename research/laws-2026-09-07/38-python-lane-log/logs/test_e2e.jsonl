@@ -1,0 +1,34 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "repair:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-21/test_repairs_strictness_bug_by0", "file": "mod.py", "n_obs": 3, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 2, "bits": [], "ruling": 0, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 2, "bits": [], "ruling": 2, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 2, "bits": [], "ruling": 0, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 1025, "bits": [], "ruling": 0, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 1025, "bits": [], "ruling": 1, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 1025, "bits": [], "ruling": 1024, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 0], "bits": [], "ruling": 5, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 1024, "bits": [], "ruling": 0, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 1024, "bits": [], "ruling": 1024, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 1024, "bits": [], "ruling": 0, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 10], "bits": [], "ruling": 15, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 514, "bits": [], "ruling": 0, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 514, "bits": [], "ruling": 2, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 514, "bits": [], "ruling": 512, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 1], "bits": [], "ruling": 6, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 512, "bits": [], "ruling": 0, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.EMIT", "site": "loop.py:297", "byte": 512, "bits": [], "ruling": 512, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.ADVANCE", "site": "loop.py:298", "byte": 512, "bits": [], "ruling": 0, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 9], "bits": [], "ruling": 14, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "lanes.HALT", "site": "loop.py:284", "byte": 0, "bits": [], "ruling": 1, "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "engine", "site": "loop.py:217", "sit": 513, "byte": 1, "bits": ["BUILT"], "ruling": "SHIP", "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "-", "event": "repair:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-21/test_repairs_strictness_bug_by0", "file": "mod.py", "repaired": true, "ambiguous": false, "acts_tried": [6, 5, 15, 6, 14], "reason": "engine law: BUILT -> SHIP", "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_e2e.py::test_repairs_strictness_bug_byte_exact"}
+{"law": "-", "event": "repair:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-21/test_green_suite_refuses_befor0", "file": "mod.py", "n_obs": 0, "test": "tests/test_e2e.py::test_green_suite_refuses_before_searching"}
+{"law": "-", "event": "repair:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-21/test_green_suite_refuses_befor0", "file": "mod.py", "repaired": false, "ambiguous": false, "acts_tried": [], "reason": "no failing test \u2014 nothing to repair", "test": "tests/test_e2e.py::test_green_suite_refuses_before_searching"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_e2e.py::test_green_suite_refuses_before_searching"}
+{"law": "-", "event": "repair:enter", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-21/test_failed_repair_restores_so0", "file": "mod.py", "n_obs": 0, "test": "tests/test_e2e.py::test_failed_repair_restores_source"}
+{"law": "-", "event": "repair:exit", "root": "/private/var/folders/4q/6wgnhcc575n88s9hzdv_c7m80000gn/T/pytest-of-kanchetidevieswar/pytest-21/test_failed_repair_restores_so0", "file": "mod.py", "repaired": false, "ambiguous": false, "acts_tried": [], "reason": "no observation named a kind this vocabulary can repair", "test": "tests/test_e2e.py::test_failed_repair_restores_source"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_e2e.py::test_failed_repair_restores_source"}

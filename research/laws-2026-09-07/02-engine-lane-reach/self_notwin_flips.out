@@ -1,0 +1,4 @@
+SELF flips the ruling on 2 of 128 base situations: [7, 8]
+  x=  7 BUILT+AMB+UNREAD ADD_STATE -> with SELF: RAISE_BUDGET
+  x=  8 NOTWIN RESHAPE -> with SELF: AUTHOR_SUCCESSOR
+NOTWIN flips the ruling on 47 of 128 base situations

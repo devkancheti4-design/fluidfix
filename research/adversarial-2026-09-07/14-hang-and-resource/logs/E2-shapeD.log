@@ -1,0 +1,10 @@
+Popen shell pid = 51752
+TimeoutExpired raised -> entering coracle's kill branch
+  poll() (None=running, int=already exited/zombie): 0
+  helper before kill: 51753 1 51752 SN
+  os.getpgid/killpg RAISED ProcessLookupError: [Errno 3] No such process
+  -> FALLBACK proc.kill(): signals ONLY the shell pid, not the group
+  second communicate: TimeoutExpired
+SURVIVORS: 1
+   51753 1 51752 SN
+after sweep: 0

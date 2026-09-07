@@ -1,0 +1,4 @@
+CONFIRM  n   pytest-invocations(min/max/mean)   labels
+      0  12   7/7/7.00   {'CORRECT': 7, 'FALSE_ACCEPT': 5}
+      1  12   9/11/9.75   {'CORRECT': 10, 'FALSE_ACCEPT': 2}
+      2  12   11/15/12.25   {'CORRECT': 11, 'FALSE_ACCEPT': 1}

@@ -192,6 +192,7 @@ def jguard_once(oracle: JavaOracle, observer, candidate_timeout=None,
     engine-law escalation ladder arrives with the coverage tier (JaCoCo)."""
     from .guard import GuardReport
     from .loop import repair
+    from .engine import decide, situation
 
     t0 = time.time()
     deadline = t0 + budget if budget else None
@@ -200,18 +201,28 @@ def jguard_once(oracle: JavaOracle, observer, candidate_timeout=None,
         return GuardReport(status="green", seconds=time.time() - t0)
     candidates = find_candidate_files_java(oracle, out)
     attempts: list = []
+    # the same two bits the Python and C paths pack; both are local here too
+    capped = False
+    greens_seen = False
     for rel in candidates:
         if deadline is not None and time.time() > deadline:
+            ruling = decide(situation(CAPPED=True,
+                                      REFUTED=bool(attempts) and not greens_seen))
             return GuardReport(status="refused", candidates=candidates,
                                seconds=time.time() - t0, attempts=attempts,
-                               hint=f"--budget exhausted ({budget}s)")
+                               hint=(f"--budget exhausted ({budget}s) — what it "
+                                     f"did not try is unknown. Raise --budget "
+                                     f"and re-run (engine law: CAPPED -> {ruling})"))
         packet = build_packet_java(oracle, rel, out)
         if packet is None:
             continue
+        capped = capped or getattr(packet, "truncated", False)
         observations = observer.observe([packet])[0]
         result = repair(oracle, rel, observations,
                         candidate_timeout=candidate_timeout, deadline=deadline)
         attempts += result.tried_log
+        greens_seen = greens_seen or bool(result.greens)
+        capped = capped or result.capped
         if result.repaired:
             return GuardReport(status="repaired", file=rel, result=result,
                                candidates=candidates, seconds=time.time() - t0)
@@ -219,5 +230,20 @@ def jguard_once(oracle: JavaOracle, observer, candidate_timeout=None,
             return GuardReport(status="refused", file=rel, result=result,
                                candidates=candidates, seconds=time.time() - t0,
                                hint=result.reason, attempts=attempts)
+        if result.greens and result.ruling == "RAISE_BUDGET":
+            return GuardReport(status="refused", file=rel, result=result,
+                               candidates=candidates, seconds=time.time() - t0,
+                               hint=result.reason, attempts=attempts)
+    ruling = decide(situation(CAPPED=capped,
+                              REFUTED=bool(attempts) and not greens_seen))
+    if ruling == "HARVEST_COUNTEREXAMPLE":
+        hint = (f"every candidate this vocabulary generated left the suite red "
+                f"({len(attempts)} rejected) — the fault is outside it, or the "
+                f"observations are wrong (engine law: REFUTED -> {ruling})")
+    elif ruling == "RAISE_BUDGET":
+        hint = ("the search was cut short, so what it did not try is unknown — "
+                f"raise --budget (engine law: CAPPED -> {ruling})")
+    else:
+        hint = f"nothing in the failure pointed at a repairable line (engine law: {ruling})"
     return GuardReport(status="refused", candidates=candidates,
-                       seconds=time.time() - t0, attempts=attempts)
+                       seconds=time.time() - t0, attempts=attempts, hint=hint)

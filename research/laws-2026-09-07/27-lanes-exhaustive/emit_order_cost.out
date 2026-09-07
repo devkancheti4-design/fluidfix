@@ -1,0 +1,39 @@
+
+== fluidfix src/*.py: 17 files, 1350 signalled lines
+   mean classes live per signalled line (popcount): 1.41   max 6
+   kind name                           lines  mean EMIT position  %lines preceded  worst
+      0 strictness                       363                0.00             0.0%      0
+      1 literal-off-by-one               957                0.16            15.9%      1
+      2 swapped-return-operands           25                0.88            64.0%      2
+      3 flipped-additive                 199                1.05            77.4%      3
+      8 minmax-swap                       19                1.00            73.7%      2
+      9 flipped-augmented-assign          34                0.56            55.9%      1
+     10 flipped-comparison-direction     124                1.75           100.0%      4
+     11 reversed-minus-operands           54                2.41           100.0%      5
+     12 flipped-boolean                  132                0.18            18.2%      1
+
+== Box2D (shared clone, READ-ONLY): 141 files, 41319 signalled lines
+   mean classes live per signalled line (popcount): 1.33   max 6
+   kind name                           lines  mean EMIT position  %lines preceded  worst
+      0 strictness                     11563                0.00             0.0%      0
+      1 literal-off-by-one             37003                0.21            21.3%      1
+      2 swapped-return-operands          112                0.96            75.9%      2
+      3 flipped-additive                2718                1.14            84.5%      3
+      8 minmax-swap                        2                1.50            50.0%      3
+      9 flipped-augmented-assign         741                0.97            76.0%      3
+     10 flipped-comparison-direction    2655                1.86           100.0%      4
+     11 reversed-minus-operands          233                2.15           100.0%      5
+     12 flipped-boolean                   15                0.00             0.0%      0
+
+== cglm (shared clone, READ-ONLY): 277 files, 24325 signalled lines
+   mean classes live per signalled line (popcount): 1.18   max 6
+   kind name                           lines  mean EMIT position  %lines preceded  worst
+      0 strictness                       777                0.00             0.0%      0
+      1 literal-off-by-one             23797                0.03             2.8%      1
+      2 swapped-return-operands          100                0.95            85.0%      2
+      3 flipped-additive                1916                1.02            92.5%      3
+      8 minmax-swap                       56                0.14            14.3%      1
+      9 flipped-augmented-assign         726                0.92            70.1%      2
+     10 flipped-comparison-direction     727                2.12           100.0%      4
+     11 reversed-minus-operands          563                2.11           100.0%      5
+     12 flipped-boolean                    0     never signalled                -      -

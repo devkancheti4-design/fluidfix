@@ -1,0 +1,117 @@
+{
+ "fixture": "F6-order-sensitive",
+ "failing_output_s": 0.216,
+ "failing_output_runs": 1,
+ "find_candidate_files_s": 0.633,
+ "find_candidate_files_runs": 2,
+ "files": [
+  "bounds.py",
+  "mod.py",
+  "totals.py"
+ ],
+ "per_file_packet_and_rank": [
+  {
+   "file": "bounds.py",
+   "s": 0.551,
+   "subprocess_runs": 2,
+   "observations": 2
+  },
+  {
+   "file": "mod.py",
+   "s": 0.537,
+   "subprocess_runs": 2,
+   "observations": 3
+  },
+  {
+   "file": "totals.py",
+   "s": 0.554,
+   "subprocess_runs": 2,
+   "observations": 2
+  }
+ ],
+ "upfront_extra_s_for_all_but_first": 1.091,
+ "upfront_extra_subprocess_runs": 4,
+ "all_subprocess_runs": [
+  {
+   "args": [
+    "-x",
+    "--tb=long"
+   ],
+   "cached": true,
+   "s": 0.215
+  },
+  {
+   "args": [
+    "--lf",
+    "--tb=no",
+    "--cov=.",
+    "--cov-report=json:/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/31-cross-rank-sight/work/s6/_fluidfix_guard_cov.json"
+   ],
+   "cached": true,
+   "s": 0.306
+  },
+  {
+   "args": [
+    "--tb=no",
+    "--cov=.",
+    "--cov-report=json:/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/31-cross-rank-sight/work/s6/_fluidfix_guard_cov.json"
+   ],
+   "cached": true,
+   "s": 0.293
+  },
+  {
+   "args": [
+    "-x",
+    "--tb=long"
+   ],
+   "cached": true,
+   "s": 0.218
+  },
+  {
+   "args": [
+    "--lf",
+    "--tb=no",
+    "--cov=bounds",
+    "--cov-report=json:/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/31-cross-rank-sight/work/s6/_fluidfix_cov.json"
+   ],
+   "cached": true,
+   "s": 0.3
+  },
+  {
+   "args": [
+    "-x",
+    "--tb=long"
+   ],
+   "cached": true,
+   "s": 0.217
+  },
+  {
+   "args": [
+    "--lf",
+    "--tb=no",
+    "--cov=mod",
+    "--cov-report=json:/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/31-cross-rank-sight/work/s6/_fluidfix_cov.json"
+   ],
+   "cached": true,
+   "s": 0.293
+  },
+  {
+   "args": [
+    "-x",
+    "--tb=long"
+   ],
+   "cached": true,
+   "s": 0.222
+  },
+  {
+   "args": [
+    "--lf",
+    "--tb=no",
+    "--cov=totals",
+    "--cov-report=json:/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/31-cross-rank-sight/work/s6/_fluidfix_cov.json"
+   ],
+   "cached": true,
+   "s": 0.302
+  }
+ ]
+}

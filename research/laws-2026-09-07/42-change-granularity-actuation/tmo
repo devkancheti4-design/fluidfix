@@ -1,0 +1,15 @@
+#!/bin/sh
+# tmo SECONDS CMD... -- no coreutils `timeout` on this machine, so a perl alarm.
+# Exit 124 on timeout, else the child's exit status.
+exec perl -e '
+  my $t = shift @ARGV;
+  my $pid = fork();
+  if (!defined $pid) { die "fork failed" }
+  if ($pid == 0) { exec @ARGV or die "exec failed: $!" }
+  $SIG{ALRM} = sub { kill "TERM", $pid; sleep 2; kill "KILL", $pid; exit 124 };
+  alarm $t;
+  waitpid($pid, 0);
+  my $st = $?;
+  alarm 0;
+  exit($st & 127 ? 128 + ($st & 127) : $st >> 8);
+' "$@"

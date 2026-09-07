@@ -1,0 +1,146 @@
+== 1. rulings on the bits the body can pack ==
+loop.py:217  decide(situation(BUILT=True, AMB=..., CAPPED=...)) — 4 reachable + 4 unreachable (BUILT is always True there):
+  BUILT=1 AMB=0 CAPPED=0  byte=0x01 -> SHIP                   reachable from _rule
+  BUILT=1 AMB=0 CAPPED=1  byte=0x21 -> RAISE_BUDGET           reachable from _rule
+  BUILT=1 AMB=1 CAPPED=0  byte=0x03 -> ADD_STATE              reachable from _rule
+  BUILT=1 AMB=1 CAPPED=1  byte=0x23 -> ADD_STATE              reachable from _rule
+  BUILT=0 AMB=0 CAPPED=0  byte=0x00 -> SHIP                   NOT packable by _rule (BUILT hardwired True)
+  BUILT=0 AMB=0 CAPPED=1  byte=0x20 -> RAISE_BUDGET           NOT packable by _rule (BUILT hardwired True)
+  BUILT=0 AMB=1 CAPPED=0  byte=0x02 -> ADD_STATE              NOT packable by _rule (BUILT hardwired True)
+  BUILT=0 AMB=1 CAPPED=1  byte=0x22 -> ADD_STATE              NOT packable by _rule (BUILT hardwired True)
+guard.py:539 decide(situation(CAPPED=capped0, REFUTED=acts0)) — the escalation gate:
+  CAPPED=0 REFUTED=0  byte=0x00 -> SHIP
+  CAPPED=0 REFUTED=1  byte=0x40 -> HARVEST_COUNTEREXAMPLE
+  CAPPED=1 REFUTED=0  byte=0x20 -> RAISE_BUDGET
+  CAPPED=1 REFUTED=1  byte=0x60 -> RAISE_BUDGET
+
+== all 256 inputs, split by the CAPPED bit (bit 5) ==
+  CAPPED=1 (128 inputs): {'RAISE_BUDGET': 16, 'ADD_STATE': 56, 'ADD_MATERIAL': 32, 'AUTHOR_SUCCESSOR': 8, 'RESHAPE': 8, 'CHANGE_GRANULARITY': 8}
+  CAPPED=0 (128 inputs): {'SHIP': 4, 'ADD_STATE': 57, 'ADD_MATERIAL': 32, 'RESHAPE': 9, 'CHANGE_GRANULARITY': 8, 'RAISE_BUDGET': 7, 'AUTHOR_SUCCESSOR': 7, 'HARVEST_COUNTEREXAMPLE': 4}
+  CAPPED=1 inputs NOT ruled RAISE_BUDGET: 112
+    0x22 AMB+CAPPED                                    -> ADD_STATE
+    0x23 BUILT+AMB+CAPPED                              -> ADD_STATE
+    0x24 UNREAD+CAPPED                                 -> ADD_MATERIAL
+    0x25 BUILT+UNREAD+CAPPED                           -> ADD_MATERIAL
+    0x26 AMB+UNREAD+CAPPED                             -> ADD_STATE
+    0x28 NOTWIN+CAPPED                                 -> AUTHOR_SUCCESSOR
+    0x29 BUILT+NOTWIN+CAPPED                           -> RESHAPE
+    0x2a AMB+NOTWIN+CAPPED                             -> ADD_STATE
+    0x2b BUILT+AMB+NOTWIN+CAPPED                       -> ADD_STATE
+    0x2c UNREAD+NOTWIN+CAPPED                          -> ADD_MATERIAL
+    0x2d BUILT+UNREAD+NOTWIN+CAPPED                    -> ADD_MATERIAL
+    0x2e AMB+UNREAD+NOTWIN+CAPPED                      -> ADD_STATE
+    0x2f BUILT+AMB+UNREAD+NOTWIN+CAPPED                -> ADD_STATE
+    0x30 HIDDEN+CAPPED                                 -> CHANGE_GRANULARITY
+    0x31 BUILT+HIDDEN+CAPPED                           -> CHANGE_GRANULARITY
+    0x32 AMB+HIDDEN+CAPPED                             -> ADD_STATE
+    0x33 BUILT+AMB+HIDDEN+CAPPED                       -> ADD_STATE
+    0x34 UNREAD+HIDDEN+CAPPED                          -> ADD_MATERIAL
+    0x35 BUILT+UNREAD+HIDDEN+CAPPED                    -> ADD_MATERIAL
+    0x36 AMB+UNREAD+HIDDEN+CAPPED                      -> ADD_STATE
+    0x38 NOTWIN+HIDDEN+CAPPED                          -> AUTHOR_SUCCESSOR
+    0x39 BUILT+NOTWIN+HIDDEN+CAPPED                    -> RESHAPE
+    0x3a AMB+NOTWIN+HIDDEN+CAPPED                      -> ADD_STATE
+    0x3b BUILT+AMB+NOTWIN+HIDDEN+CAPPED                -> ADD_STATE
+    0x3c UNREAD+NOTWIN+HIDDEN+CAPPED                   -> ADD_MATERIAL
+    0x3d BUILT+UNREAD+NOTWIN+HIDDEN+CAPPED             -> ADD_MATERIAL
+    0x3e AMB+UNREAD+NOTWIN+HIDDEN+CAPPED               -> ADD_STATE
+    0x3f BUILT+AMB+UNREAD+NOTWIN+HIDDEN+CAPPED         -> ADD_STATE
+    0x62 AMB+CAPPED+REFUTED                            -> ADD_STATE
+    0x63 BUILT+AMB+CAPPED+REFUTED                      -> ADD_STATE
+    0x64 UNREAD+CAPPED+REFUTED                         -> ADD_MATERIAL
+    0x65 BUILT+UNREAD+CAPPED+REFUTED                   -> ADD_MATERIAL
+    0x66 AMB+UNREAD+CAPPED+REFUTED                     -> ADD_STATE
+    0x68 NOTWIN+CAPPED+REFUTED                         -> AUTHOR_SUCCESSOR
+    0x69 BUILT+NOTWIN+CAPPED+REFUTED                   -> RESHAPE
+    0x6a AMB+NOTWIN+CAPPED+REFUTED                     -> ADD_STATE
+    0x6b BUILT+AMB+NOTWIN+CAPPED+REFUTED               -> ADD_STATE
+    0x6c UNREAD+NOTWIN+CAPPED+REFUTED                  -> ADD_MATERIAL
+    0x6d BUILT+UNREAD+NOTWIN+CAPPED+REFUTED            -> ADD_MATERIAL
+    0x6e AMB+UNREAD+NOTWIN+CAPPED+REFUTED              -> ADD_STATE
+    0x6f BUILT+AMB+UNREAD+NOTWIN+CAPPED+REFUTED        -> ADD_STATE
+    0x70 HIDDEN+CAPPED+REFUTED                         -> CHANGE_GRANULARITY
+    0x71 BUILT+HIDDEN+CAPPED+REFUTED                   -> CHANGE_GRANULARITY
+    0x72 AMB+HIDDEN+CAPPED+REFUTED                     -> ADD_STATE
+    0x73 BUILT+AMB+HIDDEN+CAPPED+REFUTED               -> ADD_STATE
+    0x74 UNREAD+HIDDEN+CAPPED+REFUTED                  -> ADD_MATERIAL
+    0x75 BUILT+UNREAD+HIDDEN+CAPPED+REFUTED            -> ADD_MATERIAL
+    0x76 AMB+UNREAD+HIDDEN+CAPPED+REFUTED              -> ADD_STATE
+    0x78 NOTWIN+HIDDEN+CAPPED+REFUTED                  -> AUTHOR_SUCCESSOR
+    0x79 BUILT+NOTWIN+HIDDEN+CAPPED+REFUTED            -> RESHAPE
+    0x7a AMB+NOTWIN+HIDDEN+CAPPED+REFUTED              -> ADD_STATE
+    0x7b BUILT+AMB+NOTWIN+HIDDEN+CAPPED+REFUTED        -> ADD_STATE
+    0x7c UNREAD+NOTWIN+HIDDEN+CAPPED+REFUTED           -> ADD_MATERIAL
+    0x7d BUILT+UNREAD+NOTWIN+HIDDEN+CAPPED+REFUTED     -> ADD_MATERIAL
+    0x7e AMB+UNREAD+NOTWIN+HIDDEN+CAPPED+REFUTED       -> ADD_STATE
+    0x7f BUILT+AMB+UNREAD+NOTWIN+HIDDEN+CAPPED+REFUTED -> ADD_STATE
+    0xa2 AMB+CAPPED+SELF                               -> ADD_STATE
+    0xa3 BUILT+AMB+CAPPED+SELF                         -> ADD_STATE
+    0xa4 UNREAD+CAPPED+SELF                            -> ADD_MATERIAL
+    0xa5 BUILT+UNREAD+CAPPED+SELF                      -> ADD_MATERIAL
+    0xa6 AMB+UNREAD+CAPPED+SELF                        -> ADD_STATE
+    0xa8 NOTWIN+CAPPED+SELF                            -> AUTHOR_SUCCESSOR
+    0xa9 BUILT+NOTWIN+CAPPED+SELF                      -> RESHAPE
+    0xaa AMB+NOTWIN+CAPPED+SELF                        -> ADD_STATE
+    0xab BUILT+AMB+NOTWIN+CAPPED+SELF                  -> ADD_STATE
+    0xac UNREAD+NOTWIN+CAPPED+SELF                     -> ADD_MATERIAL
+    0xad BUILT+UNREAD+NOTWIN+CAPPED+SELF               -> ADD_MATERIAL
+    0xae AMB+UNREAD+NOTWIN+CAPPED+SELF                 -> ADD_STATE
+    0xaf BUILT+AMB+UNREAD+NOTWIN+CAPPED+SELF           -> ADD_STATE
+    0xb0 HIDDEN+CAPPED+SELF                            -> CHANGE_GRANULARITY
+    0xb1 BUILT+HIDDEN+CAPPED+SELF                      -> CHANGE_GRANULARITY
+    0xb2 AMB+HIDDEN+CAPPED+SELF                        -> ADD_STATE
+    0xb3 BUILT+AMB+HIDDEN+CAPPED+SELF                  -> ADD_STATE
+    0xb4 UNREAD+HIDDEN+CAPPED+SELF                     -> ADD_MATERIAL
+    0xb5 BUILT+UNREAD+HIDDEN+CAPPED+SELF               -> ADD_MATERIAL
+    0xb6 AMB+UNREAD+HIDDEN+CAPPED+SELF                 -> ADD_STATE
+    0xb8 NOTWIN+HIDDEN+CAPPED+SELF                     -> AUTHOR_SUCCESSOR
+    0xb9 BUILT+NOTWIN+HIDDEN+CAPPED+SELF               -> RESHAPE
+    0xba AMB+NOTWIN+HIDDEN+CAPPED+SELF                 -> ADD_STATE
+    0xbb BUILT+AMB+NOTWIN+HIDDEN+CAPPED+SELF           -> ADD_STATE
+    0xbc UNREAD+NOTWIN+HIDDEN+CAPPED+SELF              -> ADD_MATERIAL
+    0xbd BUILT+UNREAD+NOTWIN+HIDDEN+CAPPED+SELF        -> ADD_MATERIAL
+    0xbe AMB+UNREAD+NOTWIN+HIDDEN+CAPPED+SELF          -> ADD_STATE
+    0xbf BUILT+AMB+UNREAD+NOTWIN+HIDDEN+CAPPED+SELF    -> ADD_STATE
+    0xe2 AMB+CAPPED+REFUTED+SELF                       -> ADD_STATE
+    0xe3 BUILT+AMB+CAPPED+REFUTED+SELF                 -> ADD_STATE
+    0xe4 UNREAD+CAPPED+REFUTED+SELF                    -> ADD_MATERIAL
+    0xe5 BUILT+UNREAD+CAPPED+REFUTED+SELF              -> ADD_MATERIAL
+    0xe6 AMB+UNREAD+CAPPED+REFUTED+SELF                -> ADD_STATE
+    0xe8 NOTWIN+CAPPED+REFUTED+SELF                    -> AUTHOR_SUCCESSOR
+    0xe9 BUILT+NOTWIN+CAPPED+REFUTED+SELF              -> RESHAPE
+    0xea AMB+NOTWIN+CAPPED+REFUTED+SELF                -> ADD_STATE
+    0xeb BUILT+AMB+NOTWIN+CAPPED+REFUTED+SELF          -> ADD_STATE
+    0xec UNREAD+NOTWIN+CAPPED+REFUTED+SELF             -> ADD_MATERIAL
+    0xed BUILT+UNREAD+NOTWIN+CAPPED+REFUTED+SELF       -> ADD_MATERIAL
+    0xee AMB+UNREAD+NOTWIN+CAPPED+REFUTED+SELF         -> ADD_STATE
+    0xef BUILT+AMB+UNREAD+NOTWIN+CAPPED+REFUTED+SELF   -> ADD_STATE
+    0xf0 HIDDEN+CAPPED+REFUTED+SELF                    -> CHANGE_GRANULARITY
+    0xf1 BUILT+HIDDEN+CAPPED+REFUTED+SELF              -> CHANGE_GRANULARITY
+    0xf2 AMB+HIDDEN+CAPPED+REFUTED+SELF                -> ADD_STATE
+    0xf3 BUILT+AMB+HIDDEN+CAPPED+REFUTED+SELF          -> ADD_STATE
+    0xf4 UNREAD+HIDDEN+CAPPED+REFUTED+SELF             -> ADD_MATERIAL
+    0xf5 BUILT+UNREAD+HIDDEN+CAPPED+REFUTED+SELF       -> ADD_MATERIAL
+    0xf6 AMB+UNREAD+HIDDEN+CAPPED+REFUTED+SELF         -> ADD_STATE
+    0xf8 NOTWIN+HIDDEN+CAPPED+REFUTED+SELF             -> AUTHOR_SUCCESSOR
+    0xf9 BUILT+NOTWIN+HIDDEN+CAPPED+REFUTED+SELF       -> RESHAPE
+    0xfa AMB+NOTWIN+HIDDEN+CAPPED+REFUTED+SELF         -> ADD_STATE
+    0xfb BUILT+AMB+NOTWIN+HIDDEN+CAPPED+REFUTED+SELF   -> ADD_STATE
+    0xfc UNREAD+NOTWIN+HIDDEN+CAPPED+REFUTED+SELF      -> ADD_MATERIAL
+    0xfd BUILT+UNREAD+NOTWIN+HIDDEN+CAPPED+REFUTED+SELF -> ADD_MATERIAL
+    0xfe AMB+UNREAD+NOTWIN+HIDDEN+CAPPED+REFUTED+SELF  -> ADD_STATE
+    0xff BUILT+AMB+UNREAD+NOTWIN+HIDDEN+CAPPED+REFUTED+SELF -> ADD_STATE
+
+== 2. fixture arithmetic (pad=0, bug at mod.py:403, file has 806 lines) ==
+  first pass  (build_packet default max_lines=110): packet lines=110 truncated=True bug_in_packet=False
+    observations=110 kinds histogram={12: 109, 1: 1} distinct candidates (= max suite runs, before dedup)=110
+    ranking-law position of the bug line among observations: absent (0 = tried first)
+  escalation  (max_lines=990, guard.py:578): packet lines=803 truncated=False bug_in_packet=True
+    observations=802 kinds histogram={12: 800, 0: 1, 10: 1, 1: 1} distinct candidates (= max suite runs, before dedup)=803
+    ranking-law position of the bug line among observations: 400 (0 = tried first)
+    bug line kinds=[0, 10]; candidates before it: 400
+
+  one suite run (oracle.check, fail-fast --lf path) on this fixture:
+    run 1: ok=False 0.33s
+    run 2: ok=False 0.21s
+    run 3: ok=False 0.20s

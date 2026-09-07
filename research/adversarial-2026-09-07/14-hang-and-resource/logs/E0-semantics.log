@@ -1,0 +1,9 @@
+
+--- oracle.py:157 / javaoracle.py:53  subprocess.run(timeout=)
+    result=TIMEOUT  survivors_after_kill=1
+      LEAKED: 36416 36359 /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python
+
+--- coracle.py:191  Popen(start_new_session)+killpg
+    result=TIMEOUT  survivors_after_kill=0
+
+final sweep, survivors: 0

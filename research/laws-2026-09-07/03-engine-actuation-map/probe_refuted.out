@@ -1,0 +1,15 @@
+== refuted: REAL law ==
+  [real] status='refused' file=None
+  [real] hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it'
+  [real] attempts=1 result=None
+  [real] harvested: at=mod.py:2 tried='    return b * a' why='FAILED test_mod.py::test_f - assert 12 == 3'
+  [real] last_refusal.json: hint='every generated candidate was rejected by the suite (engine '... rejected_candidates=1
+== refuted: SWAPPED law {'HARVEST_COUNTEREXAMPLE': 'RESHAPE'} ==
+  [swap] status='refused' file=None
+  [swap] hint=''
+  [swap] attempts=1 result=None
+  [swap] harvested: at=mod.py:2 tried='    return b * a' why='FAILED test_mod.py::test_f - assert 12 == 3'
+  [swap] last_refusal.json: hint='fault class is outside the taught vocabulary; register() it '... rejected_candidates=1
+  decide() calls during the swapped run (byte, real ruling, returned):
+    REFUTED              HARVEST_COUNTEREXAMPLE -> RESHAPE
+-- refuted: 6.8s wall

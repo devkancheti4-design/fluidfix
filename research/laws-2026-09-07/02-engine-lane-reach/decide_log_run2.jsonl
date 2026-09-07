@@ -1,0 +1,16 @@
+{"test": "tests/test_regressions.py::test_crlf_file_untouched_on_refusal_and_preserved_on_repair", "x": 1, "act": "SHIP", "site": "loop.py:217"}
+{"test": "tests/test_regressions.py::test_teach_a_new_class_from_one_registration", "x": 1, "act": "SHIP", "site": "loop.py:217"}
+{"test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record", "x": 1, "act": "SHIP", "site": null}
+{"test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record", "x": 1, "act": "SHIP", "site": null}
+{"test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record", "x": 3, "act": "ADD_STATE", "site": null}
+{"test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record", "x": 32, "act": "RAISE_BUDGET", "site": null}
+{"test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record", "x": 64, "act": "HARVEST_COUNTEREXAMPLE", "site": null}
+{"test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record", "x": 4, "act": "ADD_MATERIAL", "site": null}
+{"test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record", "x": 16, "act": "CHANGE_GRANULARITY", "site": null}
+{"test": "tests/test_law_never_ruled_wrong.py::test_the_law_ruled_correctly_on_every_incident_on_record", "x": 64, "act": "HARVEST_COUNTEREXAMPLE", "site": null}
+{"test": "tests/test_law_never_ruled_wrong.py::test_ship_is_not_a_veto_and_amb_is_the_brake", "x": 1, "act": "SHIP", "site": null}
+{"test": "tests/test_law_never_ruled_wrong.py::test_ship_is_not_a_veto_and_amb_is_the_brake", "x": 3, "act": "ADD_STATE", "site": null}
+{"test": "tests/test_dry_run.py::test_dry_run_proposes_restores_and_patch_applies", "x": 1, "act": "SHIP", "site": "loop.py:217"}
+{"test": "tests/test_dry_run.py::test_dry_run_without_git_falls_back_to_difflib", "x": 1, "act": "SHIP", "site": "loop.py:217"}
+{"test": "tests/test_dry_run.py::test_dry_run_refusal_behaves_exactly_as_today", "x": 0, "act": "SHIP", "site": "guard.py:539"}
+{"test": "tests/test_dry_run.py::test_dry_run_returns_after_proposing_even_with_interval", "x": 1, "act": "SHIP", "site": "loop.py:217"}

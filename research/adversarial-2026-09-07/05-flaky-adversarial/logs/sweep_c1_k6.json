@@ -1,0 +1,27 @@
+{
+ "repaired": true,
+ "refused": false,
+ "lineno": 5,
+ "old_line": "    return a - b",
+ "new_line": "    return b - a",
+ "acts_tried": [
+  7,
+  8
+ ],
+ "suite_runs": 3,
+ "seconds": 1.7655112743377686,
+ "reason": "engine law: BUILT -> SHIP",
+ "ambiguous": false,
+ "greens": [
+  "    return b - a"
+ ],
+ "tried_log": [
+  {
+   "at": "money.py:5",
+   "tried": "    return a + b",
+   "why": "green on one run, RED on re-check \u2014 the suite does not hold still here, so a single run cannot judge this candidate (engine law: HIDDEN -> CHANGE_GRANULARITY). last failure: FAILED tests/test_money.py::test_combined - assert 7 == 12"
+  }
+ ],
+ "tried_more": 0,
+ "restored_original": null
+}

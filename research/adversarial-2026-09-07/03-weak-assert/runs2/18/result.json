@@ -1,0 +1,48 @@
+{
+ "id": 18,
+ "lineno": 52,
+ "kind": 10,
+ "kind_name": "flipped-comparison-direction",
+ "act": 15,
+ "orig": "    return attempts < limit",
+ "mutant": "    return attempts > limit",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 52,\n \"old_line\": \"    return attempts > limit\",\n \"new_line\": \"    return attempts < limit\",\n \"acts_tried\": [\n  5,\n  15\n ],\n \"suite_runs\": 3,\n \"seconds\": 2.557223081588745,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return attempts < limit\"\n ],\n \"tried_log\": [\n  {\n   \"at\": \"weakpkg2/core.py:52\",\n   \"tried\": \"    return attempts >= limit\",\n   \"why\": \"FAILED tests/test_core.py::test_retry_allowed_bool - assert False is True\"\n  }\n ],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 52,
+  "old_line": "    return attempts > limit",
+  "new_line": "    return attempts < limit",
+  "acts_tried": [
+   5,
+   15
+  ],
+  "suite_runs": 3,
+  "seconds": 2.557223081588745,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return attempts < limit"
+  ],
+  "tried_log": [
+   {
+    "at": "weakpkg2/core.py:52",
+    "tried": "    return attempts >= limit",
+    "why": "FAILED tests/test_core.py::test_retry_allowed_bool - assert False is True"
+   }
+  ],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": true,
+ "final_equals_mutant": false,
+ "final_line": "    return attempts < limit",
+ "outcome": "SHIPPED-CORRECT",
+ "greens": [
+  "    return attempts < limit"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

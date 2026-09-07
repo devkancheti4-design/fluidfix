@@ -1,0 +1,4 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_lanes.py::test_dispatch_256"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_lanes.py::test_termination_every_mask_drains"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_lanes.py::test_mask_roundtrip"}

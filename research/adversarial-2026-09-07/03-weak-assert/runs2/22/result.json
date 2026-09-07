@@ -1,0 +1,12 @@
+{
+ "id": 22,
+ "lineno": 62,
+ "kind": 12,
+ "kind_name": "flipped-boolean",
+ "act": 1,
+ "orig": "    return {\"cache\": True, \"trace\": False}",
+ "mutant": "    return {\"cache\": True, \"trace\": True}",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

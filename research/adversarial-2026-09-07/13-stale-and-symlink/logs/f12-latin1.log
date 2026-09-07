@@ -1,0 +1,49 @@
+=== fixture: f12-latin1
+=== root:    /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/13-stale-and-symlink/fixtures/f12-latin1
+=== extra:   
+BEFORE ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154162241 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154162241
+BEFORE ./pkg/geom.py
+  content-sha256: ef9acaaffa1d15ef6292cb4d46fa196ff62949083742f08ebc66a9fcd9a954b5
+  stat(name):     mode=-rw-r--r-- inode=154162245 nlink=1 size=156
+  lstat(name):    mode=-rw-r--r-- inode=154162245
+BEFORE ./tests/test_geom.py
+  content-sha256: 4a7765cd023ca3fbded5cb878a10cb28188aae677b93c0ff6f0fe0aa4b1535c8
+  stat(name):     mode=-rw-r--r-- inode=154162243 nlink=1 size=117
+  lstat(name):    mode=-rw-r--r-- inode=154162243
+=== guard run ===
+Traceback (most recent call last):
+  File "/Users/kanchetidevieswar/neo/fluidfix/.venv/bin/fluidfix", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/cli.py", line 762, in main
+    return args.fn(args)
+           ~~~~~~~^^^^^^
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/cli.py", line 111, in cmd_guard
+    report = guard_once(oracle, observer, coverage_target=args.cov,
+                        candidate_timeout=args.candidate_timeout,
+                        escalate_budget=args.escalate_budget,
+                        budget=args.budget)
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/guard.py", line 505, in guard_once
+    packet = build_packet(oracle, rel, coverage_target=coverage_target)
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/localize.py", line 101, in build_packet
+    src = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa9 in position 36: invalid start byte
+=== guard exit: 1 ===
+AFTER ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154162241 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154162241
+AFTER ./pkg/geom.py
+  content-sha256: ef9acaaffa1d15ef6292cb4d46fa196ff62949083742f08ebc66a9fcd9a954b5
+  stat(name):     mode=-rw-r--r-- inode=154162245 nlink=1 size=156
+  lstat(name):    mode=-rw-r--r-- inode=154162245
+AFTER ./tests/test_geom.py
+  content-sha256: 4a7765cd023ca3fbded5cb878a10cb28188aae677b93c0ff6f0fe0aa4b1535c8
+  stat(name):     mode=-rw-r--r-- inode=154162243 nlink=1 size=117
+  lstat(name):    mode=-rw-r--r-- inode=154162243
+=== leftovers in .fluidfix ===
+(none)

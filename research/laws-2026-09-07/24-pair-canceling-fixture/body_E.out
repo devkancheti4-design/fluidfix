@@ -1,0 +1,6 @@
+== E_only_canceling
+repaired=False refused=True ambiguous=False
+suite_runs=8 acts_tried=[6, 6, 7, 8, 6, 7, 6, 7, 6, 8] seconds=1.8
+greens=[]
+reason: every candidate left the suite red — fault is outside this vocabulary or the observations are wrong
+file restored byte-exactly: True

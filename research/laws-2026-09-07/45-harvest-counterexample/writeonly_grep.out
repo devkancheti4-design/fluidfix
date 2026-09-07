@@ -1,0 +1,43 @@
+$ grep -rn "tried_log\|tried_more\|rejected_candidates\|last_refusal" src/fluidfix/
+src/fluidfix/loop.py:60:    tried_log: list = field(default_factory=list)
+src/fluidfix/loop.py:61:    tried_more: int = 0               # rejections beyond the 64-entry cap
+src/fluidfix/loop.py:346:                            if len(res.tried_log) < 64:
+src/fluidfix/loop.py:347:                                res.tried_log.append(
+src/fluidfix/loop.py:351:                                res.tried_more += 1
+src/fluidfix/loop.py:407:                    elif len(res.tried_log) < 64:
+src/fluidfix/loop.py:408:                        res.tried_log.append({"at": at_str,
+src/fluidfix/loop.py:412:                        res.tried_more += 1
+src/fluidfix/guard.py:518:        attempts += result.tried_log
+src/fluidfix/guard.py:598:            attempts += result.tried_log
+src/fluidfix/guard.py:702:        os.remove(os.path.join(root, ".fluidfix", "last_refusal.json"))
+src/fluidfix/guard.py:711:    path = os.path.join(d, "last_refusal.json")
+src/fluidfix/guard.py:719:               "rejected_candidates": report.attempts[:200]},
+src/fluidfix/javaoracle.py:214:        attempts += result.tried_log
+src/fluidfix/coracle.py:761:        attempts += result.tried_log
+
+$ grep -rn "attempts" src/fluidfix/ | grep -v "attempts +=" 
+src/fluidfix/javaoracle.py:202:    attempts: list = []
+src/fluidfix/javaoracle.py:206:                               seconds=time.time() - t0, attempts=attempts,
+src/fluidfix/javaoracle.py:221:                               hint=result.reason, attempts=attempts)
+src/fluidfix/javaoracle.py:223:                       seconds=time.time() - t0, attempts=attempts)
+src/fluidfix/guard.py:52:    attempts: list = field(default_factory=list)
+src/fluidfix/guard.py:104:        if self.attempts:
+src/fluidfix/guard.py:105:            base += (f" {len(self.attempts)} candidate(s) were tried and "
+src/fluidfix/guard.py:486:    attempts: list = []
+src/fluidfix/guard.py:501:                seconds=time.time() - t0, attempts=attempts,
+src/fluidfix/guard.py:529:                               hint=result.reason, attempts=attempts, evidence=ev)
+src/fluidfix/guard.py:563:                    seconds=time.time() - t0, attempts=attempts,
+src/fluidfix/guard.py:610:                                   hint=result.reason, attempts=attempts, evidence=ev)
+src/fluidfix/guard.py:624:                       attempts=attempts)
+src/fluidfix/guard.py:719:               "rejected_candidates": report.attempts[:200]},
+src/fluidfix/coracle.py:748:    attempts: list = []
+src/fluidfix/coracle.py:752:                               seconds=time.time() - t0, attempts=attempts,
+src/fluidfix/coracle.py:765:                               attempts=attempts)
+src/fluidfix/coracle.py:769:                               hint=result.reason, attempts=attempts)
+src/fluidfix/coracle.py:771:                       seconds=time.time() - t0, attempts=attempts)
+
+$ sed -n "185p;332,334p" src/fluidfix/loop.py
+    tried: set[tuple[int, str]] = set()
+                    if key in tried:
+                        continue
+                    tried.add(key)

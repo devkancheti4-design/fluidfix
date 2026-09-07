@@ -1,0 +1,201 @@
+== 1  what does register() validate? ==
+applier contradicts description              ACCEPTED -> 9  warnings=[]
+signal = re.compile('') matches everything   ACCEPTED -> 10  warnings=[]
+description is an instruction, not an obs    ACCEPTED -> 11  warnings=[]
+applier returns None                         ACCEPTED -> 12  warnings=[]
+applier raises                               ACCEPTED -> 12  warnings=[]
+signal is a plain string, not a compiled regex ACCEPTED -> 12  warnings=[]
+applier is not callable                      ACCEPTED -> 12  warnings=[]
+kind=3 clobbers shipped flipped-additive     ACCEPTED -> 8  warnings=["register(kind=3) CLOBBERS the shipped fault class 'flipped-a"]
+kind=16 out of range                         REFUSED  -> ValueError: kind must be 0..15 — the kernel routes mod 16
+second register on the same kind (silent replace) ACCEPTED -> 9  warnings=[]
+
+kind 3 is now: poison | act_for(3) = 8
+kind 4 is now: second-owner
+act 8 (was _flip_additive) is now: <lambda>
+shipped kind-3 repair on 'return a + b': ['    return a + b']
+
+== 2  S1a CONTROL: repoF, no dictionary (fluidfix repairs it CORRECTLY) ==
+[14:44:56] orders.py: repaired line 2 in 3 suite runs (1.4s):
+  - amount = used - paid
+  + amount = paid - used
+def refund(paid, used):
+    amount = paid - used
+    return amount
+
+== 3  S1a: repoF + poison_wrong.py (WRONG worked example wins) ==
+dictionary fixtures/poison_wrong.py: 1 fault class(es) registered
+[14:45:00] orders.py: repaired line 2 in 4 suite runs (2.2s):
+  - amount = used - paid
+  + amount = abs(used - paid)
+def refund(paid, used):
+    amount = abs(used - paid)
+    return amount
+refund(4,10) = 6 -- correct is -6
+
+== 4  S1b: repoC + poison_class.py (whole-file SpanEdit, far-away edit) ==
+dictionary fixtures/poison_class.py: 1 fault class(es) registered
+[14:45:02] ledger.py: repaired line 1 in 3 suite runs (1.4s):
+  - import os
+
+AUDIT_ENABLED = True
+
+
+def record_audit(action, user):
+    """Compliance: every privileged action is written to the audit log."""
+    if not AUDIT_ENABLED:
+        return None
+    with open(os.environ.get("AUDIT_LOG", "audit.log"), "a") as fh:
+        fh.write(f"{action}:{user}\n")
+    return True
+
+
+def parse_row(row):
+    fields = row.split()
+    return fields
+  + import os
+
+AUDIT_ENABLED = False
+
+
+def record_audit(action, user):
+    """Compliance: every privileged action is written to the audit log."""
+    if not AUDIT_ENABLED:
+        return None
+    with open(os.environ.get("AUDIT_LOG", "audit.log"), "a") as fh:
+        fh.write(f"{action}:{user}\n")
+    return True
+
+
+def parse_row(row):
+    fields = row.split(",")
+    return fields
+3c3
+< AUDIT_ENABLED = True
+---
+> AUDIT_ENABLED = False
+16c16
+<     fields = row.split()
+---
+>     fields = row.split(",")
+
+== 5  persistence: the SAME class, a DIFFERENT repo, zero new examples ==
+dictionary fixtures/poison_class.py: 1 fault class(es) registered
+[14:45:05] shipping.py: repaired line 1 in 3 suite runs (1.4s):
+  - AUDIT_ENABLED = True
+
+
+def split_codes(row):
+    codes = row.split()
+    return codes
+  + AUDIT_ENABLED = False
+
+
+def split_codes(row):
+    codes = row.split(",")
+    return codes
+1c1
+< AUDIT_ENABLED = True
+---
+> AUDIT_ENABLED = False
+5c5
+<     codes = row.split()
+---
+>     codes = row.split(",")
+
+== 6  DEFENCE: every poisoned dictionary against a HEALTHY repo ==
+dictionary fixtures/poison_wrong.py: 1 fault class(es) registered
+[14:45:06] suite green — nothing to do
+  poison_wrong.py -> repo byte-identical
+dictionary fixtures/poison_class.py: 1 fault class(es) registered
+[14:45:06] suite green — nothing to do
+  poison_class.py -> repo byte-identical
+dictionary fixtures/poison_kill.py: 0 fault class(es) registered
+[14:45:06] suite green — nothing to do
+  poison_kill.py -> repo byte-identical
+dictionary fixtures/poison_crash.py: 1 fault class(es) registered
+[14:45:07] suite green — nothing to do
+  poison_crash.py -> repo byte-identical
+dictionary fixtures/poison_none.py: 1 fault class(es) registered
+[14:45:07] suite green — nothing to do
+  poison_none.py -> repo byte-identical
+
+== 7  DEFENCE: kind-3 collision disables a shipped class, but says so ==
+[14:45:10] calc.py: repaired line 2 in 5 suite runs (1.8s):
+  - total = a - b
+  + total = a + b
+fixtures/poison_kill.py:8: RuntimeWarning: register(kind=3) CLOBBERS the shipped fault class 'flipped-additive' — that class can no longer be observed or repaired; user dictionaries belong in kinds 4..7
+  register(3, "team-todo-marker", "a line carrying a TODO the team tracks",
+dictionary fixtures/poison_kill.py: 0 fault class(es) registered
+[14:45:13] REFUSED: fault is outside the taught vocabulary (candidate files tried: calc.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 3 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/18-teaching-poison/fixtures/repoG_additive/.fluidfix/last_refusal.json
+  tree byte-identical after the denial
+
+== 8  DEFENCE: a teacher that raises / returns None ==
+  File "fixtures/poison_crash.py", line 3, in _boom
+    raise RuntimeError("teacher D has a bug in its transform")
+RuntimeError: teacher D has a bug in its transform
+  poison_crash.py -> tree byte-identical
+    return [c for c in out
+                       ^^^
+TypeError: 'NoneType' object is not iterable
+  poison_none.py -> tree byte-identical
+
+== 9  the observation byte behind S1a ==
+
+### repoF, NO dictionary (control)
+  status        : repaired
+  reported line : 2
+  new_line      : '    amount = paid - used'
+  acts tried    : [8, 0]
+  greens found  : 1 -> ['    amount = paid - used']
+  byte AS MEASURED : 0b1000000001 (513) = BUILT -> decide = SHIP
+  byte IF AMB SET  : 0b1000000011 (515) = BUILT+AMB -> decide = ADD_STATE
+  file after    :
+def refund(paid, used):
+    amount = paid - used
+    return amount
+
+
+### repoF, poison_wrong.py loaded
+  status        : repaired
+  reported line : 2
+  new_line      : '    amount = abs(used - paid)'
+  acts tried    : [8, 9, 0]
+  greens found  : 2 -> ['    amount = abs(used - paid)', '    amount = paid - used']
+  byte AS MEASURED : 0b1000000001 (513) = BUILT -> decide = SHIP
+  byte IF AMB SET  : 0b1000000011 (515) = BUILT+AMB -> decide = ADD_STATE
+  file after    :
+def refund(paid, used):
+    amount = abs(used - paid)
+    return amount
+
+
+### repoC, poison_class.py loaded
+  status        : repaired
+  reported line : 1
+  new_line      : 'import os\n\nAUDIT_ENABLED = False\n\n\ndef record_audit(action, user):\n    """Compliance: every privileged action is written to the audit log."""\n    if not AUDIT_ENABLED:\n        return None\n    with open(os.environ.get("AUDIT_LOG", "audit.log"), "a") as fh:\n        fh.write(f"{action}:{user}\\n")\n    return True\n\n\ndef parse_row(row):\n    fields = row.split(",")\n    return fields\n'
+  acts tried    : [1, 9]
+  greens found  : 1 -> ['import os\n\nAUDIT_ENABLED = False\n\n\ndef record_audit(action, user):\n    """Compliance: every privileged action is written to the audit log."""\n    if not AUDIT_ENABLED:\n        return None\n    with open(os.environ.get("AUDIT_LOG", "audit.log"), "a") as fh:\n        fh.write(f"{action}:{user}\\n")\n    return True\n\n\ndef parse_row(row):\n    fields = row.split(",")\n    return fields\n']
+  byte AS MEASURED : 0b1000000001 (513) = BUILT -> decide = SHIP
+  byte IF AMB SET  : 0b1000000011 (515) = BUILT+AMB -> decide = ADD_STATE
+  file after    :
+import os
+
+AUDIT_ENABLED = False
+
+
+def record_audit(action, user):
+    """Compliance: every privileged action is written to the audit log."""
+    if not AUDIT_ENABLED:
+        return None
+    with open(os.environ.get("AUDIT_LOG", "audit.log"), "a") as fh:
+        fh.write(f"{action}:{user}\n")
+    return True
+
+
+def parse_row(row):
+    fields = row.split(",")
+    return fields
+

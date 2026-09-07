@@ -1,0 +1,31 @@
+scenario: repair() returned repaired=False ambiguous=False
+          greens=['K = 1'] acts_tried=[6, 9, 10]
+          reason='... (engine law: BUILT+CAPPED -> RAISE_BUDGET)'
+
+what repair() itself ruled, at loop.py:217:
+  situation(BUILT=1, AMB=0, CAPPED=1) -> RAISE_BUDGET
+
+what guard.py:539 builds from that same result:
+  capped0 = packet.truncated or len(all_files)>len(candidates)  -> False
+            (guard.py:508,538 -- the WALL-CLOCK cap repair() measured
+             is never folded in; guard.py never reads result.greens)
+  acts0   = bool(result.acts_tried)                             -> True
+  situation(CAPPED=0, REFUTED=1) -> HARVEST_COUNTEREXAMPLE   => escalation gate FALSE, pass stops
+
+what the situation actually is, by the law's own definitions:
+  CAPPED  = True   (engine.py:22-23 'a budget truncated the search' --
+                    repair() hit first_deadline mid-search)
+  REFUTED = False  (engine.py:24-25 'the suite rejected EVERY one' --
+                    one candidate passed: greens=['K = 1'])
+  situation(CAPPED=1, REFUTED=0) -> RAISE_BUDGET   => escalation gate TRUE, pass retries
+
+same law, two bytes: HARVEST_COUNTEREXAMPLE vs RAISE_BUDGET
+the ruling was never wrong. The byte was.
+
+consequence chain, all three measured in probe_builtcapped.out:
+  1. the green ('K = 1', the real fix) is dropped, never shipped
+  2. the RAISE_BUDGET ruling repair() made is discarded by guard_once
+     (guard.py:520-529 has branches for .repaired and .ambiguous only)
+  3. guard.py:617-621 then writes a hint that is FALSE:
+     'every generated candidate was rejected by the suite'
+     -- one was not. It passed.

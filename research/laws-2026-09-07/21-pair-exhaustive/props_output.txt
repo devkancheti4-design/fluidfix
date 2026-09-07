@@ -1,0 +1,74 @@
+==========================================================================
+A. BIT RELEVANCE — on how many inputs does SETTING each bit change the
+   ruling, and in which direction (lower index = attempted sooner)
+==========================================================================
+  bit 0 EXHAUSTED  of 128 base inputs:  30 sooner    2 later   96 unchanged
+  bit 1 PARTIAL    of 128 base inputs:   6 sooner    0 later  122 unchanged
+  bit 2 DISJOINT   of 128 base inputs:  16 sooner    0 later  112 unchanged
+  bit 3 COUPLED    of 128 base inputs:   2 sooner    2 later  124 unchanged
+  bit 4 CHEAP      of 128 base inputs:   2 sooner    2 later  124 unchanged
+  bit 5 TAUGHT     of 128 base inputs:   0 sooner    5 later  123 unchanged
+  bit 6 CANCELING  of 128 base inputs:   0 sooner  126 later    2 unchanged
+  bit 7 CAPPED     of 128 base inputs:  34 sooner   30 later   64 unchanged
+
+==========================================================================
+B. CAN ADDED EVIDENCE EVER REACH THE TWO ACTING LANES (PARTITION/PAIR)?
+==========================================================================
+  setting EXHAUSTED  moves  18 inputs into PARTITION/PAIR
+  setting PARTIAL    moves   2 inputs into PARTITION/PAIR
+  setting DISJOINT   moves  14 inputs into PARTITION/PAIR
+  setting COUPLED    moves   2 inputs into PARTITION/PAIR
+  setting CHEAP      moves   2 inputs into PARTITION/PAIR
+  setting TAUGHT     moves   0 inputs into PARTITION/PAIR
+  setting CANCELING  moves   0 inputs into PARTITION/PAIR
+  setting CAPPED     moves   0 inputs into PARTITION/PAIR
+  single-bit jumps from REFUSE straight to an acting lane: 3
+     x=49 EXHAUSTED|CHEAP|TAUGHT  + DISJOINT -> PARTITION
+     x=57 EXHAUSTED|COUPLED|CHEAP|TAUGHT  + PARTIAL -> PAIR
+     x=57 EXHAUSTED|COUPLED|CHEAP|TAUGHT  + DISJOINT -> PARTITION
+  (NOTE: the list above REFUTES the hypothesis this script started with —
+   a refusal IS one measured bit away from an acting lane, including the
+   quadratic PAIR lane at x=57 + PARTIAL)
+
+==========================================================================
+C. SCOPE OF THE AUTHORED R2 CLAIM
+   pair.c / pair.py: 'ctz returns the partition whenever one exists,
+   whatever else is true'
+==========================================================================
+  inputs with DISJOINT set                     : 128
+  of those, NOT ruled PARTITION                : 112
+     because EXHAUSTED is clear (R1 gate)      64
+     because CANCELING is set (R3 veto)        32
+     because CAPPED is set (budget spent)      16
+  smallest counterexample to the literal claim: x=133 EXHAUSTED|DISJOINT|CAPPED -> CAPPED
+
+==========================================================================
+D. SEMANTICALLY CONTRADICTORY REGION OF THE OBSERVATION BYTE
+   DISJOINT = 'the failing tests partition into disjoint sites'
+   COUPLED  = 'every failing test touches the same site'
+==========================================================================
+  inputs asserting BOTH (cannot both be measured true): 64/256
+  what the law rules on that region: {'SINGLE': 8, 'PARTITION': 8, 'REFUSE': 32, 'CAPPED': 16}
+  of those, how many reach a PAIR search: 0  (quadratic lane is NOT entered from a contradictory byte)
+  and with EXHAUSTED set and no veto, the contradictory region rules:
+     {'PARTITION': 8}
+
+==========================================================================
+E. THE TWO DOCUMENTED COST NUMBERS, RECOMPUTED
+==========================================================================
+  single-edit candidates measured on Box2D contact_solver.c : 1063
+  naive pair combinations C(1063,2)                        : 564453
+  docs/PAIR_LAW_PROMPT.md claims                            : 564453  (reproduces)
+  at the documented 3.5 s per candidate                     : 1975586 s = 22.87 days (doc says 'about 23 days')
+  single-edit pass at 3.5 s                                 : 1.03 h (doc says '~1 hour')
+
+==========================================================================
+F. ACTUATION REACH — where pair_law is called in the shipped body
+==========================================================================
+  Binary file /Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/__pycache__/cli.cpython-314.pyc matches
+  Binary file /Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/__pycache__/pair.cpython-314.pyc matches
+  /Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/cli.py:527:    from .pair import pair_law as _pair
+  /Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/pair.py:78:exhaustively by `fluidfix selfcheck` and tests/test_pair_law.py — all 256
+  /Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/pair.py:83:__all__ = ["BITS", "ACTS", "pair_law", "situation", "observe_bits"]
+  /Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/pair.py:121:def pair_law(observations: int) -> int:
+  /Users/kanchetidevieswar/neo/fluidfix/src/fluidfix.egg-info/SOURCES.txt:93:tests/test_pair_law.py

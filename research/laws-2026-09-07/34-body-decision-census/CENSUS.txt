@@ -1,0 +1,626 @@
+====================================================================================================
+BODY DECISION CENSUS - branches that choose between repair OUTCOMES
+====================================================================================================
+
+loop.py:175      [CODE]
+  code    : if oracle.green():
+  chooses : refuse 'no failing test' vs search
+  basis   : precondition; no decide(). Documented loop.py:18-21
+
+loop.py:201      [CODE]
+  code    : if not greens:
+  chooses : ask the law at all, or fall through to a refusal
+  basis   : gates every engine consultation on greens!=[]
+
+loop.py:218      [LAW-INPUT]
+  code    : AMB=set_amb or len(sites) > 1,
+  chooses : the AMB bit fed to decide()
+  basis   : AMB := set_amb or len(sites)>1 (engine.py:22)
+
+loop.py:221      [LAW]
+  code    : if ruling == "SHIP":
+  chooses : SHIP the repair vs refuse
+  basis   : engine law, ruling read directly. THE ONLY PURE ACTUATION BRANCH
+
+loop.py:230      [CODE]
+  code    : if set_amb or len(sites) > 1:
+  chooses : res.ambiguous -> guard aborts the file loop (guard.py:525,606)
+  basis   : re-derives decide()'s own AMB input instead of testing ruling=='ADD_STATE'
+
+loop.py:269      [CODE]
+  code    : if deadline is not None and time.time() > deadline:
+  chooses : stop the search between observations
+  basis   : wall clock; no law
+
+loop.py:273      [LAW]
+  code    : if ruled is not None:
+  chooses : return the law's ruling
+  basis   : actuation plumbing of _rule()
+
+loop.py:283      [CODE]
+  code    : mask = mask_of(k for k in obs.kinds if 0 <= k <= 15)
+  chooses : the ORDER fault classes are tried in
+  basis   : mask_of() drops obs.kinds order (acts.py:60 'most specific first'); lanes.EMIT then takes the lowest bit
+
+loop.py:284      [LAW]
+  code    : while not HALT(mask):
+  chooses : keep emitting kinds vs stop
+  basis   : lanes law HALT
+
+loop.py:285      [CODE]
+  code    : if deadline is not None and time.time() > deadline:
+  chooses : stop the search between kinds
+  basis   : wall clock; no law
+
+loop.py:292      [LAW]
+  code    : if ruled is not None:
+  chooses : return the law's ruling
+  basis   : actuation plumbing
+
+loop.py:312      [CODE]
+  code    : if not (1 <= s_ <= e_ <= len(raw)) \
+  chooses : reject a SpanEdit unseen
+  basis   : bounds + anchor safety (acts.py:32-42)
+
+loop.py:317      [CODE]
+  code    : if cand.text == old_repr:            # NOPROGRESS
+  chooses : skip candidate == NOPROGRESS
+  basis   : documented loop.py:14
+
+loop.py:325      [CODE]
+  code    : if cand == body:                     # NOPROGRESS
+  chooses : skip candidate == NOPROGRESS
+  basis   : documented loop.py:14
+
+loop.py:332      [CODE]
+  code    : if key in tried:
+  chooses : skip an already-tried candidate
+  basis   : cross-observation dedupe
+
+loop.py:335      [LAW-INPUT]
+  code    : if not counted:
+  chooses : acts_tried, which guard.py:519 turns into REFUTED
+  basis   : 'a real candidate set'; engine.py:24 says REFUTED also needs 'the suite rejected every one'
+
+loop.py:342      [CODE]
+  code    : if defect_file.endswith(".py"):
+  chooses : reject a non-compiling .py candidate for free
+  basis   : no suite run paid; .py only
+
+loop.py:346      [CODE]
+  code    : if len(res.tried_log) < 64:
+  chooses : what the harvest report contains
+  basis   : 64-entry cap (magic number)
+
+loop.py:357      [CODE]
+  code    : if ok and _confirm_runs():
+  chooses : whether the HIDDEN lane runs at all
+  basis   : FLUIDFIX_CONFIRM, default 1; 0 disables the lane
+
+loop.py:386      [LAW-QUOTED]
+  code    : if fine_disagree:
+  chooses : reject a green candidate as flaky
+  basis   : decide(situation(HIDDEN=True)) at :391 -> CHANGE_GRANULARITY is only interpolated into `why`; `ok=False` at :388 is the body's own act
+
+loop.py:398      [CODE]
+  code    : if ok:
+  chooses : record a green
+  basis   : oracle verdict plumbing
+
+loop.py:400      [CODE]
+  code    : if len(greens) - green_at_set_start > 1:
+  chooses : set_amb, and BREAK out of the candidate set
+  basis   : two greens in one set; stops searching the rest of the set
+
+loop.py:407      [CODE]
+  code    : elif len(res.tried_log) < 64:
+  chooses : what the harvest report contains
+  basis   : 64-entry cap
+
+loop.py:415      [CODE]
+  code    : if set_amb or len({g[3] for g in greens}) > 1:
+  chooses : stop the whole per-file search early
+  basis   : third re-derivation of the AMB predicate
+
+loop.py:418      [CODE]
+  code    : if amb_proven:
+  chooses : stop iterating observations
+  basis   : amb_proven
+
+loop.py:425      [LAW]
+  code    : if ruled is not None:
+  chooses : return the law's ruling
+  basis   : the one call site the docstring calls 'THE LAW RULES'
+
+loop.py:427      [CODE]
+  code    : res.reason = ("no observation named a kind this vocabulary can repair"
+  chooses : which of two refusal reasons the user sees
+  basis   : acts_tried empty => 'no kind' else 'all red'
+
+guard.py:71      [CODE]
+  code    : if exhausted and not pointed:
+  chooses : which of THREE refusal diagnoses the user is told
+  basis   : exhausted x pointed; no law
+
+guard.py:92      [CODE]
+  code    : elif exhausted:
+  chooses : refusal diagnosis 2 of 3
+  basis   : no law
+
+guard.py:136     [CODE]
+  code    : if not full.startswith(oracle.root + os.sep) or not os.path.isfile(full):
+  chooses : which files may be searched at all
+  basis   : must live under root
+
+guard.py:139     [CODE]
+  code    : if _is_test_path(rel):
+  chooses : exclude test files from the candidate set
+  basis   : the oracle is not a candidate (oracle.py:97-105)
+
+guard.py:142     [CODE]
+  code    : if rel in ordered:
+  chooses : file ORDER: deepest traceback frame wins
+  basis   : ordered.remove/append + reverse() at :145
+
+guard.py:146     [CODE]
+  code    : if ordered:
+  chooses : RETURN the frame list and NEVER consult sight()
+  basis   : the SIGHT law is skipped entirely whenever a traceback names a source file
+
+guard.py:188     [CODE]
+  code    : if n_fail == 0:
+  chooses : drop files the failing test never executed
+  basis   : n_fail==0
+
+guard.py:254     [LAW-INPUT]
+  code    : if 0 < len(hits) <= 2:          # discriminating, not noise
+  chooses : the LITERAL bit
+  basis   : <=2 files, threshold from sight.py:17
+
+guard.py:272     [LAW-INPUT]
+  code    : if 0 < len(hits) <= 2:
+  chooses : the SCARCE bit
+  basis   : <=2 files, threshold from sight.py:16
+
+guard.py:284     [LAW-INPUT]
+  code    : failonly=specificity >= 0.9,
+  chooses : FAILONLY/NAMED/TOUCHED/SMALL/UBIQUITOUS bits
+  basis   : thresholds 0.9/80/0.25 all from sight.py:18-21
+
+guard.py:300     [LAW]
+  code    : ranked2.sort(key=lambda t: (file_priority2(t[3], t[1], t[2]),
+  chooses : file search ORDER
+  basis   : sight() is the primary key; -affinity/-spec/-n_fail/name break ties INSIDE a class (documented guard.py:208)
+
+guard.py:302     [CODE]
+  code    : return [rel for _, _, _, rel in ranked2[:max(limit, 8)]]
+  chooses : how many files the first pass may search
+  basis   : max(limit,8) (magic number)
+
+guard.py:402     [CODE]
+  code    : for k in (obs.kinds or [])[:2])
+  chooses : the CHEAP bit is measured from only the first 2 kinds
+  basis   : (obs.kinds or [])[:2]
+
+guard.py:412     [LAW-INPUT]
+  code    : dense=shapes.get(_shape(body), 0) >= 8,
+  chooses : the DENSE bit
+  basis   : shape count >= 8
+
+guard.py:425     [LAW]
+  code    : order = sorted(range(len(observations)),
+  chooses : line search ORDER
+  basis   : rank() primary; -token-count breaks ties inside a class (documented guard.py:416)
+
+guard.py:463     [CODE]
+  code    : total_deadline = t0 + budget if budget else None
+  chooses : the whole pass's wall-clock budget
+  basis   : --budget
+
+guard.py:468     [CODE]
+  code    : first_deadline = t0 + budget / 3 if budget else None
+  chooses : first pass gets budget/3, escalation the rest
+  basis   : magic split; measured rationale in comment, no law
+
+guard.py:479     [CODE]
+  code    : if not fails:
+  chooses : green -> do nothing
+  basis   : precondition
+
+guard.py:489     [LAW-INPUT]
+  code    : if not candidates and not _has_pytest_cov(oracle):
+  chooses : the UNREAD bit
+  basis   : not candidates and no pytest-cov
+
+guard.py:491     [TAUTOLOGY]
+  code    : if decide(situation(UNREAD=True)) == "ADD_MATERIAL":
+  chooses : emit an ADD_MATERIAL hint
+  basis   : decide(situation(UNREAD=True)) is a CONSTANT -> ADD_MATERIAL. No actuation: only a hint string is set
+
+guard.py:498     [CODE]
+  code    : if total_deadline is not None and time.time() > total_deadline:
+  chooses : abandon the first pass
+  basis   : wall clock
+
+guard.py:506     [CODE]
+  code    : if packet is None:
+  chooses : skip a file with no packet
+  basis   : build_packet returned None
+
+guard.py:508     [LAW-INPUT]
+  code    : capped0 = capped0 or packet.truncated
+  chooses : the CAPPED bit
+  basis   : packet.truncated ONLY - the first-pass deadline cap is never propagated
+
+guard.py:509     [CODE]
+  code    : if not packet.truncated:
+  chooses : exempt a file from escalation
+  basis   : full_sight set
+
+guard.py:519     [LAW-INPUT]
+  code    : acts0 = acts0 or bool(result.acts_tried)
+  chooses : the REFUTED bit
+  basis   : bool(acts_tried) = 'candidates were generated'. engine.py:24 requires 'AND the suite rejected every one'. MISMEASURED - see Finding 4
+
+guard.py:520     [LAW]
+  code    : if result.repaired:
+  chooses : ship and stop
+  basis   : actuates loop.py:221's SHIP
+
+guard.py:525     [LAW]
+  code    : if result.ambiguous:                     # engine law: BUILT+AMB -> ADD_STATE
+  chooses : refuse and stop searching other files
+  basis   : actuates loop.py:230, i.e. BUILT+AMB -> ADD_STATE
+
+guard.py:538     [LAW-INPUT]
+  code    : capped0 = capped0 or len(all_files) > len(candidates)
+  chooses : the CAPPED bit, 2nd source
+  basis   : candidate-file list truncated
+
+guard.py:539     [LAW]
+  code    : if escalate and decide(situation(CAPPED=capped0, REFUTED=acts0)) == "RAISE_BUDGET":
+  chooses : escalate (RAISE_BUDGET) vs stop
+  basis   : the ONLY variable-byte engine consultation in guard.py - and `escalate and` short-circuits it away entirely when the flag is False
+
+guard.py:549     [CODE]
+  code    : if total_deadline is not None:
+  chooses : --budget overrides --escalate-budget
+  basis   : no law
+
+guard.py:554     [CODE]
+  code    : if time.time() > deadline:
+  chooses : abandon escalation
+  basis   : wall clock
+
+guard.py:566     [CODE]
+  code    : + ("raise --escalate-budget, use --observer claude, "
+  chooses : which escalation-refusal advice is given
+  basis   : pointed vs not
+
+guard.py:574     [CODE]
+  code    : if rel in full_sight:
+  chooses : skip a file in escalation
+  basis   : already had full sight
+
+guard.py:579     [CODE]
+  code    : if packet is not None and packet.truncated \
+  chooses : how much sight a file gets: 990 then 10**9
+  basis   : magic numbers, no law
+
+guard.py:583     [CODE]
+  code    : if packet is None or time.time() > deadline:
+  chooses : skip a file
+  basis   : dead deadline
+
+guard.py:591     [CODE]
+  code    : file_share = ((deadline - time.time()) / 2
+  chooses : one file may take at most half the escalation budget
+  basis   : anti-starvation, adversarial review 2026-08-31; no law
+
+guard.py:600     [LAW]
+  code    : if result.repaired:
+  chooses : ship and stop
+  basis   : actuates SHIP
+
+guard.py:606     [LAW]
+  code    : if result.ambiguous:
+  chooses : refuse and stop
+  basis   : actuates ADD_STATE
+
+guard.py:611     [TAUTOLOGY]
+  code    : if any_acts and not hint and \
+  chooses : emit a HARVEST hint
+  basis   : decide(situation(REFUTED=True)) is CONSTANT
+
+guard.py:617     [TAUTOLOGY]
+  code    : if not hint and acts0 and \
+  chooses : emit a HARVEST hint
+  basis   : decide(situation(REFUTED=True)) is CONSTANT
+
+acts.py:126      [CODE]
+  code    : for a, b in ((">=", ">"), ("<=", "<"), (">", ">="), ("<", "<=")):
+  chooses : candidate ORDER within a strictness set
+  basis   : >=,<=,>,< tuple order
+
+acts.py:152      [CODE]
+  code    : if val >= 0 and len(lit) > 1 and lit.startswith("0"):
+  chooses : the BYTES shipped: zero-padding preserved
+  basis   : measured: click \033 replay
+
+acts.py:159      [CODE]
+  code    : if new_lit == "0" and not re.match(r"[0-9.eEjJxXbBoO_]", line[m.end():m.end() + 1] or " "):
+  chooses : the BYTES shipped: `x + 1` -> `x`
+  basis   : only at the decrement site
+
+acts.py:173      [CODE]
+  code    : if obs.literal_value:
+  chooses : candidate ORDER: observer-pointed literal first
+  basis   : obs.literal_value/occurrence
+
+acts.py:201      [CODE]
+  code    : if obs.op_occurrence and 1 <= obs.op_occurrence <= len(ops):
+  chooses : candidate ORDER: op_occurrence, else FIRST '+'
+  basis   : the docstring calls :204 a 'legacy first-+ heuristic'
+
+acts.py:248      [CODE]
+  code    : for a, b in (("<=", ">="), (">=", "<="), ("<", ">"), (">", "<")):
+  chooses : candidate ORDER: relaxed pair before strict
+  basis   : tuple order
+
+acts.py:400      [CODE]
+  code    : if fn is None:
+  chooses : unknown act -> NOPROGRESS
+  basis   : documented
+
+acts.py:406      [CODE]
+  code    : if isinstance(c, (str, SpanEdit))][:candidate_cap()]
+  chooses : TRUNCATE the candidate set at 32
+  basis   : a BUDGET (acts.py:366-376) that sets NO CAPPED bit anywhere - the law never learns the set was cut
+
+acts.py:412      [CODE]
+  code    : return out[0] if out else line
+  chooses : apply() ships candidate[0]
+  basis   : back-compat single-fix API
+
+oracle.py:75     [CODE]
+  code    : if rc != 0 and _NO_PYTEST in out:
+  chooses : HarnessError vs a red suite
+  basis   : no pytest in the interpreter
+
+oracle.py:83     [CODE]
+  code    : if rc not in _EXIT_MEANING:
+  chooses : HarnessError vs a red suite
+  basis   : _EXIT_MEANING = {3,4,5}; 1 and 2 are real red
+
+oracle.py:113    [CODE]
+  code    : if m and m.group(1) != "0":
+  chooses : REJECT a candidate that exited 0
+  basis   : anti-oracle-silencing; no law
+
+oracle.py:203    [CODE]
+  code    : if self._fastgate_ok:
+  chooses : reject on --lf alone, no full run
+  basis   : fast gate; sound (subset) but it is the sole rejection gate for those candidates
+
+oracle.py:205    [CODE]
+  code    : if rc in _EXIT_MEANING:
+  chooses : disable the fast gate for this run
+  basis   : adaptive, SQLAlchemy scar
+
+oracle.py:213    [CODE]
+  code    : elif rc != 0:
+  chooses : REJECT the candidate
+  basis   : --lf red
+
+oracle.py:221    [CODE]
+  code    : if rc in _EXIT_MEANING:
+  chooses : REJECT rather than raise
+  basis   : a candidate is in the tree, so pytest choking is the candidate's fault
+
+oracle.py:227    [CODE]
+  code    : if rc == 0:
+  chooses : ACCEPT the candidate
+  basis   : rc==0 and no liars
+
+oracle.py:229    [CODE]
+  code    : if liars:
+  chooses : REJECT a green exit code
+  basis   : _still_reports_failures
+
+coracle.py:229   [CODE]
+  code    : if rc != 0 and out.startswith("BUILD FAILED") and not self._pristine_checked:
+  chooses : CBuildError vs rejection
+  basis   : pristine tree or not
+
+coracle.py:241   [CODE]
+  code    : if rc == 0:
+  chooses : suite red despite exit 0
+  basis   : _fail_names
+
+coracle.py:250   [CODE]
+  code    : if out.startswith("BUILD FAILED") and not self._pristine_checked:
+  chooses : CBuildError vs rejection
+  basis   : pristine tree or not
+
+coracle.py:257   [CODE]
+  code    : if self.stale_binary():
+  chooses : refuse to judge at all
+  basis   : stale binary
+
+coracle.py:283   [CODE]
+  code    : if rc == 0:
+  chooses : ACCEPT the candidate
+  basis   : rc==0 and no liars
+
+coracle.py:285   [CODE]
+  code    : if liars:
+  chooses : REJECT a green exit code
+  basis   : anti-oracle-silencing
+
+coracle.py:293   [CODE]
+  code    : if clean.startswith("BUILD FAILED"):
+  chooses : REJECT: does not compile
+  basis   : the compiler as second oracle
+
+coracle.py:298   [CODE]
+  code    : if bad:
+  chooses : REJECT: tests failed
+  basis   : 
+
+coracle.py:485   [CODE]
+  code    : if re.search(r"(^|/)(tests?|testing)(/|$)", rel_dp):
+  chooses : exclude whole trees from search
+  basis   : tests?/testing directories
+
+coracle.py:488   [CODE]
+  code    : if fn.endswith(_SRC_EXT) and not _is_harness_file(fn):
+  chooses : exclude harness files
+  basis   : _HARNESS regex
+
+coracle.py:507   [CODE]
+  code    : if rel and rel not in ordered:
+  chooses : file ORDER: assert frames first
+  basis   : no sight() call
+
+coracle.py:531   [CODE]
+  code    : if t in ("test", "tests"):
+  chooses : ignore 'test'/'tests' tokens
+  basis   : 
+
+coracle.py:534   [CODE]
+  code    : if rel not in ordered:
+  chooses : file ORDER: exact stem scores +3
+  basis   : magic weight, no law
+
+coracle.py:537   [CODE]
+  code    : if stem != t and (t in stem.split("_")   # `math_functions`
+  chooses : file ORDER: partial stem scores +1
+  basis   : magic weight, no law
+
+coracle.py:550   [CODE]
+  code    : ordered += [r for r, _ in sorted(scored.items(),
+  chooses : file ORDER: (-score, -SIZE, name)
+  basis   : file BYTES as a tiebreak; no law
+
+coracle.py:553   [CODE]
+  code    : if not ordered:
+  chooses : file ORDER when nothing pointed: by SIZE
+  basis   : the comment itself says the order does not mean anything
+
+coracle.py:582   [CODE]
+  code    : if f == base:
+  chooses : which LINES are searched: frames in this file
+  basis   : 
+
+coracle.py:593   [CODE]
+  code    : lo = sorted(frames) if frames else sorted(
+  chooses : packet anchors: frames > coverage > every code line
+  basis   : 
+
+coracle.py:597   [CODE]
+  code    : if not lo:
+  chooses : packet anchors: fall back to all code lines
+  basis   : 
+
+coracle.py:619   [CODE]
+  code    : if len(lo) > max_lines:
+  chooses : DROP lines no taught signal matches
+  basis   : vocabulary filter; sets truncated
+
+coracle.py:625   [CODE]
+  code    : if keep:
+  chooses : keep the filter only if it kept something
+  basis   : 
+
+coracle.py:635   [CODE]
+  code    : if len(lo) > max_lines:
+  chooses : rank surviving lines by signal RARITY
+  basis   : SIGHT's SCARCE idea, hand-rolled one level down; sight() not called
+
+coracle.py:651   [CODE]
+  code    : if len(lo) > max_lines - 30:
+  chooses : second line filter at max_lines-30
+  basis   : magic number 30
+
+coracle.py:657   [CODE]
+  code    : if len(lo) > max_lines:
+  chooses : STRIDE-SAMPLE the remaining lines away
+  basis   : blind sampling; the cglm vec3.h scar
+
+coracle.py:689   [CODE]
+  code    : if not fails:
+  chooses : green -> do nothing
+  basis   : precondition
+
+coracle.py:700   [CODE]
+  code    : if cov.available():
+  chooses : use the gcov tier at all
+  basis   : gcov on PATH
+
+coracle.py:715   [CODE]
+  code    : if len(real) < 5:
+  chooses : declare the coverage probe non-credible
+  basis   : len(real) < 5 (magic number)
+
+coracle.py:723   [CODE]
+  code    : if fail_cov:
+  chooses : use coverage for ordering at all
+  basis   : 
+
+coracle.py:735   [CODE]
+  code    : extra.sort(key=lambda r: (-_spec(r), len(fail_cov[r]), r))
+  chooses : file ORDER: (-specificity, EXECUTED-LINES ASC, name)
+  basis   : no law; agent 17 measured the ASC/DESC direction alone as median rank 20 vs 3.5
+
+coracle.py:741   [CODE]
+  code    : if credible:
+  chooses : DROP files the failing test never executed
+  basis   : credible only
+
+coracle.py:743   [CODE]
+  code    : if len(touched) >= 3:
+  chooses : drop only if >=3 files survive
+  basis   : magic number 3; can discard a FRAME-named file
+
+coracle.py:750   [CODE]
+  code    : if deadline is not None and time.time() > deadline:
+  chooses : abandon the C pass
+  basis   : wall clock; cguard_once has NO escalation stage
+
+coracle.py:756   [CODE]
+  code    : if packet is None:
+  chooses : skip a file
+  basis   : no packet
+
+coracle.py:762   [LAW]
+  code    : if result.repaired:
+  chooses : ship and stop
+  basis   : actuates loop.py:221's SHIP
+
+coracle.py:766   [LAW]
+  code    : if result.ambiguous:
+  chooses : refuse and stop
+  basis   : actuates loop.py:230
+
+====================================================================================================
+TOTALS
+  branch points enumerated in the 5 files : 293 distinct lines (344 nodes; some lines hold >1)
+  branches that choose a repair OUTCOME   : 120
+  of those, by verdict                    : {'CODE': 92, 'LAW-INPUT': 10, 'LAW': 14, 'LAW-QUOTED': 1, 'TAUTOLOGY': 3}
+  by file                                 : {'loop.py': 27, 'guard.py': 40, 'acts.py': 9, 'oracle.py': 9, 'coracle.py': 35}
+  LAW or LAW-INPUT                        : 24/120 (20%)
+  CODE-DECIDED                            : 92/120 (77%)
+
+  NOT `if` STATEMENTS AT ALL (9): sort keys and ordered literals.
+  These are among the most consequential outcome decisions in the body, and a
+  census that only counted `if` would have missed every one of them:
+    acts.py:126      for a, b in ((">=", ">"), ("<=", "<"), (">", ">="), ("<", "<=")):
+    acts.py:248      for a, b in (("<=", ">="), (">=", "<="), ("<", ">"), (">", "<")):
+    coracle.py:550   ordered += [r for r, _ in sorted(scored.items(),
+    coracle.py:735   extra.sort(key=lambda r: (-_spec(r), len(fail_cov[r]), r))
+    guard.py:284     failonly=specificity >= 0.9,
+    guard.py:300     ranked2.sort(key=lambda t: (file_priority2(t[3], t[1], t[2]),
+    guard.py:302     return [rel for _, _, _, rel in ranked2[:max(limit, 8)]]
+    guard.py:412     dense=shapes.get(_shape(body), 0) >= 8,
+    guard.py:425     order = sorted(range(len(observations)),
+  every one verified present in the file: OK

@@ -1,0 +1,22 @@
+{
+ "repaired": true,
+ "refused": false,
+ "lineno": 6,
+ "old_line": "    return subtotal - tax",
+ "new_line": "    return tax - subtotal",
+ "acts_tried": [
+  7,
+  8
+ ],
+ "suite_runs": 3,
+ "seconds": 2.774909019470215,
+ "reason": "engine law: BUILT -> SHIP",
+ "ambiguous": false,
+ "greens": [
+  "    return tax - subtotal",
+  "    return subtotal + tax"
+ ],
+ "tried_log": [],
+ "tried_more": 0,
+ "restored_original": null
+}

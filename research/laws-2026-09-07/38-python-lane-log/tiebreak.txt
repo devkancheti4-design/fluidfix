@@ -1,0 +1,22 @@
+======================================================================
+RANK — guard.py:406 (LINE order)
+======================================================================
+sorts observed                : 41  (1904 elements)
+sorts with >1 element         : 33
+  ...where the law gave ONE priority to every element
+     (order decided ENTIRELY by the code tiebreak) : 21  (63.6%)
+  ...where the law separated at least two elements : 12  (36.4%)
+priority histogram            : {0: 11, 2: 6, 3: 1883, 7: 4}
+modal priority 3 covers        : 1883 of 1904 elements (98.9%)
+
+======================================================================
+SIGHT — guard.py:280 (FILE order)
+======================================================================
+sorts observed                : 38  (38 elements)
+sorts with >1 element         : 0
+  ...where the law gave ONE priority to every element
+     (order decided ENTIRELY by the code tiebreak) : 0  (0.0%)
+  ...where the law separated at least two elements : 0  (0.0%)
+priority histogram            : {0: 32, 2: 6}
+modal priority 0 covers        : 32 of 38 elements (84.2%)
+

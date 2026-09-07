@@ -1,0 +1,4 @@
+[run1] mode=naive expected=7 fp=NAIVE-no-tre status=refused check=1 skipped=0 memo=1 seconds=1.3 new_line=None
+[run2] mode=naive expected=9 fp=NAIVE-no-tre status=refused check=0 skipped=1 memo=1 seconds=1.2 new_line=None
+VERDICT mode=naive: run1=refused run2=refused — REPAIR LOST to a stale negative
+root: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/45-harvest-counterexample/safety_naive_5jk4qnp2

@@ -1,0 +1,8 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_router_law.py::test_reference_all_4096"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_router_law.py::test_identity"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_router_law.py::test_translation_invariance"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_router_law.py::test_composition"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_router_law.py::test_not_a_lookup_table"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_router_law.py::test_high_bits_never_influence"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_router_law.py::test_pack_layout"}

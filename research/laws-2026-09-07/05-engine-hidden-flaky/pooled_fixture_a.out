@@ -1,0 +1,11 @@
+fixture_a, pooled over 4 batches: 300 runs
+
+CONFIRM    N  CORRECT  FALSE_ACCEPT  false-accept rate  HIDDEN fired
+      0  100       48            52              52.0%             0
+      1  100       93             7               7.0%            43
+      2  100       96             4               4.0%            38
+
+per-batch, to show the batch-to-batch spread:
+  CONFIRM=0: (first)=26/50  _rep0=26/50
+  CONFIRM=1: (first)=3/50  _rep1=4/50
+  CONFIRM=2: (first)=0/50  _rep=4/50

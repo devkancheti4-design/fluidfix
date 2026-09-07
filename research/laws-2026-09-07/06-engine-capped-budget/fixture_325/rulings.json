@@ -1,0 +1,39 @@
+{
+ "budget": 325,
+ "status": "refused",
+ "elapsed": 175.24993205070496,
+ "runs": {
+  "check": 688,
+  "green": 2,
+  "failing_output": 3,
+  "check_green": 2
+ },
+ "rulings": [
+  {
+   "t": 24.9,
+   "bits": "CAPPED+REFUTED",
+   "byte": 96,
+   "ruling": "RAISE_BUDGET",
+   "caller": "guard.py:539",
+   "suite_runs_so_far": 110
+  },
+  {
+   "t": 175.2,
+   "bits": "BUILT+CAPPED",
+   "byte": 33,
+   "ruling": "RAISE_BUDGET",
+   "caller": "loop.py:217",
+   "suite_runs_so_far": 688
+  },
+  {
+   "t": 175.2,
+   "bits": "REFUTED",
+   "byte": 64,
+   "ruling": "HARVEST_COUNTEREXAMPLE",
+   "caller": "guard.py:612",
+   "suite_runs_so_far": 688
+  }
+ ],
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "reason": null
+}

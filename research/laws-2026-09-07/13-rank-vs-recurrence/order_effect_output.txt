@@ -1,0 +1,25 @@
+loop kind order (lanes.EMIT over KINDS): [(0, 'strictness'), (1, 'literal-off-by-one'), (2, 'swapped-return-operands'), (3, 'flipped-additive'), (8, 'minmax-swap'), (9, 'flipped-augmented-assign'), (10, 'flipped-comparison-direction'), (11, 'reversed-minus-operands'), (12, 'flipped-boolean')]
+
+================ fixture 'cmp': 'if x >= t:'
+  kinds on the line: [(0, 'strictness'), (10, 'flipped-comparison-direction')]
+  kind 0 (strictness) alone: repaired=True runs=2 new_line='    if x > t:'
+  --- A: no deadline ---
+   loop order    order=[0, 10] repaired=True suite_runs=3 acts=[5, 15] new_line='    if x > t:'
+   winner FIRST  order=[0, 10] repaired=True suite_runs=3 acts=[5, 15] new_line='    if x > t:'
+   winner LAST   order=[10, 0] repaired=True suite_runs=3 acts=[5, 15] new_line='    if x > t:'
+   reversed      order=[10, 0] repaired=True suite_runs=3 acts=[5, 15] new_line='    if x > t:'
+  --- B: deadline = 1.09s (full search took 2.42s) ---
+   winner FIRST  order=[0, 10] repaired=True suite_runs=3 reason='engine law: BUILT -> SHIP'
+   winner LAST   order=[10, 0] repaired=False suite_runs=2 reason='a candidate passes, but the search was cut short before it could be shown unique — shipping it would be a gues'
+
+================ fixture 'add': 'return a - b if a >= 0 else 1'
+  kinds on the line: [(0, 'strictness'), (1, 'literal-off-by-one'), (2, 'swapped-return-operands'), (3, 'flipped-additive'), (10, 'flipped-comparison-direction'), (11, 'reversed-minus-operands')]
+  kind 3 (flipped-additive) alone: repaired=True runs=2 new_line='    return a + b if a >= 0 else 1'
+  --- A: no deadline ---
+   loop order    order=[0, 1, 2, 3, 10, 11] repaired=True suite_runs=7 acts=[5, 6, 7, 8, 15] new_line='    return a + b if a >= 0 else 1'
+   winner FIRST  order=[3, 0, 1, 2, 10, 11] repaired=True suite_runs=7 acts=[5, 6, 7, 8, 15] new_line='    return a + b if a >= 0 else 1'
+   winner LAST   order=[0, 1, 2, 10, 11, 3] repaired=True suite_runs=7 acts=[5, 6, 7, 8, 15] new_line='    return a + b if a >= 0 else 1'
+   reversed      order=[11, 10, 3, 2, 1, 0] repaired=True suite_runs=7 acts=[5, 6, 7, 8, 15] new_line='    return a + b if a >= 0 else 1'
+  --- B: deadline = 1.3s (full search took 2.88s) ---
+   winner FIRST  order=[3, 0, 1, 2, 10, 11] repaired=False suite_runs=5 reason='wall-clock deadline reached mid-search — remaining kinds untried'
+   winner LAST   order=[0, 1, 2, 10, 11, 3] repaired=False suite_runs=5 reason='wall-clock deadline reached mid-search — remaining kinds untried'

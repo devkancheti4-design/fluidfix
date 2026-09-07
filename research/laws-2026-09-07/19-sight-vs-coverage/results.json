@@ -1,0 +1,2514 @@
+[
+ {
+  "id": "vec3_add",
+  "file": "include/cglm/vec3.h",
+  "old": "glm_vec3_add(vec3 a, vec3 b, vec3 dest) {\n  dest[0] = a[0] + b[0];",
+  "new": "glm_vec3_add(vec3 a, vec3 b, vec3 dest) {\n  dest[0] = a[0] - b[0];",
+  "line": 283,
+  "suite_s": 7.8474719524383545,
+  "fail_tests": [
+   "glm_ray_at",
+   "glmc_ray_at",
+   "glm_quat_look",
+   "glm_quat_rotatev",
+   "glm_quat_from_vecs",
+   "glmc_quat_look",
+   "glmc_quat_rotatev",
+   "glmc_quat_from_vecs"
+  ],
+  "n_fail_tests": 22,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_common.c",
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_quat.h",
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_ray.h",
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_vec3.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_ray_at",
+   "glmc_ray_at",
+   "glm_quat_look",
+   "glm_quat_rotatev"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/vec3.h",
+   "src/vec3.c",
+   "include/cglm/quat.h",
+   "src/quat.c",
+   "include/cglm/handed/euler_to_quat_lh.h"
+  ],
+  "dropped_n": 0,
+  "body_top5": [
+   "include/cglm/vec3.h",
+   "src/vec3.c",
+   "include/cglm/quat.h",
+   "src/quat.c",
+   "include/cglm/handed/euler_to_quat_lh.h"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/vec3.c",
+   "src/quat.c",
+   "include/cglm/handed/euler_to_quat_lh.h"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/vec3.h",
+   "include/cglm/quat.h",
+   "src/vec3.c"
+  ],
+  "rank_body": 1,
+  "rank_purecov": 40,
+  "rank_sight": 8,
+  "rank_sight0": 3,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 27,
+  "n_full_true": 27,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": true,
+   "small": true,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 3,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": true,
+   "touched": true,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.2295238971710205,
+   "framed": [
+    "test_common.c",
+    "test_quat.h",
+    "test_ray.h",
+    "test_vec3.h"
+   ],
+   "assert_lits": [
+    "0000009",
+    "000009",
+    "07",
+    "09",
+    "1134",
+    "1356",
+    "1374",
+    "1525",
+    "1557",
+    "171",
+    "179",
+    "19",
+    "2026",
+    "348",
+    "527",
+    "68",
+    "837",
+    "918",
+    "924"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 8,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.28396010398864746,
+   "framed": [
+    "test_common.c",
+    "test_quat.h",
+    "test_ray.h",
+    "test_vec3.h"
+   ],
+   "assert_lits": [
+    "0000009",
+    "000009",
+    "07",
+    "09",
+    "1134",
+    "1356",
+    "1374",
+    "1525",
+    "1557",
+    "171",
+    "179",
+    "19",
+    "2026",
+    "348",
+    "527",
+    "68",
+    "837",
+    "918",
+    "924"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 8,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.6041831852358168,
+  "spearman_purecov_sight": -0.9102939166097062,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.010428905487060547,
+   "probe_coverage_s": 10.355679988861084,
+   "full_coverage_s": 0.308032751083374
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "vec2_dot",
+  "file": "include/cglm/vec2.h",
+  "old": "return a[0] * b[0] + a[1] * b[1];",
+  "new": "return a[0] * b[0] - a[1] * b[1];",
+  "line": 137,
+  "suite_s": 7.417773008346558,
+  "fail_tests": [
+   "glm_mat2_rmc",
+   "glmc_mat2_rmc",
+   "glm_perlin_vec2",
+   "glmc_perlin_vec2",
+   "glm_vec2_dot",
+   "glm_vec2_norm2",
+   "glm_vec2_norm",
+   "glm_vec2_scale_as"
+  ],
+  "n_fail_tests": 18,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_mat2.h",
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_noise.h",
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_vec2.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_mat2_rmc",
+   "glmc_mat2_rmc",
+   "glm_perlin_vec2",
+   "glmc_perlin_vec2"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/vec2.h",
+   "src/vec2.c",
+   "include/cglm/mat2.h",
+   "src/mat2.c"
+  ],
+  "dropped_n": 1,
+  "body_top5": [
+   "include/cglm/vec2.h",
+   "src/vec2.c",
+   "src/mat2.c",
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/vec2.c",
+   "src/mat2.c",
+   "src/vec3.c"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/mat2.h",
+   "src/vec2.c",
+   "src/mat2.c"
+  ],
+  "rank_body": 1,
+  "rank_purecov": 71,
+  "rank_sight": 1,
+  "rank_sight0": 1,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 183,
+  "n_full_true": 183,
+  "bits_true": {
+   "priority": 0,
+   "framed": false,
+   "scarce": false,
+   "literal": true,
+   "failonly": true,
+   "named": true,
+   "touched": true,
+   "small": false,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 0,
+   "framed": false,
+   "scarce": false,
+   "literal": true,
+   "failonly": false,
+   "named": true,
+   "touched": true,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.16866493225097656,
+   "framed": [
+    "test_mat2.h",
+    "test_noise.h",
+    "test_vec2.h"
+   ],
+   "assert_lits": [
+    "00001",
+    "07",
+    "09",
+    "110",
+    "134",
+    "146",
+    "19",
+    "2026",
+    "253",
+    "283",
+    "504",
+    "531",
+    "888"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 4,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.20912575721740723,
+   "framed": [
+    "test_mat2.h",
+    "test_noise.h",
+    "test_vec2.h"
+   ],
+   "assert_lits": [
+    "00001",
+    "07",
+    "09",
+    "110",
+    "134",
+    "146",
+    "19",
+    "2026",
+    "253",
+    "283",
+    "504",
+    "531",
+    "888"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 4,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.7727956254272044,
+  "spearman_purecov_sight": -0.9847163362952838,
+  "top1_agree": true,
+  "timing": {
+   "find_candidate_files_c_s": 0.008344888687133789,
+   "probe_coverage_s": 12.186201095581055,
+   "full_coverage_s": 0.31418490409851074
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "vec4_sub_neon",
+  "file": "include/cglm/vec4.h",
+  "old": "vst1q_f32(dest, vsubq_f32(vld1q_f32(a), vld1q_f32(b)));",
+  "new": "vst1q_f32(dest, vaddq_f32(vld1q_f32(a), vld1q_f32(b)));",
+  "line": 398,
+  "suite_s": 6.549763917922974,
+  "fail_tests": [
+   "glm_perlin_vec4",
+   "glmc_perlin_vec4",
+   "glm_perlin_vec3",
+   "glmc_perlin_vec3",
+   "glm_perlin_vec2",
+   "glmc_perlin_vec2",
+   "glm_quat_sub",
+   "glm_quat_lerp"
+  ],
+  "n_fail_tests": 30,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_common.c",
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_noise.h",
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_quat.h",
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_vec4.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_perlin_vec4",
+   "glmc_perlin_vec4",
+   "glm_perlin_vec3",
+   "glmc_perlin_vec3"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/vec4.h",
+   "src/vec4.c",
+   "include/cglm/quat.h",
+   "src/quat.c",
+   "include/cglm/handed/euler_to_quat_lh.h"
+  ],
+  "dropped_n": 0,
+  "body_top5": [
+   "include/cglm/vec4.h",
+   "src/vec4.c",
+   "include/cglm/quat.h",
+   "src/quat.c",
+   "include/cglm/handed/euler_to_quat_lh.h"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/vec3.c",
+   "src/vec4.c",
+   "src/vec2.c"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/vec4.h",
+   "include/cglm/vec3.h",
+   "include/cglm/quat.h"
+  ],
+  "rank_body": 1,
+  "rank_purecov": 45,
+  "rank_sight": 9,
+  "rank_sight0": 3,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 42,
+  "n_full_true": 42,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": true,
+   "small": true,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 3,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": true,
+   "touched": true,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.26707887649536133,
+   "framed": [
+    "test_common.c",
+    "test_noise.h",
+    "test_quat.h",
+    "test_vec4.h"
+   ],
+   "assert_lits": [
+    "000009",
+    "00001",
+    "07",
+    "09",
+    "110",
+    "1139",
+    "1175",
+    "1639",
+    "19",
+    "2026",
+    "354",
+    "363",
+    "39",
+    "543",
+    "570",
+    "718",
+    "738",
+    "74",
+    "773",
+    "885",
+    "905",
+    "937",
+    "957"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 10,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.33147192001342773,
+   "framed": [
+    "test_common.c",
+    "test_noise.h",
+    "test_quat.h",
+    "test_vec4.h"
+   ],
+   "assert_lits": [
+    "000009",
+    "00001",
+    "07",
+    "09",
+    "110",
+    "1139",
+    "1175",
+    "1639",
+    "19",
+    "2026",
+    "354",
+    "363",
+    "39",
+    "543",
+    "570",
+    "718",
+    "738",
+    "74",
+    "773",
+    "885",
+    "905",
+    "937",
+    "957"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 10,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.6535611756664388,
+  "spearman_purecov_sight": -0.9537115516062884,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.00810694694519043,
+   "probe_coverage_s": 9.169095277786255,
+   "full_coverage_s": 0.30869507789611816
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "ivec3_add",
+  "file": "include/cglm/ivec3.h",
+  "old": "glm_ivec3_add(ivec3 a, ivec3 b, ivec3 dest) {\n  dest[0] = a[0] + b[0];",
+  "new": "glm_ivec3_add(ivec3 a, ivec3 b, ivec3 dest) {\n  dest[0] = a[0] - b[0];",
+  "line": 175,
+  "suite_s": 5.9047768115997314,
+  "fail_tests": [
+   "glm_ivec3_add",
+   "glmc_ivec3_add"
+  ],
+  "n_fail_tests": 2,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_ivec3.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_ivec3_add",
+   "glmc_ivec3_add"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/ivec3.h",
+   "src/ivec3.c"
+  ],
+  "dropped_n": 0,
+  "body_top5": [
+   "include/cglm/ivec3.h",
+   "src/ivec3.c",
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/ivec3.h",
+   "src/ivec3.c",
+   "src/vec3.c"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/ivec3.h",
+   "src/ivec3.c",
+   "include/cglm/vec4.h"
+  ],
+  "rank_body": 1,
+  "rank_purecov": 71,
+  "rank_sight": 3,
+  "rank_sight0": 3,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 186,
+  "n_full_true": 186,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": false,
+   "small": false,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 3,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": true,
+   "touched": false,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.10326886177062988,
+   "framed": [
+    "test_ivec3.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "102",
+    "11",
+    "19",
+    "2026"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.1236569881439209,
+   "framed": [
+    "test_ivec3.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "102",
+    "11",
+    "19",
+    "2026"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.8503075871496923,
+  "spearman_purecov_sight": -0.9948325358851675,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.0065500736236572266,
+   "probe_coverage_s": 8.212224960327148,
+   "full_coverage_s": 0.3071868419647217
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "ivec2_add",
+  "file": "include/cglm/ivec2.h",
+  "old": "glm_ivec2_add(ivec2 a, ivec2 b, ivec2 dest) {\n  dest[0] = a[0] + b[0];",
+  "new": "glm_ivec2_add(ivec2 a, ivec2 b, ivec2 dest) {\n  dest[0] = a[0] - b[0];",
+  "line": 157,
+  "suite_s": 6.182127952575684,
+  "fail_tests": [
+   "glm_ivec2_add",
+   "glmc_ivec2_add"
+  ],
+  "n_fail_tests": 2,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_ivec2.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_ivec2_add",
+   "glmc_ivec2_add"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/ivec2.h",
+   "src/ivec2.c"
+  ],
+  "dropped_n": 0,
+  "body_top5": [
+   "include/cglm/ivec2.h",
+   "src/ivec2.c",
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/ivec2.h",
+   "include/cglm/vec2.h",
+   "src/ivec2.c",
+   "src/vec3.c",
+   "include/cglm/noise.h"
+  ],
+  "sight0_top5": [
+   "include/cglm/ivec2.h",
+   "include/cglm/vec2.h",
+   "src/ivec2.c",
+   "include/cglm/vec4.h",
+   "include/cglm/vec3.h"
+  ],
+  "rank_body": 1,
+  "rank_purecov": 70,
+  "rank_sight": 1,
+  "rank_sight0": 1,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 154,
+  "n_full_true": 154,
+  "bits_true": {
+   "priority": 0,
+   "framed": false,
+   "scarce": false,
+   "literal": true,
+   "failonly": true,
+   "named": true,
+   "touched": false,
+   "small": false,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 0,
+   "framed": false,
+   "scarce": false,
+   "literal": true,
+   "failonly": false,
+   "named": true,
+   "touched": false,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.11427879333496094,
+   "framed": [
+    "test_ivec2.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "11",
+    "19",
+    "2026",
+    "91"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.13672113418579102,
+   "framed": [
+    "test_ivec2.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "11",
+    "19",
+    "2026",
+    "91"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.8449487354750513,
+  "spearman_purecov_sight": -0.9952426520847573,
+  "top1_agree": true,
+  "timing": {
+   "find_candidate_files_c_s": 0.006803989410400391,
+   "probe_coverage_s": 7.428318023681641,
+   "full_coverage_s": 0.35004591941833496
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "util_lerp",
+  "file": "include/cglm/util.h",
+  "old": "return from + t * (to - from);",
+  "new": "return from - t * (to - from);",
+  "line": 218,
+  "suite_s": 7.510716915130615,
+  "fail_tests": [
+   "glm_perlin_vec4",
+   "glmc_perlin_vec4",
+   "glm_perlin_vec3",
+   "glmc_perlin_vec3",
+   "glm_perlin_vec2",
+   "glmc_perlin_vec2"
+  ],
+  "n_fail_tests": 6,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_noise.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_perlin_vec4",
+   "glmc_perlin_vec4",
+   "glm_perlin_vec3",
+   "glmc_perlin_vec3"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/vec4.h",
+   "include/cglm/vec3.h",
+   "include/cglm/vec2.h",
+   "src/vec3.c",
+   "src/vec4.c"
+  ],
+  "dropped_n": 0,
+  "body_top5": [
+   "include/cglm/vec4.h",
+   "include/cglm/vec3.h",
+   "include/cglm/vec2.h",
+   "src/vec3.c",
+   "src/vec4.c"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/vec3.c",
+   "src/vec4.c",
+   "src/vec2.c"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/vec4.h",
+   "include/cglm/vec3.h",
+   "src/vec3.c"
+  ],
+  "rank_body": 42,
+  "rank_purecov": 37,
+  "rank_sight": 40,
+  "rank_sight0": 43,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 24,
+  "n_full_true": 24,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": false,
+   "touched": false,
+   "small": true,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 6,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": false,
+   "touched": false,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.15713119506835938,
+   "framed": [
+    "test_noise.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "110",
+    "19",
+    "2026",
+    "39",
+    "74"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 6,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.1903848648071289,
+   "framed": [
+    "test_noise.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "110",
+    "19",
+    "2026",
+    "39",
+    "74"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 6,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.6392617908407383,
+  "spearman_purecov_sight": -0.9724675324675325,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.01022791862487793,
+   "probe_coverage_s": 13.241782665252686,
+   "full_coverage_s": 0.48284435272216797
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "mat4_scale_p",
+  "file": "include/cglm/mat4.h",
+  "old": "glm_mat4_scale_p(mat4 m, float s) {\n  m[0][0] *= s;",
+  "new": "glm_mat4_scale_p(mat4 m, float s) {\n  m[0][0] += s;",
+  "line": 575,
+  "suite_s": 9.727963924407959,
+  "fail_tests": [
+   "glm_mat4_scale_p",
+   "glmc_mat4_scale_p"
+  ],
+  "n_fail_tests": 2,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_mat4.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_mat4_scale_p",
+   "glmc_mat4_scale_p"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/mat4.h",
+   "src/mat4.c"
+  ],
+  "dropped_n": 0,
+  "body_top5": [
+   "include/cglm/mat4.h",
+   "src/mat4.c",
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/mat4.c",
+   "include/cglm/mat4.h",
+   "src/vec3.c"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/mat4.h",
+   "src/mat4.c",
+   "include/cglm/vec4.h"
+  ],
+  "rank_body": 1,
+  "rank_purecov": 26,
+  "rank_sight": 4,
+  "rank_sight0": 3,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 17,
+  "n_full_true": 17,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": true,
+   "small": true,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 3,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": true,
+   "touched": true,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.12846803665161133,
+   "framed": [
+    "test_mat4.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "19",
+    "2026",
+    "305"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 10,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.12912821769714355,
+   "framed": [
+    "test_mat4.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "19",
+    "2026",
+    "305"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 13,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.8501435406698565,
+  "spearman_purecov_sight": -0.9612850307587151,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.008584260940551758,
+   "probe_coverage_s": 10.578629970550537,
+   "full_coverage_s": 0.42616701126098633
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "mat3_det",
+  "file": "include/cglm/mat3.h",
+  "old": "return a * (e * i - h * f) - d * (b * i - h * c) + g * (b * f - e * c);",
+  "new": "return a * (e * i - h * f) - d * (b * i - h * c) - g * (b * f - e * c);",
+  "line": 338,
+  "suite_s": 7.316912889480591,
+  "fail_tests": [
+   "glm_mat3_det",
+   "glmc_mat3_det"
+  ],
+  "n_fail_tests": 2,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_mat3.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_mat3_det",
+   "glmc_mat3_det"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/mat3.h",
+   "src/mat3.c"
+  ],
+  "dropped_n": 0,
+  "body_top5": [
+   "include/cglm/mat3.h",
+   "src/mat3.c",
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/mat3.c",
+   "include/cglm/mat3.h",
+   "src/vec3.c"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/mat3.h",
+   "src/mat3.c",
+   "include/cglm/vec4.h"
+  ],
+  "rank_body": 1,
+  "rank_purecov": 25,
+  "rank_sight": 4,
+  "rank_sight0": 3,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 15,
+  "n_full_true": 15,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": true,
+   "small": true,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 3,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": true,
+   "touched": true,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.1305391788482666,
+   "framed": [
+    "test_mat3.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "19",
+    "2026",
+    "220"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.15725088119506836,
+   "framed": [
+    "test_mat3.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "19",
+    "2026",
+    "220"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.8501435406698565,
+  "spearman_purecov_sight": -0.9548051948051948,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.010535955429077148,
+   "probe_coverage_s": 10.568800210952759,
+   "full_coverage_s": 0.4638552665710449
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "mat2_det",
+  "file": "include/cglm/mat2.h",
+  "old": "return m[0][0] * m[1][1] - m[1][0] * m[0][1];",
+  "new": "return m[0][0] * m[1][1] + m[1][0] * m[0][1];",
+  "line": 322,
+  "suite_s": 12.332138061523438,
+  "skipped": "suite stayed green after the edit"
+ },
+ {
+  "id": "quat_conjugate",
+  "file": "include/cglm/quat.h",
+  "old": "glm_vec4_negate_to(q, dest);\n  dest[3] = -dest[3];",
+  "new": "glm_vec4_negate_to(q, dest);\n  dest[3] = +dest[3];",
+  "line": 322,
+  "suite_s": 7.68864107131958,
+  "fail_tests": [
+   "glm_quat_conjugate",
+   "glm_quat_inv",
+   "glmc_quat_conjugate",
+   "glmc_quat_inv"
+  ],
+  "n_fail_tests": 4,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_quat.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_quat_conjugate",
+   "glm_quat_inv",
+   "glmc_quat_conjugate",
+   "glmc_quat_inv"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/quat.h",
+   "src/quat.c",
+   "include/cglm/handed/euler_to_quat_lh.h",
+   "include/cglm/handed/euler_to_quat_rh.h"
+  ],
+  "dropped_n": 0,
+  "body_top5": [
+   "include/cglm/quat.h",
+   "src/quat.c",
+   "include/cglm/handed/euler_to_quat_lh.h",
+   "include/cglm/handed/euler_to_quat_rh.h",
+   "include/cglm/aabb2d.h"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/quat.c",
+   "include/cglm/handed/euler_to_quat_lh.h",
+   "include/cglm/handed/euler_to_quat_rh.h"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/quat.h",
+   "include/cglm/handed/euler_to_quat_lh.h",
+   "include/cglm/handed/euler_to_quat_rh.h"
+  ],
+  "rank_body": 1,
+  "rank_purecov": 38,
+  "rank_sight": 6,
+  "rank_sight0": 3,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 25,
+  "n_full_true": 25,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": false,
+   "small": true,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 3,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": true,
+   "touched": false,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.10041499137878418,
+   "framed": [
+    "test_quat.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "19",
+    "2026",
+    "299",
+    "324"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 4,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.13346099853515625,
+   "framed": [
+    "test_quat.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "19",
+    "2026",
+    "299",
+    "324"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 4,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.7119890635680108,
+  "spearman_purecov_sight": -0.968257006151743,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.009180068969726562,
+   "probe_coverage_s": 10.410165071487427,
+   "full_coverage_s": 0.3151578903198242
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "euler_xyz",
+  "file": "include/cglm/euler.h",
+  "old": "dest[0][1] =  czsx * sy + cx * sz;\n  dest[0][2] = -cxcz * sy + sx * sz;\n  dest[1][0] = -cy * sz;",
+  "new": "dest[0][1] =  czsx * sy - cx * sz;\n  dest[0][2] = -cxcz * sy + sx * sz;\n  dest[1][0] = -cy * sz;",
+  "line": 151,
+  "suite_s": 6.134868144989014,
+  "skipped": "suite stayed green after the edit"
+ },
+ {
+  "id": "ray_triangle",
+  "file": "include/cglm/ray.h",
+  "old": "if (v < 0.0f || u + v > 1.0f)",
+  "new": "if (v < 0.0f || u - v > 1.0f)",
+  "line": 71,
+  "suite_s": 6.231743097305298,
+  "skipped": "suite stayed green after the edit"
+ },
+ {
+  "id": "bezier",
+  "file": "include/cglm/bezier.h",
+  "old": "xs3 = (s - ss) * 3.0f;",
+  "new": "xs3 = (s - ss) * 2.0f;",
+  "line": 56,
+  "suite_s": 6.423549175262451,
+  "fail_tests": [
+   "bezier"
+  ],
+  "n_fail_tests": 1,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_bezier.c"
+  ],
+  "credible": true,
+  "probes": [
+   "bezier"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/bezier.h",
+   "src/bezier.c"
+  ],
+  "dropped_n": 1,
+  "body_top5": [
+   "include/cglm/bezier.h",
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/bezier.h",
+   "src/vec3.c",
+   "include/cglm/noise.h"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/bezier.h",
+   "src/bezier.c",
+   "include/cglm/vec4.h"
+  ],
+  "rank_body": 1,
+  "rank_purecov": 18,
+  "rank_sight": 3,
+  "rank_sight0": 3,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 9,
+  "n_full_true": 9,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": false,
+   "small": true,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 3,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": true,
+   "touched": false,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.12749600410461426,
+   "framed": [
+    "test_bezier.c"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "19",
+    "2026",
+    "52"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.1666271686553955,
+   "framed": [
+    "test_bezier.c"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "19",
+    "2026",
+    "52"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.9222146274777854,
+  "spearman_purecov_sight": -0.9523991797676008,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.008361101150512695,
+   "probe_coverage_s": 7.869755268096924,
+   "full_coverage_s": 0.43149805068969727
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "sphere_merge",
+  "file": "include/cglm/sphere.h",
+  "old": "radii = dist + s1[3] + s2[3];",
+  "new": "radii = dist - s1[3] + s2[3];",
+  "line": 64,
+  "suite_s": 7.332105875015259,
+  "skipped": "suite stayed green after the edit"
+ },
+ {
+  "id": "plane_normalize",
+  "file": "include/cglm/plane.h",
+  "old": "if (CGLM_UNLIKELY((norm = glm_vec3_norm(plane)) < FLT_EPSILON)) {",
+  "new": "if (CGLM_UNLIKELY((norm = glm_vec3_norm(plane)) > FLT_EPSILON)) {",
+  "line": 36,
+  "suite_s": 7.681614875793457,
+  "fail_tests": [
+   "glm_plane_normalize",
+   "glmc_plane_normalize"
+  ],
+  "n_fail_tests": 2,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_plane.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_plane_normalize",
+   "glmc_plane_normalize"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/plane.h",
+   "src/plane.c"
+  ],
+  "dropped_n": 0,
+  "body_top5": [
+   "include/cglm/plane.h",
+   "src/plane.c",
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/plane.h",
+   "src/plane.c",
+   "src/vec3.c"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/plane.h",
+   "src/plane.c",
+   "include/cglm/vec4.h"
+  ],
+  "rank_body": 1,
+  "rank_purecov": 8,
+  "rank_sight": 3,
+  "rank_sight0": 3,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 6,
+  "n_full_true": 6,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": false,
+   "small": true,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 3,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": true,
+   "touched": false,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.09087705612182617,
+   "framed": [
+    "test_plane.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "19",
+    "2026",
+    "29"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.11032295227050781,
+   "framed": [
+    "test_plane.h"
+   ],
+   "assert_lits": [
+    "07",
+    "09",
+    "19",
+    "2026",
+    "29"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.8507997265892002,
+  "spearman_purecov_sight": -0.8701025290498974,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.009432077407836914,
+   "probe_coverage_s": 11.38203501701355,
+   "full_coverage_s": 0.30662083625793457
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "project_no",
+  "file": "include/cglm/clipspace/project_no.h",
+  "old": "v[0] = 2.0f * (pos[0] - vp[0]) / vp[2] - 1.0f;",
+  "new": "v[0] = 2.0f * (pos[0] - vp[0]) / vp[2] + 1.0f;",
+  "line": 47,
+  "suite_s": 9.922546863555908,
+  "fail_tests": [
+   "glm_unprojecti",
+   "glm_unproject",
+   "glm_project",
+   "glmc_unprojecti",
+   "glmc_unproject",
+   "glmc_project"
+  ],
+  "n_fail_tests": 6,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_project.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glm_unprojecti",
+   "glm_unproject",
+   "glm_project",
+   "glmc_unprojecti"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/project.h",
+   "src/project.c",
+   "include/cglm/clipspace/project_no.h",
+   "include/cglm/clipspace/project_zo.h",
+   "src/clipspace/project_no.c"
+  ],
+  "dropped_n": 2,
+  "body_top5": [
+   "include/cglm/project.h",
+   "src/project.c",
+   "include/cglm/clipspace/project_no.h",
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/clipspace/project_no.h",
+   "include/cglm/project.h",
+   "src/project.c"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/project.h",
+   "include/cglm/clipspace/project_no.h",
+   "include/cglm/clipspace/project_zo.h"
+  ],
+  "rank_body": 3,
+  "rank_purecov": 29,
+  "rank_sight": 3,
+  "rank_sight0": 4,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 21,
+  "n_full_true": 21,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": false,
+   "small": true,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 3,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": true,
+   "touched": false,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.17254924774169922,
+   "framed": [
+    "test_project.h"
+   ],
+   "assert_lits": [
+    "01",
+    "07",
+    "09",
+    "19",
+    "2026",
+    "30",
+    "61",
+    "92"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 6,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.216447114944458,
+   "framed": [
+    "test_project.h"
+   ],
+   "assert_lits": [
+    "01",
+    "07",
+    "09",
+    "19",
+    "2026",
+    "30",
+    "61",
+    "92"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 6,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.7806698564593302,
+  "spearman_purecov_sight": -0.8871633629528366,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.006864070892333984,
+   "probe_coverage_s": 12.01158595085144,
+   "full_coverage_s": 0.47063207626342773
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ },
+ {
+  "id": "aabb2d_diag",
+  "file": "include/cglm/aabb2d.h",
+  "old": "glm_aabb2d_diag(vec2 aabb[2]) {\n  return glm_vec2_distance(aabb[0], aabb[1]);",
+  "new": "glm_aabb2d_diag(vec2 aabb[2]) {\n  return glm_vec2_distance2(aabb[0], aabb[1]);",
+  "line": 169,
+  "suite_s": 7.1537580490112305,
+  "skipped": "suite stayed green after the edit"
+ },
+ {
+  "id": "src_vec3_c_wrapper",
+  "file": "src/vec3.c",
+  "old": "glmc_vec3_add(vec3 a, vec3 b, vec3 dest) {\n  glm_vec3_add(a, b, dest);",
+  "new": "glmc_vec3_add(vec3 a, vec3 b, vec3 dest) {\n  glm_vec3_sub(a, b, dest);",
+  "line": 91,
+  "suite_s": 6.635403871536255,
+  "fail_tests": [
+   "glmc_vec3_add"
+  ],
+  "n_fail_tests": 1,
+  "frames": [
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_common.c",
+   "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/19-sight-vs-coverage/cglm/test/src/test_vec3.h"
+  ],
+  "credible": true,
+  "probes": [
+   "glmc_vec3_add"
+  ],
+  "n_fail_cov_files": 76,
+  "n_full_cov_files": 76,
+  "harness_in_candidates": [
+   "test/runner.c"
+  ],
+  "prefix": [
+   "include/cglm/vec3.h",
+   "src/vec3.c"
+  ],
+  "dropped_n": 0,
+  "body_top5": [
+   "include/cglm/vec3.h",
+   "src/vec3.c",
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c"
+  ],
+  "purecov_top5": [
+   "include/cglm/aabb2d.h",
+   "include/cglm/io.h",
+   "src/cam.c",
+   "src/mat3x4.c",
+   "src/plane.c"
+  ],
+  "sight_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/vec3.c",
+   "include/cglm/vec3.h",
+   "include/cglm/noise.h"
+  ],
+  "sight0_top5": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "include/cglm/vec3.h",
+   "src/vec3.c",
+   "include/cglm/vec4.h"
+  ],
+  "rank_body": 2,
+  "rank_purecov": 76,
+  "rank_sight": 3,
+  "rank_sight0": 4,
+  "n_body": 76,
+  "n_sight": 76,
+  "n_sight0": 122,
+  "spec_true": 1.0,
+  "n_fail_true": 226,
+  "n_full_true": 226,
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": true,
+   "small": false,
+   "ubiquitous": false
+  },
+  "bits0_true": {
+   "priority": 3,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": false,
+   "named": true,
+   "touched": true,
+   "small": false,
+   "ubiquitous": false
+  },
+  "sight_meta": {
+   "measure_s": 0.14492082595825195,
+   "framed": [
+    "test_common.c",
+    "test_vec3.h"
+   ],
+   "assert_lits": [
+    "000009",
+    "07",
+    "09",
+    "19",
+    "2026",
+    "348",
+    "527"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 28,
+    "1": 76,
+    "2": 0,
+    "3": 41,
+    "8": 7,
+    "9": 9,
+    "10": 28,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "sight0_meta": {
+   "measure_s": 0.16836881637573242,
+   "framed": [
+    "test_common.c",
+    "test_vec3.h"
+   ],
+   "assert_lits": [
+    "000009",
+    "07",
+    "09",
+    "19",
+    "2026",
+    "348",
+    "527"
+   ],
+   "lit_named": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ],
+   "scarce_named": [],
+   "scarce_counts": {
+    "0": 46,
+    "1": 119,
+    "2": 0,
+    "3": 49,
+    "8": 8,
+    "9": 12,
+    "10": 45,
+    "11": 0,
+    "12": 0
+   },
+   "named_n": 2,
+   "touched_n": 110
+  },
+  "spearman_body_sight": -0.8505263157894736,
+  "spearman_purecov_sight": -0.9807792207792208,
+  "top1_agree": false,
+  "timing": {
+   "find_candidate_files_c_s": 0.013267755508422852,
+   "probe_coverage_s": 8.751928091049194,
+   "full_coverage_s": 0.38971376419067383
+  },
+  "spec_hist": {
+   "0.9": 76,
+   "0.5": 76,
+   "0.25": 76
+  },
+  "priority_hist": {
+   "0": 2,
+   "1": 0,
+   "2": 74,
+   "3": 0,
+   "4": 0,
+   "5": 0,
+   "6": 0,
+   "7": 0
+  }
+ }
+]

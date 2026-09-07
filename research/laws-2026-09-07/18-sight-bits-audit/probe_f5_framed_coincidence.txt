@@ -1,0 +1,39 @@
+== failing output lines the ranker's regexes read ==
+    tests/test_shape.py:6:
+    /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/__init__.py:352:
+    /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py:348: JSONDecodeError
+    FAILED tests/test_shape.py::test_shape - json.decoder.JSONDecodeError: Extra ...
+
+== sight() calls: 6  (0 means the law was never consulted) ==
+file                         byte  prio   spec n_fail  bits
+pkg/__init__.py                73     0   1.00      9  FRAMED|FAILONLY|SMALL
+pkg/decoder.py                193     0   0.13      9  FRAMED|SMALL|UBIQUITOUS
+pkg/fmtx.py                    72     2   1.00      8  FAILONLY|SMALL
+pkg/geom.py                    72     2   1.00     14  FAILONLY|SMALL
+pkg/poolx.py                   72     2   1.00      8  FAILONLY|SMALL
+pkg/tablex.py                  72     2   1.00      8  FAILONLY|SMALL
+
+== order returned by find_candidate_files ==
+   1. pkg/__init__.py
+   2. pkg/decoder.py
+   3. pkg/geom.py
+   4. pkg/fmtx.py
+   5. pkg/poolx.py
+   6. pkg/tablex.py
+
+== evidence dict ==
+   pointed: ['pkg/__init__.py', 'pkg/decoder.py']
+   lanes[FRAMED]: ['pkg/__init__.py', 'pkg/decoder.py']
+   lanes[SCARCE]: []
+   lanes[LITERAL]: []
+
+== per-signal hits over candidate bodies (SCARCE fires on 1..2) ==
+   kind  0 strictness                   '[<>]=?'                                      6 ['pkg/__init__.py', 'pkg/decoder.py', 'pkg/fmtx.py', 'pkg/geom.py', 'pkg/poolx.py', 'pkg/tablex.py']
+   kind  1 literal-off-by-one           '\\d'                                         6 ['pkg/__init__.py', 'pkg/decoder.py', 'pkg/fmtx.py', 'pkg/geom.py', 'pkg/poolx.py', 'pkg/tablex.py']
+   kind  2 swapped-return-operands      '^\\s*return\\s+.*\\s(?://|[-+*])\\s'         0 []
+   kind  3 flipped-additive             '\\s[-+]\\s'                                  6 ['pkg/__init__.py', 'pkg/decoder.py', 'pkg/fmtx.py', 'pkg/geom.py', 'pkg/poolx.py', 'pkg/tablex.py']
+   kind  8 minmax-swap                  '\\b(?:min|max)\\('                           6 ['pkg/__init__.py', 'pkg/decoder.py', 'pkg/fmtx.py', 'pkg/geom.py', 'pkg/poolx.py', 'pkg/tablex.py']
+   kind  9 flipped-augmented-assign     '[-+]=(?!=)'                                  6 ['pkg/__init__.py', 'pkg/decoder.py', 'pkg/fmtx.py', 'pkg/geom.py', 'pkg/poolx.py', 'pkg/tablex.py']
+   kind 10 flipped-comparison-direction '(?<![-<>])[<>](?![<>])'                      6 ['pkg/__init__.py', 'pkg/decoder.py', 'pkg/fmtx.py', 'pkg/geom.py', 'pkg/poolx.py', 'pkg/tablex.py']
+   kind 11 reversed-minus-operands      '^\\s*(?:return\\s|[A-Za-z_][\\w.\\[\\]\'\\"]*\\s*=\\s*(?![=<>])).*\\s-\\s' 0 []
+   kind 12 flipped-boolean              '\\b(?:True|False)\\b'                        6 ['pkg/__init__.py', 'pkg/decoder.py', 'pkg/fmtx.py', 'pkg/geom.py', 'pkg/poolx.py', 'pkg/tablex.py']

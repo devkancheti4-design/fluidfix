@@ -1,0 +1,71 @@
+== D8: m in 0..255 (what the docstring/tests/selfcheck verify) ==
+--- domain D8: 256 inputs
+    EMIT     wrong: 0
+    ADVANCE  wrong: 0
+    HALT     wrong: 0
+    STRICT   wrong: 0
+    DRAIN    wrong: 0
+    KIND_OF  wrong: 0
+
+== D16: m in 0..65535 (what loop.py:283 can construct) ==
+--- domain D16: 65536 inputs
+    EMIT     wrong: 0
+    ADVANCE  wrong: 0
+    HALT     wrong: 0
+    STRICT   wrong: 0
+    DRAIN    wrong: 0
+    KIND_OF  wrong: 0
+
+== EMIT/ADVANCE/HALT truth table, first 17 masks ==
+     m                bin   EMIT  ADVANCE  HALT  kind
+     0                0b0      0        0     1     -
+     1                0b1      1        0     0     0
+     2               0b10      2        0     0     1
+     3               0b11      1        2     0     0
+     4              0b100      4        0     0     2
+     5              0b101      1        4     0     0
+     6              0b110      2        4     0     1
+     7              0b111      1        6     0     0
+     8             0b1000      8        0     0     3
+     9             0b1001      1        8     0     0
+    10             0b1010      2        8     0     1
+    11             0b1011      1       10     0     0
+    12             0b1100      4        8     0     2
+    13             0b1101      1       12     0     0
+    14             0b1110      2       12     0     1
+    15             0b1111      1       14     0     0
+    16            0b10000     16        0     0     4
+
+== OOD: values outside 0..65535 that a caller could hand the law ==
+  m=            -1  EMIT=1              ADVANCE=-2               HALT=1 (spec 0)   <== HALT DISAGREES WITH SPEC
+  m=            -2  EMIT=2              ADVANCE=-4               HALT=1 (spec 0)   <== HALT DISAGREES WITH SPEC
+  m=            -8  EMIT=8              ADVANCE=-16              HALT=1 (spec 0)   <== HALT DISAGREES WITH SPEC
+  m=          -255  EMIT=1              ADVANCE=-256             HALT=1 (spec 0)   <== HALT DISAGREES WITH SPEC
+  m=          -256  EMIT=256            ADVANCE=-512             HALT=1 (spec 0)   <== HALT DISAGREES WITH SPEC
+  m=         65536  EMIT=65536          ADVANCE=0                HALT=0 (spec 0)
+  m=    2147483647  EMIT=1              ADVANCE=2147483646       HALT=0 (spec 0)
+  m=    2147483648  EMIT=2147483648     ADVANCE=0                HALT=0 (spec 0)
+  m=   -2147483648  EMIT=2147483648     ADVANCE=-4294967296      HALT=1 (spec 0)   <== HALT DISAGREES WITH SPEC
+  m=    4294967296  EMIT=4294967296     ADVANCE=0                HALT=0 (spec 0)
+  m=9223372036854775808  EMIT=9223372036854775808 ADVANCE=0                HALT=0 (spec 0)
+  m=          True  EMIT=1              ADVANCE=0                HALT=0 (spec 0)
+  m=         False  EMIT=0              ADVANCE=0                HALT=1 (spec 1)
+
+== the C expression this Python is a port of ==
+   docstring: 32-bit semantics of ((m - (m - 1)) + ((-m) >> 31))
+   python HALT vs literal C-int32 evaluation, m in -1024..1023 plus INT32 extremes: 1 divergences -> [-2147483648]
+     m=-2147483648: python HALT=1  C-int32 HALT=0
+
+== mask_of / kind_of domain ==
+  mask_of([0, 3]) = 9 = 0b1001
+  mask_of([12]) = 4096 = 0b1000000000000
+  mask_of([0, 1, 2, 3, 8, 9, 10, 11, 12]) = 7951 = 0b1111100001111
+  mask_of([15]) = 32768 = 0b1000000000000000
+  mask_of([1, 1, 1]) = 2 = 0b10
+  mask_of([3, 1]) = 10 = 0b1010
+  mask_of([1, 3]) = 10 = 0b1010
+  mask_of([-1]) RAISES ValueError: negative shift count
+  mask_of([16]) = 65536
+  mask_of([64]) = 18446744073709551616
+  mask_of([True]) = 2
+  kind_of(0) = -1   <== EMIT of an empty mask

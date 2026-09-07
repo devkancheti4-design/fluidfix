@@ -1,0 +1,44 @@
+{
+ "id": 6,
+ "lineno": 20,
+ "kind": 3,
+ "kind_name": "flipped-additive",
+ "act": 8,
+ "orig": "    return on_hand + delivered",
+ "mutant": "    return on_hand - delivered",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 20,\n \"old_line\": \"    return on_hand - delivered\",\n \"new_line\": \"    return delivered - on_hand\",\n \"acts_tried\": [\n  7,\n  8\n ],\n \"suite_runs\": 3,\n \"seconds\": 2.1030640602111816,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return delivered - on_hand\",\n  \"    return on_hand + delivered\"\n ],\n \"tried_log\": [],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 20,
+  "old_line": "    return on_hand - delivered",
+  "new_line": "    return delivered - on_hand",
+  "acts_tried": [
+   7,
+   8
+  ],
+  "suite_runs": 3,
+  "seconds": 2.1030640602111816,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return delivered - on_hand",
+   "    return on_hand + delivered"
+  ],
+  "tried_log": [],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": false,
+ "final_equals_mutant": false,
+ "final_line": "    return delivered - on_hand",
+ "outcome": "SHIPPED-WRONG",
+ "greens": [
+  "    return delivered - on_hand",
+  "    return on_hand + delivered"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

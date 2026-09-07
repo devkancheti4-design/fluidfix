@@ -1,0 +1,7 @@
+A journalled at poll 69
+WINDOW HIT at poll 11: journal ABSENT, disk holds:     if units > 9:
+--- after SIGKILL of both ---
+journal present: no
+line 10 on disk:     if units > 9:
+suite after kill rc=0
+recovery run rc=0

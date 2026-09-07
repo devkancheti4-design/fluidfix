@@ -1,0 +1,67 @@
+shipped kind ids: [0, 1, 2, 3, 8, 9, 10, 11, 12]
+reserved user-dictionary slots: 4..7 (acts.USER_KINDS)
+
+(A) full shipped mask = 7951 = 0b1111100001111
+    reachable masks with the shipped dictionary: 512 of 65536 (0.78%)
+    of those, > 255 (outside the verified window): 496
+    with all 16 slots filled (user dictionary): 65536
+
+(B) fluidfix src/*.py: 17 files, 1350 signalled lines
+    distinct masks produced: 30
+    masks > 255 (outside the verified 0..255 window): 20 distinct, 360 of 1350 signalled lines (26.7%)
+    most common masks (mask, bin, count, kinds, EMIT-order):
+           2               0b10 n=652     kinds=[1]
+           1                0b1 n=160     kinds=[0]
+        4096    0b1000000000000 n=108     kinds=[12]   <== >255
+        1027      0b10000000011 n=65      kinds=[0, 1, 10]   <== >255
+          10             0b1010 n=54      kinds=[1, 3]
+           3               0b11 n=49      kinds=[0, 1]
+        1025      0b10000000001 n=46      kinds=[0, 10]   <== >255
+           8             0b1000 n=44      kinds=[3]
+        2058     0b100000001010 n=37      kinds=[1, 3, 11]   <== >255
+        4098    0b1000000000010 n=21      kinds=[1, 12]   <== >255
+          11             0b1011 n=20      kinds=[0, 1, 3]
+         514       0b1000000010 n=17      kinds=[1, 9]   <== >255
+
+(B) fluidfix tests/*.py: 27 files, 899 signalled lines
+    distinct masks produced: 26
+    masks > 255 (outside the verified 0..255 window): 18 distinct, 195 of 899 signalled lines (21.7%)
+    most common masks (mask, bin, count, kinds, EMIT-order):
+           2               0b10 n=577     kinds=[1]
+        4096    0b1000000000000 n=78      kinds=[12]   <== >255
+          10             0b1010 n=60      kinds=[1, 3]
+        1027      0b10000000011 n=42      kinds=[0, 1, 10]   <== >255
+        1025      0b10000000001 n=27      kinds=[0, 10]   <== >255
+           8             0b1000 n=23      kinds=[3]
+           3               0b11 n=20      kinds=[0, 1]
+           1                0b1 n=14      kinds=[0]
+        4098    0b1000000000010 n=10      kinds=[1, 12]   <== >255
+         514       0b1000000010 n=8       kinds=[1, 9]   <== >255
+        2056     0b100000001000 n=5       kinds=[3, 11]   <== >255
+         256        0b100000000 n=5       kinds=[8]   <== >255
+
+(B) Box2D (shared clone, READ-ONLY): 141 files, 41319 signalled lines
+    distinct masks produced: 42
+    masks > 255 (outside the verified 0..255 window): 27 distinct, 3614 of 41319 signalled lines (8.7%)
+    most common masks (mask, bin, count, kinds, EMIT-order):
+           2               0b10 n=27409   kinds=[1]
+           3               0b11 n=5140    kinds=[0, 1]
+           1                0b1 n=2866    kinds=[0]
+        1027      0b10000000011 n=1858    kinds=[0, 1, 10]   <== >255
+          10             0b1010 n=1185    kinds=[1, 3]
+        1025      0b10000000001 n=568     kinds=[0, 10]   <== >255
+          11             0b1011 n=538     kinds=[0, 1, 3]
+           8             0b1000 n=384     kinds=[3]
+         514       0b1000000010 n=342     kinds=[1, 9]   <== >255
+         512       0b1000000000 n=178     kinds=[9]   <== >255
+        1035      0b10000001011 n=170     kinds=[0, 1, 3, 10]   <== >255
+        2058     0b100000001010 n=122     kinds=[1, 3, 11]   <== >255
+
+(C) the observer reports kinds 'most specific first' (acts.Observation, observers.observer_prompt step 2).
+    observer said       [3, 1] -> mask    10 -> loop tries [1, 3]
+    observer said       [1, 3] -> mask    10 -> loop tries [1, 3]
+    observer said      [12, 0] -> mask  4097 -> loop tries [0, 12]
+    observer said      [0, 12] -> mask  4097 -> loop tries [0, 12]
+    observer said   [10, 0, 3] -> mask  1033 -> loop tries [0, 3, 10]
+    mask_of is a SET union and EMIT is 'lowest live bit', so the observer's ordering is not representable in the value the body
+    hands the law. guard.py:402 uses obs.kinds[:2] (observer order) for the CHEAP bit; loop.py:297 uses ascending kind id.

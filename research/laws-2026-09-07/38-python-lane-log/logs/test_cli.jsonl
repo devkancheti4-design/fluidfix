@@ -1,0 +1,7 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_cli.py::test_kinds_lists_stock_classes_and_free_slots"}
+{"law": "router", "site": "acts.py:319", "byte": [0, 5, 4], "bits": [], "ruling": 9, "test": "tests/test_cli.py::test_kinds_shows_a_taught_dictionary_class"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_cli.py::test_kinds_shows_a_taught_dictionary_class"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_cli.py::test_bad_python_fails_fast_with_one_line_no_traceback"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_cli.py::test_relative_python_resolves_against_invoking_cwd"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_cli.py::test_help_examples_epilog_and_exit_code_docs"}

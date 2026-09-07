@@ -1,0 +1,169 @@
+{
+ "name": "regress_crlf_cmp",
+ "src": "tests/test_regressions.py test_crlf_file_untouched_... (via observer, not a hand-written Observation)",
+ "group": "shipped",
+ "expect": "repaired",
+ "taught": {},
+ "status": "refused",
+ "file": "mod.py",
+ "candidate_files": [
+  "mod.py"
+ ],
+ "evidence": {
+  "pointed": [
+   "mod.py"
+  ],
+  "lanes": {
+   "FRAMED": [],
+   "SCARCE": [
+    "mod.py"
+   ],
+   "LITERAL": []
+  }
+ },
+ "seconds": 5.2,
+ "hint": "AMBIGUOUS: 2 candidates at 2 different lines (2, 3) all pass the suite \u2014 the tests cannot tell them apart, and one may CANCEL the fault rather than repair it. Add one pinning test (engine law: BUILT+A",
+ "rank_calls": [
+  {
+   "rel": "mod.py",
+   "n_obs": 2,
+   "input_order": [
+    2,
+    3
+   ],
+   "ranked_order": [
+    2,
+    3
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      0,
+      10
+     ],
+     "classes": [
+      "strictness",
+      "flipped-comparison-direction"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "if x >= t:"
+    },
+    {
+     "lineno": 3,
+     "kinds": [
+      1
+     ],
+     "classes": [
+      "literal-off-by-one"
+     ],
+     "byte": 40,
+     "bits": "SIGNALED+CHEAP",
+     "priority": 3,
+     "text": "return 1"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    0,
+    10
+   ],
+   "act": 5,
+   "kind": 0,
+   "n": 1,
+   "cands": [
+    "    if x > t:"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    0,
+    10
+   ],
+   "act": 15,
+   "kind": 10,
+   "n": 1,
+   "cands": [
+    "    if x <= t:"
+   ]
+  },
+  {
+   "lineno": 3,
+   "kinds": [
+    1
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "        return 0"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "if x > t:"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "if x > t:"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": false,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "2-2",
+     "new": "if x <= t:"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "3-3",
+     "new": "return 0"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ok": true,
+   "changed": [
+    {
+     "file": "mod.py",
+     "old_lines": "3-3",
+     "new": "return 0"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 4,
+ "winner": null
+}

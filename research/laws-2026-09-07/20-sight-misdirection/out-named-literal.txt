@@ -1,0 +1,33 @@
+# fixture named-literal -> /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/20-sight-misdirection/work/named-literal
+# failing: True
+   | 
+   |     def test_render_respects_limit():
+   | >       assert shell.render(["a", "b", "c", "d"], 3) == "b95:a b c"
+   | E       AssertionError: assert 'b95:a b c d' == 'b95:a b c'
+   | E         
+   | E         - b95:a b c
+   | E         + b95:a b c d
+   | E         ?          ++
+   | 
+   | tests/test_shell.py:5: AssertionError
+   | =========================== short test summary info ============================
+   | FAILED tests/test_shell.py::test_render_respects_limit - AssertionError: asse...
+   | !!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+   | 1 failed, 4 passed in 0.03s
+
+# find_candidate_files order:
+   1. pkg/types.py       byte=0xc4 LITERAL|SMALL|UBIQUITOUS           priority=0
+   2. pkg/shell.py       byte=0x58 FAILONLY|NAMED|SMALL               priority=2
+   3. pkg/__init__.py    byte=0x48 FAILONLY|SMALL                     priority=2
+   4. pkg/utils.py       byte=0x40 SMALL                              priority=5
+   5. pkg/core.py        byte=0x40 SMALL                              priority=5
+   6. pkg/parser.py      byte=0x40 SMALL                              priority=5
+# evidence: {"pointed": ["pkg/types.py"], "lanes": {"FRAMED": [], "SCARCE": [], "LITERAL": ["pkg/types.py"]}}
+
+# per-file ledger:
+    {"file": "pkg/types.py", "suite_runs": 14, "repair_s": 3.3, "repaired": true, "reason": "engine law: BUILT -> SHIP"}
+# suite runs on WRONG files: 0, on the repaired file: 14
+
+# guard_once -> status=repaired file=pkg/types.py seconds=4.6
+# result: lineno=41 old='if len(out) > limit:        # DEFECT: should be >=' new='if len(out) >= limit:        # DEFECT: should be >=' suite_runs=14 reason='engine law: BUILT -> SHIP'
+# green after: True

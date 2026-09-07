@@ -1,0 +1,6 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_harness_errors.py::test_no_tests_collected_raises_harness_error_not_red"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_harness_errors.py::test_green_raises_but_check_rejects"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_harness_errors.py::test_candidate_caused_harness_failure_rejects_not_aborts"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_harness_errors.py::test_a_real_failing_suite_is_still_just_red"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_harness_errors.py::test_budget_refusal_does_not_blame_the_vocabulary"}

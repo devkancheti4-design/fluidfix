@@ -1,0 +1,31 @@
+{
+ "budget": 600,
+ "status": "repaired",
+ "elapsed": 179.78227519989014,
+ "runs": {
+  "check": 914,
+  "green": 2,
+  "failing_output": 3,
+  "check_green": 2
+ },
+ "rulings": [
+  {
+   "t": 23.4,
+   "bits": "CAPPED+REFUTED",
+   "byte": 96,
+   "ruling": "RAISE_BUDGET",
+   "caller": "guard.py:539",
+   "suite_runs_so_far": 110
+  },
+  {
+   "t": 179.8,
+   "bits": "BUILT",
+   "byte": 1,
+   "ruling": "SHIP",
+   "caller": "loop.py:217",
+   "suite_runs_so_far": 914
+  }
+ ],
+ "hint": "",
+ "reason": "engine law: BUILT -> SHIP (engine law: CAPPED -> RAISE_BUDGET, depth-first)"
+}

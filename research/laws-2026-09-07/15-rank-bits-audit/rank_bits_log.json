@@ -1,0 +1,30 @@
+{
+ "rc": "running",
+ "calls": [
+  {
+   "n_obs": 1,
+   "root_passed": true,
+   "rel": "mod.py",
+   "retried_passed": false,
+   "retried_len": 0,
+   "output_has_File_line": false,
+   "output_has_path_colon_line": true,
+   "output_has_FAILED": true,
+   "bytes_logged": 1,
+   "kinds_empty": 0
+  }
+ ],
+ "bytes": [
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false,
+   "_in_body": true
+  }
+ ],
+ "repairs": []
+}

@@ -1,0 +1,15 @@
+#!/bin/sh
+# timeout wrapper: no coreutils `timeout` on this host.
+# usage: ./tmo SECONDS cmd args...
+S="$1"; shift
+exec nice -n 15 perl -e '
+  my $s = shift @ARGV;
+  my $pid = fork();
+  die "fork: $!" unless defined $pid;
+  if ($pid == 0) { setpgrp(0,0); exec @ARGV or die "exec: $!"; }
+  $SIG{ALRM} = sub { kill(-9, $pid); waitpid($pid, 0); print STDERR "\n[tmo] TIMEOUT after ${s}s\n"; exit 124; };
+  alarm $s;
+  waitpid($pid, 0);
+  alarm 0;
+  exit($? >> 8);
+' "$S" "$@"

@@ -1,0 +1,82 @@
+{
+  "failing_output_names": [
+    "tests/test_billing.py::test_invoice_total"
+  ],
+  "packets": {
+    "billing.py": {
+      "lines": [
+        8,
+        12,
+        13,
+        16
+      ],
+      "mode": "coverage",
+      "fault_line_in_packet": true
+    },
+    "inventory.py": {
+      "lines": [],
+      "mode": "coverage",
+      "fault_line_in_packet": false
+    }
+  },
+  "space_size": 18,
+  "completed_search": {
+    "n": 18,
+    "seconds": 3.561253786087036,
+    "greens": 0,
+    "reducers": [
+      [
+        "billing.py",
+        13,
+        "    return subtotal + tax",
+        1,
+        [
+          "tests/test_billing.py::test_invoice_total",
+          "tests/test_billing.py::test_rounded_total"
+        ]
+      ],
+      [
+        "inventory.py",
+        11,
+        "    return on_hand < reorder_point",
+        2,
+        [
+          "tests/test_inventory.py::test_needs_reorder"
+        ]
+      ]
+    ]
+  },
+  "fixed_sets": {
+    "billing.py:13": [
+      "tests/test_billing.py::test_invoice_total",
+      "tests/test_billing.py::test_rounded_total"
+    ],
+    "inventory.py:11": [
+      "tests/test_inventory.py::test_needs_reorder"
+    ]
+  },
+  "unreached": [],
+  "cost": {
+    "single_runs": 18,
+    "single_seconds": 3.561253786087036,
+    "naive_pairs": 153,
+    "cross_pairs": 80,
+    "seconds_per_run": 0.1978474325603909
+  },
+  "pair_sweep": {
+    "cross": 80,
+    "green": [
+      [
+        "return subtotal + tax",
+        "return on_hand < reorder_point",
+        [
+          true,
+          true
+        ]
+      ]
+    ],
+    "canceling": []
+  },
+  "byte": 23,
+  "act": "PARTITION"
+}

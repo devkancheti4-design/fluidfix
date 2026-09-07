@@ -1,0 +1,23 @@
+paired lines: 6463 -> unique (repo,old,new): 3920
+box2d: coarse one-token labels, unique, version lines excluded: {'other-token': 958, 'other-literal': 4, 'sign': 4, 'off-by-one': 3, 'compare': 2}
+box2d: ... and comment/#include lines excluded: {'other-token': 825, 'other-literal': 4, 'off-by-one': 3, 'compare': 2, 'sign': 2}
+cglm: coarse one-token labels, unique, version lines excluded: {'other-token': 615, 'sign': 10, 'off-by-one': 8, 'other-literal': 6, 'compare': 3}
+cglm: ... and comment/#include lines excluded: {'other-token': 491, 'sign': 10, 'off-by-one': 8, 'other-literal': 6, 'compare': 3}
+reachable unique pairs: 50 (Counter({'cglm': 44, 'box2d': 6}))
+winning class, unique pairs: [(('cglm', 'literal-off-by-one'), 40), (('box2d', 'flipped-additive'), 3), (('box2d', 'strictness'), 2), (('cglm', 'flipped-comparison-direction'), 2), (('box2d', 'literal-off-by-one'), 1), (('cglm', 'strictness'), 1), (('cglm', 'flipped-additive'), 1)]
+
+=== candidates tried on the defect line before the exact fix, unique reachable pairs ===
+  loop (kind id, lanes.EMIT)       box2d= 12 cglm=142 total=154  (n=50)
+  recurrence same repo, LOO        box2d= 12 cglm=151 total=163  (n=50)
+  cheapest kind first              box2d= 12 cglm=138 total=150  (n=50)
+  winner first (oracle bound)      box2d=  9 cglm=136 total=145  (n=50)
+unique reachable pairs with >1 kind on the line (order can matter): 9 of 50
+   box2d  d1581fb721 kinds=[0, 3, 10] win=strictness pos_loop=1 | if ( distanceOutput.distance < target + tolerance )
+   box2d  bcc834bc1d kinds=[0, 1, 10] win=strictness pos_loop=2 | if ( 0.0f < value && value < maxFraction )
+   box2d  e6a8a5df00 kinds=[2, 3] win=flipped-additive pos_loop=4 | return inv_dt * (m_impulse.x * m_perp + (m_motorImpulse + m_
+   box2d  b6a97c6980 kinds=[0, 1, 10] win=literal-off-by-one pos_loop=3 | #include <GLES3/gl2ext.h>
+   box2d  8458df02ec kinds=[3, 11] win=flipped-additive pos_loop=1 | qr.c = q.c * r.c - q.s * r.s;
+   cglm   6ad0aca7e0 kinds=[0, 1, 10] win=flipped-comparison-direction pos_loop=4 | if (k > 0.0f) {
+   cglm   3e4f52b3af kinds=[0, 10] win=flipped-comparison-direction pos_loop=2 | if (a < b)
+   cglm   086c1cf326 kinds=[0, 1, 3, 10] win=strictness pos_loop=1 | path = (fabsf(a[0][0]) + fabsf(a[0][1]) + fabsf(a[0][2])) >
+   cglm   05c76fa992 kinds=[1, 3, 11] win=flipped-additive pos_loop=3 | dest[0][1] = cz * sx * sy - cx * sz;

@@ -1,0 +1,6 @@
+--- after SIGKILL ---
+journal present: yes
+line 10 on disk:     if units >= 10:
+--- user hand-fixed the file, suite is now GREEN ---
+user's suite rc=0
+run2 rc=0

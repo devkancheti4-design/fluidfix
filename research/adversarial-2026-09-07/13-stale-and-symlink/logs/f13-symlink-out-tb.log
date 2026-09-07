@@ -1,0 +1,38 @@
+=== fixture: f13-symlink-out-tb
+=== root:    /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/13-stale-and-symlink/fixtures/f13-symlink-out-tb/repo
+=== extra:   
+BEFORE ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154190945 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154190945
+BEFORE ./pkg/geom.py
+  content-sha256: 49731c4ec8fbdbd20109c8f569d103e0867f9fed0d73d77076b707520e97640c
+  stat(name):     mode=lrwxr-xr-x inode=154190948 nlink=1 size=21
+  lstat(name):    mode=lrwxr-xr-x inode=154190948
+  symlink -> ../../outside/geom.py
+BEFORE ./tests/test_geom.py
+  content-sha256: 81d02cabc72837e228eebcf61deccd103349b8198a00e7a151015c7e3f46b3bc
+  stat(name):     mode=-rw-r--r-- inode=154190949 nlink=1 size=128
+  lstat(name):    mode=-rw-r--r-- inode=154190949
+=== guard run ===
+[14:36:47] pkg/geom.py: repaired line 2 in 3 suite runs (2.5s):
+  - return xs[2]
+  + return xs[1]
+=== guard exit: 0 ===
+AFTER ./pkg/__init__.py
+  content-sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  stat(name):     mode=-rw-r--r-- inode=154190945 nlink=1 size=0
+  lstat(name):    mode=-rw-r--r-- inode=154190945
+AFTER ./pkg/geom.py
+  content-sha256: a1aabf6c6c48e5ff3eeba5645ba447aea450ea112b685a5d89bfd66ceea6203b
+  stat(name):     mode=lrwxr-xr-x inode=154190948 nlink=1 size=21
+  lstat(name):    mode=lrwxr-xr-x inode=154190948
+  symlink -> ../../outside/geom.py
+AFTER ./tests/test_geom.py
+  content-sha256: 81d02cabc72837e228eebcf61deccd103349b8198a00e7a151015c7e3f46b3bc
+  stat(name):     mode=-rw-r--r-- inode=154190949 nlink=1 size=128
+  lstat(name):    mode=-rw-r--r-- inode=154190949
+=== leftovers in .fluidfix ===
+total 0
+drwxr-xr-x@ 2 kanchetidevieswar  staff   64 Sep  7 14:36 .
+drwxr-xr-x@ 7 kanchetidevieswar  staff  224 Sep  7 14:36 ..

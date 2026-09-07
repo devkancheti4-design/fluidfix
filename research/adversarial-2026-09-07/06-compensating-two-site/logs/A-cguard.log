@@ -1,0 +1,5 @@
+  build: cmake --build build -j8
+  test:  ./build/tests
+[14:30:36] src/rate.c: repaired line 9 in 4 suite runs (2.1s):
+  - return fee_for(units) + 25;
+  + return fee_for(units) + 24;

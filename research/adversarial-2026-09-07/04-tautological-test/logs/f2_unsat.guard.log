@@ -1,0 +1,2 @@
+[14:36:46] REFUSED: fault is outside the taught vocabulary (candidate files tried: none found). teach it once: docs/TEACHING.md (or run: fluidfix kinds)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/04-tautological-test/fixtures/f2_unsat/.fluidfix/last_refusal.json

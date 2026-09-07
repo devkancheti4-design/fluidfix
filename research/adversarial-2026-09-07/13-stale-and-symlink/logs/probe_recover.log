@@ -1,0 +1,4 @@
+journal: {"file": "pkg/geom.py", "original": "JOURNAL RESTORE PAYLOAD\n", "started": 1788772230.25392}
+recover_inflight -> pkg/geom.py
+outside file now: 'JOURNAL RESTORE PAYLOAD\n'
+repo/pkg/geom.py is still a symlink: True

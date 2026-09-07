@@ -1,0 +1,16 @@
+=== A. BUILT+CAPPED via deadline between kinds ===
+  repaired=False reason='a candidate passes, but the search was cut short before it could be shown unique — shippin'
+  law asked: [(33, 'BUILT+CAPPED', 'RAISE_BUDGET')]
+  file untouched after refusal: True
+
+=== B. HIDDEN via one-run green, re-check red ===
+  repaired=False reason='every candidate left the suite red — fault is outside this vocabulary or the obs'
+  law asked: [(16, 'HIDDEN', 'CHANGE_GRANULARITY')]
+  tried_log why: 'green on one run, RED on re-check — the suite does not hold still here, so a single run cannot judge this candidate (eng'
+  file untouched after refusal: True
+
+=== C. AMB proven AFTER the deadline expired: is x=35 ever asked? ===
+  repaired=False ambiguous=True
+  law asked: [(3, 'BUILT+AMB', 'ADD_STATE')]
+  file untouched after refusal: True
+  x=35 asked: False   (law on x=35 would rule ADD_STATE, on x=3 rules ADD_STATE)

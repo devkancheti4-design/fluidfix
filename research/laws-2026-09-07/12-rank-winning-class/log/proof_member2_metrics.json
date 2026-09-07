@@ -1,0 +1,192 @@
+{
+ "name": "proof_member2_metrics",
+ "src": "docs/proof_one_example.py MEMBERS[1]",
+ "group": "taught",
+ "expect": "repaired",
+ "taught": {
+  "4": "missing-get-default"
+ },
+ "status": "repaired",
+ "file": "metrics.py",
+ "candidate_files": [
+  "metrics.py"
+ ],
+ "evidence": {},
+ "seconds": 4.1,
+ "hint": "",
+ "rank_calls": [
+  {
+   "rel": "metrics.py",
+   "n_obs": 1,
+   "input_order": [
+    2
+   ],
+   "ranked_order": [
+    2
+   ],
+   "rows": [
+    {
+     "lineno": 2,
+     "kinds": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "classes": [
+      "literal-off-by-one",
+      "swapped-return-operands",
+      "flipped-additive",
+      "missing-get-default"
+     ],
+     "byte": 45,
+     "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+     "priority": 0,
+     "text": "return m['base'] * 2 + m.get('jitter')"
+    }
+   ]
+  }
+ ],
+ "candidate_calls": [
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "act": 6,
+   "kind": 1,
+   "n": 1,
+   "cands": [
+    "    return m['base'] * 1 + m.get('jitter')"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "act": 7,
+   "kind": 2,
+   "n": 1,
+   "cands": [
+    "    return 2 + m.get('jitter') * m['base']"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "act": 8,
+   "kind": 3,
+   "n": 1,
+   "cands": [
+    "    return m['base'] * 2 - m.get('jitter')"
+   ]
+  },
+  {
+   "lineno": 2,
+   "kinds": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "act": 9,
+   "kind": 4,
+   "n": 1,
+   "cands": [
+    "    return m['base'] * 2 + m.get('jitter', 0)"
+   ]
+  }
+ ],
+ "checks": [
+  {
+   "n": 1,
+   "ok": false,
+   "changed": [
+    {
+     "file": "metrics.py",
+     "old_lines": "2-2",
+     "new": "return m['base'] * 1 + m.get('jitter')"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ok": false,
+   "changed": [
+    {
+     "file": "metrics.py",
+     "old_lines": "2-2",
+     "new": "return 2 + m.get('jitter') * m['base']"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ok": false,
+   "changed": [
+    {
+     "file": "metrics.py",
+     "old_lines": "2-2",
+     "new": "return m['base'] * 2 - m.get('jitter')"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ok": true,
+   "changed": [
+    {
+     "file": "metrics.py",
+     "old_lines": "2-2",
+     "new": "return m['base'] * 2 + m.get('jitter', 0)"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ok": true,
+   "changed": [
+    {
+     "file": "metrics.py",
+     "old_lines": "2-2",
+     "new": "return m['base'] * 2 + m.get('jitter', 0)"
+    }
+   ]
+  }
+ ],
+ "suite_runs": 5,
+ "winner": {
+  "lineno": 2,
+  "new_line": "    return m['base'] * 2 + m.get('jitter', 0)",
+  "old_line": "    return m['base'] * 2 + m.get('jitter')",
+  "kind": 4,
+  "class": "missing-get-default",
+  "act": 9,
+  "first_green_check": 4,
+  "suite_runs": 5,
+  "reason": "engine law: BUILT -> SHIP",
+  "law_priority": 0,
+  "bits": "FRAME+NAMED+SIGNALED+CHEAP",
+  "position_ranked": 1,
+  "n_obs": 1,
+  "position_input": 1,
+  "same_priority_ahead": 0,
+  "better_priority_ahead": 0,
+  "kind_position_in_line": 4,
+  "kinds_on_line": 4,
+  "class_slot_position": 4,
+  "class_slots_total": 4
+ }
+}

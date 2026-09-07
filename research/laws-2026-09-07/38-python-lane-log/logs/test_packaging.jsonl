@@ -1,0 +1,5 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_packaging.py::test_publish_workflow_gates_on_tests"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_packaging.py::test_pyproject_metadata"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_packaging.py::test_readme_teaching_pointers"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_packaging.py::test_gitignore_covers_guard_state"}

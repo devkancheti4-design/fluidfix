@@ -1,0 +1,246 @@
+{
+ "calls": [
+  {
+   "n_obs": 3,
+   "root_passed": true,
+   "rel": "mod.py",
+   "retried_passed": false,
+   "retried_len": 0,
+   "output_has_File_line": false,
+   "output_has_path_colon_line": true,
+   "output_has_FAILED": true,
+   "bytes_logged": 3,
+   "kinds_empty": 0
+  },
+  {
+   "n_obs": 2,
+   "root_passed": true,
+   "rel": "mod.py",
+   "retried_passed": false,
+   "retried_len": 0,
+   "output_has_File_line": false,
+   "output_has_path_colon_line": true,
+   "output_has_FAILED": true,
+   "bytes_logged": 2,
+   "kinds_empty": 0
+  },
+  {
+   "n_obs": 0,
+   "root_passed": true,
+   "rel": "mod.py",
+   "retried_passed": false,
+   "retried_len": 0,
+   "output_has_File_line": false,
+   "output_has_path_colon_line": true,
+   "output_has_FAILED": true,
+   "bytes_logged": 0,
+   "kinds_empty": 0
+  },
+  {
+   "n_obs": 3,
+   "root_passed": true,
+   "rel": "mod.py",
+   "retried_passed": false,
+   "retried_len": 0,
+   "output_has_File_line": false,
+   "output_has_path_colon_line": true,
+   "output_has_FAILED": true,
+   "bytes_logged": 3,
+   "kinds_empty": 0
+  },
+  {
+   "n_obs": 3,
+   "root_passed": true,
+   "rel": "mod.py",
+   "retried_passed": false,
+   "retried_len": 0,
+   "output_has_File_line": false,
+   "output_has_path_colon_line": true,
+   "output_has_FAILED": true,
+   "bytes_logged": 3,
+   "kinds_empty": 0
+  },
+  {
+   "n_obs": 3,
+   "root_passed": true,
+   "rel": "mod.py",
+   "retried_passed": false,
+   "retried_len": 0,
+   "output_has_File_line": false,
+   "output_has_path_colon_line": true,
+   "output_has_FAILED": true,
+   "bytes_logged": 3,
+   "kinds_empty": 0
+  },
+  {
+   "n_obs": 2,
+   "root_passed": false,
+   "rel": null,
+   "retried_passed": false,
+   "retried_len": 0,
+   "output_has_File_line": true,
+   "output_has_path_colon_line": false,
+   "output_has_FAILED": false,
+   "bytes_logged": 2,
+   "kinds_empty": 0
+  }
+ ],
+ "bytes": [
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": true,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": true,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": true,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": true,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": true,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": true,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": true
+  },
+  {
+   "signaled": true
+  },
+  {},
+  {},
+  {
+   "frame": true,
+   "retried": true
+  },
+  {
+   "frame": false,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  },
+  {
+   "frame": true,
+   "named": false,
+   "signaled": true,
+   "recent": false,
+   "cheap": true,
+   "dense": false,
+   "retried": false
+  }
+ ]
+}

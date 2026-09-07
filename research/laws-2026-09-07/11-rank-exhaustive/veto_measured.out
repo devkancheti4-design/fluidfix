@@ -1,0 +1,27 @@
+
+=== A  baseline (ships today: RETRIED never supplied) ===
+status=repaired file=mod.py wall=14.5s defect line=119
+  repair call 0 (pass 0): suite_runs=20 repaired=False at=None 4.9s
+    order=[2, 110, 111, 112, 113, 114, 115, 116, 117, 118]
+    defect line position in order: None of 10
+  repair call 1 (escalation): suite_runs=22 repaired=True at=119 6.5s
+    order=[2, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119]
+    defect line position in order: 10 of 11
+  TOTAL suite runs across passes: 42
+
+=== B  veto supplied at the escalation call from tried_log ===
+status=repaired file=mod.py wall=20.3s defect line=119
+  repair call 0 (pass 0): suite_runs=20 repaired=False at=None 7.6s
+    order=[2, 110, 111, 112, 113, 114, 115, 116, 117, 118]
+    defect line position in order: None of 10
+  repair call 1 (escalation): suite_runs=22 repaired=True at=119 8.1s
+    order=[119, 2, 110, 111, 112, 113, 114, 115, 116, 117, 118]
+    defect line position in order: 0 of 11
+  TOTAL suite runs across passes: 42
+
+================ RESULT ================
+escalation-pass suite runs   A=22   B=22
+total suite runs             A=42   B=42
+wall seconds                 A=14.5   B=20.3
+both repaired the defect     A=repaired   B=repaired
+escalation suite runs saved by the veto: 0 (0% of the escalation pass)

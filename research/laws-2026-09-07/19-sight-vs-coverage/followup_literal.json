@@ -1,0 +1,266 @@
+[
+ {
+  "id": "vec3_add",
+  "file": "include/cglm/vec3.h",
+  "rank_body": 1,
+  "rank_sight": 8,
+  "rank_sight_fix": 6,
+  "n": 76,
+  "prio_hist_sight": {
+   "0": 2,
+   "2": 74
+  },
+  "prio_hist_fix": {
+   "2": 76
+  },
+  "lit_hits_sight": {
+   "07": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ]
+  },
+  "lit_hits_fix": {},
+  "lits_sight": [
+   "0000009",
+   "000009",
+   "07",
+   "09",
+   "1134",
+   "1356",
+   "1374",
+   "1525",
+   "1557",
+   "171",
+   "179",
+   "19",
+   "2026",
+   "348",
+   "527",
+   "68",
+   "837",
+   "918",
+   "924"
+  ],
+  "lits_fix": [
+   "0000009",
+   "000009"
+  ],
+  "n_named": 8,
+  "top5_sight": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/vec3.c",
+   "src/quat.c",
+   "include/cglm/handed/euler_to_quat_lh.h"
+  ],
+  "top5_fix": [
+   "src/vec3.c",
+   "src/quat.c",
+   "include/cglm/handed/euler_to_quat_lh.h",
+   "include/cglm/handed/euler_to_quat_rh.h",
+   "include/cglm/ray.h"
+  ],
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": true,
+   "small": true,
+   "ubiquitous": false
+  }
+ },
+ {
+  "id": "vec4_sub_neon",
+  "file": "include/cglm/vec4.h",
+  "rank_body": 1,
+  "rank_sight": 9,
+  "rank_sight_fix": 8,
+  "n": 76,
+  "prio_hist_sight": {
+   "0": 2,
+   "2": 74
+  },
+  "prio_hist_fix": {
+   "2": 76
+  },
+  "lit_hits_sight": {
+   "07": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ]
+  },
+  "lit_hits_fix": {},
+  "lits_sight": [
+   "000009",
+   "00001",
+   "07",
+   "09",
+   "110",
+   "1139",
+   "1175",
+   "1639",
+   "19",
+   "2026",
+   "354",
+   "363",
+   "39",
+   "543",
+   "570",
+   "718",
+   "738",
+   "74",
+   "773",
+   "885",
+   "905",
+   "937",
+   "957"
+  ],
+  "lits_fix": [
+   "000009",
+   "00001"
+  ],
+  "n_named": 10,
+  "top5_sight": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/vec3.c",
+   "src/vec4.c",
+   "src/vec2.c"
+  ],
+  "top5_fix": [
+   "src/vec3.c",
+   "src/vec4.c",
+   "include/cglm/vec2.h",
+   "src/vec2.c",
+   "src/quat.c"
+  ],
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": true,
+   "small": true,
+   "ubiquitous": false
+  }
+ },
+ {
+  "id": "util_lerp",
+  "file": "include/cglm/util.h",
+  "rank_body": 42,
+  "rank_sight": 40,
+  "rank_sight_fix": 40,
+  "n": 76,
+  "prio_hist_sight": {
+   "0": 2,
+   "2": 74
+  },
+  "prio_hist_fix": {
+   "2": 76
+  },
+  "lit_hits_sight": {
+   "07": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ]
+  },
+  "lit_hits_fix": {},
+  "lits_sight": [
+   "07",
+   "09",
+   "110",
+   "19",
+   "2026",
+   "39",
+   "74"
+  ],
+  "lits_fix": [],
+  "n_named": 6,
+  "top5_sight": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/vec3.c",
+   "src/vec4.c",
+   "src/vec2.c"
+  ],
+  "top5_fix": [
+   "src/vec3.c",
+   "src/vec4.c",
+   "include/cglm/vec2.h",
+   "src/vec2.c",
+   "include/cglm/vec4.h"
+  ],
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": false,
+   "touched": false,
+   "small": true,
+   "ubiquitous": false
+  }
+ },
+ {
+  "id": "mat4_scale_p",
+  "file": "include/cglm/mat4.h",
+  "rank_body": 1,
+  "rank_sight": 4,
+  "rank_sight_fix": 2,
+  "n": 76,
+  "prio_hist_sight": {
+   "0": 2,
+   "2": 74
+  },
+  "prio_hist_fix": {
+   "2": 76
+  },
+  "lit_hits_sight": {
+   "07": [
+    "include/cglm/ivec2.h",
+    "include/cglm/vec2.h"
+   ]
+  },
+  "lit_hits_fix": {},
+  "lits_sight": [
+   "07",
+   "09",
+   "19",
+   "2026",
+   "305"
+  ],
+  "lits_fix": [],
+  "n_named": 2,
+  "top5_sight": [
+   "include/cglm/vec2.h",
+   "include/cglm/ivec2.h",
+   "src/mat4.c",
+   "include/cglm/mat4.h",
+   "src/vec3.c"
+  ],
+  "top5_fix": [
+   "src/mat4.c",
+   "include/cglm/mat4.h",
+   "src/vec3.c",
+   "include/cglm/noise.h",
+   "src/vec4.c"
+  ],
+  "bits_true": {
+   "priority": 2,
+   "framed": false,
+   "scarce": false,
+   "literal": false,
+   "failonly": true,
+   "named": true,
+   "touched": true,
+   "small": true,
+   "ubiquitous": false
+  }
+ }
+]

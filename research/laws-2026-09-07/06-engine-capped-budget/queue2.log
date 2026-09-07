@@ -1,0 +1,6 @@
+QUEUE2 start 13:51:54 load=3.01 3.18 2.67
+sweep_300 rc=0 13:54:36
+sweep_400 rc=0 13:57:42
+sweep_350 rc=0 14:00:45
+sweep_600 rc=0 14:03:45
+QUEUE2 done 14:03:45

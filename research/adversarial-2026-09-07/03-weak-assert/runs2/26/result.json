@@ -1,0 +1,44 @@
+{
+ "id": 26,
+ "lineno": 72,
+ "kind": 2,
+ "kind_name": "swapped-return-operands",
+ "act": 7,
+ "orig": "    return page * size - size",
+ "mutant": "    return size - size * page",
+ "suite_red": true,
+ "baseline_rc": 1,
+ "fluidfix_rc": 0,
+ "fluidfix_out": "{\n \"repaired\": true,\n \"refused\": false,\n \"lineno\": 72,\n \"old_line\": \"    return size - size * page\",\n \"new_line\": \"    return size * page - size\",\n \"acts_tried\": [\n  7,\n  8\n ],\n \"suite_runs\": 3,\n \"seconds\": 1.9433658123016357,\n \"reason\": \"engine law: BUILT -> SHIP\",\n \"ambiguous\": false,\n \"greens\": [\n  \"    return size * page - size\",\n  \"    return size + size * page\"\n ],\n \"tried_log\": [],\n \"tried_more\": 0,\n \"restored_original\": null\n}\n",
+ "report": {
+  "repaired": true,
+  "refused": false,
+  "lineno": 72,
+  "old_line": "    return size - size * page",
+  "new_line": "    return size * page - size",
+  "acts_tried": [
+   7,
+   8
+  ],
+  "suite_runs": 3,
+  "seconds": 1.9433658123016357,
+  "reason": "engine law: BUILT -> SHIP",
+  "ambiguous": false,
+  "greens": [
+   "    return size * page - size",
+   "    return size + size * page"
+  ],
+  "tried_log": [],
+  "tried_more": 0,
+  "restored_original": null
+ },
+ "final_equals_pristine": false,
+ "final_equals_mutant": false,
+ "final_line": "    return size * page - size",
+ "outcome": "SHIPPED-WRONG",
+ "greens": [
+  "    return size * page - size",
+  "    return size + size * page"
+ ],
+ "reason": "engine law: BUILT -> SHIP"
+}

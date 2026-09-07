@@ -1,0 +1,3 @@
+{"law": "-", "event": "installed", "python": "3.14.7", "test": "<import-time>"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_estimate.py::test_estimate_projects_from_the_suites_own_runtime"}
+{"law": "-", "event": "test:outcome", "outcome": "passed", "test": "tests/test_estimate.py::test_estimate_says_so_when_the_suite_is_red"}

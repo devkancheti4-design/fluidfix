@@ -1,0 +1,53 @@
+--- 01-strictness-lf ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (4.7s)
+--- 02-additive-crlf ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (4.0s)
+--- 03-swapret-trailing-ws ...
+    status=repaired NOT-BYTE-EXACT mode_ok=True post_green=True (3.8s)
+      L2 pristine=b'    return a + b  '
+      L2  on_disk=b'    return a   + b'
+--- 04-literal-no-final-nl ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (3.7s)
+--- 05-minmax-tabs ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (3.2s)
+--- 06-strictness-bom ...
+    status=refused NOT-BYTE-EXACT mode_ok=True post_green=False (3.0s)
+      L4 pristine=b'        if x > t:'
+      L4  on_disk=b'        if x >= t:'
+--- 07-nonascii-ident ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (3.7s)
+--- 08-augmented-assign ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (3.4s)
+--- 09-comparison-direction ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (3.3s)
+--- 10-boolean-flip ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (3.8s)
+--- 11-revminus-trailing-ws ...
+    status=repaired NOT-BYTE-EXACT mode_ok=True post_green=True (4.6s)
+      L2 pristine=b'    return b - a   '
+      L2  on_disk=b'    return b    - a'
+--- 12-crlf-no-final-nl ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (3.2s)
+--- 13-exec-mode ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (3.9s)
+--- 14-zero-padded-escape ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (5.8s)
+--- 15-latin1-source ...
+    status=None NOT-BYTE-EXACT mode_ok=True post_green=False (1.6s)
+      L6 pristine=b'    return len([x for x in xs if x > t])'
+      L6  on_disk=b'    return len([x for x in xs if x >= t])'
+      ERROR:
+Traceback (most recent call last):
+  File "/Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/15-byte-exact-audit/audit.py", line 93, in run_one
+    report = guard_once(Oracle(d, python=PY, timeout=SUITE_TIMEOUT), MechanicalObserver())
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/guard.py", line 505, in guard_once
+    packet = build_packet(oracle, rel, coverage_target=coverage_target)
+  File "/Users/kanchetidevieswar/neo/fluidfix/src/fluidfix/localize.py", line 101, in build_packet
+    src = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 38: invalid continuation byte
+
+--- 16-neighbour-trailing-ws ...
+    status=repaired BYTE-EXACT mode_ok=True post_green=True (5.9s)
+
+== 14 repaired / 16 fixtures; 12 byte-exact; results.json written

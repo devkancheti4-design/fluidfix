@@ -1,0 +1,2 @@
+[14:33:04] REFUSED: fault is outside the taught vocabulary (candidate files tried: pkg/mod.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/16-refusal-honesty/fixtures/py/py02_outofvocab/.fluidfix/last_refusal.json

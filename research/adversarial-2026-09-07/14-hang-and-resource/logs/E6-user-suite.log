@@ -1,0 +1,49 @@
+EEE                                                                      [100%]
+==================================== ERRORS ====================================
+_________________________ ERROR at setup of test_four __________________________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def server():
+        p = subprocess.Popen([sys.executable, "-c", SERVICE])
+        deadline = time.time() + 2.5
+        while time.time() < deadline and p.poll() is None:
+            time.sleep(0.05)
+        if p.poll() is not None:
+>           pytest.fail(f"test server could not start (rc={p.returncode}); "
+                        f"port {PORT} is already in use")
+E           Failed: test server could not start (rc=3); port 47814 is already in use
+
+conftest.py:50: Failed
+__________________________ ERROR at setup of test_one __________________________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def server():
+        p = subprocess.Popen([sys.executable, "-c", SERVICE])
+        deadline = time.time() + 2.5
+        while time.time() < deadline and p.poll() is None:
+            time.sleep(0.05)
+        if p.poll() is not None:
+>           pytest.fail(f"test server could not start (rc={p.returncode}); "
+                        f"port {PORT} is already in use")
+E           Failed: test server could not start (rc=3); port 47814 is already in use
+
+conftest.py:50: Failed
+_________________________ ERROR at setup of test_zero __________________________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def server():
+        p = subprocess.Popen([sys.executable, "-c", SERVICE])
+        deadline = time.time() + 2.5
+        while time.time() < deadline and p.poll() is None:
+            time.sleep(0.05)
+        if p.poll() is not None:
+>           pytest.fail(f"test server could not start (rc={p.returncode}); "
+                        f"port {PORT} is already in use")
+E           Failed: test server could not start (rc=3); port 47814 is already in use
+
+conftest.py:50: Failed
+=========================== short test summary info ============================
+ERROR tests/test_steps.py::test_four - Failed: test server could not start (r...
+ERROR tests/test_steps.py::test_one - Failed: test server could not start (rc...
+ERROR tests/test_steps.py::test_zero - Failed: test server could not start (r...
+3 errors in 0.14s

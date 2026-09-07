@@ -1,0 +1,5 @@
+[run1] N=80 adjudicated=81 pytest=85 seconds=21.1 attempts=64 persisted=64
+[run1] loop.py's 64-entry cap dropped 17 of 81 rejections before they were ever persisted (RepairResult.tried_more)
+[run2] memo-from-last_refusal.json entries=81 skipped=64 adjudicated=17 pytest=21 seconds=6.0
+RESULT N=80: read-back of the file fluidfix ALREADY writes saves 64 of 81 candidate adjudications (79.0%), 64 of 85 pytest invocations, 15.1s of 21.1s
+root: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/45-harvest-counterexample/cap_80_61s4lajb

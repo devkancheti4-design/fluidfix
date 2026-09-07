@@ -1,0 +1,9 @@
+[run1] memo=False status=refused seconds=6.4 check=18 pytest=25 attempts=18 persisted_rejects=18 memo_skipped=0 memo_size=0 (+0 this run)
+[run1] hint: 'every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refu'
+[run1] summary: 'REFUSED: fault is outside the taught vocabulary (candidate files tried: mod0.py, mod1.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 18 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it'
+[run2] memo=False status=refused seconds=7.5 check=18 pytest=25 attempts=18 persisted_rejects=18 memo_skipped=0 memo_size=0 (+0 this run)
+[run2] hint: 'every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refu'
+[run2] summary: 'REFUSED: fault is outside the taught vocabulary (candidate files tried: mod0.py, mod1.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 18 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it'
+RESULT memo=False: run2/run1 candidates adjudicated 18/18, pytest invocations 25/25, seconds 7.5/6.4
+RESULT memo=False: reduction on the second run — candidates 0.0%, pytest 0.0%, wall -16.8%
+root: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/45-harvest-counterexample/crossrun_base_5u6mkdb6

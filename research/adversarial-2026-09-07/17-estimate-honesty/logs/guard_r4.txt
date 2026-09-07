@@ -1,0 +1,3 @@
+[14:37:13] REFUSED: fault is outside the taught vocabulary (candidate files tried: pkg/stats.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 3 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/17-estimate-honesty/repos/r4_shim/.fluidfix/last_refusal.json

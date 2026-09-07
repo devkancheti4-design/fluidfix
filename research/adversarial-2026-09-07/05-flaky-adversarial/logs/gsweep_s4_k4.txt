@@ -1,0 +1,2 @@
+[14:37:49] REFUSED: fault is outside the taught vocabulary (candidate files tried: money.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/adversarial-2026-09-07/05-flaky-adversarial/fixtures/gsweep/s4_k4/.fluidfix/last_refusal.json

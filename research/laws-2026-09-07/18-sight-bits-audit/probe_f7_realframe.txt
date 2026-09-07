@@ -1,0 +1,20 @@
+== failing output lines the ranker's regexes read ==
+    tests/test_ratio.py:5:
+    pkg/geom.py:2: ZeroDivisionError
+    FAILED tests/test_ratio.py::test_ratio - ZeroDivisionError: division by zero
+
+== sight() calls: 0  (0 means the law was never consulted) ==
+file                         byte  prio   spec n_fail  bits
+
+== order returned by find_candidate_files ==
+   1. pkg/geom.py
+
+== evidence dict ==
+   pointed: ['pkg/geom.py']
+   lanes[FRAMED]: ['pkg/geom.py']
+
+== per-signal hits over candidate bodies (SCARCE fires on 1..2) ==
+   kind  0 strictness                   '[<>]=?'                                      0 []
+   kind  1 literal-off-by-one           '\\d'                                         0 []
+   kind  2 swapped-return-operands      '^\\s*return\\s+.*\\s(?://|[-+*])\\s'         0 []
+   kind  3 flipped-additive             '\\s[-+]\\s'                                  0 []

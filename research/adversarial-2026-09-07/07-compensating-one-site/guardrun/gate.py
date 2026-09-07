@@ -1,0 +1,5 @@
+"""Reading gate: does the FIRST reading exceed the limit?"""
+
+
+def alarm(readings, limit):
+    return readings[1] >= limit

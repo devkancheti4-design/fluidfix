@@ -1,0 +1,2 @@
+byte AS MEASURED  = 513 (0x201)  bits={BUILT}          -> SHIP
+byte AS IT WAS    = 515 (0x203)  bits={BUILT,AMB}      -> ADD_STATE

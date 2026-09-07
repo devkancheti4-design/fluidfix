@@ -1,0 +1,13 @@
+full-suite coverage: 76 files in 1.82s (incl. incremental covbuild rebuild); binary=covbuild/tests
+under test/ and NOT excluded by _is_test_path: ['test/runner.c']
+production files with executed lines: 75
+    226 src/vec3.c
+    225 include/cglm/noise.h
+    206 src/vec4.c
+    192 include/cglm/ivec4.h
+    187 include/cglm/vec2.h
+    186 include/cglm/ivec3.h
+    154 include/cglm/ivec2.h
+    147 src/vec2.c
+smallest: [(3, 'include/cglm/io.h'), (3, 'include/cglm/aabb2d.h'), (3, 'src/mat3x4.c'), (3, 'src/cam.c'), (3, 'src/plane.c')]
+probe 'glm_vec3_add' coverage: 76 files in 0.39s; identical to full? True

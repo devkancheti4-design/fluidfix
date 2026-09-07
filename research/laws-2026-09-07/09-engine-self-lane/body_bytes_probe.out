@@ -1,0 +1,10 @@
+--- AMB (two greens in one set): status=refused
+    asked byte   3 (BUILT+AMB                   ) -> ADD_STATE
+--- single green (strictness): status=repaired
+    asked byte   1 (BUILT                       ) -> SHIP
+--- REFUTED (fault out of vocabulary): status=refused
+    asked byte  64 (REFUTED                     ) -> HARVEST_COUNTEREXAMPLE
+    asked byte  64 (REFUTED                     ) -> HARVEST_COUNTEREXAMPLE
+
+distinct bytes asked across the three runs: [1, 3, 64]
+any byte with SELF (128) set: False

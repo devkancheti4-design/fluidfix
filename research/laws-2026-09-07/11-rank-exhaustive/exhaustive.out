@@ -1,0 +1,41 @@
+A. all 256 inputs vs docstring spec (lowest set evidence bit; 7 if none/veto)
+  [ok] 256/256 match, mismatches=[]
+  [ok] tests/test_rank_law.py::_spec agrees with this script's spec on 256
+B. RETRIED veto (bit 7)
+  [ok] rank(x | 128) == 7 for all 256 x
+  [ok] rank(x) == 7 for exactly the 128 vetoed + input 0 = 129 inputs
+  [ok] EV_k(x) == (x & 2^k) * (1 - RETRIED) for every x, every k (7*256 checks)
+  [ok] _SITUATION(x) == 128 + (x & 0x7F) * (1 - RETRIED) for every x
+  [ok] _EMIT(m) == lowest set bit of m for m in 1..255
+  [ok] vetoed inputs all have _SITUATION == 128 (same as no-evidence input 0)
+C. monotonicity
+  [ok] adding one evidence bit never worsens priority (448 pairs)
+  [ok] adding RETRIED never improves priority (128 pairs)
+  [ok] removing one evidence bit never improves priority
+  [ok] rank(x) == rank(lowest evidence bit of x) for all non-vetoed x with evidence
+D. rank distribution over all 256 inputs (tie-class sizes)
+   rank 0 (    FRAME):  64 inputs
+   rank 1 ( FAILONLY):  32 inputs
+   rank 2 (    NAMED):  16 inputs
+   rank 3 ( SIGNALED):   8 inputs
+   rank 4 (   RECENT):   4 inputs
+   rank 5 (    CHEAP):   2 inputs
+   rank 6 (    DENSE):   1 inputs
+   rank 7 (no-evidence/RETRIED): 129 inputs
+  [ok] class sizes are 64,32,16,8,4,2,1,129
+E. pin census of tests/test_rank_law.py -- HAND-READ, SUPERSEDED by pincensus.py; do not cite these numbers as measured
+   pinned to a literal value : 130 inputs (0, 1, 129, and all 128 vetoed inputs 128..255)
+   pinned only via _spec()   : 126 inputs = 2..127 minus {8 relational}
+   inputs with NO test at all: 0
+   ranks 1..6 have NO literal pin in the test file: [1, 2, 3, 4, 5, 6]
+  [ok] every input is pinned by at least the _spec test
+F. out-of-domain inputs (rank() does not mask to 8 bits; body only calls it via observe_bits so these are unreachable)
+   rank(  256) = 7   (_SITUATION=128)
+   rank(  257) = 0   (_SITUATION=129)
+   rank(  384) = 0   (_SITUATION=0)
+   rank(  511) = 1   (_SITUATION=-126)
+   rank(   -1) = 1   (_SITUATION=382)
+   rank( -128) = 10   (_SITUATION=1024)
+  [ok] situation()/observe_bits() can only produce 0..255
+
+RESULT: ALL CHECKS PASS

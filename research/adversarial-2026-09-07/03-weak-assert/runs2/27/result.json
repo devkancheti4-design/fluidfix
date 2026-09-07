@@ -1,0 +1,12 @@
+{
+ "id": 27,
+ "lineno": 72,
+ "kind": 3,
+ "kind_name": "flipped-additive",
+ "act": 8,
+ "orig": "    return page * size - size",
+ "mutant": "    return page * size + size",
+ "suite_red": false,
+ "baseline_rc": 0,
+ "outcome": "undetected-by-weak-suite"
+}

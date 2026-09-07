@@ -1,0 +1,5 @@
+#!/bin/sh
+# timeout(1) replacement for this host (no coreutils timeout / gtimeout).
+# usage: ./tmo <seconds> <command...>
+s="$1"; shift
+exec perl -e 'my $s=shift; $SIG{ALRM}=sub{ warn "TIMEOUT after ${s}s\n"; kill(9,-$$); exit 124 }; setpgrp(0,0); alarm $s; my $p=fork(); if(!$p){ exec @ARGV or die }; waitpid($p,0); my $rc=$?>>8; exit $rc;' "$s" "$@"

@@ -1,0 +1,19 @@
+fillers=800 truncated=True sampled=110 compensator@5 in sample=True bug@809 in sample=False
+
+round-1 packet CAPPED (packet.truncated) = True  <- guard.py:508 measures this
+law on the byte the guard HOLDS  BUILT+CAPPED -> RAISE_BUDGET
+law on the byte loop.py:217 ASKS BUILT        -> SHIP
+
+guard_once status = repaired
+  suite_runs   = 3
+  lineno       = 5
+  old_line     = '    return grade(v - 0, limit)'
+  new_line     = '    return grade(v - -1, limit)'
+  greens       = ['    return grade(v - -1, limit)']
+  reason       = engine law: BUILT -> SHIP
+  hint         = ''
+
+tree changed        = True
+real bug still there = True   (line 809: '    if v > limit:')
+compensator shipped  = True   (line 5: '    return grade(v - -1, limit)')
+suite green now      = True
