@@ -1,0 +1,11 @@
+budget= 450  status=repaired  178.0s  ruling=SHIP  line='    if v >= limit:'
+budget= 900  status=repaired  179.7s  ruling=SHIP  line='    if v >= limit:'
+
+# READING (coordinator, 2026-09-07)
+# Both budgets repair at ~178s, so the 0.15.0 changes did NOT break the
+# first-pass -> escalation handover. tests/test_span_edits.py::
+# test_budget_hands_first_pass_over_to_escalation still fails at 450 under
+# load (248s, REFUSED — under budget, so not a timeout) and passes standalone.
+# The mechanism is the one audit agent 46 measured: guard.py:591-592 gives the
+# escalation pass HALF the remaining clock, so a slower first pass shrinks the
+# window the repair needs. That is the defect to fix — not the test's number.
