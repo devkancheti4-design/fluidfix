@@ -512,14 +512,22 @@
     <tr><th>guard this share of past defects</th><th>files to test</th><th>of the files that ever broke</th></tr>
     <tr><td>30%</td><td class="big">17</td><td>5%</td></tr>
     <tr><td>50%</td><td class="big">40</td><td>12%</td></tr>
-    <tr class="key"><td><b>60%</b></td><td class="big">58</td><td><b>18%</b></td></tr>
-    <tr><td>80%</td><td class="big">138</td><td>42%</td></tr>
+    <tr class="key"><td><b>60%</b></td><td class="big">57</td><td><b>18%</b></td></tr>
+    <tr><td>80%</td><td class="big">136</td><td>42%</td></tr>
   </table></div>
+
+  <p class="note" style="margin-top:18px"><b>Read that table with one correction, which we found
+  by re-running it.</b> Those counts are every file that has <i>ever</i> broken, and Box2D rewrote
+  itself from C++ to C in 2018. So <b>54 of the 57 no longer exist</b>, and 92.9% of the counted
+  defect mass sits in deleted files. You cannot write a test for a file that is gone. Restricted to
+  files that are still in the tree, 60% of past defects is <b>16 files</b> &mdash; 34% of the 47
+  surviving files that ever broke, and 21% of the 75-file engine. That is the number to act on, and
+  it is the better one: the sprint is smaller than we were claiming, not larger.</p>
 
   <p class="note" style="margin-top:18px"><b>60% of the defects costs 18% of the files.</b>
   Defects cluster, so coverage aimed at the cluster is worth roughly twice coverage spread evenly.
-  "Get to 60% coverage" is a year nobody funds. <b>"Test the 58 files your own history already
-  named"</b> is a sprint — and for a live-service title you do not even need the git archaeology:
+  "Get to 60% coverage" is a year nobody funds. <b>"Test the 16 files your own history already
+  named, that still exist"</b> is a sprint — and for a live-service title you do not even need the git archaeology:
   three months of incidents <i>is</i> that ranking, and every incident is a test that pays twice,
   once as a regression guard and once as a worked example a class can be taught from.</p>
 
@@ -649,7 +657,7 @@
   the remedy was not a special case bolted on — the law already had a ruling for it
   (<span style="font-family:var(--mono)">HIDDEN &rarr; CHANGE_GRANULARITY</span>: when fine records
   disagree with a coarse one, stop judging at that granularity), sitting in a lane fluidfix had
-  never measured. Wiring it took the false-repair rate from <b>14% to 0%</b> — and produced
+  never measured. Wiring it took the false-repair rate from <b>14% to 0 of 49 and 0 of 46</b> on that flake, which skipped its assert at random. A later, harder measurement is the honest bound: against a flake whose failures <em>correlate with the code under test</em>, 300 runs took it from <b>52% to 7%</b> at the default and 4% with a second confirmation &mdash; <b>not to zero</b>. Against a flake independent of the code it cuts correct repairs too, from 50% to 3.3%. The remedy is real and it is not a cure. It also produced
   <b>more</b> correct repairs, because a candidate that was only ever green by luck stops
   occupying the answer.</p>
 
@@ -691,7 +699,7 @@
     <tr><td class="k">Restores the original line, not just a green suite</td><td class="ok">measured</td>
         <td>all three repairs verified with git diff against upstream</td></tr>
     <tr><td class="k">No model, no network, nothing leaves your machine</td><td class="ok">by design</td>
-        <td>five integer kernels; re-derive them offline in ~1s</td></tr>
+        <td>six integer kernels; re-derive them offline in ~1s</td></tr>
     <tr><td class="k">A rejected candidate cannot corrupt your tree</td><td class="ok">measured</td>
         <td>byte-exact rollback held across 192 rejected candidates</td></tr>
     <tr><td class="k">Maintains code your tests never run</td><td class="no">no</td>
