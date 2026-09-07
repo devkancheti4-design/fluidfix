@@ -190,12 +190,88 @@ def repair(oracle: Oracle, defect_file: str,
     # it inside the per-kind loop; `wrote` stays True across iterations, so
     # every later mutation ran UNJOURNALLED — measured 2026-09-04, a hung
     # candidate in Box2D's parallel_for.c was left on disk with no journal.
+    def _rule(capped: bool):
+        """Ask the law with the situation AS MEASURED, and act on the ruling.
+
+        Every exit from the search comes through here — including the deadline
+        paths, which used to `return` and silently discard greens already
+        found. That was this code deciding: a green plus an unfinished search
+        is BUILT+CAPPED, and the law rules RAISE_BUDGET, not SHIP. Discarding
+        it reported REFUTED instead, which is a different and false claim."""
+        if not greens:
+            return None
+        sites = {g[3] for g in greens}
+        # TWO WAYS AN INPUT CARRIES TWO OUTPUTS, and both are real:
+        #   set_amb   two greens inside ONE candidate set — the suite cannot
+        #             tell two different programs apart at one site
+        #             (K = 1 vs K = 2). This is the original AMB.
+        #   sites>1   greens at DIFFERENT lines — two contradictory claims
+        #             about where the fault is. Measured on Unity-shaped
+        #             code: repairing a sign flip (line 32) and breaking
+        #             Vec3's operator+ so the faults cancel (line 11) BOTH
+        #             pass the suite.
+        # What is NOT ambiguity: two SPELLINGS of one program reached by
+        # different acts at one site — `units >= 10` and `units > 9` are the
+        # same program written twice, and refusing those would refuse the
+        # commonest bug class there is.
+        ruling = decide(situation(BUILT=True,
+                                  AMB=set_amb or len(sites) > 1,
+                                  CAPPED=capped))
+        res.greens = [g[0] for g in greens]
+        if ruling == "SHIP":
+            crepr, content, old_repr, at = greens[0]
+            _write(path, content)
+            res.repaired, res.refused = True, False
+            res.lineno, res.old_line, res.new_line = at, old_repr, crepr
+            res.restored_original = _restored_original(
+                oracle.root, defect_file, at, crepr)
+            res.reason = f"engine law: BUILT -> {ruling}"
+            return res
+        if set_amb or len(sites) > 1:
+            res.ambiguous = True
+            res.reason = (
+                f"AMBIGUOUS: {len(greens)} candidates at {len(sites)} different "
+                f"lines ({', '.join(map(str, sorted(sites)))}) all pass the "
+                f"suite — the tests cannot tell them apart, and one may CANCEL "
+                f"the fault rather than repair it. Add one pinning test "
+                f"(engine law: BUILT+AMB -> {ruling}, never guess)")
+        else:
+            res.reason = (
+                f"a candidate passes, but the search was cut short before it "
+                f"could be shown unique — shipping it would be a guess. Raise "
+                f"the budget and re-run (engine law: BUILT+CAPPED -> {ruling})")
+        return res
+
     begin_inflight(oracle.root, defect_file, src)
+    # THE LAW DECIDES, THIS CODE ONLY MEASURES. AMB — "one input carries two
+    # outputs" — cannot be observed from a single candidate set, so greens are
+    # collected across the WHOLE search and the law is asked once, at the end,
+    # with the complete situation. Shipping the first green asked the law a
+    # question it could not answer honestly: BUILT was true, but whether AMB
+    # was also true had not been established yet.
+    #
+    # Measured 2026-09-04 on Unity-shaped gameplay logic: a sign flip in
+    # ProjectOnPlane admitted TWO passing repairs — the real fix, and breaking
+    # Vec3's operator+ so the two bugs cancel. The search found the
+    # compensating one first, shipped it, and never looked at the real defect.
+    # Both are green, so AMB held and the law's ruling was ADD_STATE: refuse
+    # and ask for one pinning test. The ruling was right and available; the
+    # situation was measured too early.
+    #
+    # This is the same principle the candidate-set loop already applied ("a
+    # lone green with the set unfinished is an UNPROVEN-unique repair"),
+    # extended to where it also holds: across observations.
+    greens: list[tuple[str, str, str, int]] = []
+    amb_proven = False
+    set_amb = False        # two greens inside ONE candidate set
     try:
         for obs in observations:
             if deadline is not None and time.time() > deadline:
                 # tree is byte-identical to src here (every candidate is
                 # rolled back before the next observation) — an honest stop
+                ruled = _rule(capped=True)
+                if ruled is not None:
+                    return ruled
                 res.reason = ("wall-clock deadline reached mid-search — "
                               "remaining observations untried")
                 return res
@@ -212,6 +288,9 @@ def repair(oracle: Oracle, defect_file: str,
                     # set unfinished is an UNPROVEN-unique repair — shipping
                     # it would be a guess (adversarial review, 2026-08-31).
                     # Overshoot is bounded: one candidate set, <= 32 runs.
+                    ruled = _rule(capped=True)
+                    if ruled is not None:
+                        return ruled
                     res.reason = ("wall-clock deadline reached mid-search — "
                                   "remaining kinds untried")
                     return res
@@ -221,8 +300,8 @@ def repair(oracle: Oracle, defect_file: str,
                 obs.file, obs.root = defect_file, oracle.root
                 obs.all_lines = [l.rstrip("\r") for l in raw]
                 counted = False
-                # each green: (new_repr, full_file_content, old_repr, lineno)
-                greens: list[tuple[str, str, str, int]] = []
+                # (greens accumulate across the whole search — see above)
+                green_at_set_start = len(greens)
                 for cand in candidates(body, act, obs):
                     if isinstance(cand, SpanEdit):
                         # the engine law's CHANGE_GRANULARITY act, actuated:
@@ -318,7 +397,11 @@ def repair(oracle: Oracle, defect_file: str,
                                    f"last failure: {why2}")
                     if ok:
                         greens.append((crepr, content, old_repr, at))
-                        if len(greens) >= 2:                 # AMB proven — stop
+                        if len(greens) - green_at_set_start > 1:
+                            # Two greens inside ONE candidate set: the suite
+                            # cannot tell two DIFFERENT programs apart. This
+                            # is the original AMB and it is proven here.
+                            set_amb = True
                             _write(path, "\n".join(raw))
                             break
                     elif len(res.tried_log) < 64:
@@ -329,28 +412,18 @@ def repair(oracle: Oracle, defect_file: str,
                         res.tried_more += 1
                     _write(path, "\n".join(raw))             # roll back, keep testing
                 _write(path, src)                        # byte-exact restore
-                if greens:
-                    # the engine law rules on what happened: one green is
-                    # BUILT -> SHIP; two DISTINCT greens is BUILT+AMB ->
-                    # ADD_STATE (the suite cannot tell the candidates apart —
-                    # refuse and ask for a pinning test, never guess)
-                    ruling = decide(situation(BUILT=True, AMB=len(greens) > 1))
-                    res.greens = [g[0] for g in greens]
-                    if ruling == "SHIP":
-                        crepr, content, old_repr, at = greens[0]
-                        _write(path, content)
-                        res.repaired, res.refused = True, False
-                        res.lineno, res.old_line, res.new_line = at, old_repr, crepr
-                        res.restored_original = _restored_original(
-                            oracle.root, defect_file, at, crepr)
-                        res.reason = f"kind {kind} -> act {act}"
-                        return res
-                    res.ambiguous = True
-                    res.reason = (f"AMBIGUOUS: {len(greens)} different candidates all "
-                                  f"pass the suite at line {obs.lineno} — the tests "
-                                  "cannot tell them apart; add one pinning test "
-                                  "(engine law: ADD_STATE, never guess)")
-                    return res
+                if set_amb or len({g[3] for g in greens}) > 1:
+                    amb_proven = True            # the law has enough
+                    break
+            if amb_proven:
+                break
+
+        # ------------------------------------------------ THE LAW RULES ----
+        # Nothing above this point decides anything. The search measured the
+        # situation; the law is now asked once, with all of it.
+        ruled = _rule(capped=False)
+        if ruled is not None:
+            return ruled
         res.reason = ("no observation named a kind this vocabulary can repair"
                       if not res.acts_tried else
                       "every candidate left the suite red — fault is outside "

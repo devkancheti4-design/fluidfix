@@ -523,10 +523,51 @@ def cmd_selfcheck(args) -> int:
           f"  R2 no penalty on pointing, R3 monotone):    "
           f"{'all hold' if not (r1_bad or r2_bad or r3_bad) else 'VIOLATED'}")
 
+    # ---- law 6: the PAIR law, verified as its author verifies it ---------
+    from .pair import pair_law as _pair
+
+    EXH, PAR, DIS, COU, CHE, TAU, CAN, CAP = (1, 2, 4, 8, 16, 32, 64, 128)
+
+    def _pspec(x):
+        if x & CAN:
+            return 7
+        if not (x & CAP):
+            if x & EXH:
+                if x & DIS:
+                    return 0
+                if (x & PAR) and (x & COU) and (x & CHE):
+                    return 1
+                if (x & PAR) and not (x & COU):
+                    return 2
+                if not (x & TAU):
+                    return 3
+                if not (x & CHE):
+                    return 4
+            else:
+                return 6
+        return 5 if x & CAP else 7
+
+    pair_bad = sum(_pair(x) != _pspec(x) for x in range(256))
+    # R1 no multi-edit before a single edit is exhausted
+    p1 = sum(1 for x in range(256) if not (x & EXH) and _pair(x) <= 4)
+    # R2 a partition always outranks a pair (linear beats quadratic)
+    p2 = sum(1 for x in range(256)
+             if (x & DIS) and (x & EXH) and not (x & CAN) and not (x & CAP)
+             and _pair(x) != 0)
+    # R3 CANCELING is a veto — the compensating-pair shape ranks last
+    p3 = sum(1 for x in range(256) if (x & CAN) and _pair(x) != 7)
+    reach = sum(1 for x in range(256) if _pair(x) == 1)
+    print(f"pair law vs specification, all 256:          {256 - pair_bad}/256")
+    print(f"pair law rules (R1 exhaust-first, R2 partition\n"
+          f"  beats pair, R3 canceling vetoed):           "
+          f"{'all hold' if not (p1 or p2 or p3) else 'VIOLATED'}")
+    print(f"situations that reach a PAIR search:         {reach}/256")
+
     total = (bad or 0) + ident + comp + lane_bad + law_bad + rule_bad \
         + rank_bad + veto_bad + mono_bad \
-        + sight_bad + r1_bad + r2_bad + r3_bad
-    print("SELFCHECK PASS — 5 laws re-derived" if not total else "SELFCHECK FAIL")
+        + sight_bad + r1_bad + r2_bad + r3_bad \
+        + pair_bad + p1 + p2 + p3
+    print("SELFCHECK PASS — 6 laws re-derived" if not total else "SELFCHECK FAIL")
     return 0 if not total else 1
 
 

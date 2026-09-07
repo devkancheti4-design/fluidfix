@@ -1,5 +1,57 @@
 # Changelog
 
+## 0.14.0 — 2026-09-07
+
+- **The PAIR law is fused — the sixth machine-authored kernel.** It rules,
+  after a single-edit search has failed, on whether more than one
+  simultaneous edit is warranted and in what form (PARTITION / PAIR / WIDEN
+  / TEACH / BUDGET / CAPPED / SINGLE / REFUSE). Vendored verbatim from
+  `docs/laws/pair.c`; `fluidfix selfcheck` now re-derives **6 laws**, and
+  `tests/test_pair_law.py` checks all 256 situations against the
+  specification plus the author's three structural rules: no multi-edit
+  lane can fire before single edits are EXHAUSTED (algebraically absent, not
+  merely unlikely), a PARTITION always outranks a PAIR (linear beats
+  quadratic), and CANCELING is a veto. **Only 2 of 256 situations reach a
+  pair search at all.** That conservatism is the point: a pair search is a
+  machine for finding two bugs that cancel — exactly the compensating repair
+  measured on Unity-shaped code below.
+
+  **The law is fused; the actuation is not built.** Its inputs — PARTIAL,
+  DISJOINT, CANCELING — have never been measured on a real multi-bug
+  situation, and the previous release records what happens when this
+  project ships a decision on an unmeasured situation. It will land as a
+  report-only lane first, then PARTITION.
+
+- **Every exit from the search now rules through the law, with the whole
+  situation measured.** Measured 2026-09-04 on Unity-shaped gameplay logic:
+  a sign flip in `ProjectOnPlane` admitted TWO passing repairs — restoring
+  the sign (line 32), and breaking `Vec3`'s `operator+` so the two faults
+  cancel (line 11). The search found the compensating one first and shipped
+  it. The law's ruling for that situation — BUILT+AMB → `ADD_STATE`, refuse
+  and ask for one pinning test — was right and available; the situation was
+  measured too early, at the first green, before AMB could be observed.
+
+  Greens are now collected across the WHOLE search and the law is asked
+  once, at the end. AMB is true in two measured shapes: two greens inside
+  one candidate set (the suite cannot tell K=1 from K=2 at one site), or
+  greens at two different lines (two contradictory claims about where the
+  fault is). Two spellings of one program at one site (`units >= 10` vs
+  `units > 9`) are NOT ambiguity and are still shipped.
+
+  The deadline paths used to `return` and discard greens already found —
+  reporting REFUTED, which is a different and false claim. They now rule
+  BUILT+CAPPED → `RAISE_BUDGET` and say so: *"a candidate passes, but the
+  search was cut short before it could be shown unique."*
+
+  **The cost is honest and measured**: proving uniqueness means the search
+  no longer stops at the first green, so a pass takes about 3× the suite
+  runs. The span fixture that repaired at budget=300 now needs 450 (first
+  pass cut at 150s, escalation repairs at 173s; at 600 the first pass
+  finishes alone). Those extra runs are not overhead — they are the proof
+  the earlier version skipped, and it is the reason a blind head-to-head
+  against an LLM agent on the same defect read **795 tokens over 3 suite
+  runs vs 0 tokens over 126**.
+
 ## 0.13.0 — 2026-09-04
 
 - **A FLAKY SUITE CAN MAKE A WRONG REPAIR, AND THE LAW ALREADY HAD THE

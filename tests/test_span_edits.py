@@ -213,6 +213,14 @@ def test_budget_hands_first_pass_over_to_escalation(tmp_path, clean_registry):
             break
     else:
         pytest.skip("could not place the bug outside the first-pass sample")
-    report = guard_once(oracle, MechanicalObserver(), budget=300)
+    # budget=450, not 300. Since 0.14.0 the search no longer stops at the
+    # first green: it keeps going so the law can rule on AMB with the whole
+    # situation measured (the Unity compensating repair was shipped by
+    # stopping early). That makes a pass ~3x longer, so 300 left escalation
+    # only 200s and it could not finish. Measured 2026-09-05: at 450 the
+    # first pass is cut at 150s and ESCALATION repairs at 173s — which is
+    # the handover this test exists to exercise. At 600 the first pass
+    # finishes on its own and escalation is never reached.
+    report = guard_once(oracle, MechanicalObserver(), budget=450)
     assert report.status == "repaired"
     assert report.result.new_line.strip() == "if v >= limit:"
