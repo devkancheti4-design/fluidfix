@@ -1,361 +1,482 @@
 <meta charset="utf-8">
 <title>neo</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-/* One committed visual world: an instrument panel. Cold slate ground, a warm
-   amber ruling light. Deliberately single-theme; every color painted. */
 :root{
-  --ground:#0B0F14; --surface:#121821; --raised:#171F2A; --rule:#1F2A36;
-  --text:#DDE3EA; --muted:#7C8794; --dim:#4A5561;
-  --amber:#F2B441; --amber-dim:#8A6A2A; --ok:#5FB58A; --bad:#D9776B;
+  --ground:#FFFFFF; --surface:#F5F6F8; --raised:#FFFFFF; --rule:#E4E7EC; --rule2:#CFD4DC;
+  --ink:#0E1116; --text:#1B2029; --muted:#5B6470; --dim:#98A1AC;
+  --amber:#E39B0B; --amber-soft:#FFF3D6; --amber-ink:#8A5A00;
+  --ok:#2E8B62; --bad:#C74B3C;
+  --pill:#0E1116; --pill-text:#FFFFFF;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --w:68ch; --wide:1040px;
+  --wide:1120px; --prose:64ch;
+  --shadow:0 1px 2px rgba(14,17,22,.05),0 8px 28px rgba(14,17,22,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0B0F14; --surface:#121821; --raised:#171F2A; --rule:#1F2A36; --rule2:#2C3A4A;
+  --ink:#FFFFFF; --text:#DDE3EA; --muted:#8B95A2; --dim:#5A6572;
+  --amber:#F2B441; --amber-soft:#2A2210; --amber-ink:#F2B441;
+  --ok:#5FB58A; --bad:#D9776B; --pill:#F2B441; --pill-text:#0B0F14;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 32px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --ground:#0B0F14; --surface:#121821; --raised:#171F2A; --rule:#1F2A36; --rule2:#2C3A4A;
+  --ink:#FFFFFF; --text:#DDE3EA; --muted:#8B95A2; --dim:#5A6572;
+  --amber:#F2B441; --amber-soft:#2A2210; --amber-ink:#F2B441;
+  --ok:#5FB58A; --bad:#D9776B; --pill:#F2B441; --pill-text:#0B0F14;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 32px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
-  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:var(--amber);text-decoration:none;border-bottom:1px solid var(--amber-dim)}
-a:hover{border-bottom-color:var(--amber)}
-a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
-.wrap{max-width:var(--wide);margin:0 auto;padding:0 24px}
-.prose{max-width:var(--w)}
-h1,h2,h3{font-family:var(--mono);font-weight:500;letter-spacing:-.01em;text-wrap:balance;margin:0}
-h1{font-size:clamp(28px,4vw,44px);line-height:1.15}
-h2{font-size:clamp(22px,2.6vw,30px);line-height:1.2;margin-top:88px;margin-bottom:18px}
-h3{font-size:18px;margin-bottom:10px;color:var(--text)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wide);margin:0 auto;padding:0 28px}
+h1,h2,h3{margin:0;color:var(--ink);text-wrap:balance;letter-spacing:-.025em}
+h1{font-weight:800;font-size:clamp(40px,6.4vw,84px);line-height:1.02}
+h2{font-weight:800;font-size:clamp(30px,4vw,48px);line-height:1.08}
+h3{font-weight:700;font-size:20px;line-height:1.25;letter-spacing:-.01em}
 p{margin:0 0 16px}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
-.mono{font-family:var(--mono)}
-.muted{color:var(--muted)}
-.num{font-variant-numeric:tabular-nums}
-b{font-weight:600;color:#fff}
+.muted{color:var(--muted)} .mono{font-family:var(--mono)} .num{font-variant-numeric:tabular-nums}
+b{font-weight:700;color:var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-ink);font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:10px;background:var(--pill);color:var(--pill-text);border:0;border-radius:999px;padding:14px 22px;font-weight:700;font-size:15px;cursor:pointer;transition:transform .12s,opacity .12s}
+.pill:hover{transform:translateY(-1px)} .pill:active{transform:translateY(0)}
+.pill.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--rule2)}
+.pill.ghost:hover{border-color:var(--ink)}
+.pill .ic{width:18px;height:18px;flex:none}
+.sec{padding:96px 0 0}
 
-/* ---------- top bar ---------- */
-.bar{display:flex;align-items:baseline;gap:22px;padding:22px 0 0}
-.bar .name{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.06em}
-.bar .tag{font-family:var(--mono);font-size:12px;color:var(--muted)}
-.bar nav{margin-left:auto;display:flex;gap:18px;font-family:var(--mono);font-size:12px}
-.bar nav a{border:0;color:var(--muted)}
-.bar nav a:hover{color:var(--text)}
+/* ---- nav ---- */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav .in{display:flex;align-items:center;gap:26px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--ink);letter-spacing:-.02em}
+.brand i{width:22px;height:22px;border-radius:6px;background:var(--amber);display:inline-block;position:relative}
+.brand i:after{content:"";position:absolute;inset:6px;border-radius:2px;background:var(--ground)}
+.brand .v{font-family:var(--mono);font-weight:500;font-size:12px;color:var(--muted);letter-spacing:.04em;margin-left:2px}
+.nav nav{display:flex;gap:22px;margin-left:auto;font-weight:600;font-size:14px;color:var(--muted)}
+.nav nav a:hover{color:var(--ink)}
+@media (max-width:760px){.nav nav{display:none}}
+.nav .cta{margin-left:14px;padding:10px 16px;font-size:14px}
 
-/* ---------- hero ---------- */
-.hero{padding:72px 0 0}
-.hero p.lead{font-size:19px;color:var(--muted);max-width:var(--w);margin-top:18px}
+/* ---- hero ---- */
+.hero{padding:88px 0 40px;text-align:left}
+.hero h1{max-width:16ch;min-height:2.06em}
+.hero h1 .tw{color:var(--amber-ink)}
+.hero h1 .cur{display:inline-block;width:.06em;height:.9em;background:var(--amber);vertical-align:-.08em;margin-left:.04em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .lead{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:52ch;margin:26px 0 30px;line-height:1.5}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.install{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:14px;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:12px 16px 12px 18px;color:var(--text)}
+.install button{background:none;border:0;color:var(--muted);cursor:pointer;padding:0;display:inline-flex;font-family:var(--sans);font-weight:700;font-size:13px}
+.install button:hover{color:var(--ink)}
 
-/* ---------- the byte panel ---------- */
-.panel{margin-top:40px;background:var(--surface);border:1px solid var(--rule);border-radius:6px;
-  display:grid;grid-template-columns:1fr 340px;overflow:hidden}
-@media (max-width:820px){.panel{grid-template-columns:1fr}}
-.bits{padding:22px 22px 18px;border-right:1px solid var(--rule)}
-@media (max-width:820px){.bits{border-right:0;border-bottom:1px solid var(--rule)}}
-.bits .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
-.bits .head span{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+/* ---- the field: 256 bytes ---- */
+.field{margin-top:56px;position:relative;border:1px solid var(--rule);border-radius:18px;background:var(--surface);overflow:hidden}
+.field canvas{display:block;width:100%;height:auto}
+.field .cap{position:absolute;left:0;right:0;bottom:0;padding:14px 18px;display:flex;justify-content:space-between;gap:16px;align-items:flex-end;font-family:var(--mono);font-size:12px;color:var(--muted);pointer-events:none;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--surface) 92%,transparent) 55%)}
+.field .cap b{color:var(--ink);font-weight:500}
+.field .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--ground);font-family:var(--mono);font-size:12px;line-height:1.45;padding:8px 10px;border-radius:8px;transform:translate(-50%,calc(-100% - 12px));white-space:nowrap;opacity:0;transition:opacity .1s;box-shadow:var(--shadow)}
+.field .tip b{color:var(--amber);font-weight:600}
+.field .tip[data-on]{opacity:1}
+
+/* ---- thesis ---- */
+.thesis{padding:96px 0 0}
+.thesis p{font-size:clamp(24px,3vw,36px);font-weight:600;line-height:1.25;letter-spacing:-.02em;color:var(--ink);max-width:28ch}
+.thesis p span{color:var(--muted);font-weight:500}
+
+/* ---- replay: the intro ---- */
+.replay{margin-top:56px;display:grid;grid-template-columns:1.25fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+@media (max-width:860px){.replay{grid-template-columns:1fr}}
+.term{background:var(--ink);color:#DDE3EA;padding:18px 20px 22px;font-family:var(--mono);font-size:13px;line-height:1.6;min-height:340px;position:relative}
+.term .bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;color:#7C8794;font-size:12px}
+.term .bar i{width:10px;height:10px;border-radius:50%;background:#2C3A4A;display:inline-block}
+.term .bar .t{margin-left:auto}
+.term .l{white-space:pre-wrap;word-break:break-word;min-height:1.6em}
+.term .l.c{color:#7C8794} .term .l.g{color:#5FB58A} .term .l.a{color:#F2B441} .term .l.r{color:#D9776B} .term .l.d{color:#F2B441}
+.term .ctl{position:absolute;right:16px;bottom:14px;display:flex;gap:8px}
+.term .ctl button{background:#171F2A;color:#DDE3EA;border:1px solid #2C3A4A;border-radius:999px;padding:7px 12px;font-size:12px;font-family:var(--sans);font-weight:700;cursor:pointer}
+.term .ctl button:hover{border-color:#F2B441}
+.bytes{background:var(--raised);padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.bytes .head{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .bitgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-@media (max-width:560px){.bitgrid{grid-template-columns:repeat(2,1fr)}}
-.bit{appearance:none;background:var(--raised);border:1px solid var(--rule);border-radius:4px;
-  color:var(--muted);font-family:var(--mono);font-size:12px;text-align:left;padding:10px 10px 9px;cursor:pointer;
-  display:flex;flex-direction:column;gap:5px;transition:border-color .15s,color .15s,background .15s}
-.bit .k{display:flex;justify-content:space-between;align-items:center}
-.bit .k i{font-style:normal;width:9px;height:9px;border-radius:50%;background:var(--dim);
-  box-shadow:0 0 0 1px var(--rule) inset;transition:background .15s,box-shadow .15s}
-.bit .d{font-family:var(--sans);font-size:12px;line-height:1.35;color:var(--dim)}
-.bit[aria-pressed="true"]{border-color:var(--amber-dim);color:var(--text);background:#1A2130}
-.bit[aria-pressed="true"] .k i{background:var(--amber);box-shadow:0 0 10px var(--amber)}
+@media (max-width:520px){.bitgrid{grid-template-columns:repeat(2,1fr)}}
+.bit{appearance:none;background:var(--surface);border:1px solid var(--rule);border-radius:10px;color:var(--muted);font-family:var(--mono);font-size:11px;text-align:left;padding:10px;cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:border-color .15s,background .15s,color .15s}
+.bit .k{display:flex;justify-content:space-between;align-items:center;font-weight:600;letter-spacing:.04em}
+.bit .k i{width:8px;height:8px;border-radius:50%;background:var(--rule2);transition:background .15s,box-shadow .15s}
+.bit .d{font-family:var(--sans);font-size:11.5px;line-height:1.35;color:var(--dim);font-weight:500}
+.bit[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-soft);color:var(--ink)}
+.bit[aria-pressed="true"] .k i{background:var(--amber);box-shadow:0 0 8px var(--amber)}
 .bit[aria-pressed="true"] .d{color:var(--muted)}
-.bit:hover{border-color:#2C3A4A}
-.readout{padding:22px;display:flex;flex-direction:column;justify-content:space-between;background:#0E131A}
-.readout .lab{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
-.readout .byte{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:6px}
-.readout .byte b{color:var(--text);font-weight:500}
-.readout .ruling{font-family:var(--mono);font-weight:600;font-size:clamp(22px,2.4vw,28px);color:var(--amber);
-  margin:22px 0 8px;line-height:1.1;text-shadow:0 0 18px rgba(242,180,65,.25);word-break:break-word}
-.readout .means{font-size:14px;color:var(--muted);line-height:1.5;min-height:66px}
-.readout .foot{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:18px;line-height:1.5}
-.readout .foot b{color:var(--muted);font-weight:500}
+.bit:hover{border-color:var(--rule2)}
+.readout{border-top:1px solid var(--rule);padding-top:14px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline}
+.readout .lab{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.readout .val{font-family:var(--mono);font-size:13px;color:var(--text)}
+.readout .rule{grid-column:1/-1;font-family:var(--mono);font-weight:600;font-size:clamp(20px,2.2vw,26px);color:var(--amber-ink);letter-spacing:-.01em;margin-top:4px;word-break:break-word}
+.readout .means{grid-column:1/-1;font-size:13.5px;color:var(--muted);line-height:1.5;min-height:3em}
 
-/* ---------- stat rows ---------- */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin:28px 0}
-@media (max-width:640px){.stats{grid-template-columns:1fr}}
-.stat{background:var(--surface);padding:18px 20px}
-.stat .v{font-family:var(--mono);font-size:30px;font-weight:600;color:#fff;line-height:1;letter-spacing:-.02em}
-.stat .v small{font-size:15px;color:var(--muted);font-weight:400;margin-left:4px}
-.stat .l{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.4}
+/* ---- surfaces ---- */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+@media (max-width:1000px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.grid4{grid-template-columns:1fr}}
+.card{background:var(--raised);border:1px solid var(--rule);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.card .cmd{font-family:var(--mono);font-size:12.5px;color:var(--amber-ink);background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:8px 10px;align-self:flex-start}
+.card p{font-size:14px;color:var(--muted);margin:0;line-height:1.5}
+.card .m{font-family:var(--mono);font-size:12px;color:var(--text);margin-top:auto;padding-top:6px;border-top:1px dashed var(--rule)}
 
-/* ---------- tables ---------- */
-.scroll{overflow-x:auto;margin:22px 0}
-table{border-collapse:collapse;width:100%;font-size:14px}
-th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
-th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
-td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
-tr.hi td{color:#fff}
-tr.hi td.n{color:var(--amber)}
-td .sub{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+/* ---- personas ---- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+@media (max-width:860px){.grid3{grid-template-columns:1fr}}
+.persona{background:var(--surface);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:8px;min-height:230px}
+.persona .big{font-family:var(--mono);font-weight:600;font-size:34px;color:var(--ink);letter-spacing:-.02em;line-height:1}
+.persona .big small{font-size:14px;color:var(--muted);font-weight:400;margin-left:6px;letter-spacing:0}
+.persona p{font-size:14px;color:var(--muted);margin:0}
+.persona .who{font-weight:700;color:var(--ink)}
 
-/* ---------- code ---------- */
-pre{background:#0E131A;border:1px solid var(--rule);border-radius:6px;padding:16px 18px;overflow-x:auto;
-  font-family:var(--mono);font-size:13px;line-height:1.55;color:var(--text);margin:14px 0 18px}
-pre .c{color:var(--dim)} pre .s{color:#C9A56A} pre .k{color:var(--amber)}
-code{font-family:var(--mono);font-size:.92em;background:#0E131A;padding:1px 6px;border-radius:3px;border:1px solid var(--rule)}
+/* ---- proof carousel ---- */
+.car{position:relative;margin-top:36px}
+.track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.proof{flex:0 0 min(360px,86vw);scroll-snap-align:start;background:var(--raised);border:1px solid var(--rule);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.proof .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.proof .big{font-family:var(--mono);font-weight:600;font-size:38px;color:var(--ink);letter-spacing:-.02em;line-height:1}
+.proof .big.z{color:var(--amber-ink)}
+.proof .diff{font-family:var(--mono);font-size:12px;line-height:1.5;background:var(--surface);border-radius:8px;padding:8px 10px;white-space:pre}
+.proof .diff .m{color:var(--bad)} .proof .diff .p{color:var(--ok)}
+.proof p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.5}
+.proof .src{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:auto;padding-top:8px}
+.arrows{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.arrows button{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--rule2);background:var(--raised);color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.arrows button:hover{border-color:var(--ink)}
 
-/* ---------- teach panel ---------- */
-.tabs{display:flex;gap:4px;margin:24px 0 0;border-bottom:1px solid var(--rule)}
-.tab{appearance:none;background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);
-  font-family:var(--mono);font-size:13px;padding:10px 14px;cursor:pointer;margin-bottom:-1px}
-.tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--amber)}
-.tab:hover{color:var(--text)}
-.tp{display:none;padding-top:18px}.tp[data-on]{display:block}
-.then{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px}
-@media (max-width:640px){.then{grid-template-columns:1fr}}
-.then div{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:12px 14px;font-size:13px}
-.then .y{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.08em}
-.then .f{font-family:var(--mono);font-size:12px;color:var(--text);margin-top:6px;white-space:pre}
-.then .r{color:var(--muted);margin-top:6px;font-size:12px}
-.then .miss .y{color:var(--bad)}
+/* ---- honesty strip ---- */
+.strip{margin-top:40px;background:var(--amber-soft);border:1px solid color-mix(in srgb,var(--amber) 35%,transparent);border-radius:16px;padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.strip .ic{width:28px;height:28px;border-radius:8px;background:var(--amber);flex:none;display:grid;place-items:center;color:#0E1116;font-weight:800;font-family:var(--mono)}
+.strip p{margin:0;font-size:15px;color:var(--text)}
+.strip p b{color:var(--ink)}
 
-/* ---------- head-to-head ---------- */
-.h2h{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin:24px 0}
-@media (max-width:640px){.h2h{grid-template-columns:1fr}}
-.arm{background:var(--surface);padding:20px}
-.arm .who{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.arm .big{font-family:var(--mono);font-size:40px;font-weight:600;line-height:1;margin:12px 0 4px;letter-spacing:-.02em}
-.arm .big.z{color:var(--amber);text-shadow:0 0 18px rgba(242,180,65,.25)}
-.arm .u{font-family:var(--mono);font-size:12px;color:var(--muted)}
-.arm dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:16px 0 0;font-size:13px}
-.arm dt{color:var(--muted)} .arm dd{margin:0;font-family:var(--mono)}
+/* ---- compare table ---- */
+.cmp{margin-top:36px;border:1px solid var(--rule);border-radius:16px;overflow:hidden}
+.cmp table{border-collapse:collapse;width:100%;font-size:14.5px}
+.cmp th,.cmp td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--rule);vertical-align:top}
+.cmp tr:last-child td{border-bottom:0}
+.cmp th{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--surface)}
+.cmp td.y{color:var(--ink);font-weight:600} .cmp td.n{color:var(--muted)}
 
-/* ---------- callouts ---------- */
-.note{border-left:2px solid var(--amber-dim);padding:2px 0 2px 18px;color:var(--muted);font-size:15px;margin:22px 0}
-.note b{color:var(--text)}
-.honest{border-left-color:var(--ok)}
-
-/* ---------- price ---------- */
-.price{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin:24px 0}
-@media (max-width:900px){.price{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.price{grid-template-columns:1fr}}
-.tier{background:var(--surface);padding:20px 18px;display:flex;flex-direction:column;gap:8px}
-.tier.key{background:#16202C}
-.tier .t{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.tier .p{font-family:var(--mono);font-size:26px;font-weight:600;color:#fff;letter-spacing:-.02em}
+/* ---- pricing strip ---- */
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+@media (max-width:1000px){.tiers{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.tiers{grid-template-columns:1fr}}
+.tier{background:var(--raised);border:1px solid var(--rule);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.tier.key{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.tier .t{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tier.key .t{color:color-mix(in srgb,var(--ground) 70%,transparent)}
+.tier .p{font-family:var(--mono);font-weight:600;font-size:30px;letter-spacing:-.02em;color:var(--ink)}
 .tier.key .p{color:var(--amber)}
-.tier .s{font-size:12px;color:var(--muted);font-family:var(--mono)}
-.tier .g{font-size:13px;color:var(--text);line-height:1.5;margin-top:4px}
+.tier .s{font-size:12px;font-family:var(--mono);color:var(--muted)}
+.tier.key .s{color:color-mix(in srgb,var(--ground) 70%,transparent)}
+.tier .g{font-size:14px;color:var(--muted);line-height:1.5}
+.tier.key .g{color:color-mix(in srgb,var(--ground) 88%,transparent)}
+.tier .pill{margin-top:auto;align-self:flex-start;padding:10px 16px;font-size:14px}
+.tier.key .pill{background:var(--amber);color:#0E1116}
 
-/* ---------- footer ---------- */
-footer{margin-top:96px;padding:28px 0 48px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7}
-footer a{border:0;color:var(--muted)} footer a:hover{color:var(--text)}
+/* ---- prose blocks ---- */
+.prose{max-width:var(--prose);margin-top:22px;font-size:17px;color:var(--text)}
+.prose p{margin:0 0 14px}
 
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* ---- big CTA ---- */
+.final{margin-top:110px;background:var(--ink);color:var(--ground);border-radius:24px;padding:64px 40px;text-align:center}
+.final h2{color:var(--ground)}
+.final p{color:color-mix(in srgb,var(--ground) 72%,transparent);max-width:48ch;margin:16px auto 28px}
+.final .pill{background:var(--amber);color:#0E1116}
+.final .install{background:transparent;border-color:color-mix(in srgb,var(--ground) 30%,transparent);color:var(--ground)}
+.final .install button{color:color-mix(in srgb,var(--ground) 70%,transparent)}
+
+footer{margin-top:64px;padding:28px 0 48px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline}
+footer a:hover{color:var(--ink)}
+footer .r{margin-left:auto;font-family:var(--mono);font-size:12px}
+
+.reveal{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 .cur{display:none}}
 </style>
 
-<div class="wrap">
-  <div class="bar">
-    <span class="name">neo</span>
-    <span class="tag">fluidfix · six laws as the brain</span>
-    <nav><a href="#brain">brain</a><a href="#reach">reach</a><a href="#teach">teach</a><a href="#tokens">tokens</a><a href="#efficiency">efficiency</a><a href="#price">price</a></nav>
+<header class="nav"><div class="wrap in">
+  <a class="brand" href="#"><i></i>neo <span class="v">fluidfix 0.15.0</span></a>
+  <nav><a href="#intro">Intro</a><a href="#surfaces">Product</a><a href="#for">Built for</a><a href="#proof">Proof</a><a href="#vs">vs a model</a><a href="#price">Pricing</a></nav>
+  <a class="pill cta" href="https://pypi.org/project/fluidfix/">Install</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">Six laws as the brain</div>
+  <h1 id="h1" style="margin-top:14px"><span id="fixed">Repairs the bug.</span><br><span class="tw" id="tw"></span><span class="cur"></span></h1>
+  <p class="lead">A repair tool whose every decision is a ruling from a machine-authored integer law, judged by your own test suite. No model in the loop. Zero tokens. It refuses when it cannot prove the answer, and it has never ruled wrong.</p>
+  <div class="ctas">
+    <span class="install"><span>pip install fluidfix</span><button type="button" id="copy" aria-label="copy install command">Copy</button></span>
+    <a class="pill ghost" href="#intro"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Play intro</a>
+    <a class="pill ghost" href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/verify.sh">Run the verification</a>
   </div>
 
-  <section class="hero">
-    <div class="eyebrow">A repair tool whose every decision is a ruling</div>
-    <h1>The brain is six integer laws. It has never ruled wrong. Put your hand on the bits.</h1>
-    <p class="lead">Every decision fluidfix makes comes from a machine-authored kernel: eight measured bits in, one act out, re-derived over its entire input space on every run. The panel below is the real engine law, all 256 situations, exactly as it ships.</p>
+  <div class="field" id="field">
+    <canvas id="fc" width="1120" height="420" aria-label="the engine law's full truth table: 256 observation bytes, each colored by its ruling; four are SHIP"></canvas>
+    <div class="tip" id="tip"></div>
+    <div class="cap"><span>the engine law, all <b>256</b> situations · hover any cell</span><span><b>4</b> rule SHIP · <b>252</b> refuse, and say why</span></div>
+  </div>
+</div></section>
 
-    <div class="panel" id="brain">
-      <div class="bits">
-        <div class="head"><span>observations · measured by the body</span><span>toggle any bit</span></div>
-        <div class="bitgrid" id="bitgrid"></div>
-      </div>
+<section class="thesis"><div class="wrap">
+  <p>The brain is bounded and exact. <span>What it knows about your code is what you teach it. What it decides, it can prove.</span></p>
+</div></section>
+
+<section class="sec" id="intro"><div class="wrap">
+  <div class="eyebrow">Intro · a replay of two real runs</div>
+  <h2 style="margin-top:12px">Watch it rule.</h2>
+  <div class="replay">
+    <div class="term" id="term">
+      <div class="bar"><i></i><i></i><i></i><span>fluidfix guard .</span><span class="t" id="tlabel">replay · 2026-09-07</span></div>
+      <div id="lines"></div>
+      <div class="ctl"><button type="button" id="play">Pause</button><button type="button" id="next">Next scene</button></div>
+    </div>
+    <div class="bytes">
+      <div class="head"><span>observations · measured</span><span>toggle any bit</span></div>
+      <div class="bitgrid" id="bitgrid"></div>
       <div class="readout">
-        <div>
-          <div class="lab">the law rules</div>
-          <div class="byte">byte <b id="byteval">1</b> <span id="bytebin">00000001</span></div>
-          <div class="ruling" id="ruling">SHIP</div>
-          <div class="means" id="means">A candidate passed the suite and nothing blocks it. Write it to disk, byte-exact.</div>
-        </div>
-        <div class="foot">This is the shipped kernel's full truth table, generated from <b>fluidfix.engine.decide</b> over 0..255. SHIP is ruled on exactly four of 256 bytes. Adding any evidence bit can only withdraw a ship, never create one: <b>0 of 1,024 bit-flips</b> turn a refusal into SHIP.</div>
+        <span class="lab">byte</span><span class="val"><b id="byteval">1</b> <span class="muted" id="bytebin">00000001</span></span>
+        <div class="rule" id="ruling">SHIP</div>
+        <div class="means" id="means">A candidate passed the suite and nothing blocks it. Write it to disk, byte-exact.</div>
       </div>
     </div>
-  </section>
+  </div>
+  <p class="prose muted" style="font-size:14px">The terminal replays fluidfix's own output from two runs on 2026-09-07, preserved in the repository. The panel beside it is the shipped engine law, all 256 situations, generated from <span class="mono">fluidfix.engine.decide</span>. The replay lights the bits as each run reaches its ruling; click any bit to take over.</p>
+</div></section>
 
-  <section class="prose">
-    <h2>The brain never takes a wrong decision. Here is what that sentence means, exactly.</h2>
-    <p>It does not mean fluidfix has never shipped a wrong repair. It has, and the record of every one is public. It means something narrower and stronger: <b>across 63 recorded incidents, not one defect has ever lived in a ruling.</b> Every wrong outcome traced to a bit measured wrongly, an act applied wrongly, or a report worded wrongly. Handed the honest byte, the law refuses every time.</p>
-    <div class="stats">
-      <div class="stat"><div class="v num">29<small>/ 29</small></div><div class="l">byte-to-ruling pairs asserted in a 20-agent adversarial audit re-derive exactly from the shipped law. Zero mismatches.</div></div>
-      <div class="stat"><div class="v num">0<small>/ 63</small></div><div class="l">incidents on record where the defect lived in a ruling. 33 historical, 30 found by the red team.</div></div>
-      <div class="stat"><div class="v num">6</div><div class="l">laws, each re-derived exhaustively over its whole input space by <span class="mono">fluidfix selfcheck</span>. 4,096 + 5&times;256 inputs.</div></div>
+<section class="sec" id="surfaces"><div class="wrap">
+  <div class="eyebrow">Product</div>
+  <h2 style="margin-top:12px">One brain. Six surfaces.</h2>
+  <div class="grid4">
+    <div class="card"><h3>Guard</h3><span class="cmd">fluidfix guard .</span><p>Runs on every push, unattended. Repairs what it can prove, refuses what it cannot, leaves your tree byte-identical either way. Journaled across a crash.</p><span class="m">measured: journal recovered a file after a kill, unprompted</span></div>
+    <div class="card"><h3>Teach</h3><span class="cmd">register(kind, name, …)</span><p>Write one incident down, once. Every future member of that fault class is decided by the kernel for free. You never touch the laws.</p><span class="m">measured: one 2016 example → four fixes over seven years</span></div>
+    <div class="card"><h3>C / C++ / Java / C#</h3><span class="cmd">fluidfix cguard .</span><p>The compiler is a second oracle. Same kernels, an adapter per language, and C# needed two lines.</p><span class="m">measured: Box2D b2Cross byte-exact in 46 suite runs</span></div>
+    <div class="card"><h3>Hotspots</h3><span class="cmd">fluidfix hotspots .</span><p>Your history already names the files that break. Ranked by defect density against current coverage, with what testing them buys.</p><span class="m">measured: Box2D, 60% of defects in 16 living files</span></div>
+    <div class="card"><h3>Estimate</h3><span class="cmd">fluidfix estimate .</span><p>Times your suite once and tells you what a repair will cost before you commit to anything. Refuses to guess when nothing ran.</p><span class="m">measured: refused honestly in 15 of 15 untimeable cases</span></div>
+    <div class="card"><h3>Pinning test</h3><span class="cmd">.fluidfix/pin_me_test.py</span><p>When two programs both pass your suite it writes the test that separates them, one commented assertion each. You pick. It never guesses.</p><span class="m">measured: 12/12 separated, six wrong repairs to zero</span></div>
+    <div class="card"><h3>Selfcheck</h3><span class="cmd">fluidfix selfcheck</span><p>Re-derives all six laws over their entire input space, offline, in about a second. The brain proves itself on your machine.</p><span class="m">measured: 4,096 + 5×256 inputs, 0 wrong</span></div>
+    <div class="card"><h3>Verify</h3><span class="cmd">./docs/verify.sh</span><p>Reproduces every number on this page from the commands that produced it: the laws, a real repair, a real refusal, the whole suite.</p><span class="m">measured: 219 tests, every run</span></div>
+  </div>
+</div></section>
+
+<section class="sec" id="for"><div class="wrap">
+  <div class="eyebrow">Built for</div>
+  <h2 style="margin-top:12px">Teams whose regressions come back.</h2>
+  <div class="grid3">
+    <div class="persona"><span class="who">Live-service studio</span><span class="big">10.7<small>a year</small></span><p>qualifying fixes in raylib's history, an actively shipped game framework. Same defect share as a slow library, ten times the count, because it ships ten times the code.</p></div>
+    <div class="persona"><span class="who">Engine team</span><span class="big">71%<small>of fixes</small></span><p>of raylib's real bug fixes are inside one file and 25 lines. That is the ceiling a taught class can reach today. The rest touch more than one file.</p></div>
+    <div class="persona"><span class="who">Open-source library</span><span class="big">$0<small>AGPL</small></span><p>Everything, unlimited, no gate. If your project is open source this is the whole product, and the laws stay public and verifiable.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="proof"><div class="wrap">
+  <div class="eyebrow">Proof</div>
+  <h2 style="margin-top:12px">Every number has a file behind it.</h2>
+  <div class="car">
+    <div class="track" id="track">
+      <div class="proof"><span class="k">Box2D · include/box2d/math_functions.h:212</span><span class="big">46<small style="font-size:14px;color:var(--muted);margin-left:6px">suite runs</small></span><div class="diff"><span class="m">- return a.x * b.y + a.y * b.x;</span>
+<span class="p">+ return a.x * b.y - a.y * b.x;</span></div><p>A sign flip in the 2D cross product, the bug that rotates everything the wrong way. Byte-exact against upstream in 82.8 s. No class written: it ships in the box.</p><span class="src">games page · measured on a clean clone</span></div>
+      <div class="proof"><span class="k">Head to head · same defect, two identical copies</span><span class="big z">0<small style="font-size:14px;color:var(--muted);margin-left:6px">tokens</small></span><p>fluidfix: 13 suite runs, 6.3 s, byte-exact. An unaided frontier agent: <b>43,006 tokens</b>, 2 suite runs, 73.8 s, also correct. Both arms preserved.</p><span class="src">research/headtohead-2026-09-07/RESULT.md</span></div>
+      <div class="proof"><span class="k">Ambiguity · the red team's own fixture</span><span class="big">12<small style="font-size:14px;color:var(--muted);margin-left:6px">/ 12 separated</small></span><p>Two different programs both green at one line. Before: shipped 12 of 12, wrong 6. After: refused 12 of 12, pinning test written, six wrong repairs to zero. Zero extra suite runs.</p><span class="src">tests/test_amb_is_program_identity.py</span></div>
+      <div class="proof"><span class="k">cglm · 1,131 tests</span><span class="big">100<small style="font-size:14px;color:var(--muted);margin-left:6px">suite runs</small></span><div class="diff"><span class="m">- dest[0] = a[0] - b[0];</span>
+<span class="p">+ dest[0] = a[0] + b[0];</span></div><p>Failing tests were named for ray and quaternion code because those call vec3_add. It searched past the callers to the callee. 22 tests broken, 1,131 restored.</p><span class="src">games page · measured on a clean clone</span></div>
+      <div class="proof"><span class="k">The audit</span><span class="big">0<small style="font-size:14px;color:var(--muted);margin-left:6px">/ 63 in a ruling</small></span><p>44 research reports and 20 adversarial attacks. 29 of 29 byte-to-ruling pairs re-derive from the shipped law. Every wrong outcome ever recorded lived in a measurement, never a ruling.</p><span class="src">research/AUDIT-2026-09-07.md</span></div>
+      <div class="proof"><span class="k">C# / .NET · xunit</span><span class="big">14<small style="font-size:14px;color:var(--muted);margin-left:6px">suite runs</small></span><div class="diff"><span class="m">- return a.X * b.Y + a.Y * b.X;</span>
+<span class="p">+ return a.X * b.Y - a.Y * b.X;</span></div><p>Listed as unsupported until it was tried. Supporting the language cost one file extension and one regex. 20.8 s, 1.63 s per candidate.</p><span class="src">games page · measured</span></div>
+      <div class="proof"><span class="k">Teaching · cglm's own history</span><span class="big">4<small style="font-size:14px;color:var(--muted);margin-left:6px">fixes, 1 example</small></span><p>One class taught from a 2016 commit emitted the correct repair for fixes in 2016, 2018 and 2023, in four different files. End to end the score was 0 of 6, and that is on this page too.</p><span class="src">research/laws-2026-09-07/44-*</span></div>
     </div>
-    <p>That is why the design puts the decision in a kernel and the measurement in code. A kernel of 1,555 characters can be checked over every input it will ever see. Code that measures a situation cannot, so that is where the defects live, and that is where the work goes.</p>
-    <div class="note"><b>The trade you are making.</b> A predictive model will produce an answer to any question. This will not. When it cannot prove the answer it refuses, names the bit it could not settle, and leaves your tree byte-identical. On weak test suites we measured that refusal saving you from a wrong program <b>15.4% of the time</b>. That is the whole bargain: bounded reach in exchange for a decision you can audit.</div>
-  </section>
+    <div class="arrows"><button type="button" id="prev" aria-label="previous">‹</button><button type="button" id="nxt" aria-label="next">›</button></div>
+  </div>
+  <div class="strip"><span class="ic">!</span><p><b>Three things we will not let you infer.</b> Compiled languages measured weaker: no uniqueness proof outside Python yet, and 0 of 6 end to end on cglm's real history. The shipped classes cover 2–4% of fix commits untaught; the 71% is the taught ceiling. And a suite that cannot see a defect cannot be repaired against: on cglm, three of six real bugs left all 1,131 tests green.</p></div>
+</div></section>
 
-  <section class="prose" id="reach">
-    <h2>Bounded reach. Knowledge is what you provide.</h2>
-    <p>The brain rules. It does not know your codebase. What it repairs is whatever fault classes it has been taught, judged by whatever your suite can see. So the honest question is not "what can it do" but "how much of real bug-fixing sits inside that boundary". We measured it on three engines' full histories.</p>
-    <div class="scroll"><table>
-      <tr><th>repository</th><th>history</th><th>fix commits in one file</th><th>&le; 25 changed lines</th><th>single-token, shipped classes</th></tr>
-      <tr class="hi"><td>raylib<span class="sub">game framework, 10,141 commits</span></td><td class="n">12.8 yr</td><td class="n">85.4%</td><td class="n">71.3%</td><td class="n">2.6% · 10.7 / yr</td></tr>
-      <tr><td>cglm<span class="sub">OpenGL maths</span></td><td class="n">9.9 yr</td><td class="n">60.9%</td><td class="n">54.2%</td><td class="n">2.4% · 0.6 / yr</td></tr>
-      <tr><td>Box2D<span class="sub">2D physics</span></td><td class="n">17.1 yr</td><td class="n">41.3%</td><td class="n">37.3%</td><td class="n">4.4% · 1.5 / yr</td></tr>
-    </table></div>
-    <p>Read the columns right to left. The six classes that ship in the box cover <b>two to four percent</b> of real fix commits, consistently, across three codebases. That is the untaught floor. Teach classes shaped to your own regressions and the ceiling is the column to its left: <b>more than half of all bug fixes on two of the three engines</b>, if a class may span up to 25 lines in one file.</p>
-    <p>Why 25 and not 30: going from 25 to 30 buys at most 2.5 points. Going from 30 to unbounded buys the rest only by permitting arbitrarily large rewrites. So one repair may change at most 25 lines, and a class that asks for more is refused. That cap also closed a real hole: a taught class could once return a span covering the whole file, and a red team used it to flip an unrelated flag thirteen lines from the defect.</p>
-    <div class="note"><b>What binds Box2D is not shape or size.</b> Fifty-nine percent of its fixes touch more than one file. No line budget reaches those. The law already has the ruling for that situation, called PARTITION: when the failing tests split into independent groups, repair them one at a time. It is verified over all 256 inputs. It is not yet actuated. That is the next thing we build, and it is the honest road from 35% to 85%.</div>
-  </section>
+<section class="sec" id="vs"><div class="wrap">
+  <div class="eyebrow">Laws vs a predictive model</div>
+  <h2 style="margin-top:12px">Not cheaper. Provable.</h2>
+  <div class="prose"><p>We measured it the honest way: same repository, same single-token defect, two byte-identical copies, neither arm told where it was. The agent got it right in two suite runs where the laws searched in thirteen. It spent 43,006 tokens. At that rate a codebase producing raylib's 10.7 a year costs under ten dollars of model spend. <b>Token cost is not the argument.</b> We had a smaller number here once, and when an audit found no artifact behind it we retracted it and measured again.</p></div>
+  <div class="cmp"><table>
+    <tr><th>property</th><th>the laws</th><th>a predictive model</th></tr>
+    <tr><td>same input, same output</td><td class="y">always</td><td class="n">sampled</td></tr>
+    <tr><td>when it cannot prove the answer</td><td class="y">refuses, names the bit</td><td class="n">produces something</td></tr>
+    <tr><td>the decision can be audited</td><td class="y">256 inputs, every one checked</td><td class="n">no</td></tr>
+    <tr><td>marginal cost of the next repair</td><td class="y">a few suite runs</td><td class="n">tokens, every time</td></tr>
+    <tr><td>runs unattended on every push, for years</td><td class="y">yes</td><td class="n">at cost, with drift</td></tr>
+    <tr><td>data leaves your machine</td><td class="y">never</td><td class="n">every call</td></tr>
+    <tr><td>handles a defect it was never taught</td><td class="n">no</td><td class="y">yes</td></tr>
+  </table></div>
+  <div class="prose"><p>The last row is the trade, and it is the whole product. A predictive model generalises to anything and cannot tell you when it is guessing. The laws generalise to what you taught them and can prove when they are not.</p></div>
+</div></section>
 
-  <section class="prose" id="teach">
-    <h2>How you give it examples.</h2>
-    <p>You do not write rules. You write one incident down, once, as a <code>register()</code> call, and every future member of that class is decided by the kernel for free. The code below is executed by the test suite on every CI run, so if this page drifts from reality the build goes red.</p>
-<pre><span class="c"># Taught from ONE worked example (incident INC-2041):
-#   due += inv["amount"] + inv.get("tax")      <- summed None, crashed
-#   due += inv["amount"] + inv.get("tax", 0)   <- the fix</span>
-<span class="k">register</span>(
-    4,
-    <span class="s">"missing-get-default"</span>,
-    <span class="s">'a .get(key) with no default, letting None poison arithmetic'</span>,
-    re.compile(<span class="s">r"\.get\((\"[^\"]+\"|'[^']+')\)"</span>),
-    <span class="k">lambda</span> line, o: re.sub(<span class="s">r"\.get\((\"[^\"]+\"|'[^']+')\)"</span>,
-                           <span class="s">r".get(\1, 0)"</span>, line),
-)</pre>
-    <p>Five arguments. A slot number, a name, a one-line description, the signal that says "this line is a member", and the transform that produces the candidate. The router infers the act code from the same single worked example it always uses. You never touch the kernel.</p>
+<section class="sec" id="price"><div class="wrap">
+  <div class="eyebrow">Pricing</div>
+  <h2 style="margin-top:12px">Priced on what is measured.</h2>
+  <div class="prose"><p>One qualifying defect costs an engineer thirty to sixty minutes. On a slow library that is a couple of hundred dollars a year and no licence at all. On a live-service title patching weekly it is plausibly ten to thirty thousand. Plausibly is not measured, and that is what the pilot is for. No per-seat fee, because it runs on your machine and costs us nothing per repair.</p></div>
+  <div class="tiers">
+    <div class="tier"><span class="t">Free</span><span class="p">$0</span><span class="s">AGPL-3.0 · unlimited</span><span class="g">Everything. All six laws, every language path, no feature gate.</span><a class="pill ghost" href="https://pypi.org/project/fluidfix/">Install</a></div>
+    <div class="tier key"><span class="t">Measurement pilot</span><span class="p">$5,000</span><span class="s">six weeks · credited in full</span><span class="g">We produce the number that decides everything and does not exist yet: your qualifying defects a year, and how many your suite catches. If it is small, we say so.</span><a class="pill" href="mailto:devkancheti4@gmail.com?subject=fluidfix%20pilot">Start a pilot</a></div>
+    <div class="tier"><span class="t">Licence</span><span class="p">$12,000</span><span class="s">per year · up to 10 repos</span><span class="g">Closed-source use, CI integration, hotspots, one language path. Pays for itself at about two qualifying defects a week.</span><a class="pill ghost" href="mailto:devkancheti4@gmail.com?subject=fluidfix%20licence">Talk to us</a></div>
+    <div class="tier"><span class="t">Studio</span><span class="p">$40,000</span><span class="s">per year · unlimited</span><span class="g">All language paths, and we author and maintain the fault classes for your codebase from your own incidents.</span><a class="pill ghost" href="mailto:devkancheti4@gmail.com?subject=fluidfix%20studio">Talk to us</a></div>
+  </div>
+</div></section>
 
-    <h3 style="margin-top:34px">What one example is worth, measured on real history</h3>
-    <p class="muted" style="font-size:15px">We took the six real one-token fixes in cglm's own git log and taught a class from a single one of them. Three classes. Pick a teacher below and see which of the other historical fixes that one registration then reproduced, years later, in files it had never seen.</p>
-    <div class="tabs" role="tablist" id="tabs">
-      <button class="tab" role="tab" aria-selected="true" data-t="idx">wrong subscript · 2016</button>
-      <button class="tab" role="tab" aria-selected="false" data-t="ref">swapped additive pair · 2024</button>
-      <button class="tab" role="tab" aria-selected="false" data-t="max">flipped comparison · 2018</button>
-    </div>
-    <div class="tp" data-on id="tp-idx">
-      <p style="font-size:14px" class="muted">Taught from commit <span class="mono">cd1f179</span>, "fix rotate make": <span class="mono">glm_vec3_scale(axisn, v[1], m[2]);</span> → <span class="mono">v[2]</span>. One registration. It then emitted the historically correct repair for:</p>
-      <div class="then">
-        <div><div class="y">340292c · 2023 · aabb2d.h</div><div class="f">glm_vec2(m[3], v[0]);  →  m[2]</div><div class="r">correct candidate ranked 3 of 6. The digit 2 occurs nowhere on the broken line; the transform mined it from the file.</div></div>
-        <div><div class="y">40458be · 2018 · frustum.h</div><div class="f">1.0f / c[1][3]  →  c[0][3]</div><div class="r">ranked 9 of 32. Exactly the candidate cap: a slightly wider pool would have missed it.</div></div>
-        <div><div class="y">005a6f5 · 2016 · euler.h</div><div class="f">M_PI - a[0][0]  →  a[0][1]</div><div class="r">ranked 10 of 12. The site no longer exists at HEAD; reconstructed from history.</div></div>
-        <div><div class="y">cd1f179 · 2016 · affine.h</div><div class="f">v[1]  →  v[2]</div><div class="r">the teacher itself. ranked 2 of 6.</div></div>
-      </div>
-      <p style="font-size:14px;margin-top:14px"><b>Four fixes, seven years, four files, one example.</b> That is the multiplier nobody prices correctly.</p>
-    </div>
-    <div class="tp" id="tp-ref">
-      <p style="font-size:14px" class="muted">Taught from commit <span class="mono">48839a3</span>, "fix refract": <span class="mono">k = 1.0f + eta*eta - eni*eni;</span> → <span class="mono">1.0f - eta*eta + eni*eni;</span></p>
-      <div class="then">
-        <div><div class="y">48839a3 · 2024 · vec3.h</div><div class="f">+ eta*eta - eni*eni  →  - eta*eta + eni*eni</div><div class="r">one candidate, ranked 1 of 1.</div></div>
-        <div class="miss"><div class="y">invisible to cglm's own suite</div><div class="f">1131 / 1131 tests pass with the defect present</div><div class="r">the assertions never pinned the sign, and the commit that fixed this bug loosened them. fluidfix reports green and does nothing, correctly.</div></div>
-      </div>
-      <p style="font-size:14px;margin-top:14px">The class is right. The suite cannot see the defect. <b>Teaching decides what it can repair; your tests decide what it is ever asked to.</b></p>
-    </div>
-    <div class="tp" id="tp-max">
-      <p style="font-size:14px" class="muted">Taught from commit <span class="mono">3e4f52b</span>, "fix max sign": <span class="mono">if (a &lt; b)</span> → <span class="mono">if (a &gt; b)</span> in <span class="mono">glm_max</span>.</p>
-      <div class="then">
-        <div><div class="y">3e4f52b · 2018 · util.h</div><div class="f">if (a &lt; b)  →  if (a &gt; b)</div><div class="r">one candidate, ranked 1 of 1. Already in the shipped vocabulary as kind 10, so no teaching was needed.</div></div>
-        <div class="miss"><div class="y">refused end to end</div><div class="f">the C file-finder never opened util.h</div><div class="r">its failing tests are named glm_perlin_* and clamp, none carrying the token "util". With the file pinned by hand the taught class fires on the exact line, then runs out of budget at 6 s per candidate.</div></div>
-      </div>
-      <p style="font-size:14px;margin-top:14px">End to end on cglm's six real fixes the score was <b>0 of 6</b>: three the suite could not see, one whose site is gone, two the C path refused upstream of the class. We say that on the page because it is the number.</p>
-    </div>
-  </section>
-
-  <section class="prose" id="tokens">
-    <h2>Why laws over a predictive model. The measured version.</h2>
-    <p>Same repository, same single-token defect, two byte-identical copies. Neither arm was told where it was. fluidfix on one, an unaided frontier agent on the other.</p>
-    <div class="h2h">
-      <div class="arm">
-        <div class="who">fluidfix · the laws</div>
-        <div class="big z">0</div><div class="u">tokens</div>
-        <dl><dt>suite runs</dt><dd>13</dd><dt>wall clock</dt><dd>6.3 s</dd><dt>result</dt><dd>correct, byte-exact</dd><dt>model calls</dt><dd>none, by construction</dd></dl>
-      </div>
-      <div class="arm">
-        <div class="who">an agent · predictive</div>
-        <div class="big">43,006</div><div class="u">tokens</div>
-        <dl><dt>suite runs</dt><dd>2</dd><dt>wall clock</dt><dd>73.8 s</dd><dt>result</dt><dd>correct</dd><dt>model calls</dt><dd>7 tool uses</dd></dl>
-      </div>
-    </div>
-    <div class="note honest"><b>Read this honestly, because we did.</b> The agent was not worse. It reasoned to the line in two suite runs where the laws searched in thirteen. At 43,006 tokens a defect, a repository producing raylib's 10.7 a year costs under ten dollars of model spend. <b>Token cost is not the argument for this tool.</b> We had a smaller number on this page before, and when a truth audit found no artifact behind it we retracted it and measured again.</div>
-    <p>What survives measurement is the shape of the decision, not its price:</p>
-    <div class="scroll"><table>
-      <tr><th>property</th><th>the laws</th><th>a predictive model</th></tr>
-      <tr><td>same input, same output</td><td class="n">always</td><td>sampled</td></tr>
-      <tr><td>when it cannot prove the answer</td><td class="n">refuses, names the bit</td><td>produces something</td></tr>
-      <tr><td>the decision can be audited</td><td class="n">256 inputs, all checked</td><td>no</td></tr>
-      <tr><td>marginal cost of the next repair</td><td class="n">a few suite runs</td><td>tokens, every time</td></tr>
-      <tr><td>runs unattended on every push</td><td class="n">yes, forever</td><td>at cost, with drift</td></tr>
-      <tr><td>data leaves your machine</td><td class="n">never</td><td>every call</td></tr>
-      <tr><td>handles a defect it was never taught</td><td>no</td><td class="n">yes</td></tr>
-    </table></div>
-    <p>The last row is the trade. A predictive model generalises to anything and cannot tell you when it is guessing. The laws generalise to what you taught and can prove when they are not.</p>
-  </section>
-
-  <section class="prose" id="efficiency">
-    <h2>Getting the most out of it.</h2>
-    <p>Everything below is a measured lever, not advice.</p>
-    <h3>Shape a class to what actually distinguishes it.</h3>
-    <p>The same Box2D defect, twice. A class shaped to "an assignment" pointed everywhere, the search space exploded, and after 30 minutes it refused. A class shaped to the field-name pattern that set the bug apart repaired it in 34 suite runs and 116 seconds, deriving a field name it had never been shown. Same law, same engine, opposite outcome. <b>Shaping is the single biggest lever on what this is worth.</b></p>
-    <h3>Let your suite see the defect.</h3>
-    <p>On cglm, three of six real historical bugs left all 1,131 tests passing. No repair tool can act on a failure that does not occur. <span class="mono">fluidfix hotspots</span> ranks your files by defect density in your own history and tells you which are one test away from being maintained; on Box2D, restricted to files that still exist, 60% of past defects live in 16 files.</p>
-    <h3>Run it on every push, unattended.</h3>
-    <p>A repair costs suite runs and nothing else, so there is no reason to ration it. A class you taught in 2016 will still be guarding in 2026. Everything it does is byte-exact, rolled back on rejection, and journaled across a crash. We measured the journal recovering a file on a real repository after a kill, unprompted.</p>
-    <h3>Keep repairs small on purpose.</h3>
-    <p>The 25-line cap is a ceiling, not a target. Most real fixes that sit inside one file are under three lines. A refusal that says "raise the budget" is the law telling you the search was cut short with a candidate in hand, and it will name the candidate.</p>
-  </section>
-
-  <section class="prose" id="price">
-    <h2>What it costs, and why that is realistic.</h2>
-    <p>One qualifying defect costs an engineer thirty to sixty minutes, call it $50 to $150. Multiply by how many you get a year, then by the fraction your suite catches. On a slow library that is a couple of hundred dollars and no licence at all. On a live-service title patching weekly it is plausibly ten to thirty thousand. <b>Plausibly is not measured</b>, which is what the pilot is for.</p>
-    <div class="price">
-      <div class="tier"><div class="t">free</div><div class="p">$0</div><div class="s">AGPL-3.0 · unlimited</div><div class="g">Everything. Six laws, every language path, no feature gate. If your project is open source this is the whole product.</div></div>
-      <div class="tier key"><div class="t">measurement pilot</div><div class="p">$5,000</div><div class="s">six weeks · credited in full</div><div class="g">We produce the number that decides everything and does not exist yet: your qualifying defects a year, and how many your suite catches. If it is small, we say so and you stop here.</div></div>
-      <div class="tier"><div class="t">licence</div><div class="p">$12,000</div><div class="s">per year · up to 10 repos</div><div class="g">Closed-source use, CI integration, the hotspots report, one language path. Pays for itself at about two qualifying defects a week.</div></div>
-      <div class="tier"><div class="t">studio</div><div class="p">$40,000</div><div class="s">per year · unlimited</div><div class="g">All language paths, and the part that generalises: we author and maintain the fault classes for your codebase from your own incidents.</div></div>
-    </div>
-    <p>No per-seat pricing. It runs on your machine, invokes no model, and costs us nothing per repair. Maintenance is not billed per repair either, because after a class exists the next instance costs zero tokens and a few suite runs. Studio bills for the authoring, which is the only part that takes human judgement.</p>
-    <p class="muted" style="font-size:14px">Compiled languages are priced inside Studio rather than sold as finished because they measured weaker: no uniqueness proof outside Python yet, and 0 of 6 end to end on cglm's own history. That gap is open work, not a footnote.</p>
-  </section>
-
+<div class="wrap">
+  <div class="final">
+    <h2>Put your hand on the bits.</h2>
+    <p>Install it, point it at a red suite, and read the ruling. Then run the verification script and watch six laws re-derive themselves on your own machine.</p>
+    <div class="ctas" style="justify-content:center"><span class="install"><span>pip install fluidfix</span><button type="button" id="copy2">Copy</button></span><a class="pill" href="https://github.com/devkancheti4-design/fluidfix">View source</a></div>
+  </div>
   <footer>
-    Every number on this page is reproducible. Clone <a href="https://github.com/devkancheti4-design/fluidfix">devkancheti4-design/fluidfix</a> and run <span style="color:var(--text)">./docs/verify.sh</span>: the six laws re-derive, the law rules on every exit, ambiguity is measured in both directions, and a real repair and a real refusal run end to end.<br>
-    Pricing reasoning: <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/PRICING.md">docs/PRICING.md</a> &nbsp;·&nbsp; the audit behind every caveat: <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/research/AUDIT-2026-09-07.md">research/AUDIT-2026-09-07.md</a> &nbsp;·&nbsp; <a href="https://pypi.org/project/fluidfix/">pip install fluidfix</a> · v0.15.0
+    <a href="https://github.com/devkancheti4-design/fluidfix">GitHub</a>
+    <a href="https://pypi.org/project/fluidfix/">PyPI</a>
+    <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/PRICING.md">Pricing reasoning</a>
+    <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/research/AUDIT-2026-09-07.md">The audit</a>
+    <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/TEACHING.md">Teaching</a>
+    <span class="r">AGPL-3.0 · v0.15.0</span>
   </footer>
 </div>
 
 <script>
 (function(){
-  // The shipped engine law, generated from fluidfix.engine.decide over 0..255.
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- the law, verbatim: fluidfix.engine.decide over 0..255 ----------
   var BITS=['BUILT','AMB','UNREAD','NOTWIN','HIDDEN','CAPPED','REFUTED','SELF'];
   var DESC=['a candidate passed the suite','one input carries two outputs','a needed tool reads nothing','the material exists, but not in the form needed','fine records disagree, coarse ones agree','the search was cut short','candidates generated, every one rejected','the job is the worker'];
   var ACTS=['SHIP','ADD_STATE','ADD_MATERIAL','RESHAPE','CHANGE_GRANULARITY','RAISE_BUDGET','HARVEST_COUNTEREXAMPLE','AUTHOR_SUCCESSOR'];
-  var MEANS=[
-    'A candidate passed the suite and nothing blocks it. Write it to disk, byte-exact.',
-    'Two different programs both pass your suite. Refuse, and write out the pinning test that separates them. Never guess.',
-    'Something the search needed read nothing. Bring more material: a wider file set, a taught class, a coverage tool.',
-    'The material exists but not in the form needed. Change the shape of the candidate set.',
-    'A single run cannot judge this. Stop judging at that granularity: keep per-test records, not per-run.',
-    'A candidate may be in hand, but the search was cut short before it could be shown unique. Raise the budget and re-run.',
-    'Every candidate was rejected. Keep each one with the test that killed it; teach the class or fix by hand.',
-    'The current law cannot rule here. Author its successor from the counterexample.'
-  ];
+  var MEANS=['A candidate passed the suite and nothing blocks it. Write it to disk, byte-exact.','Two different programs both pass your suite. Refuse, and write out the pinning test that separates them. Never guess.','Something the search needed read nothing. Bring more material: a wider file set, a taught class, a coverage tool.','The material exists but not in the form needed. Change the shape of the candidate set.','A single run cannot judge this. Stop judging at that granularity: keep per-test records, not per-run.','A candidate may be in hand, but the search was cut short before it could be shown unique. Raise the budget and re-run.','Every candidate was rejected. Keep each one with the test that killed it; teach the class or fix by hand.','The current law cannot rule here. Author its successor from the counterexample.'];
   var TABLE=[0,0,1,1,2,2,1,1,3,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,6,6,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,0,0,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,6,6,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1];
-  var grid=document.getElementById('bitgrid'), state=[1,0,0,0,0,0,0,0];
+
+  // ---------- typewriter ----------
+  var LINES=['Refuses the guess.','Costs zero tokens.','Never rules wrong.','Learns from one example.','Runs on every push.'];
+  var tw=document.getElementById('tw');
+  if(reduce){ tw.textContent=LINES[0]; document.querySelector('.hero .cur').style.display='none'; }
+  else{
+    var li=0, ci=0, del=false;
+    (function tick(){
+      var s=LINES[li];
+      if(!del){ ci++; tw.textContent=s.slice(0,ci); if(ci===s.length){ del=true; return setTimeout(tick,1500);} return setTimeout(tick,46); }
+      ci--; tw.textContent=s.slice(0,ci); if(ci===0){ del=false; li=(li+1)%LINES.length; return setTimeout(tick,320);} setTimeout(tick,24);
+    })();
+  }
+
+  // ---------- copy ----------
+  ['copy','copy2'].forEach(function(id){ var b=document.getElementById(id); if(!b) return;
+    b.addEventListener('click',function(){ try{ navigator.clipboard.writeText('pip install fluidfix'); b.textContent='Copied'; setTimeout(function(){b.textContent='Copy';},1400);}catch(e){} }); });
+
+  // ---------- the field: 16x16 truth table on canvas ----------
+  var cv=document.getElementById('fc'), ctx=cv.getContext('2d'), tip=document.getElementById('tip'), field=document.getElementById('field');
+  var css=getComputedStyle(document.documentElement);
+  function tok(n){ return css.getPropertyValue(n).trim(); }
+  var COLS=16, ROWS=16, PAD=28, CELLW, CELLH;
+  function layout(){ CELLW=(cv.width-PAD*2)/COLS; CELLH=(cv.height-PAD*2)/ROWS; }
+  layout();
+  var sweep=0, hover=-1;
+  function draw(){
+    var amber=tok('--amber'), ink=tok('--ink'), ground=tok('--surface');
+    ctx.fillStyle=ground; ctx.fillRect(0,0,cv.width,cv.height);
+    for(var x=0;x<256;x++){
+      var r=Math.floor(x/COLS), c=x%COLS, a=TABLE[x];
+      var px=PAD+c*CELLW, py=PAD+r*CELLH, w=CELLW-4, h=CELLH-4;
+      var isShip=(a===0);
+      // refusals: a lightness ramp of ink by act; SHIP: amber. Semantic, on subject.
+      var alpha = isShip?1 : (0.10 + a*0.06);
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = isShip? amber : ink;
+      var lit = (x===hover) || (!reduce && Math.abs(x - sweep) < 1.5);
+      if(lit){ ctx.globalAlpha=Math.min(1,alpha+0.35); }
+      roundRect(px,py,w,h, isShip?6:3); ctx.fill();
+      if(isShip){ ctx.globalAlpha=.35; ctx.shadowColor=amber; ctx.shadowBlur=18; roundRect(px,py,w,h,6); ctx.fill(); ctx.shadowBlur=0; }
+    }
+    ctx.globalAlpha=1;
+  }
+  function roundRect(x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+  draw();
+  if(!reduce){ (function anim(){ sweep=(sweep+0.55)%256; draw(); requestAnimationFrame(anim); })(); }
+  cv.addEventListener('mousemove',function(e){
+    var rc=cv.getBoundingClientRect(), sx=cv.width/rc.width, sy=cv.height/rc.height;
+    var mx=(e.clientX-rc.left)*sx, my=(e.clientY-rc.top)*sy;
+    var c=Math.floor((mx-PAD)/CELLW), r=Math.floor((my-PAD)/CELLH);
+    if(c<0||c>=COLS||r<0||r>=ROWS){ hover=-1; tip.removeAttribute('data-on'); if(reduce) draw(); return; }
+    hover=r*COLS+c;
+    var on=[]; for(var i=0;i<8;i++) if(hover>>i&1) on.push(BITS[i]);
+    tip.innerHTML='byte '+hover+' &nbsp;'+('00000000'+hover.toString(2)).slice(-8)+'<br>'+(on.length?on.join(' + '):'nothing measured')+'<br>→ <b>'+ACTS[TABLE[hover]]+'</b>';
+    var frc=field.getBoundingClientRect();
+    tip.style.left=(e.clientX-frc.left)+'px'; tip.style.top=(e.clientY-frc.top)+'px'; tip.setAttribute('data-on','');
+    if(reduce) draw();
+  });
+  cv.addEventListener('mouseleave',function(){ hover=-1; tip.removeAttribute('data-on'); if(reduce) draw(); });
+  if(window.matchMedia){ window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', draw); }
+
+  // ---------- the byte panel ----------
+  var grid=document.getElementById('bitgrid'), state=[1,0,0,0,0,0,0,0], els=[];
   BITS.forEach(function(b,i){
     var el=document.createElement('button'); el.className='bit'; el.type='button';
     el.setAttribute('aria-pressed', state[i]?'true':'false');
     el.innerHTML='<span class="k"><span>'+b+'</span><i></i></span><span class="d">'+DESC[i]+'</span>';
-    el.addEventListener('click',function(){ state[i]=state[i]?0:1; el.setAttribute('aria-pressed',state[i]?'true':'false'); render(); });
-    grid.appendChild(el);
+    el.addEventListener('click',function(){ stopReplay(); state[i]=state[i]?0:1; render(); });
+    grid.appendChild(el); els.push(el);
   });
+  function setBits(arr){ state=arr.slice(); render(); }
   function render(){
-    var x=0; for(var i=0;i<8;i++) x|=state[i]<<i;
+    var x=0; for(var i=0;i<8;i++){ x|=state[i]<<i; els[i].setAttribute('aria-pressed',state[i]?'true':'false'); }
     var a=TABLE[x];
     document.getElementById('byteval').textContent=x;
     document.getElementById('bytebin').textContent=('00000000'+x.toString(2)).slice(-8);
     document.getElementById('ruling').textContent=ACTS[a];
     document.getElementById('means').textContent=MEANS[a];
   }
-  render();   // at rest: BUILT lit, byte 1, the law rules SHIP
-  // teach tabs
-  var tabs=document.getElementById('tabs');
-  tabs.addEventListener('click',function(e){
-    var t=e.target.closest('.tab'); if(!t) return;
-    tabs.querySelectorAll('.tab').forEach(function(x){x.setAttribute('aria-selected',x===t?'true':'false');});
-    document.querySelectorAll('.tp').forEach(function(p){ if(p.id==='tp-'+t.dataset.t) p.setAttribute('data-on',''); else p.removeAttribute('data-on'); });
-  });
+  render();
+
+  // ---------- replay: fluidfix's own output, preserved in the repo ----------
+  var SCENES=[
+    { label:'repair · research/headtohead-2026-09-07/armA.log', bits:[1,0,0,0,0,0,0,0], lines:[
+      ['c','$ fluidfix guard . --budget 300'],
+      ['','timing your suite (one run)… 1 failed, 2 passed'],
+      ['','pkg/ledger.py:13  if spend > 250:   ← observed: strictness, literal'],
+      ['c','candidate 1  if spend >= 250:      suite… '],
+      ['g','[18:28:03] pkg/ledger.py: repaired line 13 in 13 suite runs (4.7s):'],
+      ['r','  - if spend > 250:'],
+      ['g','  + if spend >= 250:'],
+      ['a','engine law: BUILT -> SHIP   ·   byte-exact   ·   0 tokens']]},
+    { label:'refusal · docs/verify.sh section 4b', bits:[1,1,0,0,0,0,0,0], lines:[
+      ['c','$ fluidfix guard . --budget 120'],
+      ['','gate.py:5  return readings[1] > limit   ← observed: index, strictness'],
+      ['c','candidate A  return readings[0] > limit     suite… green'],
+      ['c','candidate B  return readings[1] >= limit    suite… green'],
+      ['','two greens · probing program identity on inputs from your own tests…'],
+      ['d','witness: alarm([3, 7], 3)  →  A: True   B: False   (0.10 s, 0 suite runs)'],
+      ['a','REFUSED   engine law: BUILT+AMB -> ADD_STATE   ·   file unchanged'],
+      ['','.fluidfix/pin_me_test.py written — one commented assertion per candidate. You choose.']]}
+  ];
+  var linesEl=document.getElementById('lines'), tlabel=document.getElementById('tlabel'), playBtn=document.getElementById('play');
+  var si=0, li=0, ch=0, timer=null, playing=true, taken=false;
+  function startScene(){ linesEl.innerHTML=''; li=0; ch=0; tlabel.textContent=SCENES[si].label; setBits([0,0,0,0,0,0,0,0]); step(); }
+  function step(){
+    if(!playing) return;
+    var sc=SCENES[si]; if(li>=sc.lines.length){ setBits(sc.bits); timer=setTimeout(function(){ si=(si+1)%SCENES.length; startScene(); }, 3400); return; }
+    var L=sc.lines[li]; var el=linesEl.children[li];
+    if(!el){ el=document.createElement('div'); el.className='l '+L[0]; linesEl.appendChild(el); }
+    if(reduce){ el.textContent=L[1]; li++; ch=0; return step(); }
+    ch++; el.textContent=L[1].slice(0,ch);
+    if(ch>=L[1].length){ li++; ch=0; if(li===sc.lines.length-1) setBits(sc.bits); timer=setTimeout(step, 420); }
+    else timer=setTimeout(step, 14);
+  }
+  function stopReplay(){ playing=false; clearTimeout(timer); playBtn.textContent='Play'; }
+  playBtn.addEventListener('click',function(){ if(playing){ stopReplay(); } else { playing=true; playBtn.textContent='Pause'; step(); } });
+  document.getElementById('next').addEventListener('click',function(){ clearTimeout(timer); si=(si+1)%SCENES.length; playing=true; playBtn.textContent='Pause'; startScene(); });
+  startScene();
+
+  // ---------- proof carousel ----------
+  var track=document.getElementById('track');
+  document.getElementById('prev').addEventListener('click',function(){ track.scrollBy({left:-380,behavior:'smooth'}); });
+  document.getElementById('nxt').addEventListener('click',function(){ track.scrollBy({left:380,behavior:'smooth'}); });
 })();
 </script>
