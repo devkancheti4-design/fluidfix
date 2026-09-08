@@ -6,7 +6,8 @@
 #     repo:     fluidfix
 #     workflow: publish.yml
 #     environment: pypi
-# Then publishing a GitHub release (or pushing a v* tag) uploads that version.
+# Then publishing a GitHub release (or pushing a v* tag) uploads that version;
+# whichever comes second is a no-op, not a failure.
 name: publish
 on:
   release:
@@ -52,3 +53,7 @@ jobs:
           name: dist
           path: dist/
       - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          # A tag push and the GitHub Release made from it both trigger this
+          # workflow; the second run must not fail on PyPI's file-name-reuse rule.
+          skip-existing: true
