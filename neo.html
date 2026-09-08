@@ -183,7 +183,7 @@ footer .r{margin-left:auto;font-family:var(--mono);font-size:12px}
   <h1 style="margin-top:14px">Repairs the bug.<br><span class="tw" id="tw">Refuses the guess.</span></h1>
   <p class="lead">Every decision is a ruling from a machine-authored integer law, judged by your own test suite. No model in the loop.</p>
   <div class="ctas">
-    <span class="install"><span>pip install fluidfix</span><button type="button" id="copy">Copy</button></span>
+    <span class="install"><span>pip install -U fluidfix</span><button type="button" id="copy">Copy</button></span>
     <a class="pill ghost" href="#intro"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Play intro</a>
   </div>
 
@@ -311,7 +311,7 @@ footer .r{margin-left:auto;font-family:var(--mono);font-size:12px}
   }, 2600);
 
   var cb=document.getElementById('copy');
-  cb.addEventListener('click',function(){ try{navigator.clipboard.writeText('pip install fluidfix');cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy';},1400);}catch(e){} });
+  cb.addEventListener('click',function(){ try{navigator.clipboard.writeText('pip install -U fluidfix');cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy';},1400);}catch(e){} });
 
   // field
   var cv=document.getElementById('fc'), ctx=cv.getContext('2d'), tip=document.getElementById('tip'), field=document.getElementById('field');
