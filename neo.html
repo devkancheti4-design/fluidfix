@@ -63,10 +63,10 @@ b{font-weight:700;color:var(--ink)}
 
 /* hero */
 .hero{padding:92px 0 0}
-.hero h1{max-width:15ch;min-height:2.06em}
+.hero h1{max-width:15ch;min-height:2.04em}
 .hero h1 .tw{color:var(--amber-ink)}
-.hero h1 .cur{display:inline-block;width:.055em;height:.88em;background:var(--amber);vertical-align:-.06em;margin-left:.04em;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
+.hero h1 .tw{display:inline-block;transition:opacity .28s ease,transform .28s ease}
+.hero h1 .tw[data-out]{opacity:0;transform:translateY(-.14em)}
 .hero .lead{font-size:clamp(17px,1.9vw,20px);color:var(--muted);max-width:46ch;margin:24px 0 28px}
 .ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .install{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:14px;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:12px 16px 12px 18px;color:var(--text)}
@@ -169,7 +169,7 @@ b{font-weight:700;color:var(--ink)}
 footer{margin-top:104px;padding:28px 0 48px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline}
 footer a:hover{color:var(--ink)}
 footer .r{margin-left:auto;font-family:var(--mono);font-size:12px}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 .cur{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
 <header class="nav"><div class="wrap in">
@@ -180,7 +180,7 @@ footer .r{margin-left:auto;font-family:var(--mono);font-size:12px}
 
 <section class="hero"><div class="wrap">
   <div class="eyebrow">Six laws as the brain</div>
-  <h1 style="margin-top:14px">Repairs the bug.<br><span class="tw" id="tw"></span><span class="cur"></span></h1>
+  <h1 style="margin-top:14px">Repairs the bug.<br><span class="tw" id="tw">Refuses the guess.</span></h1>
   <p class="lead">Every decision is a ruling from a machine-authored integer law, judged by your own test suite. No model in the loop.</p>
   <div class="ctas">
     <span class="install"><span>pip install fluidfix</span><button type="button" id="copy">Copy</button></span>
@@ -293,12 +293,15 @@ footer .r{margin-left:auto;font-family:var(--mono);font-size:12px}
   var MEANS=['A candidate passed the suite and nothing blocks it. Write it, byte-exact.','Two different programs both pass. Refuse, and write the test that separates them.','Something the search needed read nothing. Bring more material.','The material exists but not in the form needed. Reshape the candidate set.','A single run cannot judge this. Keep per-test records, not per-run.','A candidate may be in hand, but the search was cut short. Raise the budget.','Every candidate was rejected. Keep each with the test that killed it.','The law cannot rule here. Author its successor from the counterexample.'];
   var TABLE=[0,0,1,1,2,2,1,1,3,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,6,6,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,0,0,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,6,6,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1];
 
+  // Whole phrases, cross-faded. A character-by-character typewriter guarantees
+  // that some frames — a screenshot, a thumbnail, a first glance — catch a
+  // half-word like "Learns fr", which reads as a hung page rather than motion.
   var LINES=['Refuses the guess.','Costs zero tokens.','Never rules wrong.','Learns from one example.'];
-  var tw=document.getElementById('tw');
-  if(reduce){ tw.textContent=LINES[0]; }
-  else{ var li=0,ci=0,del=false; (function tick(){ var s=LINES[li];
-    if(!del){ ci++; tw.textContent=s.slice(0,ci); if(ci===s.length){del=true;return setTimeout(tick,1500);} return setTimeout(tick,46); }
-    ci--; tw.textContent=s.slice(0,ci); if(ci===0){del=false;li=(li+1)%LINES.length;return setTimeout(tick,320);} setTimeout(tick,24); })(); }
+  var tw=document.getElementById('tw'), li=0;
+  if(!reduce) setInterval(function(){
+    tw.setAttribute('data-out','');
+    setTimeout(function(){ li=(li+1)%LINES.length; tw.textContent=LINES[li]; tw.removeAttribute('data-out'); }, 280);
+  }, 2600);
 
   var cb=document.getElementById('copy');
   cb.addEventListener('click',function(){ try{navigator.clipboard.writeText('pip install fluidfix');cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy';},1400);}catch(e){} });
