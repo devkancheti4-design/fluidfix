@@ -1,0 +1,401 @@
+<meta charset="utf-8">
+<title>neo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#FFFFFF; --surface:#F5F6F8; --raised:#FFFFFF; --rule:#E4E7EC; --rule2:#CFD4DC;
+  --ink:#0E1116; --text:#1B2029; --muted:#5B6470; --dim:#98A1AC;
+  --amber:#E39B0B; --amber-soft:#FFF3D6; --amber-ink:#8A5A00;
+  --ok:#2E8B62; --bad:#C74B3C;
+  --pill:#0E1116; --pill-text:#FFFFFF;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --wide:1120px;
+  --shadow:0 1px 2px rgba(14,17,22,.05),0 8px 28px rgba(14,17,22,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0B0F14; --surface:#121821; --raised:#171F2A; --rule:#1F2A36; --rule2:#2C3A4A;
+  --ink:#FFFFFF; --text:#DDE3EA; --muted:#8B95A2; --dim:#5A6572;
+  --amber:#F2B441; --amber-soft:#2A2210; --amber-ink:#F2B441;
+  --ok:#5FB58A; --bad:#D9776B; --pill:#F2B441; --pill-text:#0B0F14;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 32px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --ground:#0B0F14; --surface:#121821; --raised:#171F2A; --rule:#1F2A36; --rule2:#2C3A4A;
+  --ink:#FFFFFF; --text:#DDE3EA; --muted:#8B95A2; --dim:#5A6572;
+  --amber:#F2B441; --amber-soft:#2A2210; --amber-ink:#F2B441;
+  --ok:#5FB58A; --bad:#D9776B; --pill:#F2B441; --pill-text:#0B0F14;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 32px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none} button{font:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wide);margin:0 auto;padding:0 28px}
+h1,h2,h3{margin:0;color:var(--ink);text-wrap:balance;letter-spacing:-.025em}
+h1{font-weight:800;font-size:clamp(40px,6.4vw,84px);line-height:1.02}
+h2{font-weight:800;font-size:clamp(30px,4vw,46px);line-height:1.08}
+h3{font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+p{margin:0}
+.muted{color:var(--muted)} .mono{font-family:var(--mono)}
+b{font-weight:700;color:var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-ink);font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:9px;background:var(--pill);color:var(--pill-text);border:0;border-radius:999px;padding:14px 22px;font-weight:700;font-size:15px;cursor:pointer;transition:transform .12s}
+.pill:hover{transform:translateY(-1px)}
+.pill.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--rule2)}
+.pill.ghost:hover{border-color:var(--ink)}
+.pill .ic{width:17px;height:17px;flex:none}
+.sec{padding:104px 0 0}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav .in{display:flex;align-items:center;gap:26px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--ink);letter-spacing:-.02em}
+.brand i{width:22px;height:22px;border-radius:6px;background:var(--amber);display:inline-block;position:relative}
+.brand i:after{content:"";position:absolute;inset:6px;border-radius:2px;background:var(--ground)}
+.brand .v{font-family:var(--mono);font-weight:500;font-size:12px;color:var(--muted);margin-left:2px}
+.nav nav{display:flex;gap:22px;margin-left:auto;font-weight:600;font-size:14px;color:var(--muted)}
+.nav nav a:hover{color:var(--ink)}
+@media (max-width:760px){.nav nav{display:none}}
+.nav .cta{margin-left:14px;padding:10px 16px;font-size:14px}
+
+/* hero */
+.hero{padding:92px 0 0}
+.hero h1{max-width:15ch;min-height:2.06em}
+.hero h1 .tw{color:var(--amber-ink)}
+.hero h1 .cur{display:inline-block;width:.055em;height:.88em;background:var(--amber);vertical-align:-.06em;margin-left:.04em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .lead{font-size:clamp(17px,1.9vw,20px);color:var(--muted);max-width:46ch;margin:24px 0 28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.install{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:14px;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:12px 16px 12px 18px;color:var(--text)}
+.install button{background:none;border:0;color:var(--muted);cursor:pointer;padding:0;font-family:var(--sans);font-weight:700;font-size:13px}
+.install button:hover{color:var(--ink)}
+
+/* the field */
+.field{margin-top:56px;position:relative;border:1px solid var(--rule);border-radius:18px;background:var(--surface);overflow:hidden}
+.field canvas{display:block;width:100%;height:auto}
+.field .cap{position:absolute;left:0;right:0;bottom:0;padding:14px 18px;display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted);pointer-events:none;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--surface) 92%,transparent) 55%)}
+.field .cap b{color:var(--ink);font-weight:500}
+.field .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--ground);font-family:var(--mono);font-size:12px;line-height:1.45;padding:8px 10px;border-radius:8px;transform:translate(-50%,calc(-100% - 12px));white-space:nowrap;opacity:0;transition:opacity .1s;box-shadow:var(--shadow)}
+.field .tip b{color:var(--amber);font-weight:600}
+.field .tip[data-on]{opacity:1}
+
+/* one line */
+.line{padding:104px 0 0}
+.line p{font-size:clamp(24px,3.1vw,38px);font-weight:600;line-height:1.24;letter-spacing:-.022em;color:var(--ink);max-width:26ch}
+.line p span{color:var(--muted);font-weight:500}
+
+/* replay */
+.replay{margin-top:36px;display:grid;grid-template-columns:1.25fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+@media (max-width:860px){.replay{grid-template-columns:1fr}}
+.term{background:var(--ink);color:#DDE3EA;padding:18px 20px 22px;font-family:var(--mono);font-size:13px;line-height:1.6;min-height:326px;position:relative}
+.term .tb{display:flex;align-items:center;gap:8px;margin-bottom:14px;color:#7C8794;font-size:12px}
+.term .tb i{width:10px;height:10px;border-radius:50%;background:#2C3A4A;display:inline-block}
+.term .tb .t{margin-left:auto}
+.term .l{white-space:pre-wrap;word-break:break-word;min-height:1.6em}
+.term .l.c{color:#7C8794} .term .l.g{color:#5FB58A} .term .l.a{color:#F2B441} .term .l.r{color:#D9776B} .term .l.d{color:#F2B441}
+.term .ctl{position:absolute;right:16px;bottom:14px;display:flex;gap:8px}
+.term .ctl button{background:#171F2A;color:#DDE3EA;border:1px solid #2C3A4A;border-radius:999px;padding:7px 12px;font-size:12px;font-family:var(--sans);font-weight:700;cursor:pointer}
+.term .ctl button:hover{border-color:#F2B441}
+.bytes{background:var(--raised);padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.bytes .bh{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bitgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media (max-width:520px){.bitgrid{grid-template-columns:repeat(2,1fr)}}
+.bit{appearance:none;background:var(--surface);border:1px solid var(--rule);border-radius:10px;color:var(--muted);font-family:var(--mono);font-size:11px;text-align:left;padding:10px;cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:border-color .15s,background .15s,color .15s}
+.bit .k{display:flex;justify-content:space-between;align-items:center;font-weight:600}
+.bit .k i{width:8px;height:8px;border-radius:50%;background:var(--rule2);transition:background .15s,box-shadow .15s}
+.bit .d{font-family:var(--sans);font-size:11.5px;line-height:1.35;color:var(--dim);font-weight:500}
+.bit[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-soft);color:var(--ink)}
+.bit[aria-pressed="true"] .k i{background:var(--amber);box-shadow:0 0 8px var(--amber)}
+.bit[aria-pressed="true"] .d{color:var(--muted)}
+.bit:hover{border-color:var(--rule2)}
+.readout{border-top:1px solid var(--rule);padding-top:14px}
+.readout .val{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.readout .rule{font-family:var(--mono);font-weight:600;font-size:clamp(20px,2.2vw,26px);color:var(--amber-ink);margin-top:6px;word-break:break-word}
+.readout .means{font-size:13.5px;color:var(--muted);line-height:1.5;min-height:3em;margin-top:6px}
+
+/* cards */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+@media (max-width:1000px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.grid4{grid-template-columns:1fr}}
+.card{background:var(--raised);border:1px solid var(--rule);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.card .cmd{font-family:var(--mono);font-size:12.5px;color:var(--amber-ink);background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:8px 10px;align-self:flex-start}
+.card p{font-size:14px;color:var(--muted);line-height:1.5}
+.card .go{margin-top:auto;padding-top:6px;font-weight:700;font-size:13.5px;color:var(--ink);display:inline-flex;align-items:center;gap:6px}
+.card:hover .go{color:var(--amber-ink)}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+@media (max-width:860px){.grid3{grid-template-columns:1fr}}
+.persona{background:var(--surface);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:8px;min-height:210px}
+.persona .big{font-family:var(--mono);font-weight:600;font-size:36px;color:var(--ink);letter-spacing:-.02em;line-height:1}
+.persona .big small{font-size:14px;color:var(--muted);font-weight:400;margin-left:6px;letter-spacing:0}
+.persona .who{font-weight:700;color:var(--ink)}
+.persona p{font-size:14px;color:var(--muted)}
+
+/* proof carousel */
+.car{margin-top:36px}
+.track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.proof{flex:0 0 min(330px,84vw);scroll-snap-align:start;background:var(--raised);border:1px solid var(--rule);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.proof .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.proof .big{font-family:var(--mono);font-weight:600;font-size:38px;color:var(--ink);letter-spacing:-.02em;line-height:1}
+.proof .big small{font-size:13px;color:var(--muted);font-weight:400;margin-left:6px;letter-spacing:0}
+.proof .big.z{color:var(--amber-ink)}
+.proof .diff{font-family:var(--mono);font-size:12px;line-height:1.5;background:var(--surface);border-radius:8px;padding:8px 10px;white-space:pre}
+.proof .diff .m{color:var(--bad)} .proof .diff .p{color:var(--ok)}
+.proof p{font-size:13.5px;color:var(--muted);line-height:1.5}
+.proof .src{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:auto;padding-top:8px}
+.arrows{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.arrows button{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--rule2);background:var(--raised);color:var(--ink);cursor:pointer}
+.arrows button:hover{border-color:var(--ink)}
+
+/* two offers */
+.offers{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
+@media (max-width:860px){.offers{grid-template-columns:1fr}}
+.offer{border-radius:20px;padding:40px 34px;display:flex;flex-direction:column;gap:10px;min-height:280px;background:var(--surface)}
+.offer.dark{background:var(--ink);color:var(--ground)}
+.offer .t{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-ink)}
+.offer.dark .t{color:var(--amber)}
+.offer h3{font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-.02em}
+.offer.dark h3{color:var(--ground)}
+.offer p{font-size:15px;color:var(--muted)}
+.offer.dark p{color:color-mix(in srgb,var(--ground) 72%,transparent)}
+.offer .pill{margin-top:auto;align-self:flex-start}
+.offer.dark .pill{background:var(--amber);color:#0E1116}
+
+footer{margin-top:104px;padding:28px 0 48px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline}
+footer a:hover{color:var(--ink)}
+footer .r{margin-left:auto;font-family:var(--mono);font-size:12px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 .cur{display:none}}
+</style>
+
+<header class="nav"><div class="wrap in">
+  <a class="brand" href="#"><i></i>neo <span class="v">fluidfix 0.15.0</span></a>
+  <nav><a href="#intro">Intro</a><a href="#product">Product</a><a href="#for">Built for</a><a href="#proof">Proof</a><a href="#get">Pricing</a></nav>
+  <a class="pill cta" href="https://pypi.org/project/fluidfix/">Install</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">Six laws as the brain</div>
+  <h1 style="margin-top:14px">Repairs the bug.<br><span class="tw" id="tw"></span><span class="cur"></span></h1>
+  <p class="lead">Every decision is a ruling from a machine-authored integer law, judged by your own test suite. No model in the loop.</p>
+  <div class="ctas">
+    <span class="install"><span>pip install fluidfix</span><button type="button" id="copy">Copy</button></span>
+    <a class="pill ghost" href="#intro"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Play intro</a>
+  </div>
+
+  <div class="field" id="field">
+    <canvas id="fc" width="1120" height="400" aria-label="the engine law's truth table: 256 observation bytes, each colored by its ruling"></canvas>
+    <div class="tip" id="tip"></div>
+    <div class="cap"><span>the engine law · all <b>256</b> situations · hover any cell</span><span><b>4</b> ship · <b>252</b> refuse</span></div>
+  </div>
+</div></section>
+
+<section class="line"><div class="wrap">
+  <p>The brain is bounded and exact. <span>What it knows is what you teach it. What it decides, it can prove.</span></p>
+</div></section>
+
+<section class="sec" id="intro"><div class="wrap">
+  <div class="eyebrow">Intro</div>
+  <h2 style="margin-top:12px">Watch it rule.</h2>
+  <div class="replay">
+    <div class="term">
+      <div class="tb"><i></i><i></i><i></i><span>fluidfix guard .</span><span class="t" id="tlabel"></span></div>
+      <div id="lines"></div>
+      <div class="ctl"><button type="button" id="play">Pause</button><button type="button" id="next">Next</button></div>
+    </div>
+    <div class="bytes">
+      <div class="bh"><span>observations</span><span>toggle any bit</span></div>
+      <div class="bitgrid" id="bitgrid"></div>
+      <div class="readout">
+        <div class="val">byte <b id="byteval">1</b> <span id="bytebin">00000001</span></div>
+        <div class="rule" id="ruling">SHIP</div>
+        <div class="means" id="means">A candidate passed the suite and nothing blocks it. Write it, byte-exact.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="product"><div class="wrap">
+  <div class="eyebrow">Product</div>
+  <h2 style="margin-top:12px">One brain. Four surfaces.</h2>
+  <div class="grid4">
+    <div class="card"><h3>Guard</h3><span class="cmd">fluidfix guard .</span><p>Runs unattended on every push. Repairs what it can prove, refuses what it cannot, leaves your tree byte-identical either way.</p><a class="go" href="https://github.com/devkancheti4-design/fluidfix">Explore →</a></div>
+    <div class="card"><h3>Teach</h3><span class="cmd">register(kind, name, …)</span><p>Write one incident down, once. Every future member of that fault class is decided by the kernel for free.</p><a class="go" href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/TEACHING.md">Explore →</a></div>
+    <div class="card"><h3>Hotspots</h3><span class="cmd">fluidfix hotspots .</span><p>Your history already names the files that break. Ranked by defect density, with what testing them buys.</p><a class="go" href="https://github.com/devkancheti4-design/fluidfix">Explore →</a></div>
+    <div class="card"><h3>Verify</h3><span class="cmd">./docs/verify.sh</span><p>Six laws re-derive over their whole input space on your machine, in about a second. The brain proves itself.</p><a class="go" href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/verify.sh">Explore →</a></div>
+  </div>
+</div></section>
+
+<section class="sec" id="for"><div class="wrap">
+  <div class="eyebrow">Built for</div>
+  <h2 style="margin-top:12px">Teams whose regressions come back.</h2>
+  <div class="grid3">
+    <div class="persona"><span class="who">Live-service studio</span><span class="big">10.7<small>a year</small></span><p>qualifying fixes in an actively shipped game framework's history.</p></div>
+    <div class="persona"><span class="who">Engine team</span><span class="big">71%<small>of fixes</small></span><p>of its real bug fixes sit inside one file and 25 lines — the ceiling a taught class reaches.</p></div>
+    <div class="persona"><span class="who">Open source</span><span class="big">$0<small>AGPL</small></span><p>Everything, unlimited, no gate. The laws stay public and verifiable.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="proof"><div class="wrap">
+  <div class="head">
+    <div><div class="eyebrow">Proof</div><h2 style="margin-top:12px">Every number has a file behind it.</h2></div>
+    <div class="arrows"><button type="button" id="prev" aria-label="previous">‹</button><button type="button" id="nxt" aria-label="next">›</button></div>
+  </div>
+  <div class="car"><div class="track" id="track">
+    <div class="proof"><span class="k">Box2D · math_functions.h:212</span><span class="big">46<small>suite runs</small></span><div class="diff"><span class="m">- a.x * b.y + a.y * b.x</span>
+<span class="p">+ a.x * b.y - a.y * b.x</span></div><p>The sign flip that rotates everything the wrong way. Byte-exact in 82.8 s, no class written.</p><span class="src">measured on a clean clone</span></div>
+    <div class="proof"><span class="k">Head to head · same defect</span><span class="big z">0<small>tokens</small></span><p>fluidfix: 13 suite runs, 6.3 s, byte-exact. An unaided agent: 43,006 tokens, 73.8 s, also correct. Both arms preserved.</p><span class="src">research/headtohead-2026-09-07</span></div>
+    <div class="proof"><span class="k">Ambiguity</span><span class="big">12<small>/ 12 separated</small></span><p>Two programs, both green at one line. Before: shipped 12, wrong 6. Now: refused 12, pinning test written, zero extra suite runs.</p><span class="src">tests/test_amb_is_program_identity.py</span></div>
+    <div class="proof"><span class="k">The audit</span><span class="big">0<small>/ 63 in a ruling</small></span><p>44 research reports, 20 adversarial attacks. Every wrong outcome ever recorded lived in a measurement, never a ruling.</p><span class="src">research/AUDIT-2026-09-07.md</span></div>
+    <div class="proof"><span class="k">cglm · 1,131 tests</span><span class="big">100<small>suite runs</small></span><div class="diff"><span class="m">- dest[0] = a[0] - b[0];</span>
+<span class="p">+ dest[0] = a[0] + b[0];</span></div><p>Searched past the callers to reach the callee. 22 broken, 1,131 restored.</p><span class="src">measured on a clean clone</span></div>
+    <div class="proof"><span class="k">Teaching · real history</span><span class="big">4<small>fixes, 1 example</small></span><p>One class taught from a 2016 commit repaired fixes in 2016, 2018 and 2023, across four files.</p><span class="src">research/laws-2026-09-07/44</span></div>
+    <div class="proof"><span class="k">C# / .NET · xunit</span><span class="big">14<small>suite runs</small></span><p>Listed unsupported until it was tried. The language cost one file extension and one regex.</p><span class="src">measured</span></div>
+  </div></div>
+</div></section>
+
+<section class="sec" id="get"><div class="wrap">
+  <div class="offers">
+    <div class="offer">
+      <span class="t">Available at no charge</span>
+      <h3>For developers</h3>
+      <p>Everything. All six laws, every language path, unlimited repositories, no feature gate.</p>
+      <a class="pill" href="https://pypi.org/project/fluidfix/">Install</a>
+    </div>
+    <div class="offer dark">
+      <span class="t">Six weeks · credited in full</span>
+      <h3>For teams</h3>
+      <p>We measure the number that decides everything: how many of your regressions are this shape, and how many your suite catches. $5,000, and we tell you if it is too small to license.</p>
+      <a class="pill" href="mailto:devkancheti4@gmail.com?subject=fluidfix%20pilot">Start a pilot</a>
+    </div>
+  </div>
+</div></section>
+
+<div class="wrap"><footer>
+  <a href="https://github.com/devkancheti4-design/fluidfix">GitHub</a>
+  <a href="https://pypi.org/project/fluidfix/">PyPI</a>
+  <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/PRICING.md">Pricing</a>
+  <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/research/AUDIT-2026-09-07.md">Audit</a>
+  <a href="https://github.com/devkancheti4-design/fluidfix/blob/master/docs/TEACHING.md">Teaching</a>
+  <span class="r">AGPL-3.0 · v0.15.0</span>
+</footer></div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var BITS=['BUILT','AMB','UNREAD','NOTWIN','HIDDEN','CAPPED','REFUTED','SELF'];
+  var DESC=['a candidate passed','one input, two outputs','a tool reads nothing','built, but not what was wanted','fine records disagree','the search was cut short','every candidate rejected','the job is the worker'];
+  var ACTS=['SHIP','ADD_STATE','ADD_MATERIAL','RESHAPE','CHANGE_GRANULARITY','RAISE_BUDGET','HARVEST_COUNTEREXAMPLE','AUTHOR_SUCCESSOR'];
+  var MEANS=['A candidate passed the suite and nothing blocks it. Write it, byte-exact.','Two different programs both pass. Refuse, and write the test that separates them.','Something the search needed read nothing. Bring more material.','The material exists but not in the form needed. Reshape the candidate set.','A single run cannot judge this. Keep per-test records, not per-run.','A candidate may be in hand, but the search was cut short. Raise the budget.','Every candidate was rejected. Keep each with the test that killed it.','The law cannot rule here. Author its successor from the counterexample.'];
+  var TABLE=[0,0,1,1,2,2,1,1,3,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,6,6,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,0,0,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,6,6,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1];
+
+  var LINES=['Refuses the guess.','Costs zero tokens.','Never rules wrong.','Learns from one example.'];
+  var tw=document.getElementById('tw');
+  if(reduce){ tw.textContent=LINES[0]; }
+  else{ var li=0,ci=0,del=false; (function tick(){ var s=LINES[li];
+    if(!del){ ci++; tw.textContent=s.slice(0,ci); if(ci===s.length){del=true;return setTimeout(tick,1500);} return setTimeout(tick,46); }
+    ci--; tw.textContent=s.slice(0,ci); if(ci===0){del=false;li=(li+1)%LINES.length;return setTimeout(tick,320);} setTimeout(tick,24); })(); }
+
+  var cb=document.getElementById('copy');
+  cb.addEventListener('click',function(){ try{navigator.clipboard.writeText('pip install fluidfix');cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy';},1400);}catch(e){} });
+
+  // field
+  var cv=document.getElementById('fc'), ctx=cv.getContext('2d'), tip=document.getElementById('tip'), field=document.getElementById('field');
+  var css=getComputedStyle(document.documentElement), COLS=16,ROWS=16,PAD=26,CW,CH,sweep=0,hover=-1;
+  function tok(n){return css.getPropertyValue(n).trim();}
+  function layout(){CW=(cv.width-PAD*2)/COLS;CH=(cv.height-PAD*2)/ROWS;} layout();
+  function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+  function draw(){
+    var amber=tok('--amber'), ink=tok('--ink'), bg=tok('--surface');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,cv.width,cv.height);
+    for(var x=0;x<256;x++){
+      var r=Math.floor(x/COLS),c=x%COLS,a=TABLE[x],ship=(a===0);
+      var px=PAD+c*CW, py=PAD+r*CH, w=CW-4, h=CH-4;
+      var al=ship?1:(0.10+a*0.06);
+      if(x===hover||(!reduce&&Math.abs(x-sweep)<1.5)) al=Math.min(1,al+0.35);
+      ctx.globalAlpha=al; ctx.fillStyle=ship?amber:ink; rr(px,py,w,h,ship?6:3); ctx.fill();
+      if(ship){ctx.globalAlpha=.35;ctx.shadowColor=amber;ctx.shadowBlur=18;rr(px,py,w,h,6);ctx.fill();ctx.shadowBlur=0;}
+    }
+    ctx.globalAlpha=1;
+  }
+  draw();
+  if(!reduce)(function anim(){sweep=(sweep+0.55)%256;draw();requestAnimationFrame(anim);})();
+  cv.addEventListener('mousemove',function(e){
+    var rc=cv.getBoundingClientRect(),mx=(e.clientX-rc.left)*(cv.width/rc.width),my=(e.clientY-rc.top)*(cv.height/rc.height);
+    var c=Math.floor((mx-PAD)/CW),r=Math.floor((my-PAD)/CH);
+    if(c<0||c>=COLS||r<0||r>=ROWS){hover=-1;tip.removeAttribute('data-on');if(reduce)draw();return;}
+    hover=r*COLS+c; var on=[]; for(var i=0;i<8;i++) if(hover>>i&1) on.push(BITS[i]);
+    tip.innerHTML='byte '+hover+'<br>'+(on.length?on.join(' + '):'nothing measured')+'<br>→ <b>'+ACTS[TABLE[hover]]+'</b>';
+    var fr=field.getBoundingClientRect(); tip.style.left=(e.clientX-fr.left)+'px'; tip.style.top=(e.clientY-fr.top)+'px'; tip.setAttribute('data-on','');
+    if(reduce)draw();
+  });
+  cv.addEventListener('mouseleave',function(){hover=-1;tip.removeAttribute('data-on');if(reduce)draw();});
+
+  // byte panel
+  var grid=document.getElementById('bitgrid'), state=[1,0,0,0,0,0,0,0], els=[];
+  BITS.forEach(function(b,i){
+    var el=document.createElement('button'); el.className='bit'; el.type='button';
+    el.setAttribute('aria-pressed',state[i]?'true':'false');
+    el.innerHTML='<span class="k"><span>'+b+'</span><i></i></span><span class="d">'+DESC[i]+'</span>';
+    el.addEventListener('click',function(){stopReplay();state[i]=state[i]?0:1;render();});
+    grid.appendChild(el); els.push(el);
+  });
+  function setBits(a){state=a.slice();render();}
+  function render(){
+    var x=0; for(var i=0;i<8;i++){x|=state[i]<<i;els[i].setAttribute('aria-pressed',state[i]?'true':'false');}
+    var a=TABLE[x];
+    document.getElementById('byteval').textContent=x;
+    document.getElementById('bytebin').textContent=('00000000'+x.toString(2)).slice(-8);
+    document.getElementById('ruling').textContent=ACTS[a];
+    document.getElementById('means').textContent=MEANS[a];
+  }
+  render();
+
+  // replay of two real runs
+  var SCENES=[
+    {label:'a repair', bits:[1,0,0,0,0,0,0,0], lines:[
+      ['c','$ fluidfix guard .'],
+      ['','pkg/ledger.py:13   if spend > 250:'],
+      ['c','candidate   if spend >= 250:   suite…'],
+      ['g','repaired line 13 in 13 suite runs (4.7s)'],
+      ['r','  - if spend > 250:'],
+      ['g','  + if spend >= 250:'],
+      ['a','BUILT → SHIP   ·   byte-exact   ·   0 tokens']]},
+    {label:'a refusal', bits:[1,1,0,0,0,0,0,0], lines:[
+      ['c','$ fluidfix guard .'],
+      ['','gate.py:5   return readings[1] > limit'],
+      ['c','candidate A   readings[0] > limit    green'],
+      ['c','candidate B   readings[1] >= limit   green'],
+      ['','two greens · are they the same program?'],
+      ['d','alarm([3, 7], 3)  →  A: True   B: False'],
+      ['a','BUILT+AMB → ADD_STATE   ·   file unchanged'],
+      ['','pin_me_test.py written. You choose.']]}
+  ];
+  var linesEl=document.getElementById('lines'), tlabel=document.getElementById('tlabel'), playBtn=document.getElementById('play');
+  var si=0,li=0,ch=0,timer=null,playing=true;
+  function startScene(){linesEl.innerHTML='';li=0;ch=0;tlabel.textContent=SCENES[si].label;setBits([0,0,0,0,0,0,0,0]);step();}
+  function step(){
+    if(!playing)return;
+    var sc=SCENES[si];
+    if(li>=sc.lines.length){setBits(sc.bits);timer=setTimeout(function(){si=(si+1)%SCENES.length;startScene();},3200);return;}
+    var L=sc.lines[li], el=linesEl.children[li];
+    if(!el){el=document.createElement('div');el.className='l '+L[0];linesEl.appendChild(el);}
+    if(reduce){el.textContent=L[1];li++;ch=0;return step();}
+    ch++; el.textContent=L[1].slice(0,ch);
+    if(ch>=L[1].length){li++;ch=0;if(li===sc.lines.length-1)setBits(sc.bits);timer=setTimeout(step,400);}
+    else timer=setTimeout(step,14);
+  }
+  function stopReplay(){playing=false;clearTimeout(timer);playBtn.textContent='Play';}
+  playBtn.addEventListener('click',function(){if(playing){stopReplay();}else{playing=true;playBtn.textContent='Pause';step();}});
+  document.getElementById('next').addEventListener('click',function(){clearTimeout(timer);si=(si+1)%SCENES.length;playing=true;playBtn.textContent='Pause';startScene();});
+  startScene();
+
+  var track=document.getElementById('track');
+  document.getElementById('prev').addEventListener('click',function(){track.scrollBy({left:-344,behavior:'smooth'});});
+  document.getElementById('nxt').addEventListener('click',function(){track.scrollBy({left:344,behavior:'smooth'});});
+})();
+</script>
