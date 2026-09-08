@@ -1,0 +1,26 @@
+OK   A_tier                   expect=repair_correct   got=repaired_correct     4.1s
+OK   A_fee                    expect=repair_correct   got=repaired_correct     2.9s
+SKIP A_clamp                  INVALID CASE - defect does not break the suite (nothing to repair)
+OK   A_head                   expect=repair_correct   got=repaired_correct     2.6s
+OK   A_delta                  expect=repair_correct   got=repaired_correct     2.9s
+OK   A_total                  expect=repair_correct   got=repaired_correct     2.9s
+OK   B1_weak_admits_two       expect=refuse           got=refused              3.8s
+OK   B2_weak_admits_two       expect=repair_correct   got=repaired_correct     3.3s
+OK   B3_weak_boundary         expect=either           got=repaired_correct     3.9s
+BAD  B4_weak_two_indices      expect=refuse           got=repaired_correct     3.2s
+BAD  B5_weak_single_point     expect=refuse           got=repaired_correct     2.9s
+BAD  B6_weak_symmetric        expect=refuse           got=repaired_correct     2.9s
+OK   C1_oov_string            expect=refuse           got=refused              2.2s
+OK   C2_oov_logic             expect=refuse           got=refused              2.3s
+SKIP D1_invisible             INVALID CASE - defect does not break the suite (nothing to repair)
+
+2 case(s) excluded as invalid BEFORE scoring:
+    A_clamp - defect does not break the suite (nothing to repair)
+    D1_invisible - defect does not break the suite (nothing to repair)
+
+
+cases                : 13
+repaired correctly   : 10
+REPAIRED WRONG       : 0   <- what `mode: push` would commit
+refused / left alone : 3
+verdicts             : OK 10  MISS 0  BAD 3

@@ -1,0 +1,119 @@
+[
+ {
+  "name": "A_tier",
+  "expect": "repair_correct",
+  "outcome": "repaired_correct",
+  "secs": 4.1,
+  "why": "strong suite, defect inside the shipped vocabulary",
+  "line": null,
+  "verdict": "OK"
+ },
+ {
+  "name": "A_fee",
+  "expect": "repair_correct",
+  "outcome": "repaired_correct",
+  "secs": 2.9,
+  "why": "strong suite, defect inside the shipped vocabulary",
+  "line": null,
+  "verdict": "OK"
+ },
+ {
+  "name": "A_head",
+  "expect": "repair_correct",
+  "outcome": "repaired_correct",
+  "secs": 2.6,
+  "why": "strong suite, defect inside the shipped vocabulary",
+  "line": null,
+  "verdict": "OK"
+ },
+ {
+  "name": "A_delta",
+  "expect": "repair_correct",
+  "outcome": "repaired_correct",
+  "secs": 2.9,
+  "why": "strong suite, defect inside the shipped vocabulary",
+  "line": null,
+  "verdict": "OK"
+ },
+ {
+  "name": "A_total",
+  "expect": "repair_correct",
+  "outcome": "repaired_correct",
+  "secs": 2.9,
+  "why": "strong suite, defect inside the shipped vocabulary",
+  "line": null,
+  "verdict": "OK"
+ },
+ {
+  "name": "B1_weak_admits_two",
+  "expect": "refuse",
+  "outcome": "refused",
+  "secs": 3.8,
+  "why": "two different programs pass this suite; shipping either is a coin flip",
+  "line": null,
+  "verdict": "OK"
+ },
+ {
+  "name": "B2_weak_admits_two",
+  "expect": "repair_correct",
+  "outcome": "repaired_correct",
+  "secs": 3.3,
+  "why": "one assertion, but only ONE candidate passes it",
+  "line": null,
+  "verdict": "OK"
+ },
+ {
+  "name": "B3_weak_boundary",
+  "expect": "either",
+  "outcome": "repaired_correct",
+  "secs": 3.9,
+  "why": "n>=10 and n>9 are ONE program; a fix here is correct, not a guess",
+  "line": null,
+  "verdict": "OK"
+ },
+ {
+  "name": "B4_weak_two_indices",
+  "expect": "refuse",
+  "outcome": "repaired_correct",
+  "secs": 3.2,
+  "why": "xs[0]+xs[1] and xs[1]+xs[0] and others all give 4 on [2,2,9]",
+  "line": null,
+  "verdict": "BAD"
+ },
+ {
+  "name": "B5_weak_single_point",
+  "expect": "refuse",
+  "outcome": "repaired_correct",
+  "secs": 2.9,
+  "why": "n*2 and n+2 both give 4 at n=2",
+  "line": null,
+  "verdict": "BAD"
+ },
+ {
+  "name": "B6_weak_symmetric",
+  "expect": "refuse",
+  "outcome": "repaired_correct",
+  "secs": 2.9,
+  "why": "a-b and b-a are indistinguishable at a==b",
+  "line": null,
+  "verdict": "BAD"
+ },
+ {
+  "name": "C1_oov_string",
+  "expect": "refuse",
+  "outcome": "refused",
+  "secs": 2.2,
+  "why": "case transform is not a taught class",
+  "line": null,
+  "verdict": "OK"
+ },
+ {
+  "name": "C2_oov_logic",
+  "expect": "refuse",
+  "outcome": "refused",
+  "secs": 2.3,
+  "why": "boolean connective swap, outside the shipped classes",
+  "line": null,
+  "verdict": "OK"
+ }
+]
