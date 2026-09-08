@@ -296,11 +296,18 @@ footer .r{margin-left:auto;font-family:var(--mono);font-size:12px}
   // Whole phrases, cross-faded. A character-by-character typewriter guarantees
   // that some frames — a screenshot, a thumbnail, a first glance — catch a
   // half-word like "Learns fr", which reads as a hung page rather than motion.
+  // NB: `heroIdx`, not `li` — the replay below uses `li` for its own line
+  // counter in this same scope, and reset it to 0 on every scene, which pinned
+  // the hero to its first phrase forever.
   var LINES=['Refuses the guess.','Costs zero tokens.','Never rules wrong.','Learns from one example.'];
-  var tw=document.getElementById('tw'), li=0;
+  var tw=document.getElementById('tw'), heroIdx=0;
   if(!reduce) setInterval(function(){
     tw.setAttribute('data-out','');
-    setTimeout(function(){ li=(li+1)%LINES.length; tw.textContent=LINES[li]; tw.removeAttribute('data-out'); }, 280);
+    setTimeout(function(){
+      heroIdx=(heroIdx+1)%LINES.length;
+      tw.textContent=LINES[heroIdx];
+      tw.removeAttribute('data-out');
+    }, 280);
   }, 2600);
 
   var cb=document.getElementById('copy');
