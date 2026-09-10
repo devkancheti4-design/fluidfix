@@ -41,6 +41,7 @@ reads `build + test` where Python read `test`:
 """
 from __future__ import annotations
 
+import math
 import os
 import re
 import shutil
@@ -108,6 +109,7 @@ class COracle:
         self._fail_tests: list[str] = []
         self._pristine_checked = False
         self._cov = None                 # built lazily; see _Coverage
+        self._last_build_end: float | None = None
 
     def coverage(self):
         """The gcov tier, or None when unavailable. Built once, lazily —
@@ -138,19 +140,53 @@ class COracle:
         p = os.path.join(self.root, tok[2:])
         return p if os.path.isfile(p) else None
 
-    def _newest_source_mtime(self) -> float:
-        newest = 0.0
+    def _source_mtimes(self):
         skip = {".git", self.build_dir, "node_modules", "covbuild"}
         for dp, dn, fns in os.walk(self.root):
             dn[:] = [d for d in dn if d not in skip and not d.startswith(".")]
             for fn in fns:
                 if fn.endswith(_SRC_EXT):
+                    path = os.path.join(dp, fn)
                     try:
-                        m = os.path.getmtime(os.path.join(dp, fn))
+                        yield path, os.path.getmtime(path)
                     except OSError:
                         continue
-                    newest = max(newest, m)
-        return newest
+
+    def _newest_source_mtime(self) -> float:
+        return max((m for _, m in self._source_mtimes()), default=0.0)
+
+    def _bump_sources_past_last_build(self) -> None:
+        """Make every source edited since the last build STRICTLY newer than
+        that build, in whole seconds.
+
+        GNU make 3.81 (the one Xcode ships) compares timestamps at whole
+        seconds — measured 2026-09-10: `make -q` called a source written
+        0.4 s AFTER its object up to date. A candidate cycle here is a few
+        seconds: write, build, test, restore, write the next. Whenever a
+        write lands in the same second as the previous compile of that
+        unit, cmake --build skips it and the suite judges the PREVIOUS
+        candidate's binary. Wrong candidates are red either way, so the
+        skip is invisible — until the right candidate is the one skipped.
+        Measured on cglm through this oracle: 7 of 8 fast cycles judged the
+        pristine line red. So before building, wait for the next whole
+        second after the last build ended and re-stamp every source touched
+        since; it costs at most one second per candidate and no verdict is
+        ever cast on a binary that does not contain the edit."""
+        last = self._last_build_end
+        if last is None:
+            return
+        edited = [path for path, m in self._source_mtimes() if m >= last - 1.0]
+        if not edited:
+            return
+        boundary = math.floor(last) + 1
+        now = time.time()
+        if now < boundary:
+            time.sleep(boundary - now + 0.01)
+        for path in edited:
+            try:
+                os.utime(path, None)
+            except OSError:
+                pass
 
     def stale_binary(self) -> bool:
         """True when the test binary is OLDER than the newest source file.
@@ -209,7 +245,11 @@ class COracle:
             return 1, f"could not run: {e}"
 
     def build(self, timeout: int | None = None) -> tuple[int, str]:
-        return self._sh(self.build_cmd, timeout)
+        self._bump_sources_past_last_build()
+        try:
+            return self._sh(self.build_cmd, timeout)
+        finally:
+            self._last_build_end = time.time()
 
     def run(self, extra: list[str] | None = None,
             timeout: int | None = None) -> tuple[int, str]:

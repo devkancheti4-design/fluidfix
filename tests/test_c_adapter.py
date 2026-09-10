@@ -7,9 +7,11 @@ defect through the whole pipeline — no cloned repo, no network. The parser
 tests pin the two runner formats measured in the wild, because C has no
 pytest monoculture and a parser tuned to one sees nothing in the other.
 """
+import math
 import os
 import shutil
 import subprocess
+import sys
 
 import pytest
 
@@ -396,3 +398,34 @@ def test_confirm_runs_is_configurable_and_defaults_on():
         os.environ.pop("FLUIDFIX_CONFIRM", None)
         if old is not None:
             os.environ["FLUIDFIX_CONFIRM"] = old
+
+
+# ------------------------------------------------- the build is the oracle --
+def test_a_candidate_written_in_the_same_second_as_its_object_is_still_built(tmp_path):
+    """GNU make 3.81 (macOS) compares mtimes at whole seconds — measured
+    2026-09-10: `make -q` called a source written 0.4 s AFTER its object up
+    to date. In a fast candidate cycle the unit is not recompiled and the
+    verdict belongs to the PREVIOUS candidate: 7 of 8 cycles on cglm judged
+    the pristine line red. The oracle must never judge a binary that does
+    not contain the edit."""
+    src, obj = tmp_path / "a.c", tmp_path / "a.o"
+    src.write_text("bad\n")
+    (tmp_path / "make.py").write_text(            # a make that compares whole seconds
+        "import math, os, shutil\n"
+        "if not os.path.exists('a.o') or math.floor(os.path.getmtime('a.c')) > math.floor(os.path.getmtime('a.o')):\n"
+        "    shutil.copy('a.c', 'a.o')\n")
+    (tmp_path / "run.py").write_text(
+        "import sys; ok = open('a.o').read().strip() == 'good'\n"
+        "print('test passed: T' if ok else 'test failed: T'); sys.exit(0 if ok else 1)\n")
+    o = COracle(str(tmp_path), build_cmd=f"{sys.executable} make.py",
+                test_cmd=f"{sys.executable} run.py")
+    red, _ = o.failing_output()
+    assert red and obj.read_text().strip() == "bad"
+    # the correct candidate lands inside the same whole second as that build
+    last = o._last_build_end
+    src.write_text("good\n")
+    os.utime(obj, (math.floor(last) + 0.5,) * 2)
+    os.utime(src, (math.floor(last) + 0.9,) * 2)
+    ok, why = o.check()
+    assert ok, why
+    assert obj.read_text().strip() == "good"
