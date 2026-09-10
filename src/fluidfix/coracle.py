@@ -788,6 +788,7 @@ def cguard_once(oracle: COracle, observer, candidate_timeout=None,
     from .engine import decide, situation
 
     attempts: list = []
+    unlisted = 0
     # The same two bits guard.py packs on the Python path. Both are already in
     # this function's locals; before 0.15.0 neither was ever handed to the law,
     # and five cguard runs on cglm produced five refusals and ZERO rulings while
@@ -802,7 +803,7 @@ def cguard_once(oracle: COracle, observer, candidate_timeout=None,
             ruling = decide(situation(CAPPED=True,
                                       REFUTED=bool(attempts) and not greens_seen))
             return GuardReport(status="refused", candidates=candidates,
-                               seconds=time.time() - t0, attempts=attempts,
+                               seconds=time.time() - t0, attempts=attempts, rejected_unlisted=unlisted,
                                hint=(f"--budget exhausted ({budget}s) with "
                                      f"{len(candidates)} candidate file(s) in "
                                      f"hand — what it did not try is unknown. "
@@ -817,22 +818,23 @@ def cguard_once(oracle: COracle, observer, candidate_timeout=None,
         result = repair(oracle, rel, observations,
                         candidate_timeout=candidate_timeout, deadline=deadline)
         attempts += result.tried_log
+        unlisted += result.tried_more
         greens_seen = greens_seen or bool(result.greens)
         capped = capped or result.capped
         if result.repaired:
             return GuardReport(status="repaired", file=rel, result=result,
                                candidates=candidates, seconds=time.time() - t0,
-                               attempts=attempts)
+                               attempts=attempts, rejected_unlisted=unlisted)
         if result.ambiguous:
             return GuardReport(status="refused", file=rel, result=result,
                                candidates=candidates, seconds=time.time() - t0,
-                               hint=result.reason, attempts=attempts)
+                               hint=result.reason, attempts=attempts, rejected_unlisted=unlisted)
         if result.greens and result.ruling == "RAISE_BUDGET":
             # the third outcome: a candidate passed and the law said the search
             # was not finished. Carry its reason rather than dropping it.
             return GuardReport(status="refused", file=rel, result=result,
                                candidates=candidates, seconds=time.time() - t0,
-                               hint=result.reason, attempts=attempts)
+                               hint=result.reason, attempts=attempts, rejected_unlisted=unlisted)
     # every candidate file searched and nothing shipped. Ask, do not assert.
     ruling = decide(situation(CAPPED=capped,
                               REFUTED=bool(attempts) and not greens_seen))
@@ -842,11 +844,11 @@ def cguard_once(oracle: COracle, observer, candidate_timeout=None,
                 f"(engine law: CAPPED -> {ruling})")
     elif ruling == "HARVEST_COUNTEREXAMPLE":
         hint = (f"every candidate this vocabulary generated left the suite red "
-                f"({len(attempts)} rejected, each listed with the test that "
+                f"({len(attempts) + unlisted} rejected, each listed with the test that "
                 f"killed it) — the fault is outside it, or the observations are "
                 f"wrong (engine law: REFUTED -> {ruling})")
     else:
         hint = (f"nothing in the failure pointed at a repairable line "
                 f"(engine law: {ruling})")
     return GuardReport(status="refused", candidates=candidates,
-                       seconds=time.time() - t0, attempts=attempts, hint=hint)
+                       seconds=time.time() - t0, attempts=attempts, rejected_unlisted=unlisted, hint=hint)

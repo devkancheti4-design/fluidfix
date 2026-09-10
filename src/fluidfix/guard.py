@@ -50,6 +50,10 @@ class GuardReport:
     # engine law HARVEST_COUNTEREXAMPLE, actuated: every candidate rejected
     # on the way to this report, each with the failing test that killed it
     attempts: list = field(default_factory=list)
+    # rejections beyond the 64 per file the log keeps — counted so the
+    # report never understates how much was tried (measured 2026-09-10:
+    # a 900 s run reported "64 candidate(s)" for far more than 64)
+    rejected_unlisted: int = 0
     # what the SIGHT law had to read: which files any POINTING lane named.
     # Empty means the ranking was ordering on circumstantial evidence alone.
     evidence: dict = field(default_factory=dict)
@@ -102,9 +106,13 @@ class GuardReport:
                     f"(candidate files tried: {', '.join(self.candidates) or 'none found'}). "
                     "teach it once: docs/TEACHING.md (or run: fluidfix kinds)")
         if self.attempts:
-            base += (f" {len(self.attempts)} candidate(s) were tried and "
-                     "rejected — each is logged with the test that failed "
-                     "it in the refusal report.")
+            total = len(self.attempts) + self.rejected_unlisted
+            base += (f" {total} candidate(s) were tried and rejected — "
+                     + (f"{len(self.attempts)} of them are logged with the test "
+                        f"that failed each (the log keeps 64 per file)."
+                        if self.rejected_unlisted else
+                        "each is logged with the test that failed it in the "
+                        "refusal report."))
         return base + (f"\n  hint: {self.hint}" if self.hint else "")
 
 
@@ -493,6 +501,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     # suite-passing candidate reported that every candidate had been rejected.
     greens_seen = False
     attempts: list = []
+    unlisted = 0
     full_sight: set[str] = set()      # pass-0 packet was complete: nothing
                                       # a bigger budget could add for this file
     if not candidates and not _has_pytest_cov(oracle):
@@ -507,7 +516,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
         if total_deadline is not None and time.time() > total_deadline:
             return GuardReport(
                 status="refused", candidates=candidates,
-                seconds=time.time() - t0, attempts=attempts,
+                seconds=time.time() - t0, attempts=attempts, rejected_unlisted=unlisted,
                 hint=(f"--budget exhausted ({budget}s) during the first "
                       "pass — raise --budget, tighten taught-class signals, "
                       "or fix by hand"), evidence=ev)
@@ -525,6 +534,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                         candidate_timeout=candidate_timeout,
                         deadline=first_deadline)
         attempts += result.tried_log
+        unlisted += result.tried_more
         acts0 = acts0 or bool(result.acts_tried)
         greens_seen = greens_seen or bool(result.greens)
         # the loop measured a wall-clock cap this pass could not see
@@ -538,7 +548,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             return GuardReport(status="refused", file=rel,
                                candidates=candidates, result=result,
                                seconds=time.time() - t0,
-                               hint=result.reason, attempts=attempts, evidence=ev)
+                               hint=result.reason, attempts=attempts, rejected_unlisted=unlisted, evidence=ev)
         if result.greens and result.ruling == "RAISE_BUDGET":
             # THE THIRD OUTCOME. `repair()` holds a candidate that passed the
             # suite and the law ruled RAISE_BUDGET on it. Before 0.15.0 this
@@ -584,7 +594,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 _pointed = (ev or {}).get("pointed") or []
                 return GuardReport(
                     status="refused", candidates=candidates, evidence=ev,
-                    seconds=time.time() - t0, attempts=attempts,
+                    seconds=time.time() - t0, attempts=attempts, rejected_unlisted=unlisted,
                     hint=(f"escalation budget exhausted ({escalate_budget}s) "
                           "with CAPPED still ruling RAISE_BUDGET — "
                           + ("raise --escalate-budget, use --observer claude, "
@@ -620,6 +630,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                             deadline=min(deadline,
                                          time.time() + file_share))
             attempts += result.tried_log
+            unlisted += result.tried_more
             any_acts = any_acts or bool(result.acts_tried)
             greens_seen = greens_seen or bool(result.greens)
             capped0 = capped0 or result.capped
@@ -633,7 +644,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 return GuardReport(status="refused", file=rel,
                                    candidates=candidates, result=result,
                                    seconds=time.time() - t0,
-                                   hint=result.reason, attempts=attempts, evidence=ev)
+                                   hint=result.reason, attempts=attempts, rejected_unlisted=unlisted, evidence=ev)
             if result.greens and result.ruling == "RAISE_BUDGET":
                 hint = result.reason          # the third outcome, again
         if any_acts and not greens_seen and not hint and \
@@ -649,7 +660,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 "refusal report lists each one with the test that killed it")
     return GuardReport(status="refused", candidates=candidates,
                        seconds=time.time() - t0, hint=hint, evidence=ev,
-                       attempts=attempts)
+                       attempts=attempts, rejected_unlisted=unlisted)
 
 
 def propose_repair(root: str, report: GuardReport) -> tuple[str, str]:
@@ -745,7 +756,8 @@ def write_refusal(root: str, report: GuardReport) -> str:
                    "register() it once and its family becomes free",
            # engine law: REFUTED -> HARVEST_COUNTEREXAMPLE — what was
            # tried, and the exact failing test that rejected each
-           "rejected_candidates": report.attempts[:200]}
+           "rejected_candidates": report.attempts[:200],
+           "rejected_not_listed": report.rejected_unlisted}
     # the ruling itself, so a reader never has to infer it from prose
     if res is not None and getattr(res, "ruling", ""):
         rec["ruling"] = res.ruling

@@ -111,3 +111,20 @@ def test_stale_refusal_cleared_on_green_or_repaired_pass(tmp_path):
     refusal.write_text("{}")
     report = guard_once(oracle, MechanicalObserver())
     assert report.status == "green" and not refusal.exists()
+
+
+def test_report_counts_rejections_beyond_the_64_entry_log(tmp_path):
+    """The per-file log keeps 64 rejections; the rest were still tried.
+    Measured 2026-09-10: 900 s cglm runs reported "64 candidate(s) were
+    tried" after far more. The summary and the refusal file must carry the
+    unlisted count."""
+    import json
+    from fluidfix.guard import GuardReport, write_refusal
+    r = GuardReport(status="refused", candidates=["m.py"],
+                    attempts=[{"at": "m.py:1", "tried": "x", "why": "red"}] * 64,
+                    rejected_unlisted=30)
+    assert "94 candidate(s) were tried" in r.summary()
+    assert "64 of them are logged" in r.summary()
+    write_refusal(str(tmp_path), r)
+    rec = json.load(open(tmp_path / ".fluidfix" / "last_refusal.json"))
+    assert rec["rejected_not_listed"] == 30 and len(rec["rejected_candidates"]) == 64
