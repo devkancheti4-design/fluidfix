@@ -218,3 +218,16 @@ def test_reduce_literal_skips_digits_inside_identifiers():
     # and the corpus-measured literals still decrement exactly as before
     assert apply("    secs = days * 24 * 3601 + secs", 6, obs()) == "    secs = days * 23 * 3601 + secs"
     assert apply("x = y[2:]", 6, obs()) == "x = y[1:]"
+
+
+def test_minmax_swap_sees_namespaced_spellings():
+    """cglm writes glm_min(, and `_` is a word character, so \\b never
+    matched it: the class was blind to the whole library (Sep 7 finding 7,
+    re-measured 2026-09-10: 900 s of budget never reached vec2.h:653)."""
+    from fluidfix import Observation
+    from fluidfix.acts import KINDS, act_for, candidates
+    line = "  dest[0] = glm_min(a[0], b[0]);"
+    assert KINDS[8][2].search(line)
+    assert "  dest[0] = glm_max(a[0], b[0]);" in candidates(line, act_for(8), Observation(lineno=1))
+    assert "x = max(a, b);" in candidates("x = min(a, b);", act_for(8), Observation(lineno=1))
+    assert not KINDS[8][2].search("admin(user)")          # not a min( call

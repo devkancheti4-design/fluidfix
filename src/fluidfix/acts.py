@@ -96,7 +96,10 @@ KINDS = {
     # dictionary keeps working across upgrades. Shipped vocabulary resumes at 8.
     8: ("minmax-swap",
         "a call to min( that should be max(, or a max( that should be min(",
-        re.compile(r"\b(?:min|max)\(")),
+        # `_` is a word character, so \b never falls after it: glm_min( and
+        # b2_max( were invisible to this class (measured 2026-09-07 and
+        # again 2026-09-10 — no budget reaches a line the signal cannot see)
+        re.compile(r"(?<![A-Za-z0-9])(?:\w*_)?(?:min|max)\(")),
     9: ("flipped-augmented-assign",
         'an augmented assignment "+=" that should be "-=", or a "-=" that '
         'should be "+="',
@@ -220,7 +223,7 @@ def _swap_minmax(line: str, obs: Observation) -> list:
     """Swap candidates for EVERY min(/max( call on the line, left to
     right — suite judges each."""
     out, seen = [], set()
-    for m in re.finditer(r"\b(min|max)\(", line):
+    for m in re.finditer(r"(?<![A-Za-z0-9])(?:\w*_)?(min|max)\(", line):
         other = "max" if m.group(1) == "min" else "min"
         cand = line[:m.start(1)] + other + line[m.end(1):]
         if cand not in seen:
