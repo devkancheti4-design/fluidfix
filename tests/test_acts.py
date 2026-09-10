@@ -191,3 +191,30 @@ def test_guard_repairs_minmax_swap_end_to_end(tmp_path):
     assert report.status == "repaired"
     assert "return max(xs)" in (tmp_path / "mod.py").read_text()
     assert oracle.green()
+
+
+def test_swap_return_operands_true_division():
+    # measured 2026-09-10 (research/maintenance-2026-09-10, case R03):
+    # `return units / total` was invisible to kind 2 — signal and applier
+    # both listed //, -, +, * and never /.
+    from fluidfix import KINDS
+    assert KINDS[2][2].search("    return units / total")
+    assert apply("    return units / total", 7, obs()) == "    return total / units"
+    assert apply("    return a // b", 7, obs()) == "    return b // a"
+
+
+def test_reduce_literal_skips_digits_inside_identifiers():
+    # measured 2026-09-10 on cglm (research/maintenance-2026-09-10, D1): all
+    # 62 candidates of a 300 s budget were GLM_VEC3_... -> GLM_VEC2_... on
+    # #define lines 10-40, and the defect at line 284 was never reached. A
+    # digit glued to an identifier is never a numeric literal.
+    from fluidfix import KINDS
+    assert not KINDS[1][2].search("#define GLM_VEC3_ONE_INIT")
+    assert not KINDS[1][2].search("int32_t x2 = y")
+    assert KINDS[1][2].search("  dest[1] = a[2];")
+    line = "#define GLM_VEC3_ONE_INIT {1.0f, 1.0f, 1.0f}"
+    assert all("VEC2" not in c for c in candidates(line, 6, obs()))
+    assert apply(line, 6, obs()) == "#define GLM_VEC3_ONE_INIT {0.0f, 1.0f, 1.0f}"
+    # and the corpus-measured literals still decrement exactly as before
+    assert apply("    secs = days * 24 * 3601 + secs", 6, obs()) == "    secs = days * 23 * 3601 + secs"
+    assert apply("x = y[2:]", 6, obs()) == "x = y[1:]"

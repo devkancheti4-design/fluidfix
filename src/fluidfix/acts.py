@@ -80,10 +80,13 @@ KINDS = {
     1: ("literal-off-by-one",
         "a numeric literal on the line is exactly one greater than correct "
         "(3601 for 3600, [2:] for [1:], group(2) for group(1))",
-        re.compile(r"\d")),
+        # a digit inside an identifier (GLM_VEC3_ONE, int32_t, x2) is never a
+        # numeric literal: measured 2026-09-10, every candidate of a 300 s
+        # cglm budget was VEC3 -> VEC2 on #define lines
+        re.compile(r"(?<![A-Za-z_\d])\d")),
     2: ("swapped-return-operands",
         'a "return a OP b" whose two operands are in the wrong order',
-        re.compile(r"^\s*return\s+.*\s(?://|[-+*])\s")),
+        re.compile(r"^\s*return\s+.*\s(?://|/|[-+*])\s")),   # / measured missing 2026-09-10
     3: ("flipped-additive",
         'a binary " + " that should be " - ", or a " - " that should be '
         '" + " (spaces around the operator)',
@@ -166,7 +169,7 @@ def _dec_at(line: str, m) -> str:
 def _reduce_literal(line: str, obs: Observation) -> list:
     """Decrement candidates for EVERY literal on the line, observer-pointed
     literal first, then left-to-right (legacy first-match order preserved)."""
-    hits = list(re.finditer(r"\d+", line))
+    hits = list(re.finditer(r"(?<![A-Za-z_\d])\d+", line))   # literals, not identifier digits
     if not hits:
         return [line]
     ordered = []
@@ -186,7 +189,7 @@ def _reduce_literal(line: str, obs: Observation) -> list:
 
 
 def _swap_return_operands(line: str, obs: Observation) -> str:
-    m = re.match(r"^(\s*return\s+)(.*?)(\s(?://|[-+*])\s)(.*)$", line)
+    m = re.match(r"^(\s*return\s+)(.*?)(\s(?://|/|[-+*])\s)(.*)$", line)
     return line if not m else f"{m.group(1)}{m.group(4)}{m.group(3)}{m.group(2)}"
 
 
