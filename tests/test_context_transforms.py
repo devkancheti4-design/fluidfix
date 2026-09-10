@@ -128,7 +128,12 @@ def test_multiline_logic_fix_from_one_example(tmp_path, clean_registry):
     (tmp_path / "test_mod.py").write_text(
         "from mod import safe_div, rate\n\ndef test_div():\n"
         "    assert safe_div(5, 0) == 0\n\ndef test_rate():\n"
-        "    assert rate(10, 0) == 0\n")
+        "    assert rate(10, 0) == 0\n    assert rate(10, 2) == 5\n")
+    # rate(10, 2) == 5 pins the direction. With only rate(10, 0) == 0, the
+    # shipped swap class (kind 2, which admits `/` since 44346f7) also
+    # greens the suite — `return seconds / events` is 0 / 10 — and the
+    # guard correctly refused two different green programs as ambiguous.
+    # Measured 2026-09-10: the fixture was weaker than the vocabulary.
     r2 = guard_once(oracle, MechanicalObserver())
     assert r2.status == "repaired"
     assert "    if seconds == 0:\n        return 0\n    return events / seconds" \
