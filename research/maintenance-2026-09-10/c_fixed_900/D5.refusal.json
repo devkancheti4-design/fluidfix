@@ -1,0 +1,331 @@
+{
+ "status": "refused",
+ "candidates": [
+  "include/cglm/vec2.h",
+  "src/vec2.c"
+ ],
+ "seconds": 908.2112150192261,
+ "hint": "--budget exhausted (900s) with 2 candidate file(s) in hand \u2014 what it did not try is unknown. Raise --budget and re-run (engine law: CAPPED -> RAISE_BUDGET)",
+ "rejected_candidates": [
+  {
+   "at": "include/cglm/vec2.h:87",
+   "tried": "  dest[-1] = v[0];",
+   "why": "4 test(s) failed, first: glm_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:87",
+   "tried": "  dest[0] = v[-1];",
+   "why": "3 test(s) failed, first: glm_vec2_maxv"
+  },
+  {
+   "at": "include/cglm/vec2.h:88",
+   "tried": "  dest[0] = v[1];",
+   "why": "4 test(s) failed, first: glm_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:88",
+   "tried": "  dest[1] = v[0];",
+   "why": "4 test(s) failed, first: glm_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:100",
+   "tried": "  dest[-1] = a[0];",
+   "why": "4 test(s) failed, first: glm_vec2_copy"
+  },
+  {
+   "at": "include/cglm/vec2.h:100",
+   "tried": "  dest[0] = a[-1];",
+   "why": "4 test(s) failed, first: glm_vec2_copy"
+  },
+  {
+   "at": "include/cglm/vec2.h:101",
+   "tried": "  dest[0] = a[1];",
+   "why": "4 test(s) failed, first: glm_vec2_copy"
+  },
+  {
+   "at": "include/cglm/vec2.h:101",
+   "tried": "  dest[1] = a[0];",
+   "why": "4 test(s) failed, first: glm_vec2_copy"
+  },
+  {
+   "at": "include/cglm/vec2.h:112",
+   "tried": "  v[-1] = v[1] = 0.0f;",
+   "why": "10 test(s) failed, first: glm_vec2_zero"
+  },
+  {
+   "at": "include/cglm/vec2.h:112",
+   "tried": "  v[0] = v[0] = 0.0f;",
+   "why": "10 test(s) failed, first: glm_vec2_zero"
+  },
+  {
+   "at": "include/cglm/vec2.h:112",
+   "tried": "  v[0] = v[1] = -1.0f;",
+   "why": "10 test(s) failed, first: glm_vec2_zero"
+  },
+  {
+   "at": "include/cglm/vec2.h:112",
+   "tried": "  v[0] = v[1] = 0.-1f;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec2.h:112:21: error: In file included from /Users/kanchetidevieswar/neo/fluidfix/research/laws"
+  },
+  {
+   "at": "include/cglm/vec2.h:123",
+   "tried": "  v[-1] = v[1] = 1.0f;",
+   "why": "4 test(s) failed, first: glm_vec2_one"
+  },
+  {
+   "at": "include/cglm/vec2.h:123",
+   "tried": "  v[0] = v[0] = 1.0f;",
+   "why": "4 test(s) failed, first: glm_vec2_one"
+  },
+  {
+   "at": "include/cglm/vec2.h:123",
+   "tried": "  v[0] = v[1] = 0.0f;",
+   "why": "4 test(s) failed, first: glm_vec2_one"
+  },
+  {
+   "at": "include/cglm/vec2.h:123",
+   "tried": "  v[0] = v[1] = 1.-1f;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec2.h:123:21: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/vec2.h:137",
+   "tried": "  return a[-1] * b[0] + a[1] * b[1];",
+   "why": "21 test(s) failed, first: glm_mat2_rmc"
+  },
+  {
+   "at": "include/cglm/vec2.h:137",
+   "tried": "  return a[0] * b[-1] + a[1] * b[1];",
+   "why": "20 test(s) failed, first: glm_mat2_rmc"
+  },
+  {
+   "at": "include/cglm/vec2.h:137",
+   "tried": "  return a[0] * b[0] + a[0] * b[1];",
+   "why": "22 test(s) failed, first: glm_mat2_rmc"
+  },
+  {
+   "at": "include/cglm/vec2.h:137",
+   "tried": "  return a[0] * b[0] + a[1] * b[0];",
+   "why": "20 test(s) failed, first: glm_mat2_rmc"
+  },
+  {
+   "at": "include/cglm/vec2.h:137",
+   "tried": "  return b[0] + a[1] * b[1]; * a[0]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec2.h:137:30: error: indirection requires pointer operand ('float' invalid)In file included fr"
+  },
+  {
+   "at": "include/cglm/vec2.h:137",
+   "tried": "  return a[0] * b[0] - a[1] * b[1];",
+   "why": "20 test(s) failed, first: glm_mat2_rmc"
+  },
+  {
+   "at": "include/cglm/vec2.h:154",
+   "tried": "  return a[-1] * b[1] - a[1] * b[0];",
+   "why": "4 test(s) failed, first: glm_vec2_cross"
+  },
+  {
+   "at": "include/cglm/vec2.h:154",
+   "tried": "  return a[0] * b[0] - a[1] * b[0];",
+   "why": "4 test(s) failed, first: glm_vec2_cross"
+  },
+  {
+   "at": "include/cglm/vec2.h:154",
+   "tried": "  return a[0] * b[1] - a[0] * b[0];",
+   "why": "4 test(s) failed, first: glm_vec2_cross"
+  },
+  {
+   "at": "include/cglm/vec2.h:154",
+   "tried": "  return a[0] * b[1] - a[1] * b[-1];",
+   "why": "4 test(s) failed, first: glm_vec2_cross"
+  },
+  {
+   "at": "include/cglm/vec2.h:154",
+   "tried": "  return b[1] - a[1] * b[0]; * a[0]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec2.h:154:30: error: indirection requires pointer operand ('float' invalid)"
+  },
+  {
+   "at": "include/cglm/vec2.h:154",
+   "tried": "  return a[0] * b[1] + a[1] * b[0];",
+   "why": "4 test(s) failed, first: glm_vec2_cross"
+  },
+  {
+   "at": "include/cglm/vec2.h:154",
+   "tried": "  return a[1] * b[0]; - a[0] * b[1]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec2.h:154:36: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/vec2.h:197",
+   "tried": "  dest[-1] = a[0] + b[0];",
+   "why": "14 test(s) failed, first: glm_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:197",
+   "tried": "  dest[0] = a[-1] + b[0];",
+   "why": "10 test(s) failed, first: glmc_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:197",
+   "tried": "  dest[0] = a[0] + b[-1];",
+   "why": "9 test(s) failed, first: glmc_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:197",
+   "tried": "  dest[0] = a[0] - b[0];",
+   "why": "12 test(s) failed, first: glm_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:198",
+   "tried": "  dest[0] = a[1] + b[1];",
+   "why": "14 test(s) failed, first: glm_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:198",
+   "tried": "  dest[1] = a[0] + b[1];",
+   "why": "12 test(s) failed, first: glm_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:198",
+   "tried": "  dest[1] = a[1] + b[0];",
+   "why": "12 test(s) failed, first: glm_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:198",
+   "tried": "  dest[1] = a[1] - b[1];",
+   "why": "12 test(s) failed, first: glm_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:211",
+   "tried": "  dest[-1] = v[0] + s;",
+   "why": "6 test(s) failed, first: glm_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:211",
+   "tried": "  dest[0] = v[-1] + s;",
+   "why": "5 test(s) failed, first: glmc_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:211",
+   "tried": "  dest[0] = v[0] - s;",
+   "why": "6 test(s) failed, first: glm_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:212",
+   "tried": "  dest[0] = v[1] + s;",
+   "why": "6 test(s) failed, first: glm_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:212",
+   "tried": "  dest[1] = v[0] + s;",
+   "why": "6 test(s) failed, first: glm_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:212",
+   "tried": "  dest[1] = v[1] - s;",
+   "why": "6 test(s) failed, first: glm_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:225",
+   "tried": "  dest[-1] = a[0] - b[0];",
+   "why": "15 test(s) failed, first: glm_aabb2d_sizev"
+  },
+  {
+   "at": "include/cglm/vec2.h:225",
+   "tried": "  dest[0] = a[-1] - b[0];",
+   "why": "10 test(s) failed, first: glm_aabb2d_sizev"
+  },
+  {
+   "at": "include/cglm/vec2.h:225",
+   "tried": "  dest[0] = a[0] - b[-1];",
+   "why": "10 test(s) failed, first: glm_aabb2d_sizev"
+  },
+  {
+   "at": "include/cglm/vec2.h:225",
+   "tried": "  dest[0] = a[0] + b[0];",
+   "why": "15 test(s) failed, first: glm_aabb2d_sizev"
+  },
+  {
+   "at": "include/cglm/vec2.h:225",
+   "tried": "  dest[0] = b[0]; - a[0]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec2.h:225:25: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/vec2.h:226",
+   "tried": "  dest[0] = a[1] - b[1];",
+   "why": "15 test(s) failed, first: glm_aabb2d_sizev"
+  },
+  {
+   "at": "include/cglm/vec2.h:226",
+   "tried": "  dest[1] = a[0] - b[1];",
+   "why": "14 test(s) failed, first: glm_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:226",
+   "tried": "  dest[1] = a[1] - b[0];",
+   "why": "14 test(s) failed, first: glm_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:226",
+   "tried": "  dest[1] = a[1] + b[1];",
+   "why": "15 test(s) failed, first: glm_aabb2d_sizev"
+  },
+  {
+   "at": "include/cglm/vec2.h:226",
+   "tried": "  dest[1] = b[1]; - a[1]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec2.hIn file included from :226:25: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/vec2.h:239",
+   "tried": "  dest[-1] = v[0] - s;",
+   "why": "6 test(s) failed, first: glm_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:239",
+   "tried": "  dest[0] = v[-1] - s;",
+   "why": "5 test(s) failed, first: glmc_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:239",
+   "tried": "  dest[0] = v[0] + s;",
+   "why": "6 test(s) failed, first: glm_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:239",
+   "tried": "  dest[0] = s; - v[0]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec2.h:239:22: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/vec2.h:240",
+   "tried": "  dest[0] = v[1] - s;",
+   "why": "6 test(s) failed, first: glm_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:240",
+   "tried": "  dest[1] = v[0] - s;",
+   "why": "6 test(s) failed, first: glm_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:240",
+   "tried": "  dest[1] = v[1] + s;",
+   "why": "6 test(s) failed, first: glm_perlin_vec2"
+  },
+  {
+   "at": "include/cglm/vec2.h:240",
+   "tried": "  dest[1] = s; - v[1]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec2.h:240:22: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/vec2.h:253",
+   "tried": "  dest[-1] = a[0] * b[0];",
+   "why": "12 test(s) failed, first: glm_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:253",
+   "tried": "  dest[0] = a[-1] * b[0];",
+   "why": "7 test(s) failed, first: glmc_perlin_vec4"
+  },
+  {
+   "at": "include/cglm/vec2.h:253",
+   "tried": "  dest[0] = a[0] * b[-1];",
+   "why": "7 test(s) failed, first: glmc_perlin_vec4"
+  }
+ ]
+}

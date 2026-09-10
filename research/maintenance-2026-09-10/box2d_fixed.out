@@ -1,0 +1,9 @@
+== D1 exit=2 wall=78s
+== D2 exit=2 wall=303s
+== D3 exit=2 wall=303s
+== D4 exit=2 wall=811s
+== D5 exit=0 wall=303s
+D5: line 13 of src/aabb.c is
+  '\tbool valid = d.x >= 0.0f && d.y >= 0.0f;'
+expected
+  '\tbool valid = d.x <= 0.0f && d.y >= 0.0f;'

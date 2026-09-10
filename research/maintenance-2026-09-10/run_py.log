@@ -1,0 +1,17 @@
+R01  0 strictness                                   exit=0   4.2s runs=6 -> BYTE_EXACT
+R02  1 literal-off-by-one                           exit=0   3.2s runs=2 -> BYTE_EXACT
+R03  2 swapped-return-operands                      exit=2   3.3s runs=None -> REFUSED (miss)
+R04  3 flipped-additive                             exit=0   4.2s runs=6 -> BYTE_EXACT
+R05  8 minmax-swap                                  exit=0   3.8s runs=4 -> BYTE_EXACT
+R06  9 flipped-augmented-assign                     exit=0   3.2s runs=2 -> BYTE_EXACT
+R07  10 flipped-comparison-direction                exit=0   4.4s runs=7 -> BYTE_EXACT
+R08  11 reversed-minus-operands                     exit=0   4.2s runs=6 -> BYTE_EXACT
+R09  12 flipped-boolean                             exit=0   4.1s runs=6 -> BYTE_EXACT
+R10  4 taught: round-lost-precision                 exit=0   3.2s runs=2 -> BYTE_EXACT
+R11  5 taught: wrong-attribute (repo-mined set)     exit=0   3.9s runs=5 -> BYTE_EXACT
+R12  6 taught: two lines together (SpanEdit)        exit=0   3.7s runs=4 -> BYTE_EXACT
+R13  6 taught, FLUIDFIX_MAX_LINES=1 (the cap)       exit=0   3.7s runs=4 -> SHIPPED_ON_REFUSE_CASE exit=0 pristine=True
+R14  ambiguity: two different programs both green   exit=2   4.7s runs=None -> CORRECT_REFUSAL
+R15  novel class, untaught                          exit=2   2.6s runs=None -> CORRECT_REFUSAL
+R16  green suite                                    exit=0   0.4s runs=None -> GREEN_NOOP
+TALLY {'BYTE_EXACT': 11, 'REFUSED': 1, 'SHIPPED_ON_REFUSE_CASE': 1, 'CORRECT_REFUSAL': 2, 'GREEN_NOOP': 1}

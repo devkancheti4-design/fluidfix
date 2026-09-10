@@ -1,0 +1,336 @@
+{
+ "status": "refused",
+ "candidates": [
+  "include/cglm/ivec2.h",
+  "src/ivec2.c"
+ ],
+ "seconds": 906.1338167190552,
+ "hint": "a candidate passes, but the search was cut short before it could be shown unique \u2014 shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)",
+ "rejected_candidates": [
+  {
+   "at": "include/cglm/ivec2.h:79",
+   "tried": "  dest[-1] = v[0];",
+   "why": "3 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:79",
+   "tried": "  dest[0] = v[-1];",
+   "why": "3 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:80",
+   "tried": "  dest[0] = v[1];",
+   "why": "4 test(s) failed, first: glm_ivec2"
+  },
+  {
+   "at": "include/cglm/ivec2.h:80",
+   "tried": "  dest[1] = v[0];",
+   "why": "4 test(s) failed, first: glm_ivec2"
+  },
+  {
+   "at": "include/cglm/ivec2.h:92",
+   "tried": "  dest[-1] = a[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_copy"
+  },
+  {
+   "at": "include/cglm/ivec2.h:92",
+   "tried": "  dest[0] = a[-1];",
+   "why": "3 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:93",
+   "tried": "  dest[0] = a[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_copy"
+  },
+  {
+   "at": "include/cglm/ivec2.h:93",
+   "tried": "  dest[1] = a[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_copy"
+  },
+  {
+   "at": "include/cglm/ivec2.h:104",
+   "tried": "  v[-1] = v[1] = 0;",
+   "why": "4 test(s) failed, first: glm_ivec2_zero"
+  },
+  {
+   "at": "include/cglm/ivec2.h:104",
+   "tried": "  v[0] = v[0] = 0;",
+   "why": "4 test(s) failed, first: glm_ivec2_zero"
+  },
+  {
+   "at": "include/cglm/ivec2.h:104",
+   "tried": "  v[0] = v[1] = -1;",
+   "why": "4 test(s) failed, first: glm_ivec2_zero"
+  },
+  {
+   "at": "include/cglm/ivec2.h:115",
+   "tried": "  v[-1] = v[1] = 1;",
+   "why": "4 test(s) failed, first: glm_ivec2_one"
+  },
+  {
+   "at": "include/cglm/ivec2.h:115",
+   "tried": "  v[0] = v[0] = 1;",
+   "why": "4 test(s) failed, first: glm_ivec2_one"
+  },
+  {
+   "at": "include/cglm/ivec2.h:115",
+   "tried": "  v[0] = v[1] = 0;",
+   "why": "4 test(s) failed, first: glm_ivec2_one"
+  },
+  {
+   "at": "include/cglm/ivec2.h:129",
+   "tried": "  return a[-1] * b[0] + a[1] * b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_dot"
+  },
+  {
+   "at": "include/cglm/ivec2.h:129",
+   "tried": "  return a[0] * b[-1] + a[1] * b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_dot"
+  },
+  {
+   "at": "include/cglm/ivec2.h:129",
+   "tried": "  return a[0] * b[0] + a[0] * b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_dot"
+  },
+  {
+   "at": "include/cglm/ivec2.h:129",
+   "tried": "  return a[0] * b[0] + a[1] * b[0];",
+   "why": "2 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:129",
+   "tried": "  return b[0] + a[1] * b[1]; * a[0]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ivec2.h:129:30: error: indirection requires pointer operand ('int' invalid)"
+  },
+  {
+   "at": "include/cglm/ivec2.h:129",
+   "tried": "  return a[0] * b[0] - a[1] * b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_dot"
+  },
+  {
+   "at": "include/cglm/ivec2.h:145",
+   "tried": "  return a[-1] * b[1] - a[1] * b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_cross"
+  },
+  {
+   "at": "include/cglm/ivec2.h:145",
+   "tried": "  return a[0] * b[0] - a[1] * b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_cross"
+  },
+  {
+   "at": "include/cglm/ivec2.h:145",
+   "tried": "  return a[0] * b[1] - a[0] * b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_cross"
+  },
+  {
+   "at": "include/cglm/ivec2.h:145",
+   "tried": "  return a[0] * b[1] - a[1] * b[-1];",
+   "why": "4 test(s) failed, first: glm_ivec2_cross"
+  },
+  {
+   "at": "include/cglm/ivec2.h:145",
+   "tried": "  return b[1] - a[1] * b[0]; * a[0]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ivec2.h:145:30: error: indirection requires pointer operand ('int' invalid)"
+  },
+  {
+   "at": "include/cglm/ivec2.h:145",
+   "tried": "  return a[0] * b[1] + a[1] * b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_cross"
+  },
+  {
+   "at": "include/cglm/ivec2.h:145",
+   "tried": "  return a[1] * b[0]; - a[0] * b[1]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ivec2.h:145:36: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/ivec2.h:158",
+   "tried": "  dest[-1] = a[0] + b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_add"
+  },
+  {
+   "at": "include/cglm/ivec2.h:158",
+   "tried": "  dest[0] = a[-1] + b[0];",
+   "why": "3 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:158",
+   "tried": "  dest[0] = a[0] + b[-1];",
+   "why": "3 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:158",
+   "tried": "  dest[0] = a[0] - b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_add"
+  },
+  {
+   "at": "include/cglm/ivec2.h:159",
+   "tried": "  dest[0] = a[1] + b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_add"
+  },
+  {
+   "at": "include/cglm/ivec2.h:159",
+   "tried": "  dest[1] = a[0] + b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_add"
+  },
+  {
+   "at": "include/cglm/ivec2.h:159",
+   "tried": "  dest[1] = a[1] + b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_add"
+  },
+  {
+   "at": "include/cglm/ivec2.h:159",
+   "tried": "  dest[1] = a[1] - b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_add"
+  },
+  {
+   "at": "include/cglm/ivec2.h:172",
+   "tried": "  dest[-1] = v[0] + s;",
+   "why": "4 test(s) failed, first: glm_ivec2_adds"
+  },
+  {
+   "at": "include/cglm/ivec2.h:172",
+   "tried": "  dest[0] = v[-1] + s;",
+   "why": "3 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:172",
+   "tried": "  dest[0] = v[0] - s;",
+   "why": "4 test(s) failed, first: glm_ivec2_adds"
+  },
+  {
+   "at": "include/cglm/ivec2.h:173",
+   "tried": "  dest[0] = v[1] + s;",
+   "why": "4 test(s) failed, first: glm_ivec2_adds"
+  },
+  {
+   "at": "include/cglm/ivec2.h:173",
+   "tried": "  dest[1] = v[0] + s;",
+   "why": "4 test(s) failed, first: glm_ivec2_adds"
+  },
+  {
+   "at": "include/cglm/ivec2.h:173",
+   "tried": "  dest[1] = v[1] - s;",
+   "why": "4 test(s) failed, first: glm_ivec2_adds"
+  },
+  {
+   "at": "include/cglm/ivec2.h:186",
+   "tried": "  dest[-1] = a[0] - b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_sub"
+  },
+  {
+   "at": "include/cglm/ivec2.h:186",
+   "tried": "  dest[0] = a[-1] - b[0];",
+   "why": "3 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:186",
+   "tried": "  dest[0] = a[0] - b[-1];",
+   "why": "3 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:186",
+   "tried": "  dest[0] = a[0] + b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_sub"
+  },
+  {
+   "at": "include/cglm/ivec2.h:186",
+   "tried": "  dest[0] = b[0]; - a[0]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ivec2.h:186:25: error: In file included from /Users/kanchetidevieswar/neo/fluidfix/research/law"
+  },
+  {
+   "at": "include/cglm/ivec2.h:187",
+   "tried": "  dest[0] = a[1] - b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_sub"
+  },
+  {
+   "at": "include/cglm/ivec2.h:187",
+   "tried": "  dest[1] = a[0] - b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_sub"
+  },
+  {
+   "at": "include/cglm/ivec2.h:187",
+   "tried": "  dest[1] = a[1] - b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_sub"
+  },
+  {
+   "at": "include/cglm/ivec2.h:187",
+   "tried": "  dest[1] = a[1] + b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_sub"
+  },
+  {
+   "at": "include/cglm/ivec2.h:187",
+   "tried": "  dest[1] = b[1]; - a[1]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ivec2.h:187:25: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/ivec2.h:200",
+   "tried": "  dest[-1] = v[0] - s;",
+   "why": "4 test(s) failed, first: glm_ivec2_subs"
+  },
+  {
+   "at": "include/cglm/ivec2.h:200",
+   "tried": "  dest[0] = v[-1] - s;",
+   "why": "3 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:200",
+   "tried": "  dest[0] = v[0] + s;",
+   "why": "4 test(s) failed, first: glm_ivec2_subs"
+  },
+  {
+   "at": "include/cglm/ivec2.h:200",
+   "tried": "  dest[0] = s; - v[0]",
+   "why": "22/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ivec2.h200: :22::200error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/ivec2.h:201",
+   "tried": "  dest[0] = v[1] - s;",
+   "why": "4 test(s) failed, first: glm_ivec2_subs"
+  },
+  {
+   "at": "include/cglm/ivec2.h:201",
+   "tried": "  dest[1] = v[0] - s;",
+   "why": "4 test(s) failed, first: glm_ivec2_subs"
+  },
+  {
+   "at": "include/cglm/ivec2.h:201",
+   "tried": "  dest[1] = v[1] + s;",
+   "why": "4 test(s) failed, first: glm_ivec2_subs"
+  },
+  {
+   "at": "include/cglm/ivec2.h:201",
+   "tried": "  dest[1] = s; - v[1]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ivec2.h:201:22: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/ivec2.h:214",
+   "tried": "  dest[-1] = a[0] * b[0];",
+   "why": "4 test(s) failed, first: glm_ivec2_mul"
+  },
+  {
+   "at": "include/cglm/ivec2.h:214",
+   "tried": "  dest[0] = a[-1] * b[0];",
+   "why": "2 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:214",
+   "tried": "  dest[0] = a[0] * b[-1];",
+   "why": "3 test(s) failed, first: glm_ivec2_subadd"
+  },
+  {
+   "at": "include/cglm/ivec2.h:215",
+   "tried": "  dest[0] = a[1] * b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_mul"
+  },
+  {
+   "at": "include/cglm/ivec2.h:215",
+   "tried": "  dest[1] = a[0] * b[1];",
+   "why": "4 test(s) failed, first: glm_ivec2_mul"
+  }
+ ],
+ "ruling": "RAISE_BUDGET",
+ "greens": [
+  "  dest[0] += a[0] - b[0];"
+ ],
+ "capped": true
+}

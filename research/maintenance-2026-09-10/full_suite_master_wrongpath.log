@@ -1,0 +1,73 @@
+......................FF................................................ [ 32%]
+............................................................F........... [ 65%]
+........................................................................ [ 97%]
+.....                                                                    [100%]
+=================================== FAILURES ===================================
+___________________ test_swap_return_operands_true_division ____________________
+
+    def test_swap_return_operands_true_division():
+        # measured 2026-09-10 (research/maintenance-2026-09-10, case R03):
+        # `return units / total` was invisible to kind 2 — signal and applier
+        # both listed //, -, +, * and never /.
+        from fluidfix import KINDS
+>       assert KINDS[2][2].search("    return units / total")
+E       AssertionError: assert None
+E        +  where None = <built-in method search of re.Pattern object at 0x109268a00>('    return units / total')
+E        +    where <built-in method search of re.Pattern object at 0x109268a00> = re.compile('^\\s*return\\s+.*\\s(?://|[-+*])\\s').search
+
+tests/test_acts.py:201: AssertionError
+_____________ test_reduce_literal_skips_digits_inside_identifiers ______________
+
+    def test_reduce_literal_skips_digits_inside_identifiers():
+        # measured 2026-09-10 on cglm (research/maintenance-2026-09-10, D1): all
+        # 62 candidates of a 300 s budget were GLM_VEC3_... -> GLM_VEC2_... on
+        # #define lines 10-40, and the defect at line 284 was never reached. A
+        # digit glued to an identifier is never a numeric literal.
+        from fluidfix import KINDS
+>       assert not KINDS[1][2].search("#define GLM_VEC3_ONE_INIT")
+E       AssertionError: assert not <re.Match object; span=(15, 16), match='3'>
+E        +  where <re.Match object; span=(15, 16), match='3'> = <built-in method search of re.Pattern object at 0x10929bb60>('#define GLM_VEC3_ONE_INIT')
+E        +    where <built-in method search of re.Pattern object at 0x10929bb60> = re.compile('\\d').search
+
+tests/test_acts.py:212: AssertionError
+__________________ test_version_is_single_source_and_current ___________________
+
+    def test_version_is_single_source_and_current():
+        """`__version__` sat at 0.9.1 through the 0.10.0 AND 0.11.0 releases —
+        two versions shipped advertising the wrong number to anyone reading it.
+        pyproject now derives the distribution version from this attribute, so a
+        drift would mis-tag a release. This pins them together."""
+        import pathlib, re
+        import fluidfix
+        root = pathlib.Path(fluidfix.__file__).resolve().parents[2]
+>       pyproject = (root / "pyproject.toml").read_text(encoding="utf-8")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_hotspots.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py:787: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pyproject.toml')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pyproject.toml'
+
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py:771: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_acts.py::test_swap_return_operands_true_division - Assertio...
+FAILED tests/test_acts.py::test_reduce_literal_skips_digits_inside_identifiers
+FAILED tests/test_hotspots.py::test_version_is_single_source_and_current - Fi...
+3 failed, 218 passed in 634.32s (0:10:34)

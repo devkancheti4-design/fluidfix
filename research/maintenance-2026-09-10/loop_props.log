@@ -1,0 +1,18 @@
+== P1 green suite
+[17:06:22] suite green — nothing to do
+exit=0 commits=1 (base had 1)
+== P2 real crash mid-candidate
+killed guard pid 16481 after 1850ms; journal present: yes; tax.py now: net * (0 - rate)
+-- next run:
+  recovered ledgerkit/tax.py: a previous run was killed mid-candidate; original bytes restored from the journal
+[17:06:28] ledgerkit/tax.py: repaired line 7 in 6 suite runs (2.5s):
+  - return net * (1 - rate)
+  + return net * (1 + rate)
+  committed
+exit=0 journal after: removed; tax.py now: net * (1 + rate); log: 0745f91 fluidfix: restore ledgerkit/tax.py:7
+== P3 --interval watch mode (tick every 4s)
+watcher pid 17025 first tick: 
+shipped regression at 17:06:34: 7804eb1 money: tidy clamp
+watcher log after 30s:
+git log: cf67b18 fluidfix: restore ledgerkit/money.py:13 7804eb1 money: tidy clamp 0745f91 fluidfix: restore ledgerkit/tax.py:7 
+money.py now: return max(0.0, amount)

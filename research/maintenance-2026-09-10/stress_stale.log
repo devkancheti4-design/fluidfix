@@ -1,0 +1,18 @@
+# stress_stale.py on ../laws-2026-09-07/44-author-successor-teaching/cglm, cmake --build build -j4, 2026-09-10
+# Each cycle: write the defect, build, write the PRISTINE line immediately, judge it with COracle.check().
+# GNU Make 3.81 compares mtimes at whole seconds (make -q on a source 0.4 s newer than its object: exit 0).
+
+## master 44346f7 (before the fix), 19:58
+cycle 1: pristine judged RED  <- stale: 12 test(s) failed, first: glm_ray_at
+cycle 2: pristine judged GREEN
+cycle 3: pristine judged RED  <- stale: 12 test(s) failed, first: glm_ray_at
+cycle 4: pristine judged RED  <- stale: 12 test(s) failed, first: glm_ray_at
+cycle 5: pristine judged RED  <- stale: 12 test(s) failed, first: glm_ray_at
+cycle 6: pristine judged RED  <- stale: 12 test(s) failed, first: glm_ray_at
+cycle 7: pristine judged RED  <- stale: 12 test(s) failed, first: glm_ray_at
+cycle 8: pristine judged RED  <- stale: 12 test(s) failed, first: glm_ray_at
+RED verdicts on pristine: 7/8
+
+## stale-build branch (COracle bumps every edited source past the last build's second), 20:05
+cycle 1..8: pristine judged GREEN
+RED verdicts on pristine: 0/8

@@ -1,0 +1,331 @@
+{
+ "status": "refused",
+ "candidates": [
+  "include/cglm/ivec3.h",
+  "src/ivec3.c"
+ ],
+ "seconds": 311.11751890182495,
+ "hint": "--budget exhausted (300s) with 2 candidate file(s) in hand \u2014 what it did not try is unknown. Raise --budget and re-run (engine law: CAPPED -> RAISE_BUDGET)",
+ "rejected_candidates": [
+  {
+   "at": "include/cglm/ivec3.h:10",
+   "tried": "   GLM_IVEC2_ONE_INIT",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:11",
+   "tried": "   GLM_IVEC2_ZERO_INIT",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:12",
+   "tried": "   GLM_IVEC2_ONE",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:13",
+   "tried": "   GLM_IVEC2_ZERO",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:16",
+   "tried": "  CGLM_INLINE void glm_ivec2(ivec4 v4, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:16",
+   "tried": "  CGLM_INLINE void glm_ivec3(ivec3 v4, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:16",
+   "tried": "  CGLM_INLINE void glm_ivec3(ivec4 v3, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:16",
+   "tried": "  CGLM_INLINE void glm_ivec3(ivec4 v4, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:17",
+   "tried": "  CGLM_INLINE void glm_ivec2_copy(ivec3 a, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:17",
+   "tried": "  CGLM_INLINE void glm_ivec3_copy(ivec2 a, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:17",
+   "tried": "  CGLM_INLINE void glm_ivec3_copy(ivec3 a, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:18",
+   "tried": "  CGLM_INLINE void glm_ivec2_zero(ivec3 v)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:18",
+   "tried": "  CGLM_INLINE void glm_ivec3_zero(ivec2 v)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:19",
+   "tried": "  CGLM_INLINE void glm_ivec2_one(ivec3 v)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:19",
+   "tried": "  CGLM_INLINE void glm_ivec3_one(ivec2 v)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:20",
+   "tried": "  CGLM_INLINE int glm_ivec2_dot(ivec3 a, ivec3 b)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:20",
+   "tried": "  CGLM_INLINE int glm_ivec3_dot(ivec2 a, ivec3 b)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:20",
+   "tried": "  CGLM_INLINE int glm_ivec3_dot(ivec3 a, ivec2 b)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:21",
+   "tried": "  CGLM_INLINE int glm_ivec2_norm2(ivec3 v)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:21",
+   "tried": "  CGLM_INLINE int glm_ivec3_norm1(ivec3 v)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:21",
+   "tried": "  CGLM_INLINE int glm_ivec3_norm2(ivec2 v)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:22",
+   "tried": "  CGLM_INLINE int glm_ivec2_norm(ivec3 v)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:22",
+   "tried": "  CGLM_INLINE int glm_ivec3_norm(ivec2 v)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:23",
+   "tried": "  CGLM_INLINE void glm_ivec2_add(ivec3 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:23",
+   "tried": "  CGLM_INLINE void glm_ivec3_add(ivec2 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:23",
+   "tried": "  CGLM_INLINE void glm_ivec3_add(ivec3 a, ivec2 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:23",
+   "tried": "  CGLM_INLINE void glm_ivec3_add(ivec3 a, ivec3 b, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:24",
+   "tried": "  CGLM_INLINE void glm_ivec2_adds(ivec3 v, int s, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:24",
+   "tried": "  CGLM_INLINE void glm_ivec3_adds(ivec2 v, int s, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:24",
+   "tried": "  CGLM_INLINE void glm_ivec3_adds(ivec3 v, int s, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:25",
+   "tried": "  CGLM_INLINE void glm_ivec2_sub(ivec3 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:25",
+   "tried": "  CGLM_INLINE void glm_ivec3_sub(ivec2 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:25",
+   "tried": "  CGLM_INLINE void glm_ivec3_sub(ivec3 a, ivec2 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:25",
+   "tried": "  CGLM_INLINE void glm_ivec3_sub(ivec3 a, ivec3 b, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:26",
+   "tried": "  CGLM_INLINE void glm_ivec2_subs(ivec3 v, int s, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:26",
+   "tried": "  CGLM_INLINE void glm_ivec3_subs(ivec2 v, int s, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:26",
+   "tried": "  CGLM_INLINE void glm_ivec3_subs(ivec3 v, int s, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:27",
+   "tried": "  CGLM_INLINE void glm_ivec2_mul(ivec3 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:27",
+   "tried": "  CGLM_INLINE void glm_ivec3_mul(ivec2 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:27",
+   "tried": "  CGLM_INLINE void glm_ivec3_mul(ivec3 a, ivec2 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:27",
+   "tried": "  CGLM_INLINE void glm_ivec3_mul(ivec3 a, ivec3 b, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:28",
+   "tried": "  CGLM_INLINE void glm_ivec2_scale(ivec3 v, int s, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:28",
+   "tried": "  CGLM_INLINE void glm_ivec3_scale(ivec2 v, int s, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:28",
+   "tried": "  CGLM_INLINE void glm_ivec3_scale(ivec3 v, int s, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:29",
+   "tried": "  CGLM_INLINE void glm_ivec2_div(ivec3 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:29",
+   "tried": "  CGLM_INLINE void glm_ivec3_div(ivec2 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:29",
+   "tried": "  CGLM_INLINE void glm_ivec3_div(ivec3 a, ivec2 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:29",
+   "tried": "  CGLM_INLINE void glm_ivec3_div(ivec3 a, ivec3 b, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:30",
+   "tried": "  CGLM_INLINE void glm_ivec2_divs(ivec3 v, int s, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:30",
+   "tried": "  CGLM_INLINE void glm_ivec3_divs(ivec2 v, int s, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:30",
+   "tried": "  CGLM_INLINE void glm_ivec3_divs(ivec3 v, int s, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:31",
+   "tried": "  CGLM_INLINE void glm_ivec2_mod(ivec3 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:31",
+   "tried": "  CGLM_INLINE void glm_ivec3_mod(ivec2 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:31",
+   "tried": "  CGLM_INLINE void glm_ivec3_mod(ivec3 a, ivec2 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:31",
+   "tried": "  CGLM_INLINE void glm_ivec3_mod(ivec3 a, ivec3 b, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:32",
+   "tried": "  CGLM_INLINE void glm_ivec2_addadd(ivec3 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:32",
+   "tried": "  CGLM_INLINE void glm_ivec3_addadd(ivec2 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:32",
+   "tried": "  CGLM_INLINE void glm_ivec3_addadd(ivec3 a, ivec2 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:32",
+   "tried": "  CGLM_INLINE void glm_ivec3_addadd(ivec3 a, ivec3 b, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:33",
+   "tried": "  CGLM_INLINE void glm_ivec2_addadds(ivec3 a, int s, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:33",
+   "tried": "  CGLM_INLINE void glm_ivec3_addadds(ivec2 a, int s, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:33",
+   "tried": "  CGLM_INLINE void glm_ivec3_addadds(ivec3 a, int s, ivec2 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:34",
+   "tried": "  CGLM_INLINE void glm_ivec2_subadd(ivec3 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  },
+  {
+   "at": "include/cglm/ivec3.h:34",
+   "tried": "  CGLM_INLINE void glm_ivec3_subadd(ivec2 a, ivec3 b, ivec3 dest)",
+   "why": "4 test(s) failed, first: glm_ivec3_dot"
+  }
+ ]
+}

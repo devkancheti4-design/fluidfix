@@ -1,0 +1,5 @@
+  build: cmake --build build -j4
+  test:  ./build/tests
+[17:29:03] REFUSED: nothing in the failure pointed at a file — no traceback frame, no discriminating literal, no taught signal narrow enough to localise. The ranking had only circumstantial evidence, so a bigger budget searches the same files in the same order. Files searched: include/cglm/vec2.h, src/vec2.c. What helps, in order: name the file yourself (--file <path>); make the failing assertion carry a value that occurs in few files; or teach a narrower signal for this class. 64 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: --budget exhausted (300s) with 2 candidate file(s) in hand — what it did not try is unknown. Raise --budget and re-run (engine law: CAPPED -> RAISE_BUDGET)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/.fluidfix/last_refusal.json

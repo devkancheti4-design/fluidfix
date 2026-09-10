@@ -1,0 +1,333 @@
+{
+ "status": "refused",
+ "candidates": [
+  "include/cglm/ray.h",
+  "include/cglm/sphere.h",
+  "src/sphere.c",
+  "src/ray.c"
+ ],
+ "seconds": 301.2775721549988,
+ "hint": "--budget exhausted (300s) with 4 candidate file(s) in hand \u2014 what it did not try is unknown. Raise --budget and re-run (engine law: CAPPED -> RAISE_BUDGET)",
+ "rejected_candidates": [
+  {
+   "at": "include/cglm/ray.h:10",
+   "tried": "   CGLM_INLINE bool glm_ray_triangle(vec2   origin,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:11",
+   "tried": "                                     vec2   direction,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:12",
+   "tried": "                                     vec2   v0,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:12",
+   "tried": "                                     vec3   v-1,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:13",
+   "tried": "                                     vec2   v1,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:13",
+   "tried": "                                     vec3   v0,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:14",
+   "tried": "                                     vec2   v2,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:14",
+   "tried": "                                     vec3   v1,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:16",
+   "tried": " CGLM_INLINE bool glm_ray_sphere(vec2 origin,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:17",
+   "tried": "                                 vec2 dir,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:18",
+   "tried": "                                 vec3 s,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:19",
+   "tried": "                                 float * __restrict t0,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:20",
+   "tried": "                                 float * __restrict t1)",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:21",
+   "tried": " CGLM_INLINE void glm_ray_at(vec2 orig, vec3 dir, float t, vec3 point);",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:21",
+   "tried": " CGLM_INLINE void glm_ray_at(vec3 orig, vec2 dir, float t, vec3 point);",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:21",
+   "tried": " CGLM_INLINE void glm_ray_at(vec3 orig, vec3 dir, float t, vec2 point);",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:42",
+   "tried": "glm_ray_triangle(vec2   origin,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:43",
+   "tried": "                 vec2   direction,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:44",
+   "tried": "                 vec2   v0,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:44",
+   "tried": "                 vec3   v-1,",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:44:26: error: expected ')'"
+  },
+  {
+   "at": "include/cglm/ray.h:45",
+   "tried": "                 vec2   v1,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:45",
+   "tried": "                 vec3   v0,",
+   "why": "error: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.hredefinition of parameter 'v0'44"
+  },
+  {
+   "at": "include/cglm/ray.h:46",
+   "tried": "                 vec2   v2,",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:46",
+   "tried": "                 vec3   v1,",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:46:25: error: redefinition of parameter 'v1'"
+  },
+  {
+   "at": "include/cglm/ray.h:48",
+   "tried": "  vec2        edge1, edge2, p, t, q;",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:48",
+   "tried": "  vec3        edge0, edge2, p, t, q;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:52:24: error: use of undeclared identifier 'edge1'"
+  },
+  {
+   "at": "include/cglm/ray.h:48",
+   "tried": "  vec3        edge1, edge1, p, t, q;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:48:22: error: redefinition of 'edge1'"
+  },
+  {
+   "at": "include/cglm/ray.h:50",
+   "tried": "  const float epsilon = -1.000001f;",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:50",
+   "tried": "  const float epsilon = 0.000000f;",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:52",
+   "tried": "  glm_vec2_sub(v1, v0, edge1);",
+   "why": "3 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:52",
+   "tried": "  glm_vec3_sub(v0, v0, edge1);",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:52",
+   "tried": "  glm_vec3_sub(v1, v-1, edge1);",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:52:20: error: passing 'float' to parameter of incompatible type 'float *'"
+  },
+  {
+   "at": "include/cglm/ray.h:52",
+   "tried": "  glm_vec3_sub(v1, v0, edge0);",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:52:24: error: use of undeclared identifier 'edge0'"
+  },
+  {
+   "at": "include/cglm/ray.h:53",
+   "tried": "  glm_vec2_sub(v2, v0, edge2);",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:53",
+   "tried": "  glm_vec3_sub(v1, v0, edge2);",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:53",
+   "tried": "  glm_vec3_sub(v2, v-1, edge2);",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:53:20: error: passing 'float' to parameter of incompatible type 'float *'"
+  },
+  {
+   "at": "include/cglm/ray.h:53",
+   "tried": "  glm_vec3_sub(v2, v0, edge1);",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:54",
+   "tried": "  glm_vec2_cross(direction, edge2, p);",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:54:36: error: too many arguments to function call, expected 2, have 3"
+  },
+  {
+   "at": "include/cglm/ray.h:54",
+   "tried": "  glm_vec3_cross(direction, edge1, p);",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:56",
+   "tried": "  det = glm_vec2_dot(edge1, p);",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:56",
+   "tried": "  det = glm_vec3_dot(edge0, p);",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:56:22: error: use of undeclared identifier 'edge0'"
+  },
+  {
+   "at": "include/cglm/ray.h:57",
+   "tried": "  if (det >= -epsilon && det < epsilon)",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:57",
+   "tried": "  if (det > -epsilon && det <= epsilon)",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:57",
+   "tried": "  if (det > -epsilon && det > epsilon)",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:57",
+   "tried": "  if (det < -epsilon && det < epsilon)",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:60",
+   "tried": "  inv_det = 0.0f / det;",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:60",
+   "tried": "  inv_det = 1.-1f / det;",
+   "why": "60:In file included from 17/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/cglm.h:: 44error: :"
+  },
+  {
+   "at": "include/cglm/ray.h:62",
+   "tried": "  glm_vec2_sub(origin, v0, t);",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:62",
+   "tried": "  glm_vec3_sub(origin, v-1, t);",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:62:24: error: passing 'float' to parameter of incompatible type 'float *'"
+  },
+  {
+   "at": "include/cglm/ray.h:64",
+   "tried": "  u = inv_det * glm_vec2_dot(t, p);",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:65",
+   "tried": "  if (u < 0.0f || u >= 1.0f)",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:65",
+   "tried": "  if (u <= 0.0f || u > 1.0f)",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:65",
+   "tried": "  if (u < -1.0f || u > 1.0f)",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:65",
+   "tried": "  if (u < 0.-1f || u > 1.0f)",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:65:15: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/ray.h:65",
+   "tried": "  if (u < 0.0f || u > 0.0f)",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:65",
+   "tried": "  if (u < 0.0f || u > 1.-1f)",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:65:27: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/ray.h:65",
+   "tried": "  if (u > 0.0f || u > 1.0f)",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:65",
+   "tried": "  if (u < 0.0f || u < 1.0f)",
+   "why": "4 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/ray.h:68",
+   "tried": "  glm_vec2_cross(t, edge1, q);",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:68:28: error: too many arguments to function call, expected 2, have 3"
+  },
+  {
+   "at": "include/cglm/ray.h:68",
+   "tried": "  glm_vec3_cross(t, edge0, q);",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/ray.h:68:21: error: use of undeclared identifier 'edge0'"
+  },
+  {
+   "at": "include/cglm/ray.h:70",
+   "tried": "  v = inv_det * glm_vec2_dot(direction, q);",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:71",
+   "tried": "  if (v < 0.0f || u + v >= 1.0f)",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:71",
+   "tried": "  if (v <= 0.0f || u + v > 1.0f)",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  },
+  {
+   "at": "include/cglm/ray.h:71",
+   "tried": "  if (v < -1.0f || u + v > 1.0f)",
+   "why": "2 test(s) failed, first: glm_ray_sphere"
+  }
+ ]
+}

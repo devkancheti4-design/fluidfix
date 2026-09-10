@@ -1,0 +1,339 @@
+{
+ "status": "refused",
+ "candidates": [
+  "include/cglm/vec3.h",
+  "src/vec3.c",
+  "include/cglm/quat.h",
+  "src/quat.c",
+  "include/cglm/handed/euler_to_quat_lh.h"
+ ],
+ "seconds": 904.9550268650055,
+ "hint": "a candidate passes, but the search was cut short before it could be shown unique \u2014 shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)",
+ "rejected_candidates": [
+  {
+   "at": "include/cglm/vec3.h:100",
+   "tried": "   glm_vec3_step_uni  -->=  use glm_vec3_steps",
+   "why": "22 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:145",
+   "tried": "  dest[-1] = v4[0];",
+   "why": "36 test(s) failed, first: glm_mat4_mulv3"
+  },
+  {
+   "at": "include/cglm/vec3.h:145",
+   "tried": "  dest[0] = v4[-1];",
+   "why": "32 test(s) failed, first: glm_mat4_mulv3"
+  },
+  {
+   "at": "include/cglm/vec3.h:146",
+   "tried": "  dest[0] = v4[1];",
+   "why": "36 test(s) failed, first: glm_mat4_mulv3"
+  },
+  {
+   "at": "include/cglm/vec3.h:146",
+   "tried": "  dest[1] = v4[0];",
+   "why": "36 test(s) failed, first: glm_mat4_mulv3"
+  },
+  {
+   "at": "include/cglm/vec3.h:147",
+   "tried": "  dest[1] = v4[2];",
+   "why": "36 test(s) failed, first: glm_mat4_mulv3"
+  },
+  {
+   "at": "include/cglm/vec3.h:147",
+   "tried": "  dest[2] = v4[1];",
+   "why": "36 test(s) failed, first: glm_mat4_mulv3"
+  },
+  {
+   "at": "include/cglm/vec3.h:159",
+   "tried": "  dest[-1] = a[0];",
+   "why": "90 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:159",
+   "tried": "  dest[0] = a[-1];",
+   "why": "3 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:160",
+   "tried": "  dest[0] = a[1];",
+   "why": "94 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:160",
+   "tried": "  dest[1] = a[0];",
+   "why": "84 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:161",
+   "tried": "  dest[1] = a[2];",
+   "why": "90 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:161",
+   "tried": "  dest[2] = a[1];",
+   "why": "76 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:172",
+   "tried": "  v[-1] = v[1] = v[2] = 0.0f;",
+   "why": "32 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:172",
+   "tried": "  v[0] = v[0] = v[2] = 0.0f;",
+   "why": "32 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:172",
+   "tried": "  v[0] = v[1] = v[1] = 0.0f;",
+   "why": "30 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:172",
+   "tried": "  v[0] = v[1] = v[2] = -1.0f;",
+   "why": "32 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:172",
+   "tried": "  v[0] = v[1] = v[2] = 0.-1f;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec3.h:172:28: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/vec3.h:183",
+   "tried": "  v[-1] = v[1] = v[2] = 1.0f;",
+   "why": "24 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:183",
+   "tried": "  v[0] = v[0] = v[2] = 1.0f;",
+   "why": "24 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:183",
+   "tried": "  v[0] = v[1] = v[1] = 1.0f;",
+   "why": "24 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:183",
+   "tried": "  v[0] = v[1] = v[2] = 0.0f;",
+   "why": "24 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:183",
+   "tried": "  v[0] = v[1] = v[2] = 1.-1f;",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec3.h:183:28: error: invalid digit 'f' in decimal constant"
+  },
+  {
+   "at": "include/cglm/vec3.h:197",
+   "tried": "  return a[-1] * b[0] + a[1] * b[1] + a[2] * b[2];",
+   "why": "143 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:197",
+   "tried": "  return a[0] * b[-1] + a[1] * b[1] + a[2] * b[2];",
+   "why": "143 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:197",
+   "tried": "  return a[0] * b[0] + a[0] * b[1] + a[2] * b[2];",
+   "why": "138 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:197",
+   "tried": "  return a[0] * b[0] + a[1] * b[0] + a[2] * b[2];",
+   "why": "134 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:197",
+   "tried": "  return a[0] * b[0] + a[1] * b[1] + a[1] * b[2];",
+   "why": "124 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:197",
+   "tried": "  return a[0] * b[0] + a[1] * b[1] + a[2] * b[1];",
+   "why": "122 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:197",
+   "tried": "  return b[0] + a[1] * b[1] + a[2] * b[2]; * a[0]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec3.h:197:44: error: indirection requires pointer operand ('float' invalid)"
+  },
+  {
+   "at": "include/cglm/vec3.h:197",
+   "tried": "  return a[0] * b[0] - a[1] * b[1] + a[2] * b[2];",
+   "why": "144 test(s) failed, first: glm_mul"
+  },
+  {
+   "at": "include/cglm/vec3.h:197",
+   "tried": "  return a[0] * b[0] + a[1] * b[1] - a[2] * b[2];",
+   "why": "139 test(s) failed, first: glm_inv_tr"
+  },
+  {
+   "at": "include/cglm/vec3.h:284",
+   "tried": "  dest[-1] = a[0] - b[0];",
+   "why": "24 test(s) failed, first: glm_camera_lookat"
+  },
+  {
+   "at": "include/cglm/vec3.h:284",
+   "tried": "  dest[0] = a[-1] - b[0];",
+   "why": "19 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:284",
+   "tried": "  dest[0] = a[0] - b[-1];",
+   "why": "19 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:284",
+   "tried": "  dest[0] = b[0]; - a[0]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec3.h:284:25: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/vec3.h:285",
+   "tried": "  dest[0] = a[1] + b[1];",
+   "why": "24 test(s) failed, first: glm_camera_lookat"
+  },
+  {
+   "at": "include/cglm/vec3.h:285",
+   "tried": "  dest[1] = a[0] + b[1];",
+   "why": "22 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:285",
+   "tried": "  dest[1] = a[1] + b[0];",
+   "why": "22 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:285",
+   "tried": "  dest[1] = a[1] - b[1];",
+   "why": "22 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:286",
+   "tried": "  dest[1] = a[2] + b[2];",
+   "why": "24 test(s) failed, first: glm_camera_lookat"
+  },
+  {
+   "at": "include/cglm/vec3.h:286",
+   "tried": "  dest[2] = a[1] + b[2];",
+   "why": "22 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:286",
+   "tried": "  dest[2] = a[2] + b[1];",
+   "why": "22 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:286",
+   "tried": "  dest[2] = a[2] - b[2];",
+   "why": "22 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:299",
+   "tried": "  dest[-1] = v[0] + s;",
+   "why": "26 test(s) failed, first: glm_perlin_vec3"
+  },
+  {
+   "at": "include/cglm/vec3.h:299",
+   "tried": "  dest[0] = v[-1] + s;",
+   "why": "25 test(s) failed, first: glmc_perlin_vec3"
+  },
+  {
+   "at": "include/cglm/vec3.h:299",
+   "tried": "  dest[0] = v[0] - s;",
+   "why": "26 test(s) failed, first: glm_perlin_vec3"
+  },
+  {
+   "at": "include/cglm/vec3.h:300",
+   "tried": "  dest[0] = v[1] + s;",
+   "why": "26 test(s) failed, first: glm_perlin_vec3"
+  },
+  {
+   "at": "include/cglm/vec3.h:300",
+   "tried": "  dest[1] = v[0] + s;",
+   "why": "26 test(s) failed, first: glm_perlin_vec3"
+  },
+  {
+   "at": "include/cglm/vec3.h:300",
+   "tried": "  dest[1] = v[1] - s;",
+   "why": "26 test(s) failed, first: glm_perlin_vec3"
+  },
+  {
+   "at": "include/cglm/vec3.h:301",
+   "tried": "  dest[1] = v[2] + s;",
+   "why": "26 test(s) failed, first: glm_perlin_vec3"
+  },
+  {
+   "at": "include/cglm/vec3.h:301",
+   "tried": "  dest[2] = v[1] + s;",
+   "why": "26 test(s) failed, first: glm_perlin_vec3"
+  },
+  {
+   "at": "include/cglm/vec3.h:301",
+   "tried": "  dest[2] = v[2] - s;",
+   "why": "26 test(s) failed, first: glm_perlin_vec3"
+  },
+  {
+   "at": "include/cglm/vec3.h:314",
+   "tried": "  dest[-1] = a[0] - b[0];",
+   "why": "40 test(s) failed, first: glm_camera_lookat"
+  },
+  {
+   "at": "include/cglm/vec3.h:314",
+   "tried": "  dest[0] = a[-1] - b[0];",
+   "why": "34 test(s) failed, first: glm_unprojecti"
+  },
+  {
+   "at": "include/cglm/vec3.h:314",
+   "tried": "  dest[0] = a[0] - b[-1];",
+   "why": "35 test(s) failed, first: glm_unprojecti"
+  },
+  {
+   "at": "include/cglm/vec3.h:314",
+   "tried": "  dest[0] = a[0] + b[0];",
+   "why": "32 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/vec3.h:314",
+   "tried": "  dest[0] = b[0]; - a[0]",
+   "why": "/Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec3.h:314:25: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/vec3.h:315",
+   "tried": "  dest[0] = a[1] - b[1];",
+   "why": "40 test(s) failed, first: glm_camera_lookat"
+  },
+  {
+   "at": "include/cglm/vec3.h:315",
+   "tried": "  dest[1] = a[0] - b[1];",
+   "why": "32 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/vec3.h:315",
+   "tried": "  dest[1] = a[1] - b[0];",
+   "why": "32 test(s) failed, first: glm_ray_triangle"
+  },
+  {
+   "at": "include/cglm/vec3.h:315",
+   "tried": "  dest[1] = a[1] + b[1];",
+   "why": "28 test(s) failed, first: glm_ray_at"
+  },
+  {
+   "at": "include/cglm/vec3.h:315",
+   "tried": "  dest[1] = b[1]; - a[1]",
+   "why": "In file included from /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/src/../include/cglm/vec3.h:315:25: error: expected ';' after expression"
+  },
+  {
+   "at": "include/cglm/vec3.h:316",
+   "tried": "  dest[1] = a[2] - b[2];",
+   "why": "40 test(s) failed, first: glm_camera_lookat"
+  }
+ ],
+ "ruling": "RAISE_BUDGET",
+ "greens": [
+  "  dest[0] = a[0] + b[0];"
+ ],
+ "capped": true
+}

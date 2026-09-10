@@ -1,0 +1,30 @@
+master + stale-build fix · master 7233933 · --budget 300 · start 2026-09-10 20:04:18
+== D1 exit=2 wall=309s
+[20:09:27] REFUSED: fault is outside the taught vocabulary (candidate files tried: include/cglm/vec3.h, src/vec3.c, include/cglm/quat.h, src/quat.c, include/cglm/handed/euler_to_quat_lh.h). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 52 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: a candidate passes, but the search was cut short before it could be shown unique — shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)
+-- git diff --numstat after run:
+1	1	include/cglm/vec3.h
+-- files byte-identical to pristine after restore: 5
+== D2 exit=2 wall=303s
+[20:14:31] REFUSED: fault is outside the taught vocabulary (candidate files tried: include/cglm/ivec3.h, src/ivec3.c). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 58 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: a candidate passes, but the search was cut short before it could be shown unique — shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)
+-- git diff --numstat after run:
+1	1	include/cglm/ivec3.h
+-- files byte-identical to pristine after restore: 5
+== D3 exit=0 wall=237s
+[20:18:28] include/cglm/ray.h: repaired line 140 in 56 suite runs (229.7s):
+-- git diff --numstat after run:
+-- files byte-identical to pristine after restore: 5
+== D4 exit=2 wall=311s
+[20:23:39] REFUSED: nothing in the failure pointed at a file — no traceback frame, no discriminating literal, no taught signal narrow enough to localise. The ranking had only circumstantial evidence, so a bigger budget searches the same files in the same order. Files searched: include/cglm/ivec2.h, src/ivec2.c. What helps, in order: name the file yourself (--file <path>); make the failing assertion carry a value that occurs in few files; or teach a narrower signal for this class. 62 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: --budget exhausted (300s) with 2 candidate file(s) in hand — what it did not try is unknown. Raise --budget and re-run (engine law: CAPPED -> RAISE_BUDGET)
+-- git diff --numstat after run:
+1	1	include/cglm/ivec2.h
+-- files byte-identical to pristine after restore: 5
+== D5 exit=2 wall=310s
+[20:28:49] REFUSED: nothing in the failure pointed at a file — no traceback frame, no discriminating literal, no taught signal narrow enough to localise. The ranking had only circumstantial evidence, so a bigger budget searches the same files in the same order. Files searched: include/cglm/vec2.h, src/vec2.c. What helps, in order: name the file yourself (--file <path>); make the failing assertion carry a value that occurs in few files; or teach a narrower signal for this class. 64 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: --budget exhausted (300s) with 2 candidate file(s) in hand — what it did not try is unknown. Raise --budget and re-run (engine law: CAPPED -> RAISE_BUDGET)
+-- git diff --numstat after run:
+1	1	include/cglm/vec2.h
+-- files byte-identical to pristine after restore: 5
+end 2026-09-10 20:28:50

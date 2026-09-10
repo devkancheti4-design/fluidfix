@@ -1,0 +1,6 @@
+defect red: True | fails: ['BasicHashSetTest', 'TableTest']
+cycle 1: pristine judged GREEN | raw rc=0 tail=['======================================', 'All Box2D tests passed!', 'Test duration = 4.68 s'] (10s)
+cycle 2: pristine judged GREEN | raw rc=0 tail=['======================================', 'All Box2D tests passed!', 'Test duration = 4.65 s'] (11s)
+cycle 3: pristine judged GREEN | raw rc=0 tail=['======================================', 'All Box2D tests passed!', 'Test duration = 4.61 s'] (11s)
+cycle 4: pristine judged GREEN | raw rc=0 tail=['======================================', 'All Box2D tests passed!', 'Test duration = 4.65 s'] (12s)
+restored, pristine build rc: 0

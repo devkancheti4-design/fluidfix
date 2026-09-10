@@ -1,0 +1,5 @@
+  build: cmake --build build -j4
+  test:  ./build/tests
+[21:28:56] REFUSED: fault is outside the taught vocabulary (candidate files tried: include/cglm/ivec3.h, src/ivec3.c). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 64 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: a candidate passes, but the search was cut short before it could be shown unique — shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)
+  refusal report: /Users/kanchetidevieswar/neo/fluidfix/research/laws-2026-09-07/37-cglm-lane-log/cglm/.fluidfix/last_refusal.json

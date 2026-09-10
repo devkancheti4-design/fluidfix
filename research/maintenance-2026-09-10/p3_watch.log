@@ -1,0 +1,6 @@
+[17:07:45] suite green — nothing to do
+[17:07:49] suite green — nothing to do
+[17:07:57] ledgerkit/discounts.py: repaired line 13 in 7 suite runs (2.6s):
+  - if amount > 100:
+  + if amount < 100:
+  committed

@@ -1,0 +1,19 @@
+  include/cglm/vec3.h          pristine=54bc1204c9af3996 tree=54bc1204c9af3996 OK
+  include/cglm/ivec3.h         pristine=7118d37f4d0e8ede tree=7118d37f4d0e8ede OK
+  include/cglm/ray.h           pristine=4cd00f080d3db6dd tree=4cd00f080d3db6dd OK
+  include/cglm/ivec2.h         pristine=16e731d46635ebe5 tree=16e731d46635ebe5 OK
+  include/cglm/vec2.h          pristine=597e4d89770ecf1b tree=597e4d89770ecf1b OK
+== D1 exit=2 wall=307s
+[17:34:18] REFUSED: nothing in the failure pointed at a file — no traceback frame, no discriminating literal, no taught signal narrow enough to localise. The ranking had only circumstantial evidence, so a bigger budget searches the same files in the same order. Files searched: include/cglm/vec3.h, src/vec3.c, include/cglm/quat.h, src/quat.c, include/cglm/handed/euler_to_quat_lh.h. What helps, in order: name the file yourself (--file <path>); make the failing assertion carry a value that occurs in few files; or teach a narrower signal for this class. 64 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: --budget exhausted (300s) with 5 candidate file(s) in hand — what it did not try is unknown. Raise --budget and re-run (engine law: CAPPED -> RAISE_BUDGET)
+== D2 exit=2 wall=306s
+[17:39:24] REFUSED: fault is outside the taught vocabulary (candidate files tried: include/cglm/ivec3.h, src/ivec3.c). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 64 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: a candidate passes, but the search was cut short before it could be shown unique — shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)
+== D3 exit=0 wall=161s
+[17:42:05] include/cglm/ray.h: repaired line 140 in 56 suite runs (155.4s):
+== D4 exit=2 wall=302s
+[17:47:07] REFUSED: nothing in the failure pointed at a file — no traceback frame, no discriminating literal, no taught signal narrow enough to localise. The ranking had only circumstantial evidence, so a bigger budget searches the same files in the same order. Files searched: include/cglm/ivec2.h, src/ivec2.c. What helps, in order: name the file yourself (--file <path>); make the failing assertion carry a value that occurs in few files; or teach a narrower signal for this class. 64 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: --budget exhausted (300s) with 2 candidate file(s) in hand — what it did not try is unknown. Raise --budget and re-run (engine law: CAPPED -> RAISE_BUDGET)
+== D5 exit=2 wall=301s
+[17:52:08] REFUSED: nothing in the failure pointed at a file — no traceback frame, no discriminating literal, no taught signal narrow enough to localise. The ranking had only circumstantial evidence, so a bigger budget searches the same files in the same order. Files searched: include/cglm/ivec2.h, src/ivec2.c, include/cglm/vec2.h, src/vec2.c. What helps, in order: name the file yourself (--file <path>); make the failing assertion carry a value that occurs in few files; or teach a narrower signal for this class. 64 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: --budget exhausted (300s) with 4 candidate file(s) in hand — what it did not try is unknown. Raise --budget and re-run (engine law: CAPPED -> RAISE_BUDGET)

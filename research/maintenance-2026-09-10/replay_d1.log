@@ -1,0 +1,10 @@
+# replay_d1.py on ../laws-2026-09-07/44-author-successor-teaching/cglm, 2026-09-10 19:36, master 44346f7
+pristine x10: ['0 failed', '0 failed', '0 failed', '0 failed', '0 failed', '0 failed', '0 failed', '0 failed', '0 failed', '0 failed']
+defect red: True | 1131 tests ran, 1109 passed, 22 failed
+'  dest[-1] = a[0] - b[0];'      -> red: 22 test(s) failed, first: glm_ray_at  | runner: 1131 tests ran, 1109 passed, 22 failed  (6s)
+'  dest[0] = a[-1] - b[0];'      -> red: 19 test(s) failed, first: glm_ray_at  | runner: 1131 tests ran, 1112 passed, 19 failed  (8s)
+'  dest[0] = a[0] - b[-1];'      -> red: 19 test(s) failed, first: glm_ray_at  | runner: 1131 tests ran, 1112 passed, 19 failed  (8s)
+'  dest[0] = a[0] + b[0];'       -> GREEN  | runner: 1131 tests ran, 1131 passed, 0 failed  (8s)
+'  dest[0] = a[0] - b[0];'       -> red: 22 test(s) failed, first: glm_ray_at  | runner: 1131 tests ran, 1109 passed, 22 failed  (8s)
+'  dest[0] = a[0] + b[0];'       -> GREEN  | runner: 1131 tests ran, 1131 passed, 0 failed  (8s)
+# an earlier 20-run pristine count with the same binary: 0 failed in all 20 (30 of 30 total)

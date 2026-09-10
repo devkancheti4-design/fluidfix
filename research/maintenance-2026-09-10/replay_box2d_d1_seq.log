@@ -1,0 +1,9 @@
+defect red: True ['BasicHashSetTest', 'TableTest']
+table.c:21 b2HashSet set = { -1 };              -> red: /Users/kanchetidevieswar/neo/fluid  raw rc=1 ['  subtest failed: BasicHashSetTest', 'test failed: TableTest'] (0s)
+   mtimes table.c 1789054291.02 table.c.o missing libbox2d.a 1789054290.28 bin/test 1789054290.42
+table.c:24 if ( capacity >= 16 )                -> red: 2 test(s) failed, first: HashSetCa  raw rc=1 ['  subtest failed: HashSetCapacityTest', 'test failed: TableTest'] (2s)
+table.c:24 if ( capacity > 15 )                 -> red: 2 test(s) failed, first: HashSetCa  raw rc=1 ['  subtest failed: HashSetCapacityTest', 'test failed: TableTest'] (1s)
+table.c:24 if ( capacity < 16 )                 -> red: 2 test(s) failed, first: BasicHash  raw rc=1 ['  subtest failed: BasicHashSetTest', 'test failed: TableTest'] (1s)
+table.c:30 set.capacity = 16;                   -> GREEN                                    raw rc=0 ['All Box2D tests passed!', 'Test duration = 4.63 s'] (11s)
+table.c:33 set.count = -1;                      -> red: 2 test(s) failed, first: BasicHash  raw rc=1 ['  subtest failed: BasicHashSetTest', 'test failed: TableTest'] (1s)
+restored; pristine raw: (0, ['All Box2D tests passed!', 'Test duration = 4.78 s'])

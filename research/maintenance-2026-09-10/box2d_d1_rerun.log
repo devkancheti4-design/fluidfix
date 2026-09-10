@@ -1,0 +1,5 @@
+  build: cmake --build build -j4
+  test:  ./build/bin/test
+[21:05:05] src/table.c: repaired line 30 in 8 suite runs (17.8s):
+  - set.capacity = 17;
+  + set.capacity = 16;
