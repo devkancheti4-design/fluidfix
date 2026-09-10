@@ -429,3 +429,15 @@ def test_a_candidate_written_in_the_same_second_as_its_object_is_still_built(tmp
     ok, why = o.check()
     assert ok, why
     assert obj.read_text().strip() == "good"
+
+
+def test_the_singular_test_dir_is_a_harness_path_too():
+    """Box2D and cglm keep their runners under test/ (singular). The coverage
+    tier filters candidate files with _is_test_path; measured 2026-09-10 on
+    Box2D D4, test/main.c passed that filter and the guard spent budget on
+    candidates inside its own harness."""
+    from fluidfix.guard import _is_test_path
+    assert _is_test_path("test/main.c")
+    assert _is_test_path("test/test_world.c")
+    assert not _is_test_path("src/table.c")
+    assert not _is_test_path("src/testbed_shapes.c")

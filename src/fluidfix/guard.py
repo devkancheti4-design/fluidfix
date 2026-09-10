@@ -111,8 +111,12 @@ class GuardReport:
 def _is_test_path(rel: str) -> bool:
     parts = rel.replace("\\", "/").split("/")
     base = parts[-1]
+    # `test/` (singular) is the C convention — Box2D, cglm — and the coverage
+    # tier feeds this filter: measured 2026-09-10, Box2D's test/main.c was
+    # a candidate file and the guard spent budget editing its own harness.
     return (base.startswith("test_") or base.endswith("_test.py")
-            or "tests" in parts[:-1] or base == "conftest.py")
+            or "tests" in parts[:-1] or "test" in parts[:-1]
+            or base == "conftest.py")
 
 
 def find_candidate_files(oracle: Oracle, failing_output: str,
