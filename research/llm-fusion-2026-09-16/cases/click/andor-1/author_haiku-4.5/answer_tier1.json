@@ -1,0 +1,8 @@
+{
+ "example_before": "help_ = item.help and \"_\"",
+ "example_after": "help_ = item.help or \"\"",
+ "name": "zsh-help-always-underscore",
+ "description": "The help text for zsh completions is hardcoded to the underscore string instead of using the actual help value.",
+ "signal": "help_\\s*=\\s*item\\.help\\s+and\\s+[\"']_[\"']",
+ "applier": "def fix(line, o):\n    return re.sub(r'(help_\\s*=\\s*)item\\.help\\s+and\\s+[\"\\']_[\"\\']', r'\\1item.help or \"\"', line)"
+}

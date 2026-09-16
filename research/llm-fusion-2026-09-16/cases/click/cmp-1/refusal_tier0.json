@@ -1,0 +1,434 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/click/formatting.py",
+  "src/click/_utils.py",
+  "src/click/__init__.py",
+  "src/click/_textwrap.py",
+  "src/click/types.py",
+  "src/click/exceptions.py",
+  "src/click/globals.py",
+  "src/click/_compat.py"
+ ],
+ "seconds": 329.4522249698639,
+ "hint": "--budget exhausted (300s) during the first pass \u2014 raise --budget, tighten taught-class signals, or fix by hand",
+ "rejected_candidates": [],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "src/click/formatting.py": [
+   [
+    14,
+    "def measure_table(rows: cabc.Iterable[tuple[str, str]]) -> tuple[int, ...]:"
+   ],
+   [
+    14,
+    "def measure_table(rows: cabc.Iterable[tuple[str, str]]) -> tuple[int, ...]:"
+   ],
+   [
+    14,
+    "def measure_table(rows: cabc.Iterable[tuple[str, str]]) -> tuple[int, ...]:"
+   ],
+   [
+    14,
+    "def measure_table(rows: cabc.Iterable[tuple[str, str]]) -> tuple[int, ...]:"
+   ],
+   [
+    14,
+    "def measure_table(rows: cabc.Iterable[tuple[str, str]]) -> tuple[int, ...]:"
+   ],
+   [
+    69,
+    "        replace_whitespace=False,"
+   ],
+   [
+    69,
+    "        replace_whitespace=False,"
+   ],
+   [
+    69,
+    "        replace_whitespace=False,"
+   ],
+   [
+    69,
+    "        replace_whitespace=False,"
+   ],
+   [
+    69,
+    "        replace_whitespace=False,"
+   ],
+   [
+    78,
+    "    def _flush_par() -> None:"
+   ],
+   [
+    78,
+    "    def _flush_par() -> None:"
+   ],
+   [
+    78,
+    "    def _flush_par() -> None:"
+   ],
+   [
+    78,
+    "    def _flush_par() -> None:"
+   ],
+   [
+    78,
+    "    def _flush_par() -> None:"
+   ],
+   [
+    81,
+    "        if buf[0].strip() == \"\\b\":"
+   ],
+   [
+    81,
+    "        if buf[0].strip() == \"\\b\":"
+   ],
+   [
+    81,
+    "        if buf[0].strip() == \"\\b\":"
+   ],
+   [
+    81,
+    "        if buf[0].strip() == \"\\b\":"
+   ],
+   [
+    81,
+    "        if buf[0].strip() == \"\\b\":"
+   ],
+   [
+    84,
+    "            p.append((indent or 0, False, \" \".join(buf)))"
+   ],
+   [
+    84,
+    "            p.append((indent or 0, False, \" \".join(buf)))"
+   ],
+   [
+    84,
+    "            p.append((indent or 0, False, \" \".join(buf)))"
+   ],
+   [
+    84,
+    "            p.append((indent or 0, False, \" \".join(buf)))"
+   ],
+   [
+    84,
+    "            p.append((indent or 0, False, \" \".join(buf)))"
+   ],
+   [
+    95,
+    "                indent = orig_len - term_len(line)"
+   ],
+   [
+    95,
+    "                indent = orig_len - term_len(line)"
+   ],
+   [
+    95,
+    "                indent = orig_len - term_len(line)"
+   ],
+   [
+    95,
+    "                indent = orig_len - term_len(line)"
+   ],
+   [
+    95,
+    "                indent = orig_len - term_len(line)"
+   ],
+   [
+    101,
+    "        with wrapper.extra_indent(\" \" * indent):"
+   ],
+   [
+    101,
+    "        with wrapper.extra_indent(\" \" * indent):"
+   ],
+   [
+    101,
+    "        with wrapper.extra_indent(\" \" * indent):"
+   ],
+   [
+    101,
+    "        with wrapper.extra_indent(\" \" * indent):"
+   ],
+   [
+    101,
+    "        with wrapper.extra_indent(\" \" * indent):"
+   ],
+   [
+    135,
+    "            max_width = 80"
+   ],
+   [
+    135,
+    "            max_width = 80"
+   ],
+   [
+    135,
+    "            max_width = 80"
+   ],
+   [
+    135,
+    "            max_width = 80"
+   ],
+   [
+    135,
+    "            max_width = 80"
+   ],
+   [
+    143,
+    "        self.current_indent = 0"
+   ],
+   [
+    143,
+    "        self.current_indent = 0"
+   ],
+   [
+    143,
+    "        self.current_indent = 0"
+   ],
+   [
+    143,
+    "        self.current_indent = 0"
+   ],
+   [
+    143,
+    "        self.current_indent = 0"
+   ],
+   [
+    146,
+    "    def write(self, string: str) -> None:"
+   ],
+   [
+    146,
+    "    def write(self, string: str) -> None:"
+   ],
+   [
+    146,
+    "    def write(self, string: str) -> None:"
+   ],
+   [
+    146,
+    "    def write(self, string: str) -> None:"
+   ],
+   [
+    146,
+    "    def write(self, string: str) -> None:"
+   ],
+   [
+    150,
+    "    def indent(self) -> None:"
+   ],
+   [
+    150,
+    "    def indent(self) -> None:"
+   ],
+   [
+    150,
+    "    def indent(self) -> None:"
+   ],
+   [
+    150,
+    "    def indent(self) -> None:"
+   ],
+   [
+    150,
+    "    def indent(self) -> None:"
+   ],
+   [
+    154,
+    "    def dedent(self) -> None:"
+   ],
+   [
+    154,
+    "    def dedent(self) -> None:"
+   ],
+   [
+    154,
+    "    def dedent(self) -> None:"
+   ],
+   [
+    154,
+    "    def dedent(self) -> None:"
+   ],
+   [
+    154,
+    "    def dedent(self) -> None:"
+   ],
+   [
+    158,
+    "    def write_usage(self, prog: str, args: str = \"\", prefix: str | None = None) -> None:"
+   ],
+   [
+    158,
+    "    def write_usage(self, prog: str, args: str = \"\", prefix: str | None = None) -> None:"
+   ],
+   [
+    158,
+    "    def write_usage(self, prog: str, args: str = \"\", prefix: str | None = None) -> None:"
+   ],
+   [
+    158,
+    "    def write_usage(self, prog: str, args: str = \"\", prefix: str | None = None) -> None:"
+   ],
+   [
+    158,
+    "    def write_usage(self, prog: str, args: str = \"\", prefix: str | None = None) -> None:"
+   ],
+   [
+    204,
+    "    def write_heading(self, heading: str) -> None:"
+   ],
+   [
+    204,
+    "    def write_heading(self, heading: str) -> None:"
+   ],
+   [
+    204,
+    "    def write_heading(self, heading: str) -> None:"
+   ],
+   [
+    204,
+    "    def write_heading(self, heading: str) -> None:"
+   ],
+   [
+    204,
+    "    def write_heading(self, heading: str) -> None:"
+   ],
+   [
+    208,
+    "    def write_paragraph(self) -> None:"
+   ],
+   [
+    208,
+    "    def write_paragraph(self) -> None:"
+   ],
+   [
+    208,
+    "    def write_paragraph(self) -> None:"
+   ],
+   [
+    208,
+    "    def write_paragraph(self) -> None:"
+   ],
+   [
+    208,
+    "    def write_paragraph(self) -> None:"
+   ],
+   [
+    213,
+    "    def write_text(self, text: str) -> None:"
+   ],
+   [
+    213,
+    "    def write_text(self, text: str) -> None:"
+   ],
+   [
+    213,
+    "    def write_text(self, text: str) -> None:"
+   ],
+   [
+    213,
+    "    def write_text(self, text: str) -> None:"
+   ],
+   [
+    213,
+    "    def write_text(self, text: str) -> None:"
+   ]
+  ],
+  "src/click/_utils.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import enum"
+   ],
+   [
+    4,
+    "import typing as t"
+   ],
+   [
+    7,
+    "class Sentinel(enum.Enum):"
+   ],
+   [
+    15,
+    "    UNSET = object()"
+   ],
+   [
+    16,
+    "    FLAG_NEEDS_VALUE = object()"
+   ],
+   [
+    18,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    21,
+    "    def __copy__(self) -> Sentinel:"
+   ],
+   [
+    24,
+    "    def __deepcopy__(self, memo: dict[int, t.Any]) -> Sentinel:"
+   ],
+   [
+    27,
+    "    def __reduce_ex__(self, protocol: object) -> tuple[t.Any, ...]:"
+   ],
+   [
+    31,
+    "UNSET: t.Literal[Sentinel.UNSET] = Sentinel.UNSET"
+   ],
+   [
+    32,
+    "\"\"\"Sentinel used to indicate that a value is not set.\"\"\""
+   ],
+   [
+    34,
+    "FLAG_NEEDS_VALUE: t.Literal[Sentinel.FLAG_NEEDS_VALUE] = Sentinel.FLAG_NEEDS_VALUE"
+   ],
+   [
+    35,
+    "\"\"\"Sentinel used to indicate an option was passed as a flag without a"
+   ],
+   [
+    36,
+    "value but is not a flag option."
+   ],
+   [
+    37,
+    ""
+   ],
+   [
+    38,
+    "``Option.consume_value`` uses this to prompt or use the ``flag_value``."
+   ],
+   [
+    39,
+    "\"\"\""
+   ],
+   [
+    41,
+    "T_UNSET: t.TypeAlias = t.Literal[Sentinel.UNSET]"
+   ],
+   [
+    42,
+    "\"\"\"Type hint for the :data:`UNSET` sentinel value.\"\"\""
+   ],
+   [
+    44,
+    "T_FLAG_NEEDS_VALUE: t.TypeAlias = t.Literal[Sentinel.FLAG_NEEDS_VALUE]"
+   ],
+   [
+    45,
+    "\"\"\"Type hint for the :data:`FLAG_NEEDS_VALUE` sentinel value.\"\"\""
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_formatting.py::test_help_formatter_write_text - AssertionEr..."
+ ]
+}

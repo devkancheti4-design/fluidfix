@@ -1,0 +1,56 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 304.2,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/lenm1-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "fable-5.1",
+   "tokens": {
+    "input": 2104,
+    "output": 116,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "fable-5.1",
+    "approx": true
+   },
+   "valid": false,
+   "why": "signal matches no line in the suspect file",
+   "rule": {
+    "name": "last-index-off-by-one",
+    "signal": "\\b(last_index|last|end_index|last_pos)\\s*=\\s*len\\([\\w.]+\\)\\s*$",
+    "example_before": "last_index = len(words)",
+    "example_after": "last_index = len(words) - 1"
+   }
+  },
+  {
+   "tier": 2,
+   "model": "fable-5.1",
+   "tokens": {
+    "input": 1955,
+    "output": 68,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "fable-5.1",
+    "approx": true
+   },
+   "proposals": 0,
+   "line": "",
+   "replacements": []
+  }
+ ],
+ "tokens": {
+  "input": 4059,
+  "output": 184,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 4243
+ },
+ "outcome": "refused-after-tier2"
+}

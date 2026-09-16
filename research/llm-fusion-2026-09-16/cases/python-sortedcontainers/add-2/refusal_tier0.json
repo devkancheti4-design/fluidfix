@@ -1,0 +1,978 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/sortedcontainers/sortedlist.py"
+ ],
+ "seconds": 203.2876491546631,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "rejected_candidates": [
+  {
+   "at": "src/sortedcontainers/sortedlist.py:719",
+   "tried": "                if start == -1 and stop == self._len:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:723",
+   "tried": "                    if stop <= self._len:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:723",
+   "tried": "                    if stop > self._len:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:87",
+   "tried": "    DEFAULT_LOAD_FACTOR = 999",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:108",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:185",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:215",
+   "tried": "                pos -= 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:215",
+   "tried": "                pos += 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) >= (_load << 1):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load <=< 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 241)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load <<= 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 241)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load << 0):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) < (_load << 1):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:249",
+   "tried": "            _lists.insert(pos, half)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:249",
+   "tried": "            _lists.insert(pos - 1, half)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos, half[-1])",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos + 1, half[])",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 250)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos - 1, half[-1])",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:257",
+   "tried": "                    _index[child] += 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:257",
+   "tried": "                    _index[child] -= 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:259",
+   "tried": "                _index[-1] += 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:259",
+   "tried": "                _index[0] += 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:259",
+   "tried": "                _index[0] -= 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:292",
+   "tried": "            values[pos : (pos + _load)] for pos in range(-1, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:292",
+   "tried": "            values[pos : (pos - _load)] for pos in range(0, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:318",
+   "tried": "            return True",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:323",
+   "tried": "            return True",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:425",
+   "tried": "        if len_lists_pos >= (self._load >> 1):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:425",
+   "tried": "        if len_lists_pos > (self._load >=> 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 425)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:425",
+   "tried": "        if len_lists_pos > (self._load >>= 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 425)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:425",
+   "tried": "        if len_lists_pos > (self._load >> 0):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:425",
+   "tried": "        if len_lists_pos < (self._load >> 1):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:429",
+   "tried": "                child = self._offset - pos",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:431",
+   "tried": "                    _index[child] -= 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:431",
+   "tried": "                    _index[child] += 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:433",
+   "tried": "                _index[-1] -= 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:433",
+   "tried": "                _index[0] -= 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:433",
+   "tried": "                _index[0] += 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:434",
+   "tried": "        elif len(_lists) >= 1:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:434",
+   "tried": "        elif len(_lists) > 0:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:434",
+   "tried": "        elif len(_lists) < 1:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:438",
+   "tried": "            prev = pos",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:438",
+   "tried": "            prev = pos + 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:438",
+   "tried": "            prev = 1 - pos",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:448",
+   "tried": "            _maxes[pos] = _lists_pos[]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 448)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:524",
+   "tried": "            if not pos & 0:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = (pos - 1) >=> 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 529)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = (pos - 1) >>= 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 529)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = (pos) >> 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = (pos - 1) >> 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = (pos + 1) >> 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = 1) >> 1 - (pos",
+   "why": "does not compile: unmatched ')' (sortedlist.py, line 529)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:531",
+   "tried": "        return idx + total",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:531",
+   "tried": "        return total - idx",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:589",
+   "tried": "            last_len = len(self._lists[])",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 589)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:596",
+   "tried": "            if idx <= 0:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:596",
+   "tried": "            if idx < -1:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:596",
+   "tried": "            if idx > 0:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:601",
+   "tried": "        if idx <= len(self._lists[0]):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:601",
+   "tried": "        if idx < len(self._lists[-1]):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:601",
+   "tried": "        if idx > len(self._lists[0]):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:609",
+   "tried": "        pos = -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:610",
+   "tried": "        child = 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:616",
+   "tried": "            if idx <= index_child:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2511",
+   "tried": "                        child_sum = self._index[child] + self._index[child]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2511",
+   "tried": "                        child_sum = self._index[child] - self._index[child + 1]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2511",
+   "tried": "                        child_sum = self._index[child] + self._index[child - 1]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:87",
+   "tried": "    DEFAULT_LOAD_FACTOR = 999",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:588",
+   "tried": "        if idx <= 0:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:588",
+   "tried": "        if idx < -1:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:588",
+   "tried": "        if idx > 0:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:598",
+   "tried": "        elif idx > self._len:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:598",
+   "tried": "        elif idx <= self._len:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:601",
+   "tried": "        if idx <= len(self._lists[0]):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:601",
+   "tried": "        if idx < len(self._lists[-1]):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:601",
+   "tried": "        if idx > len(self._lists[0]):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:602",
+   "tried": "            return -1, idx",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:609",
+   "tried": "        pos = -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:610",
+   "tried": "        child = 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:613",
+   "tried": "        while child <= len_index:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:613",
+   "tried": "        while child > len_index:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:616",
+   "tried": "            if idx <= index_child:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:616",
+   "tried": "            if idx > index_child:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:619",
+   "tried": "                idx += index_child",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:620",
+   "tried": "                pos = child",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:620",
+   "tried": "                pos = child - 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:622",
+   "tried": "            child = (pos <=< 1) + 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 622)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:622",
+   "tried": "            child = (pos <<= 1) + 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 622)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:622",
+   "tried": "            child = (pos << 0) + 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:622",
+   "tried": "            child = (pos << 1)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:622",
+   "tried": "            child = (pos << 1) - 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - Failed: Ti..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:624",
+   "tried": "        return self._offset, idx) - (pos",
+   "why": "does not compile: unmatched ')' (sortedlist.py, line 624)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:624",
+   "tried": "        return (pos + self._offset, idx)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:664",
+   "tried": "        if len(row0) == 0:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:673",
+   "tried": "        if len(row0) & 0:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:674",
+   "tried": "            row1.append(row0[])",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 674)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:676",
+   "tried": "        if len(row1) == 0:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:681",
+   "tried": "        size = 1 ** (int(log(len(row1) - 1, 2)) + 1)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:681",
+   "tried": "        size = 2 ** (int(log(len(row1), 2)) + 1)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:681",
+   "tried": "        size = 2 ** (int(log(len(row1) - 1, 1)) + 1)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - ZeroDivisi..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:681",
+   "tried": "        size = 2 ** (int(log(len(row1) - 1, 2)))",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:681",
+   "tried": "        size = 2 ** (int(log(len(row1) - 1, 2)) - 1)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:681",
+   "tried": "        size = 2 ** (int(log(len(row1) + 1, 2)) + 1)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:681",
+   "tried": "        size = 1, 2)) + 1) - 2 ** (int(log(len(row1)",
+   "why": "does not compile: unmatched ')' (sortedlist.py, line 681)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:682",
+   "tried": "        row1.extend(repeat(-1, size - len(row1)))",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:682",
+   "tried": "        row1.extend(repeat(0, size + len(row1)))",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:685",
+   "tried": "        while len(tree[-1]) >= 1:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:685",
+   "tried": "        while len(tree[]) > 1:",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 685)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:685",
+   "tried": "        while len(tree[-1]) > 0:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:685",
+   "tried": "        while len(tree[-1]) < 1:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:686",
+   "tried": "            head = iter(tree[])",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 686)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:692",
+   "tried": "        self._offset = size * 1 - 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:692",
+   "tried": "        self._offset = size * 2",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:692",
+   "tried": "        self._offset = size * 2 + 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - AssertionE..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:692",
+   "tried": "        self._offset = 1 - size * 2",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:886",
+   "tried": "    def islice(self, start=None, stop=None, reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(False, True), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, False), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, True), reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1231",
+   "tried": "    def pop(self, index=):",
+   "why": "does not compile: expected default value expression (sortedlist.py, line 1231)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1477",
+   "tried": "        doc_str = \"\"\"Return true if and only if sorted list is {-1} `other`.",
+   "why": "ERROR tests/test_coverage_sortedkeylist_modulo.py - KeyError: '-1'"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <=> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==>= ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{0}__(other)`` <==> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==> ``sl {1} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` >==> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==< ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1486",
+   "tried": "        :return: true if sorted list is {-1} `other`",
+   "why": "ERROR tests/test_coverage_sortedkeylist_modulo.py - KeyError: '-1'"
+  }
+ ],
+ "rejected_not_listed": 11,
+ "executed_lines": {
+  "src/sortedcontainers/sortedlist.py": [
+   [
+    18,
+    "import sys"
+   ],
+   [
+    19,
+    "import traceback"
+   ],
+   [
+    20,
+    "from bisect import bisect_left, bisect_right, insort"
+   ],
+   [
+    21,
+    "from collections.abc import MutableSequence, Sequence"
+   ],
+   [
+    22,
+    "from functools import reduce"
+   ],
+   [
+    23,
+    "from itertools import chain, repeat, starmap"
+   ],
+   [
+    24,
+    "from math import log"
+   ],
+   [
+    25,
+    "from operator import add, eq, ge, gt, iadd, le, lt, ne"
+   ],
+   [
+    26,
+    "from reprlib import recursive_repr"
+   ],
+   [
+    27,
+    "from textwrap import dedent"
+   ],
+   [
+    30,
+    "class SortedList(MutableSequence):"
+   ],
+   [
+    87,
+    "    DEFAULT_LOAD_FACTOR = 1000"
+   ],
+   [
+    89,
+    "    def __init__(self, iterable=None, key=None):"
+   ],
+   [
+    118,
+    "    def __new__(cls, iterable=None, key=None):"
+   ],
+   [
+    147,
+    "    @property"
+   ],
+   [
+    148,
+    "    def key(self):  # pylint: disable=useless-return"
+   ],
+   [
+    156,
+    "    def _reset(self, load):"
+   ],
+   [
+    174,
+    "        values = reduce(iadd, self._lists, [])"
+   ],
+   [
+    175,
+    "        self._clear()"
+   ],
+   [
+    176,
+    "        self._load = load"
+   ],
+   [
+    177,
+    "        self._update(values)"
+   ],
+   [
+    179,
+    "    def clear(self):"
+   ],
+   [
+    191,
+    "    _clear = clear"
+   ],
+   [
+    193,
+    "    def add(self, value):"
+   ],
+   [
+    228,
+    "    def _expand(self, pos):"
+   ],
+   [
+    261,
+    "    def update(self, iterable):"
+   ],
+   [
+    298,
+    "    _update = update"
+   ],
+   [
+    300,
+    "    def __contains__(self, value):"
+   ],
+   [
+    330,
+    "    def discard(self, value):"
+   ],
+   [
+    362,
+    "    def remove(self, value):"
+   ],
+   [
+    400,
+    "    def _delete(self, pos, idx):"
+   ],
+   [
+    454,
+    "    def _loc(self, pos, idx):"
+   ],
+   [
+    533,
+    "    def _pos(self, idx):"
+   ],
+   [
+    588,
+    "        if idx < 0:"
+   ],
+   [
+    598,
+    "        elif idx >= self._len:"
+   ],
+   [
+    601,
+    "        if idx < len(self._lists[0]):"
+   ],
+   [
+    602,
+    "            return 0, idx"
+   ],
+   [
+    604,
+    "        _index = self._index"
+   ],
+   [
+    606,
+    "        if not _index:"
+   ],
+   [
+    607,
+    "            self._build_index()"
+   ],
+   [
+    609,
+    "        pos = 0"
+   ],
+   [
+    610,
+    "        child = 1"
+   ],
+   [
+    611,
+    "        len_index = len(_index)"
+   ],
+   [
+    613,
+    "        while child < len_index:"
+   ],
+   [
+    614,
+    "            index_child = _index[child]"
+   ],
+   [
+    616,
+    "            if idx < index_child:"
+   ],
+   [
+    617,
+    "                pos = child"
+   ],
+   [
+    619,
+    "                idx -= index_child"
+   ],
+   [
+    620,
+    "                pos = child + 1"
+   ],
+   [
+    622,
+    "            child = (pos << 1) + 1"
+   ],
+   [
+    624,
+    "        return (pos - self._offset, idx)"
+   ],
+   [
+    626,
+    "    def _build_index(self):"
+   ],
+   [
+    662,
+    "        row0 = list(map(len, self._lists))"
+   ],
+   [
+    664,
+    "        if len(row0) == 1:"
+   ],
+   [
+    669,
+    "        head = iter(row0)"
+   ],
+   [
+    670,
+    "        tail = iter(head)"
+   ],
+   [
+    671,
+    "        row1 = list(starmap(add, zip(head, tail)))"
+   ],
+   [
+    673,
+    "        if len(row0) & 1:"
+   ],
+   [
+    674,
+    "            row1.append(row0[-1])"
+   ],
+   [
+    676,
+    "        if len(row1) == 1:"
+   ],
+   [
+    681,
+    "        size = 2 ** (int(log(len(row1) - 1, 2)) + 1)"
+   ],
+   [
+    682,
+    "        row1.extend(repeat(0, size - len(row1)))"
+   ],
+   [
+    683,
+    "        tree = [row0, row1]"
+   ],
+   [
+    685,
+    "        while len(tree[-1]) > 1:"
+   ],
+   [
+    686,
+    "            head = iter(tree[-1])"
+   ],
+   [
+    687,
+    "            tail = iter(head)"
+   ],
+   [
+    688,
+    "            row = list(starmap(add, zip(head, tail)))"
+   ],
+   [
+    689,
+    "            tree.append(row)"
+   ],
+   [
+    691,
+    "        reduce(iadd, reversed(tree), self._index)"
+   ],
+   [
+    692,
+    "        self._offset = size * 2 - 1"
+   ],
+   [
+    694,
+    "    def __delitem__(self, index):"
+   ],
+   [
+    715,
+    "        if isinstance(index, slice):"
+   ],
+   [
+    742,
+    "            pos, idx = self._pos(index)"
+   ],
+   [
+    743,
+    "            self._delete(pos, idx)"
+   ],
+   [
+    745,
+    "    def __getitem__(self, index):"
+   ],
+   [
+    833,
+    "    _getitem = __getitem__"
+   ],
+   [
+    835,
+    "    def __setitem__(self, index, value):"
+   ],
+   [
+    847,
+    "    def __iter__(self):"
+   ],
+   [
+    858,
+    "    def __reversed__(self):"
+   ],
+   [
+    869,
+    "    def reverse(self):"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_delitem - IndexError..."
+ ]
+}

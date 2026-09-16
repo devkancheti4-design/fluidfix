@@ -1,0 +1,132 @@
+{
+ "case": "rich/andor-1",
+ "file": "rich/pretty.py",
+ "budget": 900,
+ "guards": 13,
+ "wall_s": 917.3,
+ "cpu_sum_s": 11811.3,
+ "greens": [],
+ "distinct_programs": 0,
+ "held": [],
+ "ruling": "REFUSE (every guard's reason attached)",
+ "verdict": "REFUSED",
+ "shards": {
+  "0": {
+   "exit": 2,
+   "seconds": 901.7,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 53
+  },
+  "1": {
+   "exit": 2,
+   "seconds": 904.6,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 78
+  },
+  "2": {
+   "exit": 2,
+   "seconds": 906.1,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 0
+  },
+  "3": {
+   "exit": 2,
+   "seconds": 905.9,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 9
+  },
+  "4": {
+   "exit": 2,
+   "seconds": 912.1,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 22
+  },
+  "5": {
+   "exit": 2,
+   "seconds": 911.8,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on ",
+   "rejected": 10
+  },
+  "6": {
+   "exit": 2,
+   "seconds": 911.7,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 3
+  },
+  "7": {
+   "exit": 2,
+   "seconds": 911.4,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 4
+  },
+  "8": {
+   "exit": 2,
+   "seconds": 911.1,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 0
+  },
+  "9": {
+   "exit": 2,
+   "seconds": 910.8,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 2
+  },
+  "10": {
+   "exit": 2,
+   "seconds": 906.7,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 24
+  },
+  "11": {
+   "exit": 2,
+   "seconds": 909.9,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 2
+  },
+  "12": {
+   "exit": 2,
+   "seconds": 907.5,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary ",
+   "rejected": 11
+  }
+ }
+}

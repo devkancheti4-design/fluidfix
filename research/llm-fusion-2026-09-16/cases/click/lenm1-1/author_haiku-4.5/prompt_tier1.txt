@@ -1,0 +1,135 @@
+You write ONE fault-class rule for fluidfix, a tool that repairs a regression when a
+test suite goes red. A rule has four parts and is judged only by the suite, so be precise, not clever.
+
+Return ONLY a JSON object with these keys:
+  "example_before": the defective line exactly as it appears (no indentation),
+  "example_after":  the same line fixed,
+  "name":           a short hyphenated slug,
+  "description":    one sentence stating what an observer SEES on such a line (a fact, never an instruction),
+  "signal":         a Python regex that matches lines that CAN exhibit this fault; anchor it on the class's own tokens,
+  "applier":        Python source of a function  def fix(line, o): ...  returning the corrected line (a str),
+                    a list of candidate strs, or [SpanEdit(start, end, text)] for several lines that must change together.
+                    `re` and `SpanEdit` are available. If the line is not this class, return line unchanged. Never raise.
+
+Rules: the fix must be derivable from the line plus what the repository already contains. Do not widen the
+signal beyond the class. Do not invent facts that are not in the packet. Preserve indentation: the applier
+receives the full line including leading spaces and must return lines with the same leading spaces.
+
+=== PACKET (JSON) ===
+{
+ "file": "src/click/termui.py",
+ "other_suspects": [
+  "src/click/_utils.py",
+  "src/click/__init__.py",
+  "src/click/types.py",
+  "src/click/utils.py"
+ ],
+ "sight": "### REFUSED  defect file: src/click/termui.py  (showing only the 67 lines the failing test executed; localisation mode: coverage)\n--- failing suite output (compressed) ---\n_____________ test_make_default_short_help[-equal length, no dot] ______________\n        assert len(expect) <= max_length\n>       assert out == expect\nE       AssertionError: assert '123 567...' == '123 567 90'\nE         \nE         - 123 567 90\nE         + 123 567...\ntests/test_utils/test_make_default_short_help.py:39: AssertionError\nFAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short_help[-equal length, no dot]\n--- executed defect-file lines ---\n   1| from __future__ import annotations\n  ...\n   3| import collections.abc as cabc\n   4| import inspect\n   5| import io\n   6| import itertools\n   7| import os\n   8| import re\n   9| import sys\n  10| import typing as t\n  11| from contextlib import AbstractContextManager\n  12| from contextlib import redirect_stdout\n  13| from gettext import gettext as _\n  ...\n  15| from . import _compat\n  16| from ._compat import isatty\n  17| from ._compat import strip_ansi\n  18| from .exceptions import Abort\n  19| from .exceptions import UsageError\n  20| from .globals import resolve_color_default\n  21| from .types import Choice\n  22| from .types import convert_type\n  23| from .types import ParamType\n  24| from .utils import _LazyFile\n  25| from .utils import echo\n  ...\n  30| V = t.TypeVar(\"V\")\n  ...\n  34| visible_prompt_func: t.Callable[[str], str] = input\n  ...\n  36| _ansi_colors = {\n  37|     \"black\": 30,\n  38|     \"red\": 31,\n  39|     \"green\": 32,\n  40|     \"yellow\": 33,\n  41|     \"blue\": 34,\n  42|     \"magenta\": 35,\n  43|     \"cyan\": 36,\n  44|     \"white\": 37,\n  45|     \"reset\": 39,\n  46|     \"bright_black\": 90,\n  47|     \"bright_red\": 91,\n  48|     \"bright_green\": 92,\n  49|     \"bright_yellow\": 93,\n  50|     \"bright_blue\": 94,\n  51|     \"bright_magenta\": 95,\n  52|     \"bright_cyan\": 96,\n  53|     \"bright_white\": 97,\n  54| }\n  55| _ansi_reset_all = \"\\033[0m\"\n  ...\n  58| _HIDDEN_INPUT_MASK = \"'***'\"\n  ...\n  61| def _mask_hidden_input(message: str, value: str) -> str:\n  ...\n  79| def hidden_prompt_func(prompt: str) -> str:\n  ...\n  85| def _readline_prompt(func: t.Callable[[str], str], text: str, err: bool) -> str:\n  ...\n 108| def _build_prompt(\n  ...\n 128| def _format_default(default: V) -> V | str:\n  ...\n 168| def prompt(\n  ...\n 289| def confirm(\n  ...\n 348| def get_pager_file(\n  ...\n 367| def echo_via_pager(\n  ...\n 443| def progressbar(\n  ...\n 602| def clear() -> None:\n  ...\n 616| def _interpret_color(color: int | tuple[int, int, int] | str, offset: int = 0) -> str:\n  ...\n 641| def style(\n  ...\n 768| def unstyle(text: str) -> str:\n  ...\n 780| def secho(\n  ...\n 848| def edit(\n  ...\n 923| def launch(url: str, wait: bool = False, locate: bool = False) -> int:\n  ...\n 954| _getchar: t.Callable[[bool], str] | None = None\n  ...\n 957| def getchar(echo: bool = False) -> str:\n  ...\n 987| def raw_terminal() -> AbstractContextManager[int]:\n  ...\n 993| def pause(info: str | None = None, err: bool = False) -> None:",
+ "lines_shown": 67,
+ "truncated": false,
+ "rejected_by_the_suite": [
+  {
+   "at": "src/click/termui.py:128",
+   "tried": "def _format_default(default: V) ->= V | str:",
+   "why": "does not compile: expected ':' (termui.py, line 128)"
+  },
+  {
+   "at": "src/click/termui.py:37",
+   "tried": "\"black\": 29,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:38",
+   "tried": "\"red\": 30,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:39",
+   "tried": "\"green\": 31,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:40",
+   "tried": "\"yellow\": 32,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:41",
+   "tried": "\"blue\": 33,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:42",
+   "tried": "\"magenta\": 34,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:43",
+   "tried": "\"cyan\": 35,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:44",
+   "tried": "\"white\": 36,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:45",
+   "tried": "\"reset\": 38,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:46",
+   "tried": "\"bright_black\": 89,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:47",
+   "tried": "\"bright_red\": 90,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:48",
+   "tried": "\"bright_green\": 91,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:49",
+   "tried": "\"bright_yellow\": 92,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:50",
+   "tried": "\"bright_blue\": 93,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:51",
+   "tried": "\"bright_magenta\": 94,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:52",
+   "tried": "\"bright_cyan\": 95,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:53",
+   "tried": "\"bright_white\": 96,",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:55",
+   "tried": "_ansi_reset_all = \"\\032[0m\"",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  },
+  {
+   "at": "src/click/termui.py:55",
+   "tried": "_ansi_reset_all = \"\\033[-1m\"",
+   "why": "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short"
+  }
+ ],
+ "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)"
+}
+
+Reply with the JSON object only, nothing else.

@@ -1,0 +1,16 @@
+{
+ "case": "python-sortedcontainers/cmp-2",
+ "budget": 300,
+ "extra": "",
+ "tag": "_pip0150",
+ "code": "pip fluidfix in venv",
+ "guard_exit": 0,
+ "seconds": 61.9,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 67,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "[00:31:37] src/sortedcontainers/sortedlist.py: repaired line 1535 in 67 suite runs (56.3s):\n  - assert self._lists[pos - 1][-1] < self._lists[pos][0]\n  + assert self._lists[pos - 1][-1] <= self._lists[pos][0]\n  committed\n",
+ "verdict": "EXACT"
+}

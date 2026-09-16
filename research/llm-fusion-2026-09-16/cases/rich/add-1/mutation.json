@@ -1,0 +1,8 @@
+{
+ "file": "rich/markdown.py",
+ "lineno": 368,
+ "orig": "                    console, options, number + index, last_number",
+ "mutated": "                    console, options, number - index, last_number",
+ "cls": "add",
+ "base": "bf2620c8ce27bfdcaa3ea35b2557f94a46f1b5a9"
+}

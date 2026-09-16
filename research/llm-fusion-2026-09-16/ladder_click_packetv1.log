@@ -1,0 +1,9 @@
+== lit-1b rerun (padded literal, budget 300) ==
+click/lit-1b budget=300 -> EXACT in 76.0s runs=64 rejected=None hint=''
+== ladder click OOV: qwen3.5:4b ==
+click/andor-1                andor      -> REFUSED      via refused-after-tier2  tokens=6391 349.9s
+click/getdef-1               getdef     -> SUSPECT      via tier1                tokens=3523 185.2s
+click/lenm1-1                lenm1      -> REFUSED      via refused-after-tier2  tokens=6227 71.1s
+click/notdrop-1              notdrop    -> REFUSED      via refused-after-tier2  tokens=6384 200.4s
+LADDER_DONE qwen3.5:4b
+== ladder click OOV: phi4-mini ==

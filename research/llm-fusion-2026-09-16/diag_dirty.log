@@ -1,0 +1,12 @@
+guard exit 2 in 304.9 s
+git status after guard (should be empty apart from .fluidfix):
+?? .fluidfix/
+
+git diff --stat:
+  <none>
+--- guard tail ---
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered
+[21:29:23] REFUSED: ran out of budget before the fault was found — this is a SEARCH limit, not a gap in the taught vocabulary. The failure pointed at src/click/core.py, src/click/decorators.py, so more clock genuinely helps. Files searched: src/click/core.py, src/click/decorators.py, src/click/shell_completion.py, src/click/_utils.py, src/click/__init__.py, src/click/testing.py, src/click/types.py, src/click/utils.py; the defect may be in a file the ranking never reached. 461 candidate(s) were tried and rejected — 248 of them are logged with the test that failed each (the log keeps 64 per file).
+  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET — raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)
+  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_diag/click/.fluidfix/last_refusal.json
+

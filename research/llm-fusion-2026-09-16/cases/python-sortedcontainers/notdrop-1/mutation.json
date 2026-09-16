@@ -1,0 +1,8 @@
+{
+ "file": "src/sortedcontainers/sortedlist.py",
+ "lineno": 504,
+ "orig": "        if not pos:",
+ "mutated": "        if pos:",
+ "cls": "notdrop",
+ "base": "3ac358631f58c1347f1d6d2d92784117db0f38ed"
+}

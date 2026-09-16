@@ -1,0 +1,54 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 304.2,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/lenm1-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 3084,
+    "output": 192,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 32.2
+   },
+   "valid": false,
+   "why": "signal matches no line in the suspect file",
+   "rule": {
+    "name": "ansi-color-code-mismatch",
+    "signal": "\"reset\"\\s*:\\s*(?:38|90)",
+    "example_before": "\"reset\": 38,",
+    "example_after": "\"reset\": 39,"
+   }
+  },
+  {
+   "tier": 2,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 2916,
+    "output": 35,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 19.8
+   },
+   "proposals": 0
+  }
+ ],
+ "tokens": {
+  "input": 6000,
+  "output": 227,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 6227
+ },
+ "outcome": "refused-after-tier2"
+}

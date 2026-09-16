@@ -1,0 +1,8 @@
+{
+ "file": "arrow/parser.py",
+ "lineno": 786,
+ "orig": "        if am_pm == \"pm\" and hour < 12:",
+ "mutated": "        if am_pm == \"pm\" and hour <= 12:",
+ "cls": "cmp",
+ "base": "2224255c4acc594d734cef0bbc83360452a67983"
+}

@@ -1,0 +1,8 @@
+{
+ "example_before": "if value:",
+ "example_after": "if not value:",
+ "name": "inverted-empty-guard",
+ "description": "an `if <name>:` guard whose body returns early and whose next statement indexes <name>[0]: the guard is inverted, an empty value falls through to the index",
+ "signal": "^\\s*if (\\w+):\\s*$",
+ "applier": "def fix(line, o):\n    m = re.match(r'^(\\s*)if (\\w+):\\s*$', line)\n    if not m: return line\n    name, i = m.group(2), o.lineno\n    after = [l for l in o.all_lines[i:i + 6] if l.strip()]\n    if not after or not after[0].strip().startswith('return'): return line\n    if not any(re.search(r'\\b' + re.escape(name) + r'\\[0\\]', l) for l in after[1:]): return line\n    return m.group(1) + 'if not ' + name + ':'"
+}

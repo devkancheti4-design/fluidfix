@@ -1,0 +1,58 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 301.9,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/andor-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 3137,
+    "output": 257,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 25.4
+   },
+   "valid": false,
+   "why": "signal matches no line in the suspect file",
+   "rule": {
+    "name": "zsh-covariant-flag",
+    "signal": "^\\s*_ValueT_co\\s*=\\s*t\\.TypeVar\\([^)]*covariant=False[^)]*$",
+    "example_before": "_ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=False)",
+    "example_after": "_ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=True)"
+   }
+  },
+  {
+   "tier": 2,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 2969,
+    "output": 28,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 10.7
+   },
+   "proposals": 1,
+   "exit": 2,
+   "wall": 308.0,
+   "suite_runs": null,
+   "stdout": "y a value that occurs in few files; or teach a narrower signal for this class. 211 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or make the failure carry a locating value\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+  }
+ ],
+ "tokens": {
+  "input": 6106,
+  "output": 285,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 6391
+ },
+ "outcome": "refused-after-tier2"
+}

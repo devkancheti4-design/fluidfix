@@ -1,0 +1,4 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered
+[22:04:18] REFUSED: fault is outside the taught vocabulary (candidate files tried: arrow/locales.py, arrow/constants.py, arrow/__init__.py, arrow/_version.py, arrow/api.py, arrow/arrow.py, arrow/util.py, arrow/formatter.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 372 candidate(s) were tried and rejected — 232 of them are logged with the test that failed each (the log keeps 64 per file).
+  hint: a candidate passes, but the search was cut short before it could be shown unique — shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)
+  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_diag/arrow/.fluidfix/last_refusal.json

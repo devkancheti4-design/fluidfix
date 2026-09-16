@@ -1,0 +1,908 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/click/_termui_impl.py"
+ ],
+ "seconds": 49.75835585594177,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "rejected_candidates": [
+  {
+   "at": "src/click/_termui_impl.py:520",
+   "tried": "def _less_uses_raw_mode(less_env: str, cmd_params: list[str]) ->= bool:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 520)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:535",
+   "tried": "    tokens = env_tokens - cmd_params",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:540",
+   "tried": "                return False",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:541",
+   "tried": "        elif token.startswith(\"-\") and len(token) >= 1:",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:541",
+   "tried": "        elif token.startswith(\"-\") and len(token) > 0:",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:541",
+   "tried": "        elif token.startswith(\"-\") and len(token) < 1:",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:542",
+   "tried": "            if \"r\" in token[0:].casefold():",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:543",
+   "tried": "                return False",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:545",
+   "tried": "    return True",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:581",
+   "tried": "            color = False",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:584",
+   "tried": "            color = False",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:587",
+   "tried": "        [str(cmd_path)] - cmd_params,",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:588",
+   "tried": "        shell=True,",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:592",
+   "tried": "        text=False,",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:39",
+   "tried": "    BEFORE_BAR = \"\\r\\032[?25l\"",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:39",
+   "tried": "    BEFORE_BAR = \"\\r\\033[?24l\"",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:40",
+   "tried": "    AFTER_BAR = \"\\032[?25h\\n\"",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:40",
+   "tried": "    AFTER_BAR = \"\\033[?24h\\n\"",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:115",
+   "tried": "    def __enter__(self) ->= ProgressBar[V]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 115)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:128",
+   "tried": "    def __iter__(self) ->= cabc.Iterator[V]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 128)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:134",
+   "tried": "    def __next__(self) ->= V:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 134)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:142",
+   "tried": "    def render_finish(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 142)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:157",
+   "tried": "    def pct(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 157)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:163",
+   "tried": "    def time_per_iteration(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 163)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:169",
+   "tried": "    def eta(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 169)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:174",
+   "tried": "    def format_eta(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 174)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:195",
+   "tried": "    def format_pos(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 195)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:201",
+   "tried": "    def format_pct(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 201)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:204",
+   "tried": "    def format_bar(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 204)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:223",
+   "tried": "    def format_progress_line(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 223)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:250",
+   "tried": "    def render_progress(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 250)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:296",
+   "tried": "    def make_step(self, n_steps: int) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 296)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:318",
+   "tried": "    def update(self, n_steps: int, current_item: V | None = None) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 318)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:344",
+   "tried": "    def finish(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 344)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:349",
+   "tried": "    def generator(self) ->= cabc.Iterator[V]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 349)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:397",
+   "tried": "    def __init__(self, stream: t.TextIO, color: bool) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 397)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:401",
+   "tried": "    def write(self, text: str) ->= int:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 401)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:407",
+   "tried": "    def writelines(self, lines: cabc.Iterable[str]) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 407)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:411",
+   "tried": "    def flush(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 411)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:414",
+   "tried": "    def close(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 414)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:419",
+   "tried": "    def __getattr__(self, name: str) ->= t.Any:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 419)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:423",
+   "tried": "def _resolve_pager_command(cmd_parts: list[str]) ->= tuple[Path, list[str]] | None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 423)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:438",
+   "tried": "    cmd_filepath = shutil.which(cmd_parts[-1])",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:448",
+   "tried": "    return Path(cmd_filepath).absolute(), cmd_parts[0:]",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:497",
+   "tried": "def get_pager_file(color: bool | None = None) ->= t.Generator[t.TextIO, None, None]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 497)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:502",
+   "tried": "    .. versionadded:: 7.4.0",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:502",
+   "tried": "    .. versionadded:: 8.3.0",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:502",
+   "tried": "    .. versionadded:: 8.4.-1",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:696",
+   "tried": "    def get_editor(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 696)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:713",
+   "tried": "    def edit_files(self, filenames: cabc.Iterable[str | os.PathLike[str]]) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 713)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:751",
+   "tried": "    def edit(self, text: str | bytes | bytearray | None) ->= str | bytes | None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 751)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:799",
+   "tried": "def open_url(url: str, wait: bool = False, locate: bool = False) ->= int:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 799)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:799",
+   "tried": "def open_url(url: str, wait: bool = True, locate: bool = False) -> int:",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:799",
+   "tried": "def open_url(url: str, wait: bool = False, locate: bool = True) -> int:",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:869",
+   "tried": "def _translate_ch_to_exc(ch: str) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 869)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:938",
+   "tried": "    def raw_terminal() ->= cabc.Iterator[int]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 938)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:964",
+   "tried": "    def getchar(echo: bool) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 964)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:520",
+   "tried": "def _less_uses_raw_mode(less_env: str, cmd_params: list[str]) ->= bool:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 520)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:535",
+   "tried": "    tokens = env_tokens - cmd_params",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:540",
+   "tried": "                return False",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:541",
+   "tried": "        elif token.startswith(\"-\") and len(token) >= 1:",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:541",
+   "tried": "        elif token.startswith(\"-\") and len(token) > 0:",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:541",
+   "tried": "        elif token.startswith(\"-\") and len(token) < 1:",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:542",
+   "tried": "            if \"r\" in token[0:].casefold():",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:543",
+   "tried": "                return False",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:545",
+   "tried": "    return True",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:581",
+   "tried": "            color = False",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:584",
+   "tried": "            color = False",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:587",
+   "tried": "        [str(cmd_path)] - cmd_params,",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:588",
+   "tried": "        shell=True,",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:592",
+   "tried": "        text=False,",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:39",
+   "tried": "    BEFORE_BAR = \"\\r\\032[?25l\"",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:39",
+   "tried": "    BEFORE_BAR = \"\\r\\033[?24l\"",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:40",
+   "tried": "    AFTER_BAR = \"\\032[?25h\\n\"",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:40",
+   "tried": "    AFTER_BAR = \"\\033[?24h\\n\"",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:115",
+   "tried": "    def __enter__(self) ->= ProgressBar[V]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 115)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:128",
+   "tried": "    def __iter__(self) ->= cabc.Iterator[V]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 128)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:134",
+   "tried": "    def __next__(self) ->= V:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 134)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:142",
+   "tried": "    def render_finish(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 142)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:157",
+   "tried": "    def pct(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 157)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:163",
+   "tried": "    def time_per_iteration(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 163)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:169",
+   "tried": "    def eta(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 169)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:174",
+   "tried": "    def format_eta(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 174)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:195",
+   "tried": "    def format_pos(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 195)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:201",
+   "tried": "    def format_pct(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 201)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:204",
+   "tried": "    def format_bar(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 204)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:223",
+   "tried": "    def format_progress_line(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 223)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:250",
+   "tried": "    def render_progress(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 250)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:296",
+   "tried": "    def make_step(self, n_steps: int) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 296)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:318",
+   "tried": "    def update(self, n_steps: int, current_item: V | None = None) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 318)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:344",
+   "tried": "    def finish(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 344)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:349",
+   "tried": "    def generator(self) ->= cabc.Iterator[V]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 349)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:397",
+   "tried": "    def __init__(self, stream: t.TextIO, color: bool) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 397)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:401",
+   "tried": "    def write(self, text: str) ->= int:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 401)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:407",
+   "tried": "    def writelines(self, lines: cabc.Iterable[str]) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 407)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:411",
+   "tried": "    def flush(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 411)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:414",
+   "tried": "    def close(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 414)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:419",
+   "tried": "    def __getattr__(self, name: str) ->= t.Any:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 419)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:423",
+   "tried": "def _resolve_pager_command(cmd_parts: list[str]) ->= tuple[Path, list[str]] | None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 423)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:438",
+   "tried": "    cmd_filepath = shutil.which(cmd_parts[-1])",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:448",
+   "tried": "    return Path(cmd_filepath).absolute(), cmd_parts[0:]",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:497",
+   "tried": "def get_pager_file(color: bool | None = None) ->= t.Generator[t.TextIO, None, None]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 497)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:502",
+   "tried": "    .. versionadded:: 7.4.0",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:502",
+   "tried": "    .. versionadded:: 8.3.0",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:502",
+   "tried": "    .. versionadded:: 8.4.-1",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:696",
+   "tried": "    def get_editor(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 696)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:713",
+   "tried": "    def edit_files(self, filenames: cabc.Iterable[str | os.PathLike[str]]) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 713)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:751",
+   "tried": "    def edit(self, text: str | bytes | bytearray | None) ->= str | bytes | None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 751)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:799",
+   "tried": "def open_url(url: str, wait: bool = False, locate: bool = False) ->= int:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 799)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:799",
+   "tried": "def open_url(url: str, wait: bool = True, locate: bool = False) -> int:",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:799",
+   "tried": "def open_url(url: str, wait: bool = False, locate: bool = True) -> int:",
+   "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+  },
+  {
+   "at": "src/click/_termui_impl.py:869",
+   "tried": "def _translate_ch_to_exc(ch: str) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 869)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:938",
+   "tried": "    def raw_terminal() ->= cabc.Iterator[int]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 938)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:964",
+   "tried": "    def getchar(echo: bool) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 964)"
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "src/click/_termui_impl.py": [
+   [
+    7,
+    "from __future__ import annotations"
+   ],
+   [
+    9,
+    "import collections.abc as cabc"
+   ],
+   [
+    10,
+    "import contextlib"
+   ],
+   [
+    11,
+    "import math"
+   ],
+   [
+    12,
+    "import os"
+   ],
+   [
+    13,
+    "import shlex"
+   ],
+   [
+    14,
+    "import sys"
+   ],
+   [
+    15,
+    "import time"
+   ],
+   [
+    16,
+    "import typing as t"
+   ],
+   [
+    17,
+    "from gettext import gettext as _"
+   ],
+   [
+    18,
+    "from io import StringIO"
+   ],
+   [
+    19,
+    "from pathlib import Path"
+   ],
+   [
+    20,
+    "from types import TracebackType"
+   ],
+   [
+    22,
+    "from ._compat import _default_text_stdout"
+   ],
+   [
+    23,
+    "from ._compat import CYGWIN"
+   ],
+   [
+    24,
+    "from ._compat import get_best_encoding"
+   ],
+   [
+    25,
+    "from ._compat import isatty"
+   ],
+   [
+    26,
+    "from ._compat import strip_ansi"
+   ],
+   [
+    27,
+    "from ._compat import term_len"
+   ],
+   [
+    28,
+    "from ._compat import WIN"
+   ],
+   [
+    29,
+    "from .exceptions import ClickException"
+   ],
+   [
+    30,
+    "from .utils import echo"
+   ],
+   [
+    32,
+    "V = t.TypeVar(\"V\")"
+   ],
+   [
+    35,
+    "if os.name == \"nt\":"
+   ],
+   [
+    39,
+    "    BEFORE_BAR = \"\\r\\033[?25l\""
+   ],
+   [
+    40,
+    "    AFTER_BAR = \"\\033[?25h\\n\""
+   ],
+   [
+    43,
+    "class ProgressBar(t.Generic[V]):"
+   ],
+   [
+    44,
+    "    def __init__("
+   ],
+   [
+    115,
+    "    def __enter__(self) -> ProgressBar[V]:"
+   ],
+   [
+    120,
+    "    def __exit__("
+   ],
+   [
+    128,
+    "    def __iter__(self) -> cabc.Iterator[V]:"
+   ],
+   [
+    134,
+    "    def __next__(self) -> V:"
+   ],
+   [
+    142,
+    "    def render_finish(self) -> None:"
+   ],
+   [
+    156,
+    "    @property"
+   ],
+   [
+    157,
+    "    def pct(self) -> float:"
+   ],
+   [
+    162,
+    "    @property"
+   ],
+   [
+    163,
+    "    def time_per_iteration(self) -> float:"
+   ],
+   [
+    168,
+    "    @property"
+   ],
+   [
+    169,
+    "    def eta(self) -> float:"
+   ],
+   [
+    174,
+    "    def format_eta(self) -> str:"
+   ],
+   [
+    195,
+    "    def format_pos(self) -> str:"
+   ],
+   [
+    201,
+    "    def format_pct(self) -> str:"
+   ],
+   [
+    204,
+    "    def format_bar(self) -> str:"
+   ],
+   [
+    223,
+    "    def format_progress_line(self) -> str:"
+   ],
+   [
+    250,
+    "    def render_progress(self) -> None:"
+   ],
+   [
+    296,
+    "    def make_step(self, n_steps: int) -> None:"
+   ],
+   [
+    318,
+    "    def update(self, n_steps: int, current_item: V | None = None) -> None:"
+   ],
+   [
+    344,
+    "    def finish(self) -> None:"
+   ],
+   [
+    349,
+    "    def generator(self) -> cabc.Iterator[V]:"
+   ],
+   [
+    383,
+    "class _PagerWriter:"
+   ],
+   [
+    397,
+    "    def __init__(self, stream: t.TextIO, color: bool) -> None:"
+   ],
+   [
+    401,
+    "    def write(self, text: str) -> int:"
+   ],
+   [
+    407,
+    "    def writelines(self, lines: cabc.Iterable[str]) -> None:"
+   ],
+   [
+    411,
+    "    def flush(self) -> None:"
+   ],
+   [
+    414,
+    "    def close(self) -> None:"
+   ],
+   [
+    419,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    423,
+    "def _resolve_pager_command(cmd_parts: list[str]) -> tuple[Path, list[str]] | None:"
+   ],
+   [
+    433,
+    "    if not cmd_parts:"
+   ],
+   [
+    436,
+    "    import shutil"
+   ],
+   [
+    438,
+    "    cmd_filepath = shutil.which(cmd_parts[0])"
+   ],
+   [
+    440,
+    "    if not cmd_filepath:"
+   ],
+   [
+    448,
+    "    return Path(cmd_filepath).absolute(), cmd_parts[1:]"
+   ],
+   [
+    451,
+    "def _pager_contextmanager("
+   ],
+   [
+    455,
+    "    stdout = _default_text_stdout()"
+   ],
+   [
+    459,
+    "    if stdout is None:"
+   ],
+   [
+    462,
+    "    if not isatty(sys.stdin) or not isatty(stdout):"
+   ],
+   [
+    469,
+    "    pager_cmd_parts = shlex.split(os.environ.get(\"PAGER\", \"\"))"
+   ],
+   [
+    471,
+    "    if pager_cmd_parts:"
+   ],
+   [
+    474,
+    "        use_tempfile = WIN"
+   ],
+   [
+    482,
+    "    resolved = _resolve_pager_command(pager_cmd_parts)"
+   ],
+   [
+    484,
+    "    if resolved is None:"
+   ],
+   [
+    488,
+    "    cmd_path, cmd_params = resolved"
+   ],
+   [
+    490,
+    "    if use_tempfile:"
+   ],
+   [
+    493,
+    "    return _pipepager(cmd_path, cmd_params, color)"
+   ],
+   [
+    495,
+    ""
+   ],
+   [
+    496,
+    "@contextlib.contextmanager"
+   ],
+   [
+    497,
+    "def get_pager_file(color: bool | None = None) -> t.Generator[t.TextIO, None, None]:"
+   ],
+   [
+    498,
+    "    \"\"\"Context manager."
+   ],
+   [
+    499,
+    ""
+   ],
+   [
+    500,
+    "    Yields a writable file-like object which can be used as an output pager."
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+ ]
+}

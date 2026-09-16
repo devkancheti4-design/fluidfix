@@ -1,0 +1,5 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered
+[23:38:12] rich/console.py: repaired line 808 in 9 suite runs (49.9s):
+  - term = self._environ.get("TERM").strip().lower()
+  + term = self._environ.get("TERM", "").strip().lower()
+  committed

@@ -1,0 +1,56 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/arrow",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 301.8,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/arrow/lenm1-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 6210,
+    "output": 287,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 30.8
+   },
+   "valid": false,
+   "why": "signal matches no line in the suspect file",
+   "rule": {
+    "name": "one-factor-off-multiplication",
+    "signal": "^_SECS_PER_MONTH: Final\\[float\\]\\s*=\\s*([0-9]+)\\s*\\*\\s*60\\s*\\*\\s*24\\s*\\*\\s*30\\.5",
+    "example_before": "_SECS_PER_MONTH: Final[float] = 59 * 60 * 24 * 30.5",
+    "example_after": "_SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 30.5"
+   }
+  },
+  {
+   "tier": 2,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 6068,
+    "output": 56,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 21.3
+   },
+   "proposals": 0,
+   "line": "    _MONTHS_PER_QUARTER: Final[int] = 3",
+   "replacements": []
+  }
+ ],
+ "tokens": {
+  "input": 12278,
+  "output": 343,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 12621
+ },
+ "outcome": "refused-after-tier2"
+}

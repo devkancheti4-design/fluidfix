@@ -1,0 +1,16 @@
+{
+ "case": "arrow/cmp-2",
+ "budget": 300,
+ "extra": "",
+ "tag": "_pip0150",
+ "code": "pip fluidfix in venv",
+ "guard_exit": 2,
+ "seconds": 303.4,
+ "repaired": false,
+ "byte_exact": false,
+ "suite_runs": null,
+ "rejected": 61,
+ "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed a",
+ "stdout_tail": "[00:22:34] REFUSED: ran out of budget before the fault was found \u2014 this is a SEARCH limit, not a gap in the taught vocabulary. The failure pointed at arrow/arrow.py, so more clock genuinely helps. Files searched: arrow/arrow.py, arrow/constants.py, arrow/__init__.py, arrow/_version.py, arrow/parser.py, arrow/api.py, arrow/locales.py, arrow/util.py; the defect may be in a file the ranking never reached. 61 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_diag/arrow/.fluidfix/last_refusal.json\n",
+ "verdict": "REFUSED"
+}

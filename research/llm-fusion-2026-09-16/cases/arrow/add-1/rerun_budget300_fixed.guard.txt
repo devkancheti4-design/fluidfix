@@ -1,0 +1,4 @@
+[00:47:00] arrow/arrow.py: repaired line 1219 in 12 suite runs (64.7s):
+  - if self._datetime < dt
+  + if self._datetime > dt
+  committed

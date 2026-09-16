@@ -1,0 +1,1892 @@
+{
+ "status": "refused",
+ "candidates": [
+  "rich/__main__.py",
+  "rich/terminal_theme.py",
+  "rich/errors.py",
+  "rich/_stack.py",
+  "rich/_export_format.py",
+  "rich/_palettes.py",
+  "rich/default_styles.py",
+  "rich/themes.py"
+ ],
+ "seconds": 302.67964005470276,
+ "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or make the failure carry a locating value",
+ "rejected_candidates": [
+  {
+   "at": "rich/__main__.py:39",
+   "tried": "def make_test_card() ->= Table:",
+   "why": "does not compile: expected ':' (__main__.py, line 39)"
+  },
+  {
+   "at": "rich/terminal_theme.py:29",
+   "tried": "        self.ansi_colors = Palette(normal - (bright or normal))",
+   "why": "ERROR tests/test_card.py - TypeError: unsupported operand type(s) for -: 'lis..."
+  },
+  {
+   "at": "rich/terminal_theme.py:33",
+   "tried": "    (254, 255, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:33",
+   "tried": "    (255, 254, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:33",
+   "tried": "    (255, 255, 254),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:34",
+   "tried": "    (-1, 0, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:34",
+   "tried": "    (0, -1, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:34",
+   "tried": "    (0, 0, -1),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:36",
+   "tried": "        (-1, 0, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:36",
+   "tried": "        (0, -1, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:36",
+   "tried": "        (0, 0, -1),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:37",
+   "tried": "        (127, 0, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:37",
+   "tried": "        (128, -1, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:37",
+   "tried": "        (128, 0, -1),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:38",
+   "tried": "        (-1, 128, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:38",
+   "tried": "        (0, 127, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:38",
+   "tried": "        (0, 128, -1),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:39",
+   "tried": "        (127, 128, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:39",
+   "tried": "        (128, 127, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:39",
+   "tried": "        (128, 128, -1),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:40",
+   "tried": "        (-1, 0, 128),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:40",
+   "tried": "        (0, -1, 128),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:40",
+   "tried": "        (0, 0, 127),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:41",
+   "tried": "        (127, 0, 128),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:41",
+   "tried": "        (128, -1, 128),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:41",
+   "tried": "        (128, 0, 127),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:42",
+   "tried": "        (-1, 128, 128),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:42",
+   "tried": "        (0, 127, 128),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:42",
+   "tried": "        (0, 128, 127),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:43",
+   "tried": "        (191, 192, 192),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:43",
+   "tried": "        (192, 191, 192),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:43",
+   "tried": "        (192, 192, 191),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:46",
+   "tried": "        (127, 128, 128),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:46",
+   "tried": "        (128, 127, 128),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:46",
+   "tried": "        (128, 128, 127),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:47",
+   "tried": "        (254, 0, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:47",
+   "tried": "        (255, -1, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:47",
+   "tried": "        (255, 0, -1),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:48",
+   "tried": "        (-1, 255, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:48",
+   "tried": "        (0, 254, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:48",
+   "tried": "        (0, 255, -1),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:49",
+   "tried": "        (254, 255, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:49",
+   "tried": "        (255, 254, 0),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:49",
+   "tried": "        (255, 255, -1),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:50",
+   "tried": "        (-1, 0, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:50",
+   "tried": "        (0, -1, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:50",
+   "tried": "        (0, 0, 254),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:51",
+   "tried": "        (254, 0, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:51",
+   "tried": "        (255, -1, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:51",
+   "tried": "        (255, 0, 254),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:52",
+   "tried": "        (-1, 255, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:52",
+   "tried": "        (0, 254, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:52",
+   "tried": "        (0, 255, 254),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:53",
+   "tried": "        (254, 255, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:53",
+   "tried": "        (255, 254, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:53",
+   "tried": "        (255, 255, 254),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:58",
+   "tried": "    (11, 12, 12),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:58",
+   "tried": "    (12, 11, 12),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:58",
+   "tried": "    (12, 12, 11),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:59",
+   "tried": "    (216, 217, 217),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:59",
+   "tried": "    (217, 216, 217),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:59",
+   "tried": "    (217, 217, 216),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:61",
+   "tried": "        (25, 26, 26),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:61",
+   "tried": "        (26, 25, 26),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:61",
+   "tried": "        (26, 26, 25),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:74",
+   "tried": "        (223, 213, 97),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:74",
+   "tried": "        (224, 212, 97),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:74",
+   "tried": "        (224, 213, 96),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:75",
+   "tried": "        (156, 101, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:75",
+   "tried": "        (157, 100, 255),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:75",
+   "tried": "        (157, 101, 254),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:76",
+   "tried": "        (243, 0, 95),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:76",
+   "tried": "        (244, -1, 95),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:76",
+   "tried": "        (244, 0, 94),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:77",
+   "tried": "        (87, 209, 235),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:77",
+   "tried": "        (88, 208, 235),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:77",
+   "tried": "        (88, 209, 234),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:78",
+   "tried": "        (245, 246, 239),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:78",
+   "tried": "        (246, 245, 239),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:78",
+   "tried": "        (246, 246, 238),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:82",
+   "tried": "    (24, 25, 25),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:82",
+   "tried": "    (25, 24, 25),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:82",
+   "tried": "    (25, 25, 24),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:83",
+   "tried": "    (184, 188, 186),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:83",
+   "tried": "    (185, 187, 186),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:83",
+   "tried": "    (185, 188, 185),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:85",
+   "tried": "        (57, 61, 67),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:85",
+   "tried": "        (58, 60, 67),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:85",
+   "tried": "        (58, 61, 66),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:86",
+   "tried": "        (189, 63, 72),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:86",
+   "tried": "        (190, 62, 72),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:86",
+   "tried": "        (190, 63, 71),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:87",
+   "tried": "        (134, 154, 59),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:87",
+   "tried": "        (135, 153, 59),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:87",
+   "tried": "        (135, 154, 58),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:88",
+   "tried": "        (196, 166, 53),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:88",
+   "tried": "        (197, 165, 53),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:88",
+   "tried": "        (197, 166, 52),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:89",
+   "tried": "        (78, 118, 161),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:89",
+   "tried": "        (79, 117, 161),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:89",
+   "tried": "        (79, 118, 160),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:90",
+   "tried": "        (132, 92, 141),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:90",
+   "tried": "        (133, 91, 141),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:90",
+   "tried": "        (133, 92, 140),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:91",
+   "tried": "        (86, 143, 164),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:91",
+   "tried": "        (87, 142, 164),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:91",
+   "tried": "        (87, 143, 163),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:92",
+   "tried": "        (184, 188, 186),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:92",
+   "tried": "        (185, 187, 186),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:92",
+   "tried": "        (185, 188, 185),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:93",
+   "tried": "        (135, 137, 135),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:93",
+   "tried": "        (136, 136, 135),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:93",
+   "tried": "        (136, 137, 134),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:96",
+   "tried": "        (250, 0, 31),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:96",
+   "tried": "        (251, -1, 31),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:96",
+   "tried": "        (251, 0, 30),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:97",
+   "tried": "        (14, 114, 47),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:97",
+   "tried": "        (15, 113, 47),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:97",
+   "tried": "        (15, 114, 46),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:98",
+   "tried": "        (195, 112, 51),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:98",
+   "tried": "        (196, 111, 51),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:98",
+   "tried": "        (196, 112, 50),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:99",
+   "tried": "        (23, 109, 227),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:99",
+   "tried": "        (24, 108, 227),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:99",
+   "tried": "        (24, 109, 226),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:100",
+   "tried": "        (250, 0, 103),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:100",
+   "tried": "        (251, -1, 103),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:100",
+   "tried": "        (251, 0, 102),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:101",
+   "tried": "        (45, 112, 109),",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/_unicode_data/_versions.py:2",
+   "tried": "    \"3.1.0\",",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/_unicode_data/_versions.py:2",
+   "tried": "    \"4.0.0\",",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/_unicode_data/_versions.py:2",
+   "tried": "    \"4.1.-1\",",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/_unicode_data/_versions.py:3",
+   "tried": "    \"4.0.0\",",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/_unicode_data/_versions.py:3",
+   "tried": "    \"5.-1.0\",",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  },
+  {
+   "at": "rich/_unicode_data/_versions.py:3",
+   "tried": "    \"5.0.-1\",",
+   "why": "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+  }
+ ],
+ "rejected_not_listed": 44,
+ "executed_lines": {
+  "rich/__main__.py": [
+   [
+    1,
+    "import colorsys"
+   ],
+   [
+    2,
+    "import io"
+   ],
+   [
+    3,
+    "from time import process_time"
+   ],
+   [
+    5,
+    "from rich import box"
+   ],
+   [
+    6,
+    "from rich.color import Color"
+   ],
+   [
+    7,
+    "from rich.console import Console, ConsoleOptions, Group, RenderableType, RenderResult"
+   ],
+   [
+    8,
+    "from rich.markdown import Markdown"
+   ],
+   [
+    9,
+    "from rich.measure import Measurement"
+   ],
+   [
+    10,
+    "from rich.pretty import Pretty"
+   ],
+   [
+    11,
+    "from rich.segment import Segment"
+   ],
+   [
+    12,
+    "from rich.style import Style"
+   ],
+   [
+    13,
+    "from rich.syntax import Syntax"
+   ],
+   [
+    14,
+    "from rich.table import Table"
+   ],
+   [
+    15,
+    "from rich.text import Text"
+   ],
+   [
+    18,
+    "class ColorBox:"
+   ],
+   [
+    19,
+    "    def __rich_console__("
+   ],
+   [
+    33,
+    "    def __rich_measure__("
+   ],
+   [
+    39,
+    "def make_test_card() -> Table:"
+   ]
+  ],
+  "rich/terminal_theme.py": [
+   [
+    1,
+    "from typing import List, Optional, Tuple"
+   ],
+   [
+    3,
+    "from .color_triplet import ColorTriplet"
+   ],
+   [
+    4,
+    "from .palette import Palette"
+   ],
+   [
+    6,
+    "_ColorTuple = Tuple[int, int, int]"
+   ],
+   [
+    9,
+    "class TerminalTheme:"
+   ],
+   [
+    20,
+    "    def __init__("
+   ],
+   [
+    27,
+    "        self.background_color = ColorTriplet(*background)"
+   ],
+   [
+    28,
+    "        self.foreground_color = ColorTriplet(*foreground)"
+   ],
+   [
+    29,
+    "        self.ansi_colors = Palette(normal + (bright or normal))"
+   ],
+   [
+    32,
+    "DEFAULT_TERMINAL_THEME = TerminalTheme("
+   ],
+   [
+    33,
+    "    (255, 255, 255),"
+   ],
+   [
+    34,
+    "    (0, 0, 0),"
+   ],
+   [
+    35,
+    "    ["
+   ],
+   [
+    36,
+    "        (0, 0, 0),"
+   ],
+   [
+    37,
+    "        (128, 0, 0),"
+   ],
+   [
+    38,
+    "        (0, 128, 0),"
+   ],
+   [
+    39,
+    "        (128, 128, 0),"
+   ],
+   [
+    40,
+    "        (0, 0, 128),"
+   ],
+   [
+    41,
+    "        (128, 0, 128),"
+   ],
+   [
+    42,
+    "        (0, 128, 128),"
+   ],
+   [
+    43,
+    "        (192, 192, 192),"
+   ],
+   [
+    44,
+    "    ],"
+   ],
+   [
+    45,
+    "    ["
+   ],
+   [
+    46,
+    "        (128, 128, 128),"
+   ],
+   [
+    47,
+    "        (255, 0, 0),"
+   ],
+   [
+    48,
+    "        (0, 255, 0),"
+   ],
+   [
+    49,
+    "        (255, 255, 0),"
+   ],
+   [
+    50,
+    "        (0, 0, 255),"
+   ],
+   [
+    51,
+    "        (255, 0, 255),"
+   ],
+   [
+    52,
+    "        (0, 255, 255),"
+   ],
+   [
+    53,
+    "        (255, 255, 255),"
+   ],
+   [
+    54,
+    "    ],"
+   ],
+   [
+    55,
+    ")"
+   ],
+   [
+    57,
+    "MONOKAI = TerminalTheme("
+   ],
+   [
+    58,
+    "    (12, 12, 12),"
+   ],
+   [
+    59,
+    "    (217, 217, 217),"
+   ],
+   [
+    60,
+    "    ["
+   ],
+   [
+    61,
+    "        (26, 26, 26),"
+   ],
+   [
+    62,
+    "        (244, 0, 95),"
+   ],
+   [
+    63,
+    "        (152, 224, 36),"
+   ],
+   [
+    64,
+    "        (253, 151, 31),"
+   ],
+   [
+    65,
+    "        (157, 101, 255),"
+   ],
+   [
+    66,
+    "        (244, 0, 95),"
+   ],
+   [
+    67,
+    "        (88, 209, 235),"
+   ],
+   [
+    68,
+    "        (196, 197, 181),"
+   ],
+   [
+    69,
+    "        (98, 94, 76),"
+   ],
+   [
+    70,
+    "    ],"
+   ],
+   [
+    71,
+    "    ["
+   ],
+   [
+    72,
+    "        (244, 0, 95),"
+   ],
+   [
+    73,
+    "        (152, 224, 36),"
+   ],
+   [
+    74,
+    "        (224, 213, 97),"
+   ],
+   [
+    75,
+    "        (157, 101, 255),"
+   ],
+   [
+    76,
+    "        (244, 0, 95),"
+   ],
+   [
+    77,
+    "        (88, 209, 235),"
+   ],
+   [
+    78,
+    "        (246, 246, 239),"
+   ],
+   [
+    79,
+    "    ],"
+   ],
+   [
+    80,
+    ")"
+   ],
+   [
+    81,
+    "DIMMED_MONOKAI = TerminalTheme("
+   ],
+   [
+    82,
+    "    (25, 25, 25),"
+   ],
+   [
+    83,
+    "    (185, 188, 186),"
+   ],
+   [
+    84,
+    "    ["
+   ],
+   [
+    85,
+    "        (58, 61, 67),"
+   ],
+   [
+    86,
+    "        (190, 63, 72),"
+   ],
+   [
+    87,
+    "        (135, 154, 59),"
+   ],
+   [
+    88,
+    "        (197, 166, 53),"
+   ],
+   [
+    89,
+    "        (79, 118, 161),"
+   ],
+   [
+    90,
+    "        (133, 92, 141),"
+   ],
+   [
+    91,
+    "        (87, 143, 164),"
+   ],
+   [
+    92,
+    "        (185, 188, 186),"
+   ],
+   [
+    93,
+    "        (136, 137, 135),"
+   ],
+   [
+    94,
+    "    ],"
+   ],
+   [
+    95,
+    "    ["
+   ],
+   [
+    96,
+    "        (251, 0, 31),"
+   ],
+   [
+    97,
+    "        (15, 114, 47),"
+   ],
+   [
+    98,
+    "        (196, 112, 51),"
+   ],
+   [
+    99,
+    "        (24, 109, 227),"
+   ],
+   [
+    100,
+    "        (251, 0, 103),"
+   ],
+   [
+    101,
+    "        (46, 112, 109),"
+   ],
+   [
+    102,
+    "        (253, 255, 185),"
+   ],
+   [
+    103,
+    "    ],"
+   ]
+  ],
+  "rich/errors.py": [
+   [
+    1,
+    "class ConsoleError(Exception):"
+   ],
+   [
+    5,
+    "class StyleError(Exception):"
+   ],
+   [
+    9,
+    "class StyleSyntaxError(ConsoleError):"
+   ],
+   [
+    13,
+    "class MissingStyle(StyleError):"
+   ],
+   [
+    17,
+    "class StyleStackError(ConsoleError):"
+   ],
+   [
+    21,
+    "class NotRenderableError(ConsoleError):"
+   ],
+   [
+    25,
+    "class MarkupError(ConsoleError):"
+   ],
+   [
+    29,
+    "class LiveError(ConsoleError):"
+   ],
+   [
+    33,
+    "class NoAltScreen(ConsoleError):"
+   ]
+  ],
+  "rich/_stack.py": [
+   [
+    1,
+    "from typing import List, TypeVar"
+   ],
+   [
+    3,
+    "T = TypeVar(\"T\")"
+   ],
+   [
+    6,
+    "class Stack(List[T]):"
+   ],
+   [
+    9,
+    "    @property"
+   ],
+   [
+    10,
+    "    def top(self) -> T:"
+   ],
+   [
+    12,
+    "        return self[-1]"
+   ],
+   [
+    14,
+    "    def push(self, item: T) -> None:"
+   ],
+   [
+    16,
+    "        self.append(item)"
+   ]
+  ],
+  "rich/_export_format.py": [
+   [
+    1,
+    "CONSOLE_HTML_FORMAT = \"\"\"\\"
+   ],
+   [
+    2,
+    "<!DOCTYPE html>"
+   ],
+   [
+    3,
+    "<html>"
+   ],
+   [
+    4,
+    "<head>"
+   ],
+   [
+    5,
+    "<meta charset=\"UTF-8\">"
+   ],
+   [
+    6,
+    "<style>"
+   ],
+   [
+    7,
+    "{stylesheet}"
+   ],
+   [
+    8,
+    "body {{"
+   ],
+   [
+    9,
+    "    color: {foreground};"
+   ],
+   [
+    10,
+    "    background-color: {background};"
+   ],
+   [
+    11,
+    "}}"
+   ],
+   [
+    12,
+    "</style>"
+   ],
+   [
+    13,
+    "</head>"
+   ],
+   [
+    14,
+    "<body>"
+   ],
+   [
+    15,
+    "    <pre style=\"font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"><code style=\"font-family:inherit\">{code}</code></pre>"
+   ],
+   [
+    16,
+    "</body>"
+   ],
+   [
+    17,
+    "</html>"
+   ],
+   [
+    18,
+    "\"\"\""
+   ],
+   [
+    20,
+    "CONSOLE_SVG_FORMAT = \"\"\"\\"
+   ],
+   [
+    75,
+    "_SVG_FONT_FAMILY = \"Rich Fira Code\""
+   ],
+   [
+    76,
+    "_SVG_CLASSES_PREFIX = \"rich-svg\""
+   ]
+  ],
+  "rich/_palettes.py": [
+   [
+    1,
+    "from .palette import Palette"
+   ],
+   [
+    5,
+    "WINDOWS_PALETTE = Palette("
+   ],
+   [
+    6,
+    "    ["
+   ],
+   [
+    7,
+    "        (12, 12, 12),"
+   ],
+   [
+    8,
+    "        (197, 15, 31),"
+   ],
+   [
+    9,
+    "        (19, 161, 14),"
+   ],
+   [
+    10,
+    "        (193, 156, 0),"
+   ],
+   [
+    11,
+    "        (0, 55, 218),"
+   ],
+   [
+    12,
+    "        (136, 23, 152),"
+   ],
+   [
+    13,
+    "        (58, 150, 221),"
+   ],
+   [
+    14,
+    "        (204, 204, 204),"
+   ],
+   [
+    15,
+    "        (118, 118, 118),"
+   ],
+   [
+    16,
+    "        (231, 72, 86),"
+   ],
+   [
+    17,
+    "        (22, 198, 12),"
+   ],
+   [
+    18,
+    "        (249, 241, 165),"
+   ],
+   [
+    19,
+    "        (59, 120, 255),"
+   ],
+   [
+    20,
+    "        (180, 0, 158),"
+   ],
+   [
+    21,
+    "        (97, 214, 214),"
+   ],
+   [
+    22,
+    "        (242, 242, 242),"
+   ],
+   [
+    23,
+    "    ]"
+   ],
+   [
+    24,
+    ")"
+   ],
+   [
+    27,
+    "STANDARD_PALETTE = Palette("
+   ],
+   [
+    28,
+    "    ["
+   ],
+   [
+    29,
+    "        (0, 0, 0),"
+   ],
+   [
+    30,
+    "        (170, 0, 0),"
+   ],
+   [
+    31,
+    "        (0, 170, 0),"
+   ],
+   [
+    32,
+    "        (170, 85, 0),"
+   ],
+   [
+    33,
+    "        (0, 0, 170),"
+   ],
+   [
+    34,
+    "        (170, 0, 170),"
+   ],
+   [
+    35,
+    "        (0, 170, 170),"
+   ],
+   [
+    36,
+    "        (170, 170, 170),"
+   ],
+   [
+    37,
+    "        (85, 85, 85),"
+   ],
+   [
+    38,
+    "        (255, 85, 85),"
+   ],
+   [
+    39,
+    "        (85, 255, 85),"
+   ],
+   [
+    40,
+    "        (255, 255, 85),"
+   ],
+   [
+    41,
+    "        (85, 85, 255),"
+   ],
+   [
+    42,
+    "        (255, 85, 255),"
+   ],
+   [
+    43,
+    "        (85, 255, 255),"
+   ],
+   [
+    44,
+    "        (255, 255, 255),"
+   ],
+   [
+    45,
+    "    ]"
+   ],
+   [
+    46,
+    ")"
+   ],
+   [
+    50,
+    "EIGHT_BIT_PALETTE = Palette("
+   ]
+  ],
+  "rich/default_styles.py": [
+   [
+    1,
+    "from typing import Dict"
+   ],
+   [
+    3,
+    "from .style import Style"
+   ],
+   [
+    5,
+    "DEFAULT_STYLES: Dict[str, Style] = {"
+   ]
+  ],
+  "rich/themes.py": [
+   [
+    1,
+    "from .default_styles import DEFAULT_STYLES"
+   ],
+   [
+    2,
+    "from .theme import Theme"
+   ],
+   [
+    5,
+    "DEFAULT = Theme(DEFAULT_STYLES)"
+   ]
+  ],
+  "rich/_unicode_data/unicode17-0-0.py": [
+   [
+    4,
+    "from rich.cells import CellTable"
+   ],
+   [
+    6,
+    "cell_table = CellTable("
+   ]
+  ],
+  "rich/region.py": [
+   [
+    1,
+    "from typing import NamedTuple"
+   ],
+   [
+    4,
+    "class Region(NamedTuple):"
+   ]
+  ],
+  "rich/_extension.py": [
+   [
+    1,
+    "from typing import Any"
+   ]
+  ],
+  "rich/_unicode_data/_versions.py": [
+   [
+    1,
+    "VERSIONS = ("
+   ],
+   [
+    2,
+    "    \"4.1.0\","
+   ],
+   [
+    3,
+    "    \"5.0.0\","
+   ],
+   [
+    4,
+    "    \"5.1.0\","
+   ],
+   [
+    5,
+    "    \"5.2.0\","
+   ],
+   [
+    6,
+    "    \"6.0.0\","
+   ],
+   [
+    7,
+    "    \"6.1.0\","
+   ],
+   [
+    8,
+    "    \"6.2.0\","
+   ],
+   [
+    9,
+    "    \"6.3.0\","
+   ],
+   [
+    10,
+    "    \"7.0.0\","
+   ],
+   [
+    11,
+    "    \"8.0.0\","
+   ],
+   [
+    12,
+    "    \"9.0.0\","
+   ],
+   [
+    13,
+    "    \"10.0.0\","
+   ],
+   [
+    14,
+    "    \"11.0.0\","
+   ],
+   [
+    15,
+    "    \"12.0.0\","
+   ],
+   [
+    16,
+    "    \"12.1.0\","
+   ],
+   [
+    17,
+    "    \"13.0.0\","
+   ],
+   [
+    18,
+    "    \"14.0.0\","
+   ],
+   [
+    19,
+    "    \"15.0.0\","
+   ],
+   [
+    20,
+    "    \"15.1.0\","
+   ],
+   [
+    21,
+    "    \"16.0.0\","
+   ],
+   [
+    22,
+    "    \"17.0.0\","
+   ],
+   [
+    23,
+    ")"
+   ]
+  ],
+  "rich/markdown.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import sys"
+   ],
+   [
+    4,
+    "from dataclasses import dataclass"
+   ],
+   [
+    5,
+    "from typing import ClassVar, Iterable, get_args"
+   ],
+   [
+    7,
+    "from markdown_it import MarkdownIt"
+   ],
+   [
+    8,
+    "from markdown_it.token import Token"
+   ],
+   [
+    10,
+    "from rich.table import Table"
+   ],
+   [
+    12,
+    "from . import box"
+   ],
+   [
+    13,
+    "from ._loop import loop_first"
+   ],
+   [
+    14,
+    "from ._stack import Stack"
+   ],
+   [
+    15,
+    "from .console import Console, ConsoleOptions, JustifyMethod, RenderResult"
+   ],
+   [
+    16,
+    "from .containers import Renderables"
+   ],
+   [
+    17,
+    "from .jupyter import JupyterMixin"
+   ],
+   [
+    18,
+    "from .rule import Rule"
+   ],
+   [
+    19,
+    "from .segment import Segment"
+   ],
+   [
+    20,
+    "from .style import Style, StyleStack"
+   ],
+   [
+    21,
+    "from .syntax import Syntax"
+   ],
+   [
+    22,
+    "from .text import Text, TextType"
+   ],
+   [
+    25,
+    "class MarkdownElement:"
+   ],
+   [
+    26,
+    "    new_line: ClassVar[bool] = True"
+   ],
+   [
+    28,
+    "    @classmethod"
+   ],
+   [
+    29,
+    "    def create(cls, markdown: Markdown, token: Token) -> MarkdownElement:"
+   ],
+   [
+    39,
+    "        return cls()"
+   ],
+   [
+    41,
+    "    def on_enter(self, context: MarkdownContext) -> None:"
+   ],
+   [
+    48,
+    "    def on_text(self, context: MarkdownContext, text: TextType) -> None:"
+   ],
+   [
+    55,
+    "    def on_leave(self, context: MarkdownContext) -> None:"
+   ],
+   [
+    62,
+    "    def on_child_close(self, context: MarkdownContext, child: MarkdownElement) -> bool:"
+   ],
+   [
+    74,
+    "        return True"
+   ],
+   [
+    76,
+    "    def __rich_console__("
+   ],
+   [
+    82,
+    "class UnknownElement(MarkdownElement):"
+   ],
+   [
+    91,
+    "class TextElement(MarkdownElement):"
+   ],
+   [
+    94,
+    "    style_name = \"none\""
+   ],
+   [
+    96,
+    "    def on_enter(self, context: MarkdownContext) -> None:"
+   ],
+   [
+    97,
+    "        self.style = context.enter_style(self.style_name)"
+   ],
+   [
+    98,
+    "        self.text = Text(justify=\"left\")"
+   ],
+   [
+    100,
+    "    def on_text(self, context: MarkdownContext, text: TextType) -> None:"
+   ],
+   [
+    101,
+    "        self.text.append(text, context.current_style if isinstance(text, str) else None)"
+   ],
+   [
+    103,
+    "    def on_leave(self, context: MarkdownContext) -> None:"
+   ],
+   [
+    104,
+    "        context.leave_style()"
+   ],
+   [
+    107,
+    "class Paragraph(TextElement):"
+   ],
+   [
+    110,
+    "    style_name = \"markdown.paragraph\""
+   ],
+   [
+    111,
+    "    justify: JustifyMethod"
+   ],
+   [
+    113,
+    "    @classmethod"
+   ],
+   [
+    114,
+    "    def create(cls, markdown: Markdown, token: Token) -> Paragraph:"
+   ],
+   [
+    115,
+    "        return cls(justify=markdown.justify or \"left\")"
+   ],
+   [
+    117,
+    "    def __init__(self, justify: JustifyMethod) -> None:"
+   ],
+   [
+    118,
+    "        self.justify = justify"
+   ],
+   [
+    120,
+    "    def __rich_console__("
+   ],
+   [
+    123,
+    "        self.text.justify = self.justify"
+   ],
+   [
+    124,
+    "        yield self.text"
+   ],
+   [
+    127,
+    "@dataclass"
+   ],
+   [
+    128,
+    "class HeadingFormat:"
+   ],
+   [
+    129,
+    "    justify: JustifyMethod = \"left\""
+   ],
+   [
+    130,
+    "    style: str = \"\""
+   ],
+   [
+    133,
+    "class Heading(TextElement):"
+   ],
+   [
+    136,
+    "    LEVEL_ALIGN: ClassVar[dict[str, JustifyMethod]] = {"
+   ],
+   [
+    137,
+    "        \"h1\": \"center\","
+   ],
+   [
+    138,
+    "        \"h2\": \"left\","
+   ],
+   [
+    139,
+    "        \"h3\": \"left\","
+   ],
+   [
+    140,
+    "        \"h4\": \"left\","
+   ],
+   [
+    141,
+    "        \"h5\": \"left\","
+   ],
+   [
+    142,
+    "        \"h6\": \"left\","
+   ],
+   [
+    143,
+    "    }"
+   ],
+   [
+    145,
+    "    @classmethod"
+   ],
+   [
+    146,
+    "    def create(cls, markdown: Markdown, token: Token) -> Heading:"
+   ],
+   [
+    147,
+    "        return cls(token.tag)"
+   ],
+   [
+    149,
+    "    def on_enter(self, context: MarkdownContext) -> None:"
+   ],
+   [
+    150,
+    "        self.text = Text()"
+   ],
+   [
+    151,
+    "        context.enter_style(self.style_name)"
+   ],
+   [
+    153,
+    "    def __init__(self, tag: str) -> None:"
+   ],
+   [
+    154,
+    "        self.tag = tag"
+   ],
+   [
+    155,
+    "        self.style_name = f\"markdown.{tag}\""
+   ],
+   [
+    156,
+    "        super().__init__()"
+   ],
+   [
+    158,
+    "    def __rich_console__("
+   ],
+   [
+    161,
+    "        text = self.text.copy()"
+   ],
+   [
+    162,
+    "        heading_justify = self.LEVEL_ALIGN.get(self.tag, \"left\")"
+   ],
+   [
+    163,
+    "        text.justify = heading_justify"
+   ],
+   [
+    164,
+    "        yield text"
+   ],
+   [
+    167,
+    "class CodeBlock(TextElement):"
+   ],
+   [
+    170,
+    "    style_name = \"markdown.code_block\""
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_markdown.py::test_markdown_render - AssertionError: assert ..."
+ ]
+}

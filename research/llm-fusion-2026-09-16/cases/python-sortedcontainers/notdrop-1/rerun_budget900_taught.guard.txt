@@ -1,0 +1,4 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered
+[23:18:00] REFUSED: fault is outside the taught vocabulary (candidate files tried: src/sortedcontainers/__init__.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 59 candidate(s) were tried and rejected — each is logged with the test that failed it in the refusal report.
+  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report lists each one with the test that killed it
+  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_diag/python-sortedcontainers/.fluidfix/last_refusal.json

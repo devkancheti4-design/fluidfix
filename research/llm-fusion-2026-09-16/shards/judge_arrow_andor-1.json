@@ -1,0 +1,134 @@
+{
+ "case": "arrow/andor-1",
+ "file": "arrow/locales.py",
+ "budget": 900,
+ "guards": 13,
+ "wall_s": 903.7,
+ "cpu_sum_s": 11689.4,
+ "greens": [
+  4
+ ],
+ "distinct_programs": 1,
+ "held": [],
+ "ruling": "SHIP",
+ "verdict": "EXACT",
+ "shards": {
+  "0": {
+   "exit": 2,
+   "seconds": 851.3,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class o",
+   "rejected": 124
+  },
+  "1": {
+   "exit": 2,
+   "seconds": 903.6,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class o",
+   "rejected": 41
+  },
+  "2": {
+   "exit": 2,
+   "seconds": 903.5,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "",
+   "rejected": 0
+  },
+  "3": {
+   "exit": 2,
+   "seconds": 903.5,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "",
+   "rejected": 0
+  },
+  "4": {
+   "exit": 0,
+   "seconds": 903.4,
+   "repaired_line": 5468,
+   "suite_runs": 5,
+   "byte_exact": true,
+   "hint": "",
+   "rejected": 0
+  },
+  "5": {
+   "exit": 2,
+   "seconds": 903.4,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "",
+   "rejected": 0
+  },
+  "6": {
+   "exit": 2,
+   "seconds": 903.3,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "",
+   "rejected": 0
+  },
+  "7": {
+   "exit": 2,
+   "seconds": 903.2,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "",
+   "rejected": 0
+  },
+  "8": {
+   "exit": 2,
+   "seconds": 903.1,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "",
+   "rejected": 0
+  },
+  "9": {
+   "exit": 2,
+   "seconds": 903.0,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "",
+   "rejected": 0
+  },
+  "10": {
+   "exit": 2,
+   "seconds": 902.9,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class o",
+   "rejected": 15
+  },
+  "11": {
+   "exit": 2,
+   "seconds": 902.7,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "",
+   "rejected": 0
+  },
+  "12": {
+   "exit": 2,
+   "seconds": 902.5,
+   "repaired_line": null,
+   "suite_runs": null,
+   "byte_exact": false,
+   "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists each one with the test that kille",
+   "rejected": 2
+  }
+ }
+}

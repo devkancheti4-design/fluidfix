@@ -1,0 +1,5 @@
+{"1": {"example_before": "return round(price * qty)", "example_after": "return round(price * qty, 2)",
+       "name": "round-lost-precision-expr", "description": "a round() on a money expression with no ndigits, dropping the cents",
+       "signal": "round\\(([^(),]+)\\)",
+       "applier": "def fix(line, o):\n    return re.sub(r\"round\\(([^(),]+)\\)\", r\"round(\\1, 2)\", line)"},
+ "2": {"line": "    return round(price * qty)", "replacements": ["    return round(price * qty, 2)"]}}

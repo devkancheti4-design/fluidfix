@@ -1,0 +1,12 @@
+repo: 302 source files, 300 tests, suite 3.5s
+pkg/mod_021.py 3 flipped-additive               rank=1 of 10  loc= 9.6s  repaired  exact=True runs=4  14.6s
+pkg/mod_195.py 0 strictness                     rank=1 of 10  loc= 4.7s  repaired  exact=True runs=8  15.9s
+pkg/mod_081.py 8 minmax-swap                    rank=1 of 10  loc= 4.9s  repaired  exact=True runs=9  15.7s
+pkg/mod_055.py 1 literal-off-by-one             rank=1 of 10  loc= 4.8s  repaired  exact=True runs=10  16.0s
+pkg/mod_189.py 9 flipped-augmented-assign       rank=1 of 10  loc= 4.8s  repaired  exact=True runs=12  16.8s
+pkg/mod_258.py 10 flipped-comparison-direction  rank=1 of 10  loc= 4.9s  repaired  exact=True runs=14  17.4s
+pkg/mod_123.py 3 flipped-additive               rank=1 of 10  loc= 4.7s  repaired  exact=True runs=4  14.5s
+pkg/mod_224.py 0 strictness                     rank=1 of 10  loc= 4.7s  repaired  exact=True runs=8  16.2s
+pkg/mod_293.py 8 minmax-swap                    rank=1 of 10  loc= 4.9s  repaired  exact=True runs=9  15.8s
+pkg/mod_256.py 1 literal-off-by-one             rank=1 of 10  loc= 4.8s  repaired  exact=True runs=10  16.0s
+TALLY byte-exact 10/10  rank-1 10/10  median wall 16.0s

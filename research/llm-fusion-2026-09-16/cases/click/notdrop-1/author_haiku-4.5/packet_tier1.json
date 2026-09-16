@@ -1,0 +1,113 @@
+{
+ "system": "You write ONE fault-class rule for fluidfix, a tool that repairs a regression when a\ntest suite goes red. A rule has four parts and is judged only by the suite, so be precise, not clever.\n\nReturn ONLY a JSON object with these keys:\n  \"example_before\": the defective line exactly as it appears (no indentation),\n  \"example_after\":  the same line fixed,\n  \"name\":           a short hyphenated slug,\n  \"description\":    one sentence stating what an observer SEES on such a line (a fact, never an instruction),\n  \"signal\":         a Python regex that matches lines that CAN exhibit this fault; anchor it on the class's own tokens,\n  \"applier\":        Python source of a function  def fix(line, o): ...  returning the corrected line (a str),\n                    a list of candidate strs, or [SpanEdit(start, end, text)] for several lines that must change together.\n                    `re` and `SpanEdit` are available. If the line is not this class, return line unchanged. Never raise.\n\nRules: the fix must be derivable from the line plus what the repository already contains. Do not widen the\nsignal beyond the class. Do not invent facts that are not in the packet. Preserve indentation: the applier\nreceives the full line including leading spaces and must return lines with the same leading spaces.",
+ "user": {
+  "file": "src/click/shell_completion.py",
+  "other_suspects": [],
+  "sight": "### REFUSED  defect file: src/click/shell_completion.py  (showing only the 218 lines the failing test executed; localisation mode: frames+coverage)\n--- failing suite output (compressed) ---\n_________________________________ test_command _________________________________\n>       assert _get_words(cli, [], \"\") == []\ntests/test_shell_completion.py:35: \n>       return [c.value for c in _get_completions(cli, args, incomplete)]\ntests/test_shell_completion.py:30: \n>       return comp.get_completions(args, incomplete)\ntests/test_shell_completion.py:26: \n>       obj, incomplete = _resolve_incomplete(ctx, args, incomplete)\nsrc/click/shell_completion.py:365: \n>       if \"--\" not in args and _start_of_option(ctx, incomplete):\nsrc/click/shell_completion.py:782: \n>       c = value[0]\nE       IndexError: string index out of range\nsrc/click/shell_completion.py:667: IndexError\nFAILED tests/test_shell_completion.py::test_command - IndexError: string inde...\n--- executed defect-file lines ---\n   1| from __future__ import annotations\n  ...\n   3| import collections.abc as cabc\n   4| import os\n   5| import re\n   6| import typing as t\n   7| from gettext import gettext as _\n  ...\n   9| from .core import Argument\n  10| from .core import Command\n  11| from .core import Context\n  12| from .core import Group\n  13| from .core import Option\n  14| from .core import Parameter\n  15| from .core import ParameterSource\n  16| from .utils import echo\n  ...\n  19| def shell_complete(\n  ...\n  64|     _ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=True)\n  ...\n  67| class CompletionItem(t.Generic[_ValueT_co]):\n  ...\n  86|     __slots__ = (\"value\", \"type\", \"help\", \"_info\")\n  ...\n  88|     def __init__(\n  ...\n 100|     def __getattr__(self, name: str) -> t.Any:\n  ...\n 105| _SOURCE_BASH = \"\"\"\\\n 106| %(complete_func)s() {\n 107|     local IFS=$'\\\\n'\n 108|     local response\n 109| \n 110|     response=$(env COMP_WORDS=\"${COMP_WORDS[*]}\" COMP_CWORD=$COMP_CWORD \\\n 111| %(complete_var)s=bash_complete $1)\n 112| \n 113|     for completion in $response; do\n 114|         IFS=',' read type value <<< \"$completion\"\n 115| \n 116|         if [[ $type == 'dir' ]]; then\n 117|             COMPREPLY=()\n 118|             compopt -o dirnames\n 119|         elif [[ $type == 'file' ]]; then\n 120|             COMPREPLY=()\n 121|             compopt -o default\n 122|         elif [[ $type == 'plain' ]]; then\n 123|             COMPREPLY+=($value)\n 124|         fi\n 125|     done\n 126| \n 127|     return 0\n 128| }\n 129| \n 130| %(complete_func)s_setup() {\n 131|     complete -o nosort -F %(complete_func)s %(prog_name)s\n 132| }\n 133| \n 134| %(complete_func)s_setup;\n 135| \"\"\"\n  ...\n 143| _SOURCE_ZSH = \"\"\"\\\n  ...\n 187| _SOURCE_FISH = \"\"\"\\\n 188| function %(complete_func)s;\n 189|     set -l response (env %(complete_var)s=fish_complete COMP_WORDS=(commandline -cp) \\\n 190| COMP_CWORD=(commandline -t) %(prog_name)s);\n 191| \n 192|     for completion in $response;\n 193|         set -l metadata (string split \",\" $completion);\n 194| \n 195|         if test $metadata[1] = \"dir\";\n 196|             __fish_complete_directories $metadata[2];\n 197|         else if test $metadata[1] = \"file\";\n 198|             __fish_complete_path $metadata[2];\n 199|         else if test $metadata[1] = \"plain\";\n 200|             echo $metadata[2];\n 201|         end;\n 202|     end;\n 203| end;\n 204| \n 205| complete --no-files --command %(prog_name)s --arguments \\\n 206| \"(%(complete_func)s)\";\n 207| \"\"\"\n  ...\n 214| _SOURCE_POWERSHELL = \"\"\"\\\n  ...\n 272| class _SourceVarsDict(t.TypedDict):\n 273|     complete_func: str\n 274|     complete_var: str\n 275|     prog_name: str\n  ...\n 278| class ShellComplete:\n  ...\n 291|     name: t.ClassVar[str]\n 292|     \"\"\"Name to register the shell as with :func:`add_completion_class`.\n 293|     This is used in completion instructions (``{name}_source`` and\n 294|     ``{name}_complete``).\n 295|     \"\"\"\n  ...\n 297|     source_template: t.ClassVar[str]\n 298|     \"\"\"Completion script template formatted by :meth:`source`. This must\n 299|     be provided by subclasses.\n 300|     \"\"\"\n  ...\n 302|     cli: Command\n 303|     ctx_args: cabc.MutableMapping[str, t.Any]\n 304|     prog_name: str\n 305|     complete_var: str\n  ...\n 307|     def __init__(\n  ...\n 314|         self.cli = cli\n 315|         self.ctx_args = ctx_args\n 316|         self.prog_name = prog_name\n 317|         self.complete_var = complete_var\n  ...\n 319|     @property\n 320|     def func_name(self) -> str:\n  ...\n 327|     def source_vars(self) -> _SourceVarsDict:\n  ...\n 339|     def source(self) -> str:\n  ...\n 347|     def get_completion_args(self) -> tuple[list[str], str]:\n  ...\n 353| \n 354|     def get_completions(\n 355|         self, args: list[str], incomplete: str\n 356|     ) -> list[CompletionItem[str]]:\n 357|         \"\"\"Determine the context and last complete command or parameter\n 358|         from the complete args. Call that object's ``shell_complete``\n 359|         method to get the completions for the incomplete value.\n 360| \n 361|         :param args: List of complete args before the incomplete value.\n 362|         :param incomplete: Value being completed. May be empty.\n 363|         \"\"\"\n 364|         ctx = _resolve_context(self.cli, self.ctx_args, self.prog_name, args)\n 365|         obj, incomplete = _resolve_incomplete(ctx, args, incomplete)\n 366|         return obj.shell_complete(ctx, incomplete)\n 367| \n 368|     def format_completion(self, item: CompletionItem[str]) -> str:\n 369|         \"\"\"Format a completion item into the form recognized by the\n 370|         shell script. This must be implemented by subclasses.\n 371| \n 372|         :param item: Completion item to format.\n 373|         \"\"\"\n 374|         raise NotImplementedError\n 375| \n 376|     def complete(self) -> str:\n 377|         \"\"\"Produce the completion data to send back to the shell.\n  ...\n 389| class BashComplete(ShellComplete):\n  ...\n 392|     name: t.ClassVar[str] = \"bash\"\n 393|     source_template: t.ClassVar[str] = _SOURCE_BASH\n  ...\n 395|     @staticmethod\n 396|     def _check_version() -> None:\n  ...\n 428|     def source(self) -> str:\n  ...\n 432|     def get_completion_args(self) -> tuple[list[str], str]:\n  ...\n 444|     def format_completion(self, item: CompletionItem[t.Any]) -> str:\n  ...\n 448| class ZshComplete(ShellComplete):\n  ...\n 451|     name: t.ClassVar[str] = \"zsh\"\n 452|     source_template: t.ClassVar[str] = _SOURCE_ZSH\n  ...\n 454|     def get_completion_args(self) -> tuple[list[str], str]:\n  ...\n 466|     def format_completion(self, item: CompletionItem[str]) -> str:\n  ...\n 484| class FishComplete(ShellComplete):\n  ...\n 487|     name: t.ClassVar[str] = \"fish\"\n 488|     source_template: t.ClassVar[str] = _SOURCE_FISH\n  ...\n 490|     def get_completion_args(self) -> tuple[list[str], str]:\n  ...\n 504|     def format_completion(self, item: CompletionItem[str]) -> str:\n  ...\n 521| class PowerShellComplete(ShellComplete):\n  ...\n 527|     name: t.ClassVar[str] = \"powershell\"\n 528|     source_template: t.ClassVar[str] = _SOURCE_POWERSHELL\n  ...\n 530|     def get_completion_args(self) -> tuple[list[str], str]:\n  ...\n 542|     def format_completion(self, item: CompletionItem[str]) -> str:\n  ...\n 555| _available_shells: t.Final[dict[str, type[ShellComplete]]] = {\n 556|     \"bash\": BashComplete,\n 557|     \"fish\": FishComplete,\n 558|     \"powershell\": PowerShellComplete,\n 559|     \"zsh\": ZshComplete,\n 560| }\n  ...\n 562| _ShellCompleteT = t.TypeVar(\"_ShellCompleteT\", bound=\"ShellComplete\")\n  ...\n 565| def add_completion_class(\n  ...\n 593| def get_completion_class(shell: str) -> type[ShellComplete] | None:\n  ...\n 603| def split_arg_string(string: str) -> list[str]:\n  ...\n 639| def _is_incomplete_argument(ctx: Context, param: Parameter) -> bool:\n  ...\n 655|             param.nargs > 1\n 656|             and isinstance(value, (tuple, list))\n 657|             and len(value) < param.nargs\n 658|         )\n 659|     )\n 660| \n 661| \n 662| def _start_of_option(ctx: Context, value: str) -> bool:\n 663|     \"\"\"Check if the value looks like the start of an option.\"\"\"\n 664|     if value:\n 665|         return False\n 666| \n 667|     c = value[0]\n 668|     return c in ctx._opt_prefixes\n 669| \n 670| \n 671| def _is_incomplete_option(ctx: Context, args: list[str], param: Parameter) -> bool:\n 672|     \"\"\"Determine if the given parameter is an option that needs a value.\n 673| \n 674|     :param args: List of complete args before the incomplete value.\n 675|     :param param: Option object being checked.\n 676|     \"\"\"\n 677|     if not isinstance(param, Option):\n 678|         return False\n 679| \n  ...\n 696| def _resolve_context(\n  ...\n 710|     ctx_args[\"resilient_parsing\"] = True\n 711|     with cli.make_context(prog_name, args.copy(), **ctx_args) as ctx:\n 712|         args = ctx._protected_args + ctx.args\n  ...\n 714|         while args:\n  ...\n 754|     return ctx\n  ...\n 757| def _resolve_incomplete(\n  ...\n 770|     # as a separate item, or return the split name and value. Always\n 771|     # split and discard the \"=\" to make completion easier.\n 772|     if incomplete == \"=\":\n 773|         incomplete = \"\"\n 774|     elif \"=\" in incomplete and _start_of_option(ctx, incomplete):\n 775|         name, _, incomplete = incomplete.partition(\"=\")\n 776|         args.append(name)\n 777| \n 778|     # The \"--\" marker tells Click to stop treating values as options\n 779|     # even if they start with the option character. If it hasn't been\n 780|     # given and the incomplete arg looks like an option, the current\n 781|     # command will provide option name completions.\n 782|     if \"--\" not in args and _start_of_option(ctx, incomplete):\n 783|         return ctx.command, incomplete\n 784| \n 785|     params = ctx.command.get_params(ctx)\n 786| \n 787|     # If the last complete arg is an option name with an incomplete\n 788|     # value, the option will provide value completions.\n 789|     for param in params:\n 790|         if _is_incomplete_option(ctx, args, param):\n 791|             return param, incomplete\n 792| \n 793|     # It's not an option name or value. The first argument without a\n 794|     # parsed value will provide value completions.",
+  "lines_shown": 218,
+  "truncated": false,
+  "rejected_by_the_suite": [
+   {
+    "at": "src/click/shell_completion.py:667",
+    "tried": "c = value[-1]",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:64",
+    "tried": "_ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=False)",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:100",
+    "tried": "def __getattr__(self, name: str) ->= t.Any:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 100)"
+   },
+   {
+    "at": "src/click/shell_completion.py:111",
+    "tried": "%(complete_var)s=bash_complete $0)",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:114",
+    "tried": "IFS=',' read type value <=<< \"$completion\"",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:114",
+    "tried": "IFS=',' read type value <<=< \"$completion\"",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:114",
+    "tried": "IFS=',' read type value <<<= \"$completion\"",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:127",
+    "tried": "return -1",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:195",
+    "tried": "if test $metadata[0] = \"dir\";",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:196",
+    "tried": "__fish_complete_directories $metadata[1];",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:197",
+    "tried": "else if test $metadata[0] = \"file\";",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:198",
+    "tried": "__fish_complete_path $metadata[1];",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:199",
+    "tried": "else if test $metadata[0] = \"plain\";",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:200",
+    "tried": "echo $metadata[1];",
+    "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+   },
+   {
+    "at": "src/click/shell_completion.py:320",
+    "tried": "def func_name(self) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 320)"
+   },
+   {
+    "at": "src/click/shell_completion.py:327",
+    "tried": "def source_vars(self) ->= _SourceVarsDict:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 327)"
+   },
+   {
+    "at": "src/click/shell_completion.py:339",
+    "tried": "def source(self) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 339)"
+   },
+   {
+    "at": "src/click/shell_completion.py:347",
+    "tried": "def get_completion_args(self) ->= tuple[list[str], str]:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 347)"
+   },
+   {
+    "at": "src/click/shell_completion.py:356",
+    "tried": ") ->= list[CompletionItem[str]]:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 356)"
+   },
+   {
+    "at": "src/click/shell_completion.py:368",
+    "tried": "def format_completion(self, item: CompletionItem[str]) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 368)"
+   }
+  ],
+  "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand"
+ }
+}

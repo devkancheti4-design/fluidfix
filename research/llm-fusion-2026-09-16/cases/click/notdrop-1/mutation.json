@@ -1,0 +1,8 @@
+{
+ "file": "src/click/shell_completion.py",
+ "lineno": 664,
+ "orig": "    if not value:",
+ "mutated": "    if value:",
+ "cls": "notdrop",
+ "base": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1"
+}

@@ -1,0 +1,883 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/sortedcontainers/sortedlist.py"
+ ],
+ "seconds": 143.9945731163025,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "rejected_candidates": [
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos - 1][-1] < self._keys[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_new - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos][-1] <= self._keys[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_new - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos - 1][] <= self._keys[pos][0]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 2466)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos - 1][-1] <= self._keys[pos][-1]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos + 1][-1] <= self._keys[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_new - IndexError: li..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos - 1][-1] >= self._keys[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:87",
+   "tried": "    DEFAULT_LOAD_FACTOR = 999",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:886",
+   "tried": "    def islice(self, start=None, stop=None, reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(False, True), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, False), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, True), reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1231",
+   "tried": "    def pop(self, index=):",
+   "why": "does not compile: expected default value expression (sortedlist.py, line 1231)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1477",
+   "tried": "        doc_str = \"\"\"Return true if and only if sorted list is {-1} `other`.",
+   "why": "ERROR tests/test_coverage_sortedkeylist_modulo.py - KeyError: '-1'"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <=> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==>= ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{0}__(other)`` <==> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==> ``sl {1} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` >==> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==< ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1486",
+   "tried": "        :return: true if sorted list is {-1} `other`",
+   "why": "ERROR tests/test_coverage_sortedkeylist_modulo.py - KeyError: '-1'"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1494",
+   "tried": "    __lt__ = __make_cmp(lt, '<=', 'less than')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1494",
+   "tried": "    __lt__ = __make_cmp(lt, '>', 'less than')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1495",
+   "tried": "    __gt__ = __make_cmp(gt, '>=', 'greater than')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1495",
+   "tried": "    __gt__ = __make_cmp(gt, '<', 'greater than')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1496",
+   "tried": "    __le__ = __make_cmp(le, '<', 'less than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1496",
+   "tried": "    __le__ = __make_cmp(le, '>=', 'less than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1497",
+   "tried": "    __ge__ = __make_cmp(ge, '>', 'greater than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1497",
+   "tried": "    __ge__ = __make_cmp(ge, '<=', 'greater than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1645",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1651",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1792",
+   "tried": "            values[pos : (pos + _load)] for pos in range(-1, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - IndexError: li..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1792",
+   "tried": "            values[pos : (pos - _load)] for pos in range(0, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - IndexError: li..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1795",
+   "tried": "        _maxes.extend(sublist[] for sublist in _keys)",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 1795)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(False, True), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, False), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, True), reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2453",
+   "tried": "            assert self._load > 4",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2453",
+   "tried": "            assert self._load >= 3",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2453",
+   "tried": "            assert self._load <= 4",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2460",
+   "tried": "                for pos in range(0, len(sublist)):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2461",
+   "tried": "                    assert sublist[pos - 1] < sublist[pos]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2461",
+   "tried": "                    assert sublist[pos] <= sublist[pos]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2461",
+   "tried": "                    assert sublist[pos + 1] <= sublist[pos]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - IndexError: li..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2461",
+   "tried": "                    assert sublist[pos - 1] >= sublist[pos]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_key - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2478",
+   "tried": "                assert self._maxes[pos] == self._keys[pos][]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 2478)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos - 1][-1] < self._keys[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_new - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos][-1] <= self._keys[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_new - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos - 1][] <= self._keys[pos][0]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 2466)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos - 1][-1] <= self._keys[pos][-1]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos + 1][-1] <= self._keys[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2466",
+   "tried": "                assert self._keys[pos - 1][-1] >= self._keys[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:87",
+   "tried": "    DEFAULT_LOAD_FACTOR = 999",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:886",
+   "tried": "    def islice(self, start=None, stop=None, reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(False, True), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, False), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, True), reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1231",
+   "tried": "    def pop(self, index=):",
+   "why": "does not compile: expected default value expression (sortedlist.py, line 1231)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1477",
+   "tried": "        doc_str = \"\"\"Return true if and only if sorted list is {-1} `other`.",
+   "why": "ERROR tests/test_coverage_sortedkeylist_modulo.py - KeyError: '-1'"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <=> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==>= ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{0}__(other)`` <==> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==> ``sl {1} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` >==> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==< ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1486",
+   "tried": "        :return: true if sorted list is {-1} `other`",
+   "why": "ERROR tests/test_coverage_sortedkeylist_modulo.py - KeyError: '-1'"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1494",
+   "tried": "    __lt__ = __make_cmp(lt, '<=', 'less than')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1494",
+   "tried": "    __lt__ = __make_cmp(lt, '>', 'less than')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1495",
+   "tried": "    __gt__ = __make_cmp(gt, '>=', 'greater than')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1495",
+   "tried": "    __gt__ = __make_cmp(gt, '<', 'greater than')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1496",
+   "tried": "    __le__ = __make_cmp(le, '<', 'less than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1496",
+   "tried": "    __le__ = __make_cmp(le, '>=', 'less than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1497",
+   "tried": "    __ge__ = __make_cmp(ge, '>', 'greater than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1497",
+   "tried": "    __ge__ = __make_cmp(ge, '<=', 'greater than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1645",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1651",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1670",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1779",
+   "tried": "            if len(values) * 4 > self._len:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1779",
+   "tried": "            if len(values) * 3 >= self._len:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1779",
+   "tried": "            if len(values) * 4 <= self._len:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1792",
+   "tried": "            values[pos : (pos + _load)] for pos in range(-1, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - IndexErro..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1792",
+   "tried": "            values[pos : (pos - _load)] for pos in range(0, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - IndexErro..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1795",
+   "tried": "        _maxes.extend(sublist[] for sublist in _keys)",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 1795)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1820",
+   "tried": "            return True",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - assert 0 ..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1826",
+   "tried": "            return True",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1836",
+   "tried": "        while False:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - assert 0 ..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1838",
+   "tried": "                return True",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - assert 10..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1840",
+   "tried": "                return False",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - assert 0 ..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1841",
+   "tried": "            idx += 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Failed: T..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1841",
+   "tried": "            idx -= 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - assert 11..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1843",
+   "tried": "                pos += 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - assert 12..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1843",
+   "tried": "                pos -= 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - assert 12..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1847",
+   "tried": "                idx = -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - assert 41..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1883",
+   "tried": "        while False:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1935",
+   "tried": "        while False:",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1972",
+   "tried": "        self._len -= 0",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1972",
+   "tried": "        self._len += 1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1976",
+   "tried": "        if len_keys_pos >= (self._load >> 1):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1976",
+   "tried": "        if len_keys_pos > (self._load >=> 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 1976)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1976",
+   "tried": "        if len_keys_pos > (self._load >>= 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 1976)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1976",
+   "tried": "        if len_keys_pos > (self._load >> 0):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1976",
+   "tried": "        if len_keys_pos < (self._load >> 1):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1977",
+   "tried": "            _maxes[pos] = keys_pos[]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 1977)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(False, True), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, False), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, True), reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2196",
+   "tried": "            return -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2231",
+   "tried": "            return -1",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2453",
+   "tried": "            assert self._load > 4",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2453",
+   "tried": "            assert self._load >= 3",
+   "why": "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_contains - Assertion..."
+  }
+ ],
+ "rejected_not_listed": 18,
+ "executed_lines": {
+  "src/sortedcontainers/sortedlist.py": [
+   [
+    18,
+    "import sys"
+   ],
+   [
+    19,
+    "import traceback"
+   ],
+   [
+    20,
+    "from bisect import bisect_left, bisect_right, insort"
+   ],
+   [
+    21,
+    "from collections.abc import MutableSequence, Sequence"
+   ],
+   [
+    22,
+    "from functools import reduce"
+   ],
+   [
+    23,
+    "from itertools import chain, repeat, starmap"
+   ],
+   [
+    24,
+    "from math import log"
+   ],
+   [
+    25,
+    "from operator import add, eq, ge, gt, iadd, le, lt, ne"
+   ],
+   [
+    26,
+    "from reprlib import recursive_repr"
+   ],
+   [
+    27,
+    "from textwrap import dedent"
+   ],
+   [
+    30,
+    "class SortedList(MutableSequence):"
+   ],
+   [
+    87,
+    "    DEFAULT_LOAD_FACTOR = 1000"
+   ],
+   [
+    89,
+    "    def __init__(self, iterable=None, key=None):"
+   ],
+   [
+    118,
+    "    def __new__(cls, iterable=None, key=None):"
+   ],
+   [
+    139,
+    "        if key is None:"
+   ],
+   [
+    142,
+    "            if cls is SortedList:"
+   ],
+   [
+    143,
+    "                return object.__new__(SortedKeyList)"
+   ],
+   [
+    147,
+    "    @property"
+   ],
+   [
+    148,
+    "    def key(self):  # pylint: disable=useless-return"
+   ],
+   [
+    156,
+    "    def _reset(self, load):"
+   ],
+   [
+    174,
+    "        values = reduce(iadd, self._lists, [])"
+   ],
+   [
+    175,
+    "        self._clear()"
+   ],
+   [
+    176,
+    "        self._load = load"
+   ],
+   [
+    177,
+    "        self._update(values)"
+   ],
+   [
+    179,
+    "    def clear(self):"
+   ],
+   [
+    191,
+    "    _clear = clear"
+   ],
+   [
+    193,
+    "    def add(self, value):"
+   ],
+   [
+    228,
+    "    def _expand(self, pos):"
+   ],
+   [
+    261,
+    "    def update(self, iterable):"
+   ],
+   [
+    298,
+    "    _update = update"
+   ],
+   [
+    300,
+    "    def __contains__(self, value):"
+   ],
+   [
+    330,
+    "    def discard(self, value):"
+   ],
+   [
+    362,
+    "    def remove(self, value):"
+   ],
+   [
+    400,
+    "    def _delete(self, pos, idx):"
+   ],
+   [
+    454,
+    "    def _loc(self, pos, idx):"
+   ],
+   [
+    533,
+    "    def _pos(self, idx):"
+   ],
+   [
+    626,
+    "    def _build_index(self):"
+   ],
+   [
+    694,
+    "    def __delitem__(self, index):"
+   ],
+   [
+    745,
+    "    def __getitem__(self, index):"
+   ],
+   [
+    833,
+    "    _getitem = __getitem__"
+   ],
+   [
+    835,
+    "    def __setitem__(self, index, value):"
+   ],
+   [
+    847,
+    "    def __iter__(self):"
+   ],
+   [
+    856,
+    "        return chain.from_iterable(self._lists)"
+   ],
+   [
+    858,
+    "    def __reversed__(self):"
+   ],
+   [
+    869,
+    "    def reverse(self):"
+   ],
+   [
+    886,
+    "    def islice(self, start=None, stop=None, reverse=False):"
+   ],
+   [
+    931,
+    "    def _islice(self, min_pos, min_idx, max_pos, max_idx, reverse):"
+   ],
+   [
+    994,
+    "    def irange(self, minimum=None, maximum=None, inclusive=(True, True), reverse=False):"
+   ],
+   [
+    1075,
+    "    def __len__(self):"
+   ],
+   [
+    1083,
+    "        return self._len"
+   ],
+   [
+    1085,
+    "    def bisect_left(self, value):"
+   ],
+   [
+    1116,
+    "    def bisect_right(self, value):"
+   ],
+   [
+    1147,
+    "    bisect = bisect_right"
+   ],
+   [
+    1148,
+    "    _bisect_right = bisect_right"
+   ],
+   [
+    1150,
+    "    def count(self, value):"
+   ],
+   [
+    1189,
+    "    def copy(self):"
+   ],
+   [
+    1199,
+    "    __copy__ = copy"
+   ],
+   [
+    1201,
+    "    def append(self, value):"
+   ],
+   [
+    1212,
+    "    def extend(self, values):"
+   ],
+   [
+    1223,
+    "    def insert(self, index, value):"
+   ],
+   [
+    1231,
+    "    def pop(self, index=-1):"
+   ],
+   [
+    1290,
+    "    def index(self, value, start=None, stop=None):"
+   ],
+   [
+    1366,
+    "    def __add__(self, other):"
+   ],
+   [
+    1388,
+    "    __radd__ = __add__"
+   ],
+   [
+    1390,
+    "    def __iadd__(self, other):"
+   ],
+   [
+    1411,
+    "    def __mul__(self, num):"
+   ],
+   [
+    1429,
+    "    __rmul__ = __mul__"
+   ],
+   [
+    1431,
+    "    def __imul__(self, num):"
+   ],
+   [
+    1447,
+    "        values = reduce(iadd, self._lists, []) * num"
+   ],
+   [
+    1448,
+    "        self._clear()"
+   ],
+   [
+    1449,
+    "        self._update(values)"
+   ],
+   [
+    1450,
+    "        return self"
+   ],
+   [
+    1452,
+    "    def __make_cmp(seq_op, symbol, doc):"
+   ],
+   [
+    1455,
+    "        def comparer(self, other):"
+   ],
+   [
+    1457,
+    "            if not isinstance(other, Sequence):"
+   ],
+   [
+    1460,
+    "            self_len = self._len"
+   ],
+   [
+    1461,
+    "            len_other = len(other)"
+   ],
+   [
+    1463,
+    "            if self_len != len_other:"
+   ],
+   [
+    1469,
+    "            for alpha, beta in zip(self, other):"
+   ],
+   [
+    1470,
+    "                if alpha != beta:"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_coverage_sortedkeylist_modulo.py::test_new - AssertionError"
+ ]
+}

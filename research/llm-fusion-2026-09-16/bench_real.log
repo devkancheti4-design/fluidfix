@@ -1,0 +1,201 @@
+### click: baseline green at 6aabf09
+  [click/cmp] try 1: src/click/_textwrap.py:111 'if cur_len + n <= width:'
+  [click/cmp-1] src/click/_textwrap.py:111 'if cur_len + n <= width:' -> REFUSED in 329.6s runs=None
+  [click/cmp] try 2: src/click/parser.py:96 'raise TypeError("Cannot have two nargs < 0")'
+  [click/cmp] dead: src/click/parser.py:96
+  [click/cmp] try 3: src/click/_termui_impl.py:298 'if self.length is not None and self.pos >= self.length:'
+  [click/cmp-2] src/click/_termui_impl.py:298 'if self.length is not None and self.pos >= self.le' -> EXACT in 86.2s runs=36
+  [click/add] try 1: src/click/formatting.py:28 'yield row + ("",) * (col_count - len(row))'
+  [click/add-1] src/click/formatting.py:28 'yield row + ("",) * (col_count - len(row))' -> EXACT in 217.1s runs=48
+  [click/add] try 2: src/click/_termui_impl.py:269 'new_width = max(0, shutil.get_terminal_size().columns - clut'
+  [click/add] dead: src/click/_termui_impl.py:269
+  [click/add] try 3: src/click/_termui_impl.py:778 'os.utime(name, (os.path.getatime(name), os.path.getmtime(nam'
+  [click/add] dead: src/click/_termui_impl.py:778
+  [click/add] try 4: src/click/formatting.py:95 'indent = orig_len - term_len(line)'
+  [click/add-2] src/click/formatting.py:95 'indent = orig_len - term_len(line)' -> EXACT in 83.3s runs=55
+  [click/lit] try 1: src/click/_termui_impl.py:192 'return f"{hours:02}:{minutes:02}:{seconds:02}"'
+  [click/lit-1] src/click/_termui_impl.py:192 'return f"{hours:02}:{minutes:02}:{seconds:02}"' -> REFUSED in 305.3s runs=None
+  [click/lit] try 2: src/click/shell_completion.py:494 'incomplete = split_arg_string(incomplete)[0]'
+  [click/lit-2] src/click/shell_completion.py:494 'incomplete = split_arg_string(incomplete)[0]' -> EXACT in 65.5s runs=16
+  [click/andor] try 1: src/click/shell_completion.py:467 'help_ = item.help or "_"'
+  [click/andor-1] src/click/shell_completion.py:467 'help_ = item.help or "_"' -> REFUSED in 302.1s runs=None
+  [click/getdef] try 1: src/click/_termui_impl.py:579 'less_env = os.environ.get("LESS", "")'
+  [click/getdef-1] src/click/_termui_impl.py:579 'less_env = os.environ.get("LESS", "")' -> REFUSED in 49.9s runs=None
+  [click/notdrop] try 1: src/click/shell_completion.py:664 'if not value:'
+  [click/notdrop-1] src/click/shell_completion.py:664 'if not value:' -> REFUSED in 44.2s runs=None
+  [click/lenm1] try 1: src/click/utils.py:84 'last_index = len(words) - 1'
+  [click/lenm1-1] src/click/utils.py:84 'last_index = len(words) - 1' -> REFUSED in 304.4s runs=None
+### arrow: baseline green at 2224255
+  [arrow/cmp] try 1: arrow/arrow.py:1061 ':param tz: A :ref:`timezone expression <tz-expr>`.'
+  [arrow/cmp] dead: arrow/arrow.py:1061
+  [arrow/cmp] try 2: arrow/locales.py:1340 'elif 2 <= delta % 10 <= 4 and (delta % 100 < 10 or delta % 1'
+  [arrow/cmp-1] arrow/locales.py:1340 'elif 2 <= delta % 10 <= 4 and (delta % 100 < 10 or' -> REFUSED in 303.3s runs=None
+  [arrow/cmp] try 3: arrow/parser.py:786 'if am_pm == "pm" and hour < 12:'
+  [arrow/cmp-2] arrow/parser.py:786 'if am_pm == "pm" and hour < 12:' -> REFUSED in 303.4s runs=None
+  [arrow/add] try 1: arrow/arrow.py:1223 'calendar_diff.years * self._MONTHS_PER_YEAR + calendar_diff.'
+  [arrow/add-1] arrow/arrow.py:1223 'calendar_diff.years * self._MONTHS_PER_YEAR + cale' -> WRONG-GREEN in 113.7s runs=25
+  [arrow/add] try 2: arrow/arrow.py:574 'for _ in range(3 - len(values)):'
+  [arrow/add-2] arrow/arrow.py:574 'for _ in range(3 - len(values)):' -> REFUSED in 302.5s runs=None
+  [arrow/lit] try 1: arrow/arrow.py:895 '1548260567'
+  [arrow/lit] dead: arrow/arrow.py:895
+  [arrow/lit] try 2: arrow/locales.py:5495 '"hours": {"double": "{0} sata", "higher": "{0} sati"},'
+  [arrow/lit-1] arrow/locales.py:5495 '"hours": {"double": "{0} sata", "higher": "{0} sat' -> REFUSED in 244.5s runs=None
+  [arrow/lit] try 3: arrow/locales.py:3437 'key = "zero"  # And *never* use 0 in the singular!'
+  [arrow/lit] dead: arrow/locales.py:3437
+  [arrow/lit] try 4: arrow/arrow.py:961 '<Arrow [2014-06-11T22:27:34.787885+00:00]>'
+  [arrow/lit] dead: arrow/arrow.py:961
+  [arrow/lit] try 5: arrow/locales.py:4601 '"years": "{0} बर्ष",'
+  [arrow/lit-2] arrow/locales.py:4601 '"years": "{0} बर्ष",' -> REFUSED in 224.9s runs=None
+  [arrow/andor] try 1: arrow/arrow.py:1476 '"Ex: \'in 5 seconds\' or \'5 seconds ago\'."'
+  [arrow/andor] dead: arrow/arrow.py:1476
+  [arrow/andor] try 2: arrow/parser.py:702 ':return: A datetime object representing the date and time.'
+  [arrow/andor] dead: arrow/parser.py:702
+  [arrow/andor] try 3: arrow/arrow.py:519 "the start, '[' includes the start, ')' excludes the end, and"
+  [arrow/andor] dead: arrow/arrow.py:519
+  [arrow/andor] try 4: arrow/arrow.py:525 'Monday is 1 and Sunday is 7.'
+  [arrow/andor] dead: arrow/arrow.py:525
+  [arrow/andor] try 5: arrow/util.py:87 ':param iso_week: the week number, each year has either 52 or'
+  [arrow/andor] dead: arrow/util.py:87
+  [arrow/andor] try 6: arrow/locales.py:156 ':param only_distance: return only distance eg: "2 hours and '
+  [arrow/andor] dead: arrow/locales.py:156
+  [arrow/andor] try 7: arrow/util.py:41 'raise ValueError("Weekday must be between 0 (Monday) and 6 ('
+  [arrow/andor] dead: arrow/util.py:41
+  [arrow/andor] try 8: arrow/locales.py:5468 'if n > 10 or n == 0:'
+  [arrow/andor-1] arrow/locales.py:5468 'if n > 10 or n == 0:' -> REFUSED in 308.2s runs=None
+  [arrow/getdef] try 1: arrow/api.py:86 'return _factory.get(*args, **kwargs)'
+  [arrow/getdef] dead: arrow/api.py:86
+  [arrow/getdef] try 2: arrow/parser.py:797 'if parts.get("microsecond", 0) != 0:'
+  [arrow/getdef-1] arrow/parser.py:797 'if parts.get("microsecond", 0) != 0:' -> REFUSED in 205.0s runs=None
+  [arrow/notdrop] try 1: arrow/arrow.py:1418 'if not match:'
+  [arrow/notdrop-1] arrow/arrow.py:1418 'if not match:' -> REFUSED in 204.3s runs=None
+  [arrow/lenm1] try 1: arrow/locales.py:3636 'elif index == len(timeframes) - 1:  # Must have at least 2 i'
+  [arrow/lenm1-1] arrow/locales.py:3636 'elif index == len(timeframes) - 1:  # Must have at' -> REFUSED in 302.0s runs=None
+### python-sortedcontainers: baseline green at 3ac3586
+  [python-sortedcontainers/cmp] try 1: src/sortedcontainers/sortedlist.py:1332 'if stop < 0:'
+  [python-sortedcontainers/cmp] dead: src/sortedcontainers/sortedlist.py:1332
+  [python-sortedcontainers/cmp] try 2: src/sortedcontainers/sortedlist.py:1734 'if len(_keys[pos]) > (self._load << 1):'
+  [python-sortedcontainers/cmp] dead: src/sortedcontainers/sortedlist.py:1734
+  [python-sortedcontainers/cmp] try 3: src/sortedcontainers/sortedlist.py:1271 'if 0 <= index < len(_lists[0]):'
+  [python-sortedcontainers/cmp] dead: src/sortedcontainers/sortedlist.py:1271
+  [python-sortedcontainers/cmp] try 4: src/sortedcontainers/sortedlist.py:425 'if len_lists_pos > (self._load >> 1):'
+  [python-sortedcontainers/cmp] dead: src/sortedcontainers/sortedlist.py:425
+  [python-sortedcontainers/cmp] try 5: src/sortedcontainers/sortedlist.py:1325 'if start < 0:'
+  [python-sortedcontainers/cmp-1] src/sortedcontainers/sortedlist.py:1325 'if start < 0:' -> EXACT in 75.8s runs=78
+  [python-sortedcontainers/cmp] try 6: src/sortedcontainers/sortedlist.py:1337 'if stop <= start:'
+  [python-sortedcontainers/cmp] dead: src/sortedcontainers/sortedlist.py:1337
+  [python-sortedcontainers/cmp] try 7: src/sortedcontainers/sortedlist.py:1535 'assert self._lists[pos - 1][-1] <= self._lists[pos][0]'
+  [python-sortedcontainers/cmp-2] src/sortedcontainers/sortedlist.py:1535 'assert self._lists[pos - 1][-1] <= self._lists[pos' -> REFUSED in 202.0s runs=None
+  [python-sortedcontainers/add] try 1: src/sortedcontainers/sortedlist.py:955 'next_pos = min_pos + 1'
+  [python-sortedcontainers/add-1] src/sortedcontainers/sortedlist.py:955 'next_pos = min_pos + 1' -> REFUSED in 256.2s runs=None
+  [python-sortedcontainers/add] try 2: src/sortedcontainers/sortedlist.py:2508 'elif child + 1 == len(self._index):'
+  [python-sortedcontainers/add-2] src/sortedcontainers/sortedlist.py:2508 'elif child + 1 == len(self._index):' -> REFUSED in 203.5s runs=None
+  [python-sortedcontainers/lit] try 1: src/sortedcontainers/sortedlist.py:2421 'SortedKeyList([3, 3, 2, 2, 1, 1], key=<built-in function neg'
+  [python-sortedcontainers/lit-1] src/sortedcontainers/sortedlist.py:2421 'SortedKeyList([3, 3, 2, 2, 1, 1], key=<built-in fu' -> EXACT in 151.2s runs=56
+  [python-sortedcontainers/lit] try 2: src/sortedcontainers/sortedset.py:639 'SortedSet([1, 2, 3, 4, 5, 6, 7])'
+  [python-sortedcontainers/lit-2] src/sortedcontainers/sortedset.py:639 'SortedSet([1, 2, 3, 4, 5, 6, 7])' -> EXACT in 46.6s runs=49
+  [python-sortedcontainers/andor] try 1: src/sortedcontainers/sortedlist.py:492 'and accumulate the left-child in our total. Total is now 5 a'
+  [python-sortedcontainers/andor] dead: src/sortedcontainers/sortedlist.py:492
+  [python-sortedcontainers/andor] try 2: src/sortedcontainers/sorteddict.py:415 ':return: key and value pair'
+  [python-sortedcontainers/andor] dead: src/sortedcontainers/sorteddict.py:415
+  [python-sortedcontainers/andor] try 3: src/sortedcontainers/sortedlist.py:893 'inclusive of the beginning and end of the sorted list.'
+  [python-sortedcontainers/andor] dead: src/sortedcontainers/sortedlist.py:893
+  [python-sortedcontainers/andor] try 4: src/sortedcontainers/sortedlist.py:135 ':return: sorted list or sorted-key list instance'
+  [python-sortedcontainers/andor] dead: src/sortedcontainers/sortedlist.py:135
+  [python-sortedcontainers/andor] try 5: src/sortedcontainers/sorteddict.py:493 'pairs or keyword arguments. See :func:`SortedDict.__init__` '
+  [python-sortedcontainers/andor] dead: src/sortedcontainers/sorteddict.py:493
+  [python-sortedcontainers/andor] try 6: src/sortedcontainers/sorteddict.py:731 ':param index: integer or slice for indexing'
+  [python-sortedcontainers/andor] dead: src/sortedcontainers/sorteddict.py:731
+  [python-sortedcontainers/andor] try 7: src/sortedcontainers/sortedlist.py:2053 'the minimum and maximum ought to be included in the range,'
+  [python-sortedcontainers/andor] dead: src/sortedcontainers/sortedlist.py:2053
+  [python-sortedcontainers/andor] try 8: src/sortedcontainers/sortedlist.py:1477 'doc_str = """Return true if and only if sorted list is {0} `'
+  [python-sortedcontainers/andor] dead: src/sortedcontainers/sortedlist.py:1477
+  [python-sortedcontainers/andor] try 9: src/sortedcontainers/__init__.py:10 'and benchmarking.'
+  [python-sortedcontainers/andor] dead: src/sortedcontainers/__init__.py:10
+  [python-sortedcontainers/andor] try 10: src/sortedcontainers/sorteddict.py:134 'if args and (args[0] is None or callable(args[0])):'
+  [python-sortedcontainers/andor-1] src/sortedcontainers/sorteddict.py:134 'if args and (args[0] is None or callable(args[0]))' -> REFUSED in 18.2s runs=None
+  [python-sortedcontainers/notdrop] try 1: src/sortedcontainers/sortedlist.py:504 'if not pos:'
+  [python-sortedcontainers/notdrop-1] src/sortedcontainers/sortedlist.py:504 'if not pos:' -> REFUSED in 48.7s runs=None
+  [python-sortedcontainers/rangestart] try 1: src/sortedcontainers/sortedlist.py:2465 'for pos in range(1, len(self._keys)):'
+  [python-sortedcontainers/rangestart-1] src/sortedcontainers/sortedlist.py:2465 'for pos in range(1, len(self._keys)):' -> REFUSED in 144.2s runs=None
+  [python-sortedcontainers/lenm1] try 1: src/sortedcontainers/sortedlist.py:681 'size = 2 ** (int(log(len(row1) - 1, 2)) + 1)'
+  [python-sortedcontainers/lenm1] dead: src/sortedcontainers/sortedlist.py:681
+  [python-sortedcontainers/lenm1] try 2: src/sortedcontainers/sortedlist.py:1053 'max_pos = len(_maxes) - 1'
+  [python-sortedcontainers/lenm1-1] src/sortedcontainers/sortedlist.py:1053 'max_pos = len(_maxes) - 1' -> REFUSED in 128.5s runs=None
+### rich: baseline green at bf2620c
+  [rich/cmp] try 1: rich/highlighter.py:117 'r"\\b(?P<bool_true>true)\\b|\\b(?P<bool_false>false)\\b|\\b(?P<nu'
+  [rich/cmp-1] rich/highlighter.py:117 'r"\\b(?P<bool_true>true)\\b|\\b(?P<bool_false>false)\\' -> REFUSED in 13.6s runs=None
+  [rich/cmp] try 2: rich/table.py:576 'self.min_width is not None and table_width < (self.min_width'
+  [rich/cmp] dead: rich/table.py:576
+  [rich/cmp] try 3: rich/text.py:897 'if span.start < max_offset'
+  [rich/cmp] dead: rich/text.py:897
+  [rich/cmp] try 4: rich/highlighter.py:118 'r"(?P<number>(?<!\\w)\\-?[0-9]+\\.?[0-9]*(e[\\-\\+]?\\d+?)?\\b|0x[0'
+  [rich/cmp-2] rich/highlighter.py:118 'r"(?P<number>(?<!\\w)\\-?[0-9]+\\.?[0-9]*(e[\\-\\+]?\\d+' -> REFUSED in 252.3s runs=None
+  [rich/add] try 1: rich/markdown.py:368 'console, options, number + index, last_number'
+  [rich/add-1] rich/markdown.py:368 'console, options, number + index, last_number' -> REFUSED in 17.4s runs=None
+  [rich/add] try 2: rich/panel.py:282 'padding = left + right'
+  [rich/add-2] rich/panel.py:282 'padding = left + right' -> REFUSED in 17.4s runs=None
+  [rich/lit] try 1: rich/_unicode_data/unicode12-0-0.py:384 '(127951, 127955, 2),'
+  [rich/lit] dead: rich/_unicode_data/unicode12-0-0.py:384
+  [rich/lit] try 2: rich/_unicode_data/unicode6-2-0.py:96 '(3542, 3542, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode6-2-0.py:96
+  [rich/lit] try 3: rich/_unicode_data/unicode7-0-0.py:60 '(2763, 2765, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode7-0-0.py:60
+  [rich/lit] try 4: rich/_unicode_data/unicode6-1-0.py:158 '(8232, 8238, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode6-1-0.py:158
+  [rich/lit] try 5: rich/_unicode_data/unicode10-0-0.py:351 '(127183, 127183, 2),'
+  [rich/lit] dead: rich/_unicode_data/unicode10-0-0.py:351
+  [rich/lit] try 6: rich/_unicode_data/unicode17-0-0.py:341 '(72251, 72254, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode17-0-0.py:341
+  [rich/lit] try 7: rich/_unicode_data/unicode14-0-0.py:307 '(70502, 70508, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode14-0-0.py:307
+  [rich/lit] try 8: rich/_unicode_data/unicode14-0-0.py:175 '(9889, 9889, 2),'
+  [rich/lit] dead: rich/_unicode_data/unicode14-0-0.py:175
+  [rich/lit] try 9: rich/_unicode_data/unicode5-1-0.py:59 '(2891, 2893, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode5-1-0.py:59
+  [rich/lit] try 10: rich/_unicode_data/unicode13-0-0.py:166 '(9193, 9196, 2),'
+  [rich/lit] dead: rich/_unicode_data/unicode13-0-0.py:166
+  [rich/lit] try 11: rich/_unicode_data/__init__.py:54 'triple = cast("tuple[int, int, int]", version_integers[:3])'
+  [rich/lit] dead: rich/_unicode_data/__init__.py:54
+  [rich/lit] try 12: rich/_unicode_data/unicode11-0-0.py:150 '(7040, 7042, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode11-0-0.py:150
+  [rich/lit] try 13: rich/_unicode_data/unicode7-0-0.py:58 '(2750, 2757, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode7-0-0.py:58
+  [rich/lit] try 14: rich/_unicode_data/unicode10-0-0.py:361 '(127799, 127868, 2),'
+  [rich/lit] dead: rich/_unicode_data/unicode10-0-0.py:361
+  [rich/lit] try 15: rich/_palettes.py:223 '(215, 95, 255),'
+  [rich/lit] dead: rich/_palettes.py:223
+  [rich/lit] try 16: rich/_unicode_data/unicode16-0-0.py:425 '(127789, 127797, 2),'
+  [rich/lit] dead: rich/_unicode_data/unicode16-0-0.py:425
+  [rich/lit] try 17: rich/_unicode_data/unicode11-0-0.py:51 '(2622, 2626, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode11-0-0.py:51
+  [rich/lit] try 18: rich/_unicode_data/unicode12-1-0.py:186 '(9994, 9995, 2),'
+  [rich/lit] dead: rich/_unicode_data/unicode12-1-0.py:186
+  [rich/lit] try 19: rich/_palettes.py:93 '(0, 215, 95),'
+  [rich/lit] dead: rich/_palettes.py:93
+  [rich/lit] try 20: rich/_unicode_data/unicode17-0-0.py:405 '(122880, 122886, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode17-0-0.py:405
+  [rich/lit] try 21: rich/_unicode_data/unicode9-0-0.py:305 '(72760, 72767, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode9-0-0.py:305
+  [rich/lit] try 22: rich/_unicode_data/unicode17-0-0.py:225 '(42612, 42621, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode17-0-0.py:225
+  [rich/lit] try 23: rich/_unicode_data/unicode15-0-0.py:11 '(1155, 1161, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode15-0-0.py:11
+  [rich/lit] try 24: rich/_unicode_data/unicode11-0-0.py:76 '(3072, 3076, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode11-0-0.py:76
+  [rich/lit] try 25: rich/_unicode_data/unicode6-3-0.py:119 '(4190, 4192, 0),'
+  [rich/lit] dead: rich/_unicode_data/unicode6-3-0.py:119
+  [rich/andor] try 1: rich/cells.py:55 'int: Number of cells (0, 1 or 2) occupied by that character.'
+  [rich/andor] dead: rich/cells.py:55
+  [rich/andor] try 2: rich/pretty.py:786 'if field.repr and hasattr(obj, field.name)'
+  [rich/andor-1] rich/pretty.py:786 'if field.repr and hasattr(obj, field.name)' -> REFUSED in 21.3s runs=None
+  [rich/getdef] try 1: rich/console.py:808 'term = self._environ.get("TERM", "").strip().lower()'
+  [rich/getdef-1] rich/console.py:808 'term = self._environ.get("TERM", "").strip().lower' -> REFUSED in 66.7s runs=None
+  [rich/notdrop] try 1: rich/measure.py:141 'if not renderables:'
+  [rich/notdrop-1] rich/measure.py:141 'if not renderables:' -> REFUSED in 12.5s runs=None
+  [rich/lenm1] try 1: rich/table.py:638 'last_column = column_index == len(self.columns) - 1'
+  [rich/lenm1-1] rich/table.py:638 'last_column = column_index == len(self.columns) - ' -> REFUSED in 13.2s runs=None
+
+==== TIER 0 SUMMARY ====
+in-vocab live: 22  byte-exact: 7  wrong-green: 1  refused: 14
+OOV live: 16  refused (correct): 16  wrong-green: 0  exact: 0
+BENCH_DONE

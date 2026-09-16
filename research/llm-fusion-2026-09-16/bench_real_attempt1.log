@@ -1,0 +1,6 @@
+### click: baseline green at 6aabf09
+  [click/cmp] try 1: src/click/_textwrap.py:111 'if cur_len + n <= width:'
+  [click/cmp-1] src/click/_textwrap.py:111 'if cur_len + n <= width:' -> REFUSED in 394.5s runs=None
+  [click/cmp] try 2: src/click/parser.py:96 'raise TypeError("Cannot have two nargs < 0")'
+  [click/cmp] dead: src/click/parser.py:96
+  [click/cmp] try 3: src/click/_termui_impl.py:298 'if self.length is not None and self.pos >= self.length:'

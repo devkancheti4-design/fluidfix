@@ -1,0 +1,357 @@
+{
+ "status": "refused",
+ "candidates": [
+  "arrow/arrow.py",
+  "arrow/constants.py",
+  "arrow/__init__.py",
+  "arrow/_version.py",
+  "arrow/locales.py",
+  "arrow/api.py",
+  "arrow/util.py",
+  "arrow/formatter.py"
+ ],
+ "seconds": 308.58306980133057,
+ "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)",
+ "rejected_candidates": [
+  {
+   "at": "arrow/arrow.py:125",
+   "tried": "    _MONTHS_PER_QUARTER: Final[int] = 2",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:126",
+   "tried": "    _MONTHS_PER_YEAR: Final[int] = 11",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:127",
+   "tried": "    _SECS_PER_MINUTE: Final[int] = 59",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 59 * 60",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 60 * 59",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 59 * 60 * 24",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 59 * 24",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 60 * 23",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 59 * 60 * 24 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 59 * 24 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 23 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 24 * 6",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 59 * 60 * 24 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 59 * 24 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 23 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 29.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 30.4",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 59 * 60 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 59 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 23 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 29.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.4 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.5 * 2",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 59 * 60 * 24 * 365",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 59 * 24 * 365",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 60 * 23 * 365",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 60 * 24 * 364",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:136",
+   "tried": "        \"second\": 0.0,",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:136",
+   "tried": "        \"second\": 1.-1,",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:173",
+   "tried": "        fold = kwargs.get(\"fold\", -1)",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:182",
+   "tried": "    def now(cls, tzinfo: Optional[dt_tzinfo] = None) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 182)"
+  },
+  {
+   "at": "arrow/arrow.py:213",
+   "tried": "    def utcnow(cls) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 213)"
+  },
+  {
+   "at": "arrow/arrow.py:276",
+   "tried": "    def utcfromtimestamp(cls, timestamp: Union[int, float, str]) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 276)"
+  },
+  {
+   "at": "arrow/arrow.py:302",
+   "tried": "    def fromdatetime(cls, dt: dt_datetime, tzinfo: Optional[TZ_EXPR] = None) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 302)"
+  },
+  {
+   "at": "arrow/arrow.py:334",
+   "tried": "            fold=getattr(dt, \"fold\", -1),",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:125",
+   "tried": "    _MONTHS_PER_QUARTER: Final[int] = 2",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:126",
+   "tried": "    _MONTHS_PER_YEAR: Final[int] = 11",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:127",
+   "tried": "    _SECS_PER_MINUTE: Final[int] = 59",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 59 * 60",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 60 * 59",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 59 * 60 * 24",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 59 * 24",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 60 * 23",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 59 * 60 * 24 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 59 * 24 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 23 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 24 * 6",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 59 * 60 * 24 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 59 * 24 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 23 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 29.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 30.4",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 59 * 60 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 59 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 23 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 29.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.4 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.5 * 2",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:272",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 272)"
+  },
+  {
+   "at": "arrow/locales.py:934",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 934)"
+  },
+  {
+   "at": "arrow/locales.py:1333",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 1333)"
+  },
+  {
+   "at": "arrow/locales.py:1338",
+   "tried": "            if delta % 9 == 1 and delta % 100 != 11:",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:1338",
+   "tried": "            if delta % 10 == 0 and delta % 100 != 11:",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:1338",
+   "tried": "            if delta % 10 == 1 and delta % 99 != 11:",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:1338",
+   "tried": "            if delta % 10 == 1 and delta % 100 != 10:",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:1340",
+   "tried": "            elif 2 < delta % 10 <= 4 and (delta % 100 < 10 or delta % 100 > 20):",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:1340",
+   "tried": "            elif 2 < delta % 10 < 4 and (delta % 100 < 10 or delta % 100 >= 20):",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:1340",
+   "tried": "            elif 2 < delta % 10 <= 4 and (delta % 100 <= 10 or delta % 100 >= 20):",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  }
+ ]
+}

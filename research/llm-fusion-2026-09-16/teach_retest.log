@@ -1,0 +1,33 @@
+== taught: click/andor-1 ==
+click/andor-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> EXACT in 70.3s runs=28 rejected=None hint=''
+== taught: click/getdef-1 ==
+click/getdef-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> EXACT in 60.1s runs=6 rejected=None hint=''
+== taught: click/notdrop-1 ==
+click/notdrop-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> EXACT in 141.0s runs=24 rejected=None hint=''
+== taught: click/lenm1-1 ==
+click/lenm1-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> EXACT in 354.8s runs=3 rejected=None hint=''
+== taught: python-sortedcontainers/rangestart-1 ==
+python-sortedcontainers/rangestart-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session_b.py_taught -> EXACT in 285.9s runs=3 rejected=None hint=''
+== taught: arrow/andor-1 ==
+arrow/andor-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> REFUSED in 835.2s runs=None rejected=200 hint='a candidate passes, but the search was cut short before it could be shown unique — shipping it would'
+== taught: arrow/getdef-1 ==
+arrow/getdef-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> EXACT in 515.1s runs=46 rejected=None hint=''
+== taught: arrow/notdrop-1 ==
+arrow/notdrop-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> EXACT in 172.5s runs=3 rejected=None hint=''
+== taught: arrow/lenm1-1 ==
+arrow/lenm1-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> REFUSED in 837.9s runs=None rejected=200 hint='a candidate passes, but the search was cut short before it could be shown unique — shipping it would'
+== taught: python-sortedcontainers/andor-1 ==
+python-sortedcontainers/andor-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> EXACT in 31.5s runs=19 rejected=None hint=''
+== taught: python-sortedcontainers/notdrop-1 ==
+python-sortedcontainers/notdrop-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> REFUSED in 47.8s runs=None rejected=59 hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) '
+== taught: python-sortedcontainers/lenm1-1 ==
+python-sortedcontainers/lenm1-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> EXACT in 64.5s runs=17 rejected=None hint=''
+== taught: rich/andor-1 ==
+rich/andor-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> REFUSED in 904.1s runs=None rejected=200 hint='escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET — raise --escalate-budget, '
+== taught: rich/getdef-1 ==
+rich/getdef-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> EXACT in 228.0s runs=9 rejected=None hint=''
+== taught: rich/notdrop-1 ==
+rich/notdrop-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> EXACT in 701.2s runs=29 rejected=None hint=''
+== taught: rich/lenm1-1 ==
+rich/lenm1-1 budget=900 --dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py_taught -> REFUSED in 904.5s runs=None rejected=200 hint='escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET — raise --escalate-budget, '
+TEACH_RETEST_DONE

@@ -1,0 +1,56 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 49.8,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/getdef-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "gemma3:4b",
+   "tokens": {
+    "input": 5183,
+    "output": 118,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "gemma3:4b",
+    "seconds": 18.2
+   },
+   "valid": false,
+   "why": "signal matches no line in the suspect file",
+   "rule": {
+    "name": "none-argument-error",
+    "signal": ".*ValueError: s argument must not be None.*",
+    "example_before": "raise ValueError(\"s argument must not be None\")",
+    "example_after": "raise ValueError(s argument must not be None)"
+   }
+  },
+  {
+   "tier": 2,
+   "model": "gemma3:4b",
+   "tokens": {
+    "input": 5036,
+    "output": 51,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "gemma3:4b",
+    "seconds": 11.6
+   },
+   "proposals": 0,
+   "line": "src/click/_termui_impl.py:530",
+   "replacements": []
+  }
+ ],
+ "tokens": {
+  "input": 10219,
+  "output": 169,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 10388
+ },
+ "outcome": "refused-after-tier2"
+}

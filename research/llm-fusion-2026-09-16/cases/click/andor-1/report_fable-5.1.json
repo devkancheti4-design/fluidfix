@@ -1,0 +1,45 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 301.9,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/andor-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "fable-5.1",
+   "tokens": {
+    "input": 3900,
+    "output": 119,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "fable-5.1",
+    "approx": true
+   },
+   "valid": true,
+   "why": "ok: 1 matching line(s)",
+   "rule": {
+    "name": "and-where-fallback-or",
+    "signal": "=\\s*[\\w.\\[\\]()]+ and \"[^\"]*\"\\s*$",
+    "example_before": "help_ = item.help and \"_\"",
+    "example_after": "help_ = item.help or \"_\""
+   },
+   "exit": 0,
+   "wall": 55.4,
+   "suite_runs": 24,
+   "stdout": "dictionary rules_fused.py: 1 fault class(es) registered\n[20:44:58] src/click/shell_completion.py: repaired line 467 in 24 suite runs (38.6s):\n  - help_ = item.help and \"_\"\n  + help_ = item.help or \"_\"\n  committed\n"
+  }
+ ],
+ "tokens": {
+  "input": 3900,
+  "output": 119,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 4019
+ },
+ "outcome": "tier1"
+}

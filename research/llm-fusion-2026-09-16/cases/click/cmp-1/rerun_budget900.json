@@ -1,0 +1,13 @@
+{
+ "case": "click/cmp-1",
+ "budget": 900,
+ "guard_exit": 2,
+ "seconds": 914.0,
+ "repaired": false,
+ "byte_exact": false,
+ "suite_runs": null,
+ "rejected": 5,
+ "hint": "--budget exhausted (900s) during the first pass \u2014 raise --budget, tighten taught-class signals, or fix by hand",
+ "stdout_tail": "[19:09:22] REFUSED: nothing in the failure pointed at a file \u2014 no traceback frame, no discriminating literal, no taught signal narrow enough to localise. The ranking had only circumstantial evidence, so a bigger budget searches the same files in the same order. Files searched: src/click/globals.py, src/click/formatting.py, src/click/_utils.py, src/click/__init__.py, src/click/testing.py, src/click/_termui_impl.py, src/click/_textwrap.py, src/click/_compat.py. What helps, in order: name the file yourself (--file <path>); make the failing assertion carry a value that occurs in few files; or teach a narrower signal for this class. 5 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: --budget exhausted (900s) during the first pass \u2014 raise --budget, tighten taught-class signals, or fix by hand\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n",
+ "verdict": "REFUSED"
+}

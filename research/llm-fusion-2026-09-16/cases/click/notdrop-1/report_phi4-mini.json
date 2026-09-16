@@ -1,0 +1,64 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 44.0,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/notdrop-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "phi4-mini",
+   "tokens": {
+    "input": 5824,
+    "output": 113,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "phi4-mini",
+    "seconds": 21.8
+   },
+   "valid": false,
+   "why": "signal matches no line in the suspect file",
+   "rule": {
+    "name": "index-error-correction",
+    "signal": "IndexError: string index out of range",
+    "example_before": "c = value[-1]",
+    "example_after": "c = value[0]"
+   }
+  },
+  {
+   "tier": 2,
+   "model": "phi4-mini",
+   "tokens": {
+    "input": 5688,
+    "output": 46,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "phi4-mini",
+    "seconds": 16.5
+   },
+   "proposals": 3,
+   "line": "c = value[-1]",
+   "replacements": [
+    "c = value[0]",
+    "c = value[1]",
+    "c = value[2]"
+   ],
+   "exit": 2,
+   "wall": 53.6,
+   "suite_runs": null,
+   "stdout": "utside the taught vocabulary (candidate files tried: src/click/shell_completion.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 113 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+  }
+ ],
+ "tokens": {
+  "input": 11512,
+  "output": 159,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 11671
+ },
+ "outcome": "refused-after-tier2"
+}

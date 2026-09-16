@@ -1,0 +1,8 @@
+{
+ "example_before": "if _less_uses_raw_mode(less_env, cmd_params):",
+ "example_after": "if less_env and _less_uses_raw_mode(less_env, cmd_params):",
+ "name": "guard-none-env-var",
+ "description": "Function _less_uses_raw_mode is called with less_env from os.environ.get() which can be None, but the function does not guard against None arguments, causing AttributeError.",
+ "signal": "if\\s+_less_uses_raw_mode\\(\\s*less_env\\b",
+ "applier": "def fix(line, o):\n    import re\n    if '_less_uses_raw_mode(less_env' in line and 'if ' in line:\n        if 'less_env and _less_uses_raw_mode' not in line:\n            return re.sub(r'(if\\s+)(_less_uses_raw_mode\\()', r'\\1less_env and \\2', line)\n    return line"
+}

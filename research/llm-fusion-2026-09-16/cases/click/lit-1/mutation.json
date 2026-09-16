@@ -1,0 +1,8 @@
+{
+ "file": "src/click/_termui_impl.py",
+ "lineno": 192,
+ "orig": "                return f\"{hours:02}:{minutes:02}:{seconds:02}\"",
+ "mutated": "                return f\"{hours:3}:{minutes:02}:{seconds:02}\"",
+ "cls": "lit",
+ "base": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1"
+}

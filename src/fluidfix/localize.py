@@ -138,7 +138,10 @@ def build_packet(oracle: Oracle, defect_file: str, coverage_target: str | None =
                 f"--cov-report=json:{cov_json}"], cache=True)
     if os.path.exists(cov_json):
         try:
-            cov = json.load(open(cov_json))
+            try:
+                cov = json.load(open(cov_json))
+            except ValueError:          # empty or partial report: no coverage, not a crash
+                cov = {}
             files = cov.get("files", {})
             # exact relative path first; then path-boundary suffix — a bare
             # endswith lets mypkg/core.py shadow pkg/core.py entirely
@@ -175,7 +178,8 @@ def build_packet(oracle: Oracle, defect_file: str, coverage_target: str | None =
         # SPREAD-sample rather than truncate: taking the FIRST max_lines was
         # measured (Click, seeded bench) to cut defects that sit late in big
         # files out of the packet entirely. A stride keeps whole-file reach.
-        stride = len(lo) / max_lines
-        lo = [lo[int(i * stride)] for i in range(max_lines)]
+        if len(lo) > max_lines:   # a list the filter already shrank below the cap needs no sampling
+            stride = len(lo) / max_lines
+            lo = [lo[int(i * stride)] for i in range(max_lines)]
     return Packet(defect_file=defect_file, failure=_compress_failure(out1),
                   lines=lo, src_lines=src_lines, mode=mode, truncated=truncated)

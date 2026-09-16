@@ -1,0 +1,238 @@
+[
+ {
+  "case": "click/andor-1",
+  "cls": "andor",
+  "file": "src/click/shell_completion.py",
+  "orig": "help_ = item.help or \"_\"",
+  "mutated": "help_ = item.help and \"_\"",
+  "author": "fable-5.1",
+  "outcome": "tier1",
+  "verdict": "EXACT",
+  "tokens": {
+   "input": 3900,
+   "output": 119,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 4019
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 301.9,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/andor-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "fable-5.1",
+    "tokens": {
+     "input": 3900,
+     "output": 119,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "fable-5.1",
+     "approx": true
+    },
+    "valid": true,
+    "why": "ok: 1 matching line(s)",
+    "rule": {
+     "name": "and-where-fallback-or",
+     "signal": "=\\s*[\\w.\\[\\]()]+ and \"[^\"]*\"\\s*$",
+     "example_before": "help_ = item.help and \"_\"",
+     "example_after": "help_ = item.help or \"_\""
+    },
+    "exit": 0,
+    "wall": 55.4,
+    "suite_runs": 24,
+    "stdout": "dictionary rules_fused.py: 1 fault class(es) registered\n[20:44:58] src/click/shell_completion.py: repaired line 467 in 24 suite runs (38.6s):\n  - help_ = item.help and \"_\"\n  + help_ = item.help or \"_\"\n  committed\n"
+   }
+  ],
+  "wall_s": 60.2
+ },
+ {
+  "case": "click/getdef-1",
+  "cls": "getdef",
+  "file": "src/click/_termui_impl.py",
+  "orig": "less_env = os.environ.get(\"LESS\", \"\")",
+  "mutated": "less_env = os.environ.get(\"LESS\")",
+  "author": "fable-5.1",
+  "outcome": "tier1",
+  "verdict": "EXACT",
+  "tokens": {
+   "input": 3500,
+   "output": 119,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 3619
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 49.8,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/getdef-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "fable-5.1",
+    "tokens": {
+     "input": 3500,
+     "output": 119,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "fable-5.1",
+     "approx": true
+    },
+    "valid": true,
+    "why": "ok: 1 matching line(s)",
+    "rule": {
+     "name": "env-get-without-str-default",
+     "signal": "\\.get\\(\"[A-Z][A-Z0-9_]*\"\\)\\s*$",
+     "example_before": "less_env = os.environ.get(\"LESS\")",
+     "example_after": "less_env = os.environ.get(\"LESS\", \"\")"
+    },
+    "exit": 0,
+    "wall": 67.5,
+    "suite_runs": 26,
+    "stdout": "dictionary rules_fused.py: 1 fault class(es) registered\n[20:46:11] src/click/_termui_impl.py: repaired line 579 in 26 suite runs (37.9s):\n  - less_env = os.environ.get(\"LESS\")\n  + less_env = os.environ.get(\"LESS\", \"\")\n  committed\n"
+   }
+  ],
+  "wall_s": 72.7
+ },
+ {
+  "case": "click/lenm1-1",
+  "cls": "lenm1",
+  "file": "src/click/utils.py",
+  "orig": "last_index = len(words) - 1",
+  "mutated": "last_index = len(words)",
+  "author": "fable-5.1",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 4059,
+   "output": 184,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 4243
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 304.2,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/lenm1-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "fable-5.1",
+    "tokens": {
+     "input": 2104,
+     "output": 116,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "fable-5.1",
+     "approx": true
+    },
+    "valid": false,
+    "why": "signal matches no line in the suspect file",
+    "rule": {
+     "name": "last-index-off-by-one",
+     "signal": "\\b(last_index|last|end_index|last_pos)\\s*=\\s*len\\([\\w.]+\\)\\s*$",
+     "example_before": "last_index = len(words)",
+     "example_after": "last_index = len(words) - 1"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "fable-5.1",
+    "tokens": {
+     "input": 1955,
+     "output": 68,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "fable-5.1",
+     "approx": true
+    },
+    "proposals": 0,
+    "line": "",
+    "replacements": []
+   }
+  ],
+  "wall_s": 13.3
+ },
+ {
+  "case": "click/notdrop-1",
+  "cls": "notdrop",
+  "file": "src/click/shell_completion.py",
+  "orig": "if not value:",
+  "mutated": "if value:",
+  "author": "fable-5.1",
+  "outcome": "tier2",
+  "verdict": "EXACT",
+  "tokens": {
+   "input": 7888,
+   "output": 204,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 8092
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 44.0,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/notdrop-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "fable-5.1",
+    "tokens": {
+     "input": 4019,
+     "output": 186,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "fable-5.1",
+     "approx": true
+    },
+    "valid": false,
+    "why": "applier is a no-op on the matched line",
+    "rule": {
+     "name": "inverted-empty-guard",
+     "signal": "^\\s*if (\\w+):\\s*$",
+     "example_before": "if value:",
+     "example_after": "if not value:"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "fable-5.1",
+    "tokens": {
+     "input": 3869,
+     "output": 18,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "fable-5.1",
+     "approx": true
+    },
+    "proposals": 1,
+    "line": "    if value:",
+    "replacements": [
+     "    if not value:"
+    ],
+    "exit": 0,
+    "wall": 63.9,
+    "suite_runs": 25,
+    "stdout": "dictionary rules_fused.py: 1 fault class(es) registered\n[20:47:37] src/click/shell_completion.py: repaired line 664 in 25 suite runs (36.3s):\n  - if value:\n  + if not value:\n  committed\n"
+   }
+  ],
+  "wall_s": 72.9
+ }
+]

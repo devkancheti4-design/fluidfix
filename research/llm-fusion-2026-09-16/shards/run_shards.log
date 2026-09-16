@@ -1,0 +1,93 @@
+[arrow/andor-1] 13 guards launched in parallel, budget 900s each, --file arrow/locales.py
+  guard k00: exit 2 in 0.8s runs=None line=None exact=False | 
+  guard k01: exit 2 in 0.8s runs=None line=None exact=False | 
+  guard k02: exit 2 in 0.7s runs=None line=None exact=False | 
+  guard k03: exit 2 in 0.6s runs=None line=None exact=False | 
+  guard k04: exit 2 in 0.6s runs=None line=None exact=False | 
+  guard k05: exit 2 in 0.5s runs=None line=None exact=False | 
+  guard k06: exit 2 in 0.4s runs=None line=None exact=False | 
+  guard k07: exit 2 in 0.3s runs=None line=None exact=False | 
+  guard k08: exit 2 in 0.3s runs=None line=None exact=False | 
+  guard k09: exit 2 in 0.2s runs=None line=None exact=False | 
+  guard k10: exit 2 in 0.1s runs=None line=None exact=False | 
+  guard k11: exit 2 in 0.1s runs=None line=None exact=False | 
+  guard k12: exit 2 in 0.1s runs=None line=None exact=False | 
+[arrow/andor-1] JUDGE: REFUSE (every guard's reason attached) → REFUSED | greens [] distinct programs 0 held [] | wall 1.0s (serial guard: see cases/) cpu-sum 5.5s
+[arrow/lenm1-1] 13 guards launched in parallel, budget 900s each, --file arrow/locales.py
+  guard k00: exit 2 in 0.7s runs=None line=None exact=False | 
+  guard k01: exit 2 in 0.7s runs=None line=None exact=False | 
+  guard k02: exit 2 in 0.6s runs=None line=None exact=False | 
+  guard k03: exit 2 in 0.6s runs=None line=None exact=False | 
+  guard k04: exit 2 in 0.5s runs=None line=None exact=False | 
+  guard k05: exit 2 in 0.4s runs=None line=None exact=False | 
+  guard k06: exit 2 in 0.4s runs=None line=None exact=False | 
+  guard k07: exit 2 in 0.3s runs=None line=None exact=False | 
+  guard k08: exit 2 in 0.3s runs=None line=None exact=False | 
+  guard k09: exit 2 in 0.2s runs=None line=None exact=False | 
+  guard k10: exit 2 in 0.1s runs=None line=None exact=False | 
+  guard k11: exit 2 in 0.1s runs=None line=None exact=False | 
+  guard k12: exit 2 in 0.1s runs=None line=None exact=False | 
+[arrow/lenm1-1] JUDGE: REFUSE (every guard's reason attached) → REFUSED | greens [] distinct programs 0 held [] | wall 0.8s (serial guard: see cases/) cpu-sum 5.0s
+[rich/andor-1] 13 guards launched in parallel, budget 900s each, --file rich/pretty.py
+  guard k00: exit 2 in 3.4s runs=None line=None exact=False | 
+  guard k01: exit 2 in 3.1s runs=None line=None exact=False | 
+  guard k02: exit 2 in 2.8s runs=None line=None exact=False | 
+  guard k03: exit 2 in 2.5s runs=None line=None exact=False | 
+  guard k04: exit 2 in 2.3s runs=None line=None exact=False | 
+  guard k05: exit 2 in 2.0s runs=None line=None exact=False | 
+  guard k06: exit 2 in 1.8s runs=None line=None exact=False | 
+  guard k07: exit 2 in 1.5s runs=None line=None exact=False | 
+  guard k08: exit 2 in 1.2s runs=None line=None exact=False | 
+  guard k09: exit 2 in 0.9s runs=None line=None exact=False | 
+  guard k10: exit 2 in 0.6s runs=None line=None exact=False | 
+  guard k11: exit 2 in 0.3s runs=None line=None exact=False | 
+  guard k12: exit 2 in 0.1s runs=None line=None exact=False | 
+[rich/andor-1] JUDGE: REFUSE (every guard's reason attached) → REFUSED | greens [] distinct programs 0 held [] | wall 3.7s (serial guard: see cases/) cpu-sum 22.5s
+SHARDS_DONE
+== debugging mode, attempt 2 (guard --dictionary kind_XX.py --budget 900, 13 guards in parallel) ==
+[arrow/andor-1] 13 guards launched in parallel, budget 900s each, target arrow/locales.py
+  guard k00: exit 2 in 851.3s runs=None line=None exact=False | every generated candidate was rejected by the suite (engine law: REFUT
+  guard k01: exit 2 in 903.6s runs=None line=None exact=False | every generated candidate was rejected by the suite (engine law: REFUT
+  guard k02: exit 2 in 903.5s runs=None line=None exact=False | 
+  guard k03: exit 2 in 903.5s runs=None line=None exact=False | 
+  guard k04: exit 0 in 903.4s runs=5 line=5468 exact=True | 
+  guard k05: exit 2 in 903.4s runs=None line=None exact=False | 
+  guard k06: exit 2 in 903.3s runs=None line=None exact=False | 
+  guard k07: exit 2 in 903.2s runs=None line=None exact=False | 
+  guard k08: exit 2 in 903.1s runs=None line=None exact=False | 
+  guard k09: exit 2 in 903.0s runs=None line=None exact=False | 
+  guard k10: exit 2 in 902.9s runs=None line=None exact=False | every generated candidate was rejected by the suite (engine law: REFUT
+  guard k11: exit 2 in 902.7s runs=None line=None exact=False | 
+  guard k12: exit 2 in 902.5s runs=None line=None exact=False | every generated candidate was rejected by the suite (engine law: REFUT
+[arrow/andor-1] JUDGE: SHIP → EXACT | greens [4] distinct programs 1 held [] | wall 903.7s (serial guard: see cases/) cpu-sum 11689.4s
+[arrow/lenm1-1] 13 guards launched in parallel, budget 900s each, target arrow/locales.py
+  guard k00: exit 2 in 922.3s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k01: exit 2 in 922.3s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k02: exit 2 in 923.7s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k03: exit 2 in 923.6s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k04: exit 2 in 923.6s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k05: exit 2 in 923.5s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k06: exit 2 in 923.4s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k07: exit 0 in 930.3s runs=2 line=3636 exact=True | 
+  guard k08: exit 2 in 930.2s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k09: exit 2 in 930.1s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k10: exit 2 in 929.9s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k11: exit 2 in 929.7s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k12: exit 2 in 928.2s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+[arrow/lenm1-1] JUDGE: SHIP → EXACT | greens [7] distinct programs 1 held [] | wall 930.8s (serial guard: see cases/) cpu-sum 12040.8s
+[rich/andor-1] 13 guards launched in parallel, budget 900s each, target rich/pretty.py
+  guard k00: exit 2 in 901.7s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k01: exit 2 in 904.6s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k02: exit 2 in 906.1s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k03: exit 2 in 905.9s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k04: exit 2 in 912.1s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k05: exit 2 in 911.8s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k06: exit 2 in 911.7s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k07: exit 2 in 911.4s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k08: exit 2 in 911.1s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k09: exit 2 in 910.8s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k10: exit 2 in 906.7s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k11: exit 2 in 909.9s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+  guard k12: exit 2 in 907.5s runs=None line=None exact=False | escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDG
+[rich/andor-1] JUDGE: REFUSE (every guard's reason attached) → REFUSED | greens [] distinct programs 0 held [] | wall 917.3s (serial guard: see cases/) cpu-sum 11811.3s
+SHARDS2_DONE

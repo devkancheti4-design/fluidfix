@@ -1,0 +1,504 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/sortedcontainers/__init__.py"
+ ],
+ "seconds": 48.553972005844116,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists each one with the test that killed it",
+ "rejected_candidates": [
+  {
+   "at": "src/sortedcontainers/__init__.py:21",
+   "tried": "    >=>> sl.count('c')",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:21",
+   "tried": "    >>=> sl.count('c')",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:21",
+   "tried": "    >>>= sl.count('c')",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 21 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:16",
+   "tried": "    >=>> from sortedcontainers import SortedList",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:16",
+   "tried": "    >>=> from sortedcontainers import SortedList",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:16",
+   "tried": "    >>>= from sortedcontainers import SortedList",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 16 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:17",
+   "tried": "    >=>> sl = SortedList(['e', 'a', 'c', 'd', 'b'])",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:17",
+   "tried": "    >>=> sl = SortedList(['e', 'a', 'c', 'd', 'b'])",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:17",
+   "tried": "    >>>= sl = SortedList(['e', 'a', 'c', 'd', 'b'])",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 17 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:18",
+   "tried": "    >=>> sl",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:18",
+   "tried": "    >>=> sl",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:18",
+   "tried": "    >>>= sl",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 18 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:20",
+   "tried": "    >=>> sl *= 1000000",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:20",
+   "tried": "    >>=> sl *= 1000000",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:20",
+   "tried": "    >>>= sl *= 1000000",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 20 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:20",
+   "tried": "    >>> sl *= 999999",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:22",
+   "tried": "    999999",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:23",
+   "tried": "    >=>> sl[-3:]",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:23",
+   "tried": "    >>=> sl[-3:]",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:23",
+   "tried": "    >>>= sl[-3:]",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 23 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:23",
+   "tried": "    >>> sl[-2:]",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:25",
+   "tried": "    >=>> from sortedcontainers import SortedDict",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:25",
+   "tried": "    >>=> from sortedcontainers import SortedDict",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:25",
+   "tried": "    >>>= from sortedcontainers import SortedDict",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 25 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:26",
+   "tried": "    >=>> sd = SortedDict({'c': 3, 'a': 1, 'b': 2})",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:26",
+   "tried": "    >>=> sd = SortedDict({'c': 3, 'a': 1, 'b': 2})",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:26",
+   "tried": "    >>>= sd = SortedDict({'c': 3, 'a': 1, 'b': 2})",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 26 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:26",
+   "tried": "    >>> sd = SortedDict({'c': 2, 'a': 1, 'b': 2})",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:26",
+   "tried": "    >>> sd = SortedDict({'c': 3, 'a': 0, 'b': 2})",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:26",
+   "tried": "    >>> sd = SortedDict({'c': 3, 'a': 1, 'b': 1})",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:27",
+   "tried": "    >=>> sd",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:27",
+   "tried": "    >>=> sd",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:27",
+   "tried": "    >>>= sd",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 27 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:28",
+   "tried": "    SortedDict({'a': 0, 'b': 2, 'c': 3})",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:28",
+   "tried": "    SortedDict({'a': 1, 'b': 1, 'c': 3})",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:28",
+   "tried": "    SortedDict({'a': 1, 'b': 2, 'c': 2})",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:29",
+   "tried": "    >=>> sd.popitem(index=-1)",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:29",
+   "tried": "    >>=> sd.popitem(index=-1)",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:29",
+   "tried": "    >>>= sd.popitem(index=-1)",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 29 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:29",
+   "tried": "    >>> sd.popitem(index=)",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:30",
+   "tried": "    ('c', 2)",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:31",
+   "tried": "    >=>> from sortedcontainers import SortedSet",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:31",
+   "tried": "    >>=> from sortedcontainers import SortedSet",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:31",
+   "tried": "    >>>= from sortedcontainers import SortedSet",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 31 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:32",
+   "tried": "    >=>> ss = SortedSet('abracadabra')",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:32",
+   "tried": "    >>=> ss = SortedSet('abracadabra')",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:32",
+   "tried": "    >>>= ss = SortedSet('abracadabra')",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 32 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:33",
+   "tried": "    >=>> ss",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:33",
+   "tried": "    >>=> ss",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:33",
+   "tried": "    >>>= ss",
+   "why": "ERROR src/sortedcontainers/__init__.py - ValueError: line 33 of the docstring..."
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:69",
+   "tried": "__version__ = '1.4.0'",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:69",
+   "tried": "__version__ = '2.3.0'",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:69",
+   "tried": "__version__ = '2.4.-1'",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:70",
+   "tried": "__build__ = -1x020400",
+   "why": "does not compile: invalid decimal literal (__init__.py, line 70)"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:72",
+   "tried": "__license__ = 'Apache 1.0'",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:72",
+   "tried": "__license__ = 'Apache 2.-1'",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:73",
+   "tried": "__copyright__ = '2013-2024, Grant Jenks'",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  },
+  {
+   "at": "src/sortedcontainers/__init__.py:73",
+   "tried": "__copyright__ = '2014-2023, Grant Jenks'",
+   "why": "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "src/sortedcontainers/__init__.py": [
+   [
+    9,
+    "different implementations, most using C-extensions without great documentation"
+   ],
+   [
+    10,
+    "and benchmarking."
+   ],
+   [
+    11,
+    ""
+   ],
+   [
+    12,
+    "In Python, we can do better. And we can do it in pure-Python!"
+   ],
+   [
+    13,
+    ""
+   ],
+   [
+    14,
+    "::"
+   ],
+   [
+    15,
+    ""
+   ],
+   [
+    16,
+    "    >>> from sortedcontainers import SortedList"
+   ],
+   [
+    17,
+    "    >>> sl = SortedList(['e', 'a', 'c', 'd', 'b'])"
+   ],
+   [
+    18,
+    "    >>> sl"
+   ],
+   [
+    19,
+    "    SortedList(['a', 'b', 'c', 'd', 'e'])"
+   ],
+   [
+    20,
+    "    >>> sl *= 1000000"
+   ],
+   [
+    21,
+    "    >>> sl.count('c')"
+   ],
+   [
+    22,
+    "    1000000"
+   ],
+   [
+    23,
+    "    >>> sl[-3:]"
+   ],
+   [
+    24,
+    "    ['e', 'e', 'e']"
+   ],
+   [
+    25,
+    "    >>> from sortedcontainers import SortedDict"
+   ],
+   [
+    26,
+    "    >>> sd = SortedDict({'c': 3, 'a': 1, 'b': 2})"
+   ],
+   [
+    27,
+    "    >>> sd"
+   ],
+   [
+    28,
+    "    SortedDict({'a': 1, 'b': 2, 'c': 3})"
+   ],
+   [
+    29,
+    "    >>> sd.popitem(index=-1)"
+   ],
+   [
+    30,
+    "    ('c', 3)"
+   ],
+   [
+    31,
+    "    >>> from sortedcontainers import SortedSet"
+   ],
+   [
+    32,
+    "    >>> ss = SortedSet('abracadabra')"
+   ],
+   [
+    33,
+    "    >>> ss"
+   ],
+   [
+    48,
+    "from .sorteddict import ("
+   ],
+   [
+    49,
+    "    SortedDict,"
+   ],
+   [
+    50,
+    "    SortedItemsView,"
+   ],
+   [
+    51,
+    "    SortedKeysView,"
+   ],
+   [
+    52,
+    "    SortedValuesView,"
+   ],
+   [
+    53,
+    ")"
+   ],
+   [
+    54,
+    "from .sortedlist import SortedKeyList, SortedList, SortedListWithKey"
+   ],
+   [
+    55,
+    "from .sortedset import SortedSet"
+   ],
+   [
+    57,
+    "__all__ = ["
+   ],
+   [
+    58,
+    "    'SortedList',"
+   ],
+   [
+    59,
+    "    'SortedKeyList',"
+   ],
+   [
+    60,
+    "    'SortedListWithKey',"
+   ],
+   [
+    61,
+    "    'SortedDict',"
+   ],
+   [
+    62,
+    "    'SortedKeysView',"
+   ],
+   [
+    63,
+    "    'SortedItemsView',"
+   ],
+   [
+    64,
+    "    'SortedValuesView',"
+   ],
+   [
+    65,
+    "    'SortedSet',"
+   ],
+   [
+    66,
+    "]"
+   ],
+   [
+    68,
+    "__title__ = 'sortedcontainers'"
+   ],
+   [
+    69,
+    "__version__ = '2.4.0'"
+   ],
+   [
+    70,
+    "__build__ = 0x020400"
+   ],
+   [
+    71,
+    "__author__ = 'Grant Jenks'"
+   ],
+   [
+    72,
+    "__license__ = 'Apache 2.0'"
+   ],
+   [
+    73,
+    "__copyright__ = '2014-2024, Grant Jenks'"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED src/sortedcontainers/__init__.py::sortedcontainers"
+ ]
+}

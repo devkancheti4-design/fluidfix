@@ -1,0 +1,8 @@
+{
+ "file": "src/click/shell_completion.py",
+ "lineno": 467,
+ "orig": "        help_ = item.help or \"_\"",
+ "mutated": "        help_ = item.help and \"_\"",
+ "cls": "andor",
+ "base": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1"
+}

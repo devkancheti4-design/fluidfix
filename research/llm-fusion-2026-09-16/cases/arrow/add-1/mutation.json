@@ -1,0 +1,9 @@
+{
+ "file": "arrow/arrow.py",
+ "lineno": 1223,
+ "orig": "                    calendar_diff.years * self._MONTHS_PER_YEAR + calendar_diff.months",
+ "mutated": "                    calendar_diff.years * self._MONTHS_PER_YEAR - calendar_diff.months",
+ "cls": "add",
+ "base": "2224255c4acc594d734cef0bbc83360452a67983",
+ "note": "WRONG-GREEN in the bench (113.7 s, 25 runs): the guard changed line 1219 `if self._datetime < dt` to `> dt` and the suite passed; saved for replay and the report"
+}

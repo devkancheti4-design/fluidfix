@@ -1,0 +1,5 @@
+{
+ "line": "",
+ "replacements": [],
+ "note": "the packet shows src/click/termui.py; the failing test (test_make_default_short_help) and other_suspects point at src/click/utils.py, which the packet does not show. No honest replacement can be proposed for the shown file."
+}

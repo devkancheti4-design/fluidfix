@@ -1,0 +1,503 @@
+{
+ "status": "refused",
+ "candidates": [
+  "arrow/arrow.py"
+ ],
+ "seconds": 224.29673719406128,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "rejected_candidates": [
+  {
+   "at": "arrow/arrow.py:182",
+   "tried": "    def now(cls, tzinfo: Optional[dt_tzinfo] = None) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 182)"
+  },
+  {
+   "at": "arrow/arrow.py:1344",
+   "tried": "    def dehumanize(self, input_string: str, locale: str = \"en_us\") ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 1344)"
+  },
+  {
+   "at": "arrow/arrow.py:1385",
+   "tried": "            [\"seconds\", \"minutes\", \"hours\", \"days\", \"weeks\", \"months\", \"years\"], -1",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - AssertionError: a..."
+  },
+  {
+   "at": "arrow/arrow.py:1391",
+   "tried": "            True,",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:1409",
+   "tried": "                # Replace {-1} with regex \\d representing digits",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:1428",
+   "tried": "                        0 if not time_delta.isnumeric() else abs(int(time_delta))",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:1435",
+   "tried": "                    unit_visited[unit] = False",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - ValueError: Input..."
+  },
+  {
+   "at": "arrow/arrow.py:1447",
+   "tried": "        if not any([False for k, v in unit_visited.items() if v]):",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - ValueError: Input..."
+  },
+  {
+   "at": "arrow/arrow.py:1469",
+   "tried": "            sign_val = 0",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:1471",
+   "tried": "            sign_val = -1",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:1481",
+   "tried": "        return current_time.shift(check_imaginary=False, **time_changes)",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:125",
+   "tried": "    _MONTHS_PER_QUARTER: Final[int] = 2",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:126",
+   "tried": "    _MONTHS_PER_YEAR: Final[int] = 11",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:127",
+   "tried": "    _SECS_PER_MINUTE: Final[int] = 59",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:182",
+   "tried": "    def now(cls, tzinfo: Optional[dt_tzinfo] = None) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 182)"
+  },
+  {
+   "at": "arrow/arrow.py:1344",
+   "tried": "    def dehumanize(self, input_string: str, locale: str = \"en_us\") ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 1344)"
+  },
+  {
+   "at": "arrow/arrow.py:1385",
+   "tried": "            [\"seconds\", \"minutes\", \"hours\", \"days\", \"weeks\", \"months\", \"years\"], -1",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - AssertionError: a..."
+  },
+  {
+   "at": "arrow/arrow.py:1391",
+   "tried": "            True,",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:1409",
+   "tried": "                # Replace {-1} with regex \\d representing digits",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:1428",
+   "tried": "                        0 if not time_delta.isnumeric() else abs(int(time_delta))",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:1435",
+   "tried": "                    unit_visited[unit] = False",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - ValueError: Input..."
+  },
+  {
+   "at": "arrow/arrow.py:1447",
+   "tried": "        if not any([False for k, v in unit_visited.items() if v]):",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - ValueError: Input..."
+  },
+  {
+   "at": "arrow/arrow.py:1469",
+   "tried": "            sign_val = 0",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:1471",
+   "tried": "            sign_val = -1",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:1481",
+   "tried": "        return current_time.shift(check_imaginary=False, **time_changes)",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:125",
+   "tried": "    _MONTHS_PER_QUARTER: Final[int] = 2",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:126",
+   "tried": "    _MONTHS_PER_YEAR: Final[int] = 11",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:127",
+   "tried": "    _SECS_PER_MINUTE: Final[int] = 59",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 59 * 60",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 60 * 59",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 59 * 60 * 24",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 59 * 24",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 60 * 23",
+   "why": "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "arrow/arrow.py": [
+   [
+    7,
+    "import calendar"
+   ],
+   [
+    8,
+    "import re"
+   ],
+   [
+    9,
+    "import sys"
+   ],
+   [
+    10,
+    "from datetime import date as dt_date"
+   ],
+   [
+    11,
+    "from datetime import datetime as dt_datetime"
+   ],
+   [
+    12,
+    "from datetime import time as dt_time"
+   ],
+   [
+    13,
+    "from datetime import timedelta, timezone"
+   ],
+   [
+    14,
+    "from datetime import tzinfo as dt_tzinfo"
+   ],
+   [
+    15,
+    "from math import trunc"
+   ],
+   [
+    16,
+    "from time import struct_time"
+   ],
+   [
+    17,
+    "from typing import ("
+   ],
+   [
+    18,
+    "    Any,"
+   ],
+   [
+    19,
+    "    ClassVar,"
+   ],
+   [
+    20,
+    "    Final,"
+   ],
+   [
+    21,
+    "    Generator,"
+   ],
+   [
+    22,
+    "    Iterable,"
+   ],
+   [
+    23,
+    "    List,"
+   ],
+   [
+    24,
+    "    Literal,"
+   ],
+   [
+    25,
+    "    Mapping,"
+   ],
+   [
+    26,
+    "    Optional,"
+   ],
+   [
+    27,
+    "    Tuple,"
+   ],
+   [
+    28,
+    "    Union,"
+   ],
+   [
+    29,
+    "    cast,"
+   ],
+   [
+    30,
+    "    overload,"
+   ],
+   [
+    31,
+    ")"
+   ],
+   [
+    33,
+    "from dateutil import tz as dateutil_tz"
+   ],
+   [
+    34,
+    "from dateutil.relativedelta import relativedelta"
+   ],
+   [
+    36,
+    "from arrow import formatter, locales, parser, util"
+   ],
+   [
+    37,
+    "from arrow.constants import DEFAULT_LOCALE, DEHUMANIZE_LOCALES"
+   ],
+   [
+    38,
+    "from arrow.locales import TimeFrameLiteral"
+   ],
+   [
+    40,
+    "TZ_EXPR = Union[dt_tzinfo, str]"
+   ],
+   [
+    42,
+    "_T_FRAMES = Literal["
+   ],
+   [
+    43,
+    "    \"year\","
+   ],
+   [
+    44,
+    "    \"years\","
+   ],
+   [
+    45,
+    "    \"month\","
+   ],
+   [
+    46,
+    "    \"months\","
+   ],
+   [
+    47,
+    "    \"day\","
+   ],
+   [
+    48,
+    "    \"days\","
+   ],
+   [
+    49,
+    "    \"hour\","
+   ],
+   [
+    50,
+    "    \"hours\","
+   ],
+   [
+    51,
+    "    \"minute\","
+   ],
+   [
+    52,
+    "    \"minutes\","
+   ],
+   [
+    53,
+    "    \"second\","
+   ],
+   [
+    54,
+    "    \"seconds\","
+   ],
+   [
+    55,
+    "    \"microsecond\","
+   ],
+   [
+    56,
+    "    \"microseconds\","
+   ],
+   [
+    57,
+    "    \"week\","
+   ],
+   [
+    58,
+    "    \"weeks\","
+   ],
+   [
+    59,
+    "    \"quarter\","
+   ],
+   [
+    60,
+    "    \"quarters\","
+   ],
+   [
+    61,
+    "]"
+   ],
+   [
+    63,
+    "_BOUNDS = Literal[\"[)\", \"()\", \"(]\", \"[]\"]"
+   ],
+   [
+    65,
+    "_GRANULARITY = Literal["
+   ],
+   [
+    66,
+    "    \"auto\","
+   ],
+   [
+    67,
+    "    \"second\","
+   ],
+   [
+    68,
+    "    \"minute\","
+   ],
+   [
+    69,
+    "    \"hour\","
+   ],
+   [
+    70,
+    "    \"day\","
+   ],
+   [
+    71,
+    "    \"week\","
+   ],
+   [
+    72,
+    "    \"month\","
+   ],
+   [
+    73,
+    "    \"quarter\","
+   ],
+   [
+    74,
+    "    \"year\","
+   ],
+   [
+    75,
+    "]"
+   ],
+   [
+    78,
+    "class Arrow:"
+   ],
+   [
+    111,
+    "    resolution: ClassVar[timedelta] = dt_datetime.resolution"
+   ],
+   [
+    115,
+    "    _ATTRS: Final[List[str]] = ["
+   ],
+   [
+    116,
+    "        \"year\","
+   ],
+   [
+    117,
+    "        \"month\","
+   ],
+   [
+    118,
+    "        \"day\","
+   ],
+   [
+    119,
+    "        \"hour\","
+   ],
+   [
+    120,
+    "        \"minute\","
+   ],
+   [
+    121,
+    "        \"second\","
+   ],
+   [
+    122,
+    "        \"microsecond\","
+   ],
+   [
+    123,
+    "    ]"
+   ],
+   [
+    124,
+    "    _ATTRS_PLURAL: Final[List[str]] = [f\"{a}s\" for a in _ATTRS]"
+   ],
+   [
+    125,
+    "    _MONTHS_PER_QUARTER: Final[int] = 3"
+   ],
+   [
+    126,
+    "    _MONTHS_PER_YEAR: Final[int] = 12"
+   ],
+   [
+    127,
+    "    _SECS_PER_MINUTE: Final[int] = 60"
+   ],
+   [
+    128,
+    "    _SECS_PER_HOUR: Final[int] = 60 * 60"
+   ],
+   [
+    129,
+    "    _SECS_PER_DAY: Final[int] = 60 * 60 * 24"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_arrow.py::TestArrowDehumanize::test_now - IndexError: Repla..."
+ ]
+}

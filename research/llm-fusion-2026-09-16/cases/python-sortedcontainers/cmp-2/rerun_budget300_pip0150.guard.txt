@@ -1,0 +1,4 @@
+[00:31:37] src/sortedcontainers/sortedlist.py: repaired line 1535 in 67 suite runs (56.3s):
+  - assert self._lists[pos - 1][-1] < self._lists[pos][0]
+  + assert self._lists[pos - 1][-1] <= self._lists[pos][0]
+  committed

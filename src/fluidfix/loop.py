@@ -76,6 +76,9 @@ class RepairResult:
     # candidate is kept WITH the failing test that rejected it
     tried_log: list = field(default_factory=list)
     tried_more: int = 0               # rejections beyond the 64-entry cap
+    # every candidate key this search judged (uncapped), so a later pass over
+    # the same file can skip them instead of paying the suite again
+    tried_keys: set = field(default_factory=set)
     # provenance: the repair equals the git-HEAD content at that line (the
     # defect was an uncommitted edit); None when git/HEAD is unavailable
     restored_original: bool | None = None
@@ -192,7 +195,8 @@ def _restored_original(root: str, rel: str, lineno: int, new_line: str) -> bool 
 def repair(oracle: Oracle, defect_file: str,
            observations: list[Observation],
            candidate_timeout: int | None = None,
-           deadline: float | None = None) -> RepairResult:
+           deadline: float | None = None,
+           skip: set | None = None) -> RepairResult:
     t0 = time.time()
     res = RepairResult(repaired=False, refused=True)
     path = os.path.join(oracle.root, defect_file)
@@ -211,7 +215,14 @@ def repair(oracle: Oracle, defect_file: str,
     with open(path, encoding="utf-8", newline="") as f:
         src = f.read()
     raw = src.split("\n")            # "\n".join(raw) == src, byte for byte
-    tried: set[tuple[int, str]] = set()
+    # `skip`: candidates a previous pass over this file already judged. The
+    # escalation pass used to start from an empty set and re-judge the first
+    # pass's rejections before reaching a single new line: measured
+    # 2026-09-16 on arrow parser.py with a taught class, both passes stopped
+    # at the same 33 lines and the defect, ranked 44th of 56, was never
+    # reached at any budget. Every suite run must buy a new fact.
+    tried: set = set(skip or ())
+    res.tried_keys = tried
     wrote = False
 
     # Journal the original bytes for the WHOLE call, not per observation.

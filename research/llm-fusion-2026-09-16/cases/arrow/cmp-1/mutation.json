@@ -1,0 +1,8 @@
+{
+ "file": "arrow/locales.py",
+ "lineno": 1340,
+ "orig": "            elif 2 <= delta % 10 <= 4 and (delta % 100 < 10 or delta % 100 >= 20):",
+ "mutated": "            elif 2 < delta % 10 <= 4 and (delta % 100 < 10 or delta % 100 >= 20):",
+ "cls": "cmp",
+ "base": "2224255c4acc594d734cef0bbc83360452a67983"
+}

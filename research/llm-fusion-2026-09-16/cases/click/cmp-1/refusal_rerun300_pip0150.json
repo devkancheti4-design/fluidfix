@@ -1,0 +1,16 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/click/formatting.py",
+  "src/click/_utils.py",
+  "src/click/__init__.py",
+  "src/click/_textwrap.py",
+  "src/click/types.py",
+  "src/click/utils.py",
+  "src/click/exceptions.py",
+  "src/click/globals.py"
+ ],
+ "seconds": 329.75222992897034,
+ "hint": "--budget exhausted (300s) during the first pass \u2014 raise --budget, tighten taught-class signals, or fix by hand",
+ "rejected_candidates": []
+}

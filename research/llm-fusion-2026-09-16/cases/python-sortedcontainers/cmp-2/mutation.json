@@ -1,0 +1,8 @@
+{
+ "file": "src/sortedcontainers/sortedlist.py",
+ "lineno": 1535,
+ "orig": "                assert self._lists[pos - 1][-1] <= self._lists[pos][0]",
+ "mutated": "                assert self._lists[pos - 1][-1] < self._lists[pos][0]",
+ "cls": "cmp",
+ "base": "3ac358631f58c1347f1d6d2d92784117db0f38ed"
+}

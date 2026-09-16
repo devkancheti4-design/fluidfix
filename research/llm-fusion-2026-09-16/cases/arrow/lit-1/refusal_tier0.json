@@ -1,0 +1,583 @@
+{
+ "status": "refused",
+ "candidates": [
+  "arrow/locales.py"
+ ],
+ "seconds": 244.28045320510864,
+ "hint": "a candidate passes, but the search was cut short before it could be shown unique \u2014 shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)",
+ "rejected_candidates": [
+  {
+   "at": "arrow/locales.py:5560",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 5560)"
+  },
+  {
+   "at": "arrow/locales.py:5485",
+   "tried": "    future = \"za {-1}\"",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:46",
+   "tried": "def get_locale(name: str) ->= \"Locale\":",
+   "why": "does not compile: expected ':' (locales.py, line 46)"
+  },
+  {
+   "at": "arrow/locales.py:217",
+   "tried": "    def month_number(self, name: str) ->= Optional[int]:",
+   "why": "does not compile: expected ':' (locales.py, line 217)"
+  },
+  {
+   "at": "arrow/locales.py:303",
+   "tried": "    past = \"{-1} ago\"",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:322",
+   "tried": "        \"quarters\": \"{-1} quarters\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:418",
+   "tried": "        \"hours\": \"{-1} ore\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:487",
+   "tried": "        \"seconds\": \"{-1} segundos\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:549",
+   "tried": "    def _ordinal_number(self, n: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 549)"
+  },
+  {
+   "at": "arrow/locales.py:571",
+   "tried": "        \"months\": \"{-1} mois\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:670",
+   "tried": "        \"days\": \"{-1} \u03b7\u03bc\u03ad\u03c1\u03b5\u03c2\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:734",
+   "tried": "        \"minute\": \"0\u5206\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:743",
+   "tried": "        \"months\": \"{-1}\u30f6\u6708\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:755",
+   "tried": "        \"5\u6708\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:767",
+   "tried": "        \" 2\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:775",
+   "tried": "        \"10\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:810",
+   "tried": "        \"weeks\": \"{-1} veckor\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:881",
+   "tried": "        \"weeks\": {\"past\": \"{-1} viikkoa\", \"future\": \"{0} viikon\"},",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:881",
+   "tried": "        \"weeks\": {\"past\": \"{0} viikkoa\", \"future\": \"{-1} viikon\"},",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:958",
+   "tried": "        \"seconds\": \"{-1}\u79d2\",",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:5560",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 5560)"
+  },
+  {
+   "at": "arrow/locales.py:5564",
+   "tried": "            if 1 < delta < 4:",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Asse..."
+  },
+  {
+   "at": "arrow/locales.py:5564",
+   "tried": "            if 1 <= delta <= 4:",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:5564",
+   "tried": "            if 0 < delta <= 4:",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:5564",
+   "tried": "            if 1 < delta <= 3:",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Asse..."
+  },
+  {
+   "at": "arrow/locales.py:5564",
+   "tried": "            if 1 < delta >= 4:",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Asse..."
+  },
+  {
+   "at": "arrow/locales.py:5564",
+   "tried": "            if 1 > delta <= 4:",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Asse..."
+  },
+  {
+   "at": "arrow/locales.py:272",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 272)"
+  },
+  {
+   "at": "arrow/locales.py:934",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 934)"
+  },
+  {
+   "at": "arrow/locales.py:1333",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 1333)"
+  },
+  {
+   "at": "arrow/locales.py:2746",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 2746)"
+  },
+  {
+   "at": "arrow/locales.py:2897",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 2897)"
+  },
+  {
+   "at": "arrow/locales.py:3296",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 3296)"
+  },
+  {
+   "at": "arrow/locales.py:3427",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 3427)"
+  },
+  {
+   "at": "arrow/locales.py:3606",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 3606)"
+  },
+  {
+   "at": "arrow/locales.py:3927",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 3927)"
+  },
+  {
+   "at": "arrow/locales.py:4717",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 4717)"
+  },
+  {
+   "at": "arrow/locales.py:4969",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 4969)"
+  },
+  {
+   "at": "arrow/locales.py:5300",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 5300)"
+  },
+  {
+   "at": "arrow/locales.py:5699",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 5699)"
+  },
+  {
+   "at": "arrow/locales.py:6091",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 6091)"
+  },
+  {
+   "at": "arrow/locales.py:6464",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 6464)"
+  },
+  {
+   "at": "arrow/locales.py:5484",
+   "tried": "    past = \"pre {-1}\"",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:5485",
+   "tried": "    future = \"za {-1}\"",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+  },
+  {
+   "at": "arrow/locales.py:5491",
+   "tried": "        \"seconds\": {\"double\": \"{-1} sekunde\", \"higher\": \"{0} sekundi\"},",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - KeyE..."
+  },
+  {
+   "at": "arrow/locales.py:5491",
+   "tried": "        \"seconds\": {\"double\": \"{0} sekunde\", \"higher\": \"{-1} sekundi\"},",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - KeyE..."
+  },
+  {
+   "at": "arrow/locales.py:5493",
+   "tried": "        \"minutes\": {\"double\": \"{-1} minute\", \"higher\": \"{0} minuta\"},",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - KeyE..."
+  },
+  {
+   "at": "arrow/locales.py:5493",
+   "tried": "        \"minutes\": {\"double\": \"{0} minute\", \"higher\": \"{-1} minuta\"},",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - KeyE..."
+  },
+  {
+   "at": "arrow/locales.py:5495",
+   "tried": "        \"hours\": {\"double\": \"{-1} sata\", \"higher\": \"{1} sati\"},",
+   "why": "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - KeyE..."
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "arrow/locales.py": [
+   [
+    3,
+    "from math import trunc"
+   ],
+   [
+    4,
+    "from typing import ("
+   ],
+   [
+    5,
+    "    Any,"
+   ],
+   [
+    6,
+    "    ClassVar,"
+   ],
+   [
+    7,
+    "    Dict,"
+   ],
+   [
+    8,
+    "    List,"
+   ],
+   [
+    9,
+    "    Literal,"
+   ],
+   [
+    10,
+    "    Mapping,"
+   ],
+   [
+    11,
+    "    Optional,"
+   ],
+   [
+    12,
+    "    Sequence,"
+   ],
+   [
+    13,
+    "    Tuple,"
+   ],
+   [
+    14,
+    "    Type,"
+   ],
+   [
+    15,
+    "    Union,"
+   ],
+   [
+    16,
+    "    cast,"
+   ],
+   [
+    17,
+    ")"
+   ],
+   [
+    19,
+    "TimeFrameLiteral = Literal["
+   ],
+   [
+    20,
+    "    \"now\","
+   ],
+   [
+    21,
+    "    \"second\","
+   ],
+   [
+    22,
+    "    \"seconds\","
+   ],
+   [
+    23,
+    "    \"minute\","
+   ],
+   [
+    24,
+    "    \"minutes\","
+   ],
+   [
+    25,
+    "    \"hour\","
+   ],
+   [
+    26,
+    "    \"hours\","
+   ],
+   [
+    27,
+    "    \"day\","
+   ],
+   [
+    28,
+    "    \"days\","
+   ],
+   [
+    29,
+    "    \"week\","
+   ],
+   [
+    30,
+    "    \"weeks\","
+   ],
+   [
+    31,
+    "    \"month\","
+   ],
+   [
+    32,
+    "    \"months\","
+   ],
+   [
+    33,
+    "    \"quarter\","
+   ],
+   [
+    34,
+    "    \"quarters\","
+   ],
+   [
+    35,
+    "    \"year\","
+   ],
+   [
+    36,
+    "    \"years\","
+   ],
+   [
+    37,
+    "]"
+   ],
+   [
+    39,
+    "_TimeFrameElements = Union["
+   ],
+   [
+    40,
+    "    str, Sequence[str], Mapping[str, str], Mapping[str, Sequence[str]]"
+   ],
+   [
+    41,
+    "]"
+   ],
+   [
+    43,
+    "_locale_map: Dict[str, Type[\"Locale\"]] = {}"
+   ],
+   [
+    46,
+    "def get_locale(name: str) -> \"Locale\":"
+   ],
+   [
+    63,
+    "def get_locale_by_class_name(name: str) -> \"Locale\":"
+   ],
+   [
+    70,
+    "    locale_cls: Optional[Type[Locale]] = globals().get(name)"
+   ],
+   [
+    72,
+    "    if locale_cls is None:"
+   ],
+   [
+    75,
+    "    return locale_cls()"
+   ],
+   [
+    78,
+    "class Locale:"
+   ],
+   [
+    81,
+    "    names: ClassVar[List[str]] = []"
+   ],
+   [
+    83,
+    "    timeframes: ClassVar[Mapping[TimeFrameLiteral, _TimeFrameElements]] = {"
+   ],
+   [
+    84,
+    "        \"now\": \"\","
+   ],
+   [
+    85,
+    "        \"second\": \"\","
+   ],
+   [
+    86,
+    "        \"seconds\": \"\","
+   ],
+   [
+    87,
+    "        \"minute\": \"\","
+   ],
+   [
+    88,
+    "        \"minutes\": \"\","
+   ],
+   [
+    89,
+    "        \"hour\": \"\","
+   ],
+   [
+    90,
+    "        \"hours\": \"\","
+   ],
+   [
+    91,
+    "        \"day\": \"\","
+   ],
+   [
+    92,
+    "        \"days\": \"\","
+   ],
+   [
+    93,
+    "        \"week\": \"\","
+   ],
+   [
+    94,
+    "        \"weeks\": \"\","
+   ],
+   [
+    95,
+    "        \"month\": \"\","
+   ],
+   [
+    96,
+    "        \"months\": \"\","
+   ],
+   [
+    97,
+    "        \"quarter\": \"\","
+   ],
+   [
+    98,
+    "        \"quarters\": \"\","
+   ],
+   [
+    99,
+    "        \"year\": \"\","
+   ],
+   [
+    100,
+    "        \"years\": \"\","
+   ],
+   [
+    101,
+    "    }"
+   ],
+   [
+    103,
+    "    meridians: ClassVar[Dict[str, str]] = {\"am\": \"\", \"pm\": \"\", \"AM\": \"\", \"PM\": \"\"}"
+   ],
+   [
+    107,
+    "    and_word: ClassVar[Optional[str]] = None"
+   ],
+   [
+    109,
+    "    month_names: ClassVar[List[str]] = []"
+   ],
+   [
+    110,
+    "    month_abbreviations: ClassVar[List[str]] = []"
+   ],
+   [
+    112,
+    "    day_names: ClassVar[List[str]] = []"
+   ],
+   [
+    113,
+    "    day_abbreviations: ClassVar[List[str]] = []"
+   ],
+   [
+    115,
+    "    ordinal_day_re: ClassVar[str] = r\"(\\d+)\""
+   ],
+   [
+    119,
+    "    def __init_subclass__(cls, **kwargs: Any) -> None:"
+   ],
+   [
+    120,
+    "        for locale_name in cls.names:"
+   ],
+   [
+    121,
+    "            if locale_name in _locale_map:"
+   ],
+   [
+    124,
+    "            _locale_map[locale_name.lower().replace(\"_\", \"-\")] = cls"
+   ],
+   [
+    126,
+    "    def __init__(self) -> None:"
+   ],
+   [
+    127,
+    "        self._month_name_to_ordinal = None"
+   ],
+   [
+    129,
+    "    def describe("
+   ],
+   [
+    148,
+    "    def describe_multi("
+   ],
+   [
+    181,
+    "    def day_name(self, day: int) -> str:"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_locales.py::TestSerbianLocale::test_format_timeframe - Inde..."
+ ]
+}

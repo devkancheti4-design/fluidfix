@@ -54,6 +54,11 @@ class GuardReport:
     # report never understates how much was tried (measured 2026-09-10:
     # a 900 s run reported "64 candidate(s)" for far more than 64)
     rejected_unlisted: int = 0
+    # what a teacher needs and the log alone cannot give: the lines the failing
+    # tests executed in each file the search opened, and the failing tests
+    # themselves. Tier 1 (teach.py) authors a class from these, never the repo.
+    executed: dict = field(default_factory=dict)
+    failing: list = field(default_factory=list)
     # what the SIGHT law had to read: which files any POINTING lane named.
     # Empty means the ranking was ordering on circumstantial evidence alone.
     evidence: dict = field(default_factory=dict)
@@ -105,6 +110,14 @@ class GuardReport:
             base = ("REFUSED: fault is outside the taught vocabulary "
                     f"(candidate files tried: {', '.join(self.candidates) or 'none found'}). "
                     "teach it once: docs/TEACHING.md (or run: fluidfix kinds)")
+        if any("Timeout" in f for f in (self.failing or [])):
+            # measured 2026-09-16 on click: a mutant that also hangs a later
+            # test made every candidate run pay the 60 s per-test timeout —
+            # 300 s bought no candidates, 900 s bought five. The clock is not
+            # the limit; the wait is.
+            base += (" A failing test hit the per-test timeout, so every "
+                     "candidate run pays that wait; pass --test-timeout N "
+                     "(a few times your green suite's seconds) and re-run.")
         if self.attempts:
             total = len(self.attempts) + self.rejected_unlisted
             base += (f" {total} candidate(s) were tried and rejected — "
@@ -122,9 +135,15 @@ def _is_test_path(rel: str) -> bool:
     # `test/` (singular) is the C convention — Box2D, cglm — and the coverage
     # tier feeds this filter: measured 2026-09-10, Box2D's test/main.c was
     # a candidate file and the guard spent budget editing its own harness.
+    # an interpreter's own tree is the harness too: measured 2026-09-16 on
+    # rich, a traceback frame in .venv/lib/python3.14/site-packages/_pytest/
+    # python.py passed this filter and the guard tried eight edits on pytest
+    dirs = set(parts[:-1])
     return (base.startswith("test_") or base.endswith("_test.py")
-            or "tests" in parts[:-1] or "test" in parts[:-1]
-            or base == "conftest.py")
+            or "tests" in dirs or "test" in dirs
+            or base == "conftest.py"
+            or "site-packages" in dirs or "node_modules" in dirs
+            or any(d in dirs for d in (".venv", "venv", ".tox", ".nox", ".eggs")))
 
 
 def find_candidate_files(oracle: Oracle, failing_output: str,
@@ -173,7 +192,7 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
         cov_json = os.path.join(oracle.root, "_fluidfix_guard_cov.json")
         oracle.run(args + ["--tb=no", "--cov=.",
                           f"--cov-report=json:{cov_json}"], cache=True)
-        out = {}
+        out, lines = {}, {}
         if os.path.exists(cov_json):
             try:
                 cov = json.load(open(cov_json))
@@ -182,12 +201,13 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
                     if _is_test_path(rel) or not rel.endswith(".py"):
                         continue
                     out[rel] = len(data.get("executed_lines", []))
+                    lines[rel] = set(data.get("executed_lines", []))
             finally:
                 os.remove(cov_json)
-        return out
+        return out, lines
 
-    fail_cov = _cov_counts(["--lf"])
-    full_cov = _cov_counts([])
+    fail_cov, fail_lines = _cov_counts(["--lf"])
+    full_cov, _ = _cov_counts([])
     # affinity tokens come ONLY from the failing tests' module names —
     # test_termui.py names termui; traceback file mentions are noise
     fail_mods: set[str] = set()
@@ -278,9 +298,25 @@ def find_candidate_files(oracle: Oracle, failing_output: str,
         from .acts import KINDS
         for _kind, entry in list(KINDS.items()):
             sig = entry[2]
-            if sig is None:
+            # only a TAUGHT class (user slots 4-7) is evidence about THIS
+            # failure; a shipped class that happens to be rare in one repo
+            # is not. Measured 2026-09-16 on arrow: shipped minmax-swap
+            # matched only arrow/arrow.py, so every arrow failure pointed at
+            # the hub module and the defect files ranked 5th.
+            if sig is None or _kind not in (4, 5, 6, 7):
                 continue
-            hits = [rel for rel, b in bodies.items() if sig.search(b)]
+            # ...and only where the signal matches a line the FAILING TEST
+            # executed. A dictionary holds classes taught for other
+            # incidents: measured 2026-09-16 on click with four taught
+            # classes, get-without-default matched .get("KEY") lines in
+            # exactly core.py and decorators.py, none on the failing test's
+            # path, and the and/or defect file ranked third behind them.
+            hits = []
+            for rel, b in bodies.items():
+                src = b.split("\n")
+                if any(0 < l <= len(src) and sig.search(src[l - 1])
+                       for l in fail_lines.get(rel, ())):
+                    hits.append(rel)
             if 0 < len(hits) <= 2:
                 scarce_named.update(hits)
     except Exception:                                       # noqa: BLE001
@@ -491,7 +527,10 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
     if not fails:
         clear_refusal(oracle.root)
         return GuardReport(status="green", seconds=time.time() - t0)
+    failing = [l.strip() for l in out.splitlines() if l.startswith(("FAILED", "ERROR"))][:20]
+    executed: dict = {}
     ev: dict = {}
+    judged: dict = {}      # rel -> candidate keys the first pass already judged
     candidates = files or find_candidate_files(oracle, out, evidence=ev)
     hint = ""
     capped0 = acts0 = False
@@ -516,13 +555,14 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
         if total_deadline is not None and time.time() > total_deadline:
             return GuardReport(
                 status="refused", candidates=candidates,
-                seconds=time.time() - t0, attempts=attempts, rejected_unlisted=unlisted,
+                seconds=time.time() - t0, attempts=attempts, rejected_unlisted=unlisted, executed=executed, failing=failing,
                 hint=(f"--budget exhausted ({budget}s) during the first "
                       "pass — raise --budget, tighten taught-class signals, "
                       "or fix by hand"), evidence=ev)
         packet = build_packet(oracle, rel, coverage_target=coverage_target)
         if packet is None:
             continue
+        executed[rel] = [(l, packet.src_lines[l - 1].rstrip(chr(13))) for l in packet.lines][:80]
         capped0 = capped0 or packet.truncated
         if not packet.truncated:
             full_sight.add(rel)
@@ -533,6 +573,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
         result = repair(oracle, rel, observations,
                         candidate_timeout=candidate_timeout,
                         deadline=first_deadline)
+        judged[rel] = result.tried_keys          # the escalation must not pay for these again
         attempts += result.tried_log
         unlisted += result.tried_more
         acts0 = acts0 or bool(result.acts_tried)
@@ -548,7 +589,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             return GuardReport(status="refused", file=rel,
                                candidates=candidates, result=result,
                                seconds=time.time() - t0,
-                               hint=result.reason, attempts=attempts, rejected_unlisted=unlisted, evidence=ev)
+                               hint=result.reason, attempts=attempts, rejected_unlisted=unlisted, executed=executed, failing=failing, evidence=ev)
         if result.greens and result.ruling == "RAISE_BUDGET":
             # THE THIRD OUTCOME. `repair()` holds a candidate that passed the
             # suite and the law ruled RAISE_BUDGET on it. Before 0.15.0 this
@@ -594,7 +635,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 _pointed = (ev or {}).get("pointed") or []
                 return GuardReport(
                     status="refused", candidates=candidates, evidence=ev,
-                    seconds=time.time() - t0, attempts=attempts, rejected_unlisted=unlisted,
+                    seconds=time.time() - t0, attempts=attempts, rejected_unlisted=unlisted, executed=executed, failing=failing,
                     hint=(f"escalation budget exhausted ({escalate_budget}s) "
                           "with CAPPED still ruling RAISE_BUDGET — "
                           + ("raise --escalate-budget, use --observer claude, "
@@ -616,6 +657,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                                       max_lines=10 ** 9)   # cap gone, full sight
             if packet is None or time.time() > deadline:
                 continue    # never spend an observer call on a dead deadline
+            executed[rel] = [(l, packet.src_lines[l - 1].rstrip(chr(13))) for l in packet.lines][:80]
             observations = rank_observations("\n".join(packet.src_lines),
                                              observer.observe([packet])[0], out,
                                              root=oracle.root, rel=rel)
@@ -628,7 +670,8 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
             result = repair(oracle, rel, observations,
                             candidate_timeout=candidate_timeout,
                             deadline=min(deadline,
-                                         time.time() + file_share))
+                                         time.time() + file_share),
+                            skip=judged.get(rel))
             attempts += result.tried_log
             unlisted += result.tried_more
             any_acts = any_acts or bool(result.acts_tried)
@@ -644,7 +687,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 return GuardReport(status="refused", file=rel,
                                    candidates=candidates, result=result,
                                    seconds=time.time() - t0,
-                                   hint=result.reason, attempts=attempts, rejected_unlisted=unlisted, evidence=ev)
+                                   hint=result.reason, attempts=attempts, rejected_unlisted=unlisted, executed=executed, failing=failing, evidence=ev)
             if result.greens and result.ruling == "RAISE_BUDGET":
                 hint = result.reason          # the third outcome, again
         if any_acts and not greens_seen and not hint and \
@@ -660,7 +703,7 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 "refusal report lists each one with the test that killed it")
     return GuardReport(status="refused", candidates=candidates,
                        seconds=time.time() - t0, hint=hint, evidence=ev,
-                       attempts=attempts, rejected_unlisted=unlisted)
+                       attempts=attempts, rejected_unlisted=unlisted, executed=executed, failing=failing)
 
 
 def propose_repair(root: str, report: GuardReport) -> tuple[str, str]:
@@ -757,7 +800,10 @@ def write_refusal(root: str, report: GuardReport) -> str:
            # engine law: REFUTED -> HARVEST_COUNTEREXAMPLE — what was
            # tried, and the exact failing test that rejected each
            "rejected_candidates": report.attempts[:200],
-           "rejected_not_listed": report.rejected_unlisted}
+           "rejected_not_listed": report.rejected_unlisted,
+           # the teach-me signal proper: what the failing tests executed, and which tests
+           "executed_lines": {f: [[ln, s] for ln, s in v] for f, v in report.executed.items()},
+           "failing_tests": report.failing}
     # the ruling itself, so a reader never has to infer it from prose
     if res is not None and getattr(res, "ruling", ""):
         rec["ruling"] = res.ruling

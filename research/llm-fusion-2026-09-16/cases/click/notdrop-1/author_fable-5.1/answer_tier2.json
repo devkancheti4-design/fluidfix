@@ -1,0 +1,6 @@
+{
+ "line": "    if value:",
+ "replacements": [
+  "    if not value:"
+ ]
+}

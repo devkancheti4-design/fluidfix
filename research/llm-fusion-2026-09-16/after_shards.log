@@ -1,0 +1,12 @@
+== fixed tree 300 s: rich/add-1 ==
+rich/add-1 budget=300_fixed -> REFUSED in 302.9s runs=None rejected=135 hint='escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET — but no POINTING lane name'
+== fixed tree 300 s: rich/add-2 ==
+rich/add-2 budget=300_fixed -> REFUSED in 304.3s runs=None rejected=144 hint='escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET — but no POINTING lane name'
+== fixed tree 300 s: arrow/add-1 ==
+arrow/add-1 budget=300_fixed -> WRONG-GREEN in 220.8s runs=12 rejected=None hint=''
+== fluidfix own suite, alone ==
+........................................................................ [ 96%]
+.........                                                                [100%]
+225 passed in 614.09s (0:10:14)
+wrote RESULT.md
+AFTER_SHARDS_DONE

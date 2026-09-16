@@ -1,0 +1,2495 @@
+{
+ "status": "refused",
+ "candidates": [
+  "arrow/locales.py",
+  "arrow/constants.py",
+  "arrow/__init__.py",
+  "arrow/_version.py",
+  "arrow/api.py",
+  "arrow/arrow.py",
+  "arrow/util.py",
+  "arrow/formatter.py"
+ ],
+ "seconds": 837.7389640808105,
+ "hint": "a candidate passes, but the search was cut short before it could be shown unique \u2014 shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)",
+ "rejected_candidates": [
+  {
+   "at": "arrow/locales.py:3560",
+   "tried": "        \"months\": {\"1\": \"\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd\", \"ten\": \"{0} \u05d7\u05d5\u05d3\u05e9\u05d9\u05dd\", \"higher\": \"{0} \u05d7\u05d5\u05d3\u05e9\u05d9\u05dd\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3560",
+   "tried": "        \"months\": {\"2\": \"\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd\", \"ten\": \"{-1} \u05d7\u05d5\u05d3\u05e9\u05d9\u05dd\", \"higher\": \"{0} \u05d7\u05d5\u05d3\u05e9\u05d9\u05dd\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3560",
+   "tried": "        \"months\": {\"2\": \"\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd\", \"ten\": \"{0} \u05d7\u05d5\u05d3\u05e9\u05d9\u05dd\", \"higher\": \"{-1} \u05d7\u05d5\u05d3\u05e9\u05d9\u05dd\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:46",
+   "tried": "def get_locale(name: str) ->= \"Locale\":",
+   "why": "does not compile: expected ':' (locales.py, line 46)"
+  },
+  {
+   "at": "arrow/locales.py:217",
+   "tried": "    def month_number(self, name: str) ->= Optional[int]:",
+   "why": "does not compile: expected ':' (locales.py, line 217)"
+  },
+  {
+   "at": "arrow/locales.py:285",
+   "tried": "        direction = self.past if delta <= 0 else self.future",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:285",
+   "tried": "        direction = self.past if delta < -1 else self.future",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:285",
+   "tried": "        direction = self.past if delta > 0 else self.future",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:320",
+   "tried": "        \"months\": \"{-1} months\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:416",
+   "tried": "        \"minutes\": \"{-1} minuti\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:481",
+   "tried": "    future = \"en {-1}\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:547",
+   "tried": "    ordinal_day_re = r\"((?P<value>=[1-3]?[0-9](?=[\u00ba\u00aa]))[\u00ba\u00aa])\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:547",
+   "tried": "    ordinal_day_re = r\"((?P<=value>[1-3]?[0-9](?=[\u00ba\u00aa]))[\u00ba\u00aa])\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:547",
+   "tried": "    ordinal_day_re = r\"((?P<value>[0-3]?[0-9](?=[\u00ba\u00aa]))[\u00ba\u00aa])\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:547",
+   "tried": "    ordinal_day_re = r\"((?P<value>[1-2]?[0-9](?=[\u00ba\u00aa]))[\u00ba\u00aa])\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:547",
+   "tried": "    ordinal_day_re = r\"((?P<value>[1-3]?[-1-9](?=[\u00ba\u00aa]))[\u00ba\u00aa])\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:547",
+   "tried": "    ordinal_day_re = r\"((?P<value>[1-3]?[0-8](?=[\u00ba\u00aa]))[\u00ba\u00aa])\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:547",
+   "tried": "    ordinal_day_re = r\"((?P>value>[1-3]?[0-9](?=[\u00ba\u00aa]))[\u00ba\u00aa])\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:547",
+   "tried": "    ordinal_day_re = r\"((?P<value<[1-3]?[0-9](?=[\u00ba\u00aa]))[\u00ba\u00aa])\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:571",
+   "tried": "        \"months\": \"{-1} mois\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:668",
+   "tried": "        \"hours\": \"{-1} \u03ce\u03c1\u03b5\u03c2\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:734",
+   "tried": "        \"minute\": \"0\u5206\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:742",
+   "tried": "        \"month\": \"0\u30f6\u6708\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:755",
+   "tried": "        \"5\u6708\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:766",
+   "tried": "        \" 1\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:775",
+   "tried": "        \"10\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:810",
+   "tried": "        \"weeks\": \"{-1} veckor\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:881",
+   "tried": "        \"weeks\": {\"past\": \"{-1} viikkoa\", \"future\": \"{0} viikon\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:881",
+   "tried": "        \"weeks\": {\"past\": \"{0} viikkoa\", \"future\": \"{-1} viikon\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:958",
+   "tried": "        \"seconds\": \"{-1}\u79d2\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:967",
+   "tried": "        \"month\": \"0\u4e2a\u6708\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:994",
+   "tried": "        \" 4\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1020",
+   "tried": "    past = \"{-1}\u524d\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1033",
+   "tried": "        \"days\": \"{-1}\u5929\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1045",
+   "tried": "        \"1\u6708\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1054",
+   "tried": "        \"10\u6708\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1065",
+   "tried": "        \" 6\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1086",
+   "tried": "        \"seconds\": \"{-1}\u79d2\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1094",
+   "tried": "        \"weeks\": \"{-1}\u661f\u671f\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1107",
+   "tried": "        \"4\u6708\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1118",
+   "tried": "        \" 0\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1127",
+   "tried": "        \"9\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1156",
+   "tried": "        \"minutes\": \"{-1}\ubd84\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1171",
+   "tried": ": \"\uc5b4\uc81c\",",
+   "why": "does not compile: invalid syntax (locales.py, line 1171)"
+  },
+  {
+   "at": "arrow/locales.py:1184",
+   "tried": "        \"2\uc6d4\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1193",
+   "tried": "        \"11\uc6d4\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1204",
+   "tried": "        \" 7\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1271",
+   "tried": "        \"minutes\": \"{-1} minuten\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1352",
+   "tried": "    future = \"\u043f\u0440\u0430\u0437 {-1}\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1374",
+   "tried": "            \"singular\": \"{-1} \u043c\u0435\u0441\u044f\u0446\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1440",
+   "tried": "            \"plural\": \"{-1} sekund\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1458",
+   "tried": "            \"singular\": \"{-1} tygodni\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1526",
+   "tried": "            \"singular\": \"{-1} \u0441\u0435\u043a\u0443\u043d\u0434\u0443\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1542",
+   "tried": "            \"singular\": \"{-1} \u043d\u0435\u0434\u0435\u043b\u044e\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1559",
+   "tried": "        \"years\": {\"singular\": \"{-1} \u0433\u043e\u0434\", \"dual\": \"{0} \u0433\u043e\u0434\u0430\", \"plural\": \"{0} \u043b\u0435\u0442\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1559",
+   "tried": "        \"years\": {\"singular\": \"{0} \u0433\u043e\u0434\", \"dual\": \"{-1} \u0433\u043e\u0434\u0430\", \"plural\": \"{0} \u043b\u0435\u0442\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1559",
+   "tried": "        \"years\": {\"singular\": \"{0} \u0433\u043e\u0434\", \"dual\": \"{0} \u0433\u043e\u0434\u0430\", \"plural\": \"{-1} \u043b\u0435\u0442\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1625",
+   "tried": "        \"months\": \"{-1} maande\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1693",
+   "tried": "        \"days\": {\"singular\": \"{-1} \u0434\u0435\u043d\", \"dual\": \"{0} \u0434\u043d\u0438\", \"plural\": \"{0} \u0434\u043d\u0438\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1693",
+   "tried": "        \"days\": {\"singular\": \"{0} \u0434\u0435\u043d\", \"dual\": \"{-1} \u0434\u043d\u0438\", \"plural\": \"{0} \u0434\u043d\u0438\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1693",
+   "tried": "        \"days\": {\"singular\": \"{0} \u0434\u0435\u043d\", \"dual\": \"{0} \u0434\u043d\u0438\", \"plural\": \"{-1} \u0434\u043d\u0438\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1756",
+   "tried": "    future = \"\u0437\u0430 {-1}\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1778",
+   "tried": "            \"singular\": \"{-1} \u043c\u0456\u0441\u044f\u0446\u044c\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:1842",
+   "tried": "            \"plural\": \"{-1} \u0441\u0435\u043a\u0443\u043d\u0434\u0438\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3634",
+   "tried": "            if index == -1:",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3636",
+   "tried": "            elif index == len(timeframes):  # Must have at least 1 items",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3642",
+   "tried": "                humanized += \", \" - last_humanized",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - TypeErr..."
+  },
+  {
+   "at": "arrow/locales.py:3642",
+   "tried": "                humanized -= \", \" + last_humanized",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - TypeErr..."
+  },
+  {
+   "at": "arrow/locales.py:3543",
+   "tried": "    past = \"\u05dc\u05e4\u05e0\u05d9 {-1}\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3544",
+   "tried": "    future = \"\u05d1\u05e2\u05d5\u05d3 {-1}\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - KeyErro..."
+  },
+  {
+   "at": "arrow/locales.py:3550",
+   "tried": "        \"seconds\": \"{-1} \u05e9\u05e0\u05d9\u05d5\u05ea\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3552",
+   "tried": "        \"minutes\": \"{-1} \u05d3\u05e7\u05d5\u05ea\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - KeyErro..."
+  },
+  {
+   "at": "arrow/locales.py:3554",
+   "tried": "        \"hours\": {\"1\": \"\u05e9\u05e2\u05ea\u05d9\u05d9\u05dd\", \"ten\": \"{0} \u05e9\u05e2\u05d5\u05ea\", \"higher\": \"{0} \u05e9\u05e2\u05d5\u05ea\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3554",
+   "tried": "        \"hours\": {\"2\": \"\u05e9\u05e2\u05ea\u05d9\u05d9\u05dd\", \"ten\": \"{-1} \u05e9\u05e2\u05d5\u05ea\", \"higher\": \"{0} \u05e9\u05e2\u05d5\u05ea\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3554",
+   "tried": "        \"hours\": {\"2\": \"\u05e9\u05e2\u05ea\u05d9\u05d9\u05dd\", \"ten\": \"{0} \u05e9\u05e2\u05d5\u05ea\", \"higher\": \"{-1} \u05e9\u05e2\u05d5\u05ea\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3556",
+   "tried": "        \"days\": {\"1\": \"\u05d9\u05d5\u05de\u05d9\u05d9\u05dd\", \"ten\": \"{0} \u05d9\u05de\u05d9\u05dd\", \"higher\": \"{0} \u05d9\u05d5\u05dd\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3556",
+   "tried": "        \"days\": {\"2\": \"\u05d9\u05d5\u05de\u05d9\u05d9\u05dd\", \"ten\": \"{-1} \u05d9\u05de\u05d9\u05dd\", \"higher\": \"{0} \u05d9\u05d5\u05dd\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3556",
+   "tried": "        \"days\": {\"2\": \"\u05d9\u05d5\u05de\u05d9\u05d9\u05dd\", \"ten\": \"{0} \u05d9\u05de\u05d9\u05dd\", \"higher\": \"{-1} \u05d9\u05d5\u05dd\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3558",
+   "tried": "        \"weeks\": {\"1\": \"\u05e9\u05d1\u05d5\u05e2\u05d9\u05d9\u05dd\", \"ten\": \"{0} \u05e9\u05d1\u05d5\u05e2\u05d5\u05ea\", \"higher\": \"{0} \u05e9\u05d1\u05d5\u05e2\u05d5\u05ea\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3558",
+   "tried": "        \"weeks\": {\"2\": \"\u05e9\u05d1\u05d5\u05e2\u05d9\u05d9\u05dd\", \"ten\": \"{-1} \u05e9\u05d1\u05d5\u05e2\u05d5\u05ea\", \"higher\": \"{0} \u05e9\u05d1\u05d5\u05e2\u05d5\u05ea\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3558",
+   "tried": "        \"weeks\": {\"2\": \"\u05e9\u05d1\u05d5\u05e2\u05d9\u05d9\u05dd\", \"ten\": \"{0} \u05e9\u05d1\u05d5\u05e2\u05d5\u05ea\", \"higher\": \"{-1} \u05e9\u05d1\u05d5\u05e2\u05d5\u05ea\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3562",
+   "tried": "        \"years\": {\"1\": \"\u05e9\u05e0\u05ea\u05d9\u05d9\u05dd\", \"ten\": \"{0} \u05e9\u05e0\u05d9\u05dd\", \"higher\": \"{0} \u05e9\u05e0\u05d4\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3562",
+   "tried": "        \"years\": {\"2\": \"\u05e9\u05e0\u05ea\u05d9\u05d9\u05dd\", \"ten\": \"{-1} \u05e9\u05e0\u05d9\u05dd\", \"higher\": \"{0} \u05e9\u05e0\u05d4\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - KeyErro..."
+  },
+  {
+   "at": "arrow/locales.py:3562",
+   "tried": "        \"years\": {\"2\": \"\u05e9\u05e0\u05ea\u05d9\u05d9\u05dd\", \"ten\": \"{0} \u05e9\u05e0\u05d9\u05dd\", \"higher\": \"{-1} \u05e9\u05e0\u05d4\"},",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3606",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 3606)"
+  },
+  {
+   "at": "arrow/locales.py:3610",
+   "tried": "            if delta == 1:",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3612",
+   "tried": "            elif delta == 0 or 2 < delta < 10:",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3612",
+   "tried": "            elif delta == 0 or 2 <= delta <= 10:",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3612",
+   "tried": "            elif delta == -1 or 2 < delta <= 10:",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3612",
+   "tried": "            elif delta == 0 or 1 < delta <= 10:",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3612",
+   "tried": "            elif delta == 0 or 2 < delta <= 9:",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3612",
+   "tried": "            elif delta == 0 and 2 < delta <= 10:",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3612",
+   "tried": "            elif delta == 0 or 2 < delta >= 10:",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:3612",
+   "tried": "            elif delta == 0 or 2 > delta <= 10:",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:63",
+   "tried": "def get_locale_by_class_name(name: str) ->= \"Locale\":",
+   "why": "does not compile: expected ':' (locales.py, line 63)"
+  },
+  {
+   "at": "arrow/locales.py:119",
+   "tried": "    def __init_subclass__(cls, **kwargs: Any) ->= None:",
+   "why": "does not compile: expected ':' (locales.py, line 119)"
+  },
+  {
+   "at": "arrow/locales.py:126",
+   "tried": "    def __init__(self) ->= None:",
+   "why": "does not compile: expected ':' (locales.py, line 126)"
+  },
+  {
+   "at": "arrow/locales.py:181",
+   "tried": "    def day_name(self, day: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 181)"
+  },
+  {
+   "at": "arrow/locales.py:190",
+   "tried": "    def day_abbreviation(self, day: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 190)"
+  },
+  {
+   "at": "arrow/locales.py:199",
+   "tried": "    def month_name(self, month: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 199)"
+  },
+  {
+   "at": "arrow/locales.py:208",
+   "tried": "    def month_abbreviation(self, month: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 208)"
+  },
+  {
+   "at": "arrow/locales.py:232",
+   "tried": "    def year_full(self, year: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 232)"
+  },
+  {
+   "at": "arrow/locales.py:239",
+   "tried": "    def year_abbreviation(self, year: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 239)"
+  },
+  {
+   "at": "arrow/locales.py:246",
+   "tried": "    def meridian(self, hour: int, token: Any) ->= Optional[str]:",
+   "why": "does not compile: expected ':' (locales.py, line 246)"
+  },
+  {
+   "at": "arrow/locales.py:259",
+   "tried": "    def ordinal_number(self, n: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 259)"
+  },
+  {
+   "at": "arrow/locales.py:266",
+   "tried": "    def _ordinal_number(self, n: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 266)"
+  },
+  {
+   "at": "arrow/locales.py:269",
+   "tried": "    def _name_to_ordinal(self, lst: Sequence[str]) ->= Dict[str, int]:",
+   "why": "does not compile: expected ':' (locales.py, line 269)"
+  },
+  {
+   "at": "arrow/locales.py:272",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 272)"
+  },
+  {
+   "at": "arrow/locales.py:303",
+   "tried": "    past = \"{-1} ago\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:304",
+   "tried": "    future = \"in {-1}\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:305",
+   "tried": "    and_word = \"or\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:310",
+   "tried": "        \"seconds\": \"{-1} seconds\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:312",
+   "tried": "        \"minutes\": \"{-1} minutes\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:314",
+   "tried": "        \"hours\": \"{-1} hours\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:316",
+   "tried": "        \"days\": \"{-1} days\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:318",
+   "tried": "        \"weeks\": \"{-1} weeks\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:322",
+   "tried": "        \"quarters\": \"{-1} quarters\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:324",
+   "tried": "        \"years\": \"{-1} years\",",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:372",
+   "tried": "    ordinal_day_re = r\"((?P<value>=[2-3]?1(?=st)|[2-3]?2(?=nd)|[2-3]?3(?=rd)|[1-3]?[04-9](?=th)|1[1-3](?=th))(st|nd|rd|th))\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:372",
+   "tried": "    ordinal_day_re = r\"((?P<=value>[2-3]?1(?=st)|[2-3]?2(?=nd)|[2-3]?3(?=rd)|[1-3]?[04-9](?=th)|1[1-3](?=th))(st|nd|rd|th))\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:372",
+   "tried": "    ordinal_day_re = r\"((?P<value>[1-3]?1(?=st)|[2-3]?2(?=nd)|[2-3]?3(?=rd)|[1-3]?[04-9](?=th)|1[1-3](?=th))(st|nd|rd|th))\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:372",
+   "tried": "    ordinal_day_re = r\"((?P<value>[2-2]?1(?=st)|[2-3]?2(?=nd)|[2-3]?3(?=rd)|[1-3]?[04-9](?=th)|1[1-3](?=th))(st|nd|rd|th))\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:372",
+   "tried": "    ordinal_day_re = r\"((?P<value>[2-3]?0(?=st)|[2-3]?2(?=nd)|[2-3]?3(?=rd)|[1-3]?[04-9](?=th)|1[1-3](?=th))(st|nd|rd|th))\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:372",
+   "tried": "    ordinal_day_re = r\"((?P<value>[2-3]?1(?=st)|[1-3]?2(?=nd)|[2-3]?3(?=rd)|[1-3]?[04-9](?=th)|1[1-3](?=th))(st|nd|rd|th))\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:372",
+   "tried": "    ordinal_day_re = r\"((?P<value>[2-3]?1(?=st)|[2-2]?2(?=nd)|[2-3]?3(?=rd)|[1-3]?[04-9](?=th)|1[1-3](?=th))(st|nd|rd|th))\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:372",
+   "tried": "    ordinal_day_re = r\"((?P<value>[2-3]?1(?=st)|[2-3]?1(?=nd)|[2-3]?3(?=rd)|[1-3]?[04-9](?=th)|1[1-3](?=th))(st|nd|rd|th))\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:372",
+   "tried": "    ordinal_day_re = r\"((?P<value>[2-3]?1(?=st)|[2-3]?2(?=nd)|[1-3]?3(?=rd)|[1-3]?[04-9](?=th)|1[1-3](?=th))(st|nd|rd|th))\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/locales.py:372",
+   "tried": "    ordinal_day_re = r\"((?P<value>[2-3]?1(?=st)|[2-3]?2(?=nd)|[2-2]?3(?=rd)|[1-3]?[04-9](?=th)|1[1-3](?=th))(st|nd|rd|th))\"",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:125",
+   "tried": "    _MONTHS_PER_QUARTER: Final[int] = 2",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:126",
+   "tried": "    _MONTHS_PER_YEAR: Final[int] = 11",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:127",
+   "tried": "    _SECS_PER_MINUTE: Final[int] = 59",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 59 * 60",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 60 * 59",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 59 * 60 * 24",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 59 * 24",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 60 * 23",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 59 * 60 * 24 * 7",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 59 * 24 * 7",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 23 * 7",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 24 * 6",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 59 * 60 * 24 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 59 * 24 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 23 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 29.5",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 30.4",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 59 * 60 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 59 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 23 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 29.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.4 * 3",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.5 * 2",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 59 * 60 * 24 * 365",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 59 * 24 * 365",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 60 * 23 * 365",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 60 * 24 * 364",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:136",
+   "tried": "        \"second\": 0.0,",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:136",
+   "tried": "        \"second\": 1.-1,",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:173",
+   "tried": "        fold = kwargs.get(\"fold\", -1)",
+   "why": "ERROR tests/test_locales.py::TestHebrewLocale::test_describe_multi - ValueErr..."
+  },
+  {
+   "at": "arrow/arrow.py:182",
+   "tried": "    def now(cls, tzinfo: Optional[dt_tzinfo] = None) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 182)"
+  },
+  {
+   "at": "arrow/arrow.py:213",
+   "tried": "    def utcnow(cls) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 213)"
+  },
+  {
+   "at": "arrow/arrow.py:235",
+   "tried": "            fold=getattr(dt, \"fold\", -1),",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:276",
+   "tried": "    def utcfromtimestamp(cls, timestamp: Union[int, float, str]) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 276)"
+  },
+  {
+   "at": "arrow/arrow.py:302",
+   "tried": "    def fromdatetime(cls, dt: dt_datetime, tzinfo: Optional[TZ_EXPR] = None) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 302)"
+  },
+  {
+   "at": "arrow/arrow.py:334",
+   "tried": "            fold=getattr(dt, \"fold\", -1),",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:338",
+   "tried": "    def fromdate(cls, date: dt_date, tzinfo: Optional[TZ_EXPR] = None) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 338)"
+  },
+  {
+   "at": "arrow/arrow.py:388",
+   "tried": "    def fromordinal(cls, ordinal: int) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 388)"
+  },
+  {
+   "at": "arrow/arrow.py:598",
+   "tried": "    def floor(self, frame: _T_FRAMES, **kwargs: Any) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 598)"
+  },
+  {
+   "at": "arrow/arrow.py:620",
+   "tried": "    def ceil(self, frame: _T_FRAMES, **kwargs: Any) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 620)"
+  },
+  {
+   "at": "arrow/arrow.py:796",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (arrow.py, line 796)"
+  },
+  {
+   "at": "arrow/arrow.py:799",
+   "tried": "    def __str__(self) ->= str:",
+   "why": "does not compile: expected ':' (arrow.py, line 799)"
+  },
+  {
+   "at": "arrow/arrow.py:802",
+   "tried": "    def __format__(self, formatstr: str) ->= str:",
+   "why": "does not compile: expected ':' (arrow.py, line 802)"
+  },
+  {
+   "at": "arrow/arrow.py:808",
+   "tried": "    def __hash__(self) ->= int:",
+   "why": "does not compile: expected ':' (arrow.py, line 808)"
+  },
+  {
+   "at": "arrow/arrow.py:813",
+   "tried": "    def __getattr__(self, name: str) ->= Any:",
+   "why": "does not compile: expected ':' (arrow.py, line 813)"
+  },
+  {
+   "at": "arrow/arrow.py:829",
+   "tried": "    def tzinfo(self) ->= dt_tzinfo:",
+   "why": "does not compile: expected ':' (arrow.py, line 829)"
+  },
+  {
+   "at": "arrow/arrow.py:844",
+   "tried": "    def datetime(self) ->= dt_datetime:",
+   "why": "does not compile: expected ':' (arrow.py, line 844)"
+  },
+  {
+   "at": "arrow/arrow.py:858",
+   "tried": "    def naive(self) ->= dt_datetime:",
+   "why": "does not compile: expected ':' (arrow.py, line 858)"
+  },
+  {
+   "at": "arrow/arrow.py:874",
+   "tried": "    def timestamp(self) ->= float:",
+   "why": "does not compile: expected ':' (arrow.py, line 874)"
+  },
+  {
+   "at": "arrow/arrow.py:888",
+   "tried": "    def int_timestamp(self) ->= int:",
+   "why": "does not compile: expected ':' (arrow.py, line 888)"
+  },
+  {
+   "at": "arrow/arrow.py:902",
+   "tried": "    def float_timestamp(self) ->= float:",
+   "why": "does not compile: expected ':' (arrow.py, line 902)"
+  },
+  {
+   "at": "arrow/arrow.py:916",
+   "tried": "    def fold(self) ->= int:",
+   "why": "does not compile: expected ':' (arrow.py, line 916)"
+  },
+  {
+   "at": "arrow/arrow.py:922",
+   "tried": "    def ambiguous(self) ->= bool:",
+   "why": "does not compile: expected ':' (arrow.py, line 922)"
+  },
+  {
+   "at": "arrow/arrow.py:931",
+   "tried": "    def imaginary(self) ->= bool:",
+   "why": "does not compile: expected ':' (arrow.py, line 931)"
+  },
+  {
+   "at": "arrow/arrow.py:938",
+   "tried": "    def clone(self) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 938)"
+  },
+  {
+   "at": "arrow/arrow.py:950",
+   "tried": "    def replace(self, **kwargs: Any) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 950)"
+  },
+  {
+   "at": "arrow/arrow.py:996",
+   "tried": "    def shift(self, check_imaginary: bool = True, **kwargs: Any) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 996)"
+  },
+  {
+   "at": "arrow/arrow.py:996",
+   "tried": "    def shift(self, check_imaginary: bool = False, **kwargs: Any) -> \"Arrow\":",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:1057",
+   "tried": "    def to(self, tz: TZ_EXPR) ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 1057)"
+  },
+  {
+   "at": "arrow/arrow.py:1344",
+   "tried": "    def dehumanize(self, input_string: str, locale: str = \"en_us\") ->= \"Arrow\":",
+   "why": "does not compile: expected ':' (arrow.py, line 1344)"
+  },
+  {
+   "at": "arrow/arrow.py:1545",
+   "tried": "    def date(self) ->= dt_date:",
+   "why": "does not compile: expected ':' (arrow.py, line 1545)"
+  },
+  {
+   "at": "arrow/arrow.py:1557",
+   "tried": "    def time(self) ->= dt_time:",
+   "why": "does not compile: expected ':' (arrow.py, line 1557)"
+  },
+  {
+   "at": "arrow/arrow.py:1569",
+   "tried": "    def timetz(self) ->= dt_time:",
+   "why": "does not compile: expected ':' (arrow.py, line 1569)"
+  },
+  {
+   "at": "arrow/arrow.py:1582",
+   "tried": "    def astimezone(self, tz: Optional[dt_tzinfo]) ->= dt_datetime:",
+   "why": "does not compile: expected ':' (arrow.py, line 1582)"
+  },
+  {
+   "at": "arrow/factory.py:31",
+   "tried": "    def __init__(self, type: Type[Arrow] = Arrow) ->= None:",
+   "why": "does not compile: expected ':' (factory.py, line 31)"
+  },
+  {
+   "at": "arrow/factory.py:85",
+   "tried": "    def get(self, *args: Any, **kwargs: Any) ->= Arrow:",
+   "why": "does not compile: expected ':' (factory.py, line 85)"
+  },
+  {
+   "at": "arrow/factory.py:299",
+   "tried": "    def utcnow(self) ->= Arrow:",
+   "why": "does not compile: expected ':' (factory.py, line 299)"
+  },
+  {
+   "at": "arrow/factory.py:311",
+   "tried": "    def now(self, tz: Optional[TZ_EXPR] = None) ->= Arrow:",
+   "why": "does not compile: expected ':' (factory.py, line 311)"
+  },
+  {
+   "at": "arrow/parser.py:102",
+   "tried": "class _Parts(TypedDict, total=True):",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/parser.py:158",
+   "tried": "    _ONE_OR_TWO_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{0,2}\")",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/parser.py:158",
+   "tried": "    _ONE_OR_TWO_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{1,1}\")",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  },
+  {
+   "at": "arrow/parser.py:159",
+   "tried": "    _ONE_OR_TWO_OR_THREE_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{0,3}\")",
+   "why": "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+  }
+ ],
+ "rejected_not_listed": 129,
+ "executed_lines": {
+  "arrow/locales.py": [
+   [
+    3,
+    "from math import trunc"
+   ],
+   [
+    4,
+    "from typing import ("
+   ],
+   [
+    5,
+    "    Any,"
+   ],
+   [
+    6,
+    "    ClassVar,"
+   ],
+   [
+    7,
+    "    Dict,"
+   ],
+   [
+    8,
+    "    List,"
+   ],
+   [
+    9,
+    "    Literal,"
+   ],
+   [
+    10,
+    "    Mapping,"
+   ],
+   [
+    11,
+    "    Optional,"
+   ],
+   [
+    12,
+    "    Sequence,"
+   ],
+   [
+    13,
+    "    Tuple,"
+   ],
+   [
+    14,
+    "    Type,"
+   ],
+   [
+    15,
+    "    Union,"
+   ],
+   [
+    16,
+    "    cast,"
+   ],
+   [
+    17,
+    ")"
+   ],
+   [
+    19,
+    "TimeFrameLiteral = Literal["
+   ],
+   [
+    20,
+    "    \"now\","
+   ],
+   [
+    21,
+    "    \"second\","
+   ],
+   [
+    22,
+    "    \"seconds\","
+   ],
+   [
+    23,
+    "    \"minute\","
+   ],
+   [
+    24,
+    "    \"minutes\","
+   ],
+   [
+    25,
+    "    \"hour\","
+   ],
+   [
+    26,
+    "    \"hours\","
+   ],
+   [
+    27,
+    "    \"day\","
+   ],
+   [
+    28,
+    "    \"days\","
+   ],
+   [
+    29,
+    "    \"week\","
+   ],
+   [
+    30,
+    "    \"weeks\","
+   ],
+   [
+    31,
+    "    \"month\","
+   ],
+   [
+    32,
+    "    \"months\","
+   ],
+   [
+    33,
+    "    \"quarter\","
+   ],
+   [
+    34,
+    "    \"quarters\","
+   ],
+   [
+    35,
+    "    \"year\","
+   ],
+   [
+    36,
+    "    \"years\","
+   ],
+   [
+    37,
+    "]"
+   ],
+   [
+    39,
+    "_TimeFrameElements = Union["
+   ],
+   [
+    40,
+    "    str, Sequence[str], Mapping[str, str], Mapping[str, Sequence[str]]"
+   ],
+   [
+    41,
+    "]"
+   ],
+   [
+    43,
+    "_locale_map: Dict[str, Type[\"Locale\"]] = {}"
+   ],
+   [
+    46,
+    "def get_locale(name: str) -> \"Locale\":"
+   ],
+   [
+    63,
+    "def get_locale_by_class_name(name: str) -> \"Locale\":"
+   ],
+   [
+    70,
+    "    locale_cls: Optional[Type[Locale]] = globals().get(name)"
+   ],
+   [
+    72,
+    "    if locale_cls is None:"
+   ],
+   [
+    75,
+    "    return locale_cls()"
+   ],
+   [
+    78,
+    "class Locale:"
+   ],
+   [
+    81,
+    "    names: ClassVar[List[str]] = []"
+   ],
+   [
+    83,
+    "    timeframes: ClassVar[Mapping[TimeFrameLiteral, _TimeFrameElements]] = {"
+   ],
+   [
+    84,
+    "        \"now\": \"\","
+   ],
+   [
+    85,
+    "        \"second\": \"\","
+   ],
+   [
+    86,
+    "        \"seconds\": \"\","
+   ],
+   [
+    87,
+    "        \"minute\": \"\","
+   ],
+   [
+    88,
+    "        \"minutes\": \"\","
+   ],
+   [
+    89,
+    "        \"hour\": \"\","
+   ],
+   [
+    90,
+    "        \"hours\": \"\","
+   ],
+   [
+    91,
+    "        \"day\": \"\","
+   ],
+   [
+    92,
+    "        \"days\": \"\","
+   ],
+   [
+    93,
+    "        \"week\": \"\","
+   ],
+   [
+    94,
+    "        \"weeks\": \"\","
+   ],
+   [
+    95,
+    "        \"month\": \"\","
+   ],
+   [
+    96,
+    "        \"months\": \"\","
+   ],
+   [
+    97,
+    "        \"quarter\": \"\","
+   ],
+   [
+    98,
+    "        \"quarters\": \"\","
+   ],
+   [
+    99,
+    "        \"year\": \"\","
+   ],
+   [
+    100,
+    "        \"years\": \"\","
+   ],
+   [
+    101,
+    "    }"
+   ],
+   [
+    103,
+    "    meridians: ClassVar[Dict[str, str]] = {\"am\": \"\", \"pm\": \"\", \"AM\": \"\", \"PM\": \"\"}"
+   ],
+   [
+    107,
+    "    and_word: ClassVar[Optional[str]] = None"
+   ],
+   [
+    109,
+    "    month_names: ClassVar[List[str]] = []"
+   ],
+   [
+    110,
+    "    month_abbreviations: ClassVar[List[str]] = []"
+   ],
+   [
+    112,
+    "    day_names: ClassVar[List[str]] = []"
+   ],
+   [
+    113,
+    "    day_abbreviations: ClassVar[List[str]] = []"
+   ],
+   [
+    115,
+    "    ordinal_day_re: ClassVar[str] = r\"(\\d+)\""
+   ],
+   [
+    119,
+    "    def __init_subclass__(cls, **kwargs: Any) -> None:"
+   ],
+   [
+    120,
+    "        for locale_name in cls.names:"
+   ],
+   [
+    121,
+    "            if locale_name in _locale_map:"
+   ],
+   [
+    124,
+    "            _locale_map[locale_name.lower().replace(\"_\", \"-\")] = cls"
+   ],
+   [
+    126,
+    "    def __init__(self) -> None:"
+   ],
+   [
+    127,
+    "        self._month_name_to_ordinal = None"
+   ],
+   [
+    129,
+    "    def describe("
+   ],
+   [
+    148,
+    "    def describe_multi("
+   ],
+   [
+    181,
+    "    def day_name(self, day: int) -> str:"
+   ]
+  ],
+  "arrow/constants.py": [
+   [
+    3,
+    "import sys"
+   ],
+   [
+    4,
+    "from datetime import datetime"
+   ],
+   [
+    5,
+    "from typing import Final"
+   ],
+   [
+    11,
+    "try:"
+   ],
+   [
+    14,
+    "    _MAX_TIMESTAMP = datetime.max.timestamp()"
+   ],
+   [
+    27,
+    "MAX_TIMESTAMP: Final[float] = _MAX_TIMESTAMP"
+   ],
+   [
+    28,
+    "MAX_TIMESTAMP_MS: Final[float] = MAX_TIMESTAMP * 1000"
+   ],
+   [
+    29,
+    "MAX_TIMESTAMP_US: Final[float] = MAX_TIMESTAMP * 1_000_000"
+   ],
+   [
+    31,
+    "MAX_ORDINAL: Final[int] = datetime.max.toordinal()"
+   ],
+   [
+    32,
+    "MIN_ORDINAL: Final[int] = 1"
+   ],
+   [
+    34,
+    "DEFAULT_LOCALE: Final[str] = \"en-us\""
+   ],
+   [
+    37,
+    "DEHUMANIZE_LOCALES = {"
+   ]
+  ],
+  "arrow/__init__.py": [
+   [
+    1,
+    "from ._version import __version__"
+   ],
+   [
+    2,
+    "from .api import get, now, utcnow"
+   ],
+   [
+    3,
+    "from .arrow import Arrow"
+   ],
+   [
+    4,
+    "from .factory import ArrowFactory"
+   ],
+   [
+    5,
+    "from .formatter import ("
+   ],
+   [
+    6,
+    "    FORMAT_ATOM,"
+   ],
+   [
+    7,
+    "    FORMAT_COOKIE,"
+   ],
+   [
+    8,
+    "    FORMAT_RFC822,"
+   ],
+   [
+    9,
+    "    FORMAT_RFC850,"
+   ],
+   [
+    10,
+    "    FORMAT_RFC1036,"
+   ],
+   [
+    11,
+    "    FORMAT_RFC1123,"
+   ],
+   [
+    12,
+    "    FORMAT_RFC2822,"
+   ],
+   [
+    13,
+    "    FORMAT_RFC3339,"
+   ],
+   [
+    14,
+    "    FORMAT_RFC3339_STRICT,"
+   ],
+   [
+    15,
+    "    FORMAT_RSS,"
+   ],
+   [
+    16,
+    "    FORMAT_W3C,"
+   ],
+   [
+    17,
+    ")"
+   ],
+   [
+    18,
+    "from .parser import ParserError"
+   ],
+   [
+    22,
+    "__all__ = ["
+   ],
+   [
+    23,
+    "    \"__version__\","
+   ],
+   [
+    24,
+    "    \"get\","
+   ],
+   [
+    25,
+    "    \"now\","
+   ],
+   [
+    26,
+    "    \"utcnow\","
+   ],
+   [
+    27,
+    "    \"Arrow\","
+   ],
+   [
+    28,
+    "    \"ArrowFactory\","
+   ],
+   [
+    29,
+    "    \"FORMAT_ATOM\","
+   ],
+   [
+    30,
+    "    \"FORMAT_COOKIE\","
+   ],
+   [
+    31,
+    "    \"FORMAT_RFC822\","
+   ],
+   [
+    32,
+    "    \"FORMAT_RFC850\","
+   ],
+   [
+    33,
+    "    \"FORMAT_RFC1036\","
+   ],
+   [
+    34,
+    "    \"FORMAT_RFC1123\","
+   ],
+   [
+    35,
+    "    \"FORMAT_RFC2822\","
+   ],
+   [
+    36,
+    "    \"FORMAT_RFC3339\","
+   ],
+   [
+    37,
+    "    \"FORMAT_RFC3339_STRICT\","
+   ],
+   [
+    38,
+    "    \"FORMAT_RSS\","
+   ],
+   [
+    39,
+    "    \"FORMAT_W3C\","
+   ],
+   [
+    40,
+    "    \"ParserError\","
+   ],
+   [
+    41,
+    "]"
+   ]
+  ],
+  "arrow/_version.py": [
+   [
+    1,
+    "__version__ = \"1.4.0\""
+   ]
+  ],
+  "arrow/api.py": [
+   [
+    7,
+    "from datetime import date, datetime"
+   ],
+   [
+    8,
+    "from datetime import tzinfo as dt_tzinfo"
+   ],
+   [
+    9,
+    "from time import struct_time"
+   ],
+   [
+    10,
+    "from typing import Any, List, Optional, Tuple, Type, Union, overload"
+   ],
+   [
+    12,
+    "from arrow.arrow import TZ_EXPR, Arrow"
+   ],
+   [
+    13,
+    "from arrow.constants import DEFAULT_LOCALE"
+   ],
+   [
+    14,
+    "from arrow.factory import ArrowFactory"
+   ],
+   [
+    17,
+    "_factory = ArrowFactory()"
+   ],
+   [
+    83,
+    "def get(*args: Any, **kwargs: Any) -> Arrow:"
+   ],
+   [
+    89,
+    "get.__doc__ = _factory.get.__doc__"
+   ],
+   [
+    92,
+    "def utcnow() -> Arrow:"
+   ],
+   [
+    98,
+    "utcnow.__doc__ = _factory.utcnow.__doc__"
+   ],
+   [
+    101,
+    "def now(tz: Optional[TZ_EXPR] = None) -> Arrow:"
+   ],
+   [
+    107,
+    "now.__doc__ = _factory.now.__doc__"
+   ],
+   [
+    110,
+    "def factory(type: Type[Arrow]) -> ArrowFactory:"
+   ],
+   [
+    121,
+    "__all__ = [\"get\", \"utcnow\", \"now\", \"factory\"]"
+   ]
+  ],
+  "arrow/arrow.py": [
+   [
+    7,
+    "import calendar"
+   ],
+   [
+    8,
+    "import re"
+   ],
+   [
+    9,
+    "import sys"
+   ],
+   [
+    10,
+    "from datetime import date as dt_date"
+   ],
+   [
+    11,
+    "from datetime import datetime as dt_datetime"
+   ],
+   [
+    12,
+    "from datetime import time as dt_time"
+   ],
+   [
+    13,
+    "from datetime import timedelta, timezone"
+   ],
+   [
+    14,
+    "from datetime import tzinfo as dt_tzinfo"
+   ],
+   [
+    15,
+    "from math import trunc"
+   ],
+   [
+    16,
+    "from time import struct_time"
+   ],
+   [
+    17,
+    "from typing import ("
+   ],
+   [
+    18,
+    "    Any,"
+   ],
+   [
+    19,
+    "    ClassVar,"
+   ],
+   [
+    20,
+    "    Final,"
+   ],
+   [
+    21,
+    "    Generator,"
+   ],
+   [
+    22,
+    "    Iterable,"
+   ],
+   [
+    23,
+    "    List,"
+   ],
+   [
+    24,
+    "    Literal,"
+   ],
+   [
+    25,
+    "    Mapping,"
+   ],
+   [
+    26,
+    "    Optional,"
+   ],
+   [
+    27,
+    "    Tuple,"
+   ],
+   [
+    28,
+    "    Union,"
+   ],
+   [
+    29,
+    "    cast,"
+   ],
+   [
+    30,
+    "    overload,"
+   ],
+   [
+    31,
+    ")"
+   ],
+   [
+    33,
+    "from dateutil import tz as dateutil_tz"
+   ],
+   [
+    34,
+    "from dateutil.relativedelta import relativedelta"
+   ],
+   [
+    36,
+    "from arrow import formatter, locales, parser, util"
+   ],
+   [
+    37,
+    "from arrow.constants import DEFAULT_LOCALE, DEHUMANIZE_LOCALES"
+   ],
+   [
+    38,
+    "from arrow.locales import TimeFrameLiteral"
+   ],
+   [
+    40,
+    "TZ_EXPR = Union[dt_tzinfo, str]"
+   ],
+   [
+    42,
+    "_T_FRAMES = Literal["
+   ],
+   [
+    43,
+    "    \"year\","
+   ],
+   [
+    44,
+    "    \"years\","
+   ],
+   [
+    45,
+    "    \"month\","
+   ],
+   [
+    46,
+    "    \"months\","
+   ],
+   [
+    47,
+    "    \"day\","
+   ],
+   [
+    48,
+    "    \"days\","
+   ],
+   [
+    49,
+    "    \"hour\","
+   ],
+   [
+    50,
+    "    \"hours\","
+   ],
+   [
+    51,
+    "    \"minute\","
+   ],
+   [
+    52,
+    "    \"minutes\","
+   ],
+   [
+    53,
+    "    \"second\","
+   ],
+   [
+    54,
+    "    \"seconds\","
+   ],
+   [
+    55,
+    "    \"microsecond\","
+   ],
+   [
+    56,
+    "    \"microseconds\","
+   ],
+   [
+    57,
+    "    \"week\","
+   ],
+   [
+    58,
+    "    \"weeks\","
+   ],
+   [
+    59,
+    "    \"quarter\","
+   ],
+   [
+    60,
+    "    \"quarters\","
+   ],
+   [
+    61,
+    "]"
+   ],
+   [
+    63,
+    "_BOUNDS = Literal[\"[)\", \"()\", \"(]\", \"[]\"]"
+   ],
+   [
+    65,
+    "_GRANULARITY = Literal["
+   ],
+   [
+    66,
+    "    \"auto\","
+   ],
+   [
+    67,
+    "    \"second\","
+   ],
+   [
+    68,
+    "    \"minute\","
+   ],
+   [
+    69,
+    "    \"hour\","
+   ],
+   [
+    70,
+    "    \"day\","
+   ],
+   [
+    71,
+    "    \"week\","
+   ],
+   [
+    72,
+    "    \"month\","
+   ],
+   [
+    73,
+    "    \"quarter\","
+   ],
+   [
+    74,
+    "    \"year\","
+   ],
+   [
+    75,
+    "]"
+   ],
+   [
+    78,
+    "class Arrow:"
+   ],
+   [
+    111,
+    "    resolution: ClassVar[timedelta] = dt_datetime.resolution"
+   ],
+   [
+    115,
+    "    _ATTRS: Final[List[str]] = ["
+   ],
+   [
+    116,
+    "        \"year\","
+   ],
+   [
+    117,
+    "        \"month\","
+   ],
+   [
+    118,
+    "        \"day\","
+   ],
+   [
+    119,
+    "        \"hour\","
+   ],
+   [
+    120,
+    "        \"minute\","
+   ],
+   [
+    121,
+    "        \"second\","
+   ],
+   [
+    122,
+    "        \"microsecond\","
+   ],
+   [
+    123,
+    "    ]"
+   ],
+   [
+    124,
+    "    _ATTRS_PLURAL: Final[List[str]] = [f\"{a}s\" for a in _ATTRS]"
+   ],
+   [
+    125,
+    "    _MONTHS_PER_QUARTER: Final[int] = 3"
+   ],
+   [
+    126,
+    "    _MONTHS_PER_YEAR: Final[int] = 12"
+   ],
+   [
+    127,
+    "    _SECS_PER_MINUTE: Final[int] = 60"
+   ],
+   [
+    128,
+    "    _SECS_PER_HOUR: Final[int] = 60 * 60"
+   ],
+   [
+    129,
+    "    _SECS_PER_DAY: Final[int] = 60 * 60 * 24"
+   ]
+  ],
+  "arrow/util.py": [
+   [
+    3,
+    "import datetime"
+   ],
+   [
+    4,
+    "from typing import Any, Optional"
+   ],
+   [
+    6,
+    "from dateutil.rrule import WEEKLY, rrule"
+   ],
+   [
+    8,
+    "from arrow.constants import ("
+   ],
+   [
+    9,
+    "    MAX_ORDINAL,"
+   ],
+   [
+    10,
+    "    MAX_TIMESTAMP,"
+   ],
+   [
+    11,
+    "    MAX_TIMESTAMP_MS,"
+   ],
+   [
+    12,
+    "    MAX_TIMESTAMP_US,"
+   ],
+   [
+    13,
+    "    MIN_ORDINAL,"
+   ],
+   [
+    14,
+    ")"
+   ],
+   [
+    17,
+    "def next_weekday("
+   ],
+   [
+    45,
+    "def is_timestamp(value: Any) -> bool:"
+   ],
+   [
+    58,
+    "def validate_ordinal(value: Any) -> None:"
+   ],
+   [
+    70,
+    "def normalize_timestamp(timestamp: float) -> float:"
+   ],
+   [
+    83,
+    "def iso_to_gregorian(iso_year: int, iso_week: int, iso_day: int) -> datetime.date:"
+   ],
+   [
+    107,
+    "def validate_bounds(bounds: str) -> None:"
+   ],
+   [
+    114,
+    "__all__ = [\"next_weekday\", \"is_timestamp\", \"validate_ordinal\", \"iso_to_gregorian\"]"
+   ]
+  ],
+  "arrow/formatter.py": [
+   [
+    3,
+    "import re"
+   ],
+   [
+    4,
+    "from datetime import datetime, timedelta, timezone"
+   ],
+   [
+    5,
+    "from typing import Final, Optional, Pattern, cast"
+   ],
+   [
+    7,
+    "from arrow import locales"
+   ],
+   [
+    8,
+    "from arrow.constants import DEFAULT_LOCALE"
+   ],
+   [
+    10,
+    "FORMAT_ATOM: Final[str] = \"YYYY-MM-DD HH:mm:ssZZ\""
+   ],
+   [
+    11,
+    "FORMAT_COOKIE: Final[str] = \"dddd, DD-MMM-YYYY HH:mm:ss ZZZ\""
+   ],
+   [
+    12,
+    "FORMAT_RFC822: Final[str] = \"ddd, DD MMM YY HH:mm:ss Z\""
+   ],
+   [
+    13,
+    "FORMAT_RFC850: Final[str] = \"dddd, DD-MMM-YY HH:mm:ss ZZZ\""
+   ],
+   [
+    14,
+    "FORMAT_RFC1036: Final[str] = \"ddd, DD MMM YY HH:mm:ss Z\""
+   ],
+   [
+    15,
+    "FORMAT_RFC1123: Final[str] = \"ddd, DD MMM YYYY HH:mm:ss Z\""
+   ],
+   [
+    16,
+    "FORMAT_RFC2822: Final[str] = \"ddd, DD MMM YYYY HH:mm:ss Z\""
+   ],
+   [
+    17,
+    "FORMAT_RFC3339: Final[str] = \"YYYY-MM-DD HH:mm:ssZZ\""
+   ],
+   [
+    18,
+    "FORMAT_RFC3339_STRICT: Final[str] = \"YYYY-MM-DDTHH:mm:ssZZ\""
+   ],
+   [
+    19,
+    "FORMAT_RSS: Final[str] = \"ddd, DD MMM YYYY HH:mm:ss Z\""
+   ],
+   [
+    20,
+    "FORMAT_W3C: Final[str] = \"YYYY-MM-DD HH:mm:ssZZ\""
+   ],
+   [
+    23,
+    "class DateTimeFormatter:"
+   ],
+   [
+    28,
+    "    _FORMAT_RE: Final[Pattern[str]] = re.compile("
+   ],
+   [
+    29,
+    "        r\"(\\[(?:(?=(?P<literal>[^]]))(?P=literal))*\\]|YYY?Y?|MM?M?M?|Do|DD?D?D?|d?dd?d?|HH?|hh?|mm?|ss?|SS?S?S?S?S?|ZZ?Z?|a|A|X|x|W)\""
+   ],
+   [
+    30,
+    "    )"
+   ],
+   [
+    34,
+    "    def __init__(self, locale: str = DEFAULT_LOCALE) -> None:"
+   ],
+   [
+    37,
+    "    def format(cls, dt: datetime, fmt: str) -> str:"
+   ],
+   [
+    43,
+    "    def _format_token(self, dt: datetime, token: Optional[str]) -> Optional[str]:"
+   ]
+  ],
+  "arrow/factory.py": [
+   [
+    8,
+    "import calendar"
+   ],
+   [
+    9,
+    "from datetime import date, datetime, timezone"
+   ],
+   [
+    10,
+    "from datetime import tzinfo as dt_tzinfo"
+   ],
+   [
+    11,
+    "from decimal import Decimal"
+   ],
+   [
+    12,
+    "from time import struct_time"
+   ],
+   [
+    13,
+    "from typing import Any, List, Optional, Tuple, Type, Union, overload"
+   ],
+   [
+    15,
+    "from arrow import parser"
+   ],
+   [
+    16,
+    "from arrow.arrow import TZ_EXPR, Arrow"
+   ],
+   [
+    17,
+    "from arrow.constants import DEFAULT_LOCALE"
+   ],
+   [
+    18,
+    "from arrow.util import is_timestamp, iso_to_gregorian"
+   ],
+   [
+    21,
+    "class ArrowFactory:"
+   ],
+   [
+    31,
+    "    def __init__(self, type: Type[Arrow] = Arrow) -> None:"
+   ],
+   [
+    32,
+    "        self.type = type"
+   ],
+   [
+    85,
+    "    def get(self, *args: Any, **kwargs: Any) -> Arrow:"
+   ],
+   [
+    299,
+    "    def utcnow(self) -> Arrow:"
+   ],
+   [
+    311,
+    "    def now(self, tz: Optional[TZ_EXPR] = None) -> Arrow:"
+   ]
+  ],
+  "arrow/parser.py": [
+   [
+    3,
+    "import re"
+   ],
+   [
+    4,
+    "from datetime import datetime, timedelta, timezone"
+   ],
+   [
+    5,
+    "from datetime import tzinfo as dt_tzinfo"
+   ],
+   [
+    6,
+    "from functools import lru_cache"
+   ],
+   [
+    7,
+    "from typing import ("
+   ],
+   [
+    8,
+    "    Any,"
+   ],
+   [
+    9,
+    "    ClassVar,"
+   ],
+   [
+    10,
+    "    Dict,"
+   ],
+   [
+    11,
+    "    Iterable,"
+   ],
+   [
+    12,
+    "    List,"
+   ],
+   [
+    13,
+    "    Literal,"
+   ],
+   [
+    14,
+    "    Match,"
+   ],
+   [
+    15,
+    "    Optional,"
+   ],
+   [
+    16,
+    "    Pattern,"
+   ],
+   [
+    17,
+    "    SupportsFloat,"
+   ],
+   [
+    18,
+    "    SupportsInt,"
+   ],
+   [
+    19,
+    "    Tuple,"
+   ],
+   [
+    20,
+    "    TypedDict,"
+   ],
+   [
+    21,
+    "    Union,"
+   ],
+   [
+    22,
+    "    cast,"
+   ],
+   [
+    23,
+    "    overload,"
+   ],
+   [
+    24,
+    ")"
+   ],
+   [
+    26,
+    "try:"
+   ],
+   [
+    27,
+    "    from zoneinfo import ZoneInfo, ZoneInfoNotFoundError"
+   ],
+   [
+    31,
+    "from arrow import locales"
+   ],
+   [
+    32,
+    "from arrow.constants import DEFAULT_LOCALE"
+   ],
+   [
+    33,
+    "from arrow.util import next_weekday, normalize_timestamp"
+   ],
+   [
+    36,
+    "class ParserError(ValueError):"
+   ],
+   [
+    45,
+    "    pass"
+   ],
+   [
+    53,
+    "class ParserMatchError(ParserError):"
+   ],
+   [
+    62,
+    "    pass"
+   ],
+   [
+    65,
+    "_WEEKDATE_ELEMENT = Union[str, bytes, SupportsInt, bytearray]"
+   ],
+   [
+    67,
+    "_FORMAT_TYPE = Literal["
+   ],
+   [
+    68,
+    "    \"YYYY\","
+   ],
+   [
+    69,
+    "    \"YY\","
+   ],
+   [
+    70,
+    "    \"MM\","
+   ],
+   [
+    71,
+    "    \"M\","
+   ],
+   [
+    72,
+    "    \"DDDD\","
+   ],
+   [
+    73,
+    "    \"DDD\","
+   ],
+   [
+    74,
+    "    \"DD\","
+   ],
+   [
+    75,
+    "    \"D\","
+   ],
+   [
+    76,
+    "    \"HH\","
+   ],
+   [
+    77,
+    "    \"H\","
+   ],
+   [
+    78,
+    "    \"hh\","
+   ],
+   [
+    79,
+    "    \"h\","
+   ],
+   [
+    80,
+    "    \"mm\","
+   ],
+   [
+    81,
+    "    \"m\","
+   ],
+   [
+    82,
+    "    \"ss\","
+   ],
+   [
+    83,
+    "    \"s\","
+   ],
+   [
+    84,
+    "    \"X\","
+   ],
+   [
+    85,
+    "    \"x\","
+   ],
+   [
+    86,
+    "    \"ZZZ\","
+   ],
+   [
+    87,
+    "    \"ZZ\","
+   ],
+   [
+    88,
+    "    \"Z\","
+   ],
+   [
+    89,
+    "    \"S\","
+   ],
+   [
+    90,
+    "    \"W\","
+   ],
+   [
+    91,
+    "    \"MMMM\","
+   ],
+   [
+    92,
+    "    \"MMM\","
+   ],
+   [
+    93,
+    "    \"Do\","
+   ],
+   [
+    94,
+    "    \"dddd\","
+   ],
+   [
+    95,
+    "    \"ddd\","
+   ],
+   [
+    96,
+    "    \"d\","
+   ],
+   [
+    97,
+    "    \"a\","
+   ],
+   [
+    98,
+    "    \"A\","
+   ],
+   [
+    99,
+    "]"
+   ],
+   [
+    102,
+    "class _Parts(TypedDict, total=False):"
+   ],
+   [
+    142,
+    "class DateTimeParser:"
+   ],
+   [
+    153,
+    "    _FORMAT_RE: ClassVar[Pattern[str]] = re.compile("
+   ],
+   [
+    154,
+    "        r\"(YYY?Y?|MM?M?M?|Do|DD?D?D?|d?d?d?d|HH?|hh?|mm?|ss?|S+|ZZ?Z?|a|A|x|X|W)\""
+   ],
+   [
+    155,
+    "    )"
+   ],
+   [
+    156,
+    "    _ESCAPE_RE: ClassVar[Pattern[str]] = re.compile(r\"\\[[^\\[\\]]*\\]\")"
+   ],
+   [
+    158,
+    "    _ONE_OR_TWO_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{1,2}\")"
+   ],
+   [
+    159,
+    "    _ONE_OR_TWO_OR_THREE_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{1,3}\")"
+   ],
+   [
+    160,
+    "    _ONE_OR_MORE_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d+\")"
+   ],
+   [
+    161,
+    "    _TWO_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{2}\")"
+   ],
+   [
+    162,
+    "    _THREE_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{3}\")"
+   ],
+   [
+    163,
+    "    _FOUR_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{4}\")"
+   ],
+   [
+    164,
+    "    _TZ_Z_RE: ClassVar[Pattern[str]] = re.compile(r\"([\\+\\-])(\\d{2})(?:(\\d{2}))?|Z\")"
+   ],
+   [
+    165,
+    "    _TZ_ZZ_RE: ClassVar[Pattern[str]] = re.compile(r\"([\\+\\-])(\\d{2})(?:\\:(\\d{2}))?|Z\")"
+   ],
+   [
+    166,
+    "    _TZ_NAME_RE: ClassVar[Pattern[str]] = re.compile(r\"\\w[\\w+\\-/]+\")"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_locales.py::TestHebrewLocale::test_describe_multi - Asserti..."
+ ]
+}

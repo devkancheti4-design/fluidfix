@@ -1,0 +1,8 @@
+{
+ "file": "arrow/locales.py",
+ "lineno": 3636,
+ "orig": "            elif index == len(timeframes) - 1:  # Must have at least 2 items",
+ "mutated": "            elif index == len(timeframes):  # Must have at least 2 items",
+ "cls": "lenm1",
+ "base": "2224255c4acc594d734cef0bbc83360452a67983"
+}

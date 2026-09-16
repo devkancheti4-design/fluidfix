@@ -1,0 +1,6 @@
+== fixed tree 300 s: python-sortedcontainers/cmp-2 ==
+python-sortedcontainers/cmp-2 budget=300_fixed -> REFUSED in 253.1s runs=None rejected=97 hint='a candidate passes, but the search was cut short before it could be shown unique — shipping it would'
+== fixed tree 300 s: python-sortedcontainers/add-1 ==
+python-sortedcontainers/add-1 budget=300_fixed -> REFUSED in 242.8s runs=None rejected=96 hint='a candidate passes, but the search was cut short before it could be shown unique — shipping it would'
+wrote RESULT.md
+FINAL_EXTRA_DONE

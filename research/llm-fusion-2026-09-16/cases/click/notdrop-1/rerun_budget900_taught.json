@@ -1,0 +1,16 @@
+{
+ "case": "click/notdrop-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 141.0,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 24,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered\n[22:26:03] src/click/shell_completion.py: repaired line 664 in 24 suite runs (96.2s):\n  - if value:\n  + if not value:\n  committed\n",
+ "verdict": "EXACT"
+}

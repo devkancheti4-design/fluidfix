@@ -1,0 +1,16 @@
+{
+ "case": "rich/getdef-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 228.0,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 9,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered\n[23:38:12] rich/console.py: repaired line 808 in 9 suite runs (49.9s):\n  - term = self._environ.get(\"TERM\").strip().lower()\n  + term = self._environ.get(\"TERM\", \"\").strip().lower()\n  committed\n",
+ "verdict": "EXACT"
+}

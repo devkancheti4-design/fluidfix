@@ -1,0 +1,16 @@
+{
+ "case": "python-sortedcontainers/lenm1-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 64.5,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 17,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered\n[23:19:09] src/sortedcontainers/sortedlist.py: repaired line 1053 in 17 suite runs (27.8s):\n  - max_pos = len(_maxes)\n  + max_pos = len(_maxes) - 1\n  committed\n",
+ "verdict": "EXACT"
+}

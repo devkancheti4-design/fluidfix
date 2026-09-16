@@ -1,0 +1,45 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 49.8,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/getdef-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 3339,
+    "output": 184,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 37.6
+   },
+   "valid": true,
+   "why": "ok: 1 matching line(s)",
+   "rule": {
+    "name": "split-on-non-string",
+    "signal": "^\\s*env_tokens\\s*=\\s*less_env\\.split\\(\\)",
+    "example_before": "env_tokens = less_env.split()",
+    "example_after": "env_tokens = (less_env or '').split()"
+   },
+   "exit": 0,
+   "wall": 140.5,
+   "suite_runs": 26,
+   "stdout": "dictionary rules_fused.py: 1 fault class(es) registered\n[19:34:52] src/click/_termui_impl.py: repaired line 534 in 26 suite runs (79.0s):\n  - env_tokens = less_env.split()\n  + env_tokens = (less_env or '').split()\n  committed\n"
+  }
+ ],
+ "tokens": {
+  "input": 3339,
+  "output": 184,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 3523
+ },
+ "outcome": "tier1"
+}

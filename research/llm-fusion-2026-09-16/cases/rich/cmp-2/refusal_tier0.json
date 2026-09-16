@@ -1,0 +1,2220 @@
+{
+ "status": "refused",
+ "candidates": [
+  ".venv/lib/python3.14/site-packages/_pytest/python.py",
+  "rich/text.py",
+  "rich/highlighter.py"
+ ],
+ "seconds": 252.07194590568542,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "rejected_candidates": [
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:116",
+   "tried": "        # None =>= fallback to `strict`.",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:116",
+   "tried": "        # None =< fallback to `strict`.",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:122",
+   "tried": "def pytest_generate_tests(metafunc: Metafunc) ->= None:",
+   "why": "does not compile: expected ':' (python.py, line 122)"
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:127",
+   "tried": "def pytest_configure(config: Config) ->= None:",
+   "why": "does not compile: expected ':' (python.py, line 127)"
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:134",
+   "tried": "        \"Example: @parametrize('arg1', [0,2]) would lead to two calls of the \"",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:134",
+   "tried": "        \"Example: @parametrize('arg1', [1,1]) would lead to two calls of the \"",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:135",
+   "tried": "        \"decorated test function, one with arg1=0 and another with arg1=2.\"",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:135",
+   "tried": "        \"decorated test function, one with arg1=1 and another with arg1=1.\"",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:57",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (text.py, line 57)"
+  },
+  {
+   "at": "rich/text.py:60",
+   "tried": "    def __bool__(self) ->= bool:",
+   "why": "does not compile: expected ':' (text.py, line 60)"
+  },
+  {
+   "at": "rich/text.py:63",
+   "tried": "    def split(self, offset: int) ->= Tuple[\"Span\", Optional[\"Span\"]]:",
+   "why": "does not compile: expected ':' (text.py, line 63)"
+  },
+  {
+   "at": "rich/text.py:76",
+   "tried": "    def move(self, offset: int) ->= \"Span\":",
+   "why": "does not compile: expected ':' (text.py, line 76)"
+  },
+  {
+   "at": "rich/text.py:88",
+   "tried": "    def right_crop(self, offset: int) ->= \"Span\":",
+   "why": "does not compile: expected ':' (text.py, line 88)"
+  },
+  {
+   "at": "rich/text.py:102",
+   "tried": "    def extend(self, cells: int) ->= \"Span\":",
+   "why": "does not compile: expected ':' (text.py, line 102)"
+  },
+  {
+   "at": "rich/text.py:167",
+   "tried": "    def __len__(self) ->= int:",
+   "why": "does not compile: expected ':' (text.py, line 167)"
+  },
+  {
+   "at": "rich/text.py:170",
+   "tried": "    def __bool__(self) ->= bool:",
+   "why": "does not compile: expected ':' (text.py, line 170)"
+  },
+  {
+   "at": "rich/text.py:173",
+   "tried": "    def __str__(self) ->= str:",
+   "why": "does not compile: expected ':' (text.py, line 173)"
+  },
+  {
+   "at": "rich/text.py:176",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (text.py, line 176)"
+  },
+  {
+   "at": "rich/text.py:179",
+   "tried": "    def __add__(self, other: Any) ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 179)"
+  },
+  {
+   "at": "rich/text.py:186",
+   "tried": "    def __eq__(self, other: object) ->= bool:",
+   "why": "does not compile: expected ':' (text.py, line 186)"
+  },
+  {
+   "at": "rich/text.py:191",
+   "tried": "    def __contains__(self, other: object) ->= bool:",
+   "why": "does not compile: expected ':' (text.py, line 191)"
+  },
+  {
+   "at": "rich/text.py:198",
+   "tried": "    def __getitem__(self, slice: Union[int, slice]) ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 198)"
+  },
+  {
+   "at": "rich/text.py:225",
+   "tried": "    def cell_len(self) ->= int:",
+   "why": "does not compile: expected ':' (text.py, line 225)"
+  },
+  {
+   "at": "rich/text.py:230",
+   "tried": "    def markup(self) ->= str:",
+   "why": "does not compile: expected ':' (text.py, line 230)"
+  },
+  {
+   "at": "rich/text.py:403",
+   "tried": "    def plain(self) ->= str:",
+   "why": "does not compile: expected ':' (text.py, line 403)"
+  },
+  {
+   "at": "rich/text.py:405",
+   "tried": "        if len(self._text) != 0:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:407",
+   "tried": "        return self._text[-1]",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:410",
+   "tried": "    def plain(self, new_text: str) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 410)"
+  },
+  {
+   "at": "rich/text.py:421",
+   "tried": "    def spans(self) ->= List[Span]:",
+   "why": "does not compile: expected ':' (text.py, line 421)"
+  },
+  {
+   "at": "rich/text.py:426",
+   "tried": "    def spans(self, spans: List[Span]) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 426)"
+  },
+  {
+   "at": "rich/text.py:430",
+   "tried": "    def blank_copy(self, plain: str = \"\") ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 430)"
+  },
+  {
+   "at": "rich/text.py:443",
+   "tried": "    def copy(self) ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 443)"
+  },
+  {
+   "at": "rich/text.py:523",
+   "tried": "    def on(self, meta: Optional[Dict[str, Any]] = None, **handlers: Any) ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 523)"
+  },
+  {
+   "at": "rich/text.py:543",
+   "tried": "    def remove_suffix(self, suffix: str) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 543)"
+  },
+  {
+   "at": "rich/text.py:552",
+   "tried": "    def get_style_at_offset(self, console: \"Console\", offset: int) ->= Style:",
+   "why": "does not compile: expected ':' (text.py, line 552)"
+  },
+  {
+   "at": "rich/text.py:572",
+   "tried": "    def extend_style(self, spaces: int) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 572)"
+  },
+  {
+   "at": "rich/text.py:612",
+   "tried": "        count = -1",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:623",
+   "tried": "                if match_style is not None and end >= start:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:623",
+   "tried": "                if match_style is not None and end < start:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:626",
+   "tried": "            count += 0",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:626",
+   "tried": "            count -= 1",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:629",
+   "tried": "                if start != -1 and end >= start:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:629",
+   "tried": "                if start != and end > start:",
+   "why": "does not compile: invalid syntax (text.py, line 629)"
+  },
+  {
+   "at": "rich/text.py:629",
+   "tried": "                if start != -1 and end < start:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:662",
+   "tried": "    def rstrip(self) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 662)"
+  },
+  {
+   "at": "rich/text.py:666",
+   "tried": "    def rstrip_end(self, size: int) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 666)"
+  },
+  {
+   "at": "rich/text.py:680",
+   "tried": "    def set_length(self, new_length: int) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 680)"
+  },
+  {
+   "at": "rich/text.py:719",
+   "tried": "    def render(self, console: \"Console\", end: str = \"\") ->= Iterable[\"Segment\"]:",
+   "why": "does not compile: expected ':' (text.py, line 719)"
+  },
+  {
+   "at": "rich/text.py:778",
+   "tried": "    def join(self, lines: Iterable[\"Text\"]) ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 778)"
+  },
+  {
+   "at": "rich/text.py:817",
+   "tried": "    def expand_tabs(self, tab_size: Optional[int] = None) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 817)"
+  },
+  {
+   "at": "rich/text.py:886",
+   "tried": "    def _trim_spans(self) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 886)"
+  },
+  {
+   "at": "rich/text.py:900",
+   "tried": "    def pad(self, count: int, character: str = \" \") ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 900)"
+  },
+  {
+   "at": "rich/text.py:917",
+   "tried": "    def pad_left(self, count: int, character: str = \" \") ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 917)"
+  },
+  {
+   "at": "rich/text.py:933",
+   "tried": "    def pad_right(self, count: int, character: str = \" \") ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 933)"
+  },
+  {
+   "at": "rich/text.py:944",
+   "tried": "    def align(self, align: AlignMethod, width: int, character: str = \" \") ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 944)"
+  },
+  {
+   "at": "rich/text.py:1008",
+   "tried": "    def append_text(self, text: \"Text\") ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 1008)"
+  },
+  {
+   "at": "rich/text.py:1054",
+   "tried": "    def copy_styles(self, text: \"Text\") ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 1054)"
+  },
+  {
+   "at": "rich/text.py:1106",
+   "tried": "    def divide(self, offsets: Iterable[int]) ->= Lines:",
+   "why": "does not compile: expected ':' (text.py, line 1106)"
+  },
+  {
+   "at": "rich/text.py:1185",
+   "tried": "    def right_crop(self, amount: int = 1) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 1185)"
+  },
+  {
+   "at": "rich/text.py:1185",
+   "tried": "    def right_crop(self, amount: int = 0) -> None:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:1252",
+   "tried": "    def fit(self, width: int) ->= Lines:",
+   "why": "does not compile: expected ':' (text.py, line 1252)"
+  },
+  {
+   "at": "rich/text.py:1268",
+   "tried": "    def detect_indentation(self) ->= int:",
+   "why": "does not compile: expected ':' (text.py, line 1268)"
+  },
+  {
+   "at": "rich/highlighter.py:8",
+   "tried": "def _combine_regex(*regexes: str) ->= str:",
+   "why": "does not compile: expected ':' (highlighter.py, line 8)"
+  },
+  {
+   "at": "rich/highlighter.py:20",
+   "tried": "    def __call__(self, text: Union[str, Text]) ->= Text:",
+   "why": "does not compile: expected ':' (highlighter.py, line 20)"
+  },
+  {
+   "at": "rich/highlighter.py:42",
+   "tried": "    def highlight(self, text: Text) ->= None:",
+   "why": "does not compile: expected ':' (highlighter.py, line 42)"
+  },
+  {
+   "at": "rich/highlighter.py:57",
+   "tried": "    def highlight(self, text: Text) ->= None:",
+   "why": "does not compile: expected ':' (highlighter.py, line 57)"
+  },
+  {
+   "at": "rich/highlighter.py:67",
+   "tried": "    def highlight(self, text: Text) ->= None:",
+   "why": "does not compile: expected ':' (highlighter.py, line 67)"
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start>=<)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>=[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>=[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>=>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>=)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<=tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><=)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<=tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<=tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<=tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P>tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P>tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P>tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P>tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name<[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents<[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:86",
+   "tried": "        r'(?P<attrib_name>=[\\w_]{1,50})=(?P<attrib_value>\"?[\\w_]+\"?)?',",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:86",
+   "tried": "        r'(?P<attrib_name>[\\w_]{1,50})=(?P<attrib_value>=\"?[\\w_]+\"?)?',",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:86",
+   "tried": "        r'(?P<=attrib_name>[\\w_]{1,50})=(?P<attrib_value>\"?[\\w_]+\"?)?',",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:86",
+   "tried": "        r'(?P<attrib_name>[\\w_]{1,50})=(?P<=attrib_value>\"?[\\w_]+\"?)?',",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:86",
+   "tried": "        r'(?P<attrib_name>[\\w_]{0,50})=(?P<attrib_value>\"?[\\w_]+\"?)?',",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:86",
+   "tried": "        r'(?P<attrib_name>[\\w_]{1,49})=(?P<attrib_value>\"?[\\w_]+\"?)?',",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:86",
+   "tried": "        r'(?P>attrib_name>[\\w_]{1,50})=(?P<attrib_value>\"?[\\w_]+\"?)?',",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:86",
+   "tried": "        r'(?P<attrib_name>[\\w_]{1,50})=(?P>attrib_value>\"?[\\w_]+\"?)?',",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:86",
+   "tried": "        r'(?P<attrib_name<[\\w_]{1,50})=(?P<attrib_value>\"?[\\w_]+\"?)?',",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:86",
+   "tried": "        r'(?P<attrib_name>[\\w_]{1,50})=(?P<attrib_value<\"?[\\w_]+\"?)?',",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:87",
+   "tried": "        r\"(?P<brace>=[][{}()])\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:87",
+   "tried": "        r\"(?P<=brace>[][{}()])\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:87",
+   "tried": "        r\"(?P>brace>[][{}()])\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:87",
+   "tried": "        r\"(?P<brace<[][{}()])\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>=[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<=ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[-1-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-8]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{0,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,2}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[-1-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-8]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{0,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,2}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[-1-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-8]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{0,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,2}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[-1-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-8]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{0,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,2})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P>ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:89",
+   "tried": "            r\"(?P<ipv4<[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:90",
+   "tried": "            r\"(?P<ipv6>=([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:90",
+   "tried": "            r\"(?P<=ipv6>([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:90",
+   "tried": "            r\"(?P<ipv6>([A-Fa-f0-8]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:90",
+   "tried": "            r\"(?P<ipv6>([A-Fa-f0-9]{0,4}::?){1,7}[A-Fa-f0-9]{1,4})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:90",
+   "tried": "            r\"(?P<ipv6>([A-Fa-f0-9]{1,3}::?){1,7}[A-Fa-f0-9]{1,4})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:90",
+   "tried": "            r\"(?P<ipv6>([A-Fa-f0-9]{1,4}::?){0,7}[A-Fa-f0-9]{1,4})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:90",
+   "tried": "            r\"(?P<ipv6>([A-Fa-f0-9]{1,4}::?){1,6}[A-Fa-f0-9]{1,4})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:90",
+   "tried": "            r\"(?P<ipv6>([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-8]{1,4})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:90",
+   "tried": "            r\"(?P<ipv6>([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{0,4})\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:57",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (text.py, line 57)"
+  },
+  {
+   "at": "rich/text.py:60",
+   "tried": "    def __bool__(self) ->= bool:",
+   "why": "does not compile: expected ':' (text.py, line 60)"
+  },
+  {
+   "at": "rich/text.py:63",
+   "tried": "    def split(self, offset: int) ->= Tuple[\"Span\", Optional[\"Span\"]]:",
+   "why": "does not compile: expected ':' (text.py, line 63)"
+  },
+  {
+   "at": "rich/text.py:76",
+   "tried": "    def move(self, offset: int) ->= \"Span\":",
+   "why": "does not compile: expected ':' (text.py, line 76)"
+  },
+  {
+   "at": "rich/text.py:88",
+   "tried": "    def right_crop(self, offset: int) ->= \"Span\":",
+   "why": "does not compile: expected ':' (text.py, line 88)"
+  },
+  {
+   "at": "rich/text.py:102",
+   "tried": "    def extend(self, cells: int) ->= \"Span\":",
+   "why": "does not compile: expected ':' (text.py, line 102)"
+  },
+  {
+   "at": "rich/text.py:167",
+   "tried": "    def __len__(self) ->= int:",
+   "why": "does not compile: expected ':' (text.py, line 167)"
+  },
+  {
+   "at": "rich/text.py:170",
+   "tried": "    def __bool__(self) ->= bool:",
+   "why": "does not compile: expected ':' (text.py, line 170)"
+  },
+  {
+   "at": "rich/text.py:173",
+   "tried": "    def __str__(self) ->= str:",
+   "why": "does not compile: expected ':' (text.py, line 173)"
+  },
+  {
+   "at": "rich/text.py:176",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (text.py, line 176)"
+  },
+  {
+   "at": "rich/text.py:179",
+   "tried": "    def __add__(self, other: Any) ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 179)"
+  },
+  {
+   "at": "rich/text.py:186",
+   "tried": "    def __eq__(self, other: object) ->= bool:",
+   "why": "does not compile: expected ':' (text.py, line 186)"
+  },
+  {
+   "at": "rich/text.py:191",
+   "tried": "    def __contains__(self, other: object) ->= bool:",
+   "why": "does not compile: expected ':' (text.py, line 191)"
+  },
+  {
+   "at": "rich/text.py:198",
+   "tried": "    def __getitem__(self, slice: Union[int, slice]) ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 198)"
+  },
+  {
+   "at": "rich/text.py:225",
+   "tried": "    def cell_len(self) ->= int:",
+   "why": "does not compile: expected ':' (text.py, line 225)"
+  },
+  {
+   "at": "rich/text.py:230",
+   "tried": "    def markup(self) ->= str:",
+   "why": "does not compile: expected ':' (text.py, line 230)"
+  },
+  {
+   "at": "rich/text.py:403",
+   "tried": "    def plain(self) ->= str:",
+   "why": "does not compile: expected ':' (text.py, line 403)"
+  },
+  {
+   "at": "rich/text.py:405",
+   "tried": "        if len(self._text) != 0:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:407",
+   "tried": "        return self._text[-1]",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:410",
+   "tried": "    def plain(self, new_text: str) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 410)"
+  },
+  {
+   "at": "rich/text.py:421",
+   "tried": "    def spans(self) ->= List[Span]:",
+   "why": "does not compile: expected ':' (text.py, line 421)"
+  },
+  {
+   "at": "rich/text.py:426",
+   "tried": "    def spans(self, spans: List[Span]) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 426)"
+  },
+  {
+   "at": "rich/text.py:430",
+   "tried": "    def blank_copy(self, plain: str = \"\") ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 430)"
+  },
+  {
+   "at": "rich/text.py:443",
+   "tried": "    def copy(self) ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 443)"
+  },
+  {
+   "at": "rich/text.py:523",
+   "tried": "    def on(self, meta: Optional[Dict[str, Any]] = None, **handlers: Any) ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 523)"
+  },
+  {
+   "at": "rich/text.py:543",
+   "tried": "    def remove_suffix(self, suffix: str) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 543)"
+  },
+  {
+   "at": "rich/text.py:552",
+   "tried": "    def get_style_at_offset(self, console: \"Console\", offset: int) ->= Style:",
+   "why": "does not compile: expected ':' (text.py, line 552)"
+  },
+  {
+   "at": "rich/text.py:572",
+   "tried": "    def extend_style(self, spaces: int) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 572)"
+  },
+  {
+   "at": "rich/text.py:612",
+   "tried": "        count = -1",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:623",
+   "tried": "                if match_style is not None and end >= start:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:623",
+   "tried": "                if match_style is not None and end < start:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:626",
+   "tried": "            count += 0",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:626",
+   "tried": "            count -= 1",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:629",
+   "tried": "                if start != -1 and end >= start:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:629",
+   "tried": "                if start != and end > start:",
+   "why": "does not compile: invalid syntax (text.py, line 629)"
+  },
+  {
+   "at": "rich/text.py:629",
+   "tried": "                if start != -1 and end < start:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:662",
+   "tried": "    def rstrip(self) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 662)"
+  },
+  {
+   "at": "rich/text.py:666",
+   "tried": "    def rstrip_end(self, size: int) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 666)"
+  },
+  {
+   "at": "rich/text.py:680",
+   "tried": "    def set_length(self, new_length: int) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 680)"
+  },
+  {
+   "at": "rich/text.py:719",
+   "tried": "    def render(self, console: \"Console\", end: str = \"\") ->= Iterable[\"Segment\"]:",
+   "why": "does not compile: expected ':' (text.py, line 719)"
+  },
+  {
+   "at": "rich/text.py:778",
+   "tried": "    def join(self, lines: Iterable[\"Text\"]) ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 778)"
+  },
+  {
+   "at": "rich/text.py:817",
+   "tried": "    def expand_tabs(self, tab_size: Optional[int] = None) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 817)"
+  },
+  {
+   "at": "rich/text.py:886",
+   "tried": "    def _trim_spans(self) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 886)"
+  },
+  {
+   "at": "rich/text.py:900",
+   "tried": "    def pad(self, count: int, character: str = \" \") ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 900)"
+  },
+  {
+   "at": "rich/text.py:917",
+   "tried": "    def pad_left(self, count: int, character: str = \" \") ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 917)"
+  },
+  {
+   "at": "rich/text.py:933",
+   "tried": "    def pad_right(self, count: int, character: str = \" \") ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 933)"
+  },
+  {
+   "at": "rich/text.py:944",
+   "tried": "    def align(self, align: AlignMethod, width: int, character: str = \" \") ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 944)"
+  },
+  {
+   "at": "rich/text.py:1008",
+   "tried": "    def append_text(self, text: \"Text\") ->= \"Text\":",
+   "why": "does not compile: expected ':' (text.py, line 1008)"
+  },
+  {
+   "at": "rich/text.py:1054",
+   "tried": "    def copy_styles(self, text: \"Text\") ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 1054)"
+  },
+  {
+   "at": "rich/text.py:1106",
+   "tried": "    def divide(self, offsets: Iterable[int]) ->= Lines:",
+   "why": "does not compile: expected ':' (text.py, line 1106)"
+  },
+  {
+   "at": "rich/text.py:1185",
+   "tried": "    def right_crop(self, amount: int = 1) ->= None:",
+   "why": "does not compile: expected ':' (text.py, line 1185)"
+  },
+  {
+   "at": "rich/text.py:1185",
+   "tried": "    def right_crop(self, amount: int = 0) -> None:",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/text.py:1252",
+   "tried": "    def fit(self, width: int) ->= Lines:",
+   "why": "does not compile: expected ':' (text.py, line 1252)"
+  },
+  {
+   "at": "rich/text.py:1268",
+   "tried": "    def detect_indentation(self) ->= int:",
+   "why": "does not compile: expected ':' (text.py, line 1268)"
+  },
+  {
+   "at": "rich/highlighter.py:8",
+   "tried": "def _combine_regex(*regexes: str) ->= str:",
+   "why": "does not compile: expected ':' (highlighter.py, line 8)"
+  },
+  {
+   "at": "rich/highlighter.py:20",
+   "tried": "    def __call__(self, text: Union[str, Text]) ->= Text:",
+   "why": "does not compile: expected ':' (highlighter.py, line 20)"
+  },
+  {
+   "at": "rich/highlighter.py:42",
+   "tried": "    def highlight(self, text: Text) ->= None:",
+   "why": "does not compile: expected ':' (highlighter.py, line 42)"
+  },
+  {
+   "at": "rich/highlighter.py:57",
+   "tried": "    def highlight(self, text: Text) ->= None:",
+   "why": "does not compile: expected ':' (highlighter.py, line 57)"
+  },
+  {
+   "at": "rich/highlighter.py:67",
+   "tried": "    def highlight(self, text: Text) ->= None:",
+   "why": "does not compile: expected ':' (highlighter.py, line 67)"
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start>=<)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>=[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>=[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>=>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>=)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<=tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><=)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<=tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<=tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<=tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P>tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P>tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P>tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P>tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  },
+  {
+   "at": "rich/highlighter.py:85",
+   "tried": "        r\"(?P<tag_start><)(?P<tag_name<[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\",",
+   "why": "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+  }
+ ],
+ "rejected_not_listed": 142,
+ "executed_lines": {
+  ".venv/lib/python3.14/site-packages/_pytest/python.py": [
+   [
+    112,
+    "    )"
+   ],
+   [
+    113,
+    "    parser.addini("
+   ],
+   [
+    114,
+    "        \"strict_parametrization_ids\","
+   ],
+   [
+    115,
+    "        type=\"bool\","
+   ],
+   [
+    116,
+    "        # None => fallback to `strict`."
+   ],
+   [
+    117,
+    "        default=None,"
+   ],
+   [
+    118,
+    "        help=\"Emit an error if non-unique parameter set IDs are detected\","
+   ],
+   [
+    119,
+    "    )"
+   ],
+   [
+    120,
+    ""
+   ],
+   [
+    121,
+    ""
+   ],
+   [
+    122,
+    "def pytest_generate_tests(metafunc: Metafunc) -> None:"
+   ],
+   [
+    123,
+    "    for marker in metafunc.definition.iter_markers(name=\"parametrize\"):"
+   ],
+   [
+    124,
+    "        metafunc.parametrize(*marker.args, **marker.kwargs, _param_mark=marker)"
+   ],
+   [
+    125,
+    ""
+   ],
+   [
+    126,
+    ""
+   ],
+   [
+    127,
+    "def pytest_configure(config: Config) -> None:"
+   ],
+   [
+    128,
+    "    config.addinivalue_line("
+   ],
+   [
+    129,
+    "        \"markers\","
+   ],
+   [
+    130,
+    "        \"parametrize(argnames, argvalues): call a test function multiple \""
+   ],
+   [
+    131,
+    "        \"times passing in different arguments in turn. argvalues generally \""
+   ],
+   [
+    132,
+    "        \"needs to be a list of values if argnames specifies only one name \""
+   ],
+   [
+    133,
+    "        \"or a list of tuples of values if argnames specifies multiple names. \""
+   ],
+   [
+    134,
+    "        \"Example: @parametrize('arg1', [1,2]) would lead to two calls of the \""
+   ],
+   [
+    135,
+    "        \"decorated test function, one with arg1=1 and another with arg1=2.\""
+   ],
+   [
+    136,
+    "        \"see https://docs.pytest.org/en/stable/how-to/parametrize.html for more info \""
+   ]
+  ],
+  "rich/text.py": [
+   [
+    1,
+    "import re"
+   ],
+   [
+    2,
+    "from functools import partial, reduce"
+   ],
+   [
+    3,
+    "from math import gcd"
+   ],
+   [
+    4,
+    "from operator import itemgetter"
+   ],
+   [
+    5,
+    "from typing import ("
+   ],
+   [
+    6,
+    "    TYPE_CHECKING,"
+   ],
+   [
+    7,
+    "    Any,"
+   ],
+   [
+    8,
+    "    Callable,"
+   ],
+   [
+    9,
+    "    Dict,"
+   ],
+   [
+    10,
+    "    Iterable,"
+   ],
+   [
+    11,
+    "    List,"
+   ],
+   [
+    12,
+    "    NamedTuple,"
+   ],
+   [
+    13,
+    "    Optional,"
+   ],
+   [
+    14,
+    "    Pattern,"
+   ],
+   [
+    15,
+    "    Tuple,"
+   ],
+   [
+    16,
+    "    Union,"
+   ],
+   [
+    17,
+    ")"
+   ],
+   [
+    19,
+    "from ._loop import loop_last"
+   ],
+   [
+    20,
+    "from ._pick import pick_bool"
+   ],
+   [
+    21,
+    "from ._wrap import divide_line"
+   ],
+   [
+    22,
+    "from .align import AlignMethod"
+   ],
+   [
+    23,
+    "from .cells import cell_len, set_cell_size"
+   ],
+   [
+    24,
+    "from .containers import Lines"
+   ],
+   [
+    25,
+    "from .control import strip_control_codes"
+   ],
+   [
+    26,
+    "from .emoji import EmojiVariant"
+   ],
+   [
+    27,
+    "from .jupyter import JupyterMixin"
+   ],
+   [
+    28,
+    "from .measure import Measurement"
+   ],
+   [
+    29,
+    "from .segment import Segment"
+   ],
+   [
+    30,
+    "from .style import Style, StyleType"
+   ],
+   [
+    35,
+    "DEFAULT_JUSTIFY: \"JustifyMethod\" = \"default\""
+   ],
+   [
+    36,
+    "DEFAULT_OVERFLOW: \"OverflowMethod\" = \"fold\""
+   ],
+   [
+    39,
+    "_re_whitespace = re.compile(r\"\\s+$\")"
+   ],
+   [
+    41,
+    "TextType = Union[str, \"Text\"]"
+   ],
+   [
+    42,
+    "\"\"\"A plain string or a :class:`Text` instance.\"\"\""
+   ],
+   [
+    44,
+    "GetStyleCallable = Callable[[str], Optional[StyleType]]"
+   ],
+   [
+    47,
+    "class Span(NamedTuple):"
+   ],
+   [
+    51,
+    "    \"\"\"Span start index.\"\"\""
+   ],
+   [
+    53,
+    "    \"\"\"Span end index.\"\"\""
+   ],
+   [
+    55,
+    "    \"\"\"Style associated with the span.\"\"\""
+   ],
+   [
+    57,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    60,
+    "    def __bool__(self) -> bool:"
+   ],
+   [
+    63,
+    "    def split(self, offset: int) -> Tuple[\"Span\", Optional[\"Span\"]]:"
+   ],
+   [
+    76,
+    "    def move(self, offset: int) -> \"Span\":"
+   ],
+   [
+    88,
+    "    def right_crop(self, offset: int) -> \"Span\":"
+   ],
+   [
+    102,
+    "    def extend(self, cells: int) -> \"Span\":"
+   ],
+   [
+    118,
+    "class Text(JupyterMixin):"
+   ],
+   [
+    132,
+    "    __slots__ = ["
+   ],
+   [
+    133,
+    "        \"_text\","
+   ],
+   [
+    134,
+    "        \"style\","
+   ],
+   [
+    135,
+    "        \"justify\","
+   ],
+   [
+    136,
+    "        \"overflow\","
+   ],
+   [
+    137,
+    "        \"no_wrap\","
+   ],
+   [
+    138,
+    "        \"end\","
+   ],
+   [
+    139,
+    "        \"tab_size\","
+   ],
+   [
+    140,
+    "        \"_spans\","
+   ],
+   [
+    141,
+    "        \"_length\","
+   ],
+   [
+    142,
+    "    ]"
+   ],
+   [
+    144,
+    "    def __init__("
+   ],
+   [
+    156,
+    "        sanitized_text = strip_control_codes(text)"
+   ],
+   [
+    157,
+    "        self._text = [sanitized_text]"
+   ],
+   [
+    158,
+    "        self.style = style"
+   ],
+   [
+    159,
+    "        self.justify: Optional[\"JustifyMethod\"] = justify"
+   ],
+   [
+    160,
+    "        self.overflow: Optional[\"OverflowMethod\"] = overflow"
+   ],
+   [
+    161,
+    "        self.no_wrap = no_wrap"
+   ],
+   [
+    162,
+    "        self.end = end"
+   ],
+   [
+    163,
+    "        self.tab_size = tab_size"
+   ],
+   [
+    164,
+    "        self._spans: List[Span] = spans or []"
+   ],
+   [
+    165,
+    "        self._length: int = len(sanitized_text)"
+   ],
+   [
+    167,
+    "    def __len__(self) -> int:"
+   ],
+   [
+    170,
+    "    def __bool__(self) -> bool:"
+   ],
+   [
+    173,
+    "    def __str__(self) -> str:"
+   ],
+   [
+    176,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    179,
+    "    def __add__(self, other: Any) -> \"Text\":"
+   ],
+   [
+    186,
+    "    def __eq__(self, other: object) -> bool:"
+   ],
+   [
+    191,
+    "    def __contains__(self, other: object) -> bool:"
+   ],
+   [
+    198,
+    "    def __getitem__(self, slice: Union[int, slice]) -> \"Text\":"
+   ],
+   [
+    224,
+    "    @property"
+   ],
+   [
+    225,
+    "    def cell_len(self) -> int:"
+   ],
+   [
+    229,
+    "    @property"
+   ],
+   [
+    230,
+    "    def markup(self) -> str:"
+   ]
+  ],
+  "rich/highlighter.py": [
+   [
+    1,
+    "import re"
+   ],
+   [
+    2,
+    "from abc import ABC, abstractmethod"
+   ],
+   [
+    3,
+    "from typing import ClassVar, Sequence, Union"
+   ],
+   [
+    5,
+    "from .text import Span, Text"
+   ],
+   [
+    8,
+    "def _combine_regex(*regexes: str) -> str:"
+   ],
+   [
+    14,
+    "    return \"|\".join(regexes)"
+   ],
+   [
+    17,
+    "class Highlighter(ABC):"
+   ],
+   [
+    20,
+    "    def __call__(self, text: Union[str, Text]) -> Text:"
+   ],
+   [
+    26,
+    "        Raises:"
+   ],
+   [
+    27,
+    "            TypeError: If not called with text or str."
+   ],
+   [
+    28,
+    ""
+   ],
+   [
+    29,
+    "        Returns:"
+   ],
+   [
+    30,
+    "            Text: A test instance with highlighting applied."
+   ],
+   [
+    31,
+    "        \"\"\""
+   ],
+   [
+    32,
+    "        if isinstance(text, str):"
+   ],
+   [
+    33,
+    "            highlight_text = Text(text)"
+   ],
+   [
+    34,
+    "        elif isinstance(text, Text):"
+   ],
+   [
+    35,
+    "            highlight_text = text.copy()"
+   ],
+   [
+    36,
+    "        else:"
+   ],
+   [
+    37,
+    "            raise TypeError(f\"str or Text instance required, not {text!r}\")"
+   ],
+   [
+    38,
+    "        self.highlight(highlight_text)"
+   ],
+   [
+    39,
+    "        return highlight_text"
+   ],
+   [
+    40,
+    ""
+   ],
+   [
+    41,
+    "    @abstractmethod"
+   ],
+   [
+    42,
+    "    def highlight(self, text: Text) -> None:"
+   ],
+   [
+    43,
+    "        \"\"\"Apply highlighting in place to text."
+   ],
+   [
+    44,
+    ""
+   ],
+   [
+    45,
+    "        Args:"
+   ],
+   [
+    46,
+    "            text (~Text): A text object highlight."
+   ],
+   [
+    47,
+    "        \"\"\""
+   ],
+   [
+    48,
+    ""
+   ],
+   [
+    49,
+    ""
+   ],
+   [
+    50,
+    "class NullHighlighter(Highlighter):"
+   ],
+   [
+    57,
+    "    def highlight(self, text: Text) -> None:"
+   ],
+   [
+    61,
+    "class RegexHighlighter(Highlighter):"
+   ],
+   [
+    64,
+    "    highlights: ClassVar[Sequence[str]] = []"
+   ],
+   [
+    65,
+    "    base_style: ClassVar[str] = \"\""
+   ],
+   [
+    66,
+    ""
+   ],
+   [
+    67,
+    "    def highlight(self, text: Text) -> None:"
+   ],
+   [
+    68,
+    "        \"\"\"Highlight :class:`rich.text.Text` using regular expressions."
+   ],
+   [
+    69,
+    ""
+   ],
+   [
+    70,
+    "        Args:"
+   ],
+   [
+    71,
+    "            text (~Text): Text to highlighted."
+   ],
+   [
+    72,
+    ""
+   ],
+   [
+    73,
+    "        \"\"\""
+   ],
+   [
+    74,
+    ""
+   ],
+   [
+    75,
+    "        highlight_regex = text.highlight_regex"
+   ],
+   [
+    76,
+    "        for re_highlight in self.highlights:"
+   ],
+   [
+    77,
+    "            highlight_regex(re_highlight, style_prefix=self.base_style)"
+   ],
+   [
+    78,
+    ""
+   ],
+   [
+    79,
+    ""
+   ],
+   [
+    80,
+    "class ReprHighlighter(RegexHighlighter):"
+   ],
+   [
+    81,
+    "    \"\"\"Highlights the text typically produced from ``__repr__`` methods.\"\"\""
+   ],
+   [
+    82,
+    ""
+   ],
+   [
+    83,
+    "    base_style = \"repr.\""
+   ],
+   [
+    84,
+    "    highlights: ClassVar[Sequence[str]] = ["
+   ],
+   [
+    85,
+    "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\","
+   ],
+   [
+    86,
+    "        r'(?P<attrib_name>[\\w_]{1,50})=(?P<attrib_value>\"?[\\w_]+\"?)?',"
+   ],
+   [
+    87,
+    "        r\"(?P<brace>[][{}()])\","
+   ],
+   [
+    88,
+    "        _combine_regex("
+   ],
+   [
+    89,
+    "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\","
+   ],
+   [
+    90,
+    "            r\"(?P<ipv6>([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})\","
+   ],
+   [
+    91,
+    "            r\"(?P<eui64>(?:[0-9A-Fa-f]{1,2}-){7}[0-9A-Fa-f]{1,2}|(?:[0-9A-Fa-f]{1,2}:){7}[0-9A-Fa-f]{1,2}|(?:[0-9A-Fa-f]{4}\\.){3}[0-9A-Fa-f]{4})\","
+   ],
+   [
+    92,
+    "            r\"(?P<eui48>(?:[0-9A-Fa-f]{1,2}-){5}[0-9A-Fa-f]{1,2}|(?:[0-9A-Fa-f]{1,2}:){5}[0-9A-Fa-f]{1,2}|(?:[0-9A-Fa-f]{4}\\.){2}[0-9A-Fa-f]{4})\","
+   ],
+   [
+    93,
+    "            r\"(?P<uuid>[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})\","
+   ],
+   [
+    94,
+    "            r\"(?P<call>[\\w.]*?)\\(\","
+   ],
+   [
+    95,
+    "            r\"\\b(?P<bool_true>True)\\b|\\b(?P<bool_false>False)\\b|\\b(?P<none>None)\\b\","
+   ],
+   [
+    96,
+    "            r\"(?P<ellipsis>\\.\\.\\.)\","
+   ],
+   [
+    97,
+    "            r\"(?P<number_complex>(?<!\\w)(?:\\-?[0-9]+\\.?[0-9]*(?:e[-+]?\\d+?)?)(?:[-+](?:[0-9]+\\.?[0-9]*(?:e[-+]?\\d+)?))?j)\","
+   ],
+   [
+    98,
+    "            r\"(?P<number>(?<!\\w)\\-?[0-9]+\\.?[0-9]*(e[-+]?\\d+?)?\\b|0x[0-9a-fA-F]*)\","
+   ],
+   [
+    99,
+    "            r\"(?P<path>\\B(/[-\\w._+]+)*\\/)(?P<filename>[-\\w._+]*)?\","
+   ],
+   [
+    100,
+    "            r\"(?<![\\\\\\w])(?P<str>b?'''.*?(?<!\\\\)'''|b?'.*?(?<!\\\\)'|b?\\\"\\\"\\\".*?(?<!\\\\)\\\"\\\"\\\"|b?\\\".*?(?<!\\\\)\\\")\","
+   ],
+   [
+    101,
+    "            r\"(?P<url>(file|https|http|ws|wss)://[-0-9a-zA-Z$_+!`(),.?/;:&=%#~@]*)\","
+   ],
+   [
+    102,
+    "        ),"
+   ],
+   [
+    103,
+    "    ]"
+   ],
+   [
+    106,
+    "class JSONHighlighter(RegexHighlighter):"
+   ],
+   [
+    110,
+    "    JSON_STR = r\"(?<![\\\\\\w])(?P<str>b?\\\".*?(?<!\\\\)\\\")\""
+   ],
+   [
+    111,
+    "    JSON_WHITESPACE = {\" \", \"\\n\", \"\\r\", \"\\t\"}"
+   ],
+   [
+    112,
+    ""
+   ],
+   [
+    113,
+    "    base_style: ClassVar[str] = \"json.\""
+   ]
+  ],
+  "rich/json.py": [
+   [
+    1,
+    "from pathlib import Path"
+   ],
+   [
+    2,
+    "from json import loads, dumps"
+   ],
+   [
+    3,
+    "from typing import Any, Callable, Optional, Union"
+   ],
+   [
+    5,
+    "from .text import Text"
+   ],
+   [
+    6,
+    "from .highlighter import JSONHighlighter, NullHighlighter"
+   ],
+   [
+    9,
+    "class JSON:"
+   ],
+   [
+    25,
+    "    def __init__("
+   ],
+   [
+    37,
+    "        data = loads(json)"
+   ],
+   [
+    38,
+    "        json = dumps("
+   ],
+   [
+    39,
+    "            data,"
+   ],
+   [
+    40,
+    "            indent=indent,"
+   ],
+   [
+    41,
+    "            skipkeys=skip_keys,"
+   ],
+   [
+    42,
+    "            ensure_ascii=ensure_ascii,"
+   ],
+   [
+    43,
+    "            check_circular=check_circular,"
+   ],
+   [
+    44,
+    "            allow_nan=allow_nan,"
+   ],
+   [
+    45,
+    "            default=default,"
+   ],
+   [
+    46,
+    "            sort_keys=sort_keys,"
+   ],
+   [
+    47,
+    "        )"
+   ],
+   [
+    48,
+    "        highlighter = JSONHighlighter() if highlight else NullHighlighter()"
+   ],
+   [
+    49,
+    "        self.text = highlighter(json)"
+   ],
+   [
+    50,
+    "        self.text.no_wrap = True"
+   ],
+   [
+    51,
+    "        self.text.overflow = None"
+   ],
+   [
+    52,
+    ""
+   ],
+   [
+    53,
+    "    @classmethod"
+   ],
+   [
+    54,
+    "    def from_data("
+   ],
+   [
+    55,
+    "        cls,"
+   ],
+   [
+    56,
+    "        data: Any,"
+   ],
+   [
+    57,
+    "        indent: Union[None, int, str] = 2,"
+   ],
+   [
+    58,
+    "        highlight: bool = True,"
+   ],
+   [
+    59,
+    "        skip_keys: bool = False,"
+   ],
+   [
+    60,
+    "        ensure_ascii: bool = False,"
+   ],
+   [
+    61,
+    "        check_circular: bool = True,"
+   ],
+   [
+    101,
+    "    def __rich__(self) -> Text:"
+   ]
+  ],
+  "rich/console.py": [
+   [
+    1,
+    "import os"
+   ],
+   [
+    2,
+    "import sys"
+   ],
+   [
+    3,
+    "import threading"
+   ],
+   [
+    4,
+    "from abc import ABC, abstractmethod"
+   ],
+   [
+    5,
+    "from dataclasses import dataclass, field"
+   ],
+   [
+    6,
+    "from datetime import datetime"
+   ],
+   [
+    7,
+    "from functools import wraps"
+   ],
+   [
+    8,
+    "from itertools import islice"
+   ],
+   [
+    9,
+    "from math import ceil"
+   ],
+   [
+    10,
+    "from os import PathLike"
+   ],
+   [
+    11,
+    "from time import monotonic"
+   ],
+   [
+    12,
+    "from types import FrameType, ModuleType, TracebackType"
+   ],
+   [
+    13,
+    "from typing import ("
+   ],
+   [
+    14,
+    "    IO,"
+   ],
+   [
+    15,
+    "    TYPE_CHECKING,"
+   ],
+   [
+    16,
+    "    Any,"
+   ],
+   [
+    17,
+    "    Callable,"
+   ],
+   [
+    18,
+    "    Dict,"
+   ],
+   [
+    19,
+    "    Iterable,"
+   ],
+   [
+    20,
+    "    List,"
+   ],
+   [
+    21,
+    "    Literal,"
+   ],
+   [
+    22,
+    "    Mapping,"
+   ],
+   [
+    23,
+    "    NamedTuple,"
+   ],
+   [
+    24,
+    "    Optional,"
+   ],
+   [
+    25,
+    "    Protocol,"
+   ],
+   [
+    26,
+    "    TextIO,"
+   ],
+   [
+    27,
+    "    Tuple,"
+   ],
+   [
+    28,
+    "    Type,"
+   ],
+   [
+    29,
+    "    Union,"
+   ],
+   [
+    30,
+    "    cast,"
+   ],
+   [
+    31,
+    "    runtime_checkable,"
+   ],
+   [
+    32,
+    ")"
+   ],
+   [
+    34,
+    "from rich._null_file import NULL_FILE"
+   ],
+   [
+    36,
+    "from . import errors, themes"
+   ],
+   [
+    37,
+    "from ._emoji_replace import _emoji_replace"
+   ],
+   [
+    38,
+    "from ._export_format import CONSOLE_HTML_FORMAT, CONSOLE_SVG_FORMAT"
+   ],
+   [
+    39,
+    "from ._fileno import get_fileno"
+   ],
+   [
+    40,
+    "from ._log_render import FormatTimeCallable, LogRender"
+   ],
+   [
+    41,
+    "from .align import Align, AlignMethod"
+   ],
+   [
+    42,
+    "from .color import ColorSystem, blend_rgb"
+   ],
+   [
+    43,
+    "from .control import Control"
+   ],
+   [
+    44,
+    "from .emoji import EmojiVariant"
+   ],
+   [
+    45,
+    "from .highlighter import NullHighlighter, ReprHighlighter"
+   ],
+   [
+    46,
+    "from .markup import render as render_markup"
+   ],
+   [
+    47,
+    "from .measure import Measurement, measure_renderables"
+   ],
+   [
+    48,
+    "from .pager import Pager, SystemPager"
+   ],
+   [
+    49,
+    "from .protocol import rich_cast"
+   ],
+   [
+    50,
+    "from .region import Region"
+   ],
+   [
+    51,
+    "from .screen import Screen"
+   ],
+   [
+    52,
+    "from .segment import Segment"
+   ],
+   [
+    53,
+    "from .style import Style, StyleType"
+   ],
+   [
+    54,
+    "from .styled import Styled"
+   ],
+   [
+    55,
+    "from .terminal_theme import DEFAULT_TERMINAL_THEME, SVG_EXPORT_THEME, TerminalTheme"
+   ],
+   [
+    56,
+    "from .text import Text, TextType"
+   ],
+   [
+    57,
+    "from .theme import Theme, ThemeStack"
+   ],
+   [
+    64,
+    "JUPYTER_DEFAULT_COLUMNS = 115"
+   ],
+   [
+    65,
+    "JUPYTER_DEFAULT_LINES = 100"
+   ],
+   [
+    66,
+    "WINDOWS = sys.platform == \"win32\""
+   ],
+   [
+    68,
+    "HighlighterType = Callable[[Union[str, \"Text\"]], \"Text\"]"
+   ],
+   [
+    69,
+    "JustifyMethod = Literal[\"default\", \"left\", \"center\", \"right\", \"full\"]"
+   ],
+   [
+    70,
+    "OverflowMethod = Literal[\"fold\", \"crop\", \"ellipsis\", \"ignore\"]"
+   ],
+   [
+    73,
+    "class NoChange:"
+   ],
+   [
+    74,
+    "    pass"
+   ],
+   [
+    77,
+    "NO_CHANGE = NoChange()"
+   ],
+   [
+    79,
+    "try:"
+   ],
+   [
+    80,
+    "    _STDIN_FILENO = sys.__stdin__.fileno()  # type: ignore[union-attr]"
+   ],
+   [
+    83,
+    "try:"
+   ],
+   [
+    84,
+    "    _STDOUT_FILENO = sys.__stdout__.fileno()  # type: ignore[union-attr]"
+   ],
+   [
+    87,
+    "try:"
+   ],
+   [
+    88,
+    "    _STDERR_FILENO = sys.__stderr__.fileno()  # type: ignore[union-attr]"
+   ],
+   [
+    92,
+    "_STD_STREAMS = (_STDIN_FILENO, _STDOUT_FILENO, _STDERR_FILENO)"
+   ],
+   [
+    93,
+    "_STD_STREAMS_OUTPUT = (_STDOUT_FILENO, _STDERR_FILENO)"
+   ],
+   [
+    96,
+    "_TERM_COLORS = {"
+   ],
+   [
+    97,
+    "    \"kitty\": ColorSystem.EIGHT_BIT,"
+   ],
+   [
+    98,
+    "    \"256color\": ColorSystem.EIGHT_BIT,"
+   ],
+   [
+    99,
+    "    \"16color\": ColorSystem.STANDARD,"
+   ],
+   [
+    100,
+    "}"
+   ],
+   [
+    103,
+    "class ConsoleDimensions(NamedTuple):"
+   ],
+   [
+    107,
+    "    \"\"\"The width of the console in 'cells'.\"\"\""
+   ],
+   [
+    109,
+    "    \"\"\"The height of the console in lines.\"\"\""
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_console.py::test_print_json - re.PatternError: bad characte..."
+ ]
+}

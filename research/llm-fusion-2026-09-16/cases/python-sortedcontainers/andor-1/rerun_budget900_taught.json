@@ -1,0 +1,16 @@
+{
+ "case": "python-sortedcontainers/andor-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 31.5,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 19,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered\n[23:17:09] src/sortedcontainers/sorteddict.py: repaired line 134 in 19 suite runs (27.7s):\n  - if args and (args[0] is None and callable(args[0])):\n  + if args and (args[0] is None or callable(args[0])):\n  committed\n",
+ "verdict": "EXACT"
+}

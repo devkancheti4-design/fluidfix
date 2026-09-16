@@ -1,0 +1,8 @@
+{
+ "example_before": "if len(text) >= max_length - 3:",
+ "example_after": "if len(text) > max_length - 3:",
+ "name": "truncation-boundary-off-by-one",
+ "description": "A truncation condition uses >= instead of >, causing text that exactly fits the limit to be incorrectly truncated with ellipsis.",
+ "signal": "if\\s+len\\([^)]+\\)\\s*>=\\s*max_length\\s*-\\s*3:",
+ "applier": "def fix(line, o):\n    import re\n    if re.search(r'if\\s+len\\([^)]+\\)\\s*>=\\s*max_length\\s*-\\s*3:', line):\n        return re.sub(r'(if\\s+len\\([^)]+\\))\\s*>=\\s*(max_length\\s*-\\s*3:)', r'\\1 > \\2', line)\n    return line"
+}

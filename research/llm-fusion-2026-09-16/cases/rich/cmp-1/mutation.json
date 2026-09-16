@@ -1,0 +1,8 @@
+{
+ "file": "rich/highlighter.py",
+ "lineno": 117,
+ "orig": "            r\"\\b(?P<bool_true>true)\\b|\\b(?P<bool_false>false)\\b|\\b(?P<null>null)\\b\",",
+ "mutated": "            r\"\\b(?P<bool_true>true)\\b|\\b(?P<bool_false>false)\\b|\\b(?P<null>=null)\\b\",",
+ "cls": "cmp",
+ "base": "bf2620c8ce27bfdcaa3ea35b2557f94a46f1b5a9"
+}

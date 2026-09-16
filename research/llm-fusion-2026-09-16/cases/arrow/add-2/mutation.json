@@ -1,0 +1,8 @@
+{
+ "file": "arrow/arrow.py",
+ "lineno": 574,
+ "orig": "            for _ in range(3 - len(values)):",
+ "mutated": "            for _ in range(3 + len(values)):",
+ "cls": "add",
+ "base": "2224255c4acc594d734cef0bbc83360452a67983"
+}

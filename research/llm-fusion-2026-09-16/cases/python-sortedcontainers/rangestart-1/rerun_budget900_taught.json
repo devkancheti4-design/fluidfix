@@ -1,0 +1,16 @@
+{
+ "case": "python-sortedcontainers/rangestart-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session_b.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 285.9,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 3,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session_b.py: 1 fault class(es) registered\n[22:36:53] src/sortedcontainers/sortedlist.py: repaired line 2465 in 3 suite runs (18.2s):\n  - for pos in range(len(self._keys)):\n  + for pos in range(1, len(self._keys)):\n  committed\n",
+ "verdict": "EXACT"
+}

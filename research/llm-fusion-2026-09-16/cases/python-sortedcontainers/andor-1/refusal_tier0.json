@@ -1,0 +1,438 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/sortedcontainers/sorteddict.py"
+ ],
+ "seconds": 18.036535024642944,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "rejected_candidates": [
+  {
+   "at": "src/sortedcontainers/sorteddict.py:134",
+   "tried": "        if args and (args[-1] is None and callable(args[0])):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:134",
+   "tried": "        if args and (args[0] is None and callable(args[-1])):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:392",
+   "tried": "    def popitem(self, index=):",
+   "why": "does not compile: expected default value expression (sorteddict.py, line 392)"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:427",
+   "tried": "    def peekitem(self, index=):",
+   "why": "does not compile: expected default value expression (sorteddict.py, line 427)"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:505",
+   "tried": "        if not kwargs and len(args) == 0 and isinstance(args[0], dict):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:505",
+   "tried": "        if not kwargs and len(args) == 1 and isinstance(args[-1], dict):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:506",
+   "tried": "            pairs = args[-1]",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:510",
+   "tried": "        if (10 * len(pairs)) >= len(self):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:510",
+   "tried": "        if (9 * len(pairs)) > len(self):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:510",
+   "tried": "        if (10 * len(pairs)) < len(self):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:134",
+   "tried": "        if args and (args[-1] is None and callable(args[0])):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:134",
+   "tried": "        if args and (args[0] is None and callable(args[-1])):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:392",
+   "tried": "    def popitem(self, index=):",
+   "why": "does not compile: expected default value expression (sorteddict.py, line 392)"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:427",
+   "tried": "    def peekitem(self, index=):",
+   "why": "does not compile: expected default value expression (sorteddict.py, line 427)"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:505",
+   "tried": "        if not kwargs and len(args) == 0 and isinstance(args[0], dict):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:505",
+   "tried": "        if not kwargs and len(args) == 1 and isinstance(args[-1], dict):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:506",
+   "tried": "            pairs = args[-1]",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:510",
+   "tried": "        if (10 * len(pairs)) >= len(self):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:510",
+   "tried": "        if (9 * len(pairs)) > len(self):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:510",
+   "tried": "        if (10 * len(pairs)) < len(self):",
+   "why": "FAILED docs/introduction.rst::introduction.rst"
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "src/sortedcontainers/sorteddict.py": [
+   [
+    19,
+    "import warnings"
+   ],
+   [
+    20,
+    "from collections.abc import ItemsView, KeysView, Mapping, Sequence, ValuesView"
+   ],
+   [
+    21,
+    "from itertools import chain"
+   ],
+   [
+    23,
+    "from .sortedlist import SortedList, recursive_repr"
+   ],
+   [
+    24,
+    "from .sortedset import SortedSet"
+   ],
+   [
+    27,
+    "class SortedDict(dict):"
+   ],
+   [
+    97,
+    "    def __init__(self, *args, **kwargs):"
+   ],
+   [
+    134,
+    "        if args and (args[0] is None and callable(args[0])):"
+   ],
+   [
+    138,
+    "            _key = self._key = None"
+   ],
+   [
+    140,
+    "        self._list = SortedList(key=_key)"
+   ],
+   [
+    145,
+    "        _list = self._list"
+   ],
+   [
+    146,
+    "        self._list_add = _list.add"
+   ],
+   [
+    147,
+    "        self._list_clear = _list.clear"
+   ],
+   [
+    148,
+    "        self._list_iter = _list.__iter__"
+   ],
+   [
+    149,
+    "        self._list_reversed = _list.__reversed__"
+   ],
+   [
+    150,
+    "        self._list_pop = _list.pop"
+   ],
+   [
+    151,
+    "        self._list_remove = _list.remove"
+   ],
+   [
+    152,
+    "        self._list_update = _list.update"
+   ],
+   [
+    156,
+    "        self.bisect_left = _list.bisect_left"
+   ],
+   [
+    157,
+    "        self.bisect = _list.bisect_right"
+   ],
+   [
+    158,
+    "        self.bisect_right = _list.bisect_right"
+   ],
+   [
+    159,
+    "        self.index = _list.index"
+   ],
+   [
+    160,
+    "        self.irange = _list.irange"
+   ],
+   [
+    161,
+    "        self.islice = _list.islice"
+   ],
+   [
+    162,
+    "        self._reset = _list._reset"
+   ],
+   [
+    163,
+    ""
+   ],
+   [
+    164,
+    "        if _key is not None:"
+   ],
+   [
+    165,
+    "            self.bisect_key_left = _list.bisect_key_left"
+   ],
+   [
+    166,
+    "            self.bisect_key_right = _list.bisect_key_right"
+   ],
+   [
+    167,
+    "            self.bisect_key = _list.bisect_key"
+   ],
+   [
+    168,
+    "            self.irange_key = _list.irange_key"
+   ],
+   [
+    169,
+    ""
+   ],
+   [
+    170,
+    "        self._update(*args, **kwargs)"
+   ],
+   [
+    171,
+    ""
+   ],
+   [
+    172,
+    "    @property"
+   ],
+   [
+    173,
+    "    def key(self):"
+   ],
+   [
+    174,
+    "        \"\"\"Function used to extract comparison key from keys."
+   ],
+   [
+    175,
+    ""
+   ],
+   [
+    176,
+    "        Sorted dict compares keys directly when the key function is none."
+   ],
+   [
+    177,
+    ""
+   ],
+   [
+    178,
+    "        \"\"\""
+   ],
+   [
+    179,
+    "        return self._key"
+   ],
+   [
+    180,
+    ""
+   ],
+   [
+    181,
+    "    @property"
+   ],
+   [
+    182,
+    "    def iloc(self):"
+   ],
+   [
+    201,
+    "    def clear(self):"
+   ],
+   [
+    210,
+    "    def __delitem__(self, key):"
+   ],
+   [
+    230,
+    "        dict.__delitem__(self, key)"
+   ],
+   [
+    231,
+    "        self._list_remove(key)"
+   ],
+   [
+    233,
+    "    def __iter__(self):"
+   ],
+   [
+    244,
+    "    def __reversed__(self):"
+   ],
+   [
+    255,
+    "    def __setitem__(self, key, value):"
+   ],
+   [
+    273,
+    "        if key not in self:"
+   ],
+   [
+    274,
+    "            self._list_add(key)"
+   ],
+   [
+    275,
+    "        dict.__setitem__(self, key, value)"
+   ],
+   [
+    277,
+    "    _setitem = __setitem__"
+   ],
+   [
+    279,
+    "    def __or__(self, other):"
+   ],
+   [
+    285,
+    "    def __ror__(self, other):"
+   ],
+   [
+    291,
+    "    def __ior__(self, other):"
+   ],
+   [
+    295,
+    "    def copy(self):"
+   ],
+   [
+    305,
+    "    __copy__ = copy"
+   ],
+   [
+    307,
+    "    @classmethod"
+   ],
+   [
+    308,
+    "    def fromkeys(cls, iterable, value=None):"
+   ],
+   [
+    321,
+    "    def keys(self):"
+   ],
+   [
+    329,
+    "        return SortedKeysView(self)"
+   ],
+   [
+    331,
+    "    def items(self):"
+   ],
+   [
+    339,
+    "        return SortedItemsView(self)"
+   ],
+   [
+    341,
+    "    def values(self):"
+   ],
+   [
+    351,
+    "        return SortedValuesView(self)"
+   ],
+   [
+    353,
+    "    class _NotGiven:"
+   ],
+   [
+    355,
+    "        def __repr__(self):"
+   ],
+   [
+    358,
+    "    __not_given = _NotGiven()"
+   ],
+   [
+    360,
+    "    def pop(self, key, default=__not_given):"
+   ],
+   [
+    384,
+    "        if key in self:"
+   ],
+   [
+    385,
+    "            self._list_remove(key)"
+   ],
+   [
+    386,
+    "            return dict.pop(self, key)"
+   ],
+   [
+    392,
+    "    def popitem(self, index=-1):"
+   ],
+   [
+    420,
+    "        if not self:"
+   ],
+   [
+    423,
+    "        key = self._list_pop(index)"
+   ],
+   [
+    424,
+    "        value = dict.pop(self, key)"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED docs/introduction.rst::introduction.rst"
+ ]
+}

@@ -1,0 +1,3717 @@
+{
+ "status": "refused",
+ "candidates": [
+  "rich/pretty.py",
+  "rich/color.py",
+  "rich/terminal_theme.py",
+  "rich/errors.py",
+  "rich/_export_format.py",
+  "rich/_palettes.py",
+  "rich/default_styles.py",
+  "rich/themes.py"
+ ],
+ "seconds": 903.8686311244965,
+ "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)",
+ "rejected_candidates": [
+  {
+   "at": "rich/pretty.py:70",
+   "tried": "def _is_dataclass_repr(obj: object) ->= bool:",
+   "why": "does not compile: expected ':' (pretty.py, line 70)"
+  },
+  {
+   "at": "rich/pretty.py:291",
+   "tried": "        self.highlighter = highlighter and ReprHighlighter()",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:309",
+   "tried": "            max_width=options.max_width + self.margin,",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:309",
+   "tried": "            max_width=self.margin, - options.max_width",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (pretty.py, line 309)"
+  },
+  {
+   "at": "rich/pretty.py:60",
+   "tried": "def _is_attr_object(obj: Any) ->= bool:",
+   "why": "does not compile: expected ':' (pretty.py, line 60)"
+  },
+  {
+   "at": "rich/pretty.py:62",
+   "tried": "    return _has_attrs or _attr_module.has(type(obj))",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - attr.exceptions.NotAnAtt..."
+  },
+  {
+   "at": "rich/pretty.py:65",
+   "tried": "def _get_attr_fields(obj: Any) ->= Sequence[\"_attr_module.Attribute[Any]\"]:",
+   "why": "does not compile: expected ':' (pretty.py, line 65)"
+  },
+  {
+   "at": "rich/pretty.py:93",
+   "tried": "def _has_default_namedtuple_repr(obj: object) ->= bool:",
+   "why": "does not compile: expected ':' (pretty.py, line 93)"
+  },
+  {
+   "at": "rich/pretty.py:357",
+   "tried": "def _get_braces_for_defaultdict(_object: DefaultDict[Any, Any]) ->= Tuple[str, str, str]:",
+   "why": "does not compile: expected ':' (pretty.py, line 357)"
+  },
+  {
+   "at": "rich/pretty.py:365",
+   "tried": "def _get_braces_for_deque(_object: Deque[Any]) ->= Tuple[str, str, str]:",
+   "why": "does not compile: expected ':' (pretty.py, line 365)"
+  },
+  {
+   "at": "rich/pretty.py:375",
+   "tried": "def _get_braces_for_array(_object: \"array[Any]\") ->= Tuple[str, str, str]:",
+   "why": "does not compile: expected ':' (pretty.py, line 375)"
+  },
+  {
+   "at": "rich/pretty.py:398",
+   "tried": "def is_expandable(obj: Any) ->= bool:",
+   "why": "does not compile: expected ':' (pretty.py, line 398)"
+  },
+  {
+   "at": "rich/pretty.py:402",
+   "tried": "        and (is_dataclass(obj))",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:403",
+   "tried": "        and (hasattr(obj, \"__rich_repr__\"))",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:404",
+   "tried": "        and _is_attr_object(obj)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:405",
+   "tried": "    ) or not isclass(obj)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:417",
+   "tried": "    last: bool = True",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:418",
+   "tried": "    is_tuple: bool = True",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:419",
+   "tried": "    is_namedtuple: bool = True",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:424",
+   "tried": "    def iter_tokens(self) ->= Iterable[str]:",
+   "why": "does not compile: expected ':' (pretty.py, line 424)"
+  },
+  {
+   "at": "rich/pretty.py:434",
+   "tried": "                if self.is_tuple and not self.is_namedtuple and len(self.children) == 0:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:434",
+   "tried": "                if self.is_tuple or not self.is_namedtuple and len(self.children) == 1:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:434",
+   "tried": "                if self.is_tuple and not self.is_namedtuple or len(self.children) == 1:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:434",
+   "tried": "                if self.is_tuple and not self.is_namedtuple and len(self.children) - 1 == 1:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:446",
+   "tried": "    def check_length(self, start_length: int, max_length: int) ->= bool:",
+   "why": "does not compile: expected ':' (pretty.py, line 446)"
+  },
+  {
+   "at": "rich/pretty.py:459",
+   "tried": "            if total_length >= max_length:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:459",
+   "tried": "            if total_length < max_length:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:460",
+   "tried": "                return True",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert \"ExampleDatac...a..."
+  },
+  {
+   "at": "rich/pretty.py:461",
+   "tried": "        return False",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:463",
+   "tried": "    def __str__(self) ->= str:",
+   "why": "does not compile: expected ':' (pretty.py, line 463)"
+  },
+  {
+   "at": "rich/pretty.py:480",
+   "tried": "        lines = [_Line(node=self, is_root=False)]",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:481",
+   "tried": "        line_no = -1",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:482",
+   "tried": "        while line_no <= len(lines):",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - IndexError: list index o..."
+  },
+  {
+   "at": "rich/pretty.py:482",
+   "tried": "        while line_no < len(lines) - 1:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert \"ExampleDatac...a..."
+  },
+  {
+   "at": "rich/pretty.py:482",
+   "tried": "        while line_no > len(lines):",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert \"ExampleDatac...a..."
+  },
+  {
+   "at": "rich/pretty.py:484",
+   "tried": "            if line.expandable or not line.expanded:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - AssertionError"
+  },
+  {
+   "at": "rich/pretty.py:485",
+   "tried": "                if expand_all and not line.check_length(max_width):",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert \"ExampleDatac...a..."
+  },
+  {
+   "at": "rich/pretty.py:486",
+   "tried": "                    lines[line_no : line_no] = line.expand(indent_size)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - Failed: Timeout (>60.0s)..."
+  },
+  {
+   "at": "rich/pretty.py:486",
+   "tried": "                    lines[line_no : line_no - 1] = line.expand(indent_size)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - Failed: Timeout (>60.0s)..."
+  },
+  {
+   "at": "rich/pretty.py:487",
+   "tried": "            line_no += 0",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - Failed: Timeout (>60.0s)..."
+  },
+  {
+   "at": "rich/pretty.py:487",
+   "tried": "            line_no -= 1",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - IndexError: list index o..."
+  },
+  {
+   "at": "rich/pretty.py:498",
+   "tried": "    is_root: bool = True",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:503",
+   "tried": "    expanded: bool = True",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert \"ExampleDatac...a..."
+  },
+  {
+   "at": "rich/pretty.py:504",
+   "tried": "    last: bool = True",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:507",
+   "tried": "    def expandable(self) ->= bool:",
+   "why": "does not compile: expected ':' (pretty.py, line 507)"
+  },
+  {
+   "at": "rich/pretty.py:509",
+   "tried": "        return bool(self.node is not None or self.node.children)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - AttributeError: 'NoneTyp..."
+  },
+  {
+   "at": "rich/pretty.py:511",
+   "tried": "    def check_length(self, max_length: int) ->= bool:",
+   "why": "does not compile: expected ':' (pretty.py, line 511)"
+  },
+  {
+   "at": "rich/pretty.py:514",
+   "tried": "            len(self.whitespace) - cell_len(self.text) + cell_len(self.suffix)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:514",
+   "tried": "            len(self.whitespace) + cell_len(self.text) - cell_len(self.suffix)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:519",
+   "tried": "    def expand(self, indent_size: int) ->= Iterable[\"_Line\"]:",
+   "why": "does not compile: expected ':' (pretty.py, line 519)"
+  },
+  {
+   "at": "rich/pretty.py:532",
+   "tried": "        child_whitespace = self.whitespace - \" \" * indent_size",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - TypeError: unsupported o..."
+  },
+  {
+   "at": "rich/pretty.py:533",
+   "tried": "        tuple_of_one = node.is_tuple and len(node.children) == 0",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:533",
+   "tried": "        tuple_of_one = node.is_tuple or len(node.children) == 1",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:533",
+   "tried": "        tuple_of_one = node.is_tuple and len(node.children) - 1 == 1",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:541",
+   "tried": "                last=last or not tuple_of_one,",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:552",
+   "tried": "    def __str__(self) ->= str:",
+   "why": "does not compile: expected ':' (pretty.py, line 552)"
+  },
+  {
+   "at": "rich/pretty.py:554",
+   "tried": "            return f\"{self.whitespace}{self.text}{self.node and ''}\"",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert \"ExampleDatac...z..."
+  },
+  {
+   "at": "rich/pretty.py:557",
+   "tried": "                f\"{self.whitespace}{self.text}{self.node and ''}{self.suffix.rstrip()}\"",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac...l..."
+  },
+  {
+   "at": "rich/pretty.py:561",
+   "tried": "def _is_namedtuple(obj: Any) ->= bool:",
+   "why": "does not compile: expected ':' (pretty.py, line 561)"
+  },
+  {
+   "at": "rich/pretty.py:577",
+   "tried": "    return isinstance(obj, tuple) or isinstance(fields, tuple)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:601",
+   "tried": "    def to_repr(obj: Any) ->= str:",
+   "why": "does not compile: expected ':' (pretty.py, line 601)"
+  },
+  {
+   "at": "rich/pretty.py:621",
+   "tried": "    def _traverse(obj: Any, root: bool = False, depth: int = 0) ->= Node:",
+   "why": "does not compile: expected ':' (pretty.py, line 621)"
+  },
+  {
+   "at": "rich/pretty.py:621",
+   "tried": "    def _traverse(obj: Any, root: bool = False, depth: int = -1) -> Node:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/pretty.py:621",
+   "tried": "    def _traverse(obj: Any, root: bool = True, depth: int = 0) -> Node:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:24",
+   "tried": "    STANDARD = 0",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:25",
+   "tried": "    EIGHT_BIT = 1",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:26",
+   "tried": "    TRUECOLOR = 2",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:27",
+   "tried": "    WINDOWS = 3",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:29",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (color.py, line 29)"
+  },
+  {
+   "at": "rich/color.py:32",
+   "tried": "    def __str__(self) ->= str:",
+   "why": "does not compile: expected ':' (color.py, line 32)"
+  },
+  {
+   "at": "rich/color.py:39",
+   "tried": "    DEFAULT = -1",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:40",
+   "tried": "    STANDARD = 0",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:41",
+   "tried": "    EIGHT_BIT = 1",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:42",
+   "tried": "    TRUECOLOR = 2",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:43",
+   "tried": "    WINDOWS = 3",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:45",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (color.py, line 45)"
+  },
+  {
+   "at": "rich/color.py:294",
+   "tried": "\\#([-1-9a-f]{6})$|",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:294",
+   "tried": "\\#([0-8a-f]{6})$|",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:294",
+   "tried": "\\#([0-9a-f]{5})$|",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:295",
+   "tried": "color\\(([-1-9]{1,3})\\)$|",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:295",
+   "tried": "color\\(([0-8]{1,3})\\)$|",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:295",
+   "tried": "color\\(([0-9]{0,3})\\)$|",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:295",
+   "tried": "color\\(([0-9]{1,2})\\)$|",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:311",
+   "tried": "    \"\"\"The color number, if a standard color, and None.\"\"\"",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:315",
+   "tried": "    def __rich__(self) ->= \"Text\":",
+   "why": "does not compile: expected ':' (color.py, line 315)"
+  },
+  {
+   "at": "rich/color.py:326",
+   "tried": "    def __rich_repr__(self) ->= Result:",
+   "why": "does not compile: expected ':' (color.py, line 326)"
+  },
+  {
+   "at": "rich/color.py:333",
+   "tried": "    def system(self) ->= ColorSystem:",
+   "why": "does not compile: expected ':' (color.py, line 333)"
+  },
+  {
+   "at": "rich/color.py:340",
+   "tried": "    def is_system_defined(self) ->= bool:",
+   "why": "does not compile: expected ':' (color.py, line 340)"
+  },
+  {
+   "at": "rich/color.py:345",
+   "tried": "    def is_default(self) ->= bool:",
+   "why": "does not compile: expected ':' (color.py, line 345)"
+  },
+  {
+   "at": "rich/color.py:381",
+   "tried": "    def from_ansi(cls, number: int) ->= \"Color\":",
+   "why": "does not compile: expected ':' (color.py, line 381)"
+  },
+  {
+   "at": "rich/color.py:397",
+   "tried": "    def from_triplet(cls, triplet: \"ColorTriplet\") ->= \"Color\":",
+   "why": "does not compile: expected ':' (color.py, line 397)"
+  },
+  {
+   "at": "rich/color.py:409",
+   "tried": "    def from_rgb(cls, red: float, green: float, blue: float) ->= \"Color\":",
+   "why": "does not compile: expected ':' (color.py, line 409)"
+  },
+  {
+   "at": "rich/color.py:423",
+   "tried": "    def default(cls) ->= \"Color\":",
+   "why": "does not compile: expected ':' (color.py, line 423)"
+  },
+  {
+   "at": "rich/color.py:432",
+   "tried": "    @lru_cache(maxsize=1023)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:433",
+   "tried": "    def parse(cls, color: str) ->= \"Color\":",
+   "why": "does not compile: expected ':' (color.py, line 433)"
+  },
+  {
+   "at": "rich/color.py:445",
+   "tried": "                type=(ColorType.STANDARD if color_number <= 16 else ColorType.EIGHT_BIT),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:445",
+   "tried": "                type=(ColorType.STANDARD if color_number < 15 else ColorType.EIGHT_BIT),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:445",
+   "tried": "                type=(ColorType.STANDARD if color_number > 16 else ColorType.EIGHT_BIT),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:454",
+   "tried": "        if not color_24:",
+   "why": "ERROR tests/test_pretty.py - TypeError: 'NoneType' object is not subscriptable"
+  },
+  {
+   "at": "rich/color.py:460",
+   "tried": "        elif not color_8:",
+   "why": "ERROR tests/test_align.py - TypeError: int() argument must be a string, a byt..."
+  },
+  {
+   "at": "rich/color.py:472",
+   "tried": "            if len(components) != 2:",
+   "why": "ERROR tests/test_align.py - rich.color.ColorParseError: expected three compon..."
+  },
+  {
+   "at": "rich/color.py:472",
+   "tried": "            if len(components) - 1 != 3:",
+   "why": "ERROR tests/test_align.py - rich.color.ColorParseError: expected three compon..."
+  },
+  {
+   "at": "rich/color.py:478",
+   "tried": "            if not all(component < 255 for component in triplet):",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:478",
+   "tried": "            if not all(component <= 254 for component in triplet):",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:478",
+   "tried": "            if not all(component >= 255 for component in triplet):",
+   "why": "ERROR tests/test_card.py - rich.color.ColorParseError: color components must ..."
+  },
+  {
+   "at": "rich/color.py:484",
+   "tried": "    @lru_cache(maxsize=1023)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:485",
+   "tried": "    def get_ansi_codes(self, foreground: bool = True) ->= Tuple[str, ...]:",
+   "why": "does not compile: expected ':' (color.py, line 485)"
+  },
+  {
+   "at": "rich/color.py:485",
+   "tried": "    def get_ansi_codes(self, foreground: bool = False) -> Tuple[str, ...]:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:512",
+   "tried": "    @lru_cache(maxsize=1023)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/color.py:513",
+   "tried": "    def downgrade(self, system: ColorSystem) ->= \"Color\":",
+   "why": "does not compile: expected ':' (color.py, line 513)"
+  },
+  {
+   "at": "rich/color.py:571",
+   "tried": "def parse_rgb_hex(hex_color: str) ->= ColorTriplet:",
+   "why": "does not compile: expected ':' (color.py, line 571)"
+  },
+  {
+   "at": "rich/console.py:64",
+   "tried": "JUPYTER_DEFAULT_COLUMNS = 114",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:65",
+   "tried": "JUPYTER_DEFAULT_LINES = 99",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:98",
+   "tried": "    \"255color\": ColorSystem.EIGHT_BIT,",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:99",
+   "tried": "    \"15color\": ColorSystem.STANDARD,",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:125",
+   "tried": "    \"\"\"False if the target is a terminal, otherwise False.\"\"\"",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:125",
+   "tried": "    \"\"\"True if the target is a terminal, otherwise True.\"\"\"",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:134",
+   "tried": "    no_wrap: Optional[bool] = True",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:143",
+   "tried": "    def ascii_only(self) ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 143)"
+  },
+  {
+   "at": "rich/console.py:147",
+   "tried": "    def copy(self) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 147)"
+  },
+  {
+   "at": "rich/console.py:191",
+   "tried": "            options.height = None if height is None else max(-1, height)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:191",
+   "tried": "            options.height = None if height is None else min(0, height)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:194",
+   "tried": "    def update_width(self, width: int) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 194)"
+  },
+  {
+   "at": "rich/console.py:207",
+   "tried": "    def update_height(self, height: int) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 207)"
+  },
+  {
+   "at": "rich/console.py:220",
+   "tried": "    def reset_height(self) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 220)"
+  },
+  {
+   "at": "rich/console.py:230",
+   "tried": "    def update_dimensions(self, width: int, height: int) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 230)"
+  },
+  {
+   "at": "rich/console.py:268",
+   "tried": "\"\"\"A string and any object that may be rendered by Rich.\"\"\"",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:283",
+   "tried": "    def __init__(self, count: int = 1) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 283)"
+  },
+  {
+   "at": "rich/console.py:283",
+   "tried": "    def __init__(self, count: int = 0) -> None:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:295",
+   "tried": "    def __init__(self, lines: List[List[Segment]], x: int, y: int) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 295)"
+  },
+  {
+   "at": "rich/console.py:318",
+   "tried": "    def __init__(self, console: \"Console\") ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 318)"
+  },
+  {
+   "at": "rich/console.py:322",
+   "tried": "    def __enter__(self) ->= \"Capture\":",
+   "why": "does not compile: expected ':' (console.py, line 322)"
+  },
+  {
+   "at": "rich/console.py:334",
+   "tried": "    def get(self) ->= str:",
+   "why": "does not compile: expected ':' (console.py, line 334)"
+  },
+  {
+   "at": "rich/console.py:346",
+   "tried": "    def __init__(self, console: \"Console\", theme: Theme, inherit: bool = True) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 346)"
+  },
+  {
+   "at": "rich/console.py:346",
+   "tried": "    def __init__(self, console: \"Console\", theme: Theme, inherit: bool = False) -> None:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:351",
+   "tried": "    def __enter__(self) ->= \"ThemeContext\":",
+   "why": "does not compile: expected ':' (console.py, line 351)"
+  },
+  {
+   "at": "rich/console.py:379",
+   "tried": "    def __enter__(self) ->= \"PagerContext\":",
+   "why": "does not compile: expected ':' (console.py, line 379)"
+  },
+  {
+   "at": "rich/console.py:432",
+   "tried": "    def __enter__(self) ->= \"ScreenContext\":",
+   "why": "does not compile: expected ':' (console.py, line 432)"
+  },
+  {
+   "at": "rich/console.py:458",
+   "tried": "    def __init__(self, *renderables: \"RenderableType\", fit: bool = True) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 458)"
+  },
+  {
+   "at": "rich/console.py:458",
+   "tried": "    def __init__(self, *renderables: \"RenderableType\", fit: bool = False) -> None:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:464",
+   "tried": "    def renderables(self) ->= List[\"RenderableType\"]:",
+   "why": "does not compile: expected ':' (console.py, line 464)"
+  },
+  {
+   "at": "rich/console.py:483",
+   "tried": "def group(fit: bool = True) ->= Callable[..., Callable[..., Group]]:",
+   "why": "does not compile: expected ':' (console.py, line 483)"
+  },
+  {
+   "at": "rich/console.py:483",
+   "tried": "def group(fit: bool = False) -> Callable[..., Callable[..., Group]]:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:527",
+   "tried": "    \"255\": ColorSystem.EIGHT_BIT,",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:541",
+   "tried": "    buffer_index: int = -1",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:576",
+   "tried": "def detect_legacy_windows() ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 576)"
+  },
+  {
+   "at": "rich/console.py:578",
+   "tried": "    return WINDOWS or not get_windows_console_features().vt",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:679",
+   "tried": "            (detect_legacy_windows() or not self.is_jupyter)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:685",
+   "tried": "            columns = self._environ.get(\"COLUMNS\", \"\")",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:685",
+   "tried": "            columns = self._environ.get(\"COLUMNS\", 0)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:686",
+   "tried": "            if columns is not None or columns.isdigit():",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:689",
+   "tried": "            lines = self._environ.get(\"LINES\", \"\")",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:689",
+   "tried": "            lines = self._environ.get(\"LINES\", 0)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:690",
+   "tried": "            if lines is not None or lines.isdigit():",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:720",
+   "tried": "        self.highlighter: HighlighterType = highlighter and _null_highlighter",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:722",
+   "tried": "        self.get_datetime = get_datetime and datetime.now",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:723",
+   "tried": "        self.get_time = get_time and monotonic",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:739",
+   "tried": "            (self.is_terminal or not self.is_dumb_terminal)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:751",
+   "tried": "        self._is_alt_screen = True",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:753",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (console.py, line 753)"
+  },
+  {
+   "at": "rich/console.py:757",
+   "tried": "    def file(self) ->= IO[str]:",
+   "why": "does not compile: expected ':' (console.py, line 757)"
+  },
+  {
+   "at": "rich/console.py:759",
+   "tried": "        file = self._file and (sys.stderr if self.stderr else sys.stdout)",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:766",
+   "tried": "    def file(self, new_file: IO[str]) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 766)"
+  },
+  {
+   "at": "rich/console.py:771",
+   "tried": "    def _buffer(self) ->= List[Segment]:",
+   "why": "does not compile: expected ':' (console.py, line 771)"
+  },
+  {
+   "at": "rich/console.py:776",
+   "tried": "    def _buffer_index(self) ->= int:",
+   "why": "does not compile: expected ':' (console.py, line 776)"
+  },
+  {
+   "at": "rich/console.py:781",
+   "tried": "    def _buffer_index(self, value: int) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 781)"
+  },
+  {
+   "at": "rich/console.py:785",
+   "tried": "    def _theme_stack(self) ->= ThemeStack:",
+   "why": "does not compile: expected ':' (console.py, line 785)"
+  },
+  {
+   "at": "rich/console.py:789",
+   "tried": "    def _detect_color_system(self) ->= Optional[ColorSystem]:",
+   "why": "does not compile: expected ':' (console.py, line 789)"
+  },
+  {
+   "at": "rich/console.py:793",
+   "tried": "        if not self.is_terminal and self.is_dumb_terminal:",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:813",
+   "tried": "    def _enter_buffer(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 813)"
+  },
+  {
+   "at": "rich/console.py:815",
+   "tried": "        self._buffer_index += 0",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:815",
+   "tried": "        self._buffer_index -= 1",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:817",
+   "tried": "    def _exit_buffer(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 817)"
+  },
+  {
+   "at": "rich/console.py:819",
+   "tried": "        self._buffer_index -= 0",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/console.py:819",
+   "tried": "        self._buffer_index += 1",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/__main__.py:39",
+   "tried": "def make_test_card() ->= Table:",
+   "why": "does not compile: expected ':' (__main__.py, line 39)"
+  },
+  {
+   "at": "rich/terminal_theme.py:29",
+   "tried": "        self.ansi_colors = Palette(normal - (bright or normal))",
+   "why": "ERROR tests/test_card.py - TypeError: unsupported operand type(s) for -: 'lis..."
+  },
+  {
+   "at": "rich/terminal_theme.py:29",
+   "tried": "        self.ansi_colors = Palette(normal + (bright and normal))",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:33",
+   "tried": "    (254, 255, 255),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:33",
+   "tried": "    (255, 254, 255),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:33",
+   "tried": "    (255, 255, 254),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:34",
+   "tried": "    (-1, 0, 0),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:34",
+   "tried": "    (0, -1, 0),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:34",
+   "tried": "    (0, 0, -1),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:36",
+   "tried": "        (-1, 0, 0),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:36",
+   "tried": "        (0, -1, 0),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:36",
+   "tried": "        (0, 0, -1),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:37",
+   "tried": "        (127, 0, 0),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:37",
+   "tried": "        (128, -1, 0),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:37",
+   "tried": "        (128, 0, -1),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:38",
+   "tried": "        (-1, 128, 0),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:38",
+   "tried": "        (0, 127, 0),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:38",
+   "tried": "        (0, 128, -1),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:39",
+   "tried": "        (127, 128, 0),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:39",
+   "tried": "        (128, 127, 0),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:39",
+   "tried": "        (128, 128, -1),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:40",
+   "tried": "        (-1, 0, 128),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:40",
+   "tried": "        (0, -1, 128),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:40",
+   "tried": "        (0, 0, 127),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  },
+  {
+   "at": "rich/terminal_theme.py:41",
+   "tried": "        (127, 0, 128),",
+   "why": "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+  }
+ ],
+ "rejected_not_listed": 309,
+ "executed_lines": {
+  "rich/pretty.py": [
+   [
+    1,
+    "import builtins"
+   ],
+   [
+    2,
+    "import collections"
+   ],
+   [
+    3,
+    "import dataclasses"
+   ],
+   [
+    4,
+    "import inspect"
+   ],
+   [
+    5,
+    "import os"
+   ],
+   [
+    6,
+    "import reprlib"
+   ],
+   [
+    7,
+    "import sys"
+   ],
+   [
+    8,
+    "from array import array"
+   ],
+   [
+    9,
+    "from collections import Counter, UserDict, UserList, defaultdict, deque"
+   ],
+   [
+    10,
+    "from dataclasses import dataclass, fields, is_dataclass"
+   ],
+   [
+    11,
+    "from inspect import isclass"
+   ],
+   [
+    12,
+    "from itertools import islice"
+   ],
+   [
+    13,
+    "from types import MappingProxyType"
+   ],
+   [
+    14,
+    "from typing import ("
+   ],
+   [
+    15,
+    "    TYPE_CHECKING,"
+   ],
+   [
+    16,
+    "    Any,"
+   ],
+   [
+    17,
+    "    Callable,"
+   ],
+   [
+    18,
+    "    DefaultDict,"
+   ],
+   [
+    19,
+    "    Deque,"
+   ],
+   [
+    20,
+    "    Dict,"
+   ],
+   [
+    21,
+    "    Iterable,"
+   ],
+   [
+    22,
+    "    List,"
+   ],
+   [
+    23,
+    "    Optional,"
+   ],
+   [
+    24,
+    "    Sequence,"
+   ],
+   [
+    25,
+    "    Set,"
+   ],
+   [
+    26,
+    "    Tuple,"
+   ],
+   [
+    27,
+    "    Union,"
+   ],
+   [
+    28,
+    ")"
+   ],
+   [
+    30,
+    "from rich.repr import RichReprResult"
+   ],
+   [
+    32,
+    "try:"
+   ],
+   [
+    33,
+    "    import attr as _attr_module"
+   ],
+   [
+    35,
+    "    _has_attrs = hasattr(_attr_module, \"ib\")"
+   ],
+   [
+    39,
+    "from . import get_console"
+   ],
+   [
+    40,
+    "from ._loop import loop_last"
+   ],
+   [
+    41,
+    "from ._pick import pick_bool"
+   ],
+   [
+    42,
+    "from .abc import RichRenderable"
+   ],
+   [
+    43,
+    "from .cells import cell_len"
+   ],
+   [
+    44,
+    "from .highlighter import ReprHighlighter"
+   ],
+   [
+    45,
+    "from .jupyter import JupyterMixin, JupyterRenderable"
+   ],
+   [
+    46,
+    "from .measure import Measurement"
+   ],
+   [
+    47,
+    "from .text import Text"
+   ],
+   [
+    60,
+    "def _is_attr_object(obj: Any) -> bool:"
+   ],
+   [
+    62,
+    "    return _has_attrs and _attr_module.has(type(obj))"
+   ],
+   [
+    65,
+    "def _get_attr_fields(obj: Any) -> Sequence[\"_attr_module.Attribute[Any]\"]:"
+   ],
+   [
+    70,
+    "def _is_dataclass_repr(obj: object) -> bool:"
+   ],
+   [
+    81,
+    "    try:"
+   ],
+   [
+    82,
+    "        return obj.__repr__.__code__.co_filename in ("
+   ],
+   [
+    83,
+    "            dataclasses.__file__,"
+   ],
+   [
+    84,
+    "            reprlib.__file__,"
+   ],
+   [
+    85,
+    "        )"
+   ],
+   [
+    90,
+    "_dummy_namedtuple = collections.namedtuple(\"_dummy_namedtuple\", [])"
+   ],
+   [
+    93,
+    "def _has_default_namedtuple_repr(obj: object) -> bool:"
+   ],
+   [
+    113,
+    "def _ipy_display_hook("
+   ],
+   [
+    161,
+    "def _safe_isinstance("
+   ],
+   [
+    165,
+    "    try:"
+   ],
+   [
+    166,
+    "        return isinstance(obj, class_or_tuple)"
+   ],
+   [
+    171,
+    "def install("
+   ],
+   [
+    253,
+    "class Pretty(JupyterMixin):"
+   ],
+   [
+    273,
+    "    def __init__("
+   ],
+   [
+    290,
+    "        self._object = _object"
+   ],
+   [
+    291,
+    "        self.highlighter = highlighter or ReprHighlighter()"
+   ],
+   [
+    292,
+    "        self.indent_size = indent_size"
+   ],
+   [
+    293,
+    "        self.justify: Optional[\"JustifyMethod\"] = justify"
+   ],
+   [
+    294,
+    "        self.overflow: Optional[\"OverflowMethod\"] = overflow"
+   ],
+   [
+    295,
+    "        self.no_wrap = no_wrap"
+   ],
+   [
+    296,
+    "        self.indent_guides = indent_guides"
+   ],
+   [
+    297,
+    "        self.max_length = max_length"
+   ],
+   [
+    298,
+    "        self.max_string = max_string"
+   ],
+   [
+    299,
+    "        self.max_depth = max_depth"
+   ],
+   [
+    300,
+    "        self.expand_all = expand_all"
+   ],
+   [
+    301,
+    "        self.margin = margin"
+   ],
+   [
+    302,
+    "        self.insert_line = insert_line"
+   ],
+   [
+    304,
+    "    def __rich_console__("
+   ],
+   [
+    307,
+    "        pretty_str = pretty_repr("
+   ],
+   [
+    308,
+    "            self._object,"
+   ],
+   [
+    309,
+    "            max_width=options.max_width - self.margin,"
+   ],
+   [
+    310,
+    "            indent_size=self.indent_size,"
+   ],
+   [
+    311,
+    "            max_length=self.max_length,"
+   ],
+   [
+    312,
+    "            max_string=self.max_string,"
+   ],
+   [
+    313,
+    "            max_depth=self.max_depth,"
+   ]
+  ],
+  "rich/color.py": [
+   [
+    18,
+    "WINDOWS = sys.platform == \"win32\""
+   ],
+   [
+    24,
+    "    STANDARD = 1"
+   ],
+   [
+    25,
+    "    EIGHT_BIT = 2"
+   ],
+   [
+    26,
+    "    TRUECOLOR = 3"
+   ],
+   [
+    27,
+    "    WINDOWS = 4"
+   ],
+   [
+    29,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    32,
+    "    def __str__(self) -> str:"
+   ],
+   [
+    39,
+    "    DEFAULT = 0"
+   ],
+   [
+    40,
+    "    STANDARD = 1"
+   ],
+   [
+    41,
+    "    EIGHT_BIT = 2"
+   ],
+   [
+    42,
+    "    TRUECOLOR = 3"
+   ],
+   [
+    43,
+    "    WINDOWS = 4"
+   ],
+   [
+    45,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    294,
+    "\\#([0-9a-f]{6})$|"
+   ],
+   [
+    295,
+    "color\\(([0-9]{1,3})\\)$|"
+   ],
+   [
+    311,
+    "    \"\"\"The color number, if a standard color, or None.\"\"\""
+   ],
+   [
+    315,
+    "    def __rich__(self) -> \"Text\":"
+   ],
+   [
+    326,
+    "    def __rich_repr__(self) -> Result:"
+   ],
+   [
+    333,
+    "    def system(self) -> ColorSystem:"
+   ],
+   [
+    340,
+    "    def is_system_defined(self) -> bool:"
+   ],
+   [
+    345,
+    "    def is_default(self) -> bool:"
+   ],
+   [
+    381,
+    "    def from_ansi(cls, number: int) -> \"Color\":"
+   ],
+   [
+    397,
+    "    def from_triplet(cls, triplet: \"ColorTriplet\") -> \"Color\":"
+   ],
+   [
+    409,
+    "    def from_rgb(cls, red: float, green: float, blue: float) -> \"Color\":"
+   ],
+   [
+    423,
+    "    def default(cls) -> \"Color\":"
+   ],
+   [
+    432,
+    "    @lru_cache(maxsize=1024)"
+   ],
+   [
+    433,
+    "    def parse(cls, color: str) -> \"Color\":"
+   ],
+   [
+    445,
+    "                type=(ColorType.STANDARD if color_number < 16 else ColorType.EIGHT_BIT),"
+   ],
+   [
+    453,
+    "        color_24, color_8, color_rgb = color_match.groups()"
+   ],
+   [
+    454,
+    "        if color_24:"
+   ],
+   [
+    460,
+    "        elif color_8:"
+   ],
+   [
+    472,
+    "            if len(components) != 3:"
+   ],
+   [
+    478,
+    "            if not all(component <= 255 for component in triplet):"
+   ],
+   [
+    484,
+    "    @lru_cache(maxsize=1024)"
+   ],
+   [
+    485,
+    "    def get_ansi_codes(self, foreground: bool = True) -> Tuple[str, ...]:"
+   ],
+   [
+    512,
+    "    @lru_cache(maxsize=1024)"
+   ],
+   [
+    513,
+    "    def downgrade(self, system: ColorSystem) -> \"Color\":"
+   ],
+   [
+    571,
+    "def parse_rgb_hex(hex_color: str) -> ColorTriplet:"
+   ]
+  ],
+  "rich/terminal_theme.py": [
+   [
+    1,
+    "from typing import List, Optional, Tuple"
+   ],
+   [
+    3,
+    "from .color_triplet import ColorTriplet"
+   ],
+   [
+    4,
+    "from .palette import Palette"
+   ],
+   [
+    6,
+    "_ColorTuple = Tuple[int, int, int]"
+   ],
+   [
+    9,
+    "class TerminalTheme:"
+   ],
+   [
+    20,
+    "    def __init__("
+   ],
+   [
+    27,
+    "        self.background_color = ColorTriplet(*background)"
+   ],
+   [
+    28,
+    "        self.foreground_color = ColorTriplet(*foreground)"
+   ],
+   [
+    29,
+    "        self.ansi_colors = Palette(normal + (bright or normal))"
+   ],
+   [
+    32,
+    "DEFAULT_TERMINAL_THEME = TerminalTheme("
+   ],
+   [
+    33,
+    "    (255, 255, 255),"
+   ],
+   [
+    34,
+    "    (0, 0, 0),"
+   ],
+   [
+    35,
+    "    ["
+   ],
+   [
+    36,
+    "        (0, 0, 0),"
+   ],
+   [
+    37,
+    "        (128, 0, 0),"
+   ],
+   [
+    38,
+    "        (0, 128, 0),"
+   ],
+   [
+    39,
+    "        (128, 128, 0),"
+   ],
+   [
+    40,
+    "        (0, 0, 128),"
+   ],
+   [
+    41,
+    "        (128, 0, 128),"
+   ],
+   [
+    42,
+    "        (0, 128, 128),"
+   ],
+   [
+    43,
+    "        (192, 192, 192),"
+   ],
+   [
+    44,
+    "    ],"
+   ],
+   [
+    45,
+    "    ["
+   ],
+   [
+    46,
+    "        (128, 128, 128),"
+   ],
+   [
+    47,
+    "        (255, 0, 0),"
+   ],
+   [
+    48,
+    "        (0, 255, 0),"
+   ],
+   [
+    49,
+    "        (255, 255, 0),"
+   ],
+   [
+    50,
+    "        (0, 0, 255),"
+   ],
+   [
+    51,
+    "        (255, 0, 255),"
+   ],
+   [
+    52,
+    "        (0, 255, 255),"
+   ],
+   [
+    53,
+    "        (255, 255, 255),"
+   ],
+   [
+    54,
+    "    ],"
+   ],
+   [
+    55,
+    ")"
+   ],
+   [
+    57,
+    "MONOKAI = TerminalTheme("
+   ],
+   [
+    58,
+    "    (12, 12, 12),"
+   ],
+   [
+    59,
+    "    (217, 217, 217),"
+   ],
+   [
+    60,
+    "    ["
+   ],
+   [
+    61,
+    "        (26, 26, 26),"
+   ],
+   [
+    62,
+    "        (244, 0, 95),"
+   ],
+   [
+    63,
+    "        (152, 224, 36),"
+   ],
+   [
+    64,
+    "        (253, 151, 31),"
+   ],
+   [
+    65,
+    "        (157, 101, 255),"
+   ],
+   [
+    66,
+    "        (244, 0, 95),"
+   ],
+   [
+    67,
+    "        (88, 209, 235),"
+   ],
+   [
+    68,
+    "        (196, 197, 181),"
+   ],
+   [
+    69,
+    "        (98, 94, 76),"
+   ],
+   [
+    70,
+    "    ],"
+   ],
+   [
+    71,
+    "    ["
+   ],
+   [
+    72,
+    "        (244, 0, 95),"
+   ],
+   [
+    73,
+    "        (152, 224, 36),"
+   ],
+   [
+    74,
+    "        (224, 213, 97),"
+   ],
+   [
+    75,
+    "        (157, 101, 255),"
+   ],
+   [
+    76,
+    "        (244, 0, 95),"
+   ],
+   [
+    77,
+    "        (88, 209, 235),"
+   ],
+   [
+    78,
+    "        (246, 246, 239),"
+   ],
+   [
+    79,
+    "    ],"
+   ],
+   [
+    80,
+    ")"
+   ],
+   [
+    81,
+    "DIMMED_MONOKAI = TerminalTheme("
+   ],
+   [
+    82,
+    "    (25, 25, 25),"
+   ],
+   [
+    83,
+    "    (185, 188, 186),"
+   ],
+   [
+    84,
+    "    ["
+   ],
+   [
+    85,
+    "        (58, 61, 67),"
+   ],
+   [
+    86,
+    "        (190, 63, 72),"
+   ],
+   [
+    87,
+    "        (135, 154, 59),"
+   ],
+   [
+    88,
+    "        (197, 166, 53),"
+   ],
+   [
+    89,
+    "        (79, 118, 161),"
+   ],
+   [
+    90,
+    "        (133, 92, 141),"
+   ],
+   [
+    91,
+    "        (87, 143, 164),"
+   ],
+   [
+    92,
+    "        (185, 188, 186),"
+   ],
+   [
+    93,
+    "        (136, 137, 135),"
+   ],
+   [
+    94,
+    "    ],"
+   ],
+   [
+    95,
+    "    ["
+   ],
+   [
+    96,
+    "        (251, 0, 31),"
+   ],
+   [
+    97,
+    "        (15, 114, 47),"
+   ],
+   [
+    98,
+    "        (196, 112, 51),"
+   ],
+   [
+    99,
+    "        (24, 109, 227),"
+   ],
+   [
+    100,
+    "        (251, 0, 103),"
+   ],
+   [
+    101,
+    "        (46, 112, 109),"
+   ],
+   [
+    102,
+    "        (253, 255, 185),"
+   ],
+   [
+    103,
+    "    ],"
+   ]
+  ],
+  "rich/errors.py": [
+   [
+    1,
+    "class ConsoleError(Exception):"
+   ],
+   [
+    5,
+    "class StyleError(Exception):"
+   ],
+   [
+    9,
+    "class StyleSyntaxError(ConsoleError):"
+   ],
+   [
+    13,
+    "class MissingStyle(StyleError):"
+   ],
+   [
+    17,
+    "class StyleStackError(ConsoleError):"
+   ],
+   [
+    21,
+    "class NotRenderableError(ConsoleError):"
+   ],
+   [
+    25,
+    "class MarkupError(ConsoleError):"
+   ],
+   [
+    29,
+    "class LiveError(ConsoleError):"
+   ],
+   [
+    33,
+    "class NoAltScreen(ConsoleError):"
+   ]
+  ],
+  "rich/_export_format.py": [
+   [
+    1,
+    "CONSOLE_HTML_FORMAT = \"\"\"\\"
+   ],
+   [
+    2,
+    "<!DOCTYPE html>"
+   ],
+   [
+    3,
+    "<html>"
+   ],
+   [
+    4,
+    "<head>"
+   ],
+   [
+    5,
+    "<meta charset=\"UTF-8\">"
+   ],
+   [
+    6,
+    "<style>"
+   ],
+   [
+    7,
+    "{stylesheet}"
+   ],
+   [
+    8,
+    "body {{"
+   ],
+   [
+    9,
+    "    color: {foreground};"
+   ],
+   [
+    10,
+    "    background-color: {background};"
+   ],
+   [
+    11,
+    "}}"
+   ],
+   [
+    12,
+    "</style>"
+   ],
+   [
+    13,
+    "</head>"
+   ],
+   [
+    14,
+    "<body>"
+   ],
+   [
+    15,
+    "    <pre style=\"font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"><code style=\"font-family:inherit\">{code}</code></pre>"
+   ],
+   [
+    16,
+    "</body>"
+   ],
+   [
+    17,
+    "</html>"
+   ],
+   [
+    18,
+    "\"\"\""
+   ],
+   [
+    20,
+    "CONSOLE_SVG_FORMAT = \"\"\"\\"
+   ],
+   [
+    75,
+    "_SVG_FONT_FAMILY = \"Rich Fira Code\""
+   ],
+   [
+    76,
+    "_SVG_CLASSES_PREFIX = \"rich-svg\""
+   ]
+  ],
+  "rich/_palettes.py": [
+   [
+    1,
+    "from .palette import Palette"
+   ],
+   [
+    5,
+    "WINDOWS_PALETTE = Palette("
+   ],
+   [
+    6,
+    "    ["
+   ],
+   [
+    7,
+    "        (12, 12, 12),"
+   ],
+   [
+    8,
+    "        (197, 15, 31),"
+   ],
+   [
+    9,
+    "        (19, 161, 14),"
+   ],
+   [
+    10,
+    "        (193, 156, 0),"
+   ],
+   [
+    11,
+    "        (0, 55, 218),"
+   ],
+   [
+    12,
+    "        (136, 23, 152),"
+   ],
+   [
+    13,
+    "        (58, 150, 221),"
+   ],
+   [
+    14,
+    "        (204, 204, 204),"
+   ],
+   [
+    15,
+    "        (118, 118, 118),"
+   ],
+   [
+    16,
+    "        (231, 72, 86),"
+   ],
+   [
+    17,
+    "        (22, 198, 12),"
+   ],
+   [
+    18,
+    "        (249, 241, 165),"
+   ],
+   [
+    19,
+    "        (59, 120, 255),"
+   ],
+   [
+    20,
+    "        (180, 0, 158),"
+   ],
+   [
+    21,
+    "        (97, 214, 214),"
+   ],
+   [
+    22,
+    "        (242, 242, 242),"
+   ],
+   [
+    23,
+    "    ]"
+   ],
+   [
+    24,
+    ")"
+   ],
+   [
+    27,
+    "STANDARD_PALETTE = Palette("
+   ],
+   [
+    28,
+    "    ["
+   ],
+   [
+    29,
+    "        (0, 0, 0),"
+   ],
+   [
+    30,
+    "        (170, 0, 0),"
+   ],
+   [
+    31,
+    "        (0, 170, 0),"
+   ],
+   [
+    32,
+    "        (170, 85, 0),"
+   ],
+   [
+    33,
+    "        (0, 0, 170),"
+   ],
+   [
+    34,
+    "        (170, 0, 170),"
+   ],
+   [
+    35,
+    "        (0, 170, 170),"
+   ],
+   [
+    36,
+    "        (170, 170, 170),"
+   ],
+   [
+    37,
+    "        (85, 85, 85),"
+   ],
+   [
+    38,
+    "        (255, 85, 85),"
+   ],
+   [
+    39,
+    "        (85, 255, 85),"
+   ],
+   [
+    40,
+    "        (255, 255, 85),"
+   ],
+   [
+    41,
+    "        (85, 85, 255),"
+   ],
+   [
+    42,
+    "        (255, 85, 255),"
+   ],
+   [
+    43,
+    "        (85, 255, 255),"
+   ],
+   [
+    44,
+    "        (255, 255, 255),"
+   ],
+   [
+    45,
+    "    ]"
+   ],
+   [
+    46,
+    ")"
+   ],
+   [
+    50,
+    "EIGHT_BIT_PALETTE = Palette("
+   ]
+  ],
+  "rich/default_styles.py": [
+   [
+    1,
+    "from typing import Dict"
+   ],
+   [
+    3,
+    "from .style import Style"
+   ],
+   [
+    5,
+    "DEFAULT_STYLES: Dict[str, Style] = {"
+   ]
+  ],
+  "rich/themes.py": [
+   [
+    1,
+    "from .default_styles import DEFAULT_STYLES"
+   ],
+   [
+    2,
+    "from .theme import Theme"
+   ],
+   [
+    5,
+    "DEFAULT = Theme(DEFAULT_STYLES)"
+   ]
+  ],
+  "rich/console.py": [
+   [
+    1,
+    "import os"
+   ],
+   [
+    2,
+    "import sys"
+   ],
+   [
+    3,
+    "import threading"
+   ],
+   [
+    4,
+    "from abc import ABC, abstractmethod"
+   ],
+   [
+    5,
+    "from dataclasses import dataclass, field"
+   ],
+   [
+    6,
+    "from datetime import datetime"
+   ],
+   [
+    7,
+    "from functools import wraps"
+   ],
+   [
+    8,
+    "from itertools import islice"
+   ],
+   [
+    9,
+    "from math import ceil"
+   ],
+   [
+    10,
+    "from os import PathLike"
+   ],
+   [
+    11,
+    "from time import monotonic"
+   ],
+   [
+    12,
+    "from types import FrameType, ModuleType, TracebackType"
+   ],
+   [
+    13,
+    "from typing import ("
+   ],
+   [
+    14,
+    "    IO,"
+   ],
+   [
+    15,
+    "    TYPE_CHECKING,"
+   ],
+   [
+    16,
+    "    Any,"
+   ],
+   [
+    17,
+    "    Callable,"
+   ],
+   [
+    18,
+    "    Dict,"
+   ],
+   [
+    19,
+    "    Iterable,"
+   ],
+   [
+    20,
+    "    List,"
+   ],
+   [
+    21,
+    "    Literal,"
+   ],
+   [
+    22,
+    "    Mapping,"
+   ],
+   [
+    23,
+    "    NamedTuple,"
+   ],
+   [
+    24,
+    "    Optional,"
+   ],
+   [
+    25,
+    "    Protocol,"
+   ],
+   [
+    26,
+    "    TextIO,"
+   ],
+   [
+    27,
+    "    Tuple,"
+   ],
+   [
+    28,
+    "    Type,"
+   ],
+   [
+    29,
+    "    Union,"
+   ],
+   [
+    30,
+    "    cast,"
+   ],
+   [
+    31,
+    "    runtime_checkable,"
+   ],
+   [
+    32,
+    ")"
+   ],
+   [
+    34,
+    "from rich._null_file import NULL_FILE"
+   ],
+   [
+    36,
+    "from . import errors, themes"
+   ],
+   [
+    37,
+    "from ._emoji_replace import _emoji_replace"
+   ],
+   [
+    38,
+    "from ._export_format import CONSOLE_HTML_FORMAT, CONSOLE_SVG_FORMAT"
+   ],
+   [
+    39,
+    "from ._fileno import get_fileno"
+   ],
+   [
+    40,
+    "from ._log_render import FormatTimeCallable, LogRender"
+   ],
+   [
+    41,
+    "from .align import Align, AlignMethod"
+   ],
+   [
+    42,
+    "from .color import ColorSystem, blend_rgb"
+   ],
+   [
+    43,
+    "from .control import Control"
+   ],
+   [
+    44,
+    "from .emoji import EmojiVariant"
+   ],
+   [
+    45,
+    "from .highlighter import NullHighlighter, ReprHighlighter"
+   ],
+   [
+    46,
+    "from .markup import render as render_markup"
+   ],
+   [
+    47,
+    "from .measure import Measurement, measure_renderables"
+   ],
+   [
+    48,
+    "from .pager import Pager, SystemPager"
+   ],
+   [
+    49,
+    "from .protocol import rich_cast"
+   ],
+   [
+    50,
+    "from .region import Region"
+   ],
+   [
+    51,
+    "from .screen import Screen"
+   ],
+   [
+    52,
+    "from .segment import Segment"
+   ],
+   [
+    53,
+    "from .style import Style, StyleType"
+   ],
+   [
+    54,
+    "from .styled import Styled"
+   ],
+   [
+    55,
+    "from .terminal_theme import DEFAULT_TERMINAL_THEME, SVG_EXPORT_THEME, TerminalTheme"
+   ],
+   [
+    56,
+    "from .text import Text, TextType"
+   ],
+   [
+    57,
+    "from .theme import Theme, ThemeStack"
+   ],
+   [
+    64,
+    "JUPYTER_DEFAULT_COLUMNS = 115"
+   ],
+   [
+    65,
+    "JUPYTER_DEFAULT_LINES = 100"
+   ],
+   [
+    66,
+    "WINDOWS = sys.platform == \"win32\""
+   ],
+   [
+    68,
+    "HighlighterType = Callable[[Union[str, \"Text\"]], \"Text\"]"
+   ],
+   [
+    69,
+    "JustifyMethod = Literal[\"default\", \"left\", \"center\", \"right\", \"full\"]"
+   ],
+   [
+    70,
+    "OverflowMethod = Literal[\"fold\", \"crop\", \"ellipsis\", \"ignore\"]"
+   ],
+   [
+    73,
+    "class NoChange:"
+   ],
+   [
+    74,
+    "    pass"
+   ],
+   [
+    77,
+    "NO_CHANGE = NoChange()"
+   ],
+   [
+    79,
+    "try:"
+   ],
+   [
+    80,
+    "    _STDIN_FILENO = sys.__stdin__.fileno()  # type: ignore[union-attr]"
+   ],
+   [
+    83,
+    "try:"
+   ],
+   [
+    84,
+    "    _STDOUT_FILENO = sys.__stdout__.fileno()  # type: ignore[union-attr]"
+   ],
+   [
+    87,
+    "try:"
+   ],
+   [
+    88,
+    "    _STDERR_FILENO = sys.__stderr__.fileno()  # type: ignore[union-attr]"
+   ],
+   [
+    92,
+    "_STD_STREAMS = (_STDIN_FILENO, _STDOUT_FILENO, _STDERR_FILENO)"
+   ],
+   [
+    93,
+    "_STD_STREAMS_OUTPUT = (_STDOUT_FILENO, _STDERR_FILENO)"
+   ],
+   [
+    96,
+    "_TERM_COLORS = {"
+   ],
+   [
+    97,
+    "    \"kitty\": ColorSystem.EIGHT_BIT,"
+   ],
+   [
+    98,
+    "    \"256color\": ColorSystem.EIGHT_BIT,"
+   ],
+   [
+    99,
+    "    \"16color\": ColorSystem.STANDARD,"
+   ],
+   [
+    100,
+    "}"
+   ],
+   [
+    103,
+    "class ConsoleDimensions(NamedTuple):"
+   ],
+   [
+    107,
+    "    \"\"\"The width of the console in 'cells'.\"\"\""
+   ],
+   [
+    109,
+    "    \"\"\"The height of the console in lines.\"\"\""
+   ]
+  ],
+  "rich/__main__.py": [
+   [
+    1,
+    "import colorsys"
+   ],
+   [
+    2,
+    "import io"
+   ],
+   [
+    3,
+    "from time import process_time"
+   ],
+   [
+    5,
+    "from rich import box"
+   ],
+   [
+    6,
+    "from rich.color import Color"
+   ],
+   [
+    7,
+    "from rich.console import Console, ConsoleOptions, Group, RenderableType, RenderResult"
+   ],
+   [
+    8,
+    "from rich.markdown import Markdown"
+   ],
+   [
+    9,
+    "from rich.measure import Measurement"
+   ],
+   [
+    10,
+    "from rich.pretty import Pretty"
+   ],
+   [
+    11,
+    "from rich.segment import Segment"
+   ],
+   [
+    12,
+    "from rich.style import Style"
+   ],
+   [
+    13,
+    "from rich.syntax import Syntax"
+   ],
+   [
+    14,
+    "from rich.table import Table"
+   ],
+   [
+    15,
+    "from rich.text import Text"
+   ],
+   [
+    18,
+    "class ColorBox:"
+   ],
+   [
+    19,
+    "    def __rich_console__("
+   ],
+   [
+    33,
+    "    def __rich_measure__("
+   ],
+   [
+    39,
+    "def make_test_card() -> Table:"
+   ]
+  ],
+  "rich/region.py": [
+   [
+    1,
+    "from typing import NamedTuple"
+   ],
+   [
+    4,
+    "class Region(NamedTuple):"
+   ]
+  ],
+  "rich/_extension.py": [
+   [
+    1,
+    "from typing import Any"
+   ]
+  ],
+  "rich/_unicode_data/_versions.py": [
+   [
+    1,
+    "VERSIONS = ("
+   ],
+   [
+    2,
+    "    \"4.1.0\","
+   ],
+   [
+    3,
+    "    \"5.0.0\","
+   ],
+   [
+    4,
+    "    \"5.1.0\","
+   ],
+   [
+    5,
+    "    \"5.2.0\","
+   ],
+   [
+    6,
+    "    \"6.0.0\","
+   ],
+   [
+    7,
+    "    \"6.1.0\","
+   ],
+   [
+    8,
+    "    \"6.2.0\","
+   ],
+   [
+    9,
+    "    \"6.3.0\","
+   ],
+   [
+    10,
+    "    \"7.0.0\","
+   ],
+   [
+    11,
+    "    \"8.0.0\","
+   ],
+   [
+    12,
+    "    \"9.0.0\","
+   ],
+   [
+    13,
+    "    \"10.0.0\","
+   ],
+   [
+    14,
+    "    \"11.0.0\","
+   ],
+   [
+    15,
+    "    \"12.0.0\","
+   ],
+   [
+    16,
+    "    \"12.1.0\","
+   ],
+   [
+    17,
+    "    \"13.0.0\","
+   ],
+   [
+    18,
+    "    \"14.0.0\","
+   ],
+   [
+    19,
+    "    \"15.0.0\","
+   ],
+   [
+    20,
+    "    \"15.1.0\","
+   ],
+   [
+    21,
+    "    \"16.0.0\","
+   ],
+   [
+    22,
+    "    \"17.0.0\","
+   ],
+   [
+    23,
+    ")"
+   ]
+  ],
+  "rich/pager.py": [
+   [
+    1,
+    "from abc import ABC, abstractmethod"
+   ],
+   [
+    2,
+    "from typing import Any"
+   ],
+   [
+    5,
+    "class Pager(ABC):"
+   ],
+   [
+    8,
+    "    @abstractmethod"
+   ],
+   [
+    9,
+    "    def show(self, content: str) -> None:"
+   ],
+   [
+    17,
+    "class SystemPager(Pager):"
+   ],
+   [
+    23,
+    "    def show(self, content: str) -> None:"
+   ]
+  ],
+  "rich/abc.py": [
+   [
+    1,
+    "from abc import ABC"
+   ],
+   [
+    4,
+    "class RichRenderable(ABC):"
+   ],
+   [
+    15,
+    "    @classmethod"
+   ],
+   [
+    16,
+    "    def __subclasshook__(cls, other: type) -> bool:"
+   ]
+  ],
+  "rich/_stack.py": [
+   [
+    1,
+    "from typing import List, TypeVar"
+   ],
+   [
+    3,
+    "T = TypeVar(\"T\")"
+   ],
+   [
+    6,
+    "class Stack(List[T]):"
+   ],
+   [
+    9,
+    "    @property"
+   ],
+   [
+    10,
+    "    def top(self) -> T:"
+   ],
+   [
+    14,
+    "    def push(self, item: T) -> None:"
+   ]
+  ],
+  "rich/color_triplet.py": [
+   [
+    1,
+    "from typing import NamedTuple, Tuple"
+   ],
+   [
+    4,
+    "class ColorTriplet(NamedTuple):"
+   ],
+   [
+    8,
+    "    \"\"\"Red component in 0 to 255 range.\"\"\""
+   ],
+   [
+    10,
+    "    \"\"\"Green component in 0 to 255 range.\"\"\""
+   ],
+   [
+    12,
+    "    \"\"\"Blue component in 0 to 255 range.\"\"\""
+   ],
+   [
+    14,
+    "    @property"
+   ],
+   [
+    15,
+    "    def hex(self) -> str:"
+   ],
+   [
+    20,
+    "    @property"
+   ],
+   [
+    21,
+    "    def rgb(self) -> str:"
+   ],
+   [
+    30,
+    "    @property"
+   ],
+   [
+    31,
+    "    def normalized(self) -> Tuple[float, float, float]:"
+   ]
+  ],
+  "rich/theme.py": [
+   [
+    1,
+    "from typing import IO, Dict, List, Mapping, Optional"
+   ],
+   [
+    3,
+    "from .default_styles import DEFAULT_STYLES"
+   ],
+   [
+    4,
+    "from .style import Style, StyleType"
+   ],
+   [
+    7,
+    "class Theme:"
+   ],
+   [
+    17,
+    "    def __init__("
+   ],
+   [
+    20,
+    "        self.styles = DEFAULT_STYLES.copy() if inherit else {}"
+   ],
+   [
+    21,
+    "        if styles is not None:"
+   ],
+   [
+    22,
+    "            self.styles.update("
+   ],
+   [
+    23,
+    "                {"
+   ],
+   [
+    24,
+    "                    name: style if isinstance(style, Style) else Style.parse(style)"
+   ],
+   [
+    25,
+    "                    for name, style in styles.items()"
+   ],
+   [
+    26,
+    "                }"
+   ],
+   [
+    27,
+    "            )"
+   ],
+   [
+    29,
+    "    @property"
+   ],
+   [
+    30,
+    "    def config(self) -> str:"
+   ],
+   [
+    37,
+    "    @classmethod"
+   ],
+   [
+    38,
+    "    def from_file("
+   ],
+   [
+    59,
+    "    @classmethod"
+   ],
+   [
+    60,
+    "    def read("
+   ],
+   [
+    77,
+    "class ThemeStackError(Exception):"
+   ],
+   [
+    81,
+    "class ThemeStack:"
+   ],
+   [
+    88,
+    "    def __init__(self, theme: Theme) -> None:"
+   ],
+   [
+    89,
+    "        self._entries: List[Dict[str, Style]] = [theme.styles]"
+   ],
+   [
+    90,
+    "        self.get = self._entries[-1].get"
+   ],
+   [
+    92,
+    "    def push_theme(self, theme: Theme, inherit: bool = True) -> None:"
+   ],
+   [
+    106,
+    "    def pop_theme(self) -> None:"
+   ]
+  ],
+  "rich/emoji.py": [
+   [
+    1,
+    "import sys"
+   ],
+   [
+    2,
+    "from typing import TYPE_CHECKING, Literal, Optional, Union"
+   ],
+   [
+    4,
+    "from ._emoji_replace import _emoji_replace"
+   ],
+   [
+    5,
+    "from .jupyter import JupyterMixin"
+   ],
+   [
+    6,
+    "from .segment import Segment"
+   ],
+   [
+    7,
+    "from .style import Style"
+   ],
+   [
+    13,
+    "EmojiVariant = Literal[\"emoji\", \"text\"]"
+   ],
+   [
+    16,
+    "class NoEmoji(Exception):"
+   ],
+   [
+    20,
+    "class Emoji(JupyterMixin):"
+   ],
+   [
+    21,
+    "    __slots__ = [\"name\", \"style\", \"_char\", \"variant\"]"
+   ],
+   [
+    23,
+    "    VARIANTS = {\"text\": \"\\ufe0e\", \"emoji\": \"\\ufe0f\"}"
+   ],
+   [
+    25,
+    "    def __init__("
+   ],
+   [
+    52,
+    "    @classmethod"
+   ],
+   [
+    53,
+    "    def replace(cls, text: str) -> str:"
+   ],
+   [
+    64,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    67,
+    "    def __str__(self) -> str:"
+   ],
+   [
+    70,
+    "    def __rich_console__("
+   ]
+  ],
+  "rich/_null_file.py": [
+   [
+    1,
+    "from types import TracebackType"
+   ],
+   [
+    2,
+    "from typing import IO, Iterable, Iterator, List, Optional, Type"
+   ],
+   [
+    5,
+    "class NullFile(IO[str]):"
+   ],
+   [
+    6,
+    "    def close(self) -> None:"
+   ],
+   [
+    9,
+    "    def isatty(self) -> bool:"
+   ],
+   [
+    12,
+    "    def read(self, __n: int = 1) -> str:"
+   ],
+   [
+    15,
+    "    def readable(self) -> bool:"
+   ],
+   [
+    18,
+    "    def readline(self, __limit: int = 1) -> str:"
+   ],
+   [
+    21,
+    "    def readlines(self, __hint: int = 1) -> List[str]:"
+   ],
+   [
+    24,
+    "    def seek(self, __offset: int, __whence: int = 1) -> int:"
+   ],
+   [
+    27,
+    "    def seekable(self) -> bool:"
+   ],
+   [
+    30,
+    "    def tell(self) -> int:"
+   ],
+   [
+    33,
+    "    def truncate(self, __size: Optional[int] = 1) -> int:"
+   ],
+   [
+    36,
+    "    def writable(self) -> bool:"
+   ],
+   [
+    39,
+    "    def writelines(self, __lines: Iterable[str]) -> None:"
+   ],
+   [
+    42,
+    "    def __next__(self) -> str:"
+   ],
+   [
+    45,
+    "    def __iter__(self) -> Iterator[str]:"
+   ],
+   [
+    48,
+    "    def __enter__(self) -> IO[str]:"
+   ],
+   [
+    51,
+    "    def __exit__("
+   ],
+   [
+    59,
+    "    def write(self, text: str) -> int:"
+   ],
+   [
+    62,
+    "    def flush(self) -> None:"
+   ],
+   [
+    65,
+    "    def fileno(self) -> int:"
+   ],
+   [
+    69,
+    "NULL_FILE = NullFile()"
+   ]
+  ],
+  "rich/control.py": [
+   [
+    1,
+    "import time"
+   ],
+   [
+    2,
+    "from typing import TYPE_CHECKING, Callable, Dict, Iterable, List, Union, Final"
+   ],
+   [
+    4,
+    "from .segment import ControlCode, ControlType, Segment"
+   ],
+   [
+    9,
+    "STRIP_CONTROL_CODES: Final = ["
+   ],
+   [
+    10,
+    "    7,  # Bell"
+   ],
+   [
+    11,
+    "    8,  # Backspace"
+   ],
+   [
+    12,
+    "    11,  # Vertical tab"
+   ],
+   [
+    13,
+    "    12,  # Form feed"
+   ],
+   [
+    14,
+    "    13,  # Carriage return"
+   ],
+   [
+    15,
+    "]"
+   ],
+   [
+    16,
+    "_CONTROL_STRIP_TRANSLATE: Final = {"
+   ],
+   [
+    17,
+    "    _codepoint: None for _codepoint in STRIP_CONTROL_CODES"
+   ],
+   [
+    18,
+    "}"
+   ],
+   [
+    20,
+    "CONTROL_ESCAPE: Final = {"
+   ],
+   [
+    21,
+    "    7: \"\\\\a\","
+   ],
+   [
+    22,
+    "    8: \"\\\\b\","
+   ],
+   [
+    23,
+    "    11: \"\\\\v\","
+   ],
+   [
+    24,
+    "    12: \"\\\\f\","
+   ],
+   [
+    25,
+    "    13: \"\\\\r\","
+   ],
+   [
+    26,
+    "}"
+   ],
+   [
+    28,
+    "CONTROL_CODES_FORMAT: Dict[int, Callable[..., str]] = {"
+   ],
+   [
+    29,
+    "    ControlType.BELL: lambda: \"\\x07\","
+   ],
+   [
+    30,
+    "    ControlType.CARRIAGE_RETURN: lambda: \"\\r\","
+   ],
+   [
+    31,
+    "    ControlType.HOME: lambda: \"\\x1b[H\","
+   ],
+   [
+    32,
+    "    ControlType.CLEAR: lambda: \"\\x1b[2J\","
+   ],
+   [
+    33,
+    "    ControlType.ENABLE_ALT_SCREEN: lambda: \"\\x1b[?1049h\","
+   ],
+   [
+    34,
+    "    ControlType.DISABLE_ALT_SCREEN: lambda: \"\\x1b[?1049l\","
+   ],
+   [
+    35,
+    "    ControlType.SHOW_CURSOR: lambda: \"\\x1b[?25h\","
+   ],
+   [
+    36,
+    "    ControlType.HIDE_CURSOR: lambda: \"\\x1b[?25l\","
+   ],
+   [
+    37,
+    "    ControlType.CURSOR_UP: lambda param: f\"\\x1b[{param}A\","
+   ],
+   [
+    38,
+    "    ControlType.CURSOR_DOWN: lambda param: f\"\\x1b[{param}B\","
+   ],
+   [
+    39,
+    "    ControlType.CURSOR_FORWARD: lambda param: f\"\\x1b[{param}C\","
+   ],
+   [
+    40,
+    "    ControlType.CURSOR_BACKWARD: lambda param: f\"\\x1b[{param}D\","
+   ],
+   [
+    41,
+    "    ControlType.CURSOR_MOVE_TO_COLUMN: lambda param: f\"\\x1b[{param+1}G\","
+   ],
+   [
+    42,
+    "    ControlType.ERASE_IN_LINE: lambda param: f\"\\x1b[{param}K\","
+   ],
+   [
+    43,
+    "    ControlType.CURSOR_MOVE_TO: lambda x, y: f\"\\x1b[{y+1};{x+1}H\","
+   ],
+   [
+    44,
+    "    ControlType.SET_WINDOW_TITLE: lambda title: f\"\\x1b]0;{title}\\x07\","
+   ],
+   [
+    45,
+    "}"
+   ],
+   [
+    48,
+    "class Control:"
+   ],
+   [
+    56,
+    "    __slots__ = [\"segment\"]"
+   ],
+   [
+    58,
+    "    def __init__(self, *codes: Union[ControlType, ControlCode]) -> None:"
+   ],
+   [
+    68,
+    "    @classmethod"
+   ],
+   [
+    69,
+    "    def bell(cls) -> \"Control\":"
+   ],
+   [
+    73,
+    "    @classmethod"
+   ],
+   [
+    74,
+    "    def home(cls) -> \"Control\":"
+   ],
+   [
+    78,
+    "    @classmethod"
+   ],
+   [
+    79,
+    "    def move(cls, x: int = 0, y: int = 0) -> \"Control\":"
+   ],
+   [
+    107,
+    "    @classmethod"
+   ],
+   [
+    108,
+    "    def move_to_column(cls, x: int, y: int = 0) -> \"Control\":"
+   ],
+   [
+    131,
+    "    @classmethod"
+   ],
+   [
+    132,
+    "    def move_to(cls, x: int, y: int) -> \"Control\":"
+   ],
+   [
+    144,
+    "    @classmethod"
+   ],
+   [
+    145,
+    "    def clear(cls) -> \"Control\":"
+   ],
+   [
+    149,
+    "    @classmethod"
+   ],
+   [
+    150,
+    "    def show_cursor(cls, show: bool) -> \"Control\":"
+   ],
+   [
+    154,
+    "    @classmethod"
+   ],
+   [
+    155,
+    "    def alt_screen(cls, enable: bool) -> \"Control\":"
+   ],
+   [
+    162,
+    "    @classmethod"
+   ],
+   [
+    163,
+    "    def title(cls, title: str) -> \"Control\":"
+   ],
+   [
+    171,
+    "    def __str__(self) -> str:"
+   ],
+   [
+    174,
+    "    def __rich_console__("
+   ],
+   [
+    181,
+    "def strip_control_codes("
+   ],
+   [
+    195,
+    "def escape_control_codes("
+   ]
+  ],
+  "rich/styled.py": [
+   [
+    1,
+    "from typing import TYPE_CHECKING"
+   ],
+   [
+    3,
+    "from .measure import Measurement"
+   ],
+   [
+    4,
+    "from .segment import Segment"
+   ],
+   [
+    5,
+    "from .style import StyleType"
+   ],
+   [
+    11,
+    "class Styled:"
+   ],
+   [
+    19,
+    "    def __init__(self, renderable: \"RenderableType\", style: \"StyleType\") -> None:"
+   ],
+   [
+    23,
+    "    def __rich_console__("
+   ],
+   [
+    31,
+    "    def __rich_measure__("
+   ]
+  ],
+  "rich/highlighter.py": [
+   [
+    1,
+    "import re"
+   ],
+   [
+    2,
+    "from abc import ABC, abstractmethod"
+   ],
+   [
+    3,
+    "from typing import ClassVar, Sequence, Union"
+   ],
+   [
+    5,
+    "from .text import Span, Text"
+   ],
+   [
+    8,
+    "def _combine_regex(*regexes: str) -> str:"
+   ],
+   [
+    14,
+    "    return \"|\".join(regexes)"
+   ],
+   [
+    17,
+    "class Highlighter(ABC):"
+   ],
+   [
+    20,
+    "    def __call__(self, text: Union[str, Text]) -> Text:"
+   ],
+   [
+    41,
+    "    @abstractmethod"
+   ],
+   [
+    42,
+    "    def highlight(self, text: Text) -> None:"
+   ],
+   [
+    50,
+    "class NullHighlighter(Highlighter):"
+   ],
+   [
+    57,
+    "    def highlight(self, text: Text) -> None:"
+   ],
+   [
+    61,
+    "class RegexHighlighter(Highlighter):"
+   ],
+   [
+    64,
+    "    highlights: ClassVar[Sequence[str]] = []"
+   ],
+   [
+    65,
+    "    base_style: ClassVar[str] = \"\""
+   ],
+   [
+    67,
+    "    def highlight(self, text: Text) -> None:"
+   ],
+   [
+    80,
+    "class ReprHighlighter(RegexHighlighter):"
+   ],
+   [
+    83,
+    "    base_style = \"repr.\""
+   ],
+   [
+    84,
+    "    highlights: ClassVar[Sequence[str]] = ["
+   ],
+   [
+    85,
+    "        r\"(?P<tag_start><)(?P<tag_name>[-\\w.:|]*)(?P<tag_contents>[\\w\\W]*)(?P<tag_end>>)\","
+   ],
+   [
+    86,
+    "        r'(?P<attrib_name>[\\w_]{1,50})=(?P<attrib_value>\"?[\\w_]+\"?)?',"
+   ],
+   [
+    87,
+    "        r\"(?P<brace>[][{}()])\","
+   ],
+   [
+    88,
+    "        _combine_regex("
+   ],
+   [
+    89,
+    "            r\"(?P<ipv4>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})\","
+   ],
+   [
+    90,
+    "            r\"(?P<ipv6>([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})\","
+   ],
+   [
+    91,
+    "            r\"(?P<eui64>(?:[0-9A-Fa-f]{1,2}-){7}[0-9A-Fa-f]{1,2}|(?:[0-9A-Fa-f]{1,2}:){7}[0-9A-Fa-f]{1,2}|(?:[0-9A-Fa-f]{4}\\.){3}[0-9A-Fa-f]{4})\","
+   ],
+   [
+    92,
+    "            r\"(?P<eui48>(?:[0-9A-Fa-f]{1,2}-){5}[0-9A-Fa-f]{1,2}|(?:[0-9A-Fa-f]{1,2}:){5}[0-9A-Fa-f]{1,2}|(?:[0-9A-Fa-f]{4}\\.){2}[0-9A-Fa-f]{4})\","
+   ],
+   [
+    93,
+    "            r\"(?P<uuid>[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})\","
+   ],
+   [
+    94,
+    "            r\"(?P<call>[\\w.]*?)\\(\","
+   ],
+   [
+    95,
+    "            r\"\\b(?P<bool_true>True)\\b|\\b(?P<bool_false>False)\\b|\\b(?P<none>None)\\b\","
+   ],
+   [
+    96,
+    "            r\"(?P<ellipsis>\\.\\.\\.)\","
+   ],
+   [
+    97,
+    "            r\"(?P<number_complex>(?<!\\w)(?:\\-?[0-9]+\\.?[0-9]*(?:e[-+]?\\d+?)?)(?:[-+](?:[0-9]+\\.?[0-9]*(?:e[-+]?\\d+)?))?j)\","
+   ],
+   [
+    98,
+    "            r\"(?P<number>(?<!\\w)\\-?[0-9]+\\.?[0-9]*(e[-+]?\\d+?)?\\b|0x[0-9a-fA-F]*)\","
+   ],
+   [
+    99,
+    "            r\"(?P<path>\\B(/[-\\w._+]+)*\\/)(?P<filename>[-\\w._+]*)?\","
+   ],
+   [
+    100,
+    "            r\"(?<![\\\\\\w])(?P<str>b?'''.*?(?<!\\\\)'''|b?'.*?(?<!\\\\)'|b?\\\"\\\"\\\".*?(?<!\\\\)\\\"\\\"\\\"|b?\\\".*?(?<!\\\\)\\\")\","
+   ],
+   [
+    101,
+    "            r\"(?P<url>(file|https|http|ws|wss)://[-0-9a-zA-Z$_+!`(),.?/;:&=%#~@]*)\","
+   ],
+   [
+    102,
+    "        ),"
+   ],
+   [
+    103,
+    "    ]"
+   ],
+   [
+    106,
+    "class JSONHighlighter(RegexHighlighter):"
+   ],
+   [
+    110,
+    "    JSON_STR = r\"(?<![\\\\\\w])(?P<str>b?\\\".*?(?<!\\\\)\\\")\""
+   ],
+   [
+    111,
+    "    JSON_WHITESPACE = {\" \", \"\\n\", \"\\r\", \"\\t\"}"
+   ],
+   [
+    113,
+    "    base_style: ClassVar[str] = \"json.\""
+   ],
+   [
+    114,
+    "    highlights: ClassVar[Sequence[str]] = ["
+   ],
+   [
+    115,
+    "        _combine_regex("
+   ],
+   [
+    116,
+    "            r\"(?P<brace>[\\{\\[\\(\\)\\]\\}])\","
+   ],
+   [
+    117,
+    "            r\"\\b(?P<bool_true>true)\\b|\\b(?P<bool_false>false)\\b|\\b(?P<null>null)\\b\","
+   ],
+   [
+    118,
+    "            r\"(?P<number>(?<!\\w)\\-?[0-9]+\\.?[0-9]*(e[\\-\\+]?\\d+?)?\\b|0x[0-9a-fA-F]*)\","
+   ],
+   [
+    119,
+    "            JSON_STR,"
+   ],
+   [
+    120,
+    "        ),"
+   ],
+   [
+    121,
+    "    ]"
+   ],
+   [
+    123,
+    "    def highlight(self, text: Text) -> None:"
+   ],
+   [
+    143,
+    "class ISO8601Highlighter(RegexHighlighter):"
+   ],
+   [
+    148,
+    "    base_style: ClassVar[str] = \"iso8601.\""
+   ],
+   [
+    149,
+    "    highlights: ClassVar[Sequence[str]] = ["
+   ]
+  ],
+  "rich/protocol.py": [
+   [
+    1,
+    "from typing import Any, cast, Set, TYPE_CHECKING"
+   ],
+   [
+    6,
+    "_GIBBERISH = \"\"\"aihwerij235234ljsdnp34ksodfipwoe234234jlskjdf\"\"\""
+   ],
+   [
+    9,
+    "def is_renderable(check_object: Any) -> bool:"
+   ],
+   [
+    18,
+    "def rich_cast(renderable: object) -> \"RenderableType\":"
+   ],
+   [
+    27,
+    "    from rich.console import RenderableType"
+   ],
+   [
+    29,
+    "    rich_visited_set: Set[type] = set()  # Prevent potential infinite loop"
+   ],
+   [
+    30,
+    "    while hasattr(renderable, \"__rich__\") and not isinstance(renderable, type):"
+   ],
+   [
+    41,
+    "    return cast(RenderableType, renderable)"
+   ]
+  ],
+  "rich/repr.py": [
+   [
+    1,
+    "from functools import partial"
+   ],
+   [
+    2,
+    "from typing import ("
+   ],
+   [
+    3,
+    "    Any,"
+   ],
+   [
+    4,
+    "    Callable,"
+   ],
+   [
+    5,
+    "    Iterable,"
+   ],
+   [
+    6,
+    "    List,"
+   ],
+   [
+    7,
+    "    Optional,"
+   ],
+   [
+    8,
+    "    Tuple,"
+   ],
+   [
+    9,
+    "    Type,"
+   ],
+   [
+    10,
+    "    TypeVar,"
+   ],
+   [
+    11,
+    "    Union,"
+   ],
+   [
+    12,
+    "    overload,"
+   ],
+   [
+    13,
+    ")"
+   ],
+   [
+    15,
+    "T = TypeVar(\"T\")"
+   ],
+   [
+    18,
+    "Result = Iterable[Union[Any, Tuple[Any], Tuple[str, Any], Tuple[str, Any, Any]]]"
+   ],
+   [
+    19,
+    "RichReprResult = Result"
+   ],
+   [
+    22,
+    "class ReprError(Exception):"
+   ],
+   [
+    36,
+    "def auto("
+   ],
+   [
+    41,
+    "    def do_replace(cls: Type[T], angular: Optional[bool] = None) -> Type[T]:"
+   ],
+   [
+    42,
+    "        def auto_repr(self: T) -> str:"
+   ],
+   [
+    67,
+    "        def auto_rich_repr(self: Type[T]) -> Result:"
+   ],
+   [
+    89,
+    "        if not hasattr(cls, \"__rich_repr__\"):"
+   ],
+   [
+    93,
+    "        auto_repr.__doc__ = \"Return repr(self)\""
+   ],
+   [
+    94,
+    "        cls.__repr__ = auto_repr  # type: ignore[assignment]"
+   ],
+   [
+    95,
+    "        if angular is not None:"
+   ],
+   [
+    96,
+    "            cls.__rich_repr__.angular = angular  # type: ignore[attr-defined]"
+   ],
+   [
+    97,
+    "        return cls"
+   ],
+   [
+    99,
+    "    if cls is None:"
+   ],
+   [
+    100,
+    "        return partial(do_replace, angular=angular)"
+   ],
+   [
+    102,
+    "        return do_replace(cls, angular=angular)"
+   ],
+   [
+    115,
+    "def rich_repr("
+   ],
+   [
+    118,
+    "    if cls is None:"
+   ],
+   [
+    119,
+    "        return auto(angular=angular)"
+   ],
+   [
+    121,
+    "        return auto(cls)"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_pretty.py::test_pretty_dataclass - assert 'ExampleDatac... ..."
+ ]
+}

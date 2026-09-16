@@ -1,0 +1,858 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/sortedcontainers/sortedlist.py"
+ ],
+ "seconds": 128.32689476013184,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "rejected_candidates": [
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(False, True), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [] == [0]"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, False), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [] == [0]"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, True), reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [1, 0] == [0, 1]"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1034",
+   "tried": "            if inclusive[-1]:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [0] == []"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1056",
+   "tried": "            if inclusive[0]:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [] == [0]"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(False, True), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, False), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, True), reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:87",
+   "tried": "    DEFAULT_LOAD_FACTOR = 999",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:108",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:113",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:189",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:292",
+   "tried": "            values[pos : (pos + _load)] for pos in range(-1, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:292",
+   "tried": "            values[pos : (pos - _load)] for pos in range(0, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:294",
+   "tried": "        _maxes.extend(sublist[] for sublist in _lists)",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 294)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:524",
+   "tried": "            if not pos & 0:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:525",
+   "tried": "                total += _index[pos]",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:525",
+   "tried": "                total += _index[pos + 1]",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:525",
+   "tried": "                total -= _index[pos - 1]",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = (pos - 1) >=> 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 529)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = (pos - 1) >>= 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 529)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = (pos) >> 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = (pos - 1) >> 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = (pos + 1) >> 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:529",
+   "tried": "            pos = 1) >> 1 - (pos",
+   "why": "does not compile: unmatched ')' (sortedlist.py, line 529)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:588",
+   "tried": "        if idx <= 0:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:588",
+   "tried": "        if idx < -1:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:588",
+   "tried": "        if idx > 0:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:589",
+   "tried": "            last_len = len(self._lists[])",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 589)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:591",
+   "tried": "            if (-idx) < last_len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:591",
+   "tried": "            if (-idx) >= last_len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:598",
+   "tried": "        elif idx > self._len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:598",
+   "tried": "        elif idx <= self._len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:601",
+   "tried": "        if idx <= len(self._lists[0]):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:601",
+   "tried": "        if idx < len(self._lists[-1]):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:601",
+   "tried": "        if idx > len(self._lists[0]):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:602",
+   "tried": "            return -1, idx",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:610",
+   "tried": "        child = 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:613",
+   "tried": "        while child <= len_index:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:613",
+   "tried": "        while child > len_index:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:616",
+   "tried": "            if idx <= index_child:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:616",
+   "tried": "            if idx > index_child:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:622",
+   "tried": "            child = (pos <=< 1) + 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 622)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:622",
+   "tried": "            child = (pos <<= 1) + 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 622)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:622",
+   "tried": "            child = (pos << 0) + 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:622",
+   "tried": "            child = (pos << 1)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:622",
+   "tried": "            child = (pos << 1) - 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:624",
+   "tried": "        return self._offset, idx) - (pos",
+   "why": "does not compile: unmatched ')' (sortedlist.py, line 624)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:624",
+   "tried": "        return (pos + self._offset, idx)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:673",
+   "tried": "        if len(row0) & 0:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:677",
+   "tried": "            self._index[:] = row1 - row0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:678",
+   "tried": "            self._offset = 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:718",
+   "tried": "            if step == 1 and start <= stop:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:718",
+   "tried": "            if step == 0 and start < stop:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:718",
+   "tried": "            if step == 1 and start > stop:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:721",
+   "tried": "                elif self._len < 8 * (stop - start):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:721",
+   "tried": "                elif self._len <= 7 * (stop - start):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:721",
+   "tried": "                elif self._len <= 8 * (stop + start):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:721",
+   "tried": "                elif self._len >= 8 * (stop - start):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:723",
+   "tried": "                    if stop <= self._len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:723",
+   "tried": "                    if stop > self._len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:733",
+   "tried": "            if step >= 0:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:733",
+   "tried": "            if step > -1:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:733",
+   "tried": "            if step < 0:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(False, True), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [] == [0]"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, False), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [] == [0]"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:994",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, True), reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [1, 0] == [0, 1]"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1034",
+   "tried": "            if inclusive[-1]:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [0] == []"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1056",
+   "tried": "            if inclusive[0]:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [] == [0]"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1060",
+   "tried": "                    max_pos -= 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1060",
+   "tried": "                    max_pos += 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(False, True), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, False), reverse=False):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:2008",
+   "tried": "    def irange(self, minimum=None, maximum=None, inclusive=(True, True), reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:87",
+   "tried": "    DEFAULT_LOAD_FACTOR = 999",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:108",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:113",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:185",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:189",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:292",
+   "tried": "            values[pos : (pos + _load)] for pos in range(-1, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:292",
+   "tried": "            values[pos : (pos - _load)] for pos in range(0, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:294",
+   "tried": "        _maxes.extend(sublist[] for sublist in _lists)",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 294)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:886",
+   "tried": "    def islice(self, start=None, stop=None, reverse=True):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:944",
+   "tried": "        if min_pos >= max_pos:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [] == [0]"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:944",
+   "tried": "        if min_pos < max_pos:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [] == [0, 1, 2..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:955",
+   "tried": "        next_pos = min_pos",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [0, 1, 2, 3, 4..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:955",
+   "tried": "        next_pos = min_pos - 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - assert [0, 1, 2, 3, 4..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1231",
+   "tried": "    def pop(self, index=):",
+   "why": "does not compile: expected default value expression (sortedlist.py, line 1231)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1477",
+   "tried": "        doc_str = \"\"\"Return true if and only if sorted list is {-1} `other`.",
+   "why": "ERROR tests/test_coverage_sortedlist.py - KeyError: '-1'"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <=> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==>= ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{0}__(other)`` <==> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==> ``sl {1} other``",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` >==> ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1479",
+   "tried": "        ``sl.__{1}__(other)`` <==< ``sl {2} other``",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1486",
+   "tried": "        :return: true if sorted list is {-1} `other`",
+   "why": "ERROR tests/test_coverage_sortedlist.py - KeyError: '-1'"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1494",
+   "tried": "    __lt__ = __make_cmp(lt, '<=', 'less than')",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1494",
+   "tried": "    __lt__ = __make_cmp(lt, '>', 'less than')",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1495",
+   "tried": "    __gt__ = __make_cmp(gt, '>=', 'greater than')",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1495",
+   "tried": "    __gt__ = __make_cmp(gt, '<', 'greater than')",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1496",
+   "tried": "    __le__ = __make_cmp(le, '<', 'less than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1496",
+   "tried": "    __le__ = __make_cmp(le, '>=', 'less than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1497",
+   "tried": "    __ge__ = __make_cmp(ge, '>', 'greater than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1497",
+   "tried": "    __ge__ = __make_cmp(ge, '<=', 'greater than or equal to')",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+  }
+ ],
+ "rejected_not_listed": 146,
+ "executed_lines": {
+  "src/sortedcontainers/sortedlist.py": [
+   [
+    18,
+    "import sys"
+   ],
+   [
+    19,
+    "import traceback"
+   ],
+   [
+    20,
+    "from bisect import bisect_left, bisect_right, insort"
+   ],
+   [
+    21,
+    "from collections.abc import MutableSequence, Sequence"
+   ],
+   [
+    22,
+    "from functools import reduce"
+   ],
+   [
+    23,
+    "from itertools import chain, repeat, starmap"
+   ],
+   [
+    24,
+    "from math import log"
+   ],
+   [
+    25,
+    "from operator import add, eq, ge, gt, iadd, le, lt, ne"
+   ],
+   [
+    26,
+    "from reprlib import recursive_repr"
+   ],
+   [
+    27,
+    "from textwrap import dedent"
+   ],
+   [
+    30,
+    "class SortedList(MutableSequence):"
+   ],
+   [
+    87,
+    "    DEFAULT_LOAD_FACTOR = 1000"
+   ],
+   [
+    89,
+    "    def __init__(self, iterable=None, key=None):"
+   ],
+   [
+    107,
+    "        assert key is None"
+   ],
+   [
+    108,
+    "        self._len = 0"
+   ],
+   [
+    109,
+    "        self._load = self.DEFAULT_LOAD_FACTOR"
+   ],
+   [
+    110,
+    "        self._lists = []"
+   ],
+   [
+    111,
+    "        self._maxes = []"
+   ],
+   [
+    112,
+    "        self._index = []"
+   ],
+   [
+    113,
+    "        self._offset = 0"
+   ],
+   [
+    115,
+    "        if iterable is not None:"
+   ],
+   [
+    118,
+    "    def __new__(cls, iterable=None, key=None):"
+   ],
+   [
+    139,
+    "        if key is None:"
+   ],
+   [
+    140,
+    "            return object.__new__(cls)"
+   ],
+   [
+    147,
+    "    @property"
+   ],
+   [
+    148,
+    "    def key(self):  # pylint: disable=useless-return"
+   ],
+   [
+    156,
+    "    def _reset(self, load):"
+   ],
+   [
+    174,
+    "        values = reduce(iadd, self._lists, [])"
+   ],
+   [
+    175,
+    "        self._clear()"
+   ],
+   [
+    176,
+    "        self._load = load"
+   ],
+   [
+    177,
+    "        self._update(values)"
+   ],
+   [
+    179,
+    "    def clear(self):"
+   ],
+   [
+    185,
+    "        self._len = 0"
+   ],
+   [
+    186,
+    "        del self._lists[:]"
+   ],
+   [
+    187,
+    "        del self._maxes[:]"
+   ],
+   [
+    188,
+    "        del self._index[:]"
+   ],
+   [
+    189,
+    "        self._offset = 0"
+   ],
+   [
+    191,
+    "    _clear = clear"
+   ],
+   [
+    193,
+    "    def add(self, value):"
+   ],
+   [
+    228,
+    "    def _expand(self, pos):"
+   ],
+   [
+    261,
+    "    def update(self, iterable):"
+   ],
+   [
+    274,
+    "        _lists = self._lists"
+   ],
+   [
+    275,
+    "        _maxes = self._maxes"
+   ],
+   [
+    276,
+    "        values = sorted(iterable)"
+   ],
+   [
+    278,
+    "        if _maxes:"
+   ],
+   [
+    290,
+    "        _load = self._load"
+   ],
+   [
+    291,
+    "        _lists.extend("
+   ],
+   [
+    292,
+    "            values[pos : (pos + _load)] for pos in range(0, len(values), _load)"
+   ],
+   [
+    293,
+    "        )"
+   ],
+   [
+    294,
+    "        _maxes.extend(sublist[-1] for sublist in _lists)"
+   ],
+   [
+    295,
+    "        self._len = len(values)"
+   ],
+   [
+    296,
+    "        del self._index[:]"
+   ],
+   [
+    298,
+    "    _update = update"
+   ],
+   [
+    300,
+    "    def __contains__(self, value):"
+   ],
+   [
+    330,
+    "    def discard(self, value):"
+   ],
+   [
+    362,
+    "    def remove(self, value):"
+   ],
+   [
+    400,
+    "    def _delete(self, pos, idx):"
+   ],
+   [
+    454,
+    "    def _loc(self, pos, idx):"
+   ],
+   [
+    533,
+    "    def _pos(self, idx):"
+   ],
+   [
+    626,
+    "    def _build_index(self):"
+   ],
+   [
+    694,
+    "    def __delitem__(self, index):"
+   ],
+   [
+    745,
+    "    def __getitem__(self, index):"
+   ],
+   [
+    833,
+    "    _getitem = __getitem__"
+   ],
+   [
+    835,
+    "    def __setitem__(self, index, value):"
+   ],
+   [
+    847,
+    "    def __iter__(self):"
+   ],
+   [
+    858,
+    "    def __reversed__(self):"
+   ],
+   [
+    869,
+    "    def reverse(self):"
+   ],
+   [
+    886,
+    "    def islice(self, start=None, stop=None, reverse=False):"
+   ],
+   [
+    931,
+    "    def _islice(self, min_pos, min_idx, max_pos, max_idx, reverse):"
+   ],
+   [
+    942,
+    "        _lists = self._lists"
+   ],
+   [
+    944,
+    "        if min_pos > max_pos:"
+   ],
+   [
+    945,
+    "            return iter(())"
+   ],
+   [
+    947,
+    "        if min_pos == max_pos:"
+   ],
+   [
+    948,
+    "            if reverse:"
+   ],
+   [
+    949,
+    "                indices = reversed(range(min_idx, max_idx))"
+   ],
+   [
+    950,
+    "                return map(_lists[min_pos].__getitem__, indices)"
+   ],
+   [
+    952,
+    "            indices = range(min_idx, max_idx)"
+   ],
+   [
+    953,
+    "            return map(_lists[min_pos].__getitem__, indices)"
+   ],
+   [
+    955,
+    "        next_pos = min_pos + 1"
+   ],
+   [
+    957,
+    "        if next_pos == max_pos:"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_coverage_sortedlist.py::test_irange - IndexError: list inde..."
+ ]
+}

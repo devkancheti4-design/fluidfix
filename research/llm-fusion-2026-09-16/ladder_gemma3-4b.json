@@ -1,0 +1,203 @@
+[
+ {
+  "case": "click/andor-1",
+  "cls": "andor",
+  "file": "src/click/shell_completion.py",
+  "orig": "help_ = item.help or \"_\"",
+  "mutated": "help_ = item.help and \"_\"",
+  "author": "gemma3:4b",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 11373,
+   "output": 602,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 11975
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 301.9,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/andor-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "gemma3:4b",
+    "tokens": {
+     "input": 5760,
+     "output": 563,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "gemma3:4b",
+     "seconds": 43.3
+    },
+    "valid": false,
+    "why": "signal matches no line in the suspect file",
+    "rule": {
+     "name": "missing-colon",
+     "signal": ".*def\\s+shell_complete\\s*\\(.*\\)\\s*:\\n.*",
+     "example_before": "def shell_complete(shell, _, instruction = instruction.partition(\"_\")):\n    comp_cls = get_completion_class(shell)\n    if comp_cls is None:\n        return\n    comp = comp_cls(cli, ctx_args, prog_name, complete_var)\n    if instruction == \"source\":\n        pass\n    if instruction == \"complete\":\n        echo(comp.complete().encode())\n        return 0\n    _ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=True)\n    CompletionItem(t.Generic[_ValueT_co])\n    __slots__ = (\"value\", \"type\", \"help\", \"_info\")\n    def __init__(self, value, type, help, _info):\n        self.value = value\n        self.type = type\n        self.help = help\n        self._info = _info\n    def __getattr__(self, name):\n        return None\n",
+     "example_after": "def shell_complete(shell, _, instruction = instruction.partition(\"_\")):\n    comp_cls = get_completion_class(shell)\n    if comp_cls is None:\n        return\n    comp = comp_cls(cli, ctx_args, prog_name, complete_var)\n    if instruction == \"source\":\n        return\n    if instruction == \"complete\":\n        echo(comp.complete().encode())\n        return 0\n    _ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=True)\n    CompletionItem(t.Generic[_ValueT_co])\n    __slots__ = (\"value\", \"type\", \"help\", \"_info\")\n    def __init__(self, value, type, help, _info):\n        self.value = value\n        self.type = type\n        self.help = help\n        self._info = _info\n    def __getattr__(self, name):\n        return None\n"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "gemma3:4b",
+    "tokens": {
+     "input": 5613,
+     "output": 39,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "gemma3:4b",
+     "seconds": 21.2
+    },
+    "proposals": 1,
+    "line": "        self.help: str | None = help",
+    "replacements": [
+     "self.help: str | None = help\n"
+    ],
+    "exit": 2,
+    "wall": 302.3,
+    "suite_runs": null,
+    "stdout": "y a value that occurs in few files; or teach a narrower signal for this class. 185 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or make the failure carry a locating value\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+   }
+  ],
+  "wall_s": 378.1
+ },
+ {
+  "case": "click/getdef-1",
+  "cls": "getdef",
+  "file": "src/click/_termui_impl.py",
+  "orig": "less_env = os.environ.get(\"LESS\", \"\")",
+  "mutated": "less_env = os.environ.get(\"LESS\")",
+  "author": "gemma3:4b",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 10219,
+   "output": 169,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 10388
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 49.8,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/getdef-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "gemma3:4b",
+    "tokens": {
+     "input": 5183,
+     "output": 118,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "gemma3:4b",
+     "seconds": 18.2
+    },
+    "valid": false,
+    "why": "signal matches no line in the suspect file",
+    "rule": {
+     "name": "none-argument-error",
+     "signal": ".*ValueError: s argument must not be None.*",
+     "example_before": "raise ValueError(\"s argument must not be None\")",
+     "example_after": "raise ValueError(s argument must not be None)"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "gemma3:4b",
+    "tokens": {
+     "input": 5036,
+     "output": 51,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "gemma3:4b",
+     "seconds": 11.6
+    },
+    "proposals": 0,
+    "line": "src/click/_termui_impl.py:530",
+    "replacements": []
+   }
+  ],
+  "wall_s": 40.3
+ },
+ {
+  "case": "click/notdrop-1",
+  "cls": "notdrop",
+  "file": "src/click/shell_completion.py",
+  "orig": "if not value:",
+  "mutated": "if value:",
+  "author": "gemma3:4b",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 13801,
+   "output": 200,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 14001
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 44.0,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/notdrop-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "gemma3:4b",
+    "tokens": {
+     "input": 6974,
+     "output": 149,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "gemma3:4b",
+     "seconds": 24.2
+    },
+    "valid": false,
+    "why": "applier is a no-op on every matched line",
+    "rule": {
+     "name": "leading-double-dash",
+     "signal": ".*\\\"--\\\" not in args and _start_of_option\\(.*\\).*",
+     "example_before": "if \"--\" not in args and _start_of_option(ctx, incomplete):\n",
+     "example_after": "if not \"--\" in args and _start_of_option(ctx, incomplete):\n"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "gemma3:4b",
+    "tokens": {
+     "input": 6827,
+     "output": 51,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "gemma3:4b",
+     "seconds": 17.1
+    },
+    "proposals": 1,
+    "line": "src/click/shell_completion.py:667",
+    "replacements": [
+     "try:\n    c = value[-1]\nexcept IndexError:\n    c = None"
+    ],
+    "exit": 2,
+    "wall": 53.8,
+    "suite_runs": null,
+    "stdout": "utside the taught vocabulary (candidate files tried: src/click/shell_completion.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 113 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+   }
+  ],
+  "wall_s": 104.3
+ }
+]

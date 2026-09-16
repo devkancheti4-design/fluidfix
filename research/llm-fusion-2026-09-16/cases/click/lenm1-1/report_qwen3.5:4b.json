@@ -1,0 +1,66 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 304.2,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/lenm1-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 2870,
+    "output": 200,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 16.5
+   },
+   "valid": true,
+   "why": "ok: 1 matching line(s)",
+   "rule": {
+    "name": "ansi-color-code-shift",
+    "signal": "^\\s+\"black\":\\s+(\\d+),$",
+    "example_before": "\"black\": 30,",
+    "example_after": "\"black\": 29,"
+   },
+   "exit": 2,
+   "wall": 303.9,
+   "suite_runs": null,
+   "stdout": "xceptions.py, src/click/globals.py, src/click/_compat.py; the defect may be in a file the ranking never reached. 106 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+  },
+  {
+   "tier": 2,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 2702,
+    "output": 58,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 16.6
+   },
+   "proposals": 1,
+   "line": "  55| _ansi_reset_all = \"\\032[0m\"",
+   "replacements": [
+    "  55| _ansi_reset_all = \"\\033[0m\""
+   ],
+   "exit": 2,
+   "wall": 303.0,
+   "suite_runs": null,
+   "stdout": "xceptions.py, src/click/globals.py, src/click/_compat.py; the defect may be in a file the ranking never reached. 106 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+  }
+ ],
+ "tokens": {
+  "input": 5572,
+  "output": 258,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 5830
+ },
+ "outcome": "refused-after-tier2"
+}

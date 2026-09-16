@@ -1,0 +1,19 @@
+== pip 0.15.0: click/cmp-1 ==
+click/cmp-1 budget=300_pip0150 -> REFUSED in 329.9s runs=None rejected=0 hint='--budget exhausted (300s) during the first pass — raise --budget, tighten taught-class signals, or f'
+== pip 0.15.0: click/lit-1b ==
+click/lit-1b budget=300_pip0150 -> EXACT in 74.3s runs=64 rejected=None hint=''
+== pip 0.15.0: arrow/cmp-1 ==
+arrow/cmp-1 budget=300_pip0150 -> REFUSED in 308.8s runs=None rejected=68 hint='escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET — raise --escalate-budget, '
+== pip 0.15.0: arrow/cmp-2 ==
+arrow/cmp-2 budget=300_pip0150 -> REFUSED in 303.4s runs=None rejected=61 hint='escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET — raise --escalate-budget, '
+== pip 0.15.0: arrow/add-1 ==
+arrow/add-1 budget=300_pip0150 -> WRONG-GREEN in 117.4s runs=25 rejected=None hint=''
+== pip 0.15.0: arrow/add-2 ==
+arrow/add-2 budget=300_pip0150 -> REFUSED in 297.9s runs=None rejected=73 hint='a candidate passes, but the search was cut short before it could be shown unique — shipping it would'
+== pip 0.15.0: rich/add-1 ==
+rich/add-1 budget=300_pip0150 -> REFUSED in 20.3s runs=None rejected=11 hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) '
+== pip 0.15.0: rich/add-2 ==
+rich/add-2 budget=300_pip0150 -> REFUSED in 20.2s runs=None rejected=11 hint='every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) '
+== pip 0.15.0: python-sortedcontainers/cmp-2 ==
+python-sortedcontainers/cmp-2 budget=300_pip0150 -> EXACT in 61.9s runs=67 rejected=None hint=''
+PIP_COMPARE_DONE

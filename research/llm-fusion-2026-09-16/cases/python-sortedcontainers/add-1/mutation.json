@@ -1,0 +1,8 @@
+{
+ "file": "src/sortedcontainers/sortedlist.py",
+ "lineno": 955,
+ "orig": "        next_pos = min_pos + 1",
+ "mutated": "        next_pos = min_pos - 1",
+ "cls": "add",
+ "base": "3ac358631f58c1347f1d6d2d92784117db0f38ed"
+}

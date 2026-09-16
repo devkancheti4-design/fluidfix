@@ -1,0 +1,8 @@
+{
+ "file": "src/sortedcontainers/sortedlist.py",
+ "lineno": 1053,
+ "orig": "            max_pos = len(_maxes) - 1",
+ "mutated": "            max_pos = len(_maxes)",
+ "cls": "lenm1",
+ "base": "3ac358631f58c1347f1d6d2d92784117db0f38ed"
+}

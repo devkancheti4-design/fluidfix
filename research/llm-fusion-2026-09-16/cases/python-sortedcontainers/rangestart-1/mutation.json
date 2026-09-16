@@ -1,0 +1,8 @@
+{
+ "file": "src/sortedcontainers/sortedlist.py",
+ "lineno": 2465,
+ "orig": "            for pos in range(1, len(self._keys)):",
+ "mutated": "            for pos in range(len(self._keys)):",
+ "cls": "rangestart",
+ "base": "3ac358631f58c1347f1d6d2d92784117db0f38ed"
+}

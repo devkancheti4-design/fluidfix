@@ -1,0 +1,8 @@
+{
+ "file": "src/click/_termui_impl.py",
+ "lineno": 579,
+ "orig": "        less_env = os.environ.get(\"LESS\", \"\")",
+ "mutated": "        less_env = os.environ.get(\"LESS\")",
+ "cls": "getdef",
+ "base": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1"
+}

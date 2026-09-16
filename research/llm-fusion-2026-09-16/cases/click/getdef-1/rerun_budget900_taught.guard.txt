@@ -1,0 +1,5 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered
+[22:23:36] src/click/_termui_impl.py: repaired line 579 in 6 suite runs (26.4s):
+  - less_env = os.environ.get("LESS")
+  + less_env = os.environ.get("LESS", "")
+  committed

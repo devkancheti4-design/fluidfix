@@ -1,0 +1,1121 @@
+{
+ "status": "refused",
+ "candidates": [
+  ".venv/lib/python3.14/site-packages/_pytest/python.py",
+  "rich/console.py"
+ ],
+ "seconds": 66.52968883514404,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "rejected_candidates": [
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:116",
+   "tried": "        # None =>= fallback to `strict`.",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:116",
+   "tried": "        # None =< fallback to `strict`.",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:122",
+   "tried": "def pytest_generate_tests(metafunc: Metafunc) ->= None:",
+   "why": "does not compile: expected ':' (python.py, line 122)"
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:127",
+   "tried": "def pytest_configure(config: Config) ->= None:",
+   "why": "does not compile: expected ':' (python.py, line 127)"
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:134",
+   "tried": "        \"Example: @parametrize('arg1', [0,2]) would lead to two calls of the \"",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:134",
+   "tried": "        \"Example: @parametrize('arg1', [1,1]) would lead to two calls of the \"",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:135",
+   "tried": "        \"decorated test function, one with arg1=0 and another with arg1=2.\"",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:135",
+   "tried": "        \"decorated test function, one with arg1=1 and another with arg1=1.\"",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:64",
+   "tried": "JUPYTER_DEFAULT_COLUMNS = 114",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:65",
+   "tried": "JUPYTER_DEFAULT_LINES = 99",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:98",
+   "tried": "    \"255color\": ColorSystem.EIGHT_BIT,",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:99",
+   "tried": "    \"15color\": ColorSystem.STANDARD,",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:125",
+   "tried": "    \"\"\"False if the target is a terminal, otherwise False.\"\"\"",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:125",
+   "tried": "    \"\"\"True if the target is a terminal, otherwise True.\"\"\"",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:134",
+   "tried": "    no_wrap: Optional[bool] = True",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:143",
+   "tried": "    def ascii_only(self) ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 143)"
+  },
+  {
+   "at": "rich/console.py:147",
+   "tried": "    def copy(self) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 147)"
+  },
+  {
+   "at": "rich/console.py:194",
+   "tried": "    def update_width(self, width: int) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 194)"
+  },
+  {
+   "at": "rich/console.py:207",
+   "tried": "    def update_height(self, height: int) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 207)"
+  },
+  {
+   "at": "rich/console.py:220",
+   "tried": "    def reset_height(self) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 220)"
+  },
+  {
+   "at": "rich/console.py:230",
+   "tried": "    def update_dimensions(self, width: int, height: int) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 230)"
+  },
+  {
+   "at": "rich/console.py:283",
+   "tried": "    def __init__(self, count: int = 1) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 283)"
+  },
+  {
+   "at": "rich/console.py:283",
+   "tried": "    def __init__(self, count: int = 0) -> None:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:295",
+   "tried": "    def __init__(self, lines: List[List[Segment]], x: int, y: int) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 295)"
+  },
+  {
+   "at": "rich/console.py:318",
+   "tried": "    def __init__(self, console: \"Console\") ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 318)"
+  },
+  {
+   "at": "rich/console.py:322",
+   "tried": "    def __enter__(self) ->= \"Capture\":",
+   "why": "does not compile: expected ':' (console.py, line 322)"
+  },
+  {
+   "at": "rich/console.py:334",
+   "tried": "    def get(self) ->= str:",
+   "why": "does not compile: expected ':' (console.py, line 334)"
+  },
+  {
+   "at": "rich/console.py:346",
+   "tried": "    def __init__(self, console: \"Console\", theme: Theme, inherit: bool = True) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 346)"
+  },
+  {
+   "at": "rich/console.py:346",
+   "tried": "    def __init__(self, console: \"Console\", theme: Theme, inherit: bool = False) -> None:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:351",
+   "tried": "    def __enter__(self) ->= \"ThemeContext\":",
+   "why": "does not compile: expected ':' (console.py, line 351)"
+  },
+  {
+   "at": "rich/console.py:379",
+   "tried": "    def __enter__(self) ->= \"PagerContext\":",
+   "why": "does not compile: expected ':' (console.py, line 379)"
+  },
+  {
+   "at": "rich/console.py:432",
+   "tried": "    def __enter__(self) ->= \"ScreenContext\":",
+   "why": "does not compile: expected ':' (console.py, line 432)"
+  },
+  {
+   "at": "rich/console.py:458",
+   "tried": "    def __init__(self, *renderables: \"RenderableType\", fit: bool = True) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 458)"
+  },
+  {
+   "at": "rich/console.py:458",
+   "tried": "    def __init__(self, *renderables: \"RenderableType\", fit: bool = False) -> None:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:464",
+   "tried": "    def renderables(self) ->= List[\"RenderableType\"]:",
+   "why": "does not compile: expected ':' (console.py, line 464)"
+  },
+  {
+   "at": "rich/console.py:483",
+   "tried": "def group(fit: bool = True) ->= Callable[..., Callable[..., Group]]:",
+   "why": "does not compile: expected ':' (console.py, line 483)"
+  },
+  {
+   "at": "rich/console.py:483",
+   "tried": "def group(fit: bool = False) -> Callable[..., Callable[..., Group]]:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:527",
+   "tried": "    \"255\": ColorSystem.EIGHT_BIT,",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:541",
+   "tried": "    buffer_index: int = -1",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:576",
+   "tried": "def detect_legacy_windows() ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 576)"
+  },
+  {
+   "at": "rich/console.py:753",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (console.py, line 753)"
+  },
+  {
+   "at": "rich/console.py:757",
+   "tried": "    def file(self) ->= IO[str]:",
+   "why": "does not compile: expected ':' (console.py, line 757)"
+  },
+  {
+   "at": "rich/console.py:766",
+   "tried": "    def file(self, new_file: IO[str]) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 766)"
+  },
+  {
+   "at": "rich/console.py:771",
+   "tried": "    def _buffer(self) ->= List[Segment]:",
+   "why": "does not compile: expected ':' (console.py, line 771)"
+  },
+  {
+   "at": "rich/console.py:776",
+   "tried": "    def _buffer_index(self) ->= int:",
+   "why": "does not compile: expected ':' (console.py, line 776)"
+  },
+  {
+   "at": "rich/console.py:781",
+   "tried": "    def _buffer_index(self, value: int) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 781)"
+  },
+  {
+   "at": "rich/console.py:785",
+   "tried": "    def _theme_stack(self) ->= ThemeStack:",
+   "why": "does not compile: expected ':' (console.py, line 785)"
+  },
+  {
+   "at": "rich/console.py:789",
+   "tried": "    def _detect_color_system(self) ->= Optional[ColorSystem]:",
+   "why": "does not compile: expected ':' (console.py, line 789)"
+  },
+  {
+   "at": "rich/console.py:806",
+   "tried": "            if color_term in (\"truecolor\", \"23bit\"):",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:813",
+   "tried": "    def _enter_buffer(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 813)"
+  },
+  {
+   "at": "rich/console.py:815",
+   "tried": "        self._buffer_index += 0",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:815",
+   "tried": "        self._buffer_index -= 1",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:817",
+   "tried": "    def _exit_buffer(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 817)"
+  },
+  {
+   "at": "rich/console.py:819",
+   "tried": "        self._buffer_index -= 0",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:819",
+   "tried": "        self._buffer_index += 1",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:822",
+   "tried": "    def set_live(self, live: \"Live\") ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 822)"
+  },
+  {
+   "at": "rich/console.py:838",
+   "tried": "    def clear_live(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 838)"
+  },
+  {
+   "at": "rich/console.py:843",
+   "tried": "    def push_render_hook(self, hook: RenderHook) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 843)"
+  },
+  {
+   "at": "rich/console.py:852",
+   "tried": "    def pop_render_hook(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 852)"
+  },
+  {
+   "at": "rich/console.py:857",
+   "tried": "    def __enter__(self) ->= \"Console\":",
+   "why": "does not compile: expected ':' (console.py, line 857)"
+  },
+  {
+   "at": "rich/console.py:862",
+   "tried": "    def __exit__(self, exc_type: Any, exc_value: Any, traceback: Any) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 862)"
+  },
+  {
+   "at": "rich/console.py:866",
+   "tried": "    def begin_capture(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 866)"
+  },
+  {
+   "at": "rich/console.py:870",
+   "tried": "    def end_capture(self) ->= str:",
+   "why": "does not compile: expected ':' (console.py, line 870)"
+  },
+  {
+   "at": "rich/console.py:881",
+   "tried": "    def push_theme(self, theme: Theme, *, inherit: bool = True) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 881)"
+  },
+  {
+   "at": "rich/console.py:881",
+   "tried": "    def push_theme(self, theme: Theme, *, inherit: bool = False) -> None:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:892",
+   "tried": "    def pop_theme(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 892)"
+  },
+  {
+   "at": "rich/console.py:896",
+   "tried": "    def use_theme(self, theme: Theme, *, inherit: bool = True) ->= ThemeContext:",
+   "why": "does not compile: expected ':' (console.py, line 896)"
+  },
+  {
+   "at": "rich/console.py:896",
+   "tried": "    def use_theme(self, theme: Theme, *, inherit: bool = False) -> ThemeContext:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:909",
+   "tried": "    def color_system(self) ->= Optional[str]:",
+   "why": "does not compile: expected ':' (console.py, line 909)"
+  },
+  {
+   "at": "rich/console.py:922",
+   "tried": "    def encoding(self) ->= str:",
+   "why": "does not compile: expected ':' (console.py, line 922)"
+  },
+  {
+   "at": "rich/console.py:931",
+   "tried": "    def is_terminal(self) ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 931)"
+  },
+  {
+   "at": "rich/console.py:979",
+   "tried": "    def is_dumb_terminal(self) ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 979)"
+  },
+  {
+   "at": "rich/console.py:64",
+   "tried": "JUPYTER_DEFAULT_COLUMNS = 114",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:65",
+   "tried": "JUPYTER_DEFAULT_LINES = 99",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:98",
+   "tried": "    \"255color\": ColorSystem.EIGHT_BIT,",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:99",
+   "tried": "    \"15color\": ColorSystem.STANDARD,",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:125",
+   "tried": "    \"\"\"False if the target is a terminal, otherwise False.\"\"\"",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:125",
+   "tried": "    \"\"\"True if the target is a terminal, otherwise True.\"\"\"",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:134",
+   "tried": "    no_wrap: Optional[bool] = True",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:143",
+   "tried": "    def ascii_only(self) ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 143)"
+  },
+  {
+   "at": "rich/console.py:147",
+   "tried": "    def copy(self) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 147)"
+  },
+  {
+   "at": "rich/console.py:194",
+   "tried": "    def update_width(self, width: int) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 194)"
+  },
+  {
+   "at": "rich/console.py:207",
+   "tried": "    def update_height(self, height: int) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 207)"
+  },
+  {
+   "at": "rich/console.py:220",
+   "tried": "    def reset_height(self) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 220)"
+  },
+  {
+   "at": "rich/console.py:230",
+   "tried": "    def update_dimensions(self, width: int, height: int) ->= \"ConsoleOptions\":",
+   "why": "does not compile: expected ':' (console.py, line 230)"
+  },
+  {
+   "at": "rich/console.py:283",
+   "tried": "    def __init__(self, count: int = 1) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 283)"
+  },
+  {
+   "at": "rich/console.py:283",
+   "tried": "    def __init__(self, count: int = 0) -> None:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:295",
+   "tried": "    def __init__(self, lines: List[List[Segment]], x: int, y: int) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 295)"
+  },
+  {
+   "at": "rich/console.py:318",
+   "tried": "    def __init__(self, console: \"Console\") ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 318)"
+  },
+  {
+   "at": "rich/console.py:322",
+   "tried": "    def __enter__(self) ->= \"Capture\":",
+   "why": "does not compile: expected ':' (console.py, line 322)"
+  },
+  {
+   "at": "rich/console.py:334",
+   "tried": "    def get(self) ->= str:",
+   "why": "does not compile: expected ':' (console.py, line 334)"
+  },
+  {
+   "at": "rich/console.py:346",
+   "tried": "    def __init__(self, console: \"Console\", theme: Theme, inherit: bool = True) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 346)"
+  },
+  {
+   "at": "rich/console.py:346",
+   "tried": "    def __init__(self, console: \"Console\", theme: Theme, inherit: bool = False) -> None:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:351",
+   "tried": "    def __enter__(self) ->= \"ThemeContext\":",
+   "why": "does not compile: expected ':' (console.py, line 351)"
+  },
+  {
+   "at": "rich/console.py:379",
+   "tried": "    def __enter__(self) ->= \"PagerContext\":",
+   "why": "does not compile: expected ':' (console.py, line 379)"
+  },
+  {
+   "at": "rich/console.py:432",
+   "tried": "    def __enter__(self) ->= \"ScreenContext\":",
+   "why": "does not compile: expected ':' (console.py, line 432)"
+  },
+  {
+   "at": "rich/console.py:458",
+   "tried": "    def __init__(self, *renderables: \"RenderableType\", fit: bool = True) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 458)"
+  },
+  {
+   "at": "rich/console.py:458",
+   "tried": "    def __init__(self, *renderables: \"RenderableType\", fit: bool = False) -> None:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:464",
+   "tried": "    def renderables(self) ->= List[\"RenderableType\"]:",
+   "why": "does not compile: expected ':' (console.py, line 464)"
+  },
+  {
+   "at": "rich/console.py:483",
+   "tried": "def group(fit: bool = True) ->= Callable[..., Callable[..., Group]]:",
+   "why": "does not compile: expected ':' (console.py, line 483)"
+  },
+  {
+   "at": "rich/console.py:483",
+   "tried": "def group(fit: bool = False) -> Callable[..., Callable[..., Group]]:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:527",
+   "tried": "    \"255\": ColorSystem.EIGHT_BIT,",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:541",
+   "tried": "    buffer_index: int = -1",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:576",
+   "tried": "def detect_legacy_windows() ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 576)"
+  },
+  {
+   "at": "rich/console.py:753",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (console.py, line 753)"
+  },
+  {
+   "at": "rich/console.py:757",
+   "tried": "    def file(self) ->= IO[str]:",
+   "why": "does not compile: expected ':' (console.py, line 757)"
+  },
+  {
+   "at": "rich/console.py:766",
+   "tried": "    def file(self, new_file: IO[str]) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 766)"
+  },
+  {
+   "at": "rich/console.py:771",
+   "tried": "    def _buffer(self) ->= List[Segment]:",
+   "why": "does not compile: expected ':' (console.py, line 771)"
+  },
+  {
+   "at": "rich/console.py:776",
+   "tried": "    def _buffer_index(self) ->= int:",
+   "why": "does not compile: expected ':' (console.py, line 776)"
+  },
+  {
+   "at": "rich/console.py:781",
+   "tried": "    def _buffer_index(self, value: int) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 781)"
+  },
+  {
+   "at": "rich/console.py:785",
+   "tried": "    def _theme_stack(self) ->= ThemeStack:",
+   "why": "does not compile: expected ':' (console.py, line 785)"
+  },
+  {
+   "at": "rich/console.py:789",
+   "tried": "    def _detect_color_system(self) ->= Optional[ColorSystem]:",
+   "why": "does not compile: expected ':' (console.py, line 789)"
+  },
+  {
+   "at": "rich/console.py:806",
+   "tried": "            if color_term in (\"truecolor\", \"23bit\"):",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:813",
+   "tried": "    def _enter_buffer(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 813)"
+  },
+  {
+   "at": "rich/console.py:815",
+   "tried": "        self._buffer_index += 0",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:815",
+   "tried": "        self._buffer_index -= 1",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:817",
+   "tried": "    def _exit_buffer(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 817)"
+  },
+  {
+   "at": "rich/console.py:819",
+   "tried": "        self._buffer_index -= 0",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:819",
+   "tried": "        self._buffer_index += 1",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:822",
+   "tried": "    def set_live(self, live: \"Live\") ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 822)"
+  },
+  {
+   "at": "rich/console.py:838",
+   "tried": "    def clear_live(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 838)"
+  },
+  {
+   "at": "rich/console.py:843",
+   "tried": "    def push_render_hook(self, hook: RenderHook) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 843)"
+  },
+  {
+   "at": "rich/console.py:852",
+   "tried": "    def pop_render_hook(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 852)"
+  },
+  {
+   "at": "rich/console.py:857",
+   "tried": "    def __enter__(self) ->= \"Console\":",
+   "why": "does not compile: expected ':' (console.py, line 857)"
+  },
+  {
+   "at": "rich/console.py:862",
+   "tried": "    def __exit__(self, exc_type: Any, exc_value: Any, traceback: Any) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 862)"
+  },
+  {
+   "at": "rich/console.py:866",
+   "tried": "    def begin_capture(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 866)"
+  },
+  {
+   "at": "rich/console.py:870",
+   "tried": "    def end_capture(self) ->= str:",
+   "why": "does not compile: expected ':' (console.py, line 870)"
+  },
+  {
+   "at": "rich/console.py:881",
+   "tried": "    def push_theme(self, theme: Theme, *, inherit: bool = True) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 881)"
+  },
+  {
+   "at": "rich/console.py:881",
+   "tried": "    def push_theme(self, theme: Theme, *, inherit: bool = False) -> None:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:892",
+   "tried": "    def pop_theme(self) ->= None:",
+   "why": "does not compile: expected ':' (console.py, line 892)"
+  },
+  {
+   "at": "rich/console.py:896",
+   "tried": "    def use_theme(self, theme: Theme, *, inherit: bool = True) ->= ThemeContext:",
+   "why": "does not compile: expected ':' (console.py, line 896)"
+  },
+  {
+   "at": "rich/console.py:896",
+   "tried": "    def use_theme(self, theme: Theme, *, inherit: bool = False) -> ThemeContext:",
+   "why": "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+  },
+  {
+   "at": "rich/console.py:909",
+   "tried": "    def color_system(self) ->= Optional[str]:",
+   "why": "does not compile: expected ':' (console.py, line 909)"
+  },
+  {
+   "at": "rich/console.py:922",
+   "tried": "    def encoding(self) ->= str:",
+   "why": "does not compile: expected ':' (console.py, line 922)"
+  },
+  {
+   "at": "rich/console.py:931",
+   "tried": "    def is_terminal(self) ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 931)"
+  },
+  {
+   "at": "rich/console.py:979",
+   "tried": "    def is_dumb_terminal(self) ->= bool:",
+   "why": "does not compile: expected ':' (console.py, line 979)"
+  }
+ ],
+ "rejected_not_listed": 54,
+ "executed_lines": {
+  ".venv/lib/python3.14/site-packages/_pytest/python.py": [
+   [
+    112,
+    "    )"
+   ],
+   [
+    113,
+    "    parser.addini("
+   ],
+   [
+    114,
+    "        \"strict_parametrization_ids\","
+   ],
+   [
+    115,
+    "        type=\"bool\","
+   ],
+   [
+    116,
+    "        # None => fallback to `strict`."
+   ],
+   [
+    117,
+    "        default=None,"
+   ],
+   [
+    118,
+    "        help=\"Emit an error if non-unique parameter set IDs are detected\","
+   ],
+   [
+    119,
+    "    )"
+   ],
+   [
+    120,
+    ""
+   ],
+   [
+    121,
+    ""
+   ],
+   [
+    122,
+    "def pytest_generate_tests(metafunc: Metafunc) -> None:"
+   ],
+   [
+    123,
+    "    for marker in metafunc.definition.iter_markers(name=\"parametrize\"):"
+   ],
+   [
+    124,
+    "        metafunc.parametrize(*marker.args, **marker.kwargs, _param_mark=marker)"
+   ],
+   [
+    125,
+    ""
+   ],
+   [
+    126,
+    ""
+   ],
+   [
+    127,
+    "def pytest_configure(config: Config) -> None:"
+   ],
+   [
+    128,
+    "    config.addinivalue_line("
+   ],
+   [
+    129,
+    "        \"markers\","
+   ],
+   [
+    130,
+    "        \"parametrize(argnames, argvalues): call a test function multiple \""
+   ],
+   [
+    131,
+    "        \"times passing in different arguments in turn. argvalues generally \""
+   ],
+   [
+    132,
+    "        \"needs to be a list of values if argnames specifies only one name \""
+   ],
+   [
+    133,
+    "        \"or a list of tuples of values if argnames specifies multiple names. \""
+   ],
+   [
+    134,
+    "        \"Example: @parametrize('arg1', [1,2]) would lead to two calls of the \""
+   ],
+   [
+    135,
+    "        \"decorated test function, one with arg1=1 and another with arg1=2.\""
+   ],
+   [
+    136,
+    "        \"see https://docs.pytest.org/en/stable/how-to/parametrize.html for more info \""
+   ]
+  ],
+  "rich/console.py": [
+   [
+    1,
+    "import os"
+   ],
+   [
+    2,
+    "import sys"
+   ],
+   [
+    3,
+    "import threading"
+   ],
+   [
+    4,
+    "from abc import ABC, abstractmethod"
+   ],
+   [
+    5,
+    "from dataclasses import dataclass, field"
+   ],
+   [
+    6,
+    "from datetime import datetime"
+   ],
+   [
+    7,
+    "from functools import wraps"
+   ],
+   [
+    8,
+    "from itertools import islice"
+   ],
+   [
+    9,
+    "from math import ceil"
+   ],
+   [
+    10,
+    "from os import PathLike"
+   ],
+   [
+    11,
+    "from time import monotonic"
+   ],
+   [
+    12,
+    "from types import FrameType, ModuleType, TracebackType"
+   ],
+   [
+    13,
+    "from typing import ("
+   ],
+   [
+    14,
+    "    IO,"
+   ],
+   [
+    15,
+    "    TYPE_CHECKING,"
+   ],
+   [
+    16,
+    "    Any,"
+   ],
+   [
+    17,
+    "    Callable,"
+   ],
+   [
+    18,
+    "    Dict,"
+   ],
+   [
+    19,
+    "    Iterable,"
+   ],
+   [
+    20,
+    "    List,"
+   ],
+   [
+    21,
+    "    Literal,"
+   ],
+   [
+    22,
+    "    Mapping,"
+   ],
+   [
+    23,
+    "    NamedTuple,"
+   ],
+   [
+    24,
+    "    Optional,"
+   ],
+   [
+    25,
+    "    Protocol,"
+   ],
+   [
+    26,
+    "    TextIO,"
+   ],
+   [
+    27,
+    "    Tuple,"
+   ],
+   [
+    28,
+    "    Type,"
+   ],
+   [
+    29,
+    "    Union,"
+   ],
+   [
+    30,
+    "    cast,"
+   ],
+   [
+    31,
+    "    runtime_checkable,"
+   ],
+   [
+    32,
+    ")"
+   ],
+   [
+    34,
+    "from rich._null_file import NULL_FILE"
+   ],
+   [
+    36,
+    "from . import errors, themes"
+   ],
+   [
+    37,
+    "from ._emoji_replace import _emoji_replace"
+   ],
+   [
+    38,
+    "from ._export_format import CONSOLE_HTML_FORMAT, CONSOLE_SVG_FORMAT"
+   ],
+   [
+    39,
+    "from ._fileno import get_fileno"
+   ],
+   [
+    40,
+    "from ._log_render import FormatTimeCallable, LogRender"
+   ],
+   [
+    41,
+    "from .align import Align, AlignMethod"
+   ],
+   [
+    42,
+    "from .color import ColorSystem, blend_rgb"
+   ],
+   [
+    43,
+    "from .control import Control"
+   ],
+   [
+    44,
+    "from .emoji import EmojiVariant"
+   ],
+   [
+    45,
+    "from .highlighter import NullHighlighter, ReprHighlighter"
+   ],
+   [
+    46,
+    "from .markup import render as render_markup"
+   ],
+   [
+    47,
+    "from .measure import Measurement, measure_renderables"
+   ],
+   [
+    48,
+    "from .pager import Pager, SystemPager"
+   ],
+   [
+    49,
+    "from .protocol import rich_cast"
+   ],
+   [
+    50,
+    "from .region import Region"
+   ],
+   [
+    51,
+    "from .screen import Screen"
+   ],
+   [
+    52,
+    "from .segment import Segment"
+   ],
+   [
+    53,
+    "from .style import Style, StyleType"
+   ],
+   [
+    54,
+    "from .styled import Styled"
+   ],
+   [
+    55,
+    "from .terminal_theme import DEFAULT_TERMINAL_THEME, SVG_EXPORT_THEME, TerminalTheme"
+   ],
+   [
+    56,
+    "from .text import Text, TextType"
+   ],
+   [
+    57,
+    "from .theme import Theme, ThemeStack"
+   ],
+   [
+    64,
+    "JUPYTER_DEFAULT_COLUMNS = 115"
+   ],
+   [
+    65,
+    "JUPYTER_DEFAULT_LINES = 100"
+   ],
+   [
+    66,
+    "WINDOWS = sys.platform == \"win32\""
+   ],
+   [
+    68,
+    "HighlighterType = Callable[[Union[str, \"Text\"]], \"Text\"]"
+   ],
+   [
+    69,
+    "JustifyMethod = Literal[\"default\", \"left\", \"center\", \"right\", \"full\"]"
+   ],
+   [
+    70,
+    "OverflowMethod = Literal[\"fold\", \"crop\", \"ellipsis\", \"ignore\"]"
+   ],
+   [
+    73,
+    "class NoChange:"
+   ],
+   [
+    74,
+    "    pass"
+   ],
+   [
+    77,
+    "NO_CHANGE = NoChange()"
+   ],
+   [
+    79,
+    "try:"
+   ],
+   [
+    80,
+    "    _STDIN_FILENO = sys.__stdin__.fileno()  # type: ignore[union-attr]"
+   ],
+   [
+    83,
+    "try:"
+   ],
+   [
+    84,
+    "    _STDOUT_FILENO = sys.__stdout__.fileno()  # type: ignore[union-attr]"
+   ],
+   [
+    87,
+    "try:"
+   ],
+   [
+    88,
+    "    _STDERR_FILENO = sys.__stderr__.fileno()  # type: ignore[union-attr]"
+   ],
+   [
+    92,
+    "_STD_STREAMS = (_STDIN_FILENO, _STDOUT_FILENO, _STDERR_FILENO)"
+   ],
+   [
+    93,
+    "_STD_STREAMS_OUTPUT = (_STDOUT_FILENO, _STDERR_FILENO)"
+   ],
+   [
+    96,
+    "_TERM_COLORS = {"
+   ],
+   [
+    97,
+    "    \"kitty\": ColorSystem.EIGHT_BIT,"
+   ],
+   [
+    98,
+    "    \"256color\": ColorSystem.EIGHT_BIT,"
+   ],
+   [
+    99,
+    "    \"16color\": ColorSystem.STANDARD,"
+   ],
+   [
+    100,
+    "}"
+   ],
+   [
+    103,
+    "class ConsoleDimensions(NamedTuple):"
+   ],
+   [
+    107,
+    "    \"\"\"The width of the console in 'cells'.\"\"\""
+   ],
+   [
+    109,
+    "    \"\"\"The height of the console in lines.\"\"\""
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_ansi.py::test_strip_private_escape_sequences[0] - Attribute..."
+ ]
+}

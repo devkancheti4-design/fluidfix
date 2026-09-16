@@ -1,0 +1,113 @@
+{
+ "system": "You write ONE fault-class rule for fluidfix, a tool that repairs a regression when a\ntest suite goes red. A rule has four parts and is judged only by the suite, so be precise, not clever.\n\nReturn ONLY a JSON object with these keys:\n  \"example_before\": the defective line exactly as it appears (no indentation),\n  \"example_after\":  the same line fixed,\n  \"name\":           a short hyphenated slug,\n  \"description\":    one sentence stating what an observer SEES on such a line (a fact, never an instruction),\n  \"signal\":         a Python regex that matches lines that CAN exhibit this fault; anchor it on the class's own tokens,\n  \"applier\":        Python source of a function  def fix(line, o): ...  returning the corrected line (a str),\n                    a list of candidate strs, or [SpanEdit(start, end, text)] for several lines that must change together.\n                    `re` and `SpanEdit` are available. If the line is not this class, return line unchanged. Never raise.\n\nRules: the fix must be derivable from the line plus what the repository already contains. Do not widen the\nsignal beyond the class. Do not invent facts that are not in the packet. Preserve indentation: the applier\nreceives the full line including leading spaces and must return lines with the same leading spaces.",
+ "user": {
+  "file": "src/click/_termui_impl.py",
+  "other_suspects": [],
+  "sight": "### REFUSED  defect file: src/click/_termui_impl.py  (showing only the 172 lines the failing test executed; localisation mode: frames+coverage)\n--- failing suite output (compressed) ---\n_______________ test_pipepager_less_detection_matches_stem[less] _______________\n>           env_tokens = shlex.split(less_env)\nsrc/click/_termui_impl.py:530: \n>           raise ValueError(\"s argument must not be None\")\nE           ValueError: s argument must not be None\n/Library/Frameworks/Python.f\n  ...\n7: \n>           return next(self.gen)\n/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py:141: \n>           if _less_uses_raw_mode(less_env, cmd_params):\nsrc/click/_termui_impl.py:580: \n>           env_tokens = less_env.split()\nE           AttributeError: 'NoneType' object has no attribute 'split'\nsrc/click/_termui_impl.py:534: AttributeError\nFAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]\n--- executed defect-file lines ---\n   7| from __future__ import annotations\n  ...\n   9| import collections.abc as cabc\n  10| import contextlib\n  11| import math\n  12| import os\n  13| import shlex\n  14| import sys\n  15| import time\n  16| import typing as t\n  17| from gettext import gettext as _\n  18| from io import StringIO\n  19| from pathlib import Path\n  20| from types import TracebackType\n  ...\n  22| from ._compat import _default_text_stdout\n  23| from ._compat import CYGWIN\n  24| from ._compat import get_best_encoding\n  25| from ._compat import isatty\n  26| from ._compat import strip_ansi\n  27| from ._compat import term_len\n  28| from ._compat import WIN\n  29| from .exceptions import ClickException\n  30| from .utils import echo\n  ...\n  32| V = t.TypeVar(\"V\")\n  ...\n  35| if os.name == \"nt\":\n  ...\n  39|     BEFORE_BAR = \"\\r\\033[?25l\"\n  40|     AFTER_BAR = \"\\033[?25h\\n\"\n  ...\n  43| class ProgressBar(t.Generic[V]):\n  44|     def __init__(\n  ...\n 115|     def __enter__(self) -> ProgressBar[V]:\n  ...\n 120|     def __exit__(\n  ...\n 128|     def __iter__(self) -> cabc.Iterator[V]:\n  ...\n 134|     def __next__(self) -> V:\n  ...\n 142|     def render_finish(self) -> None:\n  ...\n 156|     @property\n 157|     def pct(self) -> float:\n  ...\n 162|     @property\n 163|     def time_per_iteration(self) -> float:\n  ...\n 168|     @property\n 169|     def eta(self) -> float:\n  ...\n 174|     def format_eta(self) -> str:\n  ...\n 195|     def format_pos(self) -> str:\n  ...\n 201|     def format_pct(self) -> str:\n  ...\n 204|     def format_bar(self) -> str:\n  ...\n 223|     def format_progress_line(self) -> str:\n  ...\n 250|     def render_progress(self) -> None:\n  ...\n 296|     def make_step(self, n_steps: int) -> None:\n  ...\n 318|     def update(self, n_steps: int, current_item: V | None = None) -> None:\n  ...\n 344|     def finish(self) -> None:\n  ...\n 349|     def generator(self) -> cabc.Iterator[V]:\n  ...\n 383| class _PagerWriter:\n  ...\n 397|     def __init__(self, stream: t.TextIO, color: bool) -> None:\n  ...\n 401|     def write(self, text: str) -> int:\n  ...\n 407|     def writelines(self, lines: cabc.Iterable[str]) -> None:\n  ...\n 411|     def flush(self) -> None:\n  ...\n 414|     def close(self) -> None:\n  ...\n 419|     def __getattr__(self, name: str) -> t.Any:\n  ...\n 423| def _resolve_pager_command(cmd_parts: list[str]) -> tuple[Path, list[str]] | None:\n  ...\n 433|     if not cmd_parts:\n  ...\n 436|     import shutil\n  ...\n 438|     cmd_filepath = shutil.which(cmd_parts[0])\n  ...\n 440|     if not cmd_filepath:\n  ...\n 448|     return Path(cmd_filepath).absolute(), cmd_parts[1:]\n  ...\n 451| def _pager_contextmanager(\n  ...\n 455|     stdout = _default_text_stdout()\n  ...\n 459|     if stdout is None:\n  ...\n 462|     if not isatty(sys.stdin) or not isatty(stdout):\n  ...\n 469|     pager_cmd_parts = shlex.split(os.environ.get(\"PAGER\", \"\"))\n  ...\n 471|     if pager_cmd_parts:\n  ...\n 474|         use_tempfile = WIN\n  ...\n 482|     resolved = _resolve_pager_command(pager_cmd_parts)\n  ...\n 484|     if resolved is None:\n  ...\n 488|     cmd_path, cmd_params = resolved\n  ...\n 490|     if use_tempfile:\n  ...\n 493|     return _pipepager(cmd_path, cmd_params, color)\n  ...\n 495| \n 496| @contextlib.contextmanager\n 497| def get_pager_file(color: bool | None = None) -> t.Generator[t.TextIO, None, None]:\n 498|     \"\"\"Context manager.\n 499| \n 500|     Yields a writable file-like object which can be used as an output pager.\n 501| \n 502|     .. versionadded:: 8.4.0\n 503| \n 504|     :param color: controls if the pager supports ANSI colors or not.  The\n 505|                   default is autodetection.\n 506|     \"\"\"\n 507|     with _pager_contextmanager(color=color) as (stream, color):\n 508|         # Every pager strategy yields a text stream, so the only thing left to\n 509|         # do is strip ANSI styling when colors are disabled. A strategy yields\n 510|         # None when it has no opinion on colors, which settles as off here. The\n 511|         # wrapper does not close the stream: each strategy owns its stream's\n 512|         # lifecycle.\n 513|         writer = _PagerWriter(stream, color=bool(color))\n 514|         try:\n 515|             yield t.cast(t.TextIO, writer)\n 516|         finally:\n 517|             writer.flush()\n 518| \n 519| \n 520| def _less_uses_raw_mode(less_env: str, cmd_params: list[str]) -> bool:\n 521|     \"\"\"Detect a raw-control-characters request in a ``less`` invocation.\n 522| \n 523|     Parses the tokens of the ``LESS`` environment variable and the command\n 524|     line: only short-option clusters (``-R``, ``-rX``, ``-XrY``) and the\n 525|     ``--raw-control-chars`` long option request raw mode. Filenames and\n 526|     long-option values may carry the letter ``r`` without being such a\n 527|     request.\n 528|     \"\"\"\n 529|     try:\n 530|         env_tokens = shlex.split(less_env)\n 531|     except ValueError:\n 532|         # Unbalanced quotes make ``LESS`` unparsable: fall back to whitespace\n 533|         # splitting rather than failing the pager over it.\n 534|         env_tokens = less_env.split()\n 535|     tokens = env_tokens + cmd_params\n 536| \n 537|     for token in tokens:\n 538|         if token.startswith(\"--\"):\n 539|             if token.casefold() == \"--raw-control-chars\":\n 540|                 return True\n 541|         elif token.startswith(\"-\") and len(token) > 1:\n 542|             if \"r\" in token[1:].casefold():\n 543|                 return True\n 544| \n 545|     return False\n 546| \n  ...\n 548| @contextlib.contextmanager\n 549| def _pipepager(\n  ...\n 560|     import subprocess\n  ...\n 563|     env = dict(os.environ)\n  ...\n 568|     # recognized like bare ``less``, case-insensitively on Windows since its\n 569|     # filesystems are. POSIX keeps an exact match.\n 570|     cmd_name = cmd_path.stem\n 571|     if WIN:\n 572|         # ``_pager_contextmanager`` currently routes every Windows invocation\n 573|         # to ``_tempfilepager``, so this branch is not reachable on Windows\n 574|         # today: it keeps the detection correct should that routing ever\n 575|         # change.\n 576|         cmd_name = cmd_name.casefold()\n 577| \n 578|     if color is None and cmd_name == \"less\":\n 579|         less_env = os.environ.get(\"LESS\")\n 580|         if _less_uses_raw_mode(less_env, cmd_params):\n 581|             color = True\n 582|         elif not less_env and not cmd_params:\n 583|             env[\"LESS\"] = \"-R\"\n 584|             color = True\n 585| \n 586|     c = subprocess.Popen(\n 587|         [str(cmd_path)] + cmd_params,\n 588|         shell=False,\n 589|         stdin=subprocess.PIPE,\n 590|         env=env,\n 591|         errors=\"replace\",\n 592|         text=True,\n  ...\n 635| @contextlib.contextmanager\n 636| def _tempfilepager(\n  ...\n 670| @contextlib.contextmanager\n 671| def _nullpager(\n  ...\n 683| class Editor:\n 684|     def __init__(\n  ...\n 696|     def get_editor(self) -> str:\n  ...\n 713|     def edit_files(self, filenames: cabc.Iterable[str | os.PathLike[str]]) -> None:\n  ...\n 751|     def edit(self, text: str | bytes | bytearray | None) -> str | bytes | None:\n  ...\n 799| def open_url(url: str, wait: bool = False, locate: bool = False) -> int:\n  ...\n 869| def _translate_ch_to_exc(ch: str) -> None:\n  ...\n 880| if sys.platform == \"win32\":\n  ...\n 934|     import termios\n 935|     import tty\n  ...\n 937|     @contextlib.contextmanager\n 938|     def raw_terminal() -> cabc.Iterator[int]:\n  ...\n 964|     def getchar(echo: bool) -> str:",
+  "lines_shown": 172,
+  "truncated": false,
+  "rejected_by_the_suite": [
+   {
+    "at": "src/click/_termui_impl.py:520",
+    "tried": "def _less_uses_raw_mode(less_env: str, cmd_params: list[str]) ->= bool:",
+    "why": "does not compile: expected ':' (_termui_impl.py, line 520)"
+   },
+   {
+    "at": "src/click/_termui_impl.py:535",
+    "tried": "tokens = env_tokens - cmd_params",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:540",
+    "tried": "return False",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:541",
+    "tried": "elif token.startswith(\"-\") and len(token) >= 1:",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:541",
+    "tried": "elif token.startswith(\"-\") and len(token) > 0:",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:541",
+    "tried": "elif token.startswith(\"-\") and len(token) < 1:",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:542",
+    "tried": "if \"r\" in token[0:].casefold():",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:543",
+    "tried": "return False",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:545",
+    "tried": "return True",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:581",
+    "tried": "color = False",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:584",
+    "tried": "color = False",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:587",
+    "tried": "[str(cmd_path)] - cmd_params,",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:588",
+    "tried": "shell=True,",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:592",
+    "tried": "text=False,",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:39",
+    "tried": "BEFORE_BAR = \"\\r\\032[?25l\"",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:39",
+    "tried": "BEFORE_BAR = \"\\r\\033[?24l\"",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:40",
+    "tried": "AFTER_BAR = \"\\032[?25h\\n\"",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:40",
+    "tried": "AFTER_BAR = \"\\033[?24h\\n\"",
+    "why": "FAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]"
+   },
+   {
+    "at": "src/click/_termui_impl.py:115",
+    "tried": "def __enter__(self) ->= ProgressBar[V]:",
+    "why": "does not compile: expected ':' (_termui_impl.py, line 115)"
+   },
+   {
+    "at": "src/click/_termui_impl.py:128",
+    "tried": "def __iter__(self) ->= cabc.Iterator[V]:",
+    "why": "does not compile: expected ':' (_termui_impl.py, line 128)"
+   }
+  ],
+  "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand"
+ }
+}

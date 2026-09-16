@@ -1,0 +1,8 @@
+{
+ "file": "arrow/parser.py",
+ "lineno": 797,
+ "orig": "            if parts.get(\"microsecond\", 0) != 0:",
+ "mutated": "            if parts.get(\"microsecond\") != 0:",
+ "cls": "getdef",
+ "base": "2224255c4acc594d734cef0bbc83360452a67983"
+}

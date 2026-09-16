@@ -1,0 +1,8 @@
+{
+ "file": "rich/measure.py",
+ "lineno": 141,
+ "orig": "    if not renderables:",
+ "mutated": "    if renderables:",
+ "cls": "notdrop",
+ "base": "bf2620c8ce27bfdcaa3ea35b2557f94a46f1b5a9"
+}

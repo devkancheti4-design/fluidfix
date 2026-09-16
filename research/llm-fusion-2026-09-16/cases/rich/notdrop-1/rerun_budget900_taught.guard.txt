@@ -1,0 +1,5 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered
+[23:49:59] rich/measure.py: repaired line 141 in 29 suite runs (63.7s):
+  - if renderables:
+  + if not renderables:
+  committed

@@ -1,0 +1,8 @@
+{
+ "file": "arrow/locales.py",
+ "lineno": 5495,
+ "orig": "        \"hours\": {\"double\": \"{0} sata\", \"higher\": \"{0} sati\"},",
+ "mutated": "        \"hours\": {\"double\": \"{0} sata\", \"higher\": \"{1} sati\"},",
+ "cls": "lit",
+ "base": "2224255c4acc594d734cef0bbc83360452a67983"
+}

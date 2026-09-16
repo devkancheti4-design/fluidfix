@@ -1,0 +1,16 @@
+{
+ "case": "arrow/add-1",
+ "budget": 300,
+ "extra": "",
+ "tag": "_pip0150",
+ "code": "pip fluidfix in venv",
+ "guard_exit": 0,
+ "seconds": 117.4,
+ "repaired": true,
+ "byte_exact": false,
+ "suite_runs": 25,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "[00:24:36] arrow/arrow.py: repaired line 1219 in 25 suite runs (99.2s):\n  - if self._datetime < dt\n  + if self._datetime > dt\n  committed\n",
+ "verdict": "WRONG-GREEN"
+}

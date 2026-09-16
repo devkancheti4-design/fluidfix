@@ -1,0 +1,8 @@
+{
+ "example_before": "last_index = len(words)",
+ "example_after": "last_index = len(words) - 1",
+ "name": "last-index-off-by-one",
+ "description": "a variable named like an index or last position assigned `len(<seq>)` with no `- 1`, so it points one past the end",
+ "signal": "\\b(last_index|last|end_index|last_pos)\\s*=\\s*len\\([\\w.]+\\)\\s*$",
+ "applier": "def fix(line, o):\n    return re.sub(r'(=\\s*len\\([\\w.]+\\))(\\s*)$', r'\\1 - 1\\2', line, count=1)"
+}

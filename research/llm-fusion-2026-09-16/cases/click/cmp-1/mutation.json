@@ -1,0 +1,8 @@
+{
+ "file": "src/click/_textwrap.py",
+ "lineno": 111,
+ "orig": "                if cur_len + n <= width:",
+ "mutated": "                if cur_len + n < width:",
+ "cls": "cmp",
+ "base": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1"
+}

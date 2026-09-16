@@ -1,0 +1,16 @@
+{
+ "case": "click/andor-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 70.1,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 28,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered\n[21:35:04] src/click/shell_completion.py: repaired line 467 in 28 suite runs (37.1s):\n  - help_ = item.help and \"_\"\n  + help_ = item.help or \"_\"\n  committed\n",
+ "verdict": "EXACT"
+}

@@ -1,0 +1,16 @@
+{
+ "case": "click/lenm1-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 496.6,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 29,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered\n[21:47:34] src/click/utils.py: repaired line 84 in 29 suite runs (158.0s):\n  - last_index = len(words)\n  + last_index = len(words) - 1\n  committed\n",
+ "verdict": "EXACT"
+}

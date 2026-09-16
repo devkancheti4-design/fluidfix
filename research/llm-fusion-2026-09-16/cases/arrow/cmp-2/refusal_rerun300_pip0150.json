@@ -1,0 +1,322 @@
+{
+ "status": "refused",
+ "candidates": [
+  "arrow/arrow.py",
+  "arrow/constants.py",
+  "arrow/__init__.py",
+  "arrow/_version.py",
+  "arrow/parser.py",
+  "arrow/api.py",
+  "arrow/locales.py",
+  "arrow/util.py"
+ ],
+ "seconds": 303.14229106903076,
+ "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)",
+ "rejected_candidates": [
+  {
+   "at": "arrow/arrow.py:1545",
+   "tried": "    def date(self) ->= dt_date:",
+   "why": "does not compile: expected ':' (arrow.py, line 1545)"
+  },
+  {
+   "at": "arrow/arrow.py:1557",
+   "tried": "    def time(self) ->= dt_time:",
+   "why": "does not compile: expected ':' (arrow.py, line 1557)"
+  },
+  {
+   "at": "arrow/arrow.py:125",
+   "tried": "    _MONTHS_PER_QUARTER: Final[int] = 2",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:126",
+   "tried": "    _MONTHS_PER_YEAR: Final[int] = 11",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:127",
+   "tried": "    _SECS_PER_MINUTE: Final[int] = 59",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 59 * 60",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 60 * 59",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 59 * 60 * 24",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 59 * 24",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 60 * 23",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 59 * 60 * 24 * 7",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 59 * 24 * 7",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 23 * 7",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 24 * 6",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 59 * 60 * 24 * 30.5",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 59 * 24 * 30.5",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 23 * 30.5",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 29.5",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 30.4",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 59 * 60 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 59 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 23 * 30.5 * 3",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 29.5 * 3",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.4 * 3",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.5 * 2",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 59 * 60 * 24 * 365",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 59 * 24 * 365",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 60 * 23 * 365",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 60 * 24 * 364",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:136",
+   "tried": "        \"second\": 0.0,",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:136",
+   "tried": "        \"second\": 1.-1,",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:173",
+   "tried": "        fold = kwargs.get(\"fold\", -1)",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:1545",
+   "tried": "    def date(self) ->= dt_date:",
+   "why": "does not compile: expected ':' (arrow.py, line 1545)"
+  },
+  {
+   "at": "arrow/arrow.py:1557",
+   "tried": "    def time(self) ->= dt_time:",
+   "why": "does not compile: expected ':' (arrow.py, line 1557)"
+  },
+  {
+   "at": "arrow/arrow.py:125",
+   "tried": "    _MONTHS_PER_QUARTER: Final[int] = 2",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:126",
+   "tried": "    _MONTHS_PER_YEAR: Final[int] = 11",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:127",
+   "tried": "    _SECS_PER_MINUTE: Final[int] = 59",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 59 * 60",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 60 * 59",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 59 * 60 * 24",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 59 * 24",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 60 * 23",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 59 * 60 * 24 * 7",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 59 * 24 * 7",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 23 * 7",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 24 * 6",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 59 * 60 * 24 * 30.5",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 59 * 24 * 30.5",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 23 * 30.5",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 29.5",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 30.4",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 59 * 60 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 59 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 23 * 30.5 * 3",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 29.5 * 3",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.4 * 3",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.5 * 2",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/parser.py:686",
+   "tried": "                if \"hour\" in parts and not 0 < parts[\"hour\"] <= 12:",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/parser.py:686",
+   "tried": "                if \"hour\" in parts and not 0 <= parts[\"hour\"] < 12:",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - arrow.p..."
+  },
+  {
+   "at": "arrow/parser.py:686",
+   "tried": "                if \"hour\" in parts and not -1 <= parts[\"hour\"] <= 12:",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - Asserti..."
+  },
+  {
+   "at": "arrow/parser.py:686",
+   "tried": "                if \"hour\" in parts and not 0 <= parts[\"hour\"] <= 11:",
+   "why": "FAILED tests/test_parser.py::TestDateTimeParserParse::test_parse_pm - arrow.p..."
+  }
+ ]
+}

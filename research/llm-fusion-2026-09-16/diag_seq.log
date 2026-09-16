@@ -1,0 +1,5 @@
+case 1 mod_021 3 flipped-additive: exit=0 exact=True searched=None
+    ['[18:22:48] pkg/mod_021.py: repaired line 5 in 4 suite runs (7.6s):']
+case 2 mod_195 0 strictness: exit=0 exact=True searched=None
+    ['[18:23:09] pkg/mod_195.py: repaired line 9 in 8 suite runs (12.8s):']
+tree leftovers: ['.fluidfix', '.git', '.gitignore', '.pytest_cache']

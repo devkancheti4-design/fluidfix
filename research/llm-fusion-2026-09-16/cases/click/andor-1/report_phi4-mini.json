@@ -1,0 +1,64 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 301.9,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/andor-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "phi4-mini",
+   "tokens": {
+    "input": 4835,
+    "output": 333,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "phi4-mini",
+    "seconds": 29.2
+   },
+   "valid": false,
+   "why": "signal matches no line in the suspect file",
+   "rule": {
+    "name": "completer-plain-missing-compopt",
+    "signal": "if [[ $type == 'plain' ]]; then",
+    "example_before": "if [[ $type == 'file' ]]; then\n  124|             COMPREPLY=()\n  125|             compopt -o default\n  126|         else if [[ $type == 'plain' ]]; then\n  123|             COMPREPLY+=($value)\n  124|         fi\n  125|     done;\n",
+    "example_after": "if [[ $type == 'file' ]]; then\n  124|             COMPREPLY=()\n  125|             compopt -o default\n  126|         else if [[ $type == 'plain' ]]; then\n  123|             COMPREPLY+=($value)\n  124|         fi\n  125|     done;\n"
+   }
+  },
+  {
+   "tier": 2,
+   "model": "phi4-mini",
+   "tokens": {
+    "input": 4673,
+    "output": 150,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "phi4-mini",
+    "seconds": 18.2
+   },
+   "proposals": 3,
+   "line": "def complete(self) -> str:",
+   "replacements": [
+    "def complete(self) -> str:\n    return \"\\n\".join([self.format_completion(item) for item in self.get_completions()])",
+    "def complete(self) -> str:\n    completions = self.get_completions()\n    return '\\n'.join([self.format_completion(item) for item in completions])",
+    "def complete(self) -> str:\n    completions = self.get_completions()\n    formatted_completions = [self.format_completion(item) for item in completions]\n    retur"
+   ],
+   "exit": 2,
+   "wall": 303.5,
+   "suite_runs": null,
+   "stdout": "y a value that occurs in few files; or teach a narrower signal for this class. 186 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or make the failure carry a locating value\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+  }
+ ],
+ "tokens": {
+  "input": 9508,
+  "output": 483,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 9991
+ },
+ "outcome": "refused-after-tier2"
+}

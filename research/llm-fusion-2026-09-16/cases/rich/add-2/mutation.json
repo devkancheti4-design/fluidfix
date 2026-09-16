@@ -1,0 +1,8 @@
+{
+ "file": "rich/panel.py",
+ "lineno": 282,
+ "orig": "        padding = left + right",
+ "mutated": "        padding = left - right",
+ "cls": "add",
+ "base": "bf2620c8ce27bfdcaa3ea35b2557f94a46f1b5a9"
+}

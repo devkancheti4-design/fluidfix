@@ -1,0 +1,5 @@
+click/andor-1                andor      -> EXACT        via tier1                tokens=4019 60.2s
+click/getdef-1               getdef     -> EXACT        via tier1                tokens=3619 72.7s
+click/lenm1-1                lenm1      -> REFUSED      via refused-after-tier2  tokens=4243 13.3s
+click/notdrop-1              notdrop    -> EXACT        via tier2                tokens=8092 72.9s
+LADDER_DONE fable-5.1

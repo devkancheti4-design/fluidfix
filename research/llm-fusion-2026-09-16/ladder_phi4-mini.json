@@ -1,0 +1,286 @@
+[
+ {
+  "case": "click/andor-1",
+  "cls": "andor",
+  "file": "src/click/shell_completion.py",
+  "orig": "help_ = item.help or \"_\"",
+  "mutated": "help_ = item.help and \"_\"",
+  "author": "phi4-mini",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 9508,
+   "output": 483,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 9991
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 301.9,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/andor-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "phi4-mini",
+    "tokens": {
+     "input": 4835,
+     "output": 333,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "phi4-mini",
+     "seconds": 29.2
+    },
+    "valid": false,
+    "why": "signal matches no line in the suspect file",
+    "rule": {
+     "name": "completer-plain-missing-compopt",
+     "signal": "if [[ $type == 'plain' ]]; then",
+     "example_before": "if [[ $type == 'file' ]]; then\n  124|             COMPREPLY=()\n  125|             compopt -o default\n  126|         else if [[ $type == 'plain' ]]; then\n  123|             COMPREPLY+=($value)\n  124|         fi\n  125|     done;\n",
+     "example_after": "if [[ $type == 'file' ]]; then\n  124|             COMPREPLY=()\n  125|             compopt -o default\n  126|         else if [[ $type == 'plain' ]]; then\n  123|             COMPREPLY+=($value)\n  124|         fi\n  125|     done;\n"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "phi4-mini",
+    "tokens": {
+     "input": 4673,
+     "output": 150,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "phi4-mini",
+     "seconds": 18.2
+    },
+    "proposals": 3,
+    "line": "def complete(self) -> str:",
+    "replacements": [
+     "def complete(self) -> str:\n    return \"\\n\".join([self.format_completion(item) for item in self.get_completions()])",
+     "def complete(self) -> str:\n    completions = self.get_completions()\n    return '\\n'.join([self.format_completion(item) for item in completions])",
+     "def complete(self) -> str:\n    completions = self.get_completions()\n    formatted_completions = [self.format_completion(item) for item in completions]\n    retur"
+    ],
+    "exit": 2,
+    "wall": 303.5,
+    "suite_runs": null,
+    "stdout": "y a value that occurs in few files; or teach a narrower signal for this class. 186 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or make the failure carry a locating value\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+   }
+  ],
+  "wall_s": 361.8
+ },
+ {
+  "case": "click/getdef-1",
+  "cls": "getdef",
+  "file": "src/click/_termui_impl.py",
+  "orig": "less_env = os.environ.get(\"LESS\", \"\")",
+  "mutated": "less_env = os.environ.get(\"LESS\")",
+  "author": "phi4-mini",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 8504,
+   "output": 204,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 8708
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 49.8,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/getdef-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "phi4-mini",
+    "tokens": {
+     "input": 4320,
+     "output": 128,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "phi4-mini",
+     "seconds": 18.5
+    },
+    "valid": false,
+    "why": "bad signal: cannot refer to an open group at position 13",
+    "rule": {
+     "name": "shlex-split-failure",
+     "signal": "shlex\\.split(\\1)",
+     "example_before": "env_tokens = shlex.split(less_env)\n",
+     "example_after": "env_tokens = shlex.split(less_env)"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "phi4-mini",
+    "tokens": {
+     "input": 4184,
+     "output": 76,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "phi4-mini",
+     "seconds": 13.7
+    },
+    "proposals": 3,
+    "line": "env_tokens = shlex.split(less_env)",
+    "replacements": [
+     "env_tokens = shlex.split(less_env.strip())",
+     "env_tokens = shlex.split(less_env.strip().replace(' ', ''))",
+     "env_tokens = shlex.split(less_env if less_env else '')"
+    ],
+    "exit": 2,
+    "wall": 45.8,
+    "suite_runs": null,
+    "stdout": "is outside the taught vocabulary (candidate files tried: src/click/_termui_impl.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 114 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+   }
+  ],
+  "wall_s": 88.5
+ },
+ {
+  "case": "click/lenm1-1",
+  "cls": "lenm1",
+  "file": "src/click/utils.py",
+  "orig": "last_index = len(words) - 1",
+  "mutated": "last_index = len(words)",
+  "author": "phi4-mini",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 5114,
+   "output": 216,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 5330
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 304.2,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/lenm1-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "phi4-mini",
+    "tokens": {
+     "input": 2625,
+     "output": 123,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "phi4-mini",
+     "seconds": 10.6
+    },
+    "valid": false,
+    "why": "applier is a no-op on the matched line",
+    "rule": {
+     "name": "format-default-comma",
+     "signal": "def _format_default(default: V) ->= V | str:",
+     "example_before": "def _format_default(default: V) ->= V | str:",
+     "example_after": "def _format_default(default: V) -> V | str:"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "phi4-mini",
+    "tokens": {
+     "input": 2489,
+     "output": 93,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "phi4-mini",
+     "seconds": 9.0
+    },
+    "proposals": 3,
+    "line": "def _format_default(default: V) -> V | str:",
+    "replacements": [
+     "def _format_default(default: V) -> str:",
+     "def _format_default(default: V) -> str: # Corrected the colon to a comma",
+     "def _format_default(default: V) -> str: # Corrected the colon to a comma, and added a comment for clarity"
+    ],
+    "exit": 2,
+    "wall": 300.4,
+    "suite_runs": null,
+    "stdout": "xceptions.py, src/click/globals.py, src/click/_compat.py; the defect may be in a file the ranking never reached. 110 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+   }
+  ],
+  "wall_s": 333.2
+ },
+ {
+  "case": "click/notdrop-1",
+  "cls": "notdrop",
+  "file": "src/click/shell_completion.py",
+  "orig": "if not value:",
+  "mutated": "if value:",
+  "author": "phi4-mini",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 11512,
+   "output": 159,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 11671
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 44.0,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/notdrop-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "phi4-mini",
+    "tokens": {
+     "input": 5824,
+     "output": 113,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "phi4-mini",
+     "seconds": 21.8
+    },
+    "valid": false,
+    "why": "signal matches no line in the suspect file",
+    "rule": {
+     "name": "index-error-correction",
+     "signal": "IndexError: string index out of range",
+     "example_before": "c = value[-1]",
+     "example_after": "c = value[0]"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "phi4-mini",
+    "tokens": {
+     "input": 5688,
+     "output": 46,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "phi4-mini",
+     "seconds": 16.5
+    },
+    "proposals": 3,
+    "line": "c = value[-1]",
+    "replacements": [
+     "c = value[0]",
+     "c = value[1]",
+     "c = value[2]"
+    ],
+    "exit": 2,
+    "wall": 53.6,
+    "suite_runs": null,
+    "stdout": "utside the taught vocabulary (candidate files tried: src/click/shell_completion.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 113 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+   }
+  ],
+  "wall_s": 101.4
+ }
+]

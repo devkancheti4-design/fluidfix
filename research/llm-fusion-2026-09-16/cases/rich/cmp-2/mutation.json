@@ -1,0 +1,8 @@
+{
+ "file": "rich/highlighter.py",
+ "lineno": 118,
+ "orig": "            r\"(?P<number>(?<!\\w)\\-?[0-9]+\\.?[0-9]*(e[\\-\\+]?\\d+?)?\\b|0x[0-9a-fA-F]*)\",",
+ "mutated": "            r\"(?P<=number>(?<!\\w)\\-?[0-9]+\\.?[0-9]*(e[\\-\\+]?\\d+?)?\\b|0x[0-9a-fA-F]*)\",",
+ "cls": "cmp",
+ "base": "bf2620c8ce27bfdcaa3ea35b2557f94a46f1b5a9"
+}

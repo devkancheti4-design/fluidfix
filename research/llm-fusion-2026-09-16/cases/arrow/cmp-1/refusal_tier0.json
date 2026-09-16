@@ -1,0 +1,1473 @@
+{
+ "status": "refused",
+ "candidates": [
+  "arrow/arrow.py",
+  "arrow/constants.py",
+  "arrow/__init__.py",
+  "arrow/_version.py",
+  "arrow/locales.py",
+  "arrow/api.py",
+  "arrow/util.py",
+  "arrow/formatter.py"
+ ],
+ "seconds": 303.14944672584534,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "rejected_candidates": [
+  {
+   "at": "arrow/arrow.py:125",
+   "tried": "    _MONTHS_PER_QUARTER: Final[int] = 2",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:126",
+   "tried": "    _MONTHS_PER_YEAR: Final[int] = 11",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:127",
+   "tried": "    _SECS_PER_MINUTE: Final[int] = 59",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 59 * 60",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 60 * 59",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 59 * 60 * 24",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 59 * 24",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 60 * 23",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 59 * 60 * 24 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 59 * 24 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 23 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 24 * 6",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 59 * 60 * 24 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 59 * 24 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 23 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 29.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 30.4",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 59 * 60 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 59 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 23 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 29.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.4 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.5 * 2",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 59 * 60 * 24 * 365",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 59 * 24 * 365",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 60 * 23 * 365",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:133",
+   "tried": "    _SECS_PER_YEAR: Final[int] = 60 * 60 * 24 * 364",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:136",
+   "tried": "        \"second\": 0.0,",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:136",
+   "tried": "        \"second\": 1.-1,",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:173",
+   "tried": "        fold = kwargs.get(\"fold\", -1)",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:125",
+   "tried": "    _MONTHS_PER_QUARTER: Final[int] = 2",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:126",
+   "tried": "    _MONTHS_PER_YEAR: Final[int] = 11",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:127",
+   "tried": "    _SECS_PER_MINUTE: Final[int] = 59",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 59 * 60",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:128",
+   "tried": "    _SECS_PER_HOUR: Final[int] = 60 * 59",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 59 * 60 * 24",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 59 * 24",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:129",
+   "tried": "    _SECS_PER_DAY: Final[int] = 60 * 60 * 23",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 59 * 60 * 24 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 59 * 24 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 23 * 7",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:130",
+   "tried": "    _SECS_PER_WEEK: Final[int] = 60 * 60 * 24 * 6",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 59 * 60 * 24 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 59 * 24 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 23 * 30.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 29.5",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:131",
+   "tried": "    _SECS_PER_MONTH: Final[float] = 60 * 60 * 24 * 30.4",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 59 * 60 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 59 * 24 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 23 * 30.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 29.5 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.4 * 3",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/arrow.py:132",
+   "tried": "    _SECS_PER_QUARTER: Final[float] = 60 * 60 * 24 * 30.5 * 2",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:272",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 272)"
+  },
+  {
+   "at": "arrow/locales.py:934",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 934)"
+  },
+  {
+   "at": "arrow/locales.py:1333",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 1333)"
+  },
+  {
+   "at": "arrow/locales.py:1338",
+   "tried": "            if delta % 9 == 1 and delta % 100 != 11:",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:1338",
+   "tried": "            if delta % 10 == 0 and delta % 100 != 11:",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:1338",
+   "tried": "            if delta % 10 == 1 and delta % 99 != 11:",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  },
+  {
+   "at": "arrow/locales.py:1338",
+   "tried": "            if delta % 10 == 1 and delta % 100 != 10:",
+   "why": "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "arrow/arrow.py": [
+   [
+    7,
+    "import calendar"
+   ],
+   [
+    8,
+    "import re"
+   ],
+   [
+    9,
+    "import sys"
+   ],
+   [
+    10,
+    "from datetime import date as dt_date"
+   ],
+   [
+    11,
+    "from datetime import datetime as dt_datetime"
+   ],
+   [
+    12,
+    "from datetime import time as dt_time"
+   ],
+   [
+    13,
+    "from datetime import timedelta, timezone"
+   ],
+   [
+    14,
+    "from datetime import tzinfo as dt_tzinfo"
+   ],
+   [
+    15,
+    "from math import trunc"
+   ],
+   [
+    16,
+    "from time import struct_time"
+   ],
+   [
+    17,
+    "from typing import ("
+   ],
+   [
+    18,
+    "    Any,"
+   ],
+   [
+    19,
+    "    ClassVar,"
+   ],
+   [
+    20,
+    "    Final,"
+   ],
+   [
+    21,
+    "    Generator,"
+   ],
+   [
+    22,
+    "    Iterable,"
+   ],
+   [
+    23,
+    "    List,"
+   ],
+   [
+    24,
+    "    Literal,"
+   ],
+   [
+    25,
+    "    Mapping,"
+   ],
+   [
+    26,
+    "    Optional,"
+   ],
+   [
+    27,
+    "    Tuple,"
+   ],
+   [
+    28,
+    "    Union,"
+   ],
+   [
+    29,
+    "    cast,"
+   ],
+   [
+    30,
+    "    overload,"
+   ],
+   [
+    31,
+    ")"
+   ],
+   [
+    33,
+    "from dateutil import tz as dateutil_tz"
+   ],
+   [
+    34,
+    "from dateutil.relativedelta import relativedelta"
+   ],
+   [
+    36,
+    "from arrow import formatter, locales, parser, util"
+   ],
+   [
+    37,
+    "from arrow.constants import DEFAULT_LOCALE, DEHUMANIZE_LOCALES"
+   ],
+   [
+    38,
+    "from arrow.locales import TimeFrameLiteral"
+   ],
+   [
+    40,
+    "TZ_EXPR = Union[dt_tzinfo, str]"
+   ],
+   [
+    42,
+    "_T_FRAMES = Literal["
+   ],
+   [
+    43,
+    "    \"year\","
+   ],
+   [
+    44,
+    "    \"years\","
+   ],
+   [
+    45,
+    "    \"month\","
+   ],
+   [
+    46,
+    "    \"months\","
+   ],
+   [
+    47,
+    "    \"day\","
+   ],
+   [
+    48,
+    "    \"days\","
+   ],
+   [
+    49,
+    "    \"hour\","
+   ],
+   [
+    50,
+    "    \"hours\","
+   ],
+   [
+    51,
+    "    \"minute\","
+   ],
+   [
+    52,
+    "    \"minutes\","
+   ],
+   [
+    53,
+    "    \"second\","
+   ],
+   [
+    54,
+    "    \"seconds\","
+   ],
+   [
+    55,
+    "    \"microsecond\","
+   ],
+   [
+    56,
+    "    \"microseconds\","
+   ],
+   [
+    57,
+    "    \"week\","
+   ],
+   [
+    58,
+    "    \"weeks\","
+   ],
+   [
+    59,
+    "    \"quarter\","
+   ],
+   [
+    60,
+    "    \"quarters\","
+   ],
+   [
+    61,
+    "]"
+   ],
+   [
+    63,
+    "_BOUNDS = Literal[\"[)\", \"()\", \"(]\", \"[]\"]"
+   ],
+   [
+    65,
+    "_GRANULARITY = Literal["
+   ],
+   [
+    66,
+    "    \"auto\","
+   ],
+   [
+    67,
+    "    \"second\","
+   ],
+   [
+    68,
+    "    \"minute\","
+   ],
+   [
+    69,
+    "    \"hour\","
+   ],
+   [
+    70,
+    "    \"day\","
+   ],
+   [
+    71,
+    "    \"week\","
+   ],
+   [
+    72,
+    "    \"month\","
+   ],
+   [
+    73,
+    "    \"quarter\","
+   ],
+   [
+    74,
+    "    \"year\","
+   ],
+   [
+    75,
+    "]"
+   ],
+   [
+    78,
+    "class Arrow:"
+   ],
+   [
+    111,
+    "    resolution: ClassVar[timedelta] = dt_datetime.resolution"
+   ],
+   [
+    115,
+    "    _ATTRS: Final[List[str]] = ["
+   ],
+   [
+    116,
+    "        \"year\","
+   ],
+   [
+    117,
+    "        \"month\","
+   ],
+   [
+    118,
+    "        \"day\","
+   ],
+   [
+    119,
+    "        \"hour\","
+   ],
+   [
+    120,
+    "        \"minute\","
+   ],
+   [
+    121,
+    "        \"second\","
+   ],
+   [
+    122,
+    "        \"microsecond\","
+   ],
+   [
+    123,
+    "    ]"
+   ],
+   [
+    124,
+    "    _ATTRS_PLURAL: Final[List[str]] = [f\"{a}s\" for a in _ATTRS]"
+   ],
+   [
+    125,
+    "    _MONTHS_PER_QUARTER: Final[int] = 3"
+   ],
+   [
+    126,
+    "    _MONTHS_PER_YEAR: Final[int] = 12"
+   ],
+   [
+    127,
+    "    _SECS_PER_MINUTE: Final[int] = 60"
+   ],
+   [
+    128,
+    "    _SECS_PER_HOUR: Final[int] = 60 * 60"
+   ],
+   [
+    129,
+    "    _SECS_PER_DAY: Final[int] = 60 * 60 * 24"
+   ]
+  ],
+  "arrow/constants.py": [
+   [
+    3,
+    "import sys"
+   ],
+   [
+    4,
+    "from datetime import datetime"
+   ],
+   [
+    5,
+    "from typing import Final"
+   ],
+   [
+    11,
+    "try:"
+   ],
+   [
+    14,
+    "    _MAX_TIMESTAMP = datetime.max.timestamp()"
+   ],
+   [
+    27,
+    "MAX_TIMESTAMP: Final[float] = _MAX_TIMESTAMP"
+   ],
+   [
+    28,
+    "MAX_TIMESTAMP_MS: Final[float] = MAX_TIMESTAMP * 1000"
+   ],
+   [
+    29,
+    "MAX_TIMESTAMP_US: Final[float] = MAX_TIMESTAMP * 1_000_000"
+   ],
+   [
+    31,
+    "MAX_ORDINAL: Final[int] = datetime.max.toordinal()"
+   ],
+   [
+    32,
+    "MIN_ORDINAL: Final[int] = 1"
+   ],
+   [
+    34,
+    "DEFAULT_LOCALE: Final[str] = \"en-us\""
+   ],
+   [
+    37,
+    "DEHUMANIZE_LOCALES = {"
+   ]
+  ],
+  "arrow/__init__.py": [
+   [
+    1,
+    "from ._version import __version__"
+   ],
+   [
+    2,
+    "from .api import get, now, utcnow"
+   ],
+   [
+    3,
+    "from .arrow import Arrow"
+   ],
+   [
+    4,
+    "from .factory import ArrowFactory"
+   ],
+   [
+    5,
+    "from .formatter import ("
+   ],
+   [
+    6,
+    "    FORMAT_ATOM,"
+   ],
+   [
+    7,
+    "    FORMAT_COOKIE,"
+   ],
+   [
+    8,
+    "    FORMAT_RFC822,"
+   ],
+   [
+    9,
+    "    FORMAT_RFC850,"
+   ],
+   [
+    10,
+    "    FORMAT_RFC1036,"
+   ],
+   [
+    11,
+    "    FORMAT_RFC1123,"
+   ],
+   [
+    12,
+    "    FORMAT_RFC2822,"
+   ],
+   [
+    13,
+    "    FORMAT_RFC3339,"
+   ],
+   [
+    14,
+    "    FORMAT_RFC3339_STRICT,"
+   ],
+   [
+    15,
+    "    FORMAT_RSS,"
+   ],
+   [
+    16,
+    "    FORMAT_W3C,"
+   ],
+   [
+    17,
+    ")"
+   ],
+   [
+    18,
+    "from .parser import ParserError"
+   ],
+   [
+    22,
+    "__all__ = ["
+   ],
+   [
+    23,
+    "    \"__version__\","
+   ],
+   [
+    24,
+    "    \"get\","
+   ],
+   [
+    25,
+    "    \"now\","
+   ],
+   [
+    26,
+    "    \"utcnow\","
+   ],
+   [
+    27,
+    "    \"Arrow\","
+   ],
+   [
+    28,
+    "    \"ArrowFactory\","
+   ],
+   [
+    29,
+    "    \"FORMAT_ATOM\","
+   ],
+   [
+    30,
+    "    \"FORMAT_COOKIE\","
+   ],
+   [
+    31,
+    "    \"FORMAT_RFC822\","
+   ],
+   [
+    32,
+    "    \"FORMAT_RFC850\","
+   ],
+   [
+    33,
+    "    \"FORMAT_RFC1036\","
+   ],
+   [
+    34,
+    "    \"FORMAT_RFC1123\","
+   ],
+   [
+    35,
+    "    \"FORMAT_RFC2822\","
+   ],
+   [
+    36,
+    "    \"FORMAT_RFC3339\","
+   ],
+   [
+    37,
+    "    \"FORMAT_RFC3339_STRICT\","
+   ],
+   [
+    38,
+    "    \"FORMAT_RSS\","
+   ],
+   [
+    39,
+    "    \"FORMAT_W3C\","
+   ],
+   [
+    40,
+    "    \"ParserError\","
+   ],
+   [
+    41,
+    "]"
+   ]
+  ],
+  "arrow/_version.py": [
+   [
+    1,
+    "__version__ = \"1.4.0\""
+   ]
+  ],
+  "arrow/locales.py": [
+   [
+    3,
+    "from math import trunc"
+   ],
+   [
+    4,
+    "from typing import ("
+   ],
+   [
+    5,
+    "    Any,"
+   ],
+   [
+    6,
+    "    ClassVar,"
+   ],
+   [
+    7,
+    "    Dict,"
+   ],
+   [
+    8,
+    "    List,"
+   ],
+   [
+    9,
+    "    Literal,"
+   ],
+   [
+    10,
+    "    Mapping,"
+   ],
+   [
+    11,
+    "    Optional,"
+   ],
+   [
+    12,
+    "    Sequence,"
+   ],
+   [
+    13,
+    "    Tuple,"
+   ],
+   [
+    14,
+    "    Type,"
+   ],
+   [
+    15,
+    "    Union,"
+   ],
+   [
+    16,
+    "    cast,"
+   ],
+   [
+    17,
+    ")"
+   ],
+   [
+    19,
+    "TimeFrameLiteral = Literal["
+   ],
+   [
+    20,
+    "    \"now\","
+   ],
+   [
+    21,
+    "    \"second\","
+   ],
+   [
+    22,
+    "    \"seconds\","
+   ],
+   [
+    23,
+    "    \"minute\","
+   ],
+   [
+    24,
+    "    \"minutes\","
+   ],
+   [
+    25,
+    "    \"hour\","
+   ],
+   [
+    26,
+    "    \"hours\","
+   ],
+   [
+    27,
+    "    \"day\","
+   ],
+   [
+    28,
+    "    \"days\","
+   ],
+   [
+    29,
+    "    \"week\","
+   ],
+   [
+    30,
+    "    \"weeks\","
+   ],
+   [
+    31,
+    "    \"month\","
+   ],
+   [
+    32,
+    "    \"months\","
+   ],
+   [
+    33,
+    "    \"quarter\","
+   ],
+   [
+    34,
+    "    \"quarters\","
+   ],
+   [
+    35,
+    "    \"year\","
+   ],
+   [
+    36,
+    "    \"years\","
+   ],
+   [
+    37,
+    "]"
+   ],
+   [
+    39,
+    "_TimeFrameElements = Union["
+   ],
+   [
+    40,
+    "    str, Sequence[str], Mapping[str, str], Mapping[str, Sequence[str]]"
+   ],
+   [
+    41,
+    "]"
+   ],
+   [
+    43,
+    "_locale_map: Dict[str, Type[\"Locale\"]] = {}"
+   ],
+   [
+    46,
+    "def get_locale(name: str) -> \"Locale\":"
+   ],
+   [
+    63,
+    "def get_locale_by_class_name(name: str) -> \"Locale\":"
+   ],
+   [
+    70,
+    "    locale_cls: Optional[Type[Locale]] = globals().get(name)"
+   ],
+   [
+    72,
+    "    if locale_cls is None:"
+   ],
+   [
+    75,
+    "    return locale_cls()"
+   ],
+   [
+    78,
+    "class Locale:"
+   ],
+   [
+    81,
+    "    names: ClassVar[List[str]] = []"
+   ],
+   [
+    83,
+    "    timeframes: ClassVar[Mapping[TimeFrameLiteral, _TimeFrameElements]] = {"
+   ],
+   [
+    84,
+    "        \"now\": \"\","
+   ],
+   [
+    85,
+    "        \"second\": \"\","
+   ],
+   [
+    86,
+    "        \"seconds\": \"\","
+   ],
+   [
+    87,
+    "        \"minute\": \"\","
+   ],
+   [
+    88,
+    "        \"minutes\": \"\","
+   ],
+   [
+    89,
+    "        \"hour\": \"\","
+   ],
+   [
+    90,
+    "        \"hours\": \"\","
+   ],
+   [
+    91,
+    "        \"day\": \"\","
+   ],
+   [
+    92,
+    "        \"days\": \"\","
+   ],
+   [
+    93,
+    "        \"week\": \"\","
+   ],
+   [
+    94,
+    "        \"weeks\": \"\","
+   ],
+   [
+    95,
+    "        \"month\": \"\","
+   ],
+   [
+    96,
+    "        \"months\": \"\","
+   ],
+   [
+    97,
+    "        \"quarter\": \"\","
+   ],
+   [
+    98,
+    "        \"quarters\": \"\","
+   ],
+   [
+    99,
+    "        \"year\": \"\","
+   ],
+   [
+    100,
+    "        \"years\": \"\","
+   ],
+   [
+    101,
+    "    }"
+   ],
+   [
+    103,
+    "    meridians: ClassVar[Dict[str, str]] = {\"am\": \"\", \"pm\": \"\", \"AM\": \"\", \"PM\": \"\"}"
+   ],
+   [
+    107,
+    "    and_word: ClassVar[Optional[str]] = None"
+   ],
+   [
+    109,
+    "    month_names: ClassVar[List[str]] = []"
+   ],
+   [
+    110,
+    "    month_abbreviations: ClassVar[List[str]] = []"
+   ],
+   [
+    112,
+    "    day_names: ClassVar[List[str]] = []"
+   ],
+   [
+    113,
+    "    day_abbreviations: ClassVar[List[str]] = []"
+   ],
+   [
+    115,
+    "    ordinal_day_re: ClassVar[str] = r\"(\\d+)\""
+   ],
+   [
+    119,
+    "    def __init_subclass__(cls, **kwargs: Any) -> None:"
+   ],
+   [
+    120,
+    "        for locale_name in cls.names:"
+   ],
+   [
+    121,
+    "            if locale_name in _locale_map:"
+   ],
+   [
+    124,
+    "            _locale_map[locale_name.lower().replace(\"_\", \"-\")] = cls"
+   ],
+   [
+    126,
+    "    def __init__(self) -> None:"
+   ],
+   [
+    127,
+    "        self._month_name_to_ordinal = None"
+   ],
+   [
+    129,
+    "    def describe("
+   ],
+   [
+    148,
+    "    def describe_multi("
+   ],
+   [
+    181,
+    "    def day_name(self, day: int) -> str:"
+   ]
+  ],
+  "arrow/api.py": [
+   [
+    7,
+    "from datetime import date, datetime"
+   ],
+   [
+    8,
+    "from datetime import tzinfo as dt_tzinfo"
+   ],
+   [
+    9,
+    "from time import struct_time"
+   ],
+   [
+    10,
+    "from typing import Any, List, Optional, Tuple, Type, Union, overload"
+   ],
+   [
+    12,
+    "from arrow.arrow import TZ_EXPR, Arrow"
+   ],
+   [
+    13,
+    "from arrow.constants import DEFAULT_LOCALE"
+   ],
+   [
+    14,
+    "from arrow.factory import ArrowFactory"
+   ],
+   [
+    17,
+    "_factory = ArrowFactory()"
+   ],
+   [
+    83,
+    "def get(*args: Any, **kwargs: Any) -> Arrow:"
+   ],
+   [
+    89,
+    "get.__doc__ = _factory.get.__doc__"
+   ],
+   [
+    92,
+    "def utcnow() -> Arrow:"
+   ],
+   [
+    98,
+    "utcnow.__doc__ = _factory.utcnow.__doc__"
+   ],
+   [
+    101,
+    "def now(tz: Optional[TZ_EXPR] = None) -> Arrow:"
+   ],
+   [
+    107,
+    "now.__doc__ = _factory.now.__doc__"
+   ],
+   [
+    110,
+    "def factory(type: Type[Arrow]) -> ArrowFactory:"
+   ],
+   [
+    121,
+    "__all__ = [\"get\", \"utcnow\", \"now\", \"factory\"]"
+   ]
+  ],
+  "arrow/util.py": [
+   [
+    3,
+    "import datetime"
+   ],
+   [
+    4,
+    "from typing import Any, Optional"
+   ],
+   [
+    6,
+    "from dateutil.rrule import WEEKLY, rrule"
+   ],
+   [
+    8,
+    "from arrow.constants import ("
+   ],
+   [
+    9,
+    "    MAX_ORDINAL,"
+   ],
+   [
+    10,
+    "    MAX_TIMESTAMP,"
+   ],
+   [
+    11,
+    "    MAX_TIMESTAMP_MS,"
+   ],
+   [
+    12,
+    "    MAX_TIMESTAMP_US,"
+   ],
+   [
+    13,
+    "    MIN_ORDINAL,"
+   ],
+   [
+    14,
+    ")"
+   ],
+   [
+    17,
+    "def next_weekday("
+   ],
+   [
+    45,
+    "def is_timestamp(value: Any) -> bool:"
+   ],
+   [
+    58,
+    "def validate_ordinal(value: Any) -> None:"
+   ],
+   [
+    70,
+    "def normalize_timestamp(timestamp: float) -> float:"
+   ],
+   [
+    83,
+    "def iso_to_gregorian(iso_year: int, iso_week: int, iso_day: int) -> datetime.date:"
+   ],
+   [
+    107,
+    "def validate_bounds(bounds: str) -> None:"
+   ],
+   [
+    114,
+    "__all__ = [\"next_weekday\", \"is_timestamp\", \"validate_ordinal\", \"iso_to_gregorian\"]"
+   ]
+  ],
+  "arrow/formatter.py": [
+   [
+    3,
+    "import re"
+   ],
+   [
+    4,
+    "from datetime import datetime, timedelta, timezone"
+   ],
+   [
+    5,
+    "from typing import Final, Optional, Pattern, cast"
+   ],
+   [
+    7,
+    "from arrow import locales"
+   ],
+   [
+    8,
+    "from arrow.constants import DEFAULT_LOCALE"
+   ],
+   [
+    10,
+    "FORMAT_ATOM: Final[str] = \"YYYY-MM-DD HH:mm:ssZZ\""
+   ],
+   [
+    11,
+    "FORMAT_COOKIE: Final[str] = \"dddd, DD-MMM-YYYY HH:mm:ss ZZZ\""
+   ],
+   [
+    12,
+    "FORMAT_RFC822: Final[str] = \"ddd, DD MMM YY HH:mm:ss Z\""
+   ],
+   [
+    13,
+    "FORMAT_RFC850: Final[str] = \"dddd, DD-MMM-YY HH:mm:ss ZZZ\""
+   ],
+   [
+    14,
+    "FORMAT_RFC1036: Final[str] = \"ddd, DD MMM YY HH:mm:ss Z\""
+   ],
+   [
+    15,
+    "FORMAT_RFC1123: Final[str] = \"ddd, DD MMM YYYY HH:mm:ss Z\""
+   ],
+   [
+    16,
+    "FORMAT_RFC2822: Final[str] = \"ddd, DD MMM YYYY HH:mm:ss Z\""
+   ],
+   [
+    17,
+    "FORMAT_RFC3339: Final[str] = \"YYYY-MM-DD HH:mm:ssZZ\""
+   ],
+   [
+    18,
+    "FORMAT_RFC3339_STRICT: Final[str] = \"YYYY-MM-DDTHH:mm:ssZZ\""
+   ],
+   [
+    19,
+    "FORMAT_RSS: Final[str] = \"ddd, DD MMM YYYY HH:mm:ss Z\""
+   ],
+   [
+    20,
+    "FORMAT_W3C: Final[str] = \"YYYY-MM-DD HH:mm:ssZZ\""
+   ],
+   [
+    23,
+    "class DateTimeFormatter:"
+   ],
+   [
+    28,
+    "    _FORMAT_RE: Final[Pattern[str]] = re.compile("
+   ],
+   [
+    29,
+    "        r\"(\\[(?:(?=(?P<literal>[^]]))(?P=literal))*\\]|YYY?Y?|MM?M?M?|Do|DD?D?D?|d?dd?d?|HH?|hh?|mm?|ss?|SS?S?S?S?S?|ZZ?Z?|a|A|X|x|W)\""
+   ],
+   [
+    30,
+    "    )"
+   ],
+   [
+    34,
+    "    def __init__(self, locale: str = DEFAULT_LOCALE) -> None:"
+   ],
+   [
+    37,
+    "    def format(cls, dt: datetime, fmt: str) -> str:"
+   ],
+   [
+    43,
+    "    def _format_token(self, dt: datetime, token: Optional[str]) -> Optional[str]:"
+   ]
+  ],
+  "arrow/factory.py": [
+   [
+    8,
+    "import calendar"
+   ],
+   [
+    9,
+    "from datetime import date, datetime, timezone"
+   ],
+   [
+    10,
+    "from datetime import tzinfo as dt_tzinfo"
+   ],
+   [
+    11,
+    "from decimal import Decimal"
+   ],
+   [
+    12,
+    "from time import struct_time"
+   ],
+   [
+    13,
+    "from typing import Any, List, Optional, Tuple, Type, Union, overload"
+   ],
+   [
+    15,
+    "from arrow import parser"
+   ],
+   [
+    16,
+    "from arrow.arrow import TZ_EXPR, Arrow"
+   ],
+   [
+    17,
+    "from arrow.constants import DEFAULT_LOCALE"
+   ],
+   [
+    18,
+    "from arrow.util import is_timestamp, iso_to_gregorian"
+   ],
+   [
+    21,
+    "class ArrowFactory:"
+   ],
+   [
+    31,
+    "    def __init__(self, type: Type[Arrow] = Arrow) -> None:"
+   ],
+   [
+    32,
+    "        self.type = type"
+   ],
+   [
+    85,
+    "    def get(self, *args: Any, **kwargs: Any) -> Arrow:"
+   ],
+   [
+    299,
+    "    def utcnow(self) -> Arrow:"
+   ],
+   [
+    311,
+    "    def now(self, tz: Optional[TZ_EXPR] = None) -> Arrow:"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_locales.py::TestRussianLocale::test_plurals_timeframe - Ass..."
+ ]
+}

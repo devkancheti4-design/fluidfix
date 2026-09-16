@@ -1,0 +1,25 @@
+== ladder click OOV: qwen3.5:4b ==
+click/andor-1                andor      -> REFUSED      via refused-after-tier2  tokens=10729 411.7s
+click/getdef-1               getdef     -> REFUSED      via refused-after-tier2  tokens=9518 101.4s
+click/lenm1-1                lenm1      -> REFUSED      via refused-after-tier2  tokens=5830 653.3s
+click/notdrop-1              notdrop    -> REFUSED      via refused-after-tier2  tokens=13086 140.7s
+LADDER_DONE qwen3.5:4b
+== ladder click OOV: phi4-mini ==
+click/andor-1                andor      -> REFUSED      via refused-after-tier2  tokens=9991 361.8s
+click/getdef-1               getdef     -> REFUSED      via refused-after-tier2  tokens=8708 88.5s
+click/lenm1-1                lenm1      -> REFUSED      via refused-after-tier2  tokens=5330 333.2s
+click/notdrop-1              notdrop    -> REFUSED      via refused-after-tier2  tokens=11799 89.9s
+LADDER_DONE phi4-mini
+== ladder click OOV: gemma3:4b ==
+click/andor-1                andor      -> REFUSED      via refused-after-tier2  tokens=11975 378.1s
+click/getdef-1               getdef     -> REFUSED      via refused-after-tier2  tokens=10388 40.3s
+click/lenm1-1                lenm1      -> exit1        via exit1                tokens=- 44.8s
+click/notdrop-1              notdrop    -> REFUSED      via refused-after-tier2  tokens=14383 152.8s
+LADDER_DONE gemma3:4b
+== ladder click OOV: file author collect (fable-5.1) ==
+click/andor-1: awaiting author — packet written under /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/andor-1/author_fable-5.1
+click/getdef-1: awaiting author — packet written under /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/getdef-1/author_fable-5.1
+click/lenm1-1: awaiting author — packet written under /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/lenm1-1/author_fable-5.1
+click/notdrop-1: awaiting author — packet written under /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/notdrop-1/author_fable-5.1
+LADDER_DONE fable-5.1
+CHAIN_DONE click

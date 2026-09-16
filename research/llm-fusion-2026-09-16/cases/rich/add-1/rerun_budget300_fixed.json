@@ -1,0 +1,16 @@
+{
+ "case": "rich/add-1",
+ "budget": 300,
+ "extra": "",
+ "tag": "_fixed",
+ "code": "source tree",
+ "guard_exit": 2,
+ "seconds": 302.9,
+ "repaired": false,
+ "byte_exact": false,
+ "suite_runs": null,
+ "rejected": 135,
+ "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or mak",
+ "stdout_tail": "[00:38:04] REFUSED: nothing in the failure pointed at a file \u2014 no traceback frame, no discriminating literal, no taught signal narrow enough to localise. The ranking had only circumstantial evidence, so a bigger budget searches the same files in the same order. Files searched: rich/__main__.py, rich/terminal_theme.py, rich/errors.py, rich/_stack.py, rich/_export_format.py, rich/_palettes.py, rich/default_styles.py, rich/themes.py. What helps, in order: name the file yourself (--file <path>); make the failing assertion carry a value that occurs in few files; or teach a narrower signal for this class. 179 candidate(s) were tried and rejected \u2014 135 of them are logged with the test that failed each (the log keeps 64 per file).\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or make the failure carry a locating value\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_diag/rich/.fluidfix/last_refusal.json\n",
+ "verdict": "REFUSED"
+}

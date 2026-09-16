@@ -1,0 +1,16 @@
+{
+ "case": "click/getdef-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 60.1,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 6,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered\n[22:23:36] src/click/_termui_impl.py: repaired line 579 in 6 suite runs (26.4s):\n  - less_env = os.environ.get(\"LESS\")\n  + less_env = os.environ.get(\"LESS\", \"\")\n  committed\n",
+ "verdict": "EXACT"
+}

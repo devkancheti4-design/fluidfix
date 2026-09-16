@@ -1,0 +1,16 @@
+{
+ "case": "rich/andor-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 2,
+ "seconds": 904.1,
+ "repaired": false,
+ "byte_exact": false,
+ "suite_runs": null,
+ "rejected": 200,
+ "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed a",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered\n[23:34:18] REFUSED: ran out of budget before the fault was found \u2014 this is a SEARCH limit, not a gap in the taught vocabulary. The failure pointed at rich/console.py, so more clock genuinely helps. Files searched: rich/pretty.py, rich/color.py, rich/terminal_theme.py, rich/errors.py, rich/_export_format.py, rich/_palettes.py, rich/default_styles.py, rich/themes.py; the defect may be in a file the ranking never reached. 753 candidate(s) were tried and rejected \u2014 444 of them are logged with the test that failed each (the log keeps 64 per file).\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_diag/rich/.fluidfix/last_refusal.json\n",
+ "verdict": "REFUSED"
+}

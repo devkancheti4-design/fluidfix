@@ -1,0 +1,9 @@
+{
+ "file": "src/click/_termui_impl.py",
+ "lineno": 192,
+ "orig": "                return f\"{hours:02}:{minutes:02}:{seconds:02}\"",
+ "mutated": "                return f\"{hours:03}:{minutes:02}:{seconds:02}\"",
+ "cls": "lit",
+ "base": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1",
+ "note": "lit-1 re-cut with the zero padding kept: the bench's literal operator wrote 02->3 (padding dropped), which is outside the shipped class; 02->03 is inside it"
+}

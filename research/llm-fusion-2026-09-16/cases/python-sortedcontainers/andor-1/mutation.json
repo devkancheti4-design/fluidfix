@@ -1,0 +1,8 @@
+{
+ "file": "src/sortedcontainers/sorteddict.py",
+ "lineno": 134,
+ "orig": "        if args and (args[0] is None or callable(args[0])):",
+ "mutated": "        if args and (args[0] is None and callable(args[0])):",
+ "cls": "andor",
+ "base": "3ac358631f58c1347f1d6d2d92784117db0f38ed"
+}

@@ -1,0 +1,56 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/arrow",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 204.8,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/arrow/getdef-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 7324,
+    "output": 221,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 32.9
+   },
+   "valid": false,
+   "why": "signal matches no line in the suspect file",
+   "rule": {
+    "name": "digit-range-zero-start",
+    "signal": "_ONE_OR_TWO_DIGIT_RE: ClassVar\\[Pattern\\[str\\]\\] = re\\.compile\\(r\"\\\\d{1,2}\"\\)",
+    "example_before": "_ONE_OR_TWO_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{1,2}\")",
+    "example_after": "_ONE_OR_TWO_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{0,2}\")"
+   }
+  },
+  {
+   "tier": 2,
+   "model": "qwen3.5:4b",
+   "tokens": {
+    "input": 7182,
+    "output": 80,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "qwen3.5:4b",
+    "seconds": 23.9
+   },
+   "proposals": 0,
+   "line": "    _ONE_OR_TWO_DIGIT_RE: ClassVar[Pattern[str]] = re.compile(r\"\\d{1,2}\")",
+   "replacements": []
+  }
+ ],
+ "tokens": {
+  "input": 14506,
+  "output": 301,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 14807
+ },
+ "outcome": "refused-after-tier2"
+}

@@ -1,0 +1,8 @@
+{
+ "file": "rich/pretty.py",
+ "lineno": 786,
+ "orig": "                    if field.repr and hasattr(obj, field.name)",
+ "mutated": "                    if field.repr or hasattr(obj, field.name)",
+ "cls": "andor",
+ "base": "bf2620c8ce27bfdcaa3ea35b2557f94a46f1b5a9"
+}

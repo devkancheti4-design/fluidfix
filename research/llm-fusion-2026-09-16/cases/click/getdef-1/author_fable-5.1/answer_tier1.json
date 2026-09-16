@@ -1,0 +1,8 @@
+{
+ "example_before": "less_env = os.environ.get(\"LESS\")",
+ "example_after": "less_env = os.environ.get(\"LESS\", \"\")",
+ "name": "env-get-without-str-default",
+ "description": "an environment lookup `.get(\"NAME\")` with no default, whose None result reaches code that expects a str",
+ "signal": "\\.get\\(\"[A-Z][A-Z0-9_]*\"\\)\\s*$",
+ "applier": "def fix(line, o):\n    return re.sub(r'\\.get\\(\"([A-Z][A-Z0-9_]*)\"\\)(\\s*)$', r'.get(\"\\1\", \"\")\\2', line, count=1)"
+}

@@ -1,0 +1,382 @@
+{
+ "status": "refused",
+ "candidates": [
+  "arrow/arrow.py",
+  "arrow/constants.py",
+  "arrow/__init__.py",
+  "arrow/_version.py",
+  "arrow/api.py",
+  "arrow/locales.py",
+  "arrow/util.py",
+  "arrow/formatter.py"
+ ],
+ "seconds": 297.7102780342102,
+ "hint": "a candidate passes, but the search was cut short before it could be shown unique \u2014 shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)",
+ "rejected_candidates": [
+  {
+   "at": "arrow/arrow.py:705",
+   "tried": "        start = cls.fromdatetime(start, tzinfo).span(frame, exact=exact)[-1]",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:486",
+   "tried": "        day_is_clipped = True",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:487",
+   "tried": "        i = -1",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:489",
+   "tried": "        while current < end and i < limit:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:489",
+   "tried": "        while current <= end and i <= limit:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:489",
+   "tried": "        while current >= end and i < limit:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [] == [(<A..."
+  },
+  {
+   "at": "arrow/arrow.py:489",
+   "tried": "        while current <= end and i > limit:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [] == [(<A..."
+  },
+  {
+   "at": "arrow/arrow.py:490",
+   "tried": "            i += 0",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:490",
+   "tried": "            i -= 1",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:495",
+   "tried": "                check_imaginary=False, **{frame_relative: relative_steps}",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:498",
+   "tried": "            if frame in [\"month\", \"quarter\", \"year\"] and current.day <= original_day:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:498",
+   "tried": "            if frame in [\"month\", \"quarter\", \"year\"] and current.day > original_day:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 1 < week_start <= 7:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 1 <= week_start < 7:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 0 <= week_start <= 7:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 1 <= week_start <= 6:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 1 >= week_start <= 7:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 1 <= week_start >= 7:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:570",
+   "tried": "            frames = self._ATTRS[: index]",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:570",
+   "tried": "            frames = self._ATTRS[: index - 1]",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - TypeError: Arrow...."
+  },
+  {
+   "at": "arrow/arrow.py:574",
+   "tried": "            for _ in range(2 + len(values)):",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:575",
+   "tried": "                values.append(0)",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - ValueError: month..."
+  },
+  {
+   "at": "arrow/arrow.py:705",
+   "tried": "        start = cls.fromdatetime(start, tzinfo).span(frame, exact=exact)[-1]",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:486",
+   "tried": "        day_is_clipped = True",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:487",
+   "tried": "        i = -1",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:489",
+   "tried": "        while current < end and i < limit:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:489",
+   "tried": "        while current <= end and i <= limit:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:489",
+   "tried": "        while current >= end and i < limit:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [] == [(<A..."
+  },
+  {
+   "at": "arrow/arrow.py:489",
+   "tried": "        while current <= end and i > limit:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [] == [(<A..."
+  },
+  {
+   "at": "arrow/arrow.py:490",
+   "tried": "            i += 0",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:490",
+   "tried": "            i -= 1",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:495",
+   "tried": "                check_imaginary=False, **{frame_relative: relative_steps}",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:498",
+   "tried": "            if frame in [\"month\", \"quarter\", \"year\"] and current.day <= original_day:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:498",
+   "tried": "            if frame in [\"month\", \"quarter\", \"year\"] and current.day > original_day:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 1 < week_start <= 7:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 1 <= week_start < 7:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 0 <= week_start <= 7:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 1 <= week_start <= 6:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 1 >= week_start <= 7:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:559",
+   "tried": "            if not 1 <= week_start >= 7:",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:570",
+   "tried": "            frames = self._ATTRS[: index]",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/arrow.py:570",
+   "tried": "            frames = self._ATTRS[: index - 1]",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - TypeError: Arrow...."
+  },
+  {
+   "at": "arrow/locales.py:232",
+   "tried": "    def year_full(self, year: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 232)"
+  },
+  {
+   "at": "arrow/locales.py:239",
+   "tried": "    def year_abbreviation(self, year: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 239)"
+  },
+  {
+   "at": "arrow/locales.py:4082",
+   "tried": "    def year_full(self, year: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 4082)"
+  },
+  {
+   "at": "arrow/locales.py:4087",
+   "tried": "    def year_abbreviation(self, year: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 4087)"
+  },
+  {
+   "at": "arrow/locales.py:4189",
+   "tried": "    def year_full(self, year: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 4189)"
+  },
+  {
+   "at": "arrow/locales.py:4194",
+   "tried": "    def year_abbreviation(self, year: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 4194)"
+  },
+  {
+   "at": "arrow/locales.py:46",
+   "tried": "def get_locale(name: str) ->= \"Locale\":",
+   "why": "does not compile: expected ':' (locales.py, line 46)"
+  },
+  {
+   "at": "arrow/locales.py:63",
+   "tried": "def get_locale_by_class_name(name: str) ->= \"Locale\":",
+   "why": "does not compile: expected ':' (locales.py, line 63)"
+  },
+  {
+   "at": "arrow/locales.py:119",
+   "tried": "    def __init_subclass__(cls, **kwargs: Any) ->= None:",
+   "why": "does not compile: expected ':' (locales.py, line 119)"
+  },
+  {
+   "at": "arrow/locales.py:126",
+   "tried": "    def __init__(self) ->= None:",
+   "why": "does not compile: expected ':' (locales.py, line 126)"
+  },
+  {
+   "at": "arrow/locales.py:181",
+   "tried": "    def day_name(self, day: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 181)"
+  },
+  {
+   "at": "arrow/locales.py:190",
+   "tried": "    def day_abbreviation(self, day: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 190)"
+  },
+  {
+   "at": "arrow/locales.py:199",
+   "tried": "    def month_name(self, month: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 199)"
+  },
+  {
+   "at": "arrow/locales.py:208",
+   "tried": "    def month_abbreviation(self, month: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 208)"
+  },
+  {
+   "at": "arrow/locales.py:217",
+   "tried": "    def month_number(self, name: str) ->= Optional[int]:",
+   "why": "does not compile: expected ':' (locales.py, line 217)"
+  },
+  {
+   "at": "arrow/locales.py:246",
+   "tried": "    def meridian(self, hour: int, token: Any) ->= Optional[str]:",
+   "why": "does not compile: expected ':' (locales.py, line 246)"
+  },
+  {
+   "at": "arrow/locales.py:259",
+   "tried": "    def ordinal_number(self, n: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 259)"
+  },
+  {
+   "at": "arrow/locales.py:266",
+   "tried": "    def _ordinal_number(self, n: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 266)"
+  },
+  {
+   "at": "arrow/locales.py:269",
+   "tried": "    def _name_to_ordinal(self, lst: Sequence[str]) ->= Dict[str, int]:",
+   "why": "does not compile: expected ':' (locales.py, line 269)"
+  },
+  {
+   "at": "arrow/locales.py:272",
+   "tried": "    def _format_timeframe(self, timeframe: TimeFrameLiteral, delta: int) ->= str:",
+   "why": "does not compile: expected ':' (locales.py, line 272)"
+  },
+  {
+   "at": "arrow/locales.py:303",
+   "tried": "    past = \"{-1} ago\"",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/locales.py:304",
+   "tried": "    future = \"in {-1}\"",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/locales.py:310",
+   "tried": "        \"seconds\": \"{-1} seconds\",",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/locales.py:312",
+   "tried": "        \"minutes\": \"{-1} minutes\",",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/locales.py:314",
+   "tried": "        \"hours\": \"{-1} hours\",",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/locales.py:316",
+   "tried": "        \"days\": \"{-1} days\",",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/locales.py:318",
+   "tried": "        \"weeks\": \"{-1} weeks\",",
+   "why": "FAILED tests/test_arrow.py::TestArrowSpanRange::test_year - assert [(<Arrow [..."
+  },
+  {
+   "at": "arrow/factory.py:31",
+   "tried": "    def __init__(self, type: Type[Arrow] = Arrow) ->= None:",
+   "why": "does not compile: expected ':' (factory.py, line 31)"
+  },
+  {
+   "at": "arrow/factory.py:85",
+   "tried": "    def get(self, *args: Any, **kwargs: Any) ->= Arrow:",
+   "why": "does not compile: expected ':' (factory.py, line 85)"
+  },
+  {
+   "at": "arrow/factory.py:299",
+   "tried": "    def utcnow(self) ->= Arrow:",
+   "why": "does not compile: expected ':' (factory.py, line 299)"
+  },
+  {
+   "at": "arrow/factory.py:311",
+   "tried": "    def now(self, tz: Optional[TZ_EXPR] = None) ->= Arrow:",
+   "why": "does not compile: expected ':' (factory.py, line 311)"
+  }
+ ]
+}

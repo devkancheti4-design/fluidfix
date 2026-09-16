@@ -1,0 +1,118 @@
+{
+ "system": "You write ONE fault-class rule for fluidfix, a tool that repairs a regression when a\ntest suite goes red. A rule has four parts and is judged only by the suite, so be precise, not clever.\n\nReturn ONLY a JSON object with these keys:\n  \"example_before\": the defective line exactly as it appears (no indentation),\n  \"example_after\":  the same line fixed,\n  \"name\":           a short hyphenated slug,\n  \"description\":    one sentence stating what an observer SEES on such a line (a fact, never an instruction),\n  \"signal\":         a Python regex that matches lines that CAN exhibit this fault; anchor it on the class's own tokens,\n  \"applier\":        Python source of a function  def fix(line, o): ...  returning the corrected line (a str),\n                    a list of candidate strs, or [SpanEdit(start, end, text)] for several lines that must change together.\n                    `re` and `SpanEdit` are available. If the line is not this class, return line unchanged. Never raise.\n\nRules: the fix must be derivable from the line plus what the repository already contains. Do not widen the\nsignal beyond the class. Do not invent facts that are not in the packet. Preserve indentation: the applier\nreceives the full line including leading spaces and must return lines with the same leading spaces.",
+ "user": {
+  "file": "src/click/shell_completion.py",
+  "other_suspects": [
+   "src/click/_utils.py",
+   "src/click/__init__.py",
+   "src/click/testing.py",
+   "src/click/types.py"
+  ],
+  "sight": "### REFUSED  defect file: src/click/shell_completion.py  (showing only the 203 lines the failing test executed; localisation mode: coverage)\n--- failing suite output (compressed) ---\n__________ test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n] ___________\n>       assert result.output == expect\nE       AssertionError: assert 'plain\\na\\n\\nplain\\nb\\n_\\n' == 'plain\\na\\n_\\nplain\\nb\\nbee\\n'\nE         \nE           plain\nE           a\nE         - _\nE         + \nE           plain\nE           b\nE         - bee\nE         + _\ntests/test_shell_completion.py:391: AssertionError\nFAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]\n--- executed defect-file lines ---\n   1| from __future__ import annotations\n  ...\n   3| import collections.abc as cabc\n   4| import os\n   5| import re\n   6| import typing as t\n   7| from gettext import gettext as _\n  ...\n   9| from .core import Argument\n  10| from .core import Command\n  11| from .core import Context\n  12| from .core import Group\n  13| from .core import Option\n  14| from .core import Parameter\n  15| from .core import ParameterSource\n  16| from .utils import echo\n  ...\n  19| def shell_complete(\n  ...\n  38|     shell, _, instruction = instruction.partition(\"_\")\n  39|     comp_cls = get_completion_class(shell)\n  ...\n  41|     if comp_cls is None:\n  ...\n  44|     comp = comp_cls(cli, ctx_args, prog_name, complete_var)\n  ...\n  47|     if instruction == \"source\":\n  ...\n  51|     if instruction == \"complete\":\n  52|         echo(comp.complete().encode())\n  53|         return 0\n  ...\n  64|     _ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=True)\n  ...\n  67| class CompletionItem(t.Generic[_ValueT_co]):\n  ...\n  86|     __slots__ = (\"value\", \"type\", \"help\", \"_info\")\n  ...\n  88|     def __init__(\n  ...\n  95|         self.value: _ValueT_co = value\n  96|         self.type: str = type\n  97|         self.help: str | None = help\n  98|         self._info = kwargs\n  ...\n 100|     def __getattr__(self, name: str) -> t.Any:\n  ...\n 105| _SOURCE_BASH = \"\"\"\\\n 106| %(complete_func)s() {\n 107|     local IFS=$'\\\\n'\n 108|     local response\n 109| \n 110|     response=$(env COMP_WORDS=\"${COMP_WORDS[*]}\" COMP_CWORD=$COMP_CWORD \\\n 111| %(complete_var)s=bash_complete $1)\n 112| \n 113|     for completion in $response; do\n 114|         IFS=',' read type value <<< \"$completion\"\n 115| \n 116|         if [[ $type == 'dir' ]]; then\n 117|             COMPREPLY=()\n 118|             compopt -o dirnames\n 119|         elif [[ $type == 'file' ]]; then\n 120|             COMPREPLY=()\n 121|             compopt -o default\n 122|         elif [[ $type == 'plain' ]]; then\n 123|             COMPREPLY+=($value)\n 124|         fi\n 125|     done\n 126| \n 127|     return 0\n 128| }\n 129| \n 130| %(complete_func)s_setup() {\n 131|     complete -o nosort -F %(complete_func)s %(prog_name)s\n 132| }\n 133| \n 134| %(complete_func)s_setup;\n 135| \"\"\"\n  ...\n 143| _SOURCE_ZSH = \"\"\"\\\n  ...\n 187| _SOURCE_FISH = \"\"\"\\\n 188| function %(complete_func)s;\n 189|     set -l response (env %(complete_var)s=fish_complete COMP_WORDS=(commandline -cp) \\\n 190| COMP_CWORD=(commandline -t) %(prog_name)s);\n 191| \n 192|     for completion in $response;\n 193|         set -l metadata (string split \",\" $completion);\n 194| \n 195|         if test $metadata[1] = \"dir\";\n 196|             __fish_complete_directories $metadata[2];\n 197|         else if test $metadata[1] = \"file\";\n 198|             __fish_complete_path $metadata[2];\n 199|         else if test $metadata[1] = \"plain\";\n 200|             echo $metadata[2];\n 201|         end;\n 202|     end;\n 203| end;\n 204| \n 205| complete --no-files --command %(prog_name)s --arguments \\\n 206| \"(%(complete_func)s)\";\n 207| \"\"\"\n  ...\n 214| _SOURCE_POWERSHELL = \"\"\"\\\n  ...\n 272| class _SourceVarsDict(t.TypedDict):\n 273|     complete_func: str\n 274|     complete_var: str\n 275|     prog_name: str\n  ...\n 278| class ShellComplete:\n  ...\n 291|     name: t.ClassVar[str]\n 292|     \"\"\"Name to register the shell as with :func:`add_completion_class`.\n 293|     This is used in completion instructions (``{name}_source`` and\n 294|     ``{name}_complete``).\n 295|     \"\"\"\n  ...\n 297|     source_template: t.ClassVar[str]\n 298|     \"\"\"Completion script template formatted by :meth:`source`. This must\n 299|     be provided by subclasses.\n 300|     \"\"\"\n  ...\n 302|     cli: Command\n 303|     ctx_args: cabc.MutableMapping[str, t.Any]\n 304|     prog_name: str\n 305|     complete_var: str\n  ...\n 307|     def __init__(\n  ...\n 314|         self.cli = cli\n 315|         self.ctx_args = ctx_args\n 316|         self.prog_name = prog_name\n 317|         self.complete_var = complete_var\n  ...\n 319|     @property\n 320|     def func_name(self) -> str:\n  ...\n 327|     def source_vars(self) -> _SourceVarsDict:\n  ...\n 339|     def source(self) -> str:\n  ...\n 347|     def get_completion_args(self) -> tuple[list[str], str]:\n  ...\n 354|     def get_completions(\n  ...\n 364|         ctx = _resolve_context(self.cli, self.ctx_args, self.prog_name, args)\n 365|         obj, incomplete = _resolve_incomplete(ctx, args, incomplete)\n 366|         return obj.shell_complete(ctx, incomplete)\n  ...\n 368|     def format_completion(self, item: CompletionItem[str]) -> str:\n  ...\n 376|     def complete(self) -> str:\n  ...\n 383|         args, incomplete = self.get_completion_args()\n 384|         completions = self.get_completions(args, incomplete)\n 385|         out = [self.format_completion(item) for item in completions]\n 386|         return \"\\n\".join(out)\n  ...\n 389| class BashComplete(ShellComplete):\n  ...\n 392|     name: t.ClassVar[str] = \"bash\"\n 393|     source_template: t.ClassVar[str] = _SOURCE_BASH\n  ...\n 395|     @staticmethod\n 396|     def _check_version() -> None:\n  ...\n 428|     def source(self) -> str:\n  ...\n 432|     def get_completion_args(self) -> tuple[list[str], str]:\n  ...\n 444|     def format_completion(self, item: CompletionItem[t.Any]) -> str:\n  ...\n 448| class ZshComplete(ShellComplete):\n  ...\n 451|     name: t.ClassVar[str] = \"zsh\"\n 452|     source_template: t.ClassVar[str] = _SOURCE_ZSH\n  ...\n 454|     def get_completion_args(self) -> tuple[list[str], str]:\n 455|         cwords = split_arg_string(os.environ[\"COMP_WORDS\"])\n 456|         cword = int(os.environ[\"COMP_CWORD\"])\n 457|         args = cwords[1:cword]\n  ...\n 459|         try:\n 460|             incomplete = cwords[cword]\n 461|         except IndexError:\n 462|             incomplete = \"\"\n  ...\n 464|         return args, incomplete\n  ...\n 466|     def format_completion(self, item: CompletionItem[str]) -> str:\n 467|         help_ = item.help and \"_\"\n  ...\n 480|         value = item.value.replace(\":\", r\"\\:\") if help_ != \"_\" else item.value\n 481|         return f\"{item.type}\\n{value}\\n{help_}\"\n  ...\n 484| class FishComplete(ShellComplete):\n  ...\n 487|     name: t.ClassVar[str] = \"fish\"\n 488|     source_template: t.ClassVar[str] = _SOURCE_FISH\n  ...\n 490|     def get_completion_args(self) -> tuple[list[str], str]:\n  ...\n 504|     def format_completion(self, item: CompletionItem[str]) -> str:\n  ...\n 521| class PowerShellComplete(ShellComplete):\n  ...\n 527|     name: t.ClassVar[str] = \"powershell\"\n 528|     source_template: t.ClassVar[str] = _SOURCE_POWERSHELL\n  ...\n 530|     def get_completion_args(self) -> tuple[list[str], str]:\n  ...\n 542|     def format_completion(self, item: CompletionItem[str]) -> str:\n  ...\n 555| _available_shells: t.Final[dict[str, type[ShellComplete]]] = {\n 556|     \"bash\": BashComplete,\n 557|     \"fish\": FishComplete,\n 558|     \"powershell\": PowerShellComplete,\n 559|     \"zsh\": ZshComplete,\n 560| }\n  ...\n 562| _ShellCompleteT = t.TypeVar(\"_ShellCompleteT\", bound=\"ShellComplete\")\n  ...\n 565| def add_completion_class(\n  ...\n 593| def get_completion_class(shell: str) -> type[ShellComplete] | None:\n  ...\n 600|     return _available_shells.get(shell)\n  ...\n 603| def split_arg_string(string: str) -> list[str]:\n  ...\n 621|     import shlex\n  ...\n 623|     lex = shlex.shlex(string, posix=True)\n 624|     lex.whitespace_split = True\n 625|     lex.commenters = \"\"\n 626|     out: list[str] = []\n  ...\n 628|     try:\n 629|         out.extend(lex)\n  ...\n 636|     return out\n  ...\n 639| def _is_incomplete_argument(ctx: Context, param: Parameter) -> bool:\n  ...\n 647|     if not isinstance(param, Argument):\n 648|         return False\n  ...\n 662| def _start_of_option(ctx: Context, value: str) -> bool:\n  ...\n 664|     if not value:\n 665|         return False\n  ...\n 671| def _is_incomplete_option(ctx: Context, args: list[str], param: Parameter) -> bool:\n  ...\n 677|     if not isinstance(param, Option):\n  ...\n 680|     if param.is_flag or param.count:\n 681|         return False\n  ...\n 696| def _resolve_context(\n  ...\n 710|     ctx_args[\"resilient_parsing\"] = True\n 711|     with cli.make_context(prog_name, args.copy(), **ctx_args) as ctx:\n 712|         args = ctx._protected_args + ctx.args\n  ...\n 714|         while args:\n  ...\n 754|     return ctx\n  ...\n 757| def _resolve_incomplete(\n  ...\n 772|     if incomplete == \"=\":\n  ...\n 774|     elif \"=\" in incomplete and _start_of_option(ctx, incomplete):\n  ...\n 782|     if \"--\" not in args and _start_of_option(ctx, incomplete):\n  ...\n 785|     params = ctx.command.get_params(ctx)\n  ...\n 789|     for param in params:\n 790|         if _is_incomplete_option(ctx, args, param):\n  ...\n 795|     for param in params:\n 796|         if _is_incomplete_argument(ctx, param):\n  ...\n 801|     return ctx.command, incomplete",
+  "lines_shown": 203,
+  "truncated": false,
+  "rejected_by_the_suite": [
+   {
+    "at": "src/click/shell_completion.py:53",
+    "tried": "return -1",
+    "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\n"
+   },
+   {
+    "at": "src/click/shell_completion.py:320",
+    "tried": "def func_name(self) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 320)"
+   },
+   {
+    "at": "src/click/shell_completion.py:327",
+    "tried": "def source_vars(self) ->= _SourceVarsDict:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 327)"
+   },
+   {
+    "at": "src/click/shell_completion.py:339",
+    "tried": "def source(self) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 339)"
+   },
+   {
+    "at": "src/click/shell_completion.py:347",
+    "tried": "def get_completion_args(self) ->= tuple[list[str], str]:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 347)"
+   },
+   {
+    "at": "src/click/shell_completion.py:368",
+    "tried": "def format_completion(self, item: CompletionItem[str]) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 368)"
+   },
+   {
+    "at": "src/click/shell_completion.py:376",
+    "tried": "def complete(self) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 376)"
+   },
+   {
+    "at": "src/click/shell_completion.py:396",
+    "tried": "def _check_version() ->= None:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 396)"
+   },
+   {
+    "at": "src/click/shell_completion.py:428",
+    "tried": "def source(self) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 428)"
+   },
+   {
+    "at": "src/click/shell_completion.py:432",
+    "tried": "def get_completion_args(self) ->= tuple[list[str], str]:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 432)"
+   },
+   {
+    "at": "src/click/shell_completion.py:444",
+    "tried": "def format_completion(self, item: CompletionItem[t.Any]) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 444)"
+   },
+   {
+    "at": "src/click/shell_completion.py:454",
+    "tried": "def get_completion_args(self) ->= tuple[list[str], str]:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 454)"
+   },
+   {
+    "at": "src/click/shell_completion.py:457",
+    "tried": "args = cwords[0:cword]",
+    "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\n"
+   },
+   {
+    "at": "src/click/shell_completion.py:466",
+    "tried": "def format_completion(self, item: CompletionItem[str]) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 466)"
+   },
+   {
+    "at": "src/click/shell_completion.py:490",
+    "tried": "def get_completion_args(self) ->= tuple[list[str], str]:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 490)"
+   },
+   {
+    "at": "src/click/shell_completion.py:504",
+    "tried": "def format_completion(self, item: CompletionItem[str]) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 504)"
+   },
+   {
+    "at": "src/click/shell_completion.py:530",
+    "tried": "def get_completion_args(self) ->= tuple[list[str], str]:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 530)"
+   },
+   {
+    "at": "src/click/shell_completion.py:542",
+    "tried": "def format_completion(self, item: CompletionItem[str]) ->= str:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 542)"
+   },
+   {
+    "at": "src/click/shell_completion.py:64",
+    "tried": "_ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=False)",
+    "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\n"
+   },
+   {
+    "at": "src/click/shell_completion.py:100",
+    "tried": "def __getattr__(self, name: str) ->= t.Any:",
+    "why": "does not compile: expected ':' (shell_completion.py, line 100)"
+   }
+  ],
+  "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or make the failure carry a locating value"
+ }
+}

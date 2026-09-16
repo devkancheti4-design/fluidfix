@@ -1,0 +1,3 @@
+== ladder arrow OOV: qwen3.5:4b ==
+arrow/andor-1                andor      -> REFUSED      via refused-after-tier2  tokens=15074 141.3s
+arrow/getdef-1               getdef     -> exit1        via exit1                tokens=- 145.7s

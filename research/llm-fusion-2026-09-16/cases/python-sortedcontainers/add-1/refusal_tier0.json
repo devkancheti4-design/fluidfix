@@ -1,0 +1,1533 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/sortedcontainers/sortedlist.py",
+  "src/sortedcontainers/sortedset.py",
+  "src/sortedcontainers/__init__.py",
+  "src/sortedcontainers/sorteddict.py"
+ ],
+ "seconds": 256.05651783943176,
+ "hint": "a candidate passes, but the search was cut short before it could be shown unique \u2014 shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)",
+ "rejected_candidates": [
+  {
+   "at": "src/sortedcontainers/sortedlist.py:886",
+   "tried": "    def islice(self, start=None, stop=None, reverse=True):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:916",
+   "tried": "        if start > stop:",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:916",
+   "tried": "        if start <= stop:",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:955",
+   "tried": "        next_pos = min_pos",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:955",
+   "tried": "        next_pos = 1 - min_pos",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:87",
+   "tried": "    DEFAULT_LOAD_FACTOR = 999",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:108",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:113",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:185",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:189",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:226",
+   "tried": "        self._len += 0",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:226",
+   "tried": "        self._len -= 1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) >= (_load << 1):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load <=< 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 241)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load <<= 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 241)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load << 0):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) < (_load << 1):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:247",
+   "tried": "            _maxes[pos] = _lists_pos[]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 247)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:249",
+   "tried": "            _lists.insert(pos, half)",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:249",
+   "tried": "            _lists.insert(pos - 1, half)",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos, half[-1])",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos + 1, half[])",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 250)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos - 1, half[-1])",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:255",
+   "tried": "                child = self._offset - pos",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:257",
+   "tried": "                    _index[child] += 0",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:257",
+   "tried": "                    _index[child] -= 1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >=> 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 258)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >>= 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 258)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child) >> 1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >> 0",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child + 1) >> 1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:265",
+   "tried": "        doc_str = \"\"\"Return true if and only if sorted set is {-1} `other`.",
+   "why": "ERROR tests/test_coverage_sorteddict.py - KeyError: '-1'"
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:267",
+   "tried": "        ``ss.__{1}__(other)`` <=> ``ss {2} other``",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:267",
+   "tried": "        ``ss.__{1}__(other)`` <==>= ``ss {2} other``",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:267",
+   "tried": "        ``ss.__{0}__(other)`` <==> ``ss {2} other``",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:267",
+   "tried": "        ``ss.__{1}__(other)`` <==> ``ss {1} other``",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:267",
+   "tried": "        ``ss.__{1}__(other)`` >==> ``ss {2} other``",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:267",
+   "tried": "        ``ss.__{1}__(other)`` <==< ``ss {2} other``",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:274",
+   "tried": "        :return: true if sorted set is {-1} `other`",
+   "why": "ERROR tests/test_coverage_sorteddict.py - KeyError: '-1'"
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:282",
+   "tried": "    __lt__ = __make_cmp(lt, '<=', 'a proper subset of')",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:282",
+   "tried": "    __lt__ = __make_cmp(lt, '>', 'a proper subset of')",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:283",
+   "tried": "    __gt__ = __make_cmp(gt, '>=', 'a proper superset of')",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:283",
+   "tried": "    __gt__ = __make_cmp(gt, '<', 'a proper superset of')",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:284",
+   "tried": "    __le__ = __make_cmp(le, '<', 'a subset of')",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:284",
+   "tried": "    __le__ = __make_cmp(le, '>=', 'a subset of')",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:285",
+   "tried": "    __ge__ = __make_cmp(ge, '>', 'a superset of')",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:285",
+   "tried": "    __ge__ = __make_cmp(ge, '<=', 'a superset of')",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:401",
+   "tried": "    def pop(self, index=):",
+   "why": "does not compile: expected default value expression (sortedset.py, line 401)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:648",
+   "tried": "        if (4 * len(values)) >= len(_set):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:648",
+   "tried": "        if (3 * len(values)) > len(_set):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedset.py:648",
+   "tried": "        if (4 * len(values)) < len(_set):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:886",
+   "tried": "    def islice(self, start=None, stop=None, reverse=True):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:916",
+   "tried": "        if start > stop:",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:916",
+   "tried": "        if start <= stop:",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:944",
+   "tried": "        if min_pos >= max_pos:",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:944",
+   "tried": "        if min_pos < max_pos:",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:955",
+   "tried": "        next_pos = min_pos",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:955",
+   "tried": "        next_pos = 1 - min_pos",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:87",
+   "tried": "    DEFAULT_LOAD_FACTOR = 999",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:108",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:113",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:185",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:189",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:226",
+   "tried": "        self._len += 0",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:226",
+   "tried": "        self._len -= 1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) >= (_load << 1):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load <=< 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 241)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load <<= 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 241)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load << 0):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) < (_load << 1):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:247",
+   "tried": "            _maxes[pos] = _lists_pos[]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 247)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:249",
+   "tried": "            _lists.insert(pos, half)",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:249",
+   "tried": "            _lists.insert(pos - 1, half)",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos, half[-1])",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos + 1, half[])",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 250)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos - 1, half[-1])",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:255",
+   "tried": "                child = self._offset - pos",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:257",
+   "tried": "                    _index[child] += 0",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:257",
+   "tried": "                    _index[child] -= 1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >=> 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 258)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >>= 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 258)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child) >> 1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >> 0",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child + 1) >> 1",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:134",
+   "tried": "        if args and (args[-1] is None or callable(args[0])):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:134",
+   "tried": "        if args and (args[0] is None or callable(args[-1])):",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:135",
+   "tried": "            _key = self._key = args[-1]",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:136",
+   "tried": "            args = args[0:]",
+   "why": "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:392",
+   "tried": "    def popitem(self, index=):",
+   "why": "does not compile: expected default value expression (sorteddict.py, line 392)"
+  },
+  {
+   "at": "src/sortedcontainers/sorteddict.py:427",
+   "tried": "    def peekitem(self, index=):",
+   "why": "does not compile: expected default value expression (sorteddict.py, line 427)"
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "src/sortedcontainers/sortedlist.py": [
+   [
+    18,
+    "import sys"
+   ],
+   [
+    19,
+    "import traceback"
+   ],
+   [
+    20,
+    "from bisect import bisect_left, bisect_right, insort"
+   ],
+   [
+    21,
+    "from collections.abc import MutableSequence, Sequence"
+   ],
+   [
+    22,
+    "from functools import reduce"
+   ],
+   [
+    23,
+    "from itertools import chain, repeat, starmap"
+   ],
+   [
+    24,
+    "from math import log"
+   ],
+   [
+    25,
+    "from operator import add, eq, ge, gt, iadd, le, lt, ne"
+   ],
+   [
+    26,
+    "from reprlib import recursive_repr"
+   ],
+   [
+    27,
+    "from textwrap import dedent"
+   ],
+   [
+    30,
+    "class SortedList(MutableSequence):"
+   ],
+   [
+    87,
+    "    DEFAULT_LOAD_FACTOR = 1000"
+   ],
+   [
+    89,
+    "    def __init__(self, iterable=None, key=None):"
+   ],
+   [
+    107,
+    "        assert key is None"
+   ],
+   [
+    108,
+    "        self._len = 0"
+   ],
+   [
+    109,
+    "        self._load = self.DEFAULT_LOAD_FACTOR"
+   ],
+   [
+    110,
+    "        self._lists = []"
+   ],
+   [
+    111,
+    "        self._maxes = []"
+   ],
+   [
+    112,
+    "        self._index = []"
+   ],
+   [
+    113,
+    "        self._offset = 0"
+   ],
+   [
+    115,
+    "        if iterable is not None:"
+   ],
+   [
+    116,
+    "            self._update(iterable)"
+   ],
+   [
+    118,
+    "    def __new__(cls, iterable=None, key=None):"
+   ],
+   [
+    139,
+    "        if key is None:"
+   ],
+   [
+    140,
+    "            return object.__new__(cls)"
+   ],
+   [
+    142,
+    "            if cls is SortedList:"
+   ],
+   [
+    143,
+    "                return object.__new__(SortedKeyList)"
+   ],
+   [
+    147,
+    "    @property"
+   ],
+   [
+    148,
+    "    def key(self):  # pylint: disable=useless-return"
+   ],
+   [
+    156,
+    "    def _reset(self, load):"
+   ],
+   [
+    174,
+    "        values = reduce(iadd, self._lists, [])"
+   ],
+   [
+    175,
+    "        self._clear()"
+   ],
+   [
+    176,
+    "        self._load = load"
+   ],
+   [
+    177,
+    "        self._update(values)"
+   ],
+   [
+    179,
+    "    def clear(self):"
+   ],
+   [
+    185,
+    "        self._len = 0"
+   ],
+   [
+    186,
+    "        del self._lists[:]"
+   ],
+   [
+    187,
+    "        del self._maxes[:]"
+   ],
+   [
+    188,
+    "        del self._index[:]"
+   ],
+   [
+    189,
+    "        self._offset = 0"
+   ],
+   [
+    191,
+    "    _clear = clear"
+   ],
+   [
+    193,
+    "    def add(self, value):"
+   ],
+   [
+    208,
+    "        _lists = self._lists"
+   ],
+   [
+    209,
+    "        _maxes = self._maxes"
+   ],
+   [
+    211,
+    "        if _maxes:"
+   ],
+   [
+    212,
+    "            pos = bisect_right(_maxes, value)"
+   ],
+   [
+    214,
+    "            if pos == len(_maxes):"
+   ],
+   [
+    219,
+    "                insort(_lists[pos], value)"
+   ],
+   [
+    221,
+    "            self._expand(pos)"
+   ],
+   [
+    226,
+    "        self._len += 1"
+   ],
+   [
+    228,
+    "    def _expand(self, pos):"
+   ],
+   [
+    237,
+    "        _load = self._load"
+   ],
+   [
+    238,
+    "        _lists = self._lists"
+   ],
+   [
+    239,
+    "        _index = self._index"
+   ],
+   [
+    241,
+    "        if len(_lists[pos]) > (_load << 1):"
+   ],
+   [
+    242,
+    "            _maxes = self._maxes"
+   ],
+   [
+    244,
+    "            _lists_pos = _lists[pos]"
+   ],
+   [
+    245,
+    "            half = _lists_pos[_load:]"
+   ],
+   [
+    246,
+    "            del _lists_pos[_load:]"
+   ],
+   [
+    247,
+    "            _maxes[pos] = _lists_pos[-1]"
+   ],
+   [
+    249,
+    "            _lists.insert(pos + 1, half)"
+   ],
+   [
+    250,
+    "            _maxes.insert(pos + 1, half[-1])"
+   ],
+   [
+    252,
+    "            del _index[:]"
+   ],
+   [
+    254,
+    "            if _index:"
+   ],
+   [
+    255,
+    "                child = self._offset + pos"
+   ],
+   [
+    256,
+    "                while child:"
+   ],
+   [
+    257,
+    "                    _index[child] += 1"
+   ],
+   [
+    258,
+    "                    child = (child - 1) >> 1"
+   ],
+   [
+    259,
+    "                _index[0] += 1"
+   ],
+   [
+    261,
+    "    def update(self, iterable):"
+   ],
+   [
+    274,
+    "        _lists = self._lists"
+   ],
+   [
+    275,
+    "        _maxes = self._maxes"
+   ],
+   [
+    276,
+    "        values = sorted(iterable)"
+   ],
+   [
+    278,
+    "        if _maxes:"
+   ],
+   [
+    279,
+    "            if len(values) * 4 >= self._len:"
+   ],
+   [
+    280,
+    "                _lists.append(values)"
+   ],
+   [
+    281,
+    "                values = reduce(iadd, _lists, [])"
+   ],
+   [
+    282,
+    "                values.sort()"
+   ],
+   [
+    283,
+    "                self._clear()"
+   ],
+   [
+    290,
+    "        _load = self._load"
+   ]
+  ],
+  "src/sortedcontainers/sortedset.py": [
+   [
+    16,
+    "from collections.abc import MutableSet, Sequence, Set"
+   ],
+   [
+    17,
+    "from itertools import chain"
+   ],
+   [
+    18,
+    "from operator import eq, ge, gt, le, lt, ne"
+   ],
+   [
+    19,
+    "from textwrap import dedent"
+   ],
+   [
+    21,
+    "from .sortedlist import SortedList, recursive_repr"
+   ],
+   [
+    24,
+    "class SortedSet(MutableSet, Sequence):"
+   ],
+   [
+    97,
+    "    def __init__(self, iterable=None, key=None):"
+   ],
+   [
+    121,
+    "        self._key = key"
+   ],
+   [
+    127,
+    "        if not hasattr(self, '_set'):"
+   ],
+   [
+    128,
+    "            self._set = set()"
+   ],
+   [
+    130,
+    "        self._list = SortedList(self._set, key=key)"
+   ],
+   [
+    134,
+    "        _set = self._set"
+   ],
+   [
+    135,
+    "        self.isdisjoint = _set.isdisjoint"
+   ],
+   [
+    136,
+    "        self.issubset = _set.issubset"
+   ],
+   [
+    137,
+    "        self.issuperset = _set.issuperset"
+   ],
+   [
+    141,
+    "        _list = self._list"
+   ],
+   [
+    142,
+    "        self.bisect_left = _list.bisect_left"
+   ],
+   [
+    143,
+    "        self.bisect = _list.bisect"
+   ],
+   [
+    144,
+    "        self.bisect_right = _list.bisect_right"
+   ],
+   [
+    145,
+    "        self.index = _list.index"
+   ],
+   [
+    146,
+    "        self.irange = _list.irange"
+   ],
+   [
+    147,
+    "        self.islice = _list.islice"
+   ],
+   [
+    148,
+    "        self._reset = _list._reset"
+   ],
+   [
+    150,
+    "        if key is not None:"
+   ],
+   [
+    151,
+    "            self.bisect_key_left = _list.bisect_key_left"
+   ],
+   [
+    152,
+    "            self.bisect_key_right = _list.bisect_key_right"
+   ],
+   [
+    153,
+    "            self.bisect_key = _list.bisect_key"
+   ],
+   [
+    154,
+    "            self.irange_key = _list.irange_key"
+   ],
+   [
+    156,
+    "        if iterable is not None:"
+   ],
+   [
+    157,
+    "            self._update(iterable)"
+   ],
+   [
+    159,
+    "    @classmethod"
+   ],
+   [
+    160,
+    "    def _fromset(cls, values, key=None):"
+   ],
+   [
+    171,
+    "    @property"
+   ],
+   [
+    172,
+    "    def key(self):"
+   ],
+   [
+    180,
+    "    def __contains__(self, value):"
+   ],
+   [
+    197,
+    "    def __getitem__(self, index):"
+   ],
+   [
+    221,
+    "    def __delitem__(self, index):"
+   ],
+   [
+    252,
+    "    def __make_cmp(set_op, symbol, doc):"
+   ],
+   [
+    255,
+    "        def comparer(self, other):"
+   ],
+   [
+    263,
+    "        set_op_name = set_op.__name__"
+   ],
+   [
+    264,
+    "        comparer.__name__ = f'__{set_op_name}__'"
+   ],
+   [
+    265,
+    "        doc_str = \"\"\"Return true if and only if sorted set is {0} `other`."
+   ],
+   [
+    266,
+    ""
+   ],
+   [
+    267,
+    "        ``ss.__{1}__(other)`` <==> ``ss {2} other``"
+   ],
+   [
+    268,
+    ""
+   ],
+   [
+    269,
+    "        Comparisons use subset and superset semantics as with sets."
+   ],
+   [
+    270,
+    ""
+   ],
+   [
+    271,
+    "        Runtime complexity: `O(n)`"
+   ],
+   [
+    272,
+    ""
+   ],
+   [
+    273,
+    "        :param other: `other` set"
+   ],
+   [
+    274,
+    "        :return: true if sorted set is {0} `other`"
+   ],
+   [
+    275,
+    ""
+   ],
+   [
+    276,
+    "        \"\"\""
+   ],
+   [
+    277,
+    "        comparer.__doc__ = dedent(doc_str.format(doc, set_op_name, symbol))"
+   ],
+   [
+    278,
+    "        return comparer"
+   ],
+   [
+    280,
+    "    __eq__ = __make_cmp(eq, '==', 'equal to')"
+   ],
+   [
+    281,
+    "    __ne__ = __make_cmp(ne, '!=', 'not equal to')"
+   ],
+   [
+    282,
+    "    __lt__ = __make_cmp(lt, '<', 'a proper subset of')"
+   ],
+   [
+    283,
+    "    __gt__ = __make_cmp(gt, '>', 'a proper superset of')"
+   ],
+   [
+    284,
+    "    __le__ = __make_cmp(le, '<=', 'a subset of')"
+   ],
+   [
+    285,
+    "    __ge__ = __make_cmp(ge, '>=', 'a superset of')"
+   ],
+   [
+    286,
+    "    __make_cmp = staticmethod(__make_cmp)"
+   ],
+   [
+    288,
+    "    def __len__(self):"
+   ],
+   [
+    296,
+    "        return len(self._set)"
+   ],
+   [
+    298,
+    "    def __iter__(self):"
+   ],
+   [
+    307,
+    "        return iter(self._list)"
+   ],
+   [
+    309,
+    "    def __reversed__(self):"
+   ],
+   [
+    320,
+    "    def add(self, value):"
+   ],
+   [
+    340,
+    "    _add = add"
+   ],
+   [
+    342,
+    "    def clear(self):"
+   ],
+   [
+    351,
+    "    def copy(self):"
+   ],
+   [
+    361,
+    "    __copy__ = copy"
+   ],
+   [
+    363,
+    "    def count(self, value):"
+   ],
+   [
+    378,
+    "    def discard(self, value):"
+   ],
+   [
+    399,
+    "    _discard = discard"
+   ],
+   [
+    401,
+    "    def pop(self, index=-1):"
+   ],
+   [
+    429,
+    "    def remove(self, value):"
+   ],
+   [
+    452,
+    "    def difference(self, *iterables):"
+   ],
+   [
+    473,
+    "    __sub__ = difference"
+   ],
+   [
+    475,
+    "    def difference_update(self, *iterables):"
+   ]
+  ],
+  "src/sortedcontainers/__init__.py": [
+   [
+    48,
+    "from .sorteddict import ("
+   ],
+   [
+    49,
+    "    SortedDict,"
+   ],
+   [
+    50,
+    "    SortedItemsView,"
+   ],
+   [
+    51,
+    "    SortedKeysView,"
+   ],
+   [
+    52,
+    "    SortedValuesView,"
+   ],
+   [
+    53,
+    ")"
+   ],
+   [
+    54,
+    "from .sortedlist import SortedKeyList, SortedList, SortedListWithKey"
+   ],
+   [
+    55,
+    "from .sortedset import SortedSet"
+   ],
+   [
+    57,
+    "__all__ = ["
+   ],
+   [
+    58,
+    "    'SortedList',"
+   ],
+   [
+    59,
+    "    'SortedKeyList',"
+   ],
+   [
+    60,
+    "    'SortedListWithKey',"
+   ],
+   [
+    61,
+    "    'SortedDict',"
+   ],
+   [
+    62,
+    "    'SortedKeysView',"
+   ],
+   [
+    63,
+    "    'SortedItemsView',"
+   ],
+   [
+    64,
+    "    'SortedValuesView',"
+   ],
+   [
+    65,
+    "    'SortedSet',"
+   ],
+   [
+    66,
+    "]"
+   ],
+   [
+    68,
+    "__title__ = 'sortedcontainers'"
+   ],
+   [
+    69,
+    "__version__ = '2.4.0'"
+   ],
+   [
+    70,
+    "__build__ = 0x020400"
+   ],
+   [
+    71,
+    "__author__ = 'Grant Jenks'"
+   ],
+   [
+    72,
+    "__license__ = 'Apache 2.0'"
+   ],
+   [
+    73,
+    "__copyright__ = '2014-2024, Grant Jenks'"
+   ]
+  ],
+  "src/sortedcontainers/sorteddict.py": [
+   [
+    19,
+    "import warnings"
+   ],
+   [
+    20,
+    "from collections.abc import ItemsView, KeysView, Mapping, Sequence, ValuesView"
+   ],
+   [
+    21,
+    "from itertools import chain"
+   ],
+   [
+    23,
+    "from .sortedlist import SortedList, recursive_repr"
+   ],
+   [
+    24,
+    "from .sortedset import SortedSet"
+   ],
+   [
+    27,
+    "class SortedDict(dict):"
+   ],
+   [
+    97,
+    "    def __init__(self, *args, **kwargs):"
+   ],
+   [
+    134,
+    "        if args and (args[0] is None or callable(args[0])):"
+   ],
+   [
+    135,
+    "            _key = self._key = args[0]"
+   ],
+   [
+    136,
+    "            args = args[1:]"
+   ],
+   [
+    138,
+    "            _key = self._key = None"
+   ],
+   [
+    140,
+    "        self._list = SortedList(key=_key)"
+   ],
+   [
+    145,
+    "        _list = self._list"
+   ],
+   [
+    146,
+    "        self._list_add = _list.add"
+   ],
+   [
+    147,
+    "        self._list_clear = _list.clear"
+   ],
+   [
+    148,
+    "        self._list_iter = _list.__iter__"
+   ],
+   [
+    149,
+    "        self._list_reversed = _list.__reversed__"
+   ],
+   [
+    150,
+    "        self._list_pop = _list.pop"
+   ],
+   [
+    151,
+    "        self._list_remove = _list.remove"
+   ],
+   [
+    152,
+    "        self._list_update = _list.update"
+   ],
+   [
+    156,
+    "        self.bisect_left = _list.bisect_left"
+   ],
+   [
+    157,
+    "        self.bisect = _list.bisect_right"
+   ],
+   [
+    158,
+    "        self.bisect_right = _list.bisect_right"
+   ],
+   [
+    159,
+    "        self.index = _list.index"
+   ],
+   [
+    160,
+    "        self.irange = _list.irange"
+   ],
+   [
+    161,
+    "        self.islice = _list.islice"
+   ],
+   [
+    162,
+    "        self._reset = _list._reset"
+   ],
+   [
+    164,
+    "        if _key is not None:"
+   ],
+   [
+    165,
+    "            self.bisect_key_left = _list.bisect_key_left"
+   ],
+   [
+    166,
+    "            self.bisect_key_right = _list.bisect_key_right"
+   ],
+   [
+    167,
+    "            self.bisect_key = _list.bisect_key"
+   ],
+   [
+    168,
+    "            self.irange_key = _list.irange_key"
+   ],
+   [
+    170,
+    "        self._update(*args, **kwargs)"
+   ],
+   [
+    172,
+    "    @property"
+   ],
+   [
+    173,
+    "    def key(self):"
+   ],
+   [
+    181,
+    "    @property"
+   ],
+   [
+    182,
+    "    def iloc(self):"
+   ],
+   [
+    201,
+    "    def clear(self):"
+   ],
+   [
+    210,
+    "    def __delitem__(self, key):"
+   ],
+   [
+    233,
+    "    def __iter__(self):"
+   ],
+   [
+    244,
+    "    def __reversed__(self):"
+   ],
+   [
+    255,
+    "    def __setitem__(self, key, value):"
+   ],
+   [
+    277,
+    "    _setitem = __setitem__"
+   ],
+   [
+    279,
+    "    def __or__(self, other):"
+   ],
+   [
+    285,
+    "    def __ror__(self, other):"
+   ],
+   [
+    291,
+    "    def __ior__(self, other):"
+   ],
+   [
+    295,
+    "    def copy(self):"
+   ],
+   [
+    305,
+    "    __copy__ = copy"
+   ],
+   [
+    307,
+    "    @classmethod"
+   ],
+   [
+    308,
+    "    def fromkeys(cls, iterable, value=None):"
+   ],
+   [
+    321,
+    "    def keys(self):"
+   ],
+   [
+    331,
+    "    def items(self):"
+   ],
+   [
+    341,
+    "    def values(self):"
+   ],
+   [
+    353,
+    "    class _NotGiven:"
+   ],
+   [
+    355,
+    "        def __repr__(self):"
+   ],
+   [
+    358,
+    "    __not_given = _NotGiven()"
+   ],
+   [
+    360,
+    "    def pop(self, key, default=__not_given):"
+   ],
+   [
+    392,
+    "    def popitem(self, index=-1):"
+   ],
+   [
+    427,
+    "    def peekitem(self, index=-1):"
+   ],
+   [
+    457,
+    "    def setdefault(self, key, default=None):"
+   ],
+   [
+    487,
+    "    def update(self, *args, **kwargs):"
+   ],
+   [
+    500,
+    "        if not self:"
+   ],
+   [
+    501,
+    "            dict.update(self, *args, **kwargs)"
+   ],
+   [
+    502,
+    "            self._list_update(dict.__iter__(self))"
+   ],
+   [
+    503,
+    "            return"
+   ],
+   [
+    518,
+    "    _update = update"
+   ],
+   [
+    520,
+    "    def __reduce__(self):"
+   ],
+   [
+    530,
+    "    @recursive_repr()"
+   ],
+   [
+    531,
+    "    def __repr__(self):"
+   ],
+   [
+    539,
+    "        _key = self._key"
+   ],
+   [
+    540,
+    "        type_name = type(self).__name__"
+   ],
+   [
+    541,
+    "        key_arg = '' if _key is None else f'{_key!r}, '"
+   ],
+   [
+    542,
+    "        item_format = '{!r}: {!r}'.format"
+   ],
+   [
+    543,
+    "        items = ', '.join(item_format(key, self[key]) for key in self._list)"
+   ],
+   [
+    544,
+    "        return f'{type_name}({key_arg}{{{items}}})'"
+   ],
+   [
+    546,
+    "    def _check(self):"
+   ],
+   [
+    558,
+    "def _view_delitem(self, index):"
+   ],
+   [
+    596,
+    "class SortedKeysView(KeysView, Sequence):"
+   ],
+   [
+    605,
+    "    __slots__ = ()"
+   ],
+   [
+    607,
+    "    @classmethod"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_coverage_sorteddict.py::test_islice - AssertionError: asser..."
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "case": "click/lit-1b",
+ "budget": 300,
+ "guard_exit": 0,
+ "seconds": 76.0,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 64,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "[19:25:57] src/click/_termui_impl.py: repaired line 192 in 64 suite runs (59.1s):\n  - return f\"{hours:03}:{minutes:02}:{seconds:02}\"\n  + return f\"{hours:02}:{minutes:02}:{seconds:02}\"\n  committed\n",
+ "verdict": "EXACT"
+}

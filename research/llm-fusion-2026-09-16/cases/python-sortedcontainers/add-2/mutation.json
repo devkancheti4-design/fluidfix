@@ -1,0 +1,8 @@
+{
+ "file": "src/sortedcontainers/sortedlist.py",
+ "lineno": 2508,
+ "orig": "                    elif child + 1 == len(self._index):",
+ "mutated": "                    elif child - 1 == len(self._index):",
+ "cls": "add",
+ "base": "3ac358631f58c1347f1d6d2d92784117db0f38ed"
+}

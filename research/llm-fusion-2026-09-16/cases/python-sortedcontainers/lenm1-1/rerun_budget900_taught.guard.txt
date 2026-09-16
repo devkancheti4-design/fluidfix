@@ -1,0 +1,5 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered
+[23:19:09] src/sortedcontainers/sortedlist.py: repaired line 1053 in 17 suite runs (27.8s):
+  - max_pos = len(_maxes)
+  + max_pos = len(_maxes) - 1
+  committed

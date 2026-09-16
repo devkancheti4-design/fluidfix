@@ -1,0 +1,808 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/sortedcontainers/sortedlist.py"
+ ],
+ "seconds": 201.806156873703,
+ "hint": "a candidate passes, but the search was cut short before it could be shown unique \u2014 shipping it would be a guess. Raise the budget and re-run (engine law: BUILT+CAPPED -> RAISE_BUDGET)",
+ "rejected_candidates": [
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1535",
+   "tried": "                assert self._lists[pos][-1] < self._lists[pos][0]",
+   "why": "FAILED tests/benchmark_splits_fill.py::tests.benchmark_splits_fill"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1535",
+   "tried": "                assert self._lists[pos - 1][] < self._lists[pos][0]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 1535)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1535",
+   "tried": "                assert self._lists[pos - 1][-1] < self._lists[pos][-1]",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1535",
+   "tried": "                assert self._lists[pos + 1][-1] < self._lists[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - IndexError: list index..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1535",
+   "tried": "                assert self._lists[pos - 1][-1] > self._lists[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1106",
+   "tried": "            return -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:87",
+   "tried": "    DEFAULT_LOAD_FACTOR = 999",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:108",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:113",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:185",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:189",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:226",
+   "tried": "        self._len += 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:226",
+   "tried": "        self._len -= 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) >= (_load << 1):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load <=< 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 241)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load <<= 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 241)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load << 0):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) < (_load << 1):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - IndexError: list index..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:247",
+   "tried": "            _maxes[pos] = _lists_pos[]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 247)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:249",
+   "tried": "            _lists.insert(pos, half)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:249",
+   "tried": "            _lists.insert(pos - 1, half)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos, half[-1])",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos + 1, half[])",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 250)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos - 1, half[-1])",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:255",
+   "tried": "                child = self._offset - pos",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:257",
+   "tried": "                    _index[child] += 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:257",
+   "tried": "                    _index[child] -= 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >=> 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 258)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >>= 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 258)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child) >> 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >> 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child + 1) >> 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = 1) >> 1 - (child",
+   "why": "does not compile: unmatched ')' (sortedlist.py, line 258)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:259",
+   "tried": "                _index[-1] += 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:259",
+   "tried": "                _index[0] += 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:259",
+   "tried": "                _index[0] -= 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:279",
+   "tried": "            if len(values) * 4 > self._len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:279",
+   "tried": "            if len(values) * 3 >= self._len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:279",
+   "tried": "            if len(values) * 4 <= self._len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:292",
+   "tried": "            values[pos : (pos + _load)] for pos in range(-1, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - IndexError: list index..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:292",
+   "tried": "            values[pos : (pos - _load)] for pos in range(0, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:294",
+   "tried": "        _maxes.extend(sublist[] for sublist in _lists)",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 294)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:421",
+   "tried": "        self._len -= 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1535",
+   "tried": "                assert self._lists[pos][-1] < self._lists[pos][0]",
+   "why": "FAILED tests/benchmark_splits_fill.py::tests.benchmark_splits_fill"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1535",
+   "tried": "                assert self._lists[pos - 1][] < self._lists[pos][0]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 1535)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1535",
+   "tried": "                assert self._lists[pos - 1][-1] < self._lists[pos][-1]",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1535",
+   "tried": "                assert self._lists[pos + 1][-1] < self._lists[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - IndexError: list index..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1535",
+   "tried": "                assert self._lists[pos - 1][-1] > self._lists[pos][0]",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:1106",
+   "tried": "            return -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:87",
+   "tried": "    DEFAULT_LOAD_FACTOR = 999",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:108",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:113",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:185",
+   "tried": "        self._len = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:189",
+   "tried": "        self._offset = -1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:215",
+   "tried": "                pos -= 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - IndexError: list index..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:215",
+   "tried": "                pos += 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - IndexError: list index..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:226",
+   "tried": "        self._len += 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:226",
+   "tried": "        self._len -= 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) >= (_load << 1):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load <=< 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 241)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load <<= 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 241)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) > (_load << 0):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:241",
+   "tried": "        if len(_lists[pos]) < (_load << 1):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - IndexError: list index..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:247",
+   "tried": "            _maxes[pos] = _lists_pos[]",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 247)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:249",
+   "tried": "            _lists.insert(pos, half)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:249",
+   "tried": "            _lists.insert(pos - 1, half)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos, half[-1])",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos + 1, half[])",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 250)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:250",
+   "tried": "            _maxes.insert(pos - 1, half[-1])",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:255",
+   "tried": "                child = self._offset - pos",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:257",
+   "tried": "                    _index[child] += 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:257",
+   "tried": "                    _index[child] -= 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >=> 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 258)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >>= 1",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 258)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child) >> 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child - 1) >> 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = (child + 1) >> 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:258",
+   "tried": "                    child = 1) >> 1 - (child",
+   "why": "does not compile: unmatched ')' (sortedlist.py, line 258)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:259",
+   "tried": "                _index[-1] += 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:259",
+   "tried": "                _index[0] += 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:259",
+   "tried": "                _index[0] -= 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:279",
+   "tried": "            if len(values) * 4 > self._len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:279",
+   "tried": "            if len(values) * 3 >= self._len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:279",
+   "tried": "            if len(values) * 4 <= self._len:",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:292",
+   "tried": "            values[pos : (pos + _load)] for pos in range(-1, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - IndexError: list index..."
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:292",
+   "tried": "            values[pos : (pos - _load)] for pos in range(0, len(values), _load)",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:294",
+   "tried": "        _maxes.extend(sublist[] for sublist in _lists)",
+   "why": "does not compile: invalid syntax. Perhaps you forgot a comma? (sortedlist.py, line 294)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:421",
+   "tried": "        self._len -= 0",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:421",
+   "tried": "        self._len += 1",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:425",
+   "tried": "        if len_lists_pos >= (self._load >> 1):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:425",
+   "tried": "        if len_lists_pos > (self._load >=> 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 425)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:425",
+   "tried": "        if len_lists_pos > (self._load >>= 1):",
+   "why": "does not compile: invalid syntax (sortedlist.py, line 425)"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:425",
+   "tried": "        if len_lists_pos > (self._load >> 0):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  },
+  {
+   "at": "src/sortedcontainers/sortedlist.py:425",
+   "tried": "        if len_lists_pos < (self._load >> 1):",
+   "why": "FAILED tests/test_coverage_sortedlist.py::test_count - AssertionError"
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "src/sortedcontainers/sortedlist.py": [
+   [
+    18,
+    "import sys"
+   ],
+   [
+    19,
+    "import traceback"
+   ],
+   [
+    20,
+    "from bisect import bisect_left, bisect_right, insort"
+   ],
+   [
+    21,
+    "from collections.abc import MutableSequence, Sequence"
+   ],
+   [
+    22,
+    "from functools import reduce"
+   ],
+   [
+    23,
+    "from itertools import chain, repeat, starmap"
+   ],
+   [
+    24,
+    "from math import log"
+   ],
+   [
+    25,
+    "from operator import add, eq, ge, gt, iadd, le, lt, ne"
+   ],
+   [
+    26,
+    "from reprlib import recursive_repr"
+   ],
+   [
+    27,
+    "from textwrap import dedent"
+   ],
+   [
+    30,
+    "class SortedList(MutableSequence):"
+   ],
+   [
+    87,
+    "    DEFAULT_LOAD_FACTOR = 1000"
+   ],
+   [
+    89,
+    "    def __init__(self, iterable=None, key=None):"
+   ],
+   [
+    107,
+    "        assert key is None"
+   ],
+   [
+    108,
+    "        self._len = 0"
+   ],
+   [
+    109,
+    "        self._load = self.DEFAULT_LOAD_FACTOR"
+   ],
+   [
+    110,
+    "        self._lists = []"
+   ],
+   [
+    111,
+    "        self._maxes = []"
+   ],
+   [
+    112,
+    "        self._index = []"
+   ],
+   [
+    113,
+    "        self._offset = 0"
+   ],
+   [
+    115,
+    "        if iterable is not None:"
+   ],
+   [
+    116,
+    "            self._update(iterable)"
+   ],
+   [
+    118,
+    "    def __new__(cls, iterable=None, key=None):"
+   ],
+   [
+    139,
+    "        if key is None:"
+   ],
+   [
+    140,
+    "            return object.__new__(cls)"
+   ],
+   [
+    147,
+    "    @property"
+   ],
+   [
+    148,
+    "    def key(self):  # pylint: disable=useless-return"
+   ],
+   [
+    156,
+    "    def _reset(self, load):"
+   ],
+   [
+    174,
+    "        values = reduce(iadd, self._lists, [])"
+   ],
+   [
+    175,
+    "        self._clear()"
+   ],
+   [
+    176,
+    "        self._load = load"
+   ],
+   [
+    177,
+    "        self._update(values)"
+   ],
+   [
+    179,
+    "    def clear(self):"
+   ],
+   [
+    185,
+    "        self._len = 0"
+   ],
+   [
+    186,
+    "        del self._lists[:]"
+   ],
+   [
+    187,
+    "        del self._maxes[:]"
+   ],
+   [
+    188,
+    "        del self._index[:]"
+   ],
+   [
+    189,
+    "        self._offset = 0"
+   ],
+   [
+    191,
+    "    _clear = clear"
+   ],
+   [
+    193,
+    "    def add(self, value):"
+   ],
+   [
+    208,
+    "        _lists = self._lists"
+   ],
+   [
+    209,
+    "        _maxes = self._maxes"
+   ],
+   [
+    211,
+    "        if _maxes:"
+   ],
+   [
+    212,
+    "            pos = bisect_right(_maxes, value)"
+   ],
+   [
+    214,
+    "            if pos == len(_maxes):"
+   ],
+   [
+    215,
+    "                pos -= 1"
+   ],
+   [
+    216,
+    "                _lists[pos].append(value)"
+   ],
+   [
+    217,
+    "                _maxes[pos] = value"
+   ],
+   [
+    219,
+    "                insort(_lists[pos], value)"
+   ],
+   [
+    221,
+    "            self._expand(pos)"
+   ],
+   [
+    223,
+    "            _lists.append([value])"
+   ],
+   [
+    224,
+    "            _maxes.append(value)"
+   ],
+   [
+    226,
+    "        self._len += 1"
+   ],
+   [
+    228,
+    "    def _expand(self, pos):"
+   ],
+   [
+    237,
+    "        _load = self._load"
+   ],
+   [
+    238,
+    "        _lists = self._lists"
+   ],
+   [
+    239,
+    "        _index = self._index"
+   ],
+   [
+    241,
+    "        if len(_lists[pos]) > (_load << 1):"
+   ],
+   [
+    242,
+    "            _maxes = self._maxes"
+   ],
+   [
+    244,
+    "            _lists_pos = _lists[pos]"
+   ],
+   [
+    245,
+    "            half = _lists_pos[_load:]"
+   ],
+   [
+    246,
+    "            del _lists_pos[_load:]"
+   ],
+   [
+    247,
+    "            _maxes[pos] = _lists_pos[-1]"
+   ],
+   [
+    249,
+    "            _lists.insert(pos + 1, half)"
+   ],
+   [
+    250,
+    "            _maxes.insert(pos + 1, half[-1])"
+   ],
+   [
+    252,
+    "            del _index[:]"
+   ],
+   [
+    254,
+    "            if _index:"
+   ],
+   [
+    255,
+    "                child = self._offset + pos"
+   ],
+   [
+    256,
+    "                while child:"
+   ],
+   [
+    257,
+    "                    _index[child] += 1"
+   ],
+   [
+    258,
+    "                    child = (child - 1) >> 1"
+   ],
+   [
+    259,
+    "                _index[0] += 1"
+   ],
+   [
+    261,
+    "    def update(self, iterable):"
+   ],
+   [
+    274,
+    "        _lists = self._lists"
+   ],
+   [
+    275,
+    "        _maxes = self._maxes"
+   ],
+   [
+    276,
+    "        values = sorted(iterable)"
+   ],
+   [
+    278,
+    "        if _maxes:"
+   ],
+   [
+    279,
+    "            if len(values) * 4 >= self._len:"
+   ],
+   [
+    280,
+    "                _lists.append(values)"
+   ],
+   [
+    281,
+    "                values = reduce(iadd, _lists, [])"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_coverage_sortedlist.py::test_bisect_left - AssertionError"
+ ]
+}

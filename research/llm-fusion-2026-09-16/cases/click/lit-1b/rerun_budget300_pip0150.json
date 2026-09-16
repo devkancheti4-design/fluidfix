@@ -1,0 +1,16 @@
+{
+ "case": "click/lit-1b",
+ "budget": 300,
+ "extra": "",
+ "tag": "_pip0150",
+ "code": "pip fluidfix in venv",
+ "guard_exit": 0,
+ "seconds": 74.3,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 64,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "[00:12:12] src/click/_termui_impl.py: repaired line 192 in 64 suite runs (57.5s):\n  - return f\"{hours:03}:{minutes:02}:{seconds:02}\"\n  + return f\"{hours:02}:{minutes:02}:{seconds:02}\"\n  committed\n",
+ "verdict": "EXACT"
+}

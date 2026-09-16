@@ -1,0 +1,64 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 304.2,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/lenm1-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "phi4-mini",
+   "tokens": {
+    "input": 2625,
+    "output": 123,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "phi4-mini",
+    "seconds": 10.6
+   },
+   "valid": false,
+   "why": "applier is a no-op on the matched line",
+   "rule": {
+    "name": "format-default-comma",
+    "signal": "def _format_default(default: V) ->= V | str:",
+    "example_before": "def _format_default(default: V) ->= V | str:",
+    "example_after": "def _format_default(default: V) -> V | str:"
+   }
+  },
+  {
+   "tier": 2,
+   "model": "phi4-mini",
+   "tokens": {
+    "input": 2489,
+    "output": 93,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "phi4-mini",
+    "seconds": 9.0
+   },
+   "proposals": 3,
+   "line": "def _format_default(default: V) -> V | str:",
+   "replacements": [
+    "def _format_default(default: V) -> str:",
+    "def _format_default(default: V) -> str: # Corrected the colon to a comma",
+    "def _format_default(default: V) -> str: # Corrected the colon to a comma, and added a comment for clarity"
+   ],
+   "exit": 2,
+   "wall": 300.4,
+   "suite_runs": null,
+   "stdout": "xceptions.py, src/click/globals.py, src/click/_compat.py; the defect may be in a file the ranking never reached. 110 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 raise --escalate-budget, use --observer claude, or fix by hand (the clock ran out on a search the failure genuinely pointed at)\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+  }
+ ],
+ "tokens": {
+  "input": 5114,
+  "output": 216,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 5330
+ },
+ "outcome": "refused-after-tier2"
+}

@@ -1,0 +1,158 @@
+{
+ "status": "refused",
+ "candidates": [
+  ".venv/lib/python3.14/site-packages/_pytest/python.py"
+ ],
+ "seconds": 13.411057949066162,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists each one with the test that killed it",
+ "rejected_candidates": [
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:116",
+   "tried": "        # None =>= fallback to `strict`.",
+   "why": "FAILED tests/test_console.py::test_print_json - assert '\\x1b[1m[\\x1b...[1m]\\x..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:116",
+   "tried": "        # None =< fallback to `strict`.",
+   "why": "FAILED tests/test_console.py::test_print_json - assert '\\x1b[1m[\\x1b...[1m]\\x..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:122",
+   "tried": "def pytest_generate_tests(metafunc: Metafunc) ->= None:",
+   "why": "does not compile: expected ':' (python.py, line 122)"
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:127",
+   "tried": "def pytest_configure(config: Config) ->= None:",
+   "why": "does not compile: expected ':' (python.py, line 127)"
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:134",
+   "tried": "        \"Example: @parametrize('arg1', [0,2]) would lead to two calls of the \"",
+   "why": "FAILED tests/test_console.py::test_print_json - assert '\\x1b[1m[\\x1b...[1m]\\x..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:134",
+   "tried": "        \"Example: @parametrize('arg1', [1,1]) would lead to two calls of the \"",
+   "why": "FAILED tests/test_console.py::test_print_json - assert '\\x1b[1m[\\x1b...[1m]\\x..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:135",
+   "tried": "        \"decorated test function, one with arg1=0 and another with arg1=2.\"",
+   "why": "FAILED tests/test_console.py::test_print_json - assert '\\x1b[1m[\\x1b...[1m]\\x..."
+  },
+  {
+   "at": ".venv/lib/python3.14/site-packages/_pytest/python.py:135",
+   "tried": "        \"decorated test function, one with arg1=1 and another with arg1=1.\"",
+   "why": "FAILED tests/test_console.py::test_print_json - assert '\\x1b[1m[\\x1b...[1m]\\x..."
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  ".venv/lib/python3.14/site-packages/_pytest/python.py": [
+   [
+    112,
+    "    )"
+   ],
+   [
+    113,
+    "    parser.addini("
+   ],
+   [
+    114,
+    "        \"strict_parametrization_ids\","
+   ],
+   [
+    115,
+    "        type=\"bool\","
+   ],
+   [
+    116,
+    "        # None => fallback to `strict`."
+   ],
+   [
+    117,
+    "        default=None,"
+   ],
+   [
+    118,
+    "        help=\"Emit an error if non-unique parameter set IDs are detected\","
+   ],
+   [
+    119,
+    "    )"
+   ],
+   [
+    120,
+    ""
+   ],
+   [
+    121,
+    ""
+   ],
+   [
+    122,
+    "def pytest_generate_tests(metafunc: Metafunc) -> None:"
+   ],
+   [
+    123,
+    "    for marker in metafunc.definition.iter_markers(name=\"parametrize\"):"
+   ],
+   [
+    124,
+    "        metafunc.parametrize(*marker.args, **marker.kwargs, _param_mark=marker)"
+   ],
+   [
+    125,
+    ""
+   ],
+   [
+    126,
+    ""
+   ],
+   [
+    127,
+    "def pytest_configure(config: Config) -> None:"
+   ],
+   [
+    128,
+    "    config.addinivalue_line("
+   ],
+   [
+    129,
+    "        \"markers\","
+   ],
+   [
+    130,
+    "        \"parametrize(argnames, argvalues): call a test function multiple \""
+   ],
+   [
+    131,
+    "        \"times passing in different arguments in turn. argvalues generally \""
+   ],
+   [
+    132,
+    "        \"needs to be a list of values if argnames specifies only one name \""
+   ],
+   [
+    133,
+    "        \"or a list of tuples of values if argnames specifies multiple names. \""
+   ],
+   [
+    134,
+    "        \"Example: @parametrize('arg1', [1,2]) would lead to two calls of the \""
+   ],
+   [
+    135,
+    "        \"decorated test function, one with arg1=1 and another with arg1=2.\""
+   ],
+   [
+    136,
+    "        \"see https://docs.pytest.org/en/stable/how-to/parametrize.html for more info \""
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_console.py::test_print_json - assert '\\x1b[1m[\\x1b...[1m]\\x..."
+ ]
+}

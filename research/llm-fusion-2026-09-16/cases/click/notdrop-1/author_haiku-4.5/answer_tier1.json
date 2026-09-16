@@ -1,0 +1,8 @@
+{
+ "example_before": "    if value:",
+ "example_after": "    if not value:",
+ "name": "inverted-truthiness-guard",
+ "description": "A guard condition that checks if a parameter is truthy and returns False, but then tries to index that same parameter when falsy, causing IndexError.",
+ "signal": "if\\s+\\w+:\\s*$",
+ "applier": "def fix(line, o):\n    import re\n    m = re.match(r'^(\\s*)if\\s+(\\w+):\\s*$', line)\n    if m:\n        indent, var = m.groups()\n        if var and not var.startswith('not '):\n            return f'{indent}if not {var}:'\n    return line"
+}

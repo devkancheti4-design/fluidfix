@@ -1,0 +1,3977 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/click/_termui_impl.py",
+  "src/click/termui.py",
+  "src/click/_utils.py",
+  "src/click/globals.py",
+  "src/click/__init__.py",
+  "src/click/_compat.py",
+  "src/click/types.py",
+  "src/click/exceptions.py"
+ ],
+ "seconds": 305.1562201976776,
+ "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or make the failure carry a locating value",
+ "rejected_candidates": [
+  {
+   "at": "src/click/_termui_impl.py:174",
+   "tried": "    def format_eta(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 174)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:177",
+   "tried": "            seconds = t % 59",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:178",
+   "tried": "            t //= 59",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:179",
+   "tried": "            minutes = t % 59",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:180",
+   "tried": "            t //= 59",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:181",
+   "tried": "            hours = t % 23",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:182",
+   "tried": "            t //= 23",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:183",
+   "tried": "            if t >= 0:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:183",
+   "tried": "            if t > -1:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:183",
+   "tried": "            if t < 0:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:192",
+   "tried": "                return f\"{hours:2}:{minutes:02}:{seconds:02}\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:192",
+   "tried": "                return f\"{hours:3}:{minutes:01}:{seconds:02}\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:192",
+   "tried": "                return f\"{hours:3}:{minutes:02}:{seconds:01}\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:169",
+   "tried": "    def eta(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 169)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:171",
+   "tried": "            return (self.length - self.pos) * self.time_per_iteration",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:171",
+   "tried": "            return self.time_per_iteration * (self.length + self.pos)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:171",
+   "tried": "            return self.pos) - self.time_per_iteration * (self.length",
+   "why": "does not compile: unmatched ')' (_termui_impl.py, line 171)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:195",
+   "tried": "    def format_pos(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 195)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:201",
+   "tried": "    def format_pct(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 201)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:202",
+   "tried": "        return f\"{int(self.pct * 99): 4}%\"[1:]",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:202",
+   "tried": "        return f\"{int(self.pct * 100): 3}%\"[1:]",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:202",
+   "tried": "        return f\"{int(self.pct * 100): 4}%\"[0:]",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:202",
+   "tried": "        return 100): 4}%\"[1:] * f\"{int(self.pct",
+   "why": "does not compile: unmatched ')' (_termui_impl.py, line 202)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:204",
+   "tried": "    def format_bar(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 204)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:208",
+   "tried": "            bar += self.empty_char * (self.width + bar_length)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:208",
+   "tried": "            bar -= self.empty_char * (self.width - bar_length)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:223",
+   "tried": "    def format_progress_line(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 223)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:39",
+   "tried": "    BEFORE_BAR = \"\\r\\032[?25l\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:39",
+   "tried": "    BEFORE_BAR = \"\\r\\033[?24l\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:40",
+   "tried": "    AFTER_BAR = \"\\032[?25h\\n\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:40",
+   "tried": "    AFTER_BAR = \"\\033[?24h\\n\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:85",
+   "tried": "        self._completed_intervals = -1",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:87",
+   "tried": "        self.autowidth: bool = width == -1",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:92",
+   "tried": "            length = length_hint(iterable,)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:94",
+   "tried": "            if length ==:",
+   "why": "does not compile: invalid syntax (_termui_impl.py, line 94)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:102",
+   "tried": "        self.pos: int = -1",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:107",
+   "tried": "        self.eta_known: bool = True",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:108",
+   "tried": "        self.finished: bool = True",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:110",
+   "tried": "        self.entered: bool = True",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:115",
+   "tried": "    def __enter__(self) ->= ProgressBar[V]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 115)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:116",
+   "tried": "        self.entered = False",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:128",
+   "tried": "    def __iter__(self) ->= cabc.Iterator[V]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 128)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:134",
+   "tried": "    def __next__(self) ->= V:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 134)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:142",
+   "tried": "    def render_finish(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 142)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:157",
+   "tried": "    def pct(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 157)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:159",
+   "tried": "            return 0.0",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:159",
+   "tried": "            return 1.-1",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return min(self.pos / (float(self.length or 0) or 1), 1.0)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return min(self.pos / (float(self.length or 1) or 0), 1.0)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return min(self.pos / (float(self.length or 1) or 1), 0.0)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return min(self.pos / (float(self.length or 1) or 1), 1.-1)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return (float(self.length or 1) or 1), 1.0) / min(self.pos",
+   "why": "does not compile: unmatched ')' (_termui_impl.py, line 160)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return max(self.pos / (float(self.length or 1) or 1), 1.0)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:163",
+   "tried": "    def time_per_iteration(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 163)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:166",
+   "tried": "        return float(len(self.avg)) / sum(self.avg)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - ZeroDi..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:250",
+   "tried": "    def render_progress(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 250)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:283",
+   "tried": "        if self.max_width is None or self.max_width <= line_len:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:283",
+   "tried": "        if self.max_width is None or self.max_width > line_len:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:287",
+   "tried": "        buf.append(\" \" * (clear_width + line_len))",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:293",
+   "tried": "            echo(line, file=self.file, color=self.color, nl=True)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:296",
+   "tried": "    def make_step(self, n_steps: int) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 296)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:298",
+   "tried": "        if self.length is not None and self.pos > self.length:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:298",
+   "tried": "        if self.length is not None and self.pos <= self.length:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:299",
+   "tried": "            self.finished = False",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:128",
+   "tried": "def _format_default(default: V) ->= V | str:",
+   "why": "does not compile: expected ':' (termui.py, line 128)"
+  },
+  {
+   "at": "src/click/termui.py:37",
+   "tried": "    \"black\": 29,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:38",
+   "tried": "    \"red\": 30,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:39",
+   "tried": "    \"green\": 31,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:40",
+   "tried": "    \"yellow\": 32,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:41",
+   "tried": "    \"blue\": 33,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:42",
+   "tried": "    \"magenta\": 34,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:43",
+   "tried": "    \"cyan\": 35,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:44",
+   "tried": "    \"white\": 36,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:45",
+   "tried": "    \"reset\": 38,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:46",
+   "tried": "    \"bright_black\": 89,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:47",
+   "tried": "    \"bright_red\": 90,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:48",
+   "tried": "    \"bright_green\": 91,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:49",
+   "tried": "    \"bright_yellow\": 92,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:50",
+   "tried": "    \"bright_blue\": 93,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:51",
+   "tried": "    \"bright_magenta\": 94,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:52",
+   "tried": "    \"bright_cyan\": 95,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:53",
+   "tried": "    \"bright_white\": 96,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:55",
+   "tried": "_ansi_reset_all = \"\\032[0m\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:55",
+   "tried": "_ansi_reset_all = \"\\033[-1m\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:61",
+   "tried": "def _mask_hidden_input(message: str, value: str) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 61)"
+  },
+  {
+   "at": "src/click/termui.py:79",
+   "tried": "def hidden_prompt_func(prompt: str) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 79)"
+  },
+  {
+   "at": "src/click/termui.py:85",
+   "tried": "def _readline_prompt(func: t.Callable[[str], str], text: str, err: bool) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 85)"
+  },
+  {
+   "at": "src/click/termui.py:602",
+   "tried": "def clear() ->= None:",
+   "why": "does not compile: expected ':' (termui.py, line 602)"
+  },
+  {
+   "at": "src/click/termui.py:616",
+   "tried": "def _interpret_color(color: int | tuple[int, int, int] | str, offset: int = 0) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 616)"
+  },
+  {
+   "at": "src/click/termui.py:616",
+   "tried": "def _interpret_color(color: int | tuple[int, int, int] | str, offset: int = -1) -> str:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:619",
+   "tried": "        return offset) + str(_ansi_colors[color]",
+   "why": "does not compile: unmatched ')' (termui.py, line 619)"
+  },
+  {
+   "at": "src/click/termui.py:619",
+   "tried": "        return str(_ansi_colors[color] - offset)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:741",
+   "tried": "        bits.append(f\"\\032[{_interpret_color(fg)}m\")",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:768",
+   "tried": "def unstyle(text: str) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 768)"
+  },
+  {
+   "at": "src/click/termui.py:923",
+   "tried": "def launch(url: str, wait: bool = False, locate: bool = False) ->= int:",
+   "why": "does not compile: expected ':' (termui.py, line 923)"
+  },
+  {
+   "at": "src/click/termui.py:923",
+   "tried": "def launch(url: str, wait: bool = True, locate: bool = False) -> int:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:923",
+   "tried": "def launch(url: str, wait: bool = False, locate: bool = True) -> int:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:957",
+   "tried": "def getchar(echo: bool = False) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 957)"
+  },
+  {
+   "at": "src/click/termui.py:957",
+   "tried": "def getchar(echo: bool = True) -> str:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:987",
+   "tried": "def raw_terminal() ->= AbstractContextManager[int]:",
+   "why": "does not compile: expected ':' (termui.py, line 987)"
+  },
+  {
+   "at": "src/click/termui.py:993",
+   "tried": "def pause(info: str | None = None, err: bool = False) ->= None:",
+   "why": "does not compile: expected ':' (termui.py, line 993)"
+  },
+  {
+   "at": "src/click/termui.py:993",
+   "tried": "def pause(info: str | None = None, err: bool = True) -> None:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_utils.py:18",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (_utils.py, line 18)"
+  },
+  {
+   "at": "src/click/_utils.py:21",
+   "tried": "    def __copy__(self) ->= Sentinel:",
+   "why": "does not compile: expected ':' (_utils.py, line 21)"
+  },
+  {
+   "at": "src/click/_utils.py:24",
+   "tried": "    def __deepcopy__(self, memo: dict[int, t.Any]) ->= Sentinel:",
+   "why": "does not compile: expected ':' (_utils.py, line 24)"
+  },
+  {
+   "at": "src/click/_utils.py:27",
+   "tried": "    def __reduce_ex__(self, protocol: object) ->= tuple[t.Any, ...]:",
+   "why": "does not compile: expected ':' (_utils.py, line 27)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:174",
+   "tried": "    def format_eta(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 174)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:177",
+   "tried": "            seconds = t % 59",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:178",
+   "tried": "            t //= 59",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:179",
+   "tried": "            minutes = t % 59",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:180",
+   "tried": "            t //= 59",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:181",
+   "tried": "            hours = t % 23",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:182",
+   "tried": "            t //= 23",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:183",
+   "tried": "            if t >= 0:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:183",
+   "tried": "            if t > -1:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:183",
+   "tried": "            if t < 0:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:192",
+   "tried": "                return f\"{hours:2}:{minutes:02}:{seconds:02}\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:192",
+   "tried": "                return f\"{hours:3}:{minutes:01}:{seconds:02}\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:192",
+   "tried": "                return f\"{hours:3}:{minutes:02}:{seconds:01}\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:169",
+   "tried": "    def eta(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 169)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:171",
+   "tried": "            return (self.length - self.pos) * self.time_per_iteration",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:171",
+   "tried": "            return self.time_per_iteration * (self.length + self.pos)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:171",
+   "tried": "            return self.pos) - self.time_per_iteration * (self.length",
+   "why": "does not compile: unmatched ')' (_termui_impl.py, line 171)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:195",
+   "tried": "    def format_pos(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 195)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:201",
+   "tried": "    def format_pct(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 201)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:202",
+   "tried": "        return f\"{int(self.pct * 99): 4}%\"[1:]",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:202",
+   "tried": "        return f\"{int(self.pct * 100): 3}%\"[1:]",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:202",
+   "tried": "        return f\"{int(self.pct * 100): 4}%\"[0:]",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:202",
+   "tried": "        return 100): 4}%\"[1:] * f\"{int(self.pct",
+   "why": "does not compile: unmatched ')' (_termui_impl.py, line 202)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:204",
+   "tried": "    def format_bar(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 204)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:208",
+   "tried": "            bar += self.empty_char * (self.width + bar_length)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:208",
+   "tried": "            bar -= self.empty_char * (self.width - bar_length)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:223",
+   "tried": "    def format_progress_line(self) ->= str:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 223)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:39",
+   "tried": "    BEFORE_BAR = \"\\r\\032[?25l\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:39",
+   "tried": "    BEFORE_BAR = \"\\r\\033[?24l\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:40",
+   "tried": "    AFTER_BAR = \"\\032[?25h\\n\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:40",
+   "tried": "    AFTER_BAR = \"\\033[?24h\\n\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:85",
+   "tried": "        self._completed_intervals = -1",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:87",
+   "tried": "        self.autowidth: bool = width == -1",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:92",
+   "tried": "            length = length_hint(iterable,)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:94",
+   "tried": "            if length ==:",
+   "why": "does not compile: invalid syntax (_termui_impl.py, line 94)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:102",
+   "tried": "        self.pos: int = -1",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:107",
+   "tried": "        self.eta_known: bool = True",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:108",
+   "tried": "        self.finished: bool = True",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:110",
+   "tried": "        self.entered: bool = True",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:115",
+   "tried": "    def __enter__(self) ->= ProgressBar[V]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 115)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:116",
+   "tried": "        self.entered = False",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:128",
+   "tried": "    def __iter__(self) ->= cabc.Iterator[V]:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 128)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:134",
+   "tried": "    def __next__(self) ->= V:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 134)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:142",
+   "tried": "    def render_finish(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 142)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:157",
+   "tried": "    def pct(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 157)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:159",
+   "tried": "            return 0.0",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:159",
+   "tried": "            return 1.-1",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return min(self.pos / (float(self.length or 0) or 1), 1.0)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return min(self.pos / (float(self.length or 1) or 0), 1.0)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return min(self.pos / (float(self.length or 1) or 1), 0.0)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return min(self.pos / (float(self.length or 1) or 1), 1.-1)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return (float(self.length or 1) or 1), 1.0) / min(self.pos",
+   "why": "does not compile: unmatched ')' (_termui_impl.py, line 160)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:160",
+   "tried": "        return max(self.pos / (float(self.length or 1) or 1), 1.0)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:163",
+   "tried": "    def time_per_iteration(self) ->= float:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 163)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:166",
+   "tried": "        return float(len(self.avg)) / sum(self.avg)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - ZeroDi..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:250",
+   "tried": "    def render_progress(self) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 250)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:283",
+   "tried": "        if self.max_width is None or self.max_width <= line_len:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:283",
+   "tried": "        if self.max_width is None or self.max_width > line_len:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:287",
+   "tried": "        buf.append(\" \" * (clear_width + line_len))",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:293",
+   "tried": "            echo(line, file=self.file, color=self.color, nl=True)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:296",
+   "tried": "    def make_step(self, n_steps: int) ->= None:",
+   "why": "does not compile: expected ':' (_termui_impl.py, line 296)"
+  },
+  {
+   "at": "src/click/_termui_impl.py:297",
+   "tried": "        self.pos -= n_steps",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:298",
+   "tried": "        if self.length is not None and self.pos > self.length:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/_termui_impl.py:298",
+   "tried": "        if self.length is not None and self.pos <= self.length:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:128",
+   "tried": "def _format_default(default: V) ->= V | str:",
+   "why": "does not compile: expected ':' (termui.py, line 128)"
+  },
+  {
+   "at": "src/click/termui.py:37",
+   "tried": "    \"black\": 29,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:38",
+   "tried": "    \"red\": 30,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:39",
+   "tried": "    \"green\": 31,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:40",
+   "tried": "    \"yellow\": 32,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:41",
+   "tried": "    \"blue\": 33,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:42",
+   "tried": "    \"magenta\": 34,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:43",
+   "tried": "    \"cyan\": 35,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:44",
+   "tried": "    \"white\": 36,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:45",
+   "tried": "    \"reset\": 38,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:46",
+   "tried": "    \"bright_black\": 89,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:47",
+   "tried": "    \"bright_red\": 90,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:48",
+   "tried": "    \"bright_green\": 91,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:49",
+   "tried": "    \"bright_yellow\": 92,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:50",
+   "tried": "    \"bright_blue\": 93,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:51",
+   "tried": "    \"bright_magenta\": 94,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:52",
+   "tried": "    \"bright_cyan\": 95,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:53",
+   "tried": "    \"bright_white\": 96,",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:55",
+   "tried": "_ansi_reset_all = \"\\032[0m\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:55",
+   "tried": "_ansi_reset_all = \"\\033[-1m\"",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:61",
+   "tried": "def _mask_hidden_input(message: str, value: str) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 61)"
+  },
+  {
+   "at": "src/click/termui.py:79",
+   "tried": "def hidden_prompt_func(prompt: str) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 79)"
+  },
+  {
+   "at": "src/click/termui.py:85",
+   "tried": "def _readline_prompt(func: t.Callable[[str], str], text: str, err: bool) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 85)"
+  },
+  {
+   "at": "src/click/termui.py:602",
+   "tried": "def clear() ->= None:",
+   "why": "does not compile: expected ':' (termui.py, line 602)"
+  },
+  {
+   "at": "src/click/termui.py:616",
+   "tried": "def _interpret_color(color: int | tuple[int, int, int] | str, offset: int = 0) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 616)"
+  },
+  {
+   "at": "src/click/termui.py:616",
+   "tried": "def _interpret_color(color: int | tuple[int, int, int] | str, offset: int = -1) -> str:",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:619",
+   "tried": "        return offset) + str(_ansi_colors[color]",
+   "why": "does not compile: unmatched ')' (termui.py, line 619)"
+  },
+  {
+   "at": "src/click/termui.py:619",
+   "tried": "        return str(_ansi_colors[color] - offset)",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:741",
+   "tried": "        bits.append(f\"\\032[{_interpret_color(fg)}m\")",
+   "why": "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+  },
+  {
+   "at": "src/click/termui.py:768",
+   "tried": "def unstyle(text: str) ->= str:",
+   "why": "does not compile: expected ':' (termui.py, line 768)"
+  }
+ ],
+ "rejected_not_listed": 76,
+ "executed_lines": {
+  "src/click/_termui_impl.py": [
+   [
+    7,
+    "from __future__ import annotations"
+   ],
+   [
+    9,
+    "import collections.abc as cabc"
+   ],
+   [
+    10,
+    "import contextlib"
+   ],
+   [
+    11,
+    "import math"
+   ],
+   [
+    12,
+    "import os"
+   ],
+   [
+    13,
+    "import shlex"
+   ],
+   [
+    14,
+    "import sys"
+   ],
+   [
+    15,
+    "import time"
+   ],
+   [
+    16,
+    "import typing as t"
+   ],
+   [
+    17,
+    "from gettext import gettext as _"
+   ],
+   [
+    18,
+    "from io import StringIO"
+   ],
+   [
+    19,
+    "from pathlib import Path"
+   ],
+   [
+    20,
+    "from types import TracebackType"
+   ],
+   [
+    22,
+    "from ._compat import _default_text_stdout"
+   ],
+   [
+    23,
+    "from ._compat import CYGWIN"
+   ],
+   [
+    24,
+    "from ._compat import get_best_encoding"
+   ],
+   [
+    25,
+    "from ._compat import isatty"
+   ],
+   [
+    26,
+    "from ._compat import strip_ansi"
+   ],
+   [
+    27,
+    "from ._compat import term_len"
+   ],
+   [
+    28,
+    "from ._compat import WIN"
+   ],
+   [
+    29,
+    "from .exceptions import ClickException"
+   ],
+   [
+    30,
+    "from .utils import echo"
+   ],
+   [
+    32,
+    "V = t.TypeVar(\"V\")"
+   ],
+   [
+    35,
+    "if os.name == \"nt\":"
+   ],
+   [
+    39,
+    "    BEFORE_BAR = \"\\r\\033[?25l\""
+   ],
+   [
+    40,
+    "    AFTER_BAR = \"\\033[?25h\\n\""
+   ],
+   [
+    43,
+    "class ProgressBar(t.Generic[V]):"
+   ],
+   [
+    44,
+    "    def __init__("
+   ],
+   [
+    63,
+    "        self.fill_char = fill_char"
+   ],
+   [
+    64,
+    "        self.empty_char = empty_char"
+   ],
+   [
+    65,
+    "        self.bar_template = bar_template"
+   ],
+   [
+    66,
+    "        self.info_sep = info_sep"
+   ],
+   [
+    67,
+    "        self.hidden = hidden"
+   ],
+   [
+    68,
+    "        self.show_eta = show_eta"
+   ],
+   [
+    69,
+    "        self.show_percent = show_percent"
+   ],
+   [
+    70,
+    "        self.show_pos = show_pos"
+   ],
+   [
+    71,
+    "        self.item_show_func = item_show_func"
+   ],
+   [
+    72,
+    "        self.label: str = label or \"\""
+   ],
+   [
+    74,
+    "        if file is None:"
+   ],
+   [
+    75,
+    "            file = _default_text_stdout()"
+   ],
+   [
+    79,
+    "            if file is None:"
+   ],
+   [
+    82,
+    "        self.file = file"
+   ],
+   [
+    83,
+    "        self.color = color"
+   ],
+   [
+    84,
+    "        self.update_min_steps = update_min_steps"
+   ],
+   [
+    85,
+    "        self._completed_intervals = 0"
+   ],
+   [
+    86,
+    "        self.width: int = width"
+   ],
+   [
+    87,
+    "        self.autowidth: bool = width == 0"
+   ],
+   [
+    89,
+    "        if length is None:"
+   ],
+   [
+    90,
+    "            from operator import length_hint"
+   ],
+   [
+    92,
+    "            length = length_hint(iterable, -1)"
+   ],
+   [
+    94,
+    "            if length == -1:"
+   ],
+   [
+    96,
+    "        if iterable is None:"
+   ],
+   [
+    100,
+    "        self.iter: cabc.Iterable[V] = iter(iterable)"
+   ],
+   [
+    101,
+    "        self.length = length"
+   ],
+   [
+    102,
+    "        self.pos: int = 0"
+   ],
+   [
+    103,
+    "        self.avg: list[float] = []"
+   ],
+   [
+    104,
+    "        self.last_eta: float"
+   ],
+   [
+    105,
+    "        self.start: float"
+   ],
+   [
+    106,
+    "        self.start = self.last_eta = time.time()"
+   ],
+   [
+    107,
+    "        self.eta_known: bool = False"
+   ],
+   [
+    108,
+    "        self.finished: bool = False"
+   ],
+   [
+    109,
+    "        self.max_width: int | None = None"
+   ],
+   [
+    110,
+    "        self.entered: bool = False"
+   ],
+   [
+    111,
+    "        self.current_item: V | None = None"
+   ],
+   [
+    112,
+    "        self._is_atty = isatty(self.file)"
+   ],
+   [
+    113,
+    "        self._last_line: str | None = None"
+   ],
+   [
+    115,
+    "    def __enter__(self) -> ProgressBar[V]:"
+   ],
+   [
+    116,
+    "        self.entered = True"
+   ],
+   [
+    117,
+    "        self.render_progress()"
+   ],
+   [
+    118,
+    "        return self"
+   ],
+   [
+    120,
+    "    def __exit__("
+   ],
+   [
+    126,
+    "        self.render_finish()"
+   ],
+   [
+    128,
+    "    def __iter__(self) -> cabc.Iterator[V]:"
+   ],
+   [
+    129,
+    "        if not self.entered:"
+   ],
+   [
+    131,
+    "        self.render_progress()"
+   ],
+   [
+    132,
+    "        return self.generator()"
+   ],
+   [
+    134,
+    "    def __next__(self) -> V:"
+   ],
+   [
+    142,
+    "    def render_finish(self) -> None:"
+   ],
+   [
+    146,
+    "        if self._completed_intervals:"
+   ],
+   [
+    151,
+    "        if self.hidden or not self._is_atty:"
+   ]
+  ],
+  "src/click/termui.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import collections.abc as cabc"
+   ],
+   [
+    4,
+    "import inspect"
+   ],
+   [
+    5,
+    "import io"
+   ],
+   [
+    6,
+    "import itertools"
+   ],
+   [
+    7,
+    "import os"
+   ],
+   [
+    8,
+    "import re"
+   ],
+   [
+    9,
+    "import sys"
+   ],
+   [
+    10,
+    "import typing as t"
+   ],
+   [
+    11,
+    "from contextlib import AbstractContextManager"
+   ],
+   [
+    12,
+    "from contextlib import redirect_stdout"
+   ],
+   [
+    13,
+    "from gettext import gettext as _"
+   ],
+   [
+    15,
+    "from . import _compat"
+   ],
+   [
+    16,
+    "from ._compat import isatty"
+   ],
+   [
+    17,
+    "from ._compat import strip_ansi"
+   ],
+   [
+    18,
+    "from .exceptions import Abort"
+   ],
+   [
+    19,
+    "from .exceptions import UsageError"
+   ],
+   [
+    20,
+    "from .globals import resolve_color_default"
+   ],
+   [
+    21,
+    "from .types import Choice"
+   ],
+   [
+    22,
+    "from .types import convert_type"
+   ],
+   [
+    23,
+    "from .types import ParamType"
+   ],
+   [
+    24,
+    "from .utils import _LazyFile"
+   ],
+   [
+    25,
+    "from .utils import echo"
+   ],
+   [
+    30,
+    "V = t.TypeVar(\"V\")"
+   ],
+   [
+    34,
+    "visible_prompt_func: t.Callable[[str], str] = input"
+   ],
+   [
+    36,
+    "_ansi_colors = {"
+   ],
+   [
+    37,
+    "    \"black\": 30,"
+   ],
+   [
+    38,
+    "    \"red\": 31,"
+   ],
+   [
+    39,
+    "    \"green\": 32,"
+   ],
+   [
+    40,
+    "    \"yellow\": 33,"
+   ],
+   [
+    41,
+    "    \"blue\": 34,"
+   ],
+   [
+    42,
+    "    \"magenta\": 35,"
+   ],
+   [
+    43,
+    "    \"cyan\": 36,"
+   ],
+   [
+    44,
+    "    \"white\": 37,"
+   ],
+   [
+    45,
+    "    \"reset\": 39,"
+   ],
+   [
+    46,
+    "    \"bright_black\": 90,"
+   ],
+   [
+    47,
+    "    \"bright_red\": 91,"
+   ],
+   [
+    48,
+    "    \"bright_green\": 92,"
+   ],
+   [
+    49,
+    "    \"bright_yellow\": 93,"
+   ],
+   [
+    50,
+    "    \"bright_blue\": 94,"
+   ],
+   [
+    51,
+    "    \"bright_magenta\": 95,"
+   ],
+   [
+    52,
+    "    \"bright_cyan\": 96,"
+   ],
+   [
+    53,
+    "    \"bright_white\": 97,"
+   ],
+   [
+    54,
+    "}"
+   ],
+   [
+    55,
+    "_ansi_reset_all = \"\\033[0m\""
+   ],
+   [
+    58,
+    "_HIDDEN_INPUT_MASK = \"'***'\""
+   ],
+   [
+    61,
+    "def _mask_hidden_input(message: str, value: str) -> str:"
+   ],
+   [
+    79,
+    "def hidden_prompt_func(prompt: str) -> str:"
+   ],
+   [
+    85,
+    "def _readline_prompt(func: t.Callable[[str], str], text: str, err: bool) -> str:"
+   ],
+   [
+    108,
+    "def _build_prompt("
+   ],
+   [
+    128,
+    "def _format_default(default: V) -> V | str:"
+   ],
+   [
+    168,
+    "def prompt("
+   ],
+   [
+    289,
+    "def confirm("
+   ],
+   [
+    348,
+    "def get_pager_file("
+   ],
+   [
+    367,
+    "def echo_via_pager("
+   ],
+   [
+    443,
+    "def progressbar("
+   ],
+   [
+    579,
+    "    from ._termui_impl import ProgressBar"
+   ],
+   [
+    581,
+    "    color = resolve_color_default(color)"
+   ],
+   [
+    582,
+    "    return ProgressBar("
+   ],
+   [
+    583,
+    "        iterable=iterable,"
+   ],
+   [
+    584,
+    "        length=length,"
+   ],
+   [
+    585,
+    "        hidden=hidden,"
+   ],
+   [
+    586,
+    "        show_eta=show_eta,"
+   ],
+   [
+    587,
+    "        show_percent=show_percent,"
+   ],
+   [
+    588,
+    "        show_pos=show_pos,"
+   ],
+   [
+    589,
+    "        item_show_func=item_show_func,"
+   ],
+   [
+    590,
+    "        fill_char=fill_char,"
+   ],
+   [
+    591,
+    "        empty_char=empty_char,"
+   ],
+   [
+    592,
+    "        bar_template=bar_template,"
+   ],
+   [
+    593,
+    "        info_sep=info_sep,"
+   ],
+   [
+    594,
+    "        file=file,"
+   ],
+   [
+    595,
+    "        label=label,"
+   ],
+   [
+    596,
+    "        width=width,"
+   ],
+   [
+    597,
+    "        color=color,"
+   ],
+   [
+    598,
+    "        update_min_steps=update_min_steps,"
+   ],
+   [
+    599,
+    "    )"
+   ],
+   [
+    602,
+    "def clear() -> None:"
+   ],
+   [
+    616,
+    "def _interpret_color(color: int | tuple[int, int, int] | str, offset: int = 0) -> str:"
+   ],
+   [
+    618,
+    "    if isinstance(color, str) and color in _ansi_colors:"
+   ],
+   [
+    619,
+    "        return str(_ansi_colors[color] + offset)"
+   ]
+  ],
+  "src/click/_utils.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import enum"
+   ],
+   [
+    4,
+    "import typing as t"
+   ],
+   [
+    7,
+    "class Sentinel(enum.Enum):"
+   ],
+   [
+    15,
+    "    UNSET = object()"
+   ],
+   [
+    16,
+    "    FLAG_NEEDS_VALUE = object()"
+   ],
+   [
+    18,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    21,
+    "    def __copy__(self) -> Sentinel:"
+   ],
+   [
+    24,
+    "    def __deepcopy__(self, memo: dict[int, t.Any]) -> Sentinel:"
+   ],
+   [
+    27,
+    "    def __reduce_ex__(self, protocol: object) -> tuple[t.Any, ...]:"
+   ],
+   [
+    31,
+    "UNSET: t.Literal[Sentinel.UNSET] = Sentinel.UNSET"
+   ],
+   [
+    32,
+    "\"\"\"Sentinel used to indicate that a value is not set.\"\"\""
+   ],
+   [
+    34,
+    "FLAG_NEEDS_VALUE: t.Literal[Sentinel.FLAG_NEEDS_VALUE] = Sentinel.FLAG_NEEDS_VALUE"
+   ],
+   [
+    35,
+    "\"\"\"Sentinel used to indicate an option was passed as a flag without a"
+   ],
+   [
+    36,
+    "value but is not a flag option."
+   ],
+   [
+    37,
+    ""
+   ],
+   [
+    38,
+    "``Option.consume_value`` uses this to prompt or use the ``flag_value``."
+   ],
+   [
+    39,
+    "\"\"\""
+   ],
+   [
+    41,
+    "T_UNSET: t.TypeAlias = t.Literal[Sentinel.UNSET]"
+   ],
+   [
+    42,
+    "\"\"\"Type hint for the :data:`UNSET` sentinel value.\"\"\""
+   ],
+   [
+    44,
+    "T_FLAG_NEEDS_VALUE: t.TypeAlias = t.Literal[Sentinel.FLAG_NEEDS_VALUE]"
+   ],
+   [
+    45,
+    "\"\"\"Type hint for the :data:`FLAG_NEEDS_VALUE` sentinel value.\"\"\""
+   ]
+  ],
+  "src/click/globals.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import typing as t"
+   ],
+   [
+    4,
+    "from threading import local"
+   ],
+   [
+    9,
+    "_local = local()"
+   ],
+   [
+    20,
+    "def get_current_context(silent: bool = False) -> Context | None:"
+   ],
+   [
+    35,
+    "    try:"
+   ],
+   [
+    36,
+    "        return t.cast(\"Context\", _local.stack[-1])"
+   ],
+   [
+    37,
+    "    except (AttributeError, IndexError) as e:"
+   ],
+   [
+    38,
+    "        if not silent:"
+   ],
+   [
+    41,
+    "    return None"
+   ],
+   [
+    44,
+    "def push_context(ctx: Context) -> None:"
+   ],
+   [
+    46,
+    "    _local.__dict__.setdefault(\"stack\", []).append(ctx)"
+   ],
+   [
+    49,
+    "def pop_context() -> None:"
+   ],
+   [
+    51,
+    "    _local.stack.pop()"
+   ],
+   [
+    54,
+    "def resolve_color_default(color: bool | None = None) -> bool | None:"
+   ],
+   [
+    59,
+    "    if color is not None:"
+   ],
+   [
+    62,
+    "    ctx = get_current_context(silent=True)"
+   ],
+   [
+    64,
+    "    if ctx is not None:"
+   ],
+   [
+    65,
+    "        return ctx.color"
+   ],
+   [
+    67,
+    "    return None"
+   ]
+  ],
+  "src/click/__init__.py": [
+   [
+    8,
+    "from __future__ import annotations"
+   ],
+   [
+    10,
+    "from .core import Argument as Argument"
+   ],
+   [
+    11,
+    "from .core import Command as Command"
+   ],
+   [
+    12,
+    "from .core import CommandCollection as CommandCollection"
+   ],
+   [
+    13,
+    "from .core import Context as Context"
+   ],
+   [
+    14,
+    "from .core import Group as Group"
+   ],
+   [
+    15,
+    "from .core import Option as Option"
+   ],
+   [
+    16,
+    "from .core import Parameter as Parameter"
+   ],
+   [
+    17,
+    "from .core import ParameterSource as ParameterSource"
+   ],
+   [
+    18,
+    "from .decorators import argument as argument"
+   ],
+   [
+    19,
+    "from .decorators import command as command"
+   ],
+   [
+    20,
+    "from .decorators import confirmation_option as confirmation_option"
+   ],
+   [
+    21,
+    "from .decorators import custom_version_option as custom_version_option"
+   ],
+   [
+    22,
+    "from .decorators import group as group"
+   ],
+   [
+    23,
+    "from .decorators import help_option as help_option"
+   ],
+   [
+    24,
+    "from .decorators import make_pass_decorator as make_pass_decorator"
+   ],
+   [
+    25,
+    "from .decorators import option as option"
+   ],
+   [
+    26,
+    "from .decorators import pass_context as pass_context"
+   ],
+   [
+    27,
+    "from .decorators import pass_obj as pass_obj"
+   ],
+   [
+    28,
+    "from .decorators import password_option as password_option"
+   ],
+   [
+    29,
+    "from .decorators import version_option as version_option"
+   ],
+   [
+    30,
+    "from .exceptions import Abort as Abort"
+   ],
+   [
+    31,
+    "from .exceptions import BadArgumentUsage as BadArgumentUsage"
+   ],
+   [
+    32,
+    "from .exceptions import BadOptionUsage as BadOptionUsage"
+   ],
+   [
+    33,
+    "from .exceptions import BadParameter as BadParameter"
+   ],
+   [
+    34,
+    "from .exceptions import ClickException as ClickException"
+   ],
+   [
+    35,
+    "from .exceptions import FileError as FileError"
+   ],
+   [
+    36,
+    "from .exceptions import MissingParameter as MissingParameter"
+   ],
+   [
+    37,
+    "from .exceptions import NoSuchCommand as NoSuchCommand"
+   ],
+   [
+    38,
+    "from .exceptions import NoSuchOption as NoSuchOption"
+   ],
+   [
+    39,
+    "from .exceptions import UsageError as UsageError"
+   ],
+   [
+    40,
+    "from .formatting import HelpFormatter as HelpFormatter"
+   ],
+   [
+    41,
+    "from .formatting import wrap_text as wrap_text"
+   ],
+   [
+    42,
+    "from .globals import get_current_context as get_current_context"
+   ],
+   [
+    43,
+    "from .termui import clear as clear"
+   ],
+   [
+    44,
+    "from .termui import confirm as confirm"
+   ],
+   [
+    45,
+    "from .termui import echo_via_pager as echo_via_pager"
+   ],
+   [
+    46,
+    "from .termui import edit as edit"
+   ],
+   [
+    47,
+    "from .termui import get_pager_file as get_pager_file"
+   ],
+   [
+    48,
+    "from .termui import getchar as getchar"
+   ],
+   [
+    49,
+    "from .termui import launch as launch"
+   ],
+   [
+    50,
+    "from .termui import pause as pause"
+   ],
+   [
+    51,
+    "from .termui import progressbar as progressbar"
+   ],
+   [
+    52,
+    "from .termui import prompt as prompt"
+   ],
+   [
+    53,
+    "from .termui import secho as secho"
+   ],
+   [
+    54,
+    "from .termui import style as style"
+   ],
+   [
+    55,
+    "from .termui import unstyle as unstyle"
+   ],
+   [
+    56,
+    "from .types import BOOL as BOOL"
+   ],
+   [
+    57,
+    "from .types import Choice as Choice"
+   ],
+   [
+    58,
+    "from .types import DateTime as DateTime"
+   ],
+   [
+    59,
+    "from .types import File as File"
+   ],
+   [
+    60,
+    "from .types import FLOAT as FLOAT"
+   ],
+   [
+    61,
+    "from .types import FloatRange as FloatRange"
+   ],
+   [
+    62,
+    "from .types import INT as INT"
+   ],
+   [
+    63,
+    "from .types import IntRange as IntRange"
+   ],
+   [
+    64,
+    "from .types import ParamType as ParamType"
+   ],
+   [
+    65,
+    "from .types import Path as Path"
+   ],
+   [
+    66,
+    "from .types import STRING as STRING"
+   ],
+   [
+    67,
+    "from .types import Tuple as Tuple"
+   ],
+   [
+    68,
+    "from .types import UNPROCESSED as UNPROCESSED"
+   ],
+   [
+    69,
+    "from .types import UUID as UUID"
+   ],
+   [
+    70,
+    "from .utils import echo as echo"
+   ],
+   [
+    71,
+    "from .utils import format_filename as format_filename"
+   ],
+   [
+    72,
+    "from .utils import get_app_dir as get_app_dir"
+   ],
+   [
+    73,
+    "from .utils import open_file as open_file"
+   ],
+   [
+    76,
+    "def __getattr__(name: str) -> object:"
+   ],
+   [
+    77,
+    "    import warnings"
+   ],
+   [
+    79,
+    "    if name == \"BaseCommand\":"
+   ],
+   [
+    90,
+    "    if name == \"MultiCommand\":"
+   ],
+   [
+    101,
+    "    if name == \"OptionParser\":"
+   ],
+   [
+    112,
+    "    if name == \"__version__\":"
+   ],
+   [
+    124,
+    "    if name == \"get_binary_stream\":"
+   ],
+   [
+    134,
+    "    if name == \"get_text_stream\":"
+   ],
+   [
+    144,
+    "    raise AttributeError(name)"
+   ]
+  ],
+  "src/click/_compat.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import codecs"
+   ],
+   [
+    4,
+    "import collections.abc as cabc"
+   ],
+   [
+    5,
+    "import io"
+   ],
+   [
+    6,
+    "import os"
+   ],
+   [
+    7,
+    "import re"
+   ],
+   [
+    8,
+    "import sys"
+   ],
+   [
+    9,
+    "import typing as t"
+   ],
+   [
+    10,
+    "from types import TracebackType"
+   ],
+   [
+    11,
+    "from weakref import WeakKeyDictionary"
+   ],
+   [
+    13,
+    "CYGWIN = sys.platform.startswith(\"cygwin\")"
+   ],
+   [
+    14,
+    "WIN = sys.platform.startswith(\"win\")"
+   ],
+   [
+    19,
+    "_ansi_re = re.compile(r\"\\033\\[[0-?]*[ -/]*[@-~]\")"
+   ],
+   [
+    22,
+    "def _make_text_stream("
+   ],
+   [
+    43,
+    "def is_ascii_encoding(encoding: str) -> bool:"
+   ],
+   [
+    45,
+    "    try:"
+   ],
+   [
+    46,
+    "        return codecs.lookup(encoding).name == \"ascii\""
+   ],
+   [
+    51,
+    "def get_best_encoding(stream: t.IO[t.Any]) -> str:"
+   ],
+   [
+    59,
+    "class _NonClosingTextIOWrapper(io.TextIOWrapper):"
+   ],
+   [
+    60,
+    "    def __init__("
+   ],
+   [
+    74,
+    "    def __del__(self) -> None:"
+   ],
+   [
+    80,
+    "    def isatty(self) -> bool:"
+   ],
+   [
+    85,
+    "class _FixupStream:"
+   ],
+   [
+    95,
+    "    def __init__("
+   ],
+   [
+    105,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    108,
+    "    def read1(self, size: int) -> bytes:"
+   ],
+   [
+    116,
+    "    def readable(self) -> bool:"
+   ],
+   [
+    128,
+    "    def writable(self) -> bool:"
+   ],
+   [
+    143,
+    "    def seekable(self) -> bool:"
+   ],
+   [
+    154,
+    "def _is_binary_reader(stream: t.IO[t.Any], default: bool = False) -> bool:"
+   ],
+   [
+    163,
+    "def _is_binary_writer(stream: t.IO[t.Any], default: bool = False) -> bool:"
+   ],
+   [
+    164,
+    "    try:"
+   ],
+   [
+    165,
+    "        stream.write(b\"\")"
+   ],
+   [
+    166,
+    "    except Exception:"
+   ],
+   [
+    167,
+    "        try:"
+   ],
+   [
+    168,
+    "            stream.write(\"\")"
+   ],
+   [
+    169,
+    "            return False"
+   ],
+   [
+    176,
+    "def _find_binary_reader(stream: t.IO[t.Any]) -> t.BinaryIO | None:"
+   ],
+   [
+    194,
+    "def _find_binary_writer(stream: t.IO[t.Any]) -> t.BinaryIO | None:"
+   ],
+   [
+    212,
+    "def _stream_is_misconfigured(stream: t.TextIO) -> bool:"
+   ],
+   [
+    218,
+    "    return is_ascii_encoding(getattr(stream, \"encoding\", None) or \"ascii\")"
+   ],
+   [
+    221,
+    "def _is_compat_stream_attr(stream: t.TextIO, attr: str, value: str | None) -> bool:"
+   ],
+   [
+    226,
+    "    stream_value = getattr(stream, attr, None)"
+   ],
+   [
+    227,
+    "    return stream_value == value or (value is None and stream_value is not None)"
+   ],
+   [
+    230,
+    "def _is_compatible_text_stream("
+   ],
+   [
+    236,
+    "    return _is_compat_stream_attr("
+   ],
+   [
+    237,
+    "        stream, \"encoding\", encoding"
+   ],
+   [
+    238,
+    "    ) and _is_compat_stream_attr(stream, \"errors\", errors)"
+   ],
+   [
+    241,
+    "def _force_correct_text_stream("
+   ],
+   [
+    250,
+    "    if is_binary(text_stream, False):"
+   ],
+   [
+    253,
+    "        text_stream = t.cast(t.TextIO, text_stream)"
+   ],
+   [
+    256,
+    "        if _is_compatible_text_stream(text_stream, encoding, errors) and not ("
+   ],
+   [
+    259,
+    "            return text_stream"
+   ],
+   [
+    287,
+    "def _force_correct_text_reader("
+   ],
+   [
+    303,
+    "def _force_correct_text_writer("
+   ],
+   [
+    309,
+    "    return _force_correct_text_stream("
+   ],
+   [
+    310,
+    "        text_writer,"
+   ],
+   [
+    311,
+    "        encoding,"
+   ],
+   [
+    312,
+    "        errors,"
+   ],
+   [
+    313,
+    "        _is_binary_writer,"
+   ],
+   [
+    314,
+    "        _find_binary_writer,"
+   ],
+   [
+    315,
+    "        force_writable=force_writable,"
+   ],
+   [
+    316,
+    "    )"
+   ],
+   [
+    319,
+    "def get_binary_stdin() -> t.BinaryIO:"
+   ],
+   [
+    326,
+    "def get_binary_stdout() -> t.BinaryIO:"
+   ],
+   [
+    333,
+    "def get_binary_stderr() -> t.BinaryIO:"
+   ],
+   [
+    340,
+    "def get_text_stdin(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    347,
+    "def get_text_stdout(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    348,
+    "    rv = _get_windows_console_stream(sys.stdout, encoding, errors)"
+   ],
+   [
+    349,
+    "    if rv is not None:"
+   ],
+   [
+    351,
+    "    return _force_correct_text_writer(sys.stdout, encoding, errors, force_writable=True)"
+   ],
+   [
+    354,
+    "def get_text_stderr(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    361,
+    "def _wrap_io_open("
+   ],
+   [
+    374,
+    "def open_stream("
+   ],
+   [
+    455,
+    "class _AtomicFile:"
+   ],
+   [
+    456,
+    "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:"
+   ],
+   [
+    462,
+    "    @property"
+   ],
+   [
+    463,
+    "    def name(self) -> str:"
+   ],
+   [
+    466,
+    "    def close(self, delete: bool = False) -> None:"
+   ],
+   [
+    473,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ]
+  ],
+  "src/click/types.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import abc"
+   ],
+   [
+    4,
+    "import collections.abc as cabc"
+   ],
+   [
+    5,
+    "import enum"
+   ],
+   [
+    6,
+    "import os"
+   ],
+   [
+    7,
+    "import stat"
+   ],
+   [
+    8,
+    "import sys"
+   ],
+   [
+    9,
+    "import typing as t"
+   ],
+   [
+    10,
+    "import uuid"
+   ],
+   [
+    11,
+    "from datetime import datetime"
+   ],
+   [
+    12,
+    "from gettext import gettext as _"
+   ],
+   [
+    13,
+    "from gettext import ngettext"
+   ],
+   [
+    15,
+    "from ._compat import _get_argv_encoding"
+   ],
+   [
+    16,
+    "from ._compat import open_stream"
+   ],
+   [
+    17,
+    "from .exceptions import BadParameter"
+   ],
+   [
+    18,
+    "from .utils import _LazyFile"
+   ],
+   [
+    19,
+    "from .utils import _safecall"
+   ],
+   [
+    20,
+    "from .utils import format_filename"
+   ],
+   [
+    29,
+    "_ValueT = t.TypeVar(\"_ValueT\")"
+   ],
+   [
+    30,
+    "_ValueT_contra = t.TypeVar(\"_ValueT_contra\", contravariant=True)"
+   ],
+   [
+    31,
+    "_ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=True)"
+   ],
+   [
+    40,
+    "elif sys.version_info >= (3, 13):"
+   ],
+   [
+    41,
+    "    _InputT_contra = t.TypeVar(\"_InputT_contra\", contravariant=True, default=t.Any)"
+   ],
+   [
+    45,
+    "_FloatValueT = t.TypeVar(\"_FloatValueT\", bound=float)"
+   ],
+   [
+    46,
+    "_FloatValueT_co = t.TypeVar(\"_FloatValueT_co\", bound=float, covariant=True)"
+   ],
+   [
+    49,
+    "class ParamTypeInfoDict(t.TypedDict):"
+   ],
+   [
+    50,
+    "    param_type: str"
+   ],
+   [
+    51,
+    "    name: str"
+   ],
+   [
+    54,
+    "class ParamType(t.Generic[_ValueT_co, _InputT_contra], abc.ABC):"
+   ],
+   [
+    83,
+    "    is_composite: t.ClassVar[bool] = False"
+   ],
+   [
+    84,
+    "    arity: int = 1  # read-only"
+   ],
+   [
+    87,
+    "    name: str"
+   ],
+   [
+    95,
+    "    envvar_list_splitter: t.ClassVar[str | None] = None"
+   ],
+   [
+    97,
+    "    if sys.version_info < (3, 13):"
+   ],
+   [
+    111,
+    "    def to_info_dict(self) -> ParamTypeInfoDict:"
+   ],
+   [
+    148,
+    "    def __call__("
+   ],
+   [
+    154,
+    "        if value is not None:"
+   ],
+   [
+    155,
+    "            return self.convert(value, param, ctx)"
+   ],
+   [
+    158,
+    "    def get_metavar(self, param: Parameter, ctx: Context) -> str | None:"
+   ],
+   [
+    161,
+    "    def get_missing_message(self, param: Parameter, ctx: Context | None) -> str | None:"
+   ],
+   [
+    168,
+    "    def convert("
+   ],
+   [
+    194,
+    "    def split_envvar_value(self, rv: str) -> cabc.Sequence[str]:"
+   ],
+   [
+    204,
+    "    def fail("
+   ],
+   [
+    213,
+    "    def shell_complete("
+   ],
+   [
+    231,
+    "class CompositeParamType(ParamType[_ValueT_co]):"
+   ],
+   [
+    232,
+    "    is_composite: t.ClassVar[bool] = True"
+   ],
+   [
+    249,
+    "    class FuncParamTypeInfoDict(ParamTypeInfoDict):"
+   ],
+   [
+    250,
+    "        func: t.Callable[[t.Any], t.Any]"
+   ],
+   [
+    253,
+    "class FuncParamType(ParamType[_ValueT_co], t.Generic[_ValueT_contra, _ValueT_co]):"
+   ],
+   [
+    254,
+    "    name: str"
+   ],
+   [
+    255,
+    "    func: t.Callable[[_ValueT_contra], _ValueT_co]"
+   ],
+   [
+    257,
+    "    def __init__(self, func: t.Callable[[_ValueT_contra], _ValueT_co]) -> None:"
+   ],
+   [
+    261,
+    "    def to_info_dict(self) -> FuncParamTypeInfoDict[_ValueT_contra, _ValueT_co]:"
+   ],
+   [
+    264,
+    "    def convert("
+   ],
+   [
+    281,
+    "class UnprocessedParamType(ParamType[t.Any]):"
+   ],
+   [
+    282,
+    "    name = \"text\""
+   ],
+   [
+    284,
+    "    def convert("
+   ],
+   [
+    289,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    293,
+    "class StringParamType(ParamType[str]):"
+   ],
+   [
+    294,
+    "    name = \"text\""
+   ],
+   [
+    296,
+    "    def convert("
+   ],
+   [
+    314,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    326,
+    "    class ChoiceInfoDict(ParamTypeInfoDict):"
+   ],
+   [
+    327,
+    "        choices: tuple[t.Any, ...]"
+   ],
+   [
+    328,
+    "        case_sensitive: bool"
+   ],
+   [
+    331,
+    "class Choice(ParamType[_ValueT_co], t.Generic[_ValueT_co]):"
+   ],
+   [
+    359,
+    "    name: str = \"choice\""
+   ],
+   [
+    361,
+    "    choices: tuple[_ValueT_co, ...]"
+   ],
+   [
+    362,
+    "    case_sensitive: bool"
+   ],
+   [
+    364,
+    "    def __init__("
+   ],
+   [
+    370,
+    "    def to_info_dict(self) -> ChoiceInfoDict[_ValueT_co]:"
+   ],
+   [
+    377,
+    "    def _normalized_mapping("
+   ],
+   [
+    395,
+    "    def normalize_choice(self, choice: object, ctx: Context | None) -> str:"
+   ],
+   [
+    415,
+    "    def get_metavar(self, param: Parameter, ctx: Context) -> str | None:"
+   ],
+   [
+    433,
+    "    def get_missing_message(self, param: Parameter, ctx: Context | None) -> str:"
+   ],
+   [
+    443,
+    "    def convert("
+   ],
+   [
+    467,
+    "    def get_invalid_choice_message(self, value: t.Any, ctx: Context | None) -> str:"
+   ],
+   [
+    481,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    484,
+    "    def shell_complete("
+   ],
+   [
+    507,
+    "class DateTimeInfoDict(ParamTypeInfoDict):"
+   ]
+  ],
+  "src/click/exceptions.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import collections.abc as cabc"
+   ],
+   [
+    4,
+    "import typing as t"
+   ],
+   [
+    5,
+    "from gettext import gettext as _"
+   ],
+   [
+    6,
+    "from gettext import ngettext"
+   ],
+   [
+    8,
+    "from ._compat import get_text_stderr"
+   ],
+   [
+    9,
+    "from .globals import resolve_color_default"
+   ],
+   [
+    10,
+    "from .utils import echo"
+   ],
+   [
+    11,
+    "from .utils import format_filename"
+   ],
+   [
+    19,
+    "def _join_param_hints(param_hint: cabc.Sequence[str] | str | None) -> str | None:"
+   ],
+   [
+    26,
+    "def _format_possibilities(possibilities: list[str]) -> str:"
+   ],
+   [
+    35,
+    "class ClickException(Exception):"
+   ],
+   [
+    39,
+    "    exit_code: t.ClassVar[int] = 1"
+   ],
+   [
+    41,
+    "    show_color: t.Final[bool | None]"
+   ],
+   [
+    42,
+    "    message: t.Final[str]"
+   ],
+   [
+    44,
+    "    def __init__(self, message: str) -> None:"
+   ],
+   [
+    51,
+    "    def format_message(self) -> str:"
+   ],
+   [
+    54,
+    "    def __str__(self) -> str:"
+   ],
+   [
+    57,
+    "    def show(self, file: t.IO[t.Any] | None = None) -> None:"
+   ],
+   [
+    68,
+    "class UsageError(ClickException):"
+   ],
+   [
+    77,
+    "    exit_code: t.ClassVar[int] = 2"
+   ],
+   [
+    79,
+    "    ctx: Context | None"
+   ],
+   [
+    80,
+    "    cmd: t.Final[Command | None]"
+   ],
+   [
+    82,
+    "    def __init__(self, message: str, ctx: Context | None = None) -> None:"
+   ],
+   [
+    87,
+    "    def show(self, file: t.IO[t.Any] | None = None) -> None:"
+   ],
+   [
+    114,
+    "class BadParameter(UsageError):"
+   ],
+   [
+    132,
+    "    param: Parameter | None"
+   ],
+   [
+    133,
+    "    param_hint: cabc.Sequence[str] | str | None"
+   ],
+   [
+    135,
+    "    def __init__("
+   ],
+   [
+    146,
+    "    def format_message(self) -> str:"
+   ],
+   [
+    159,
+    "class MissingParameter(BadParameter):"
+   ],
+   [
+    171,
+    "    param_type: t.Final[str | None]"
+   ],
+   [
+    173,
+    "    def __init__("
+   ],
+   [
+    184,
+    "    def format_message(self) -> str:"
+   ],
+   [
+    224,
+    "    def __str__(self) -> str:"
+   ],
+   [
+    232,
+    "class NoSuchOption(UsageError):"
+   ],
+   [
+    238,
+    "    option_name: t.Final[str]"
+   ],
+   [
+    239,
+    "    possibilities: t.Final[list[str] | None]"
+   ],
+   [
+    241,
+    "    def __init__("
+   ],
+   [
+    262,
+    "    def format_message(self) -> str:"
+   ],
+   [
+    268,
+    "class NoSuchCommand(UsageError):"
+   ],
+   [
+    274,
+    "    command_name: t.Final[str]"
+   ],
+   [
+    275,
+    "    possibilities: t.Final[list[str] | None]"
+   ],
+   [
+    277,
+    "    def __init__("
+   ],
+   [
+    298,
+    "    def format_message(self) -> str:"
+   ],
+   [
+    304,
+    "class BadOptionUsage(UsageError):"
+   ],
+   [
+    314,
+    "    option_name: t.Final[str]"
+   ],
+   [
+    316,
+    "    def __init__("
+   ],
+   [
+    323,
+    "class BadArgumentUsage(UsageError):"
+   ],
+   [
+    332,
+    "class NoArgsIsHelpError(UsageError):"
+   ],
+   [
+    333,
+    "    ctx: Context"
+   ],
+   [
+    335,
+    "    def __init__(self, ctx: Context) -> None:"
+   ],
+   [
+    338,
+    "    def show(self, file: t.IO[t.Any] | None = None) -> None:"
+   ],
+   [
+    342,
+    "class FileError(ClickException):"
+   ],
+   [
+    345,
+    "    ui_filename: t.Final[str]"
+   ],
+   [
+    346,
+    "    filename: t.Final[str]"
+   ],
+   [
+    348,
+    "    def __init__(self, filename: str, hint: str | None = None) -> None:"
+   ],
+   [
+    356,
+    "    def format_message(self) -> str:"
+   ],
+   [
+    362,
+    "class Abort(RuntimeError):"
+   ],
+   [
+    366,
+    "class Exit(RuntimeError):"
+   ],
+   [
+    373,
+    "    __slots__ = (\"exit_code\",)"
+   ],
+   [
+    375,
+    "    exit_code: t.Final[int]"
+   ],
+   [
+    377,
+    "    def __init__(self, code: int = 0) -> None:"
+   ],
+   [
+    378,
+    "        self.exit_code = code"
+   ]
+  ],
+  "src/click/testing.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import collections.abc as cabc"
+   ],
+   [
+    4,
+    "import contextlib"
+   ],
+   [
+    5,
+    "import io"
+   ],
+   [
+    6,
+    "import os"
+   ],
+   [
+    7,
+    "import pdb"
+   ],
+   [
+    8,
+    "import shlex"
+   ],
+   [
+    9,
+    "import sys"
+   ],
+   [
+    10,
+    "import tempfile"
+   ],
+   [
+    11,
+    "import typing as t"
+   ],
+   [
+    12,
+    "from types import TracebackType"
+   ],
+   [
+    14,
+    "from . import _compat"
+   ],
+   [
+    15,
+    "from . import formatting"
+   ],
+   [
+    16,
+    "from . import termui"
+   ],
+   [
+    17,
+    "from . import utils"
+   ],
+   [
+    18,
+    "from ._compat import _find_binary_reader"
+   ],
+   [
+    25,
+    "if sys.platform == \"win32\":"
+   ],
+   [
+    28,
+    "    CaptureMode: t.TypeAlias = t.Literal[\"sys\", \"fd\"]  # pyright: ignore[reportRedeclaration]"
+   ],
+   [
+    29,
+    "ExceptionInfo: t.TypeAlias = tuple[type[BaseException], BaseException, TracebackType]"
+   ],
+   [
+    32,
+    "class EchoingStdin:"
+   ],
+   [
+    33,
+    "    _input: t.BinaryIO"
+   ],
+   [
+    34,
+    "    _output: t.BinaryIO"
+   ],
+   [
+    35,
+    "    _paused: bool"
+   ],
+   [
+    37,
+    "    def __init__(self, input: t.BinaryIO, output: t.BinaryIO) -> None:"
+   ],
+   [
+    42,
+    "    def __getattr__(self, x: str) -> t.Any:"
+   ],
+   [
+    45,
+    "    def _echo(self, rv: bytes) -> bytes:"
+   ],
+   [
+    51,
+    "    def read(self, n: int = -1) -> bytes:"
+   ],
+   [
+    54,
+    "    def read1(self, n: int = -1) -> bytes:"
+   ],
+   [
+    57,
+    "    def readline(self, n: int = -1) -> bytes:"
+   ],
+   [
+    60,
+    "    def readlines(self) -> list[bytes]:"
+   ],
+   [
+    63,
+    "    def __iter__(self) -> cabc.Iterator[bytes]:"
+   ],
+   [
+    66,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    70,
+    "@contextlib.contextmanager"
+   ],
+   [
+    71,
+    "def _pause_echo(stream: EchoingStdin | None) -> cabc.Generator[None]:"
+   ],
+   [
+    80,
+    "class _FDCapture:"
+   ],
+   [
+    91,
+    "    _targetfd: int"
+   ],
+   [
+    92,
+    "    saved_fd: int"
+   ],
+   [
+    93,
+    "    _tmpfile: t.BinaryIO | None"
+   ],
+   [
+    95,
+    "    def __init__(self, targetfd: int) -> None:"
+   ],
+   [
+    100,
+    "    def start(self) -> None:"
+   ],
+   [
+    105,
+    "    def stop(self) -> bytes:"
+   ],
+   [
+    117,
+    "class BytesIOCopy(io.BytesIO):"
+   ],
+   [
+    123,
+    "    copy_to: io.BytesIO"
+   ],
+   [
+    125,
+    "    def __init__(self, copy_to: io.BytesIO) -> None:"
+   ],
+   [
+    126,
+    "        super().__init__()"
+   ],
+   [
+    127,
+    "        self.copy_to = copy_to"
+   ],
+   [
+    129,
+    "    def flush(self) -> None:"
+   ],
+   [
+    130,
+    "        super().flush()"
+   ],
+   [
+    131,
+    "        self.copy_to.flush()"
+   ],
+   [
+    133,
+    "    def write(self, b: ReadableBuffer) -> int:"
+   ],
+   [
+    134,
+    "        self.copy_to.write(b)"
+   ],
+   [
+    135,
+    "        return super().write(b)"
+   ],
+   [
+    138,
+    "class StreamMixer:"
+   ],
+   [
+    146,
+    "    output: io.BytesIO"
+   ],
+   [
+    147,
+    "    stdout: BytesIOCopy"
+   ],
+   [
+    148,
+    "    stderr: BytesIOCopy"
+   ],
+   [
+    150,
+    "    def __init__(self) -> None:"
+   ],
+   [
+    151,
+    "        self.output = io.BytesIO()"
+   ],
+   [
+    152,
+    "        self.stdout = BytesIOCopy(copy_to=self.output)"
+   ],
+   [
+    153,
+    "        self.stderr = BytesIOCopy(copy_to=self.output)"
+   ],
+   [
+    156,
+    "class _NamedTextIOWrapper(io.TextIOWrapper):"
+   ],
+   [
+    168,
+    "    _name: str"
+   ],
+   [
+    169,
+    "    _mode: str"
+   ],
+   [
+    170,
+    "    _original_fd: int"
+   ],
+   [
+    172,
+    "    def __init__("
+   ],
+   [
+    179,
+    "        super().__init__(buffer, **kwargs)"
+   ],
+   [
+    180,
+    "        self._name = name"
+   ],
+   [
+    181,
+    "        self._mode = mode"
+   ],
+   [
+    182,
+    "        self._original_fd = -1"
+   ],
+   [
+    184,
+    "    def close(self) -> None:"
+   ],
+   [
+    192,
+    "    def fileno(self) -> int:"
+   ],
+   [
+    202,
+    "    @property"
+   ],
+   [
+    203,
+    "    def name(self) -> str:"
+   ],
+   [
+    206,
+    "    @property"
+   ],
+   [
+    207,
+    "    def mode(self) -> str:"
+   ],
+   [
+    211,
+    "def make_input_stream("
+   ],
+   [
+    215,
+    "    if hasattr(input, \"read\"):"
+   ],
+   [
+    223,
+    "    if input is None:"
+   ],
+   [
+    224,
+    "        input = b\"\""
+   ],
+   [
+    228,
+    "    return io.BytesIO(input)"
+   ]
+  ],
+  "src/click/core.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import collections.abc as cabc"
+   ],
+   [
+    4,
+    "import enum"
+   ],
+   [
+    5,
+    "import errno"
+   ],
+   [
+    6,
+    "import inspect"
+   ],
+   [
+    7,
+    "import os"
+   ],
+   [
+    8,
+    "import sys"
+   ],
+   [
+    9,
+    "import typing as t"
+   ],
+   [
+    10,
+    "from abc import ABC"
+   ],
+   [
+    11,
+    "from abc import abstractmethod"
+   ],
+   [
+    12,
+    "from collections import abc"
+   ],
+   [
+    13,
+    "from collections import Counter"
+   ],
+   [
+    14,
+    "from contextlib import AbstractContextManager"
+   ],
+   [
+    15,
+    "from contextlib import contextmanager"
+   ],
+   [
+    16,
+    "from contextlib import ExitStack"
+   ],
+   [
+    17,
+    "from functools import update_wrapper"
+   ],
+   [
+    18,
+    "from gettext import gettext as _"
+   ],
+   [
+    19,
+    "from gettext import ngettext"
+   ],
+   [
+    20,
+    "from itertools import repeat"
+   ],
+   [
+    21,
+    "from types import TracebackType"
+   ],
+   [
+    23,
+    "from . import types"
+   ],
+   [
+    24,
+    "from ._utils import FLAG_NEEDS_VALUE"
+   ],
+   [
+    25,
+    "from ._utils import UNSET"
+   ],
+   [
+    26,
+    "from .exceptions import Abort"
+   ],
+   [
+    27,
+    "from .exceptions import BadParameter"
+   ],
+   [
+    28,
+    "from .exceptions import ClickException"
+   ],
+   [
+    29,
+    "from .exceptions import Exit"
+   ],
+   [
+    30,
+    "from .exceptions import MissingParameter"
+   ],
+   [
+    31,
+    "from .exceptions import NoArgsIsHelpError"
+   ],
+   [
+    32,
+    "from .exceptions import NoSuchCommand"
+   ],
+   [
+    33,
+    "from .exceptions import UsageError"
+   ],
+   [
+    34,
+    "from .formatting import HelpFormatter"
+   ],
+   [
+    35,
+    "from .formatting import join_options"
+   ],
+   [
+    36,
+    "from .globals import pop_context"
+   ],
+   [
+    37,
+    "from .globals import push_context"
+   ],
+   [
+    38,
+    "from .parser import _OptionParser"
+   ],
+   [
+    39,
+    "from .parser import _split_opt"
+   ],
+   [
+    40,
+    "from .termui import confirm"
+   ],
+   [
+    41,
+    "from .termui import prompt"
+   ],
+   [
+    42,
+    "from .termui import style"
+   ],
+   [
+    43,
+    "from .utils import _detect_program_name"
+   ],
+   [
+    44,
+    "from .utils import _expand_args"
+   ],
+   [
+    45,
+    "from .utils import _make_default_short_help"
+   ],
+   [
+    46,
+    "from .utils import _PacifyFlushWrapper"
+   ],
+   [
+    47,
+    "from .utils import echo"
+   ],
+   [
+    48,
+    "from .utils import make_str"
+   ],
+   [
+    55,
+    "F = t.TypeVar(\"F\", bound=\"t.Callable[..., t.Any]\")"
+   ],
+   [
+    56,
+    "V = t.TypeVar(\"V\")"
+   ],
+   [
+    60,
+    "_HELP_OPTION_STORAGE_NAME = \"_click_default_help\""
+   ],
+   [
+    63,
+    "def _complete_visible_commands("
+   ],
+   [
+    82,
+    "def _check_nested_chain("
+   ],
+   [
+    102,
+    "def _echo_aborted() -> None:"
+   ],
+   [
+    107,
+    "def _format_deprecated_label(deprecated: bool | str) -> str:"
+   ],
+   [
+    115,
+    "def _format_deprecated_suffix(deprecated: bool | str) -> str:"
+   ],
+   [
+    124,
+    "def batch(iterable: cabc.Iterable[V], batch_size: int) -> list[tuple[V, ...]]:"
+   ],
+   [
+    128,
+    "@contextmanager"
+   ],
+   [
+    129,
+    "def augment_usage_errors("
+   ],
+   [
+    133,
+    "    try:"
+   ],
+   [
+    134,
+    "        yield"
+   ],
+   [
+    147,
+    "def iter_params_for_processing("
+   ],
+   [
+    163,
+    "    def sort_key(item: Parameter) -> tuple[bool, float]:"
+   ],
+   [
+    164,
+    "        try:"
+   ],
+   [
+    165,
+    "            idx: float = invocation_order.index(item)"
+   ],
+   [
+    166,
+    "        except ValueError:"
+   ],
+   [
+    167,
+    "            idx = float(\"inf\")"
+   ],
+   [
+    169,
+    "        return not item.is_eager, idx"
+   ],
+   [
+    171,
+    "    return sorted(declaration_order, key=sort_key)"
+   ],
+   [
+    174,
+    "class ParameterSource(enum.IntEnum):"
+   ],
+   [
+    201,
+    "    PROMPT = enum.auto()"
+   ],
+   [
+    202,
+    "    \"\"\"Used a prompt to confirm a default or provide a value.\"\"\""
+   ],
+   [
+    203,
+    "    COMMANDLINE = enum.auto()"
+   ],
+   [
+    204,
+    "    \"\"\"The value was provided by the command line args.\"\"\""
+   ],
+   [
+    205,
+    "    ENVIRONMENT = enum.auto()"
+   ],
+   [
+    206,
+    "    \"\"\"The value was provided with an environment variable.\"\"\""
+   ],
+   [
+    207,
+    "    DEFAULT_MAP = enum.auto()"
+   ],
+   [
+    208,
+    "    \"\"\"Used a default provided by :attr:`Context.default_map`.\"\"\""
+   ],
+   [
+    209,
+    "    DEFAULT = enum.auto()"
+   ],
+   [
+    210,
+    "    \"\"\"Used the default specified by the parameter.\"\"\""
+   ],
+   [
+    213,
+    "class Context:"
+   ],
+   [
+    315,
+    "    formatter_class: type[HelpFormatter] = HelpFormatter"
+   ]
+  ],
+  "src/click/decorators.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import inspect"
+   ],
+   [
+    4,
+    "import typing as t"
+   ],
+   [
+    5,
+    "from functools import update_wrapper"
+   ],
+   [
+    6,
+    "from gettext import gettext as _"
+   ],
+   [
+    8,
+    "from .core import Argument"
+   ],
+   [
+    9,
+    "from .core import Command"
+   ],
+   [
+    10,
+    "from .core import Context"
+   ],
+   [
+    11,
+    "from .core import Group"
+   ],
+   [
+    12,
+    "from .core import Option"
+   ],
+   [
+    13,
+    "from .core import Parameter"
+   ],
+   [
+    14,
+    "from .globals import get_current_context"
+   ],
+   [
+    15,
+    "from .utils import echo"
+   ],
+   [
+    22,
+    "R = t.TypeVar(\"R\")"
+   ],
+   [
+    23,
+    "T = t.TypeVar(\"T\")"
+   ],
+   [
+    24,
+    "_AnyCallable = t.Callable[..., t.Any]"
+   ],
+   [
+    25,
+    "FC = t.TypeVar(\"FC\", bound=\"_AnyCallable | Command\")"
+   ],
+   [
+    28,
+    "def pass_context(f: t.Callable[te.Concatenate[Context, P], R]) -> t.Callable[P, R]:"
+   ],
+   [
+    39,
+    "def pass_obj(f: t.Callable[te.Concatenate[T, P], R]) -> t.Callable[P, R]:"
+   ],
+   [
+    51,
+    "def make_pass_decorator("
+   ],
+   [
+    100,
+    "def pass_meta_key("
+   ],
+   [
+    133,
+    "CmdType = t.TypeVar(\"CmdType\", bound=Command)"
+   ],
+   [
+    168,
+    "def command("
+   ],
+   [
+    206,
+    "    func: t.Callable[[_AnyCallable], t.Any] | None = None"
+   ],
+   [
+    208,
+    "    if callable(name):"
+   ],
+   [
+    214,
+    "    if cls is None:"
+   ],
+   [
+    215,
+    "        cls = t.cast(\"type[CmdType]\", Command)"
+   ],
+   [
+    217,
+    "    def decorator(f: _AnyCallable) -> CmdType:"
+   ],
+   [
+    218,
+    "        if isinstance(f, Command):"
+   ],
+   [
+    221,
+    "        attr_params = attrs.pop(\"params\", None)"
+   ],
+   [
+    222,
+    "        params = attr_params if attr_params is not None else []"
+   ],
+   [
+    224,
+    "        try:"
+   ],
+   [
+    225,
+    "            decorator_params = f.__click_params__  # type: ignore"
+   ],
+   [
+    226,
+    "        except AttributeError:"
+   ],
+   [
+    227,
+    "            pass"
+   ],
+   [
+    232,
+    "        if attrs.get(\"help\") is None:"
+   ],
+   [
+    233,
+    "            attrs[\"help\"] = f.__doc__"
+   ],
+   [
+    239,
+    "        if name is not None:"
+   ],
+   [
+    242,
+    "            cmd_name = f.__name__.lower().replace(\"_\", \"-\")"
+   ],
+   [
+    243,
+    "            cmd_left, sep, suffix = cmd_name.rpartition(\"-\")"
+   ],
+   [
+    245,
+    "            if sep and suffix in {\"command\", \"cmd\", \"group\", \"grp\"}:"
+   ],
+   [
+    248,
+    "        cmd = cls(name=cmd_name, callback=f, params=params, **attrs)"
+   ],
+   [
+    249,
+    "        cmd.__doc__ = f.__doc__"
+   ],
+   [
+    250,
+    "        return cmd"
+   ],
+   [
+    252,
+    "    if func is not None:"
+   ],
+   [
+    255,
+    "    return decorator"
+   ],
+   [
+    258,
+    "GrpType = t.TypeVar(\"GrpType\", bound=Group)"
+   ],
+   [
+    293,
+    "def group("
+   ],
+   [
+    314,
+    "def _param_memo(f: t.Callable[..., t.Any], param: Parameter) -> None:"
+   ],
+   [
+    315,
+    "    if isinstance(f, Command):"
+   ],
+   [
+    316,
+    "        f.params.append(param)"
+   ],
+   [
+    324,
+    "def argument("
+   ],
+   [
+    352,
+    "def option("
+   ],
+   [
+    370,
+    "    if cls is None:"
+   ],
+   [
+    371,
+    "        cls = Option"
+   ],
+   [
+    373,
+    "    def decorator(f: FC) -> FC:"
+   ],
+   [
+    374,
+    "        _param_memo(f, cls(param_decls, **attrs))"
+   ],
+   [
+    375,
+    "        return f"
+   ],
+   [
+    377,
+    "    return decorator"
+   ],
+   [
+    380,
+    "def confirmation_option(*param_decls: str, **kwargs: t.Any) -> t.Callable[[FC], FC]:"
+   ],
+   [
+    404,
+    "def password_option(*param_decls: str, **kwargs: t.Any) -> t.Callable[[FC], FC]:"
+   ],
+   [
+    421,
+    "def version_option("
+   ],
+   [
+    561,
+    "def custom_version_option("
+   ],
+   [
+    603,
+    "def help_option(*param_decls: str, **kwargs: t.Any) -> t.Callable[[FC], FC]:"
+   ],
+   [
+    612,
+    "    def show_help(ctx: Context, param: Parameter, value: bool) -> None:"
+   ],
+   [
+    614,
+    "        if value and not ctx.resilient_parsing:"
+   ],
+   [
+    618,
+    "    if not param_decls:"
+   ],
+   [
+    621,
+    "    kwargs.setdefault(\"is_flag\", True)"
+   ],
+   [
+    622,
+    "    kwargs.setdefault(\"expose_value\", False)"
+   ],
+   [
+    623,
+    "    kwargs.setdefault(\"is_eager\", True)"
+   ],
+   [
+    624,
+    "    kwargs.setdefault(\"help\", _(\"Show this message and exit.\"))"
+   ],
+   [
+    625,
+    "    kwargs.setdefault(\"callback\", show_help)"
+   ],
+   [
+    627,
+    "    return option(*param_decls, **kwargs)"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert..."
+ ]
+}

@@ -1,0 +1,8 @@
+arrow/cmp-1 true file arrow/locales.py rank 5 of 10
+ ranked: ['arrow/arrow.py', 'arrow/constants.py', 'arrow/__init__.py', 'arrow/_version.py', 'arrow/locales.py', 'arrow/api.py', 'arrow/util.py', 'arrow/formatter.py']
+ pointed: ['arrow/arrow.py']
+ red: True
+arrow/cmp-2 true file arrow/parser.py rank 5 of 10
+ ranked: ['arrow/arrow.py', 'arrow/constants.py', 'arrow/__init__.py', 'arrow/_version.py', 'arrow/parser.py', 'arrow/api.py', 'arrow/locales.py', 'arrow/util.py']
+ pointed: ['arrow/arrow.py']
+ red: True

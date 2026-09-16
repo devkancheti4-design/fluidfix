@@ -1,0 +1,8 @@
+{
+ "example_before": "help_ = item.help and \"_\"",
+ "example_after": "help_ = item.help or \"_\"",
+ "name": "and-where-fallback-or",
+ "description": "an assignment whose value is `<expr> and \"<literal>\"`: the literal replaces every truthy value and a falsy value yields itself, where a fallback (`or`) was meant",
+ "signal": "=\\s*[\\w.\\[\\]()]+ and \"[^\"]*\"\\s*$",
+ "applier": "def fix(line, o):\n    return re.sub(r' and (\"[^\"]*\"\\s*)$', r' or \\1', line, count=1)"
+}

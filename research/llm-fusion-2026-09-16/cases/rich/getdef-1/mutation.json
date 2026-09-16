@@ -1,0 +1,8 @@
+{
+ "file": "rich/console.py",
+ "lineno": 808,
+ "orig": "            term = self._environ.get(\"TERM\", \"\").strip().lower()",
+ "mutated": "            term = self._environ.get(\"TERM\").strip().lower()",
+ "cls": "getdef",
+ "base": "bf2620c8ce27bfdcaa3ea35b2557f94a46f1b5a9"
+}

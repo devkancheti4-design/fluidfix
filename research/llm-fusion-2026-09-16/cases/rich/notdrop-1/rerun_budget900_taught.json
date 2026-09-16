@@ -1,0 +1,16 @@
+{
+ "case": "rich/notdrop-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 701.2,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 29,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered\n[23:49:59] rich/measure.py: repaired line 141 in 29 suite runs (63.7s):\n  - if renderables:\n  + if not renderables:\n  committed\n",
+ "verdict": "EXACT"
+}

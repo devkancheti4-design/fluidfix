@@ -1,0 +1,8 @@
+{
+ "file": "src/click/utils.py",
+ "lineno": 84,
+ "orig": "    last_index = len(words) - 1",
+ "mutated": "    last_index = len(words)",
+ "cls": "lenm1",
+ "base": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1"
+}

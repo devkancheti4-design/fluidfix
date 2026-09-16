@@ -1,0 +1,16 @@
+{
+ "case": "arrow/notdrop-1",
+ "budget": 900,
+ "extra": "--dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py",
+ "tag": "_taught",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 320.8,
+ "repaired": true,
+ "byte_exact": true,
+ "suite_runs": 57,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered\n[22:19:59] arrow/arrow.py: repaired line 1418 in 57 suite runs (163.9s):\n  - if match:\n  + if not match:\n  tree already matches last commit \u2014 nothing to commit\n",
+ "verdict": "EXACT"
+}

@@ -1,0 +1,8 @@
+{
+ "file": "arrow/locales.py",
+ "lineno": 4601,
+ "orig": "        \"years\": \"{0} \u092c\u0930\u094d\u0937\",",
+ "mutated": "        \"years\": \"{1} \u092c\u0930\u094d\u0937\",",
+ "cls": "lit",
+ "base": "2224255c4acc594d734cef0bbc83360452a67983"
+}

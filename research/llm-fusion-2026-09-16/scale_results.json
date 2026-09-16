@@ -1,0 +1,178 @@
+{
+ "n_files": 302,
+ "n_tests": 300,
+ "suite_s": 3.5,
+ "seed": 20260916,
+ "results": [
+  {
+   "file": "pkg/mod_021.py",
+   "kind": "3 flipped-additive",
+   "rank_of_true_file": 1,
+   "ranked": [
+    "pkg/mod_021.py",
+    "pkg/core.py",
+    "pkg/mod_000.py",
+    "pkg/mod_001.py",
+    "pkg/mod_002.py"
+   ],
+   "localise_s": 9.6,
+   "status": "repaired",
+   "byte_exact": true,
+   "suite_runs": 4,
+   "wall_s": 14.6
+  },
+  {
+   "file": "pkg/mod_195.py",
+   "kind": "0 strictness",
+   "rank_of_true_file": 1,
+   "ranked": [
+    "pkg/mod_195.py",
+    "pkg/core.py",
+    "pkg/mod_180.py",
+    "pkg/mod_181.py",
+    "pkg/mod_182.py"
+   ],
+   "localise_s": 4.7,
+   "status": "repaired",
+   "byte_exact": true,
+   "suite_runs": 8,
+   "wall_s": 15.9
+  },
+  {
+   "file": "pkg/mod_081.py",
+   "kind": "8 minmax-swap",
+   "rank_of_true_file": 1,
+   "ranked": [
+    "pkg/mod_081.py",
+    "pkg/core.py",
+    "pkg/mod_060.py",
+    "pkg/mod_061.py",
+    "pkg/mod_062.py"
+   ],
+   "localise_s": 4.9,
+   "status": "repaired",
+   "byte_exact": true,
+   "suite_runs": 9,
+   "wall_s": 15.7
+  },
+  {
+   "file": "pkg/mod_055.py",
+   "kind": "1 literal-off-by-one",
+   "rank_of_true_file": 1,
+   "ranked": [
+    "pkg/mod_055.py",
+    "pkg/core.py",
+    "pkg/mod_030.py",
+    "pkg/mod_031.py",
+    "pkg/mod_032.py"
+   ],
+   "localise_s": 4.8,
+   "status": "repaired",
+   "byte_exact": true,
+   "suite_runs": 10,
+   "wall_s": 16.0
+  },
+  {
+   "file": "pkg/mod_189.py",
+   "kind": "9 flipped-augmented-assign",
+   "rank_of_true_file": 1,
+   "ranked": [
+    "pkg/mod_189.py",
+    "pkg/core.py",
+    "pkg/mod_180.py",
+    "pkg/mod_181.py",
+    "pkg/mod_182.py"
+   ],
+   "localise_s": 4.8,
+   "status": "repaired",
+   "byte_exact": true,
+   "suite_runs": 12,
+   "wall_s": 16.8
+  },
+  {
+   "file": "pkg/mod_258.py",
+   "kind": "10 flipped-comparison-direction",
+   "rank_of_true_file": 1,
+   "ranked": [
+    "pkg/mod_258.py",
+    "pkg/core.py",
+    "pkg/mod_240.py",
+    "pkg/mod_241.py",
+    "pkg/mod_242.py"
+   ],
+   "localise_s": 4.9,
+   "status": "repaired",
+   "byte_exact": true,
+   "suite_runs": 14,
+   "wall_s": 17.4
+  },
+  {
+   "file": "pkg/mod_123.py",
+   "kind": "3 flipped-additive",
+   "rank_of_true_file": 1,
+   "ranked": [
+    "pkg/mod_123.py",
+    "pkg/core.py",
+    "pkg/mod_120.py",
+    "pkg/mod_121.py",
+    "pkg/mod_122.py"
+   ],
+   "localise_s": 4.7,
+   "status": "repaired",
+   "byte_exact": true,
+   "suite_runs": 4,
+   "wall_s": 14.5
+  },
+  {
+   "file": "pkg/mod_224.py",
+   "kind": "0 strictness",
+   "rank_of_true_file": 1,
+   "ranked": [
+    "pkg/mod_224.py",
+    "pkg/core.py",
+    "pkg/mod_210.py",
+    "pkg/mod_211.py",
+    "pkg/mod_212.py"
+   ],
+   "localise_s": 4.7,
+   "status": "repaired",
+   "byte_exact": true,
+   "suite_runs": 8,
+   "wall_s": 16.2
+  },
+  {
+   "file": "pkg/mod_293.py",
+   "kind": "8 minmax-swap",
+   "rank_of_true_file": 1,
+   "ranked": [
+    "pkg/mod_293.py",
+    "pkg/core.py",
+    "pkg/mod_270.py",
+    "pkg/mod_271.py",
+    "pkg/mod_272.py"
+   ],
+   "localise_s": 4.9,
+   "status": "repaired",
+   "byte_exact": true,
+   "suite_runs": 9,
+   "wall_s": 15.8
+  },
+  {
+   "file": "pkg/mod_256.py",
+   "kind": "1 literal-off-by-one",
+   "rank_of_true_file": 1,
+   "ranked": [
+    "pkg/mod_256.py",
+    "pkg/core.py",
+    "pkg/mod_240.py",
+    "pkg/mod_241.py",
+    "pkg/mod_242.py"
+   ],
+   "localise_s": 4.8,
+   "status": "repaired",
+   "byte_exact": true,
+   "suite_runs": 10,
+   "wall_s": 16.0
+  }
+ ]
+}

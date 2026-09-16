@@ -1,0 +1,16 @@
+{
+ "case": "arrow/add-1",
+ "budget": 300,
+ "extra": "",
+ "tag": "_fixed",
+ "code": "source tree",
+ "guard_exit": 0,
+ "seconds": 220.8,
+ "repaired": true,
+ "byte_exact": false,
+ "suite_runs": 12,
+ "rejected": null,
+ "hint": "",
+ "stdout_tail": "[00:47:00] arrow/arrow.py: repaired line 1219 in 12 suite runs (64.7s):\n  - if self._datetime < dt\n  + if self._datetime > dt\n  committed\n",
+ "verdict": "WRONG-GREEN"
+}

@@ -1,0 +1,62 @@
+{
+ "repo": "/private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click",
+ "tiers": [
+  {
+   "tier": 0,
+   "exit": 2,
+   "wall": 44.0,
+   "suite_runs": null,
+   "stdout": "",
+   "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/notdrop-1/refusal_tier0.json"
+  },
+  {
+   "tier": 1,
+   "model": "fable-5.1",
+   "tokens": {
+    "input": 4019,
+    "output": 186,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "fable-5.1",
+    "approx": true
+   },
+   "valid": false,
+   "why": "applier is a no-op on the matched line",
+   "rule": {
+    "name": "inverted-empty-guard",
+    "signal": "^\\s*if (\\w+):\\s*$",
+    "example_before": "if value:",
+    "example_after": "if not value:"
+   }
+  },
+  {
+   "tier": 2,
+   "model": "fable-5.1",
+   "tokens": {
+    "input": 3869,
+    "output": 18,
+    "cache_read": 0,
+    "cache_write": 0,
+    "model": "fable-5.1",
+    "approx": true
+   },
+   "proposals": 1,
+   "line": "    if value:",
+   "replacements": [
+    "    if not value:"
+   ],
+   "exit": 0,
+   "wall": 63.9,
+   "suite_runs": 25,
+   "stdout": "dictionary rules_fused.py: 1 fault class(es) registered\n[20:47:37] src/click/shell_completion.py: repaired line 664 in 25 suite runs (36.3s):\n  - if value:\n  + if not value:\n  committed\n"
+  }
+ ],
+ "tokens": {
+  "input": 7888,
+  "output": 204,
+  "cache_read": 0,
+  "cache_write": 0,
+  "total": 8092
+ },
+ "outcome": "tier2"
+}

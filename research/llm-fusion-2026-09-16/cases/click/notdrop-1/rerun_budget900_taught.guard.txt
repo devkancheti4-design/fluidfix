@@ -1,0 +1,5 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered
+[22:26:03] src/click/shell_completion.py: repaired line 664 in 24 suite runs (96.2s):
+  - if value:
+  + if not value:
+  committed

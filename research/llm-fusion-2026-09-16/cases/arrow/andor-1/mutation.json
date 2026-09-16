@@ -1,0 +1,8 @@
+{
+ "file": "arrow/locales.py",
+ "lineno": 5468,
+ "orig": "        if n > 10 or n == 0:",
+ "mutated": "        if n > 10 and n == 0:",
+ "cls": "andor",
+ "base": "2224255c4acc594d734cef0bbc83360452a67983"
+}

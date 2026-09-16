@@ -1,0 +1,5 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered
+[23:02:30] arrow/arrow.py: repaired line 1418 in 3 suite runs (23.4s):
+  - if match:
+  + if not match:
+  committed

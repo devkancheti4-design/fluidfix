@@ -1,0 +1,793 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/click/shell_completion.py"
+ ],
+ "seconds": 44.0174720287323,
+ "hint": "every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand",
+ "rejected_candidates": [
+  {
+   "at": "src/click/shell_completion.py:667",
+   "tried": "    c = value[-1]",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:64",
+   "tried": "    _ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=False)",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:100",
+   "tried": "    def __getattr__(self, name: str) ->= t.Any:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 100)"
+  },
+  {
+   "at": "src/click/shell_completion.py:111",
+   "tried": "%(complete_var)s=bash_complete $0)",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <=<< \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <<=< \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <<<= \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:127",
+   "tried": "    return -1",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:195",
+   "tried": "        if test $metadata[0] = \"dir\";",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:196",
+   "tried": "            __fish_complete_directories $metadata[1];",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:197",
+   "tried": "        else if test $metadata[0] = \"file\";",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:198",
+   "tried": "            __fish_complete_path $metadata[1];",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:199",
+   "tried": "        else if test $metadata[0] = \"plain\";",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:200",
+   "tried": "            echo $metadata[1];",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:320",
+   "tried": "    def func_name(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 320)"
+  },
+  {
+   "at": "src/click/shell_completion.py:327",
+   "tried": "    def source_vars(self) ->= _SourceVarsDict:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 327)"
+  },
+  {
+   "at": "src/click/shell_completion.py:339",
+   "tried": "    def source(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 339)"
+  },
+  {
+   "at": "src/click/shell_completion.py:347",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 347)"
+  },
+  {
+   "at": "src/click/shell_completion.py:356",
+   "tried": "    ) ->= list[CompletionItem[str]]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 356)"
+  },
+  {
+   "at": "src/click/shell_completion.py:368",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 368)"
+  },
+  {
+   "at": "src/click/shell_completion.py:376",
+   "tried": "    def complete(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 376)"
+  },
+  {
+   "at": "src/click/shell_completion.py:396",
+   "tried": "    def _check_version() ->= None:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 396)"
+  },
+  {
+   "at": "src/click/shell_completion.py:428",
+   "tried": "    def source(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 428)"
+  },
+  {
+   "at": "src/click/shell_completion.py:432",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 432)"
+  },
+  {
+   "at": "src/click/shell_completion.py:444",
+   "tried": "    def format_completion(self, item: CompletionItem[t.Any]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 444)"
+  },
+  {
+   "at": "src/click/shell_completion.py:454",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 454)"
+  },
+  {
+   "at": "src/click/shell_completion.py:466",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 466)"
+  },
+  {
+   "at": "src/click/shell_completion.py:490",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 490)"
+  },
+  {
+   "at": "src/click/shell_completion.py:504",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 504)"
+  },
+  {
+   "at": "src/click/shell_completion.py:530",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 530)"
+  },
+  {
+   "at": "src/click/shell_completion.py:542",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 542)"
+  },
+  {
+   "at": "src/click/shell_completion.py:593",
+   "tried": "def get_completion_class(shell: str) ->= type[ShellComplete] | None:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 593)"
+  },
+  {
+   "at": "src/click/shell_completion.py:603",
+   "tried": "def split_arg_string(string: str) ->= list[str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 603)"
+  },
+  {
+   "at": "src/click/shell_completion.py:639",
+   "tried": "def _is_incomplete_argument(ctx: Context, param: Parameter) ->= bool:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 639)"
+  },
+  {
+   "at": "src/click/shell_completion.py:655",
+   "tried": "            param.nargs >= 1",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:655",
+   "tried": "            param.nargs > 0",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:655",
+   "tried": "            param.nargs < 1",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:657",
+   "tried": "            and len(value) <= param.nargs",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:657",
+   "tried": "            and len(value) > param.nargs",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:662",
+   "tried": "def _start_of_option(ctx: Context, value: str) ->= bool:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 662)"
+  },
+  {
+   "at": "src/click/shell_completion.py:665",
+   "tried": "        return True",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:671",
+   "tried": "def _is_incomplete_option(ctx: Context, args: list[str], param: Parameter) ->= bool:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 671)"
+  },
+  {
+   "at": "src/click/shell_completion.py:678",
+   "tried": "        return True",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:710",
+   "tried": "    ctx_args[\"resilient_parsing\"] = False",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:712",
+   "tried": "        args = ctx._protected_args - ctx.args",
+   "why": "FAILED tests/test_shell_completion.py::test_command - TypeError: unsupported ..."
+  },
+  {
+   "at": "src/click/shell_completion.py:667",
+   "tried": "    c = value[-1]",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:64",
+   "tried": "    _ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=False)",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:100",
+   "tried": "    def __getattr__(self, name: str) ->= t.Any:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 100)"
+  },
+  {
+   "at": "src/click/shell_completion.py:111",
+   "tried": "%(complete_var)s=bash_complete $0)",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <=<< \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <<=< \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <<<= \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:123",
+   "tried": "            COMPREPLY-=($value)",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:127",
+   "tried": "    return -1",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:195",
+   "tried": "        if test $metadata[0] = \"dir\";",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:196",
+   "tried": "            __fish_complete_directories $metadata[1];",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:197",
+   "tried": "        else if test $metadata[0] = \"file\";",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:198",
+   "tried": "            __fish_complete_path $metadata[1];",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:199",
+   "tried": "        else if test $metadata[0] = \"plain\";",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:200",
+   "tried": "            echo $metadata[1];",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:320",
+   "tried": "    def func_name(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 320)"
+  },
+  {
+   "at": "src/click/shell_completion.py:327",
+   "tried": "    def source_vars(self) ->= _SourceVarsDict:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 327)"
+  },
+  {
+   "at": "src/click/shell_completion.py:339",
+   "tried": "    def source(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 339)"
+  },
+  {
+   "at": "src/click/shell_completion.py:347",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 347)"
+  },
+  {
+   "at": "src/click/shell_completion.py:356",
+   "tried": "    ) ->= list[CompletionItem[str]]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 356)"
+  },
+  {
+   "at": "src/click/shell_completion.py:368",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 368)"
+  },
+  {
+   "at": "src/click/shell_completion.py:376",
+   "tried": "    def complete(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 376)"
+  },
+  {
+   "at": "src/click/shell_completion.py:396",
+   "tried": "    def _check_version() ->= None:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 396)"
+  },
+  {
+   "at": "src/click/shell_completion.py:428",
+   "tried": "    def source(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 428)"
+  },
+  {
+   "at": "src/click/shell_completion.py:432",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 432)"
+  },
+  {
+   "at": "src/click/shell_completion.py:444",
+   "tried": "    def format_completion(self, item: CompletionItem[t.Any]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 444)"
+  },
+  {
+   "at": "src/click/shell_completion.py:454",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 454)"
+  },
+  {
+   "at": "src/click/shell_completion.py:466",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 466)"
+  },
+  {
+   "at": "src/click/shell_completion.py:490",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 490)"
+  },
+  {
+   "at": "src/click/shell_completion.py:504",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 504)"
+  },
+  {
+   "at": "src/click/shell_completion.py:530",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 530)"
+  },
+  {
+   "at": "src/click/shell_completion.py:542",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 542)"
+  },
+  {
+   "at": "src/click/shell_completion.py:593",
+   "tried": "def get_completion_class(shell: str) ->= type[ShellComplete] | None:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 593)"
+  },
+  {
+   "at": "src/click/shell_completion.py:603",
+   "tried": "def split_arg_string(string: str) ->= list[str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 603)"
+  },
+  {
+   "at": "src/click/shell_completion.py:639",
+   "tried": "def _is_incomplete_argument(ctx: Context, param: Parameter) ->= bool:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 639)"
+  },
+  {
+   "at": "src/click/shell_completion.py:655",
+   "tried": "            param.nargs >= 1",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:655",
+   "tried": "            param.nargs > 0",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:655",
+   "tried": "            param.nargs < 1",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:657",
+   "tried": "            and len(value) <= param.nargs",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:657",
+   "tried": "            and len(value) > param.nargs",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:662",
+   "tried": "def _start_of_option(ctx: Context, value: str) ->= bool:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 662)"
+  },
+  {
+   "at": "src/click/shell_completion.py:665",
+   "tried": "        return True",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:671",
+   "tried": "def _is_incomplete_option(ctx: Context, args: list[str], param: Parameter) ->= bool:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 671)"
+  },
+  {
+   "at": "src/click/shell_completion.py:678",
+   "tried": "        return True",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:710",
+   "tried": "    ctx_args[\"resilient_parsing\"] = False",
+   "why": "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+  },
+  {
+   "at": "src/click/shell_completion.py:712",
+   "tried": "        args = ctx._protected_args - ctx.args",
+   "why": "FAILED tests/test_shell_completion.py::test_command - TypeError: unsupported ..."
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "src/click/shell_completion.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import collections.abc as cabc"
+   ],
+   [
+    4,
+    "import os"
+   ],
+   [
+    5,
+    "import re"
+   ],
+   [
+    6,
+    "import typing as t"
+   ],
+   [
+    7,
+    "from gettext import gettext as _"
+   ],
+   [
+    9,
+    "from .core import Argument"
+   ],
+   [
+    10,
+    "from .core import Command"
+   ],
+   [
+    11,
+    "from .core import Context"
+   ],
+   [
+    12,
+    "from .core import Group"
+   ],
+   [
+    13,
+    "from .core import Option"
+   ],
+   [
+    14,
+    "from .core import Parameter"
+   ],
+   [
+    15,
+    "from .core import ParameterSource"
+   ],
+   [
+    16,
+    "from .utils import echo"
+   ],
+   [
+    19,
+    "def shell_complete("
+   ],
+   [
+    64,
+    "    _ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=True)"
+   ],
+   [
+    67,
+    "class CompletionItem(t.Generic[_ValueT_co]):"
+   ],
+   [
+    86,
+    "    __slots__ = (\"value\", \"type\", \"help\", \"_info\")"
+   ],
+   [
+    88,
+    "    def __init__("
+   ],
+   [
+    100,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    105,
+    "_SOURCE_BASH = \"\"\"\\"
+   ],
+   [
+    106,
+    "%(complete_func)s() {"
+   ],
+   [
+    107,
+    "    local IFS=$'\\\\n'"
+   ],
+   [
+    108,
+    "    local response"
+   ],
+   [
+    109,
+    ""
+   ],
+   [
+    110,
+    "    response=$(env COMP_WORDS=\"${COMP_WORDS[*]}\" COMP_CWORD=$COMP_CWORD \\"
+   ],
+   [
+    111,
+    "%(complete_var)s=bash_complete $1)"
+   ],
+   [
+    112,
+    ""
+   ],
+   [
+    113,
+    "    for completion in $response; do"
+   ],
+   [
+    114,
+    "        IFS=',' read type value <<< \"$completion\""
+   ],
+   [
+    115,
+    ""
+   ],
+   [
+    116,
+    "        if [[ $type == 'dir' ]]; then"
+   ],
+   [
+    117,
+    "            COMPREPLY=()"
+   ],
+   [
+    118,
+    "            compopt -o dirnames"
+   ],
+   [
+    119,
+    "        elif [[ $type == 'file' ]]; then"
+   ],
+   [
+    120,
+    "            COMPREPLY=()"
+   ],
+   [
+    121,
+    "            compopt -o default"
+   ],
+   [
+    122,
+    "        elif [[ $type == 'plain' ]]; then"
+   ],
+   [
+    123,
+    "            COMPREPLY+=($value)"
+   ],
+   [
+    124,
+    "        fi"
+   ],
+   [
+    125,
+    "    done"
+   ],
+   [
+    126,
+    ""
+   ],
+   [
+    127,
+    "    return 0"
+   ],
+   [
+    128,
+    "}"
+   ],
+   [
+    129,
+    ""
+   ],
+   [
+    130,
+    "%(complete_func)s_setup() {"
+   ],
+   [
+    131,
+    "    complete -o nosort -F %(complete_func)s %(prog_name)s"
+   ],
+   [
+    132,
+    "}"
+   ],
+   [
+    133,
+    ""
+   ],
+   [
+    134,
+    "%(complete_func)s_setup;"
+   ],
+   [
+    135,
+    "\"\"\""
+   ],
+   [
+    143,
+    "_SOURCE_ZSH = \"\"\"\\"
+   ],
+   [
+    187,
+    "_SOURCE_FISH = \"\"\"\\"
+   ],
+   [
+    188,
+    "function %(complete_func)s;"
+   ],
+   [
+    189,
+    "    set -l response (env %(complete_var)s=fish_complete COMP_WORDS=(commandline -cp) \\"
+   ],
+   [
+    190,
+    "COMP_CWORD=(commandline -t) %(prog_name)s);"
+   ],
+   [
+    191,
+    ""
+   ],
+   [
+    192,
+    "    for completion in $response;"
+   ],
+   [
+    193,
+    "        set -l metadata (string split \",\" $completion);"
+   ],
+   [
+    194,
+    ""
+   ],
+   [
+    195,
+    "        if test $metadata[1] = \"dir\";"
+   ],
+   [
+    196,
+    "            __fish_complete_directories $metadata[2];"
+   ],
+   [
+    197,
+    "        else if test $metadata[1] = \"file\";"
+   ],
+   [
+    198,
+    "            __fish_complete_path $metadata[2];"
+   ],
+   [
+    199,
+    "        else if test $metadata[1] = \"plain\";"
+   ],
+   [
+    200,
+    "            echo $metadata[2];"
+   ],
+   [
+    201,
+    "        end;"
+   ],
+   [
+    202,
+    "    end;"
+   ],
+   [
+    203,
+    "end;"
+   ],
+   [
+    204,
+    ""
+   ],
+   [
+    205,
+    "complete --no-files --command %(prog_name)s --arguments \\"
+   ],
+   [
+    206,
+    "\"(%(complete_func)s)\";"
+   ],
+   [
+    207,
+    "\"\"\""
+   ],
+   [
+    214,
+    "_SOURCE_POWERSHELL = \"\"\"\\"
+   ],
+   [
+    272,
+    "class _SourceVarsDict(t.TypedDict):"
+   ],
+   [
+    273,
+    "    complete_func: str"
+   ],
+   [
+    274,
+    "    complete_var: str"
+   ],
+   [
+    275,
+    "    prog_name: str"
+   ],
+   [
+    278,
+    "class ShellComplete:"
+   ],
+   [
+    291,
+    "    name: t.ClassVar[str]"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_shell_completion.py::test_command - IndexError: string inde..."
+ ]
+}

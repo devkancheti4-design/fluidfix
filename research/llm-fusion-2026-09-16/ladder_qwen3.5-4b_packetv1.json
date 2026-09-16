@@ -1,0 +1,249 @@
+[
+ {
+  "case": "click/andor-1",
+  "cls": "andor",
+  "file": "src/click/shell_completion.py",
+  "orig": "help_ = item.help or \"_\"",
+  "mutated": "help_ = item.help and \"_\"",
+  "author": "qwen3.5:4b",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 6106,
+   "output": 285,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 6391
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 301.9,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/andor-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "qwen3.5:4b",
+    "tokens": {
+     "input": 3137,
+     "output": 257,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "qwen3.5:4b",
+     "seconds": 25.4
+    },
+    "valid": false,
+    "why": "signal matches no line in the suspect file",
+    "rule": {
+     "name": "zsh-covariant-flag",
+     "signal": "^\\s*_ValueT_co\\s*=\\s*t\\.TypeVar\\([^)]*covariant=False[^)]*$",
+     "example_before": "_ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=False)",
+     "example_after": "_ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=True)"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "qwen3.5:4b",
+    "tokens": {
+     "input": 2969,
+     "output": 28,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "qwen3.5:4b",
+     "seconds": 10.7
+    },
+    "proposals": 1,
+    "exit": 2,
+    "wall": 308.0,
+    "suite_runs": null,
+    "stdout": "y a value that occurs in few files; or teach a narrower signal for this class. 211 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or make the failure carry a locating value\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+   }
+  ],
+  "wall_s": 349.9
+ },
+ {
+  "case": "click/getdef-1",
+  "cls": "getdef",
+  "file": "src/click/_termui_impl.py",
+  "orig": "less_env = os.environ.get(\"LESS\", \"\")",
+  "mutated": "less_env = os.environ.get(\"LESS\")",
+  "author": "qwen3.5:4b",
+  "outcome": "tier1",
+  "verdict": "SUSPECT",
+  "tokens": {
+   "input": 3339,
+   "output": 184,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 3523
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 49.8,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/getdef-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "qwen3.5:4b",
+    "tokens": {
+     "input": 3339,
+     "output": 184,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "qwen3.5:4b",
+     "seconds": 37.6
+    },
+    "valid": true,
+    "why": "ok: 1 matching line(s)",
+    "rule": {
+     "name": "split-on-non-string",
+     "signal": "^\\s*env_tokens\\s*=\\s*less_env\\.split\\(\\)",
+     "example_before": "env_tokens = less_env.split()",
+     "example_after": "env_tokens = (less_env or '').split()"
+    },
+    "exit": 0,
+    "wall": 140.5,
+    "suite_runs": 26,
+    "stdout": "dictionary rules_fused.py: 1 fault class(es) registered\n[19:34:52] src/click/_termui_impl.py: repaired line 534 in 26 suite runs (79.0s):\n  - env_tokens = less_env.split()\n  + env_tokens = (less_env or '').split()\n  committed\n"
+   }
+  ],
+  "wall_s": 185.2
+ },
+ {
+  "case": "click/lenm1-1",
+  "cls": "lenm1",
+  "file": "src/click/utils.py",
+  "orig": "last_index = len(words) - 1",
+  "mutated": "last_index = len(words)",
+  "author": "qwen3.5:4b",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 6000,
+   "output": 227,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 6227
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 304.2,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/lenm1-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "qwen3.5:4b",
+    "tokens": {
+     "input": 3084,
+     "output": 192,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "qwen3.5:4b",
+     "seconds": 32.2
+    },
+    "valid": false,
+    "why": "signal matches no line in the suspect file",
+    "rule": {
+     "name": "ansi-color-code-mismatch",
+     "signal": "\"reset\"\\s*:\\s*(?:38|90)",
+     "example_before": "\"reset\": 38,",
+     "example_after": "\"reset\": 39,"
+    }
+   },
+   {
+    "tier": 2,
+    "model": "qwen3.5:4b",
+    "tokens": {
+     "input": 2916,
+     "output": 35,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "qwen3.5:4b",
+     "seconds": 19.8
+    },
+    "proposals": 0
+   }
+  ],
+  "wall_s": 71.1
+ },
+ {
+  "case": "click/notdrop-1",
+  "cls": "notdrop",
+  "file": "src/click/shell_completion.py",
+  "orig": "if not value:",
+  "mutated": "if value:",
+  "author": "qwen3.5:4b",
+  "outcome": "refused-after-tier2",
+  "verdict": "REFUSED",
+  "tokens": {
+   "input": 6148,
+   "output": 236,
+   "cache_read": 0,
+   "cache_write": 0,
+   "total": 6384
+  },
+  "tiers": [
+   {
+    "tier": 0,
+    "exit": 2,
+    "wall": 44.0,
+    "suite_runs": null,
+    "stdout": "",
+    "recorded": "/Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/cases/click/notdrop-1/refusal_tier0.json"
+   },
+   {
+    "tier": 1,
+    "model": "qwen3.5:4b",
+    "tokens": {
+     "input": 3158,
+     "output": 182,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "qwen3.5:4b",
+     "seconds": 34.7
+    },
+    "valid": true,
+    "why": "ok: 1 matching line(s)",
+    "rule": {
+     "name": "negative-index-access",
+     "signal": "^\\s*c\\s*=\\s*value\\[0\\]",
+     "example_before": "c = value[0]",
+     "example_after": "c = value[-1]"
+    },
+    "exit": 2,
+    "wall": 70.5,
+    "suite_runs": null,
+    "stdout": "outside the taught vocabulary (candidate files tried: src/click/shell_completion.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 91 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+   },
+   {
+    "tier": 2,
+    "model": "qwen3.5:4b",
+    "tokens": {
+     "input": 2990,
+     "output": 54,
+     "cache_read": 0,
+     "cache_write": 0,
+     "model": "qwen3.5:4b",
+     "seconds": 24.9
+    },
+    "proposals": 1,
+    "exit": 2,
+    "wall": 59.9,
+    "suite_runs": null,
+    "stdout": "outside the taught vocabulary (candidate files tried: src/click/shell_completion.py). teach it once: docs/TEACHING.md (or run: fluidfix kinds) 91 candidate(s) were tried and rejected \u2014 each is logged with the test that failed it in the refusal report.\n  hint: every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) \u2014 the refusal report lists what was tried; teach the class or fix by hand\n  refusal report: /private/tmp/claude-501/-Users-kanchetidevieswar-neo/a46159fc-099c-469d-86e6-efc9597842bd/scratchpad/repos_ladder/click/.fluidfix/last_refusal.json\n"
+   }
+  ],
+  "wall_s": 200.4
+ }
+]

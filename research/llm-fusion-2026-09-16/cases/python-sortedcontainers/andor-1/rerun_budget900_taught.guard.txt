@@ -1,0 +1,5 @@
+dictionary /Users/kanchetidevieswar/neo/fluidfix/research/llm-fusion-2026-09-16/taught/rules_session.py: 4 fault class(es) registered
+[23:17:09] src/sortedcontainers/sorteddict.py: repaired line 134 in 19 suite runs (27.7s):
+  - if args and (args[0] is None and callable(args[0])):
+  + if args and (args[0] is None or callable(args[0])):
+  committed

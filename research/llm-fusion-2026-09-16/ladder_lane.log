@@ -1,0 +1,11 @@
+== click/notdrop-1 redo with packet v3 (the v2 packet lacked the defect line) ==
+click/notdrop-1              notdrop    -> REFUSED      via refused-after-tier2  tokens=12983 168.6s
+LADDER_DONE qwen3.5:4b
+click/notdrop-1              notdrop    -> REFUSED      via refused-after-tier2  tokens=11671 101.4s
+LADDER_DONE phi4-mini
+click/notdrop-1              notdrop    -> REFUSED      via refused-after-tier2  tokens=14001 104.3s
+LADDER_DONE gemma3:4b
+== ladder arrow OOV: qwen3.5:4b ==
+arrow/andor-1                andor      -> REFUSED      via refused-after-tier2  tokens=11168 352.3s
+arrow/getdef-1               getdef     -> REFUSED      via refused-after-tier2  tokens=14807 70.9s
+arrow/lenm1-1                lenm1      -> REFUSED      via refused-after-tier2  tokens=12621 66.5s

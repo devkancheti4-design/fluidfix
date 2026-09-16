@@ -1,0 +1,4 @@
+[00:12:12] src/click/_termui_impl.py: repaired line 192 in 64 suite runs (57.5s):
+  - return f"{hours:03}:{minutes:02}:{seconds:02}"
+  + return f"{hours:02}:{minutes:02}:{seconds:02}"
+  committed

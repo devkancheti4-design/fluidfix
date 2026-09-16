@@ -1,0 +1,3233 @@
+{
+ "status": "refused",
+ "candidates": [
+  "src/click/shell_completion.py",
+  "src/click/_utils.py",
+  "src/click/__init__.py",
+  "src/click/testing.py",
+  "src/click/types.py",
+  "src/click/core.py",
+  "src/click/utils.py",
+  "src/click/_compat.py"
+ ],
+ "seconds": 301.9305031299591,
+ "hint": "escalation budget exhausted (600s) with CAPPED still ruling RAISE_BUDGET \u2014 but no POINTING lane named a file, so a larger budget re-searches the same arbitrary order; name the file with --file, or make the failure carry a locating value",
+ "rejected_candidates": [
+  {
+   "at": "src/click/shell_completion.py:53",
+   "tried": "        return -1",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:320",
+   "tried": "    def func_name(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 320)"
+  },
+  {
+   "at": "src/click/shell_completion.py:327",
+   "tried": "    def source_vars(self) ->= _SourceVarsDict:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 327)"
+  },
+  {
+   "at": "src/click/shell_completion.py:339",
+   "tried": "    def source(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 339)"
+  },
+  {
+   "at": "src/click/shell_completion.py:347",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 347)"
+  },
+  {
+   "at": "src/click/shell_completion.py:368",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 368)"
+  },
+  {
+   "at": "src/click/shell_completion.py:376",
+   "tried": "    def complete(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 376)"
+  },
+  {
+   "at": "src/click/shell_completion.py:396",
+   "tried": "    def _check_version() ->= None:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 396)"
+  },
+  {
+   "at": "src/click/shell_completion.py:428",
+   "tried": "    def source(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 428)"
+  },
+  {
+   "at": "src/click/shell_completion.py:432",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 432)"
+  },
+  {
+   "at": "src/click/shell_completion.py:444",
+   "tried": "    def format_completion(self, item: CompletionItem[t.Any]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 444)"
+  },
+  {
+   "at": "src/click/shell_completion.py:454",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 454)"
+  },
+  {
+   "at": "src/click/shell_completion.py:457",
+   "tried": "        args = cwords[0:cword]",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:466",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 466)"
+  },
+  {
+   "at": "src/click/shell_completion.py:490",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 490)"
+  },
+  {
+   "at": "src/click/shell_completion.py:504",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 504)"
+  },
+  {
+   "at": "src/click/shell_completion.py:530",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 530)"
+  },
+  {
+   "at": "src/click/shell_completion.py:542",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 542)"
+  },
+  {
+   "at": "src/click/shell_completion.py:64",
+   "tried": "    _ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=False)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:100",
+   "tried": "    def __getattr__(self, name: str) ->= t.Any:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 100)"
+  },
+  {
+   "at": "src/click/shell_completion.py:111",
+   "tried": "%(complete_var)s=bash_complete $0)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <=<< \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <<=< \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <<<= \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:127",
+   "tried": "    return -1",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:195",
+   "tried": "        if test $metadata[0] = \"dir\";",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:196",
+   "tried": "            __fish_complete_directories $metadata[1];",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:197",
+   "tried": "        else if test $metadata[0] = \"file\";",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:198",
+   "tried": "            __fish_complete_path $metadata[1];",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:199",
+   "tried": "        else if test $metadata[0] = \"plain\";",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:200",
+   "tried": "            echo $metadata[1];",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:593",
+   "tried": "def get_completion_class(shell: str) ->= type[ShellComplete] | None:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 593)"
+  },
+  {
+   "at": "src/click/shell_completion.py:603",
+   "tried": "def split_arg_string(string: str) ->= list[str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 603)"
+  },
+  {
+   "at": "src/click/shell_completion.py:623",
+   "tried": "    lex = shlex.shlex(string, posix=False)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:624",
+   "tried": "    lex.whitespace_split = False",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:639",
+   "tried": "def _is_incomplete_argument(ctx: Context, param: Parameter) ->= bool:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 639)"
+  },
+  {
+   "at": "src/click/shell_completion.py:648",
+   "tried": "        return True",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:662",
+   "tried": "def _start_of_option(ctx: Context, value: str) ->= bool:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 662)"
+  },
+  {
+   "at": "src/click/shell_completion.py:665",
+   "tried": "        return True",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:667",
+   "tried": "    c = value[-1]",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:671",
+   "tried": "def _is_incomplete_option(ctx: Context, args: list[str], param: Parameter) ->= bool:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 671)"
+  },
+  {
+   "at": "src/click/shell_completion.py:681",
+   "tried": "        return True",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:710",
+   "tried": "    ctx_args[\"resilient_parsing\"] = False",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:712",
+   "tried": "        args = ctx._protected_args - ctx.args",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/_utils.py:18",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (_utils.py, line 18)"
+  },
+  {
+   "at": "src/click/_utils.py:21",
+   "tried": "    def __copy__(self) ->= Sentinel:",
+   "why": "does not compile: expected ':' (_utils.py, line 21)"
+  },
+  {
+   "at": "src/click/_utils.py:24",
+   "tried": "    def __deepcopy__(self, memo: dict[int, t.Any]) ->= Sentinel:",
+   "why": "does not compile: expected ':' (_utils.py, line 24)"
+  },
+  {
+   "at": "src/click/_utils.py:27",
+   "tried": "    def __reduce_ex__(self, protocol: object) ->= tuple[t.Any, ...]:",
+   "why": "does not compile: expected ':' (_utils.py, line 27)"
+  },
+  {
+   "at": "src/click/__init__.py:76",
+   "tried": "def __getattr__(name: str) ->= object:",
+   "why": "does not compile: expected ':' (__init__.py, line 76)"
+  },
+  {
+   "at": "src/click/testing.py:37",
+   "tried": "    def __init__(self, input: t.BinaryIO, output: t.BinaryIO) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 37)"
+  },
+  {
+   "at": "src/click/testing.py:42",
+   "tried": "    def __getattr__(self, x: str) ->= t.Any:",
+   "why": "does not compile: expected ':' (testing.py, line 42)"
+  },
+  {
+   "at": "src/click/testing.py:45",
+   "tried": "    def _echo(self, rv: bytes) ->= bytes:",
+   "why": "does not compile: expected ':' (testing.py, line 45)"
+  },
+  {
+   "at": "src/click/testing.py:51",
+   "tried": "    def read(self, n: int = -1) ->= bytes:",
+   "why": "does not compile: expected ':' (testing.py, line 51)"
+  },
+  {
+   "at": "src/click/testing.py:51",
+   "tried": "    def read(self, n: int =) -> bytes:",
+   "why": "does not compile: expected default value expression (testing.py, line 51)"
+  },
+  {
+   "at": "src/click/testing.py:54",
+   "tried": "    def read1(self, n: int = -1) ->= bytes:",
+   "why": "does not compile: expected ':' (testing.py, line 54)"
+  },
+  {
+   "at": "src/click/testing.py:54",
+   "tried": "    def read1(self, n: int =) -> bytes:",
+   "why": "does not compile: expected default value expression (testing.py, line 54)"
+  },
+  {
+   "at": "src/click/testing.py:57",
+   "tried": "    def readline(self, n: int = -1) ->= bytes:",
+   "why": "does not compile: expected ':' (testing.py, line 57)"
+  },
+  {
+   "at": "src/click/testing.py:57",
+   "tried": "    def readline(self, n: int =) -> bytes:",
+   "why": "does not compile: expected default value expression (testing.py, line 57)"
+  },
+  {
+   "at": "src/click/testing.py:60",
+   "tried": "    def readlines(self) ->= list[bytes]:",
+   "why": "does not compile: expected ':' (testing.py, line 60)"
+  },
+  {
+   "at": "src/click/testing.py:63",
+   "tried": "    def __iter__(self) ->= cabc.Iterator[bytes]:",
+   "why": "does not compile: expected ':' (testing.py, line 63)"
+  },
+  {
+   "at": "src/click/testing.py:66",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 66)"
+  },
+  {
+   "at": "src/click/testing.py:71",
+   "tried": "def _pause_echo(stream: EchoingStdin | None) ->= cabc.Generator[None]:",
+   "why": "does not compile: expected ':' (testing.py, line 71)"
+  },
+  {
+   "at": "src/click/testing.py:95",
+   "tried": "    def __init__(self, targetfd: int) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 95)"
+  },
+  {
+   "at": "src/click/testing.py:100",
+   "tried": "    def start(self) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 100)"
+  },
+  {
+   "at": "src/click/testing.py:105",
+   "tried": "    def stop(self) ->= bytes:",
+   "why": "does not compile: expected ':' (testing.py, line 105)"
+  },
+  {
+   "at": "src/click/testing.py:125",
+   "tried": "    def __init__(self, copy_to: io.BytesIO) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 125)"
+  },
+  {
+   "at": "src/click/testing.py:129",
+   "tried": "    def flush(self) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 129)"
+  },
+  {
+   "at": "src/click/testing.py:133",
+   "tried": "    def write(self, b: ReadableBuffer) ->= int:",
+   "why": "does not compile: expected ':' (testing.py, line 133)"
+  },
+  {
+   "at": "src/click/testing.py:150",
+   "tried": "    def __init__(self) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 150)"
+  },
+  {
+   "at": "src/click/testing.py:182",
+   "tried": "        self._original_fd =",
+   "why": "does not compile: invalid syntax (testing.py, line 182)"
+  },
+  {
+   "at": "src/click/testing.py:184",
+   "tried": "    def close(self) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 184)"
+  },
+  {
+   "at": "src/click/testing.py:192",
+   "tried": "    def fileno(self) ->= int:",
+   "why": "does not compile: expected ':' (testing.py, line 192)"
+  },
+  {
+   "at": "src/click/testing.py:203",
+   "tried": "    def name(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 203)"
+  },
+  {
+   "at": "src/click/testing.py:207",
+   "tried": "    def mode(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 207)"
+  },
+  {
+   "at": "src/click/testing.py:283",
+   "tried": "    def output(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 283)"
+  },
+  {
+   "at": "src/click/testing.py:295",
+   "tried": "    def stdout(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 295)"
+  },
+  {
+   "at": "src/click/testing.py:302",
+   "tried": "    def stderr(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 302)"
+  },
+  {
+   "at": "src/click/testing.py:312",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 312)"
+  },
+  {
+   "at": "src/click/testing.py:314",
+   "tried": "        return f\"<{type(self).__name__} {exc_str}>=\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:314",
+   "tried": "        return f\"<={type(self).__name__} {exc_str}>\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:314",
+   "tried": "        return f\">{type(self).__name__} {exc_str}>\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:314",
+   "tried": "        return f\"<{type(self).__name__} {exc_str}<\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:382",
+   "tried": "    def get_default_prog_name(self, cli: Command) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 382)"
+  },
+  {
+   "at": "src/click/testing.py:439",
+   "tried": "        formatting.FORCED_WIDTH = 79",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:451",
+   "tried": "            bytes_input, encoding=self.charset, name=\"<stdin>=\", mode=\"r\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:451",
+   "tried": "            bytes_input, encoding=self.charset, name=\"<=stdin>\", mode=\"r\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:451",
+   "tried": "            bytes_input, encoding=self.charset, name=\">stdin>\", mode=\"r\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:451",
+   "tried": "            bytes_input, encoding=self.charset, name=\"<stdin<\", mode=\"r\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:462",
+   "tried": "            name=\"<stdout>=\",",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:462",
+   "tried": "            name=\"<=stdout>\",",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:462",
+   "tried": "            name=\">stdout>\",",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:462",
+   "tried": "            name=\"<stdout<\",",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:469",
+   "tried": "            name=\"<stderr>=\",",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:469",
+   "tried": "            name=\"<=stderr>\",",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:469",
+   "tried": "            name=\">stderr>\",",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:469",
+   "tried": "            name=\"<stderr<\",",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:475",
+   "tried": "        def visible_input(prompt: str | None = None) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 475)"
+  },
+  {
+   "at": "src/click/testing.py:486",
+   "tried": "        def hidden_input(prompt: str | None = None) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 486)"
+  },
+  {
+   "at": "src/click/testing.py:495",
+   "tried": "        def _getchar(echo: bool) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 495)"
+  },
+  {
+   "at": "src/click/testing.py:676",
+   "tried": "            exit_code = -1",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:695",
+   "tried": "                if e_code != -1:",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:726",
+   "tried": "                stdout = outstreams[-1].getvalue()",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:727",
+   "tried": "                stderr = outstreams[0].getvalue()",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:728",
+   "tried": "                output = outstreams[1].getvalue()",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/types.py:30",
+   "tried": "_ValueT_contra = t.TypeVar(\"_ValueT_contra\", contravariant=False)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/types.py:31",
+   "tried": "_ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=False)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/types.py:40",
+   "tried": "elif sys.version_info > (3, 13):",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/types.py:40",
+   "tried": "elif sys.version_info >= (2, 13):",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/types.py:40",
+   "tried": "elif sys.version_info >= (3, 12):",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/types.py:40",
+   "tried": "elif sys.version_info <= (3, 13):",
+   "why": "pytest usage/configuration error with this candidate applied"
+  },
+  {
+   "at": "src/click/types.py:41",
+   "tried": "    _InputT_contra = t.TypeVar(\"_InputT_contra\", contravariant=False, default=t.Any)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/types.py:46",
+   "tried": "_FloatValueT_co = t.TypeVar(\"_FloatValueT_co\", bound=float, covariant=False)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:53",
+   "tried": "        return -1",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:320",
+   "tried": "    def func_name(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 320)"
+  },
+  {
+   "at": "src/click/shell_completion.py:327",
+   "tried": "    def source_vars(self) ->= _SourceVarsDict:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 327)"
+  },
+  {
+   "at": "src/click/shell_completion.py:339",
+   "tried": "    def source(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 339)"
+  },
+  {
+   "at": "src/click/shell_completion.py:347",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 347)"
+  },
+  {
+   "at": "src/click/shell_completion.py:368",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 368)"
+  },
+  {
+   "at": "src/click/shell_completion.py:376",
+   "tried": "    def complete(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 376)"
+  },
+  {
+   "at": "src/click/shell_completion.py:396",
+   "tried": "    def _check_version() ->= None:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 396)"
+  },
+  {
+   "at": "src/click/shell_completion.py:428",
+   "tried": "    def source(self) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 428)"
+  },
+  {
+   "at": "src/click/shell_completion.py:432",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 432)"
+  },
+  {
+   "at": "src/click/shell_completion.py:444",
+   "tried": "    def format_completion(self, item: CompletionItem[t.Any]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 444)"
+  },
+  {
+   "at": "src/click/shell_completion.py:454",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 454)"
+  },
+  {
+   "at": "src/click/shell_completion.py:457",
+   "tried": "        args = cwords[0:cword]",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:466",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 466)"
+  },
+  {
+   "at": "src/click/shell_completion.py:490",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 490)"
+  },
+  {
+   "at": "src/click/shell_completion.py:504",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 504)"
+  },
+  {
+   "at": "src/click/shell_completion.py:530",
+   "tried": "    def get_completion_args(self) ->= tuple[list[str], str]:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 530)"
+  },
+  {
+   "at": "src/click/shell_completion.py:542",
+   "tried": "    def format_completion(self, item: CompletionItem[str]) ->= str:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 542)"
+  },
+  {
+   "at": "src/click/shell_completion.py:64",
+   "tried": "    _ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=False)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:100",
+   "tried": "    def __getattr__(self, name: str) ->= t.Any:",
+   "why": "does not compile: expected ':' (shell_completion.py, line 100)"
+  },
+  {
+   "at": "src/click/shell_completion.py:111",
+   "tried": "%(complete_var)s=bash_complete $0)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <=<< \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <<=< \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:114",
+   "tried": "        IFS=',' read type value <<<= \"$completion\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:123",
+   "tried": "            COMPREPLY-=($value)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:127",
+   "tried": "    return -1",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:195",
+   "tried": "        if test $metadata[0] = \"dir\";",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:196",
+   "tried": "            __fish_complete_directories $metadata[1];",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/shell_completion.py:197",
+   "tried": "        else if test $metadata[0] = \"file\";",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:37",
+   "tried": "    def __init__(self, input: t.BinaryIO, output: t.BinaryIO) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 37)"
+  },
+  {
+   "at": "src/click/testing.py:42",
+   "tried": "    def __getattr__(self, x: str) ->= t.Any:",
+   "why": "does not compile: expected ':' (testing.py, line 42)"
+  },
+  {
+   "at": "src/click/testing.py:45",
+   "tried": "    def _echo(self, rv: bytes) ->= bytes:",
+   "why": "does not compile: expected ':' (testing.py, line 45)"
+  },
+  {
+   "at": "src/click/testing.py:51",
+   "tried": "    def read(self, n: int = -1) ->= bytes:",
+   "why": "does not compile: expected ':' (testing.py, line 51)"
+  },
+  {
+   "at": "src/click/testing.py:51",
+   "tried": "    def read(self, n: int =) -> bytes:",
+   "why": "does not compile: expected default value expression (testing.py, line 51)"
+  },
+  {
+   "at": "src/click/testing.py:54",
+   "tried": "    def read1(self, n: int = -1) ->= bytes:",
+   "why": "does not compile: expected ':' (testing.py, line 54)"
+  },
+  {
+   "at": "src/click/testing.py:54",
+   "tried": "    def read1(self, n: int =) -> bytes:",
+   "why": "does not compile: expected default value expression (testing.py, line 54)"
+  },
+  {
+   "at": "src/click/testing.py:57",
+   "tried": "    def readline(self, n: int = -1) ->= bytes:",
+   "why": "does not compile: expected ':' (testing.py, line 57)"
+  },
+  {
+   "at": "src/click/testing.py:57",
+   "tried": "    def readline(self, n: int =) -> bytes:",
+   "why": "does not compile: expected default value expression (testing.py, line 57)"
+  },
+  {
+   "at": "src/click/testing.py:60",
+   "tried": "    def readlines(self) ->= list[bytes]:",
+   "why": "does not compile: expected ':' (testing.py, line 60)"
+  },
+  {
+   "at": "src/click/testing.py:63",
+   "tried": "    def __iter__(self) ->= cabc.Iterator[bytes]:",
+   "why": "does not compile: expected ':' (testing.py, line 63)"
+  },
+  {
+   "at": "src/click/testing.py:66",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 66)"
+  },
+  {
+   "at": "src/click/testing.py:71",
+   "tried": "def _pause_echo(stream: EchoingStdin | None) ->= cabc.Generator[None]:",
+   "why": "does not compile: expected ':' (testing.py, line 71)"
+  },
+  {
+   "at": "src/click/testing.py:95",
+   "tried": "    def __init__(self, targetfd: int) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 95)"
+  },
+  {
+   "at": "src/click/testing.py:100",
+   "tried": "    def start(self) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 100)"
+  },
+  {
+   "at": "src/click/testing.py:105",
+   "tried": "    def stop(self) ->= bytes:",
+   "why": "does not compile: expected ':' (testing.py, line 105)"
+  },
+  {
+   "at": "src/click/testing.py:125",
+   "tried": "    def __init__(self, copy_to: io.BytesIO) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 125)"
+  },
+  {
+   "at": "src/click/testing.py:129",
+   "tried": "    def flush(self) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 129)"
+  },
+  {
+   "at": "src/click/testing.py:133",
+   "tried": "    def write(self, b: ReadableBuffer) ->= int:",
+   "why": "does not compile: expected ':' (testing.py, line 133)"
+  },
+  {
+   "at": "src/click/testing.py:150",
+   "tried": "    def __init__(self) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 150)"
+  },
+  {
+   "at": "src/click/testing.py:182",
+   "tried": "        self._original_fd =",
+   "why": "does not compile: invalid syntax (testing.py, line 182)"
+  },
+  {
+   "at": "src/click/testing.py:184",
+   "tried": "    def close(self) ->= None:",
+   "why": "does not compile: expected ':' (testing.py, line 184)"
+  },
+  {
+   "at": "src/click/testing.py:192",
+   "tried": "    def fileno(self) ->= int:",
+   "why": "does not compile: expected ':' (testing.py, line 192)"
+  },
+  {
+   "at": "src/click/testing.py:203",
+   "tried": "    def name(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 203)"
+  },
+  {
+   "at": "src/click/testing.py:207",
+   "tried": "    def mode(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 207)"
+  },
+  {
+   "at": "src/click/testing.py:283",
+   "tried": "    def output(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 283)"
+  },
+  {
+   "at": "src/click/testing.py:295",
+   "tried": "    def stdout(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 295)"
+  },
+  {
+   "at": "src/click/testing.py:302",
+   "tried": "    def stderr(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 302)"
+  },
+  {
+   "at": "src/click/testing.py:312",
+   "tried": "    def __repr__(self) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 312)"
+  },
+  {
+   "at": "src/click/testing.py:314",
+   "tried": "        return f\"<{type(self).__name__} {exc_str}>=\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:314",
+   "tried": "        return f\"<={type(self).__name__} {exc_str}>\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:314",
+   "tried": "        return f\">{type(self).__name__} {exc_str}>\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:314",
+   "tried": "        return f\"<{type(self).__name__} {exc_str}<\"",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/testing.py:382",
+   "tried": "    def get_default_prog_name(self, cli: Command) ->= str:",
+   "why": "does not compile: expected ':' (testing.py, line 382)"
+  },
+  {
+   "at": "src/click/testing.py:439",
+   "tried": "        formatting.FORCED_WIDTH = 79",
+   "why": "FAILED tests/test_commands.py::test_auto_shorthelp - AssertionError: assert N..."
+  },
+  {
+   "at": "src/click/types.py:30",
+   "tried": "_ValueT_contra = t.TypeVar(\"_ValueT_contra\", contravariant=False)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  },
+  {
+   "at": "src/click/types.py:31",
+   "tried": "_ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=False)",
+   "why": "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+  }
+ ],
+ "rejected_not_listed": 0,
+ "executed_lines": {
+  "src/click/shell_completion.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import collections.abc as cabc"
+   ],
+   [
+    4,
+    "import os"
+   ],
+   [
+    5,
+    "import re"
+   ],
+   [
+    6,
+    "import typing as t"
+   ],
+   [
+    7,
+    "from gettext import gettext as _"
+   ],
+   [
+    9,
+    "from .core import Argument"
+   ],
+   [
+    10,
+    "from .core import Command"
+   ],
+   [
+    11,
+    "from .core import Context"
+   ],
+   [
+    12,
+    "from .core import Group"
+   ],
+   [
+    13,
+    "from .core import Option"
+   ],
+   [
+    14,
+    "from .core import Parameter"
+   ],
+   [
+    15,
+    "from .core import ParameterSource"
+   ],
+   [
+    16,
+    "from .utils import echo"
+   ],
+   [
+    19,
+    "def shell_complete("
+   ],
+   [
+    38,
+    "    shell, _, instruction = instruction.partition(\"_\")"
+   ],
+   [
+    39,
+    "    comp_cls = get_completion_class(shell)"
+   ],
+   [
+    41,
+    "    if comp_cls is None:"
+   ],
+   [
+    44,
+    "    comp = comp_cls(cli, ctx_args, prog_name, complete_var)"
+   ],
+   [
+    47,
+    "    if instruction == \"source\":"
+   ],
+   [
+    51,
+    "    if instruction == \"complete\":"
+   ],
+   [
+    52,
+    "        echo(comp.complete().encode())"
+   ],
+   [
+    53,
+    "        return 0"
+   ],
+   [
+    64,
+    "    _ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=True)"
+   ],
+   [
+    67,
+    "class CompletionItem(t.Generic[_ValueT_co]):"
+   ],
+   [
+    86,
+    "    __slots__ = (\"value\", \"type\", \"help\", \"_info\")"
+   ],
+   [
+    88,
+    "    def __init__("
+   ],
+   [
+    95,
+    "        self.value: _ValueT_co = value"
+   ],
+   [
+    96,
+    "        self.type: str = type"
+   ],
+   [
+    97,
+    "        self.help: str | None = help"
+   ],
+   [
+    98,
+    "        self._info = kwargs"
+   ],
+   [
+    100,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    105,
+    "_SOURCE_BASH = \"\"\"\\"
+   ],
+   [
+    106,
+    "%(complete_func)s() {"
+   ],
+   [
+    107,
+    "    local IFS=$'\\\\n'"
+   ],
+   [
+    108,
+    "    local response"
+   ],
+   [
+    109,
+    ""
+   ],
+   [
+    110,
+    "    response=$(env COMP_WORDS=\"${COMP_WORDS[*]}\" COMP_CWORD=$COMP_CWORD \\"
+   ],
+   [
+    111,
+    "%(complete_var)s=bash_complete $1)"
+   ],
+   [
+    112,
+    ""
+   ],
+   [
+    113,
+    "    for completion in $response; do"
+   ],
+   [
+    114,
+    "        IFS=',' read type value <<< \"$completion\""
+   ],
+   [
+    115,
+    ""
+   ],
+   [
+    116,
+    "        if [[ $type == 'dir' ]]; then"
+   ],
+   [
+    117,
+    "            COMPREPLY=()"
+   ],
+   [
+    118,
+    "            compopt -o dirnames"
+   ],
+   [
+    119,
+    "        elif [[ $type == 'file' ]]; then"
+   ],
+   [
+    120,
+    "            COMPREPLY=()"
+   ],
+   [
+    121,
+    "            compopt -o default"
+   ],
+   [
+    122,
+    "        elif [[ $type == 'plain' ]]; then"
+   ],
+   [
+    123,
+    "            COMPREPLY+=($value)"
+   ],
+   [
+    124,
+    "        fi"
+   ],
+   [
+    125,
+    "    done"
+   ],
+   [
+    126,
+    ""
+   ],
+   [
+    127,
+    "    return 0"
+   ],
+   [
+    128,
+    "}"
+   ],
+   [
+    129,
+    ""
+   ],
+   [
+    130,
+    "%(complete_func)s_setup() {"
+   ],
+   [
+    131,
+    "    complete -o nosort -F %(complete_func)s %(prog_name)s"
+   ],
+   [
+    132,
+    "}"
+   ],
+   [
+    133,
+    ""
+   ],
+   [
+    134,
+    "%(complete_func)s_setup;"
+   ],
+   [
+    135,
+    "\"\"\""
+   ],
+   [
+    143,
+    "_SOURCE_ZSH = \"\"\"\\"
+   ],
+   [
+    187,
+    "_SOURCE_FISH = \"\"\"\\"
+   ],
+   [
+    188,
+    "function %(complete_func)s;"
+   ],
+   [
+    189,
+    "    set -l response (env %(complete_var)s=fish_complete COMP_WORDS=(commandline -cp) \\"
+   ],
+   [
+    190,
+    "COMP_CWORD=(commandline -t) %(prog_name)s);"
+   ],
+   [
+    191,
+    ""
+   ],
+   [
+    192,
+    "    for completion in $response;"
+   ],
+   [
+    193,
+    "        set -l metadata (string split \",\" $completion);"
+   ],
+   [
+    194,
+    ""
+   ],
+   [
+    195,
+    "        if test $metadata[1] = \"dir\";"
+   ],
+   [
+    196,
+    "            __fish_complete_directories $metadata[2];"
+   ],
+   [
+    197,
+    "        else if test $metadata[1] = \"file\";"
+   ],
+   [
+    198,
+    "            __fish_complete_path $metadata[2];"
+   ],
+   [
+    199,
+    "        else if test $metadata[1] = \"plain\";"
+   ],
+   [
+    200,
+    "            echo $metadata[2];"
+   ],
+   [
+    201,
+    "        end;"
+   ],
+   [
+    202,
+    "    end;"
+   ]
+  ],
+  "src/click/_utils.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import enum"
+   ],
+   [
+    4,
+    "import typing as t"
+   ],
+   [
+    7,
+    "class Sentinel(enum.Enum):"
+   ],
+   [
+    15,
+    "    UNSET = object()"
+   ],
+   [
+    16,
+    "    FLAG_NEEDS_VALUE = object()"
+   ],
+   [
+    18,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    21,
+    "    def __copy__(self) -> Sentinel:"
+   ],
+   [
+    24,
+    "    def __deepcopy__(self, memo: dict[int, t.Any]) -> Sentinel:"
+   ],
+   [
+    27,
+    "    def __reduce_ex__(self, protocol: object) -> tuple[t.Any, ...]:"
+   ],
+   [
+    31,
+    "UNSET: t.Literal[Sentinel.UNSET] = Sentinel.UNSET"
+   ],
+   [
+    32,
+    "\"\"\"Sentinel used to indicate that a value is not set.\"\"\""
+   ],
+   [
+    34,
+    "FLAG_NEEDS_VALUE: t.Literal[Sentinel.FLAG_NEEDS_VALUE] = Sentinel.FLAG_NEEDS_VALUE"
+   ],
+   [
+    35,
+    "\"\"\"Sentinel used to indicate an option was passed as a flag without a"
+   ],
+   [
+    36,
+    "value but is not a flag option."
+   ],
+   [
+    37,
+    ""
+   ],
+   [
+    38,
+    "``Option.consume_value`` uses this to prompt or use the ``flag_value``."
+   ],
+   [
+    39,
+    "\"\"\""
+   ],
+   [
+    41,
+    "T_UNSET: t.TypeAlias = t.Literal[Sentinel.UNSET]"
+   ],
+   [
+    42,
+    "\"\"\"Type hint for the :data:`UNSET` sentinel value.\"\"\""
+   ],
+   [
+    44,
+    "T_FLAG_NEEDS_VALUE: t.TypeAlias = t.Literal[Sentinel.FLAG_NEEDS_VALUE]"
+   ],
+   [
+    45,
+    "\"\"\"Type hint for the :data:`FLAG_NEEDS_VALUE` sentinel value.\"\"\""
+   ]
+  ],
+  "src/click/__init__.py": [
+   [
+    8,
+    "from __future__ import annotations"
+   ],
+   [
+    10,
+    "from .core import Argument as Argument"
+   ],
+   [
+    11,
+    "from .core import Command as Command"
+   ],
+   [
+    12,
+    "from .core import CommandCollection as CommandCollection"
+   ],
+   [
+    13,
+    "from .core import Context as Context"
+   ],
+   [
+    14,
+    "from .core import Group as Group"
+   ],
+   [
+    15,
+    "from .core import Option as Option"
+   ],
+   [
+    16,
+    "from .core import Parameter as Parameter"
+   ],
+   [
+    17,
+    "from .core import ParameterSource as ParameterSource"
+   ],
+   [
+    18,
+    "from .decorators import argument as argument"
+   ],
+   [
+    19,
+    "from .decorators import command as command"
+   ],
+   [
+    20,
+    "from .decorators import confirmation_option as confirmation_option"
+   ],
+   [
+    21,
+    "from .decorators import custom_version_option as custom_version_option"
+   ],
+   [
+    22,
+    "from .decorators import group as group"
+   ],
+   [
+    23,
+    "from .decorators import help_option as help_option"
+   ],
+   [
+    24,
+    "from .decorators import make_pass_decorator as make_pass_decorator"
+   ],
+   [
+    25,
+    "from .decorators import option as option"
+   ],
+   [
+    26,
+    "from .decorators import pass_context as pass_context"
+   ],
+   [
+    27,
+    "from .decorators import pass_obj as pass_obj"
+   ],
+   [
+    28,
+    "from .decorators import password_option as password_option"
+   ],
+   [
+    29,
+    "from .decorators import version_option as version_option"
+   ],
+   [
+    30,
+    "from .exceptions import Abort as Abort"
+   ],
+   [
+    31,
+    "from .exceptions import BadArgumentUsage as BadArgumentUsage"
+   ],
+   [
+    32,
+    "from .exceptions import BadOptionUsage as BadOptionUsage"
+   ],
+   [
+    33,
+    "from .exceptions import BadParameter as BadParameter"
+   ],
+   [
+    34,
+    "from .exceptions import ClickException as ClickException"
+   ],
+   [
+    35,
+    "from .exceptions import FileError as FileError"
+   ],
+   [
+    36,
+    "from .exceptions import MissingParameter as MissingParameter"
+   ],
+   [
+    37,
+    "from .exceptions import NoSuchCommand as NoSuchCommand"
+   ],
+   [
+    38,
+    "from .exceptions import NoSuchOption as NoSuchOption"
+   ],
+   [
+    39,
+    "from .exceptions import UsageError as UsageError"
+   ],
+   [
+    40,
+    "from .formatting import HelpFormatter as HelpFormatter"
+   ],
+   [
+    41,
+    "from .formatting import wrap_text as wrap_text"
+   ],
+   [
+    42,
+    "from .globals import get_current_context as get_current_context"
+   ],
+   [
+    43,
+    "from .termui import clear as clear"
+   ],
+   [
+    44,
+    "from .termui import confirm as confirm"
+   ],
+   [
+    45,
+    "from .termui import echo_via_pager as echo_via_pager"
+   ],
+   [
+    46,
+    "from .termui import edit as edit"
+   ],
+   [
+    47,
+    "from .termui import get_pager_file as get_pager_file"
+   ],
+   [
+    48,
+    "from .termui import getchar as getchar"
+   ],
+   [
+    49,
+    "from .termui import launch as launch"
+   ],
+   [
+    50,
+    "from .termui import pause as pause"
+   ],
+   [
+    51,
+    "from .termui import progressbar as progressbar"
+   ],
+   [
+    52,
+    "from .termui import prompt as prompt"
+   ],
+   [
+    53,
+    "from .termui import secho as secho"
+   ],
+   [
+    54,
+    "from .termui import style as style"
+   ],
+   [
+    55,
+    "from .termui import unstyle as unstyle"
+   ],
+   [
+    56,
+    "from .types import BOOL as BOOL"
+   ],
+   [
+    57,
+    "from .types import Choice as Choice"
+   ],
+   [
+    58,
+    "from .types import DateTime as DateTime"
+   ],
+   [
+    59,
+    "from .types import File as File"
+   ],
+   [
+    60,
+    "from .types import FLOAT as FLOAT"
+   ],
+   [
+    61,
+    "from .types import FloatRange as FloatRange"
+   ],
+   [
+    62,
+    "from .types import INT as INT"
+   ],
+   [
+    63,
+    "from .types import IntRange as IntRange"
+   ],
+   [
+    64,
+    "from .types import ParamType as ParamType"
+   ],
+   [
+    65,
+    "from .types import Path as Path"
+   ],
+   [
+    66,
+    "from .types import STRING as STRING"
+   ],
+   [
+    67,
+    "from .types import Tuple as Tuple"
+   ],
+   [
+    68,
+    "from .types import UNPROCESSED as UNPROCESSED"
+   ],
+   [
+    69,
+    "from .types import UUID as UUID"
+   ],
+   [
+    70,
+    "from .utils import echo as echo"
+   ],
+   [
+    71,
+    "from .utils import format_filename as format_filename"
+   ],
+   [
+    72,
+    "from .utils import get_app_dir as get_app_dir"
+   ],
+   [
+    73,
+    "from .utils import open_file as open_file"
+   ],
+   [
+    76,
+    "def __getattr__(name: str) -> object:"
+   ],
+   [
+    77,
+    "    import warnings"
+   ],
+   [
+    79,
+    "    if name == \"BaseCommand\":"
+   ],
+   [
+    90,
+    "    if name == \"MultiCommand\":"
+   ],
+   [
+    101,
+    "    if name == \"OptionParser\":"
+   ],
+   [
+    112,
+    "    if name == \"__version__\":"
+   ],
+   [
+    124,
+    "    if name == \"get_binary_stream\":"
+   ],
+   [
+    134,
+    "    if name == \"get_text_stream\":"
+   ],
+   [
+    144,
+    "    raise AttributeError(name)"
+   ]
+  ],
+  "src/click/testing.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import collections.abc as cabc"
+   ],
+   [
+    4,
+    "import contextlib"
+   ],
+   [
+    5,
+    "import io"
+   ],
+   [
+    6,
+    "import os"
+   ],
+   [
+    7,
+    "import pdb"
+   ],
+   [
+    8,
+    "import shlex"
+   ],
+   [
+    9,
+    "import sys"
+   ],
+   [
+    10,
+    "import tempfile"
+   ],
+   [
+    11,
+    "import typing as t"
+   ],
+   [
+    12,
+    "from types import TracebackType"
+   ],
+   [
+    14,
+    "from . import _compat"
+   ],
+   [
+    15,
+    "from . import formatting"
+   ],
+   [
+    16,
+    "from . import termui"
+   ],
+   [
+    17,
+    "from . import utils"
+   ],
+   [
+    18,
+    "from ._compat import _find_binary_reader"
+   ],
+   [
+    25,
+    "if sys.platform == \"win32\":"
+   ],
+   [
+    28,
+    "    CaptureMode: t.TypeAlias = t.Literal[\"sys\", \"fd\"]  # pyright: ignore[reportRedeclaration]"
+   ],
+   [
+    29,
+    "ExceptionInfo: t.TypeAlias = tuple[type[BaseException], BaseException, TracebackType]"
+   ],
+   [
+    32,
+    "class EchoingStdin:"
+   ],
+   [
+    33,
+    "    _input: t.BinaryIO"
+   ],
+   [
+    34,
+    "    _output: t.BinaryIO"
+   ],
+   [
+    35,
+    "    _paused: bool"
+   ],
+   [
+    37,
+    "    def __init__(self, input: t.BinaryIO, output: t.BinaryIO) -> None:"
+   ],
+   [
+    42,
+    "    def __getattr__(self, x: str) -> t.Any:"
+   ],
+   [
+    45,
+    "    def _echo(self, rv: bytes) -> bytes:"
+   ],
+   [
+    51,
+    "    def read(self, n: int = -1) -> bytes:"
+   ],
+   [
+    54,
+    "    def read1(self, n: int = -1) -> bytes:"
+   ],
+   [
+    57,
+    "    def readline(self, n: int = -1) -> bytes:"
+   ],
+   [
+    60,
+    "    def readlines(self) -> list[bytes]:"
+   ],
+   [
+    63,
+    "    def __iter__(self) -> cabc.Iterator[bytes]:"
+   ],
+   [
+    66,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    70,
+    "@contextlib.contextmanager"
+   ],
+   [
+    71,
+    "def _pause_echo(stream: EchoingStdin | None) -> cabc.Generator[None]:"
+   ],
+   [
+    80,
+    "class _FDCapture:"
+   ],
+   [
+    91,
+    "    _targetfd: int"
+   ],
+   [
+    92,
+    "    saved_fd: int"
+   ],
+   [
+    93,
+    "    _tmpfile: t.BinaryIO | None"
+   ],
+   [
+    95,
+    "    def __init__(self, targetfd: int) -> None:"
+   ],
+   [
+    100,
+    "    def start(self) -> None:"
+   ],
+   [
+    105,
+    "    def stop(self) -> bytes:"
+   ],
+   [
+    117,
+    "class BytesIOCopy(io.BytesIO):"
+   ],
+   [
+    123,
+    "    copy_to: io.BytesIO"
+   ],
+   [
+    125,
+    "    def __init__(self, copy_to: io.BytesIO) -> None:"
+   ],
+   [
+    126,
+    "        super().__init__()"
+   ],
+   [
+    127,
+    "        self.copy_to = copy_to"
+   ],
+   [
+    129,
+    "    def flush(self) -> None:"
+   ],
+   [
+    130,
+    "        super().flush()"
+   ],
+   [
+    131,
+    "        self.copy_to.flush()"
+   ],
+   [
+    133,
+    "    def write(self, b: ReadableBuffer) -> int:"
+   ],
+   [
+    134,
+    "        self.copy_to.write(b)"
+   ],
+   [
+    135,
+    "        return super().write(b)"
+   ],
+   [
+    138,
+    "class StreamMixer:"
+   ],
+   [
+    146,
+    "    output: io.BytesIO"
+   ],
+   [
+    147,
+    "    stdout: BytesIOCopy"
+   ],
+   [
+    148,
+    "    stderr: BytesIOCopy"
+   ],
+   [
+    150,
+    "    def __init__(self) -> None:"
+   ],
+   [
+    151,
+    "        self.output = io.BytesIO()"
+   ],
+   [
+    152,
+    "        self.stdout = BytesIOCopy(copy_to=self.output)"
+   ],
+   [
+    153,
+    "        self.stderr = BytesIOCopy(copy_to=self.output)"
+   ],
+   [
+    156,
+    "class _NamedTextIOWrapper(io.TextIOWrapper):"
+   ],
+   [
+    168,
+    "    _name: str"
+   ],
+   [
+    169,
+    "    _mode: str"
+   ],
+   [
+    170,
+    "    _original_fd: int"
+   ],
+   [
+    172,
+    "    def __init__("
+   ],
+   [
+    179,
+    "        super().__init__(buffer, **kwargs)"
+   ],
+   [
+    180,
+    "        self._name = name"
+   ],
+   [
+    181,
+    "        self._mode = mode"
+   ],
+   [
+    182,
+    "        self._original_fd = -1"
+   ],
+   [
+    184,
+    "    def close(self) -> None:"
+   ],
+   [
+    192,
+    "    def fileno(self) -> int:"
+   ],
+   [
+    202,
+    "    @property"
+   ],
+   [
+    203,
+    "    def name(self) -> str:"
+   ],
+   [
+    206,
+    "    @property"
+   ],
+   [
+    207,
+    "    def mode(self) -> str:"
+   ],
+   [
+    211,
+    "def make_input_stream("
+   ],
+   [
+    215,
+    "    if hasattr(input, \"read\"):"
+   ],
+   [
+    223,
+    "    if input is None:"
+   ],
+   [
+    224,
+    "        input = b\"\""
+   ],
+   [
+    228,
+    "    return io.BytesIO(input)"
+   ]
+  ],
+  "src/click/types.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import abc"
+   ],
+   [
+    4,
+    "import collections.abc as cabc"
+   ],
+   [
+    5,
+    "import enum"
+   ],
+   [
+    6,
+    "import os"
+   ],
+   [
+    7,
+    "import stat"
+   ],
+   [
+    8,
+    "import sys"
+   ],
+   [
+    9,
+    "import typing as t"
+   ],
+   [
+    10,
+    "import uuid"
+   ],
+   [
+    11,
+    "from datetime import datetime"
+   ],
+   [
+    12,
+    "from gettext import gettext as _"
+   ],
+   [
+    13,
+    "from gettext import ngettext"
+   ],
+   [
+    15,
+    "from ._compat import _get_argv_encoding"
+   ],
+   [
+    16,
+    "from ._compat import open_stream"
+   ],
+   [
+    17,
+    "from .exceptions import BadParameter"
+   ],
+   [
+    18,
+    "from .utils import _LazyFile"
+   ],
+   [
+    19,
+    "from .utils import _safecall"
+   ],
+   [
+    20,
+    "from .utils import format_filename"
+   ],
+   [
+    29,
+    "_ValueT = t.TypeVar(\"_ValueT\")"
+   ],
+   [
+    30,
+    "_ValueT_contra = t.TypeVar(\"_ValueT_contra\", contravariant=True)"
+   ],
+   [
+    31,
+    "_ValueT_co = t.TypeVar(\"_ValueT_co\", covariant=True)"
+   ],
+   [
+    40,
+    "elif sys.version_info >= (3, 13):"
+   ],
+   [
+    41,
+    "    _InputT_contra = t.TypeVar(\"_InputT_contra\", contravariant=True, default=t.Any)"
+   ],
+   [
+    45,
+    "_FloatValueT = t.TypeVar(\"_FloatValueT\", bound=float)"
+   ],
+   [
+    46,
+    "_FloatValueT_co = t.TypeVar(\"_FloatValueT_co\", bound=float, covariant=True)"
+   ],
+   [
+    49,
+    "class ParamTypeInfoDict(t.TypedDict):"
+   ],
+   [
+    50,
+    "    param_type: str"
+   ],
+   [
+    51,
+    "    name: str"
+   ],
+   [
+    54,
+    "class ParamType(t.Generic[_ValueT_co, _InputT_contra], abc.ABC):"
+   ],
+   [
+    83,
+    "    is_composite: t.ClassVar[bool] = False"
+   ],
+   [
+    84,
+    "    arity: int = 1  # read-only"
+   ],
+   [
+    87,
+    "    name: str"
+   ],
+   [
+    95,
+    "    envvar_list_splitter: t.ClassVar[str | None] = None"
+   ],
+   [
+    97,
+    "    if sys.version_info < (3, 13):"
+   ],
+   [
+    111,
+    "    def to_info_dict(self) -> ParamTypeInfoDict:"
+   ],
+   [
+    148,
+    "    def __call__("
+   ],
+   [
+    154,
+    "        if value is not None:"
+   ],
+   [
+    155,
+    "            return self.convert(value, param, ctx)"
+   ],
+   [
+    158,
+    "    def get_metavar(self, param: Parameter, ctx: Context) -> str | None:"
+   ],
+   [
+    161,
+    "    def get_missing_message(self, param: Parameter, ctx: Context | None) -> str | None:"
+   ],
+   [
+    168,
+    "    def convert("
+   ],
+   [
+    194,
+    "    def split_envvar_value(self, rv: str) -> cabc.Sequence[str]:"
+   ],
+   [
+    204,
+    "    def fail("
+   ],
+   [
+    213,
+    "    def shell_complete("
+   ],
+   [
+    231,
+    "class CompositeParamType(ParamType[_ValueT_co]):"
+   ],
+   [
+    232,
+    "    is_composite: t.ClassVar[bool] = True"
+   ],
+   [
+    249,
+    "    class FuncParamTypeInfoDict(ParamTypeInfoDict):"
+   ],
+   [
+    250,
+    "        func: t.Callable[[t.Any], t.Any]"
+   ],
+   [
+    253,
+    "class FuncParamType(ParamType[_ValueT_co], t.Generic[_ValueT_contra, _ValueT_co]):"
+   ],
+   [
+    254,
+    "    name: str"
+   ],
+   [
+    255,
+    "    func: t.Callable[[_ValueT_contra], _ValueT_co]"
+   ],
+   [
+    257,
+    "    def __init__(self, func: t.Callable[[_ValueT_contra], _ValueT_co]) -> None:"
+   ],
+   [
+    261,
+    "    def to_info_dict(self) -> FuncParamTypeInfoDict[_ValueT_contra, _ValueT_co]:"
+   ],
+   [
+    264,
+    "    def convert("
+   ],
+   [
+    281,
+    "class UnprocessedParamType(ParamType[t.Any]):"
+   ],
+   [
+    282,
+    "    name = \"text\""
+   ],
+   [
+    284,
+    "    def convert("
+   ],
+   [
+    289,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    293,
+    "class StringParamType(ParamType[str]):"
+   ],
+   [
+    294,
+    "    name = \"text\""
+   ],
+   [
+    296,
+    "    def convert("
+   ],
+   [
+    314,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    326,
+    "    class ChoiceInfoDict(ParamTypeInfoDict):"
+   ],
+   [
+    327,
+    "        choices: tuple[t.Any, ...]"
+   ],
+   [
+    328,
+    "        case_sensitive: bool"
+   ],
+   [
+    331,
+    "class Choice(ParamType[_ValueT_co], t.Generic[_ValueT_co]):"
+   ],
+   [
+    359,
+    "    name: str = \"choice\""
+   ],
+   [
+    361,
+    "    choices: tuple[_ValueT_co, ...]"
+   ],
+   [
+    362,
+    "    case_sensitive: bool"
+   ],
+   [
+    364,
+    "    def __init__("
+   ],
+   [
+    370,
+    "    def to_info_dict(self) -> ChoiceInfoDict[_ValueT_co]:"
+   ],
+   [
+    377,
+    "    def _normalized_mapping("
+   ],
+   [
+    395,
+    "    def normalize_choice(self, choice: object, ctx: Context | None) -> str:"
+   ],
+   [
+    415,
+    "    def get_metavar(self, param: Parameter, ctx: Context) -> str | None:"
+   ],
+   [
+    433,
+    "    def get_missing_message(self, param: Parameter, ctx: Context | None) -> str:"
+   ],
+   [
+    443,
+    "    def convert("
+   ],
+   [
+    467,
+    "    def get_invalid_choice_message(self, value: t.Any, ctx: Context | None) -> str:"
+   ],
+   [
+    481,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    484,
+    "    def shell_complete("
+   ],
+   [
+    507,
+    "class DateTimeInfoDict(ParamTypeInfoDict):"
+   ]
+  ],
+  "src/click/core.py": [
+   [
+    1,
+    "from __future__ import annotations"
+   ],
+   [
+    3,
+    "import collections.abc as cabc"
+   ],
+   [
+    4,
+    "import enum"
+   ],
+   [
+    5,
+    "import errno"
+   ],
+   [
+    6,
+    "import inspect"
+   ],
+   [
+    7,
+    "import os"
+   ],
+   [
+    8,
+    "import sys"
+   ],
+   [
+    9,
+    "import typing as t"
+   ],
+   [
+    10,
+    "from abc import ABC"
+   ],
+   [
+    11,
+    "from abc import abstractmethod"
+   ],
+   [
+    12,
+    "from collections import abc"
+   ],
+   [
+    13,
+    "from collections import Counter"
+   ],
+   [
+    14,
+    "from contextlib import AbstractContextManager"
+   ],
+   [
+    15,
+    "from contextlib import contextmanager"
+   ],
+   [
+    16,
+    "from contextlib import ExitStack"
+   ],
+   [
+    17,
+    "from functools import update_wrapper"
+   ],
+   [
+    18,
+    "from gettext import gettext as _"
+   ],
+   [
+    19,
+    "from gettext import ngettext"
+   ],
+   [
+    20,
+    "from itertools import repeat"
+   ],
+   [
+    21,
+    "from types import TracebackType"
+   ],
+   [
+    23,
+    "from . import types"
+   ],
+   [
+    24,
+    "from ._utils import FLAG_NEEDS_VALUE"
+   ],
+   [
+    25,
+    "from ._utils import UNSET"
+   ],
+   [
+    26,
+    "from .exceptions import Abort"
+   ],
+   [
+    27,
+    "from .exceptions import BadParameter"
+   ],
+   [
+    28,
+    "from .exceptions import ClickException"
+   ],
+   [
+    29,
+    "from .exceptions import Exit"
+   ],
+   [
+    30,
+    "from .exceptions import MissingParameter"
+   ],
+   [
+    31,
+    "from .exceptions import NoArgsIsHelpError"
+   ],
+   [
+    32,
+    "from .exceptions import NoSuchCommand"
+   ],
+   [
+    33,
+    "from .exceptions import UsageError"
+   ],
+   [
+    34,
+    "from .formatting import HelpFormatter"
+   ],
+   [
+    35,
+    "from .formatting import join_options"
+   ],
+   [
+    36,
+    "from .globals import pop_context"
+   ],
+   [
+    37,
+    "from .globals import push_context"
+   ],
+   [
+    38,
+    "from .parser import _OptionParser"
+   ],
+   [
+    39,
+    "from .parser import _split_opt"
+   ],
+   [
+    40,
+    "from .termui import confirm"
+   ],
+   [
+    41,
+    "from .termui import prompt"
+   ],
+   [
+    42,
+    "from .termui import style"
+   ],
+   [
+    43,
+    "from .utils import _detect_program_name"
+   ],
+   [
+    44,
+    "from .utils import _expand_args"
+   ],
+   [
+    45,
+    "from .utils import _make_default_short_help"
+   ],
+   [
+    46,
+    "from .utils import _PacifyFlushWrapper"
+   ],
+   [
+    47,
+    "from .utils import echo"
+   ],
+   [
+    48,
+    "from .utils import make_str"
+   ],
+   [
+    55,
+    "F = t.TypeVar(\"F\", bound=\"t.Callable[..., t.Any]\")"
+   ],
+   [
+    56,
+    "V = t.TypeVar(\"V\")"
+   ],
+   [
+    60,
+    "_HELP_OPTION_STORAGE_NAME = \"_click_default_help\""
+   ],
+   [
+    63,
+    "def _complete_visible_commands("
+   ],
+   [
+    72,
+    "    multi = t.cast(Group, ctx.command)"
+   ],
+   [
+    74,
+    "    for name in multi.list_commands(ctx):"
+   ],
+   [
+    75,
+    "        if name.startswith(incomplete):"
+   ],
+   [
+    76,
+    "            command = multi.get_command(ctx, name)"
+   ],
+   [
+    78,
+    "            if command is not None and not command.hidden:"
+   ],
+   [
+    79,
+    "                yield name, command"
+   ],
+   [
+    82,
+    "def _check_nested_chain("
+   ],
+   [
+    102,
+    "def _echo_aborted() -> None:"
+   ],
+   [
+    107,
+    "def _format_deprecated_label(deprecated: bool | str) -> str:"
+   ],
+   [
+    115,
+    "def _format_deprecated_suffix(deprecated: bool | str) -> str:"
+   ],
+   [
+    124,
+    "def batch(iterable: cabc.Iterable[V], batch_size: int) -> list[tuple[V, ...]]:"
+   ],
+   [
+    128,
+    "@contextmanager"
+   ],
+   [
+    129,
+    "def augment_usage_errors("
+   ],
+   [
+    133,
+    "    try:"
+   ],
+   [
+    134,
+    "        yield"
+   ],
+   [
+    147,
+    "def iter_params_for_processing("
+   ],
+   [
+    163,
+    "    def sort_key(item: Parameter) -> tuple[bool, float]:"
+   ],
+   [
+    164,
+    "        try:"
+   ],
+   [
+    165,
+    "            idx: float = invocation_order.index(item)"
+   ],
+   [
+    166,
+    "        except ValueError:"
+   ],
+   [
+    167,
+    "            idx = float(\"inf\")"
+   ],
+   [
+    169,
+    "        return not item.is_eager, idx"
+   ],
+   [
+    171,
+    "    return sorted(declaration_order, key=sort_key)"
+   ],
+   [
+    174,
+    "class ParameterSource(enum.IntEnum):"
+   ],
+   [
+    201,
+    "    PROMPT = enum.auto()"
+   ],
+   [
+    202,
+    "    \"\"\"Used a prompt to confirm a default or provide a value.\"\"\""
+   ],
+   [
+    203,
+    "    COMMANDLINE = enum.auto()"
+   ],
+   [
+    204,
+    "    \"\"\"The value was provided by the command line args.\"\"\""
+   ],
+   [
+    205,
+    "    ENVIRONMENT = enum.auto()"
+   ],
+   [
+    206,
+    "    \"\"\"The value was provided with an environment variable.\"\"\""
+   ]
+  ],
+  "src/click/utils.py": [
+   [
+    32,
+    "def _posixify(name: str) -> str:"
+   ],
+   [
+    32,
+    "def _posixify(name: str) -> str:"
+   ],
+   [
+    32,
+    "def _posixify(name: str) -> str:"
+   ],
+   [
+    32,
+    "def _posixify(name: str) -> str:"
+   ],
+   [
+    36,
+    "def _safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:"
+   ],
+   [
+    36,
+    "def _safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:"
+   ],
+   [
+    36,
+    "def _safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:"
+   ],
+   [
+    36,
+    "def _safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:"
+   ],
+   [
+    52,
+    "def make_str(value: t.Any) -> str:"
+   ],
+   [
+    52,
+    "def make_str(value: t.Any) -> str:"
+   ],
+   [
+    52,
+    "def make_str(value: t.Any) -> str:"
+   ],
+   [
+    62,
+    "def _make_default_short_help(help: str, max_length: int = 45) -> str:"
+   ],
+   [
+    62,
+    "def _make_default_short_help(help: str, max_length: int = 45) -> str:"
+   ],
+   [
+    62,
+    "def _make_default_short_help(help: str, max_length: int = 45) -> str:"
+   ],
+   [
+    62,
+    "def _make_default_short_help(help: str, max_length: int = 45) -> str:"
+   ],
+   [
+    70,
+    "    if paragraph_end != -1:"
+   ],
+   [
+    70,
+    "    if paragraph_end != -1:"
+   ],
+   [
+    70,
+    "    if paragraph_end != -1:"
+   ],
+   [
+    70,
+    "    if paragraph_end != -1:"
+   ],
+   [
+    80,
+    "    if words[0] == \"\\b\":"
+   ],
+   [
+    80,
+    "    if words[0] == \"\\b\":"
+   ],
+   [
+    80,
+    "    if words[0] == \"\\b\":"
+   ],
+   [
+    83,
+    "    total_length = 0"
+   ],
+   [
+    83,
+    "    total_length = 0"
+   ],
+   [
+    83,
+    "    total_length = 0"
+   ],
+   [
+    83,
+    "    total_length = 0"
+   ],
+   [
+    84,
+    "    last_index = len(words) - 1"
+   ],
+   [
+    84,
+    "    last_index = len(words) - 1"
+   ],
+   [
+    84,
+    "    last_index = len(words) - 1"
+   ],
+   [
+    84,
+    "    last_index = len(words) - 1"
+   ],
+   [
+    87,
+    "        total_length += len(word) + (i > 0)"
+   ],
+   [
+    87,
+    "        total_length += len(word) + (i > 0)"
+   ],
+   [
+    87,
+    "        total_length += len(word) + (i > 0)"
+   ],
+   [
+    89,
+    "        if total_length > max_length:  # too long, truncate"
+   ],
+   [
+    89,
+    "        if total_length > max_length:  # too long, truncate"
+   ],
+   [
+    89,
+    "        if total_length > max_length:  # too long, truncate"
+   ],
+   [
+    89,
+    "        if total_length > max_length:  # too long, truncate"
+   ],
+   [
+    92,
+    "        if word[-1] == \".\":  # sentence end, truncate without \"...\""
+   ],
+   [
+    92,
+    "        if word[-1] == \".\":  # sentence end, truncate without \"...\""
+   ],
+   [
+    92,
+    "        if word[-1] == \".\":  # sentence end, truncate without \"...\""
+   ],
+   [
+    92,
+    "        if word[-1] == \".\":  # sentence end, truncate without \"...\""
+   ],
+   [
+    95,
+    "        if total_length == max_length and i != last_index:"
+   ],
+   [
+    95,
+    "        if total_length == max_length and i != last_index:"
+   ],
+   [
+    95,
+    "        if total_length == max_length and i != last_index:"
+   ],
+   [
+    157,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    157,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    157,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    157,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    160,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    160,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    160,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    160,
+    "    def __repr__(self) -> str:"
+   ],
+   [
+    165,
+    "    def open(self) -> t.IO[t.Any]:"
+   ],
+   [
+    165,
+    "    def open(self) -> t.IO[t.Any]:"
+   ],
+   [
+    165,
+    "    def open(self) -> t.IO[t.Any]:"
+   ],
+   [
+    165,
+    "    def open(self) -> t.IO[t.Any]:"
+   ],
+   [
+    183,
+    "    def close(self) -> None:"
+   ],
+   [
+    183,
+    "    def close(self) -> None:"
+   ],
+   [
+    183,
+    "    def close(self) -> None:"
+   ],
+   [
+    188,
+    "    def close_intelligently(self) -> None:"
+   ],
+   [
+    188,
+    "    def close_intelligently(self) -> None:"
+   ],
+   [
+    188,
+    "    def close_intelligently(self) -> None:"
+   ],
+   [
+    188,
+    "    def close_intelligently(self) -> None:"
+   ],
+   [
+    195,
+    "    def __enter__(self) -> _LazyFile:"
+   ],
+   [
+    195,
+    "    def __enter__(self) -> _LazyFile:"
+   ],
+   [
+    195,
+    "    def __enter__(self) -> _LazyFile:"
+   ],
+   [
+    206,
+    "    def __iter__(self) -> cabc.Iterator[t.AnyStr]:"
+   ],
+   [
+    206,
+    "    def __iter__(self) -> cabc.Iterator[t.AnyStr]:"
+   ],
+   [
+    206,
+    "    def __iter__(self) -> cabc.Iterator[t.AnyStr]:"
+   ],
+   [
+    206,
+    "    def __iter__(self) -> cabc.Iterator[t.AnyStr]:"
+   ],
+   [
+    228,
+    "    def __init__(self, file: t.IO[t.Any]) -> None:"
+   ],
+   [
+    228,
+    "    def __init__(self, file: t.IO[t.Any]) -> None:"
+   ],
+   [
+    228,
+    "    def __init__(self, file: t.IO[t.Any]) -> None:"
+   ],
+   [
+    228,
+    "    def __init__(self, file: t.IO[t.Any]) -> None:"
+   ],
+   [
+    231,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    231,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    231,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    234,
+    "    def __enter__(self) -> _KeepOpenFile:"
+   ],
+   [
+    234,
+    "    def __enter__(self) -> _KeepOpenFile:"
+   ],
+   [
+    234,
+    "    def __enter__(self) -> _KeepOpenFile:"
+   ]
+  ],
+  "src/click/_compat.py": [
+   [
+    19,
+    "_ansi_re = re.compile(r\"\\033\\[[0-?]*[ -/]*[@-~]\")"
+   ],
+   [
+    19,
+    "_ansi_re = re.compile(r\"\\033\\[[0-?]*[ -/]*[@-~]\")"
+   ],
+   [
+    19,
+    "_ansi_re = re.compile(r\"\\033\\[[0-?]*[ -/]*[@-~]\")"
+   ],
+   [
+    43,
+    "def is_ascii_encoding(encoding: str) -> bool:"
+   ],
+   [
+    43,
+    "def is_ascii_encoding(encoding: str) -> bool:"
+   ],
+   [
+    51,
+    "def get_best_encoding(stream: t.IO[t.Any]) -> str:"
+   ],
+   [
+    51,
+    "def get_best_encoding(stream: t.IO[t.Any]) -> str:"
+   ],
+   [
+    51,
+    "def get_best_encoding(stream: t.IO[t.Any]) -> str:"
+   ],
+   [
+    74,
+    "    def __del__(self) -> None:"
+   ],
+   [
+    74,
+    "    def __del__(self) -> None:"
+   ],
+   [
+    80,
+    "    def isatty(self) -> bool:"
+   ],
+   [
+    80,
+    "    def isatty(self) -> bool:"
+   ],
+   [
+    80,
+    "    def isatty(self) -> bool:"
+   ],
+   [
+    105,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    105,
+    "    def __getattr__(self, name: str) -> t.Any:"
+   ],
+   [
+    108,
+    "    def read1(self, size: int) -> bytes:"
+   ],
+   [
+    108,
+    "    def read1(self, size: int) -> bytes:"
+   ],
+   [
+    108,
+    "    def read1(self, size: int) -> bytes:"
+   ],
+   [
+    116,
+    "    def readable(self) -> bool:"
+   ],
+   [
+    116,
+    "    def readable(self) -> bool:"
+   ],
+   [
+    128,
+    "    def writable(self) -> bool:"
+   ],
+   [
+    128,
+    "    def writable(self) -> bool:"
+   ],
+   [
+    143,
+    "    def seekable(self) -> bool:"
+   ],
+   [
+    143,
+    "    def seekable(self) -> bool:"
+   ],
+   [
+    143,
+    "    def seekable(self) -> bool:"
+   ],
+   [
+    154,
+    "def _is_binary_reader(stream: t.IO[t.Any], default: bool = False) -> bool:"
+   ],
+   [
+    154,
+    "def _is_binary_reader(stream: t.IO[t.Any], default: bool = False) -> bool:"
+   ],
+   [
+    163,
+    "def _is_binary_writer(stream: t.IO[t.Any], default: bool = False) -> bool:"
+   ],
+   [
+    163,
+    "def _is_binary_writer(stream: t.IO[t.Any], default: bool = False) -> bool:"
+   ],
+   [
+    163,
+    "def _is_binary_writer(stream: t.IO[t.Any], default: bool = False) -> bool:"
+   ],
+   [
+    169,
+    "            return False"
+   ],
+   [
+    169,
+    "            return False"
+   ],
+   [
+    173,
+    "    return True"
+   ],
+   [
+    173,
+    "    return True"
+   ],
+   [
+    173,
+    "    return True"
+   ],
+   [
+    176,
+    "def _find_binary_reader(stream: t.IO[t.Any]) -> t.BinaryIO | None:"
+   ],
+   [
+    176,
+    "def _find_binary_reader(stream: t.IO[t.Any]) -> t.BinaryIO | None:"
+   ],
+   [
+    194,
+    "def _find_binary_writer(stream: t.IO[t.Any]) -> t.BinaryIO | None:"
+   ],
+   [
+    194,
+    "def _find_binary_writer(stream: t.IO[t.Any]) -> t.BinaryIO | None:"
+   ],
+   [
+    194,
+    "def _find_binary_writer(stream: t.IO[t.Any]) -> t.BinaryIO | None:"
+   ],
+   [
+    199,
+    "    if _is_binary_writer(stream, False):"
+   ],
+   [
+    199,
+    "    if _is_binary_writer(stream, False):"
+   ],
+   [
+    206,
+    "    if buf is not None and _is_binary_writer(buf, True):"
+   ],
+   [
+    206,
+    "    if buf is not None and _is_binary_writer(buf, True):"
+   ],
+   [
+    212,
+    "def _stream_is_misconfigured(stream: t.TextIO) -> bool:"
+   ],
+   [
+    212,
+    "def _stream_is_misconfigured(stream: t.TextIO) -> bool:"
+   ],
+   [
+    212,
+    "def _stream_is_misconfigured(stream: t.TextIO) -> bool:"
+   ],
+   [
+    218,
+    "    return is_ascii_encoding(getattr(stream, \"encoding\", None) or \"ascii\")"
+   ],
+   [
+    218,
+    "    return is_ascii_encoding(getattr(stream, \"encoding\", None) or \"ascii\")"
+   ],
+   [
+    221,
+    "def _is_compat_stream_attr(stream: t.TextIO, attr: str, value: str | None) -> bool:"
+   ],
+   [
+    221,
+    "def _is_compat_stream_attr(stream: t.TextIO, attr: str, value: str | None) -> bool:"
+   ],
+   [
+    221,
+    "def _is_compat_stream_attr(stream: t.TextIO, attr: str, value: str | None) -> bool:"
+   ],
+   [
+    227,
+    "    return stream_value == value or (value is None and stream_value is not None)"
+   ],
+   [
+    227,
+    "    return stream_value == value or (value is None and stream_value is not None)"
+   ],
+   [
+    238,
+    "    ) and _is_compat_stream_attr(stream, \"errors\", errors)"
+   ],
+   [
+    238,
+    "    ) and _is_compat_stream_attr(stream, \"errors\", errors)"
+   ],
+   [
+    238,
+    "    ) and _is_compat_stream_attr(stream, \"errors\", errors)"
+   ],
+   [
+    250,
+    "    if is_binary(text_stream, False):"
+   ],
+   [
+    250,
+    "    if is_binary(text_stream, False):"
+   ],
+   [
+    256,
+    "        if _is_compatible_text_stream(text_stream, encoding, errors) and not ("
+   ],
+   [
+    256,
+    "        if _is_compatible_text_stream(text_stream, encoding, errors) and not ("
+   ],
+   [
+    256,
+    "        if _is_compatible_text_stream(text_stream, encoding, errors) and not ("
+   ],
+   [
+    319,
+    "def get_binary_stdin() -> t.BinaryIO:"
+   ],
+   [
+    319,
+    "def get_binary_stdin() -> t.BinaryIO:"
+   ],
+   [
+    326,
+    "def get_binary_stdout() -> t.BinaryIO:"
+   ],
+   [
+    326,
+    "def get_binary_stdout() -> t.BinaryIO:"
+   ],
+   [
+    333,
+    "def get_binary_stderr() -> t.BinaryIO:"
+   ],
+   [
+    333,
+    "def get_binary_stderr() -> t.BinaryIO:"
+   ],
+   [
+    333,
+    "def get_binary_stderr() -> t.BinaryIO:"
+   ],
+   [
+    340,
+    "def get_text_stdin(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    340,
+    "def get_text_stdin(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    347,
+    "def get_text_stdout(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    347,
+    "def get_text_stdout(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    347,
+    "def get_text_stdout(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    351,
+    "    return _force_correct_text_writer(sys.stdout, encoding, errors, force_writable=True)"
+   ],
+   [
+    351,
+    "    return _force_correct_text_writer(sys.stdout, encoding, errors, force_writable=True)"
+   ],
+   [
+    354,
+    "def get_text_stderr(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    354,
+    "def get_text_stderr(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    354,
+    "def get_text_stderr(encoding: str | None = None, errors: str | None = None) -> t.TextIO:"
+   ],
+   [
+    456,
+    "    def __init__(self, f: t.IO[t.Any], tmp_filename: str, real_filename: str) -> None:"
+   ]
+  ]
+ },
+ "failing_tests": [
+  "FAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]"
+ ]
+}

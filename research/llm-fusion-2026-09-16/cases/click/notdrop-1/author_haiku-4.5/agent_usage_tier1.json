@@ -1,0 +1,5 @@
+{
+ "subagent_session_tokens": 46943,
+ "duration_ms": 27010,
+ "note": "Claude Code subagent (model haiku); session tokens include the subagent's own system prompt and tool schemas, not comparable to an API packet count"
+}
