@@ -6,6 +6,20 @@ when it refuses, what does it cost in tokens to let a model author a rule that t
 Every number below is written by the harness that measured it (`scale_results.json`, `bench_real_results.json`,
 `cases/*/*/rerun_budget*.json`, `ladder_*.json`); `report.py` renders the tables. Nothing is typed in by hand.
 
+## 0. Which fluidfix each table measures
+
+Three configurations exist and only one of them is behind almost every number here:
+
+| configuration | what it is | measured here |
+|---|---|---|
+| **single fluidfix** | one guard, one clone, one incident at a time: `fluidfix guard . --commit --budget N` | §2, §3, §4, §5, §6 — every row |
+| **maintenance version** | the guard standing on a repository across commits (`--interval`), its taught dictionary accumulating, a class taught once deciding every later member | **not measured**: §6 is the single guard with a dictionary loaded, one incident at a time |
+| **router version** | the router law dispatching an incident to N guards by kind and territory, one judge ruling over their reports | **prototype only**, §6b: three incidents, thirteen guards on one box, dictionaries as the sharding mechanism, no product code |
+
+So "7 of 22", "6 of 11", the ladder rows and the pip side-by-side describe the single guard. Nothing here says what the
+maintenance version does over months, and §6b says what a prototype of the router version did on three incidents, not
+what a production router does.
+
 ## 1. Protocol (fixed before the run)
 
 - Repositories: click, arrow, sortedcontainers, rich. Shallow clones, own venv each, suite green at baseline
@@ -30,6 +44,8 @@ Every number below is written by the harness that measured it (`scale_results.js
 
 ## 2. Hundreds of files: does it find the one that broke?
 
+_Configuration: single fluidfix._
+
 Synthetic package: 302 source files, 300 tests, green suite 3.5 s, seed 20260916. True file ranked first in 10/10 cases; byte-exact repair in 10/10; localisation 4.7–9.6 s; repair wall-clock median 16.0 s (min 14.5, max 17.4).
 
 | file | injected fault (shipped kind) | rank of true file | localise s | suite runs | wall s | byte-exact |
@@ -46,6 +62,8 @@ Synthetic package: 302 source files, 300 tests, green suite 3.5 s, seed 20260916
 | pkg/mod_256.py | 1 literal-off-by-one | 1 | 4.8 | 10 | 16.0 | yes |
 
 ## 3. Real repositories, tier 0 (zero tokens)
+
+_Configuration: single fluidfix._
 
 |  | live trials | byte-exact | wrong-green | refused | no-action |
 |---|---|---|---|---|---|
@@ -122,6 +140,8 @@ Scans: cmp 2 live of 4 tried, add 2 live of 2 tried, lit 0 live of 25 tried, and
 
 ## 4. Replays: following the guard's own advice, and running the contended cases alone
 
+_Configuration: single fluidfix._
+
 | case | code | budget s (+flags) | verdict | seconds | suite runs | candidates rejected | guard's hint |
 |---|---|---|---|---|---|---|---|
 | arrow/add-1 | source tree | 300 | WRONG-GREEN | 220.8 | 12 | - |  |
@@ -142,6 +162,8 @@ Scans: cmp 2 live of 4 tried, add 2 live of 2 tried, lit 0 live of 25 tried, and
 | rich/add-2 | pip fluidfix in venv | 300 | REFUSED | 20.2 | - | 11 | every generated candidate was rejected by the suite (engine law: REFUTED -> HARVEST_COUNTE |
 
 ## 5. The ladder: a model authors, the suite judges
+
+_Configuration: single fluidfix, an author in the loop._
 
 Verdicts: EXACT = pristine bytes restored; WRONG-GREEN = the mutated line changed to something else and the
 suite passed; SUSPECT = the suite passed but the mutated line is untouched (the author patched a different line,
@@ -203,6 +225,8 @@ a workaround, not a restoration); REFUSED = no proposal survived the suite.
 
 ## 6. Teach once by hand, judged on another developer's repo (zero tokens)
 
+_Configuration: single fluidfix with a taught dictionary._
+
 One worked example per class met in this study, written by hand from the click incident (`taught/rules_session.py`, `taught/rules_session_b.py`), no model anywhere. The suite of each target repo judges the taught candidates on the same class as it occurs there.
 
 Teaching examples restored: 5/5. Held-out cases (same class, another repo, zero tokens): 6/11 byte-exact, 0 wrong-green, 5 refused.
@@ -227,6 +251,8 @@ Teaching examples restored: 5/5. Held-out cases (same class, another repo, zero 
 | rich/notdrop-1 | notdrop | held-out (another repo) | EXACT | 701.2 | 29 | 900 | - |  |
 
 ## 6b. Debugging mode: many searchers, one judge (prototype, no product change)
+
+_Configuration: router version, prototype._
 
 The router law's own domain is the sharding key: one guard per kind, each in its own clone, all in parallel, and a judge that runs no suite and rules with the engine law's outcomes over the guards' reports (`shards/judge.py`). Measured on the cases the serial guard found but could not finish (arrow's 6,000-line locale file) or reach (rich `pretty.py`).
 
