@@ -1,0 +1,188 @@
+{
+ "fault": "percentile",
+ "author": "gemma3:4b-hard",
+ "territories": 8,
+ "pairs": 24,
+ "nodes": 24,
+ "real_searches": 6,
+ "suite_runs": 13,
+ "wall_s": 22.2,
+ "localised_to": [
+  "pkg/percentile.py"
+ ],
+ "tried": [
+  {
+   "rel": "pkg/between.py",
+   "kind": 0,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/between.py",
+   "kind": 10,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/overlap.py",
+   "kind": 0,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/overlap.py",
+   "kind": 10,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/page_count.py",
+   "kind": 1,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/page_count.py",
+   "kind": 2,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/page_count.py",
+   "kind": 3,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/page_count.py",
+   "kind": 11,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/percentile.py",
+   "kind": 0,
+   "ruling": "REFUTED",
+   "suite_runs": 2
+  },
+  {
+   "rel": "pkg/percentile.py",
+   "kind": 1,
+   "ruling": "REFUTED",
+   "suite_runs": 5
+  },
+  {
+   "rel": "pkg/percentile.py",
+   "kind": 2,
+   "ruling": "REFUTED",
+   "suite_runs": 1
+  },
+  {
+   "rel": "pkg/percentile.py",
+   "kind": 3,
+   "ruling": "REFUTED",
+   "suite_runs": 2
+  },
+  {
+   "rel": "pkg/percentile.py",
+   "kind": 10,
+   "ruling": "REFUTED",
+   "suite_runs": 2
+  },
+  {
+   "rel": "pkg/percentile.py",
+   "kind": 11,
+   "ruling": "REFUTED",
+   "suite_runs": 1
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 0,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 2,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 3,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 10,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 0,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 1,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 2,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 3,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 10,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 11,
+   "ruling": "EMPTY",
+   "suite_runs": 0
+  }
+ ],
+ "failing_output": "..............F\n=================================== FAILURES ===================================\n______________________________ test_percentile_0 _______________________________\n\n    def test_percentile_0():\n>       assert percentile([1,2,3,4], 50) == 2\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_percentile.py:4: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nvalues = [1, 2, 3, 4], p = 50\n\n    def percentile(values, p):\n        \"\"\"Nearest-rank percentile of a non-empty list: the value at rank ceil(p/100 * n),\n        counting from 1 in the sorted order.\"\"\"\n        if not values:\n            return None\n        values = sorted(values)\n        n = len(values)\n>       rank = ceil(p / 100 * n)\n               ^^^^\nE       NameError: name 'ceil' is not defined\n\npkg/percentile.py:8: NameError\n=========================== short test summary info ============================\nFAILED tests/test_percentile.py::test_percentile_0 - NameError: name 'ceil' i...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 14 passed in 0.03s\n",
+ "broken_code": "def percentile(values, p):\n    \"\"\"Nearest-rank percentile of a non-empty list: the value at rank ceil(p/100 * n),\n    counting from 1 in the sorted order.\"\"\"\n    if not values:\n        return None\n    values = sorted(values)\n    n = len(values)\n    rank = ceil(p / 100 * n)\n    if rank > n:\n        return values[-1]\n    if rank == n:\n        return values[-1]\n    return values[rank - 1]\n",
+ "tests": [
+  "assert percentile([1,2,3,4], 50) == 2",
+  "assert percentile([1,2,3,4], 100) == 4",
+  "assert percentile([1,2,3,4], 25) == 1"
+ ],
+ "rel": "pkg/percentile.py",
+ "certificates": [
+  {
+   "certified": true,
+   "why": "red before, green on the full suite, stable on re-check",
+   "suite_runs": 3,
+   "sha": "a3f3294393fd",
+   "patch": "fix_a.py"
+  },
+  {
+   "certified": true,
+   "why": "red before, green on the full suite, stable on re-check",
+   "suite_runs": 3,
+   "sha": "ec80e93d724e",
+   "patch": "fix_b.py"
+  }
+ ],
+ "amb": {
+  "passing": 2,
+  "pool": 76,
+  "witness": null
+ }
+}

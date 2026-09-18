@@ -81,3 +81,97 @@ accepted the first candidate the suite accepted — and it will misdirect again 
 - The AMB → witness-search organ (`../model-divergence-2026-09-18/witness_net.py`) is **not** wired into
   this driver: no run produced two distinct greens, so there was nothing to separate. It stays a separate
   measurement until an incident forces it.
+
+---
+
+# The handoff: it refuses, a model writes, it certifies (`handoff.py`)
+
+This is the loop the whole body of work points at, run end to end on a fault fluidfix has already been
+measured unable to author: a **real implementation a model actually wrote**, which its own hidden tests
+reject (`../model-bugs-2026-09-18`, gemma3:4b on `percentile`). The world is the same eight modules.
+
+## 1 — REFUSE, and the refusal is the artefact
+
+```
+suite says: NameError: name 'ceil' is not defined
+
+RULING    REFUTED — 24 nodes, 6 of them real searches, 13 suite runs, 22.2 s
+          every class in the vocabulary was tried and the suite rejected every candidate
+          the failure points at: pkg/percentile.py
+          classes ruled out in percentile: [0, 1, 2, 3, 10, 11]
+```
+
+**Zero tokens.** A refusal that names the territory out of eight, lists every class eliminated there, and
+carries the suite's own message is not a shrug — it is a localisation, and it is what gets handed onward.
+
+## 2 — WRITE
+
+Two models, working independently from the failing test, the file, and that refusal. Nothing else. Both
+reached for the same thing the vocabulary cannot express — **a line that is not there**:
+
+```python
++ from math import ceil
+```
+
+and both added a `rank < 1` guard the original lacked, spelled differently:
+
+| | fix A | fix B |
+|---|---|---|
+| guard | `if rank < 1: return values[0]` | `if rank < 1: rank = 1` |
+| tail | folded the redundant `rank == n` branch away | kept it |
+
+**~48,000 tokens each.**
+
+## 3 — CERTIFY, by destination
+
+```
+CERTIFY   fix_a.py: CERTIFIED — red before, green on the full suite, stable on re-check (3 suite runs)
+CERTIFY   fix_b.py: CERTIFIED — red before, green on the full suite, stable on re-check (3 suite runs)
+```
+
+Neither patch resembles anything the vocabulary produces; both are whole-file rewrites with an inserted
+import. The judge does not ask who wrote it or how it is spelled. **Zero tokens, three suite runs each,
+byte-exact rollback between them.**
+
+## 4 — SEPARATE: two greens, and the right refusal to make
+
+```
+RULING    AMB — 2 different programs both pass this suite. The suite cannot tell them apart,
+                so it is not entitled to pick one.
+SEPARATE  no input in the 76-input pool tells them apart — they may be one program spelled twice,
+          which is NOT ambiguity. Certified.
+```
+
+And that conclusion is **provable, not merely unfalsified**. For a non-empty list, `n >= 1` on every
+reachable path; when `rank == n`, `values[-1]` *is* `values[rank - 1]`; when `rank < 1`, B's `rank = 1`
+falls through to `values[0]`, which is A's answer. Exhaustively over `n` in 1..8 and rank in −4..12: **zero
+disagreements.** The pool did not fall short — the two are one program spelled twice, which is precisely
+the case `differ` exists to *not* call ambiguous.
+
+## What this run actually shows
+
+**Destination, not path, is the unit of identity.** Every organ here decides on where a program arrives:
+
+- the vocabulary's refusal is a statement about destinations it could not reach, not about text it could
+  not write
+- the certificate is granted to a whole-file rewrite it could never have authored, because it lands in the
+  right place
+- the ambiguity ruling fires on *two programs*, and is withdrawn on *one program spelled twice* — the
+  distinction is behavioural and nothing else
+
+**And the two halves cost different things.** fluidfix's half — searching 24 nodes, localising to one file
+of eight, eliminating six classes, then certifying two patches — cost **0 tokens and 19 suite runs**. The
+model's half cost **~96,000 tokens** across two writers. The refusal is the cheap half, and it is the half
+that tells the expensive half where to look.
+
+## Not claimed
+
+- One fault, one module, two writers. A demonstration of the loop, not a benchmark of it.
+- The two fixes turned out behaviourally identical, so **AMB has still never been exercised on genuinely
+  different programs inside fluidnet** — the ruling fired and was correctly withdrawn. The case where it
+  refuses two real rivals remains measured only in `../certify-2026-09-18`, where a rival was constructed.
+- The models were given the refusal. Whether the refusal actually *helps* a model — against the same model
+  with no localisation — is not measured here, and it is the obvious next experiment.
+- A defect found while building this, recorded rather than hidden: the AMB branch read `ast.parse(code)
+  .body[0]` for the function, which after the model's fix is the new `from math import ceil` — the very
+  insertion the vocabulary could not make. Found by name now.
