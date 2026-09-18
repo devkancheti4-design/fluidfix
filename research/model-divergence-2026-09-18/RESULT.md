@@ -243,44 +243,68 @@ already have and no ground truth: draw twenty times, run each program over a poo
 tests, and look at the inputs your own samples disagree on. On this corpus one uncertain model recovered 17
 of 19, and the three together recovered all of them.
 
-## Growing the input space instead of fixing it (`witness_net.py`)
+## A net over input space: growth from rulings, memory on a shape (`witness_net.py`)
 
 Everything above rests on `differ`'s pool, and that pool is **a plan made before any work is done**: the
-suite's literals, local mutations, midpoints. Its blind spot is measured and documented — a disagreement far
-from anything the tests mention is unreachable by construction (`../certify-2026-09-18`: 0 of 14), which is
-the `w > 20` against `w > 120` case differ's own docstring warns about.
+suite's literals, local mutations, midpoints. Its blind spot is measured — a divergence far from anything the
+tests mention is unreachable by construction (`../certify-2026-09-18`: 0 of 14), the `w > 20` against
+`w > 120` case differ's own docstring warns about.
 
-The net's growth rule fits this exactly, and it is the *same* rule `../lake-2026-09-18/net.py` uses to hunt
-a fault across a repository — it reads rulings, not a plan:
+The same rule `../lake-2026-09-18/net.py` uses over a repository applies to input space, and it has two
+halves that must both be respected — **the first version of this file got both wrong**:
 
-- **REFUTED** — no input in this region separates the two programs → grow **wider**: the next magnitude out,
-  then the next argument position
-- **WITNESS** — they disagree here → grow **deeper**: bisect between a point the suite proves they agree on
-  and the witness, until the boundary is located
+- **Growth is not a plan.** The search begins as ONE node, just beyond what the suite exercises. Every later
+  node is spawned by a ruling: **REFUTED** to wider (one rung further out, and this rung in the other
+  arguments); **WITNESS** to deeper (bisect between a point the suite proves they agree on and the witness).
+  The first draft enumerated nine rungs per argument up front — waves, which is the thing the net replaced.
+  Fixing it cut the cost from 271 nodes to 174 for the same twelve witnesses.
+- **The memory holds a shape, not a coordinate.** `mag:1000000` cannot transfer to a function whose inputs
+  live at another scale. What transfers is the **ratio to the suite's own range** — "the divergence lives
+  about a hundred times beyond what the tests exercise" — the analogue of `kind:7` carrying from rich to
+  arrow.
 
-Twelve rivals, each differing from a correct implementation only beyond a threshold placed **above every
-value the suite mentions**, so every rival still passes the tests. That is the blind spot and nothing else.
+Twelve rivals, each differing from a correct implementation only beyond a threshold placed above every value
+the suite mentions, so **every rival still passes its tests**. Three corpora, differing only in whether a
+shape recurs:
 
-| arm | witnesses found | evaluations |
-|---|---|---|
-| FIXED pool (today) | **0 of 12** | 489 |
-| NET, cold | **12 of 12** | 383 |
-| NET, warm | 12 of 12 | 347 |
+| corpus | memory | witnesses | nodes | evaluations | replayed from memory |
+|---|---|---|---|---|---|
+| varied (3-3000x) | cold | 12/12 | 187 | 261 | 2/12 |
+| varied | warm | 12/12 | 201 | 274 | 3/12 |
+| recurring (80-120x) | cold | 12/12 | 216 | 280 | 0/12 |
+| recurring | warm | 12/12 | 210 | 265 | 1/12 |
+| **exact (100x)** | cold | 12/12 | 166 | 215 | 3/12 |
+| **exact** | **warm** | 12/12 | **154** | **189** | **5/12** |
 
-**12 of 12 against 0 of 12, for fewer evaluations than the fixed pool spends missing.** And the bisection
-returns the boundary exactly: a threshold planted at 500 comes back as 501, at 5,000 as 5,001, at 5,000,000
-as 5,000,001 — in all twelve.
+The fixed pool finds **0 of 12** in every arm. The net finds 12 of 12 in every arm, and the boundary comes
+back **exact every time** — a threshold planted at 500 returns 501, at 5,000,000 returns 5,000,001.
 
-**The memory, honestly, bought almost nothing**: 347 evaluations warm against 383 cold, a 9% saving, with
-slightly *more* nodes. The reason is the same gap recorded in `../lake-2026-09-18` §4d. A magnitude is only
-worth remembering if faults recur at similar magnitudes, and here each case drew its threshold
-independently, so the memory ended dominated by a single rung that was wrong for most cases. **The growth
-rule is the valuable half; the memory key is still the weak one.**
+### Why the memory nearly does not pay, and when it does
 
-**What it costs to believe this.** The net's advantage comes from a prior wired into it — a geometric
-magnitude ladder over numeric arguments. That is exactly right for a drifted bound and useless for a defect
-that is not magnitude-shaped: a particular string, a specific list structure, one wrong key. This result
-says a growing search beats a fixed pool *on the shape it was built for*, and says nothing about the others.
+Splitting the node count answers it. **The wider search costs about one node per case; the bisection is
+85-90% of the work** (exact/warm: 7 nodes of search against 118 of bisection). Seeding the *search* from
+memory therefore saves nothing — and starting further out makes the bracket wider, which costs more. That was
+the first mistake: spending the memory on the cheap half.
+
+Seeding the *bracket* instead is the right place and still barely helps, for a reason that is arithmetic
+rather than engineering: **bisection is logarithmic, so a memory that halves the bracket saves exactly one
+node.** The lake's memory turned 129 nodes into 13 because that search was a *linear* scan over
+(territory, class) pairs. There is no equivalent saving against a log search.
+
+So the only way a memory beats this search is to **replace** it: probe the remembered boundary and the point
+below it, and if one separates the programs and the other does not, the answer is proved in two probes
+instead of thirteen. That is what "replayed" counts, and it needs the shape to recur *exactly* — 5 of 12
+under exact recurrence, 1 of 12 under approximate, and the run is cheapest exactly there. When the remembered
+point fails either check nothing is assumed and the ordinary search runs, which is why every arm still
+returns an exact boundary.
+
+**The general form of the lesson, which the lake only showed one side of:** a memory is worth what it
+*replaces*. Against an exhaustive search it is worth almost everything (129 to 13). Against a logarithmic one
+it is worth nothing unless it can supply the answer itself and have it verified.
+
+**What it costs to believe any of this.** The net's reach here comes from a prior wired into it — a geometric
+ladder over numeric arguments. That is right for a drifted bound and useless for a defect that is not
+magnitude-shaped: a particular string, one wrong key, a specific list structure.
 
 ## So, honestly
 
@@ -313,6 +337,10 @@ interpretability, and calling it that would not survive the first question from 
 - The AST features are hand-chosen and shallow. A negative result on them is not a negative result on
   structural fingerprinting in general.
 - `witness_net.py` is twelve synthetic rivals of one shape (a threshold above the suite's range), not
-  found defects. The 0 of 12 for the fixed pool is by construction — that is the point of the case, not a
-  surprise — so what the row actually measures is the net's cost, and the exactness of its boundary.
+  found defects, and its three corpora differ only in how tightly the planted ratios cluster. The 0 of 12
+  for the fixed pool is by construction, so what the rows measure is the net's cost and the exactness of
+  its boundary, not a discovery.
+- The replay fires on 5 of 12 even under exact recurrence: a learned ratio carries the boundary's `+1`,
+  which does not rescale to a spec whose inputs sit at a different magnitude. It abstains rather than
+  guessing, so the boundary is still exact in all twelve.
 - Nothing here changes the product. It is `differ.harvest_seeds`/`build_pool`/`evaluate`, unmodified.
