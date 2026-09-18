@@ -1,0 +1,39 @@
+{
+ "case": "rich/lenm1-1",
+ "signature": "rich::tests/test_columns.py::test_render",
+ "memory_hit": true,
+ "recalled": "rich/table.py|7",
+ "dispatched": 1,
+ "confidence_before": 0.8,
+ "gate": 0.5,
+ "class_prior": [
+  7
+ ],
+ "guards_launched": 1,
+ "suite_runs_paid": 8,
+ "memory_rows": 4,
+ "memory_bytes": 203,
+ "survey_s": 5.0,
+ "wall_s": 27.4,
+ "cpu_sum_s": 27.3,
+ "winner": "rich/table.py|7",
+ "verdict": "EXACT",
+ "winner_runs": 8,
+ "cancelled": [],
+ "learned": "rich/table.py|7",
+ "memory_confidence": 0.923,
+ "chain": [
+  "rich::tests/test_columns.py::test_render",
+  "kind:7",
+  "file:rich/table.py"
+ ],
+ "guards": {
+  "rich/table.py|7": {
+   "exit": 0,
+   "seconds": 27.3,
+   "observations": 6,
+   "suite_runs": 8,
+   "byte_exact": true
+  }
+ }
+}

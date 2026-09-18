@@ -1,0 +1,135 @@
+{
+ "case": "rich/lenm1-1",
+ "file": "rich/table.py",
+ "guards": 13,
+ "first_green": [
+  7,
+  36.3
+ ],
+ "cancelled": [
+  4
+ ],
+ "wall_s": 36.3,
+ "cpu_sum_s": 465.7,
+ "winner_kind": 7,
+ "verdict": "EXACT",
+ "per_guard": {
+  "0": {
+   "kind_name": "strictness",
+   "observations": 18,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 36.3,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "1": {
+   "kind_name": "literal-off-by-one",
+   "observations": 19,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 36.2,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "2": {
+   "kind_name": "swapped-return-operands",
+   "observations": 1,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 36.1,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "3": {
+   "kind_name": "flipped-additive",
+   "observations": 18,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 36.1,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "4": {
+   "kind_name": "flipped-boolean-operator",
+   "observations": 30,
+   "of_total": 103,
+   "exit": 125,
+   "seconds": 36.0,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "5": {
+   "kind_name": "get-without-default",
+   "observations": 0,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 36.0,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "6": {
+   "kind_name": "inverted-bare-guard",
+   "observations": 11,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 35.9,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "7": {
+   "kind_name": "len-as-last-index",
+   "observations": 6,
+   "of_total": 103,
+   "exit": 0,
+   "seconds": 35.8,
+   "suite_runs": 8,
+   "byte_exact": true
+  },
+  "8": {
+   "kind_name": "minmax-swap",
+   "observations": 9,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 35.7,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "9": {
+   "kind_name": "flipped-augmented-assign",
+   "observations": 0,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 35.6,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "10": {
+   "kind_name": "flipped-comparison-direction",
+   "observations": 4,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 35.5,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "11": {
+   "kind_name": "reversed-minus-operands",
+   "observations": 4,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 35.3,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "12": {
+   "kind_name": "flipped-boolean",
+   "observations": 8,
+   "of_total": 103,
+   "exit": 2,
+   "seconds": 35.2,
+   "suite_runs": null,
+   "byte_exact": false
+  }
+ }
+}

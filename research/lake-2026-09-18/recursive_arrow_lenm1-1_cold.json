@@ -1,0 +1,201 @@
+{
+ "case": "arrow/lenm1-1",
+ "signature": "arrow::tests/test_locales.py::TestHebrewLocale::test_describe_multi",
+ "memory_hit": false,
+ "recalled": null,
+ "dispatched": 23,
+ "confidence_before": 0.0,
+ "gate": 0.5,
+ "class_prior": [
+  7
+ ],
+ "guards_launched": 23,
+ "suite_runs_paid": 25,
+ "memory_rows": 6,
+ "memory_bytes": 419,
+ "survey_s": 8.4,
+ "wall_s": 75.4,
+ "cpu_sum_s": 1373.4,
+ "winner": "arrow/locales.py|7",
+ "verdict": "EXACT",
+ "winner_runs": 2,
+ "cancelled": [
+  "arrow/locales.py|10",
+  "arrow/locales.py|0",
+  "arrow/locales.py|1",
+  "arrow/parser.py|0",
+  "arrow/parser.py|1",
+  "arrow/arrow.py|1",
+  "arrow/formatter.py|0"
+ ],
+ "learned": "arrow/locales.py|7",
+ "memory_confidence": 0.8,
+ "chain": [
+  "arrow::tests/test_locales.py::TestHebrewLocale::test_describe_multi",
+  "kind:7",
+  "file:arrow/locales.py"
+ ],
+ "guards": {
+  "arrow/locales.py|7": {
+   "exit": 0,
+   "seconds": 74.4,
+   "observations": 1,
+   "suite_runs": 2,
+   "byte_exact": true
+  },
+  "arrow/locales.py|3": {
+   "exit": 2,
+   "seconds": 73.6,
+   "observations": 1,
+   "suite_runs": 2,
+   "byte_exact": false
+  },
+  "arrow/locales.py|9": {
+   "exit": 2,
+   "seconds": 72.7,
+   "observations": 1,
+   "suite_runs": 2,
+   "byte_exact": false
+  },
+  "arrow/locales.py|4": {
+   "exit": 2,
+   "seconds": 71.9,
+   "observations": 3,
+   "suite_runs": 5,
+   "byte_exact": false
+  },
+  "arrow/locales.py|10": {
+   "exit": 125,
+   "seconds": 71.1,
+   "observations": 7,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/locales.py|0": {
+   "exit": 125,
+   "seconds": 70.1,
+   "observations": 59,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/locales.py|1": {
+   "exit": 125,
+   "seconds": 68.9,
+   "observations": 877,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/parser.py|7": {
+   "exit": 2,
+   "seconds": 67.6,
+   "observations": 0,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/parser.py|12": {
+   "exit": 2,
+   "seconds": 66.2,
+   "observations": 1,
+   "suite_runs": 2,
+   "byte_exact": false
+  },
+  "arrow/parser.py|6": {
+   "exit": 2,
+   "seconds": 64.6,
+   "observations": 0,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/parser.py|3": {
+   "exit": 2,
+   "seconds": 62.8,
+   "observations": 0,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/parser.py|9": {
+   "exit": 2,
+   "seconds": 61.2,
+   "observations": 0,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/parser.py|4": {
+   "exit": 2,
+   "seconds": 59.5,
+   "observations": 0,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/parser.py|10": {
+   "exit": 2,
+   "seconds": 57.7,
+   "observations": 1,
+   "suite_runs": 7,
+   "byte_exact": false
+  },
+  "arrow/parser.py|5": {
+   "exit": 2,
+   "seconds": 55.9,
+   "observations": 0,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/parser.py|0": {
+   "exit": 125,
+   "seconds": 54.1,
+   "observations": 6,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/parser.py|1": {
+   "exit": 125,
+   "seconds": 52.3,
+   "observations": 11,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/arrow.py|12": {
+   "exit": 2,
+   "seconds": 50.2,
+   "observations": 1,
+   "suite_runs": 2,
+   "byte_exact": false
+  },
+  "arrow/arrow.py|1": {
+   "exit": 125,
+   "seconds": 48.1,
+   "observations": 13,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/arrow.py|0": {
+   "exit": 2,
+   "seconds": 45.9,
+   "observations": 59,
+   "suite_runs": 1,
+   "byte_exact": false
+  },
+  "arrow/formatter.py|0": {
+   "exit": 125,
+   "seconds": 43.7,
+   "observations": 4,
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "arrow/api.py|0": {
+   "exit": 2,
+   "seconds": 41.5,
+   "observations": 4,
+   "suite_runs": 1,
+   "byte_exact": false
+  },
+  "arrow/factory.py|0": {
+   "exit": 2,
+   "seconds": 39.4,
+   "observations": 4,
+   "suite_runs": 1,
+   "byte_exact": false
+  }
+ }
+}

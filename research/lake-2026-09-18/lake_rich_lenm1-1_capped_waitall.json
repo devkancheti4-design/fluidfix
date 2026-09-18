@@ -1,0 +1,175 @@
+{
+ "case": "rich/lenm1-1",
+ "faulty_file": "rich/table.py",
+ "faulty_file_covered": true,
+ "territories": 16,
+ "scan_s": 4.4,
+ "wall_s": 276.7,
+ "cpu_sum_s": 4208.8,
+ "greens": [],
+ "distinct_programs": 0,
+ "ruling": "REFUSE (every guard's reason attached)",
+ "verdict": "REFUSED",
+ "guards": {
+  "rich/console.py": {
+   "executed_lines": 473,
+   "exit": 2,
+   "seconds": 82.6,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/text.py": {
+   "executed_lines": 310,
+   "exit": 2,
+   "seconds": 276.5,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/table.py": {
+   "executed_lines": 294,
+   "exit": 2,
+   "seconds": 276.3,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/style.py": {
+   "executed_lines": 133,
+   "exit": 2,
+   "seconds": 276.3,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/segment.py": {
+   "executed_lines": 126,
+   "exit": 2,
+   "seconds": 276.1,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/markdown.py": {
+   "executed_lines": 119,
+   "exit": 2,
+   "seconds": 275.9,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/columns.py": {
+   "executed_lines": 95,
+   "exit": 2,
+   "seconds": 275.7,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/pretty.py": {
+   "executed_lines": 82,
+   "exit": 2,
+   "seconds": 275.5,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/syntax.py": {
+   "executed_lines": 82,
+   "exit": 2,
+   "seconds": 275.2,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/color.py": {
+   "executed_lines": 80,
+   "exit": 2,
+   "seconds": 275.1,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/padding.py": {
+   "executed_lines": 50,
+   "exit": 2,
+   "seconds": 274.9,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/rule.py": {
+   "executed_lines": 46,
+   "exit": 2,
+   "seconds": 274.5,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/box.py": {
+   "executed_lines": 43,
+   "exit": 2,
+   "seconds": 274.1,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/measure.py": {
+   "executed_lines": 37,
+   "exit": 2,
+   "seconds": 273.7,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/highlighter.py": {
+   "executed_lines": 35,
+   "exit": 2,
+   "seconds": 273.4,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/cells.py": {
+   "executed_lines": 34,
+   "exit": 2,
+   "seconds": 273.0,
+   "suite_runs": null,
+   "head": "refused: every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection with the test that killed it (en",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  }
+ }
+}

@@ -1,0 +1,8 @@
+[rich/lenm1-1] rich/table.py: 1016 lines split into 4 windows [(1, 254), (255, 508), (509, 762), (763, 1016)]; the fault at line 638 sits in window 2
+[rich/lenm1-1] 4 window guards launched in parallel
+  first green: window 2 (509, 762) at 237.6s — judge stops the rest
+  window 0 (1, 254)         refused    237.6s obs=18/103 runs=None 
+  window 1 (255, 508)       refused    237.5s obs=23/103 runs=None 
+  window 2 (509, 762)       GREEN      237.4s obs=42/103 runs=59 byte-exact
+  window 3 (763, 1016)      refused    237.4s obs=20/103 runs=None 
+[rich/lenm1-1] JUDGE: EXACT | winner window 2 | wall 237.6s (0 cancelled) cpu-sum 949.9s

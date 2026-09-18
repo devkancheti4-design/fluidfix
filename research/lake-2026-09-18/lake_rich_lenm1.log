@@ -1,0 +1,20 @@
+[rich/lenm1-1] 16 territories from one coverage pass (4.6s); the faulty file rich/table.py is IN the set
+[rich/lenm1-1] 16 guards launched in parallel, one per territory, 420s cap each
+  first green: rich/table.py at 312.3s — judge stops the rest
+  guard rich/console.py                        refused   312.2s runs=None 
+  guard rich/text.py                           refused   312.1s runs=None 
+  guard rich/table.py                          GREEN     312.1s runs=117 byte-exact
+  guard rich/style.py                          refused   312.0s runs=None 
+  guard rich/segment.py                        refused   312.0s runs=None 
+  guard rich/markdown.py                       refused   311.9s runs=None 
+  guard rich/columns.py                        refused   311.8s runs=None 
+  guard rich/pretty.py                         refused   311.7s runs=None 
+  guard rich/syntax.py                         refused   311.6s runs=None 
+  guard rich/color.py                          refused   311.4s runs=None 
+  guard rich/padding.py                        refused   311.2s runs=None 
+  guard rich/rule.py                           refused   310.9s runs=None 
+  guard rich/box.py                            refused   310.6s runs=None 
+  guard rich/measure.py                        refused   310.4s runs=None 
+  guard rich/highlighter.py                    refused   310.2s runs=None 
+  guard rich/cells.py                          refused   310.1s runs=None 
+[rich/lenm1-1] JUDGE: SHIP -> EXACT | greens ['rich/table.py'] | wall 312.3s (first green 312.3s, 0 guards cancelled) cpu-sum 4982.2s

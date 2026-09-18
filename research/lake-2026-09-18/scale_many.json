@@ -1,0 +1,72 @@
+{
+ "modules": 40,
+ "tests": 40,
+ "suite_s": 0.47,
+ "cores": 12,
+ "rows": [
+  {
+   "guards": 1,
+   "wall_s": 4.3,
+   "slowest_guard_s": 4.3,
+   "median_guard_s": 4.3,
+   "cpu_sum_s": 4.3,
+   "byte_exact": 1
+  },
+  {
+   "guards": 2,
+   "wall_s": 4.4,
+   "slowest_guard_s": 4.4,
+   "median_guard_s": 4.4,
+   "cpu_sum_s": 8.8,
+   "byte_exact": 2
+  },
+  {
+   "guards": 4,
+   "wall_s": 4.6,
+   "slowest_guard_s": 4.6,
+   "median_guard_s": 4.6,
+   "cpu_sum_s": 18.4,
+   "byte_exact": 4
+  },
+  {
+   "guards": 8,
+   "wall_s": 6.3,
+   "slowest_guard_s": 6.3,
+   "median_guard_s": 6.3,
+   "cpu_sum_s": 50.3,
+   "byte_exact": 8
+  },
+  {
+   "guards": 12,
+   "wall_s": 8.4,
+   "slowest_guard_s": 8.4,
+   "median_guard_s": 8.4,
+   "cpu_sum_s": 100.0,
+   "byte_exact": 12
+  },
+  {
+   "guards": 16,
+   "wall_s": 10.5,
+   "slowest_guard_s": 10.5,
+   "median_guard_s": 10.5,
+   "cpu_sum_s": 167.9,
+   "byte_exact": 16
+  },
+  {
+   "guards": 24,
+   "wall_s": 15.7,
+   "slowest_guard_s": 15.7,
+   "median_guard_s": 15.7,
+   "cpu_sum_s": 375.8,
+   "byte_exact": 24
+  },
+  {
+   "guards": 32,
+   "wall_s": 22.4,
+   "slowest_guard_s": 22.3,
+   "median_guard_s": 22.0,
+   "cpu_sum_s": 704.5,
+   "byte_exact": 32
+  }
+ ]
+}

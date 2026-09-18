@@ -1,0 +1,9 @@
+{
+ "case": "rich/lenm1-1",
+ "territory": "rich/table.py",
+ "contention": "none (1 guard)",
+ "seconds": 277.5,
+ "exit": 0,
+ "byte_exact": true,
+ "stdout_tail": "full sight: 390 executed lines, 103 observations\nrepaired line 638 in 117 suite runs (272.3s):\n  - last_column = column_index == len(self.columns)\n  + last_column = column_index == len(self.columns) - 1\n"
+}

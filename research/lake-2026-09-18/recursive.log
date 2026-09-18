@@ -1,0 +1,24 @@
+===== 1. COLD — the judge has never seen this failure =====
+[rich/lenm1-1] signature rich::tests/test_columns.py::test_render
+[rich/lenm1-1] survey 4.6s: 53 files executed by the failing test; memory: confidence 0.000 (gate 0.5) -> ABSTAIN, fan out
+[rich/lenm1-1] dispatching 45 fluidfixes (cold fan-out)
+  first green: rich/table.py kind 7 at 112.6s
+[rich/lenm1-1] JUDGE (cold): EXACT | winner rich/table.py|7 in 8 suite runs | fluidfixes dispatched 45, suite runs paid 222 | wall 112.6s cpu-sum 4378.6s
+[rich/lenm1-1] memory: rich/table.py|7 | confidence 0.8 | 4 rows, 203 bytes | sha 743951857794
+
+===== 2. WARM — the same failure again =====
+[rich/lenm1-1] signature rich::tests/test_columns.py::test_render
+[rich/lenm1-1] survey 5.0s: 53 files executed by the failing test; memory: confidence 0.800 (gate 0.5) -> rich/table.py|7
+[rich/lenm1-1] dispatching 1 fluidfix from memory
+  first green: rich/table.py kind 7 at 27.4s
+[rich/lenm1-1] JUDGE (warm): EXACT | winner rich/table.py|7 in 8 suite runs | fluidfixes dispatched 1, suite runs paid 8 | wall 27.4s cpu-sum 27.3s
+[rich/lenm1-1] memory: rich/table.py|7 | confidence 0.923 | 4 rows, 203 bytes | sha 0e1a14c76fbf
+
+===== 3. TRANSFER — another repository, a signature never seen =====
+[arrow/lenm1-1] signature arrow::tests/test_locales.py::TestHebrewLocale::test_describe_multi
+[arrow/lenm1-1] survey 8.4s: 10 files executed by the failing test; memory: confidence 0.000 (gate 0.5) -> ABSTAIN, fan out; classes that answered before: [7]
+[arrow/lenm1-1] dispatching 23 fluidfixes (cold fan-out)
+  first green: arrow/locales.py kind 7 at 75.3s
+[arrow/lenm1-1] JUDGE (cold): EXACT | winner arrow/locales.py|7 in 2 suite runs | fluidfixes dispatched 23, suite runs paid 25 | wall 75.4s cpu-sum 1373.4s
+[arrow/lenm1-1] memory: arrow/locales.py|7 | confidence 0.8 | 6 rows, 419 bytes | sha 841603dd547a
+RECURSIVE_DONE

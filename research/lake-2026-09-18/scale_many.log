@@ -1,0 +1,10 @@
+synthetic repo: 40 modules, 40 tests, green suite 0.47s, 12 cores
+    1 guards  wall     4.3s  median guard    4.3s  slowdown x 1.0  byte-exact 1/1
+    2 guards  wall     4.4s  median guard    4.4s  slowdown x 1.0  byte-exact 2/2
+    4 guards  wall     4.6s  median guard    4.6s  slowdown x 1.1  byte-exact 4/4
+    8 guards  wall     6.3s  median guard    6.3s  slowdown x 1.5  byte-exact 8/8
+   12 guards  wall     8.4s  median guard    8.4s  slowdown x 2.0  byte-exact 12/12
+   16 guards  wall    10.5s  median guard   10.5s  slowdown x 2.4  byte-exact 16/16
+   24 guards  wall    15.7s  median guard   15.7s  slowdown x 3.7  byte-exact 24/24
+   32 guards  wall    22.4s  median guard   22.0s  slowdown x 5.1  byte-exact 32/32
+SCALE_MANY_DONE

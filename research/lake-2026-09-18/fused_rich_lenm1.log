@@ -1,0 +1,17 @@
+[rich/lenm1-1] 13 fused guards on rich/table.py: one territory, one kind each
+  first green: kind 7 at 36.3s — judge stops the rest
+  kind  0 strictness                   refused     36.3s obs=18/103 runs=None 
+  kind  1 literal-off-by-one           refused     36.2s obs=19/103 runs=None 
+  kind  2 swapped-return-operands      refused     36.1s obs=1/103 runs=None 
+  kind  3 flipped-additive             refused     36.1s obs=18/103 runs=None 
+  kind  4 flipped-boolean-operator     cancelled   36.0s obs=30/103 runs=None 
+  kind  5 get-without-default          refused     36.0s obs=0/103 runs=None 
+  kind  6 inverted-bare-guard          refused     35.9s obs=11/103 runs=None 
+  kind  7 len-as-last-index            GREEN       35.8s obs=6/103 runs=8 byte-exact
+  kind  8 minmax-swap                  refused     35.7s obs=9/103 runs=None 
+  kind  9 flipped-augmented-assign     refused     35.6s obs=0/103 runs=None 
+  kind 10 flipped-comparison-direction refused     35.5s obs=4/103 runs=None 
+  kind 11 reversed-minus-operands      refused     35.3s obs=4/103 runs=None 
+  kind 12 flipped-boolean              refused     35.2s obs=8/103 runs=None 
+[rich/lenm1-1] JUDGE: EXACT | winner kind 7 | wall 36.3s (1 cancelled) cpu-sum 465.7s
+FUSED_DONE

@@ -1,0 +1,86 @@
+{
+ "case": "rich/lenm1-1",
+ "file": "rich/table.py",
+ "windows": 4,
+ "ranges": [
+  [
+   1,
+   254
+  ],
+  [
+   255,
+   508
+  ],
+  [
+   509,
+   762
+  ],
+  [
+   763,
+   1016
+  ]
+ ],
+ "fault_window": 2,
+ "first_green": [
+  2,
+  [
+   509,
+   762
+  ],
+  237.6
+ ],
+ "cancelled": [],
+ "wall_s": 237.6,
+ "cpu_sum_s": 949.9,
+ "verdict": "EXACT",
+ "guards": {
+  "0": {
+   "range": [
+    1,
+    254
+   ],
+   "exit": 2,
+   "seconds": 237.6,
+   "observations": "18",
+   "of_total": "103",
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "1": {
+   "range": [
+    255,
+    508
+   ],
+   "exit": 2,
+   "seconds": 237.5,
+   "observations": "23",
+   "of_total": "103",
+   "suite_runs": null,
+   "byte_exact": false
+  },
+  "2": {
+   "range": [
+    509,
+    762
+   ],
+   "exit": 0,
+   "seconds": 237.4,
+   "observations": "42",
+   "of_total": "103",
+   "suite_runs": 59,
+   "byte_exact": true
+  },
+  "3": {
+   "range": [
+    763,
+    1016
+   ],
+   "exit": 2,
+   "seconds": 237.4,
+   "observations": "20",
+   "of_total": "103",
+   "suite_runs": null,
+   "byte_exact": false
+  }
+ }
+}

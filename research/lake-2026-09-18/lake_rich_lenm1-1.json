@@ -1,0 +1,183 @@
+{
+ "case": "rich/lenm1-1",
+ "faulty_file": "rich/table.py",
+ "faulty_file_covered": true,
+ "territories": 16,
+ "first_green": [
+  "rich/table.py",
+  312.3
+ ],
+ "cancelled": [],
+ "confirm_s": 0,
+ "scan_s": 4.6,
+ "wall_s": 312.3,
+ "cpu_sum_s": 4982.2,
+ "greens": [
+  "rich/table.py"
+ ],
+ "distinct_programs": 1,
+ "ruling": "SHIP",
+ "verdict": "EXACT",
+ "guards": {
+  "rich/console.py": {
+   "executed_lines": 473,
+   "exit": 2,
+   "seconds": 312.2,
+   "suite_runs": null,
+   "head": "full sight: 571 executed lines, 129 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/text.py": {
+   "executed_lines": 310,
+   "exit": 2,
+   "seconds": 312.1,
+   "suite_runs": null,
+   "head": "full sight: 386 executed lines, 119 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/table.py": {
+   "executed_lines": 294,
+   "exit": 0,
+   "seconds": 312.1,
+   "suite_runs": 117,
+   "head": "full sight: 390 executed lines, 103 observations",
+   "repaired_line": 638,
+   "faulty_line_restored": true,
+   "reason": ""
+  },
+  "rich/style.py": {
+   "executed_lines": 133,
+   "exit": 2,
+   "seconds": 312.0,
+   "suite_runs": null,
+   "head": "full sight: 222 executed lines, 102 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/segment.py": {
+   "executed_lines": 126,
+   "exit": 2,
+   "seconds": 312.0,
+   "suite_runs": null,
+   "head": "full sight: 153 executed lines, 50 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/markdown.py": {
+   "executed_lines": 119,
+   "exit": 2,
+   "seconds": 311.9,
+   "suite_runs": null,
+   "head": "full sight: 143 executed lines, 46 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/columns.py": {
+   "executed_lines": 95,
+   "exit": 2,
+   "seconds": 311.8,
+   "suite_runs": null,
+   "head": "full sight: 111 executed lines, 33 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/pretty.py": {
+   "executed_lines": 82,
+   "exit": 2,
+   "seconds": 311.7,
+   "suite_runs": null,
+   "head": "full sight: 110 executed lines, 22 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/syntax.py": {
+   "executed_lines": 82,
+   "exit": 2,
+   "seconds": 311.6,
+   "suite_runs": null,
+   "head": "full sight: 160 executed lines, 39 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/color.py": {
+   "executed_lines": 80,
+   "exit": 2,
+   "seconds": 311.4,
+   "suite_runs": null,
+   "head": "full sight: 91 executed lines, 36 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/padding.py": {
+   "executed_lines": 50,
+   "exit": 2,
+   "seconds": 311.2,
+   "suite_runs": null,
+   "head": "full sight: 56 executed lines, 12 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/rule.py": {
+   "executed_lines": 46,
+   "exit": 2,
+   "seconds": 310.9,
+   "suite_runs": null,
+   "head": "full sight: 50 executed lines, 13 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/box.py": {
+   "executed_lines": 43,
+   "exit": 2,
+   "seconds": 310.6,
+   "suite_runs": null,
+   "head": "full sight: 243 executed lines, 12 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/measure.py": {
+   "executed_lines": 37,
+   "exit": 2,
+   "seconds": 310.4,
+   "suite_runs": null,
+   "head": "full sight: 45 executed lines, 11 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/highlighter.py": {
+   "executed_lines": 35,
+   "exit": 2,
+   "seconds": 310.2,
+   "suite_runs": null,
+   "head": "full sight: 61 executed lines, 26 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  },
+  "rich/cells.py": {
+   "executed_lines": 34,
+   "exit": 2,
+   "seconds": 310.1,
+   "suite_runs": null,
+   "head": "full sight: 47 executed lines, 20 observations",
+   "repaired_line": null,
+   "faulty_line_restored": false,
+   "reason": "every candidate this vocabulary generated left the suite red \u2014 the fault is outside it, or the observations are wrong. The refusal report lists each rejection w"
+  }
+ }
+}
