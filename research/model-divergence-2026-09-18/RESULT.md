@@ -69,6 +69,45 @@ Directionally Haiku writes shorter, flatter code and never reached for the math 
 per writer **none of these gaps is significant**. 44% against 62% is 14 specs against 20. This table is
 reported because it was measured, not because it separates the models. It does not.
 
+## Is the choice a stable signature, or a coin flip? (`latent.py`)
+
+If a writer's resolution of an undefined input were read out of something shared and structured, the **same**
+writers would keep agreeing with each other across different ambiguous inputs. If it were a local per-task
+choice, the grouping would shuffle. That distinction is testable from behaviour alone.
+
+46 undefined inputs over 8 specifications (41 split the writers two ways, 5 split them three ways). For each
+pair, the fraction of inputs where they gave the same answer, against a null that **shuffles writer labels
+independently per input** — preserving how many writers agree on each input and destroying only *who*.
+50,000 permutations, two-sided, Bonferroni-corrected for six pairs (α = 0.0083):
+
+| pair | n | observed | null | p | |
+|---|---|---|---|---|---|
+| gemma3:4b / haiku | 33 | **61%** | 37% | **0.0069** | significant |
+| haiku / qwen3.5:4b | 41 | **12%** | 30% | 0.0101 | misses correction |
+| gemma3:4b / phi4-mini | 21 | 57% | 39% | 0.1222 | no |
+| phi4-mini / qwen3.5:4b | 21 | 57% | 39% | 0.1214 | no |
+| gemma3:4b / qwen3.5:4b | 33 | 21% | 37% | 0.0752 | no |
+| haiku / phi4-mini | 26 | 19% | 31% | 0.2094 | no |
+
+**One pair of six survives correction, barely.** A second is a systematic *dis*agreement that just misses it.
+Counting who is the odd one out when exactly one writer stands alone: qwen3.5:4b 19 times, haiku 10,
+gemma3:4b 3, phi4-mini 2 — qwen carries a visibly different convention prior.
+
+So the choices are **not pure noise**: there is weak, detectable structure in who agrees with whom. Two
+things keep that from being a result. It is one significant pair out of six at n = 46, which is a
+hypothesis, not a finding. And the structure does not follow scale or family — the pair that agrees most is
+a 4B local model and Haiku, while the three 4B models do not group together, which is the opposite of what
+a simple story about model lineage would predict.
+
+**What this cannot be called is a claim about latent space.** Nothing here measures a representation: no
+weights, no activations, no logprobs. Behaviour is downstream of representation and many-to-one — different
+internal computations can produce identical outputs — so an output pattern constrains hypotheses about
+internals without revealing them, and this pattern is equally explained by overlapping training data,
+instruction-tuning conventions, or documentation both writers saw. The experiment that would earn the
+stronger claim is a different one: sample each writer many times at temperature above zero, or read
+logprobs over the competing conventions, and compare the **distributions** rather than one greedy answer.
+That turns 46 binary choices into a far richer signal, and it is the honest next step.
+
 ## So, honestly
 
 **Yes, and the subject is the specification, not the model.** With no access to weights, training data or
