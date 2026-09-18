@@ -1,0 +1,32 @@
+{
+ "fix_commits": 289,
+ "one_line": 134,
+ "text": 67,
+ "untokenised": 13,
+ "code": 54,
+ "vocabulary_exact": 2,
+ "recurring_shapes": 6,
+ "recurring_covered": 12,
+ "hits": [
+  {
+   "repo": "arrow",
+   "sha": "fa5bce0476",
+   "classes": [
+    "strictness"
+   ],
+   "subject": "Fix negative offset for UTC",
+   "before": "            sign = '+' if total_minutes > 0 else '-'",
+   "after": "            sign = '+' if total_minutes >= 0 else '-'"
+  },
+  {
+   "repo": "rich",
+   "sha": "4aca2c06ce",
+   "classes": [
+    "flipped-boolean"
+   ],
+   "subject": "Fix the documented default",
+   "before": "        tracebacks_word_wrap (bool, optional): Enable word wrapping of long tracebacks lines. Defaults to False.",
+   "after": "        tracebacks_word_wrap (bool, optional): Enable word wrapping of long tracebacks lines. Defaults to True."
+  }
+ ]
+}

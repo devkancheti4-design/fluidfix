@@ -1,0 +1,64 @@
+{
+ "code_fixes": 88,
+ "recurring_shapes": 7,
+ "covered": 46,
+ "once": 31,
+ "unclassed": 11,
+ "cross_repo": 3,
+ "top": [
+  {
+   "sig": "\u00b7  \u2192  \u00b7",
+   "n": 34,
+   "repos": [
+    "arrow",
+    "click",
+    "python-sortedcontainers",
+    "rich"
+   ]
+  },
+  {
+   "sig": "}  \u2192  ]",
+   "n": 2,
+   "repos": [
+    "arrow"
+   ]
+  },
+  {
+   "sig": "\u00b7  \u2192  . ID",
+   "n": 2,
+   "repos": [
+    "arrow"
+   ]
+  },
+  {
+   "sig": "\u00b7  \u2192  ,",
+   "n": 2,
+   "repos": [
+    "click"
+   ]
+  },
+  {
+   "sig": "ID  \u2192  \u00b7",
+   "n": 2,
+   "repos": [
+    "click",
+    "rich"
+   ]
+  },
+  {
+   "sig": "\u00b7  \u2192  ( )",
+   "n": 2,
+   "repos": [
+    "click",
+    "rich"
+   ]
+  },
+  {
+   "sig": "\u00b7  \u2192  CMT",
+   "n": 2,
+   "repos": [
+    "rich"
+   ]
+  }
+ ]
+}

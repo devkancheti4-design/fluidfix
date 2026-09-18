@@ -1,0 +1,897 @@
+{
+ "one_line": 134,
+ "code": 88,
+ "text": 33,
+ "untokenised": 13,
+ "all_fix_commits": 289,
+ "code_rows": [
+  {
+   "sha": "de1c5bdca7",
+   "subject": "Fix syntax in locales",
+   "file": "arrow/locales.py",
+   "hunks": 1,
+   "repo": "arrow",
+   "classes": [],
+   "before": "    }",
+   "after": "    ]"
+  },
+  {
+   "sha": "fbe19bd177",
+   "subject": "Fix syntax in locales",
+   "file": "arrow/locales.py",
+   "hunks": 1,
+   "repo": "arrow",
+   "classes": [],
+   "before": "    }",
+   "after": "    ]"
+  },
+  {
+   "sha": "7f69ace2d3",
+   "subject": "Fix for poperly handle tz passed in form pytz",
+   "file": "arrow/arrow.py",
+   "hunks": 1,
+   "repo": "arrow",
+   "classes": [],
+   "before": "            dt.microsecond, tzinfo)",
+   "after": "            dt.microsecond, dt.tzinfo)"
+  },
+  {
+   "sha": "fa5bce0476",
+   "subject": "Fix negative offset for UTC",
+   "file": "arrow/formatter.py",
+   "hunks": 1,
+   "repo": "arrow",
+   "classes": [
+    "strictness"
+   ],
+   "before": "            sign = '+' if total_minutes > 0 else '-'",
+   "after": "            sign = '+' if total_minutes >= 0 else '-'"
+  },
+  {
+   "sha": "e88984c0b6",
+   "subject": "Fix pytz conversion error",
+   "file": "arrow/arrow.py",
+   "hunks": 1,
+   "repo": "arrow",
+   "classes": [],
+   "before": "            dt.microsecond, tz)",
+   "after": "            dt.microsecond, dt.tzinfo)"
+  },
+  {
+   "sha": "198c4896d9",
+   "subject": "Fix typo timezone",
+   "file": "arrow/arrow.py",
+   "hunks": 1,
+   "repo": "arrow",
+   "classes": [],
+   "before": "        You can also provide a tzimezone expression can also be replaced:",
+   "after": "        You can also provide a timezone expression can also be replaced:"
+  },
+  {
+   "sha": "16cd686b4b",
+   "subject": "Fix typo in 'Arrow.floor' docstring",
+   "file": "arrow/arrow.py",
+   "hunks": 1,
+   "repo": "arrow",
+   "classes": [],
+   "before": "            >>> arrow.utcnow().ceil('hour')",
+   "after": "            >>> arrow.utcnow().floor('hour')"
+  },
+  {
+   "sha": "143bc85465",
+   "subject": "emergency fix broken import",
+   "file": "setup.py",
+   "hunks": 1,
+   "repo": "arrow",
+   "classes": [],
+   "before": "    version=arrow.__version__,",
+   "after": "    version='0.4.4',"
+  },
+  {
+   "sha": "5ec6198b46",
+   "subject": "fix for util breaking in python 3+",
+   "file": "arrow/util.py",
+   "hunks": 1,
+   "repo": "arrow",
+   "classes": [],
+   "before": "        return isinstance(s, (str, unicode))",
+   "after": "        return isinstance(s, str)"
+  },
+  {
+   "sha": "c6bf75fa74",
+   "subject": "Fixes windows specific error regarding spaces in filepaths for open_url.",
+   "file": "src/click/_termui_impl.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "            args = [\"explorer\", f\"/select,{url}\"]",
+   "after": "            args = [\"explorer\", \"/select,\", url]"
+  },
+  {
+   "sha": "292a27d705",
+   "subject": "Fix typo",
+   "file": "src/click/core.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "                 or a Python type.  The later is converted into the former",
+   "after": "                 or a Python type.  The latter is converted into the former"
+  },
+  {
+   "sha": "73d7de5f74",
+   "subject": "Fix versionchanged entry for click.Path (#2345)",
+   "file": "src/click/types.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        Allow passing ``type=pathlib.Path``.",
+   "after": "        Allow passing ``path_type=pathlib.Path``."
+  },
+  {
+   "sha": "18070584fc",
+   "subject": "fix type for show_default, can be str",
+   "file": "src/click/core.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        show_default: bool = False,",
+   "after": "        show_default: t.Union[bool, str] = False,"
+  },
+  {
+   "sha": "ec94dd54c9",
+   "subject": "Fix typo in docstring (change \"appnd\" to \"append\") (#1950)",
+   "file": "src/click/parser.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        ``append``, ``appnd_const`` or ``count``.",
+   "after": "        ``append``, ``append_const`` or ``count``."
+  },
+  {
+   "sha": "8b48450d5d",
+   "subject": "Fix typo in docstring (change \"appnd\" to \"append\") (#1950)",
+   "file": "src/click/parser.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        ``append``, ``appnd_const`` or ``count``.",
+   "after": "        ``append``, ``append_const`` or ``count``."
+  },
+  {
+   "sha": "de6b1ab710",
+   "subject": "Correct docstring reference",
+   "file": "src/click/core.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        :meth:`Context.lookup_value` first, then the local default.",
+   "after": "        :meth:`Context.lookup_default` first, then the local default."
+  },
+  {
+   "sha": "8c5f779185",
+   "subject": "Fix error in new AppEngine environments",
+   "file": "click/_compat.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "              'Development/' in os.environ['SERVER_SOFTWARE'])",
+   "after": "              'Development/' in os.environ.get('SERVER_SOFTWARE', ''))"
+  },
+  {
+   "sha": "fa0a7b841a",
+   "subject": "Fix error in new AppEngine environments",
+   "file": "click/_compat.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "              'Development/' in os.environ['SERVER_SOFTWARE'])",
+   "after": "              'Development/' in os.environ.get('SERVER_SOFTWARE', ''))"
+  },
+  {
+   "sha": "e0d510b51f",
+   "subject": "Fix get_current_context typo in docstring",
+   "file": "click/globals.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    :param silent: is set to `True` the return value is `None` if no context",
+   "after": "    :param silent: if set to `True` the return value is `None` if no context"
+  },
+  {
+   "sha": "93e8b9831d",
+   "subject": "Fix typo",
+   "file": "click/core.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        that are nested.  It exists so that click utiltiies can store some",
+   "after": "        that are nested.  It exists so that click utilities can store some"
+  },
+  {
+   "sha": "7a32558c1a",
+   "subject": "Fix a typo",
+   "file": "click/types.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        if value in ('true', 't,' '1', 'yes', 'y'):",
+   "after": "        if value in ('true', 't', '1', 'yes', 'y'):"
+  },
+  {
+   "sha": "2dbc14ea43",
+   "subject": "Fix missing comma in __all__ list (#935)",
+   "file": "click/__init__.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    'INT', 'FLOAT', 'BOOL', 'UUID', 'UNPROCESSED', 'FloatRange'",
+   "after": "    'INT', 'FLOAT', 'BOOL', 'UUID', 'UNPROCESSED', 'FloatRange',"
+  },
+  {
+   "sha": "3a6d3da15a",
+   "subject": "Fix invalid import in urlparse import",
+   "file": "examples/validation/validation.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    from urllib import parser as urlparse",
+   "after": "    from urllib import parse as urlparse"
+  },
+  {
+   "sha": "aae0ae2d87",
+   "subject": "Fix empty return path in get_choices",
+   "file": "click/_bashcomplete.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        return",
+   "after": "        return []"
+  },
+  {
+   "sha": "e6f22c652f",
+   "subject": "Fix path type (#695)",
+   "file": "click/types.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        if self.dir_okay and not self.file_okay:",
+   "after": "        elif self.dir_okay and not self.file_okay:"
+  },
+  {
+   "sha": "d0e24d8abd",
+   "subject": "Fix arg checks on Windoze. Fixes #477.",
+   "file": "click/_winconsole.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "                if arg in ('-c', '-m'):",
+   "after": "                if arg.startswith(('-c', '-m')):"
+  },
+  {
+   "sha": "4552159719",
+   "subject": "Fixed syntax error",
+   "file": "click/utils.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "else WIN:",
+   "after": "elif WIN:"
+  },
+  {
+   "sha": "8e768e7ba6",
+   "subject": "Fixed a regression on non windows systems",
+   "file": "click/_compat.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        _get_windows_console_stream = lambda x: None",
+   "after": "        _get_windows_console_stream = lambda *x: None"
+  },
+  {
+   "sha": "0b2e15e726",
+   "subject": "Fix broken example",
+   "file": "click/utils.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    (((0, 1), 5, 4, 3, 2), [])",
+   "after": "    (((0, 1), 2, 3, 4, 5), [])"
+  },
+  {
+   "sha": "d495fbc154",
+   "subject": "Typo in Tuple",
+   "file": "click/types.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    count and differnt types should be used for different items.  In this",
+   "after": "    count and different types should be used for different items.  In this"
+  },
+  {
+   "sha": "99be9d2bbb",
+   "subject": "Fix documentation of MultiCommand",
+   "file": "click/core.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    :class:`Command`.",
+   "after": "    :class:`Group`."
+  },
+  {
+   "sha": "7b1d403523",
+   "subject": "Fix clear() on win, colorama",
+   "file": "click/termui.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    if WIN and colorama is None:",
+   "after": "    if WIN:"
+  },
+  {
+   "sha": "a4d02ff64c",
+   "subject": "Fixed an rst syntax error",
+   "file": "click/utils.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    accidentally close a standard stream:",
+   "after": "    accidentally close a standard stream::"
+  },
+  {
+   "sha": "fa5f5033d3",
+   "subject": "Corrected an incorrect stub.",
+   "file": "click/types.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    def convert(self, param, ctx, value):",
+   "after": "    def convert(self, value, param, ctx):"
+  },
+  {
+   "sha": "a273c20d9e",
+   "subject": "Fix error message for unknown switches (#146)",
+   "file": "click/parser.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "                self._error('no such option: %s' % opt)",
+   "after": "                self._error('no such option: %s' % (arg if arg.startswith('--') else opt))"
+  },
+  {
+   "sha": "4dc22260ff",
+   "subject": "fix Choice docstring",
+   "file": "click/types.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    supported values.  All of these values have to be integers.",
+   "after": "    supported values.  All of these values have to be strings."
+  },
+  {
+   "sha": "b911a9148c",
+   "subject": "fix Argument class name typo",
+   "file": "click/decorators.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    passed as parameter declarations to :class:`Argment`, all keyword",
+   "after": "    passed as parameter declarations to :class:`Argument`, all keyword"
+  },
+  {
+   "sha": "336e5e08ac",
+   "subject": "Fixed a bug with the version flag introduced last commit.",
+   "file": "click/decorators.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "            if value or ctx.resilient_parsing:",
+   "after": "            if not value or ctx.resilient_parsing:"
+  },
+  {
+   "sha": "9877d9a2a7",
+   "subject": "Fixed a bug in tempfile pager.  This fixes #107",
+   "file": "click/_termui_impl.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [
+    "literal-off-by-one"
+   ],
+   "before": "    with open_stream(filename, 'w')[1] as f:",
+   "after": "    with open_stream(filename, 'w')[0] as f:"
+  },
+  {
+   "sha": "3d34ddf667",
+   "subject": "Fix editor failing with Python 3",
+   "file": "click/_termui_impl.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "            f = open(name)",
+   "after": "            f = open(name, 'rb')"
+  },
+  {
+   "sha": "7b8486606f",
+   "subject": "Fixed the naval example",
+   "file": "examples/naval/naval.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "def mine(ship):",
+   "after": "def mine():"
+  },
+  {
+   "sha": "f46b3f9bf7",
+   "subject": "Fixed a broken rst directive",
+   "file": "click/utils.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    .. versionmodified:: 2.0",
+   "after": "    .. versionchanged:: 2.0"
+  },
+  {
+   "sha": "f5b2e399da",
+   "subject": "Fixed the example i accidentally broke.",
+   "file": "examples/validation/validation.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "@click.option('--url', help='A URL', type=URL)",
+   "after": "@click.option('--url', help='A URL', type=URL())"
+  },
+  {
+   "sha": "645652840d",
+   "subject": "fix a typo.",
+   "file": "examples/inout/inout.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "        intout - foo.txt",
+   "after": "        inout - foo.txt"
+  },
+  {
+   "sha": "dce3b868b1",
+   "subject": "Repaired incorrect call to fail function in optparse",
+   "file": "click/_optparse.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "                self.fail('no such option: %s' % opt)",
+   "after": "                self.error('no such option: %s' % opt)"
+  },
+  {
+   "sha": "72cfc494c4",
+   "subject": "fix instanciate -> instantiate typo",
+   "file": "click/decorators.py",
+   "hunks": 1,
+   "repo": "click",
+   "classes": [],
+   "before": "    :param cls: the command class to instanciate.  This defaults to",
+   "after": "    :param cls: the command class to instantiate.  This defaults to"
+  },
+  {
+   "sha": "9b2d38c6a2",
+   "subject": "Correct SortedValuesView docstring",
+   "file": "sortedcontainers/sorteddict.py",
+   "hunks": 1,
+   "repo": "python-sortedcontainers",
+   "classes": [],
+   "before": "    The values view implements the set and sequence abstract base classes.",
+   "after": "    The values view implements the sequence abstract base class."
+  },
+  {
+   "sha": "94b7d8f6e1",
+   "subject": "Bug Fix: SortedSet.__ior__ should call update, not union",
+   "file": "sortedcontainers/sortedset.py",
+   "hunks": 1,
+   "repo": "python-sortedcontainers",
+   "classes": [],
+   "before": "    __ior__ = union",
+   "after": "    __ior__ = update"
+  },
+  {
+   "sha": "7eb5662d40",
+   "subject": "Fix missing Sequence import for SortedListWithKey",
+   "file": "sortedcontainers/sortedlistwithkey.py",
+   "hunks": 1,
+   "repo": "python-sortedcontainers",
+   "classes": [],
+   "before": "from collections import MutableSequence",
+   "after": "from collections import MutableSequence, Sequence"
+  },
+  {
+   "sha": "a0dfdd88ac",
+   "subject": "Fix SortedDict.fromkeys to use cls",
+   "file": "sortedcontainers/sorteddict.py",
+   "hunks": 1,
+   "repo": "python-sortedcontainers",
+   "classes": [],
+   "before": "        that = SortedDict((key, value) for key in seq)",
+   "after": "        that = cls((key, value) for key in seq)"
+  },
+  {
+   "sha": "9ba1980f56",
+   "subject": "Fix relative import for python 3 in sortedlistwithkey",
+   "file": "sortedcontainers/sortedlistwithkey.py",
+   "hunks": 1,
+   "repo": "python-sortedcontainers",
+   "classes": [],
+   "before": "from sortedlist import SortedList",
+   "after": "from .sortedlist import SortedList"
+  },
+  {
+   "sha": "5d6e2d72e4",
+   "subject": "fix docstring",
+   "file": "rich/console.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "                retrieve the current frame. Defaults to ``sys._getframe``.",
+   "after": "                retrieve the current frame. Defaults to None, which will use ``inspect.currentframe()``."
+  },
+  {
+   "sha": "786e9de794",
+   "subject": "mypy fix",
+   "file": "rich/_unicode_data/__init__.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "if sys.version_info >= (3, 9):",
+   "after": "if sys.version_info[:2] >= (3, 9):"
+  },
+  {
+   "sha": "f0626d32f2",
+   "subject": "fix(logging): fix tracebacks_code_width type hint",
+   "file": "rich/logging.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "        tracebacks_code_width: int = 88,",
+   "after": "        tracebacks_code_width: Optional[int] = 88,"
+  },
+  {
+   "sha": "65da27f384",
+   "subject": "fix typo",
+   "file": "rich/progress.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    def render(self, task: Task) -> Text:",
+   "after": "    def render(self, task: \"Task\") -> Text:"
+  },
+  {
+   "sha": "17dee95f11",
+   "subject": "fix pretty",
+   "file": "rich/pretty.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    _has_attrs = True",
+   "after": "    _has_attrs = hasattr(_attr_module, \"ib\")"
+  },
+  {
+   "sha": "dbdc13fbe2",
+   "subject": "fix typo in cells.py",
+   "file": "rich/cells.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "        character (str): A single character.",
+   "after": "        codepoint (int): Codepoint of a character."
+  },
+  {
+   "sha": "e57b4f0d70",
+   "subject": "Fix type of `spinner_style` argument in `Console.status`",
+   "file": "rich/console.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "        spinner_style: str = \"status.spinner\",",
+   "after": "        spinner_style: StyleType = \"status.spinner\","
+  },
+  {
+   "sha": "b248bf8660",
+   "subject": "Fix type annotations of `_Reader.name`",
+   "file": "rich/progress.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    def name(self) -> Optional[str]:",
+   "after": "    def name(self) -> str:"
+  },
+  {
+   "sha": "ccb49a279a",
+   "subject": " Fix issue probably-meant-fstring found at https://codereview.doctor",
+   "file": "rich/pretty.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    return (f\"array({_object.typecode!r}, [\", \"])\", \"array({_object.typecode!r})\")",
+   "after": "    return (f\"array({_object.typecode!r}, [\", \"])\", f\"array({_object.typecode!r})\")"
+  },
+  {
+   "sha": "06a3edb6b4",
+   "subject": "\"Fix\" spelling in docstring",
+   "file": "rich/pretty.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    there is only a miniscule chance of this happening unintentionally.",
+   "after": "    there is only a minuscule chance of this happening unintentionally."
+  },
+  {
+   "sha": "b54b1da3e4",
+   "subject": "Fix broken pager reference",
+   "file": "rich/console.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "            pager (Pager, optional): A pager object, or None to use :class:~rich.pager.SystemPager`. Defaults to None.",
+   "after": "            pager (Pager, optional): A pager object, or None to use :class:`~rich.pager.SystemPager`. Defaults to None."
+  },
+  {
+   "sha": "1206a44f4d",
+   "subject": "Fix the text.Span.__repr__ method",
+   "file": "rich/text.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "            else f\"Span({self.start}, {self.end}, {str(self.style)!r})\"",
+   "after": "            else f\"Span({self.start}, {self.end}, {repr(self.style)})\""
+  },
+  {
+   "sha": "77158a57ee",
+   "subject": "another width fix",
+   "file": "rich/console.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "            return ConsoleDimensions(self._width, self._height)",
+   "after": "            return ConsoleDimensions(self._width - self.legacy_windows, self._height)"
+  },
+  {
+   "sha": "1015379fe3",
+   "subject": "fix(tree): tree not shows root guide",
+   "file": "rich/tree.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [
+    "literal-off-by-one"
+   ],
+   "before": "            prefix = levels[(2 if self.hide_root else 2) :]",
+   "after": "            prefix = levels[(2 if self.hide_root else 1) :]"
+  },
+  {
+   "sha": "2e2884da36",
+   "subject": "fix return type for `Table.expand()`",
+   "file": "rich/table.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    def expand(self) -> int:",
+   "after": "    def expand(self) -> bool:"
+  },
+  {
+   "sha": "195972dc91",
+   "subject": "fake attribute fix",
+   "file": "rich/pretty.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "                obj, \"awehoi234_wdfjwljet234_234wdfoijsdfmmnxpi492\", False",
+   "after": "                obj, \"awehoi234_wdfjwljet234_234wdfoijsdfmmnxpi492\""
+  },
+  {
+   "sha": "90d634fdc0",
+   "subject": "Fix typos in `rich.table.Table` docstring",
+   "file": "rich/table.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "        row_styles (List[Union, str], optional): Optional list of row styles, if more that one style is give then the styles will alternate. Defaults to None.",
+   "after": "        row_styles (List[Union, str], optional): Optional list of row styles, if more than one style is given then the styles will alternate. Defaults to None."
+  },
+  {
+   "sha": "7e85a93311",
+   "subject": "type fix",
+   "file": "rich/json.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "        json_instance = cls.__new__(cls)",
+   "after": "        json_instance: \"JSON\" = cls.__new__(cls)"
+  },
+  {
+   "sha": "00eff38f20",
+   "subject": "Restore fix",
+   "file": "rich/repr.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "Result = Result",
+   "after": "RichReprResult = Result"
+  },
+  {
+   "sha": "f70eb3cac2",
+   "subject": "fix hash again",
+   "file": "rich/style.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "                self._meta,",
+   "after": "                style._meta,"
+  },
+  {
+   "sha": "eb37031873",
+   "subject": "fix hash",
+   "file": "rich/style.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "                meta,",
+   "after": "                self._meta,"
+  },
+  {
+   "sha": "cd402ac248",
+   "subject": "Fix Markdown() documentation",
+   "file": "rich/markdown.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "            enabled. Defaults to \"python\".",
+   "after": "            enabled. Defaults to None."
+  },
+  {
+   "sha": "b5654c9257",
+   "subject": "Fix docstring typo",
+   "file": "rich/logging.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "        message (str): String cotaining log message.",
+   "after": "        message (str): String containing log message."
+  },
+  {
+   "sha": "9febf2a4a4",
+   "subject": "typo",
+   "file": "rich/tui/message_pump.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    async def dispatch_messageage(self, message: Message) -> None:",
+   "after": "    async def dispatch_message(self, message: Message) -> None:"
+  },
+  {
+   "sha": "49d0e0e7e1",
+   "subject": "Fix typo",
+   "file": "rich/live.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "        refresh_per_second (float, optional): Number of times per second to refresh the live display. Defaults to 1.",
+   "after": "        refresh_per_second (float, optional): Number of times per second to refresh the live display. Defaults to 4."
+  },
+  {
+   "sha": "bcd61cc033",
+   "subject": "type fix",
+   "file": "rich/console.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    ipython = get_ipython()",
+   "after": "    ipython = get_ipython()  # type: ignore"
+  },
+  {
+   "sha": "4aca2c06ce",
+   "subject": "Fix the documented default",
+   "file": "rich/logging.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [
+    "flipped-boolean"
+   ],
+   "before": "        tracebacks_word_wrap (bool, optional): Enable word wrapping of long tracebacks lines. Defaults to False.",
+   "after": "        tracebacks_word_wrap (bool, optional): Enable word wrapping of long tracebacks lines. Defaults to True."
+  },
+  {
+   "sha": "9e881e5510",
+   "subject": "Fix mypy's issue with having same file under 2 module names",
+   "file": "rich/live.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "from .__init__ import get_console",
+   "after": "from . import get_console"
+  },
+  {
+   "sha": "645e851aad",
+   "subject": "fix spelling in docstring",
+   "file": "rich/__init__.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    * inspect(<OBJECT>, dunder=True) to see attributes begining with double underscore.",
+   "after": "    * inspect(<OBJECT>, dunder=True) to see attributes beginning with double underscore."
+  },
+  {
+   "sha": "35e09d4701",
+   "subject": "typo",
+   "file": "rich/progress.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "        redirect_stout: (bool, optional): Enable redirection of stdout, so ``print`` may be used. Defaults to True.",
+   "after": "        redirect_stdout: (bool, optional): Enable redirection of stdout, so ``print`` may be used. Defaults to True."
+  },
+  {
+   "sha": "75fe9c458d",
+   "subject": "example fix",
+   "file": "examples/bars.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    color = Color.from_rgb((y + 1) * 127, 0, 0)",
+   "after": "    color = Color.from_rgb((1 + y) * 127.5, 0, 0)"
+  },
+  {
+   "sha": "b18193b538",
+   "subject": "Fix typo",
+   "file": "rich/progress.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "        redirect_stout: (bool, optional): Enable redirection of stderr. Defaults to True.",
+   "after": "        redirect_stderr: (bool, optional): Enable redirection of stderr. Defaults to True."
+  },
+  {
+   "sha": "01b1b61b9d",
+   "subject": "Fix typo in docstring",
+   "file": "rich/progress.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "        decimal_suffix (bool, optional): Flag to renser filesize in desired format, disable to render in binary. Defaults to True.",
+   "after": "        decimal_suffix (bool, optional): Flag to render filesize in decimal format, disable to render in binary. Defaults to True."
+  },
+  {
+   "sha": "6ce51f3ca1",
+   "subject": "fix",
+   "file": "rich/pager.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    _pager = pydoc.pager",
+   "after": "    _pager = lambda self, content: pydoc.pager(content)"
+  },
+  {
+   "sha": "a86ece7b21",
+   "subject": "correct example",
+   "file": "rich/console.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "            >>> print(capture.result)",
+   "after": "            >>> print(capture.get())"
+  },
+  {
+   "sha": "ff98c229af",
+   "subject": "fix spelling of 'anything' in console.py docstring",
+   "file": "rich/console.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "            renderables (Iterable[Union[str, ConsoleRenderable]]): Anyting that Rich can render.",
+   "after": "            renderables (Iterable[Union[str, ConsoleRenderable]]): Anything that Rich can render."
+  },
+  {
+   "sha": "c605444aee",
+   "subject": "type fix",
+   "file": "rich/__main__.py",
+   "hunks": 1,
+   "repo": "rich",
+   "classes": [],
+   "before": "    print(console.file.getvalue())",
+   "after": "    print(console.file.getvalue())  # type: ignore"
+  }
+ ]
+}

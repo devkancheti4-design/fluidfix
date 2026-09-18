@@ -1,0 +1,41 @@
+{
+ "one_line": 134,
+ "recurring_signatures": 8,
+ "covered_by_recurring": 86,
+ "once_only": 34,
+ "long_rewrites": 14,
+ "top": [
+  {
+   "sig": "\u00b7  ->  \u00b7",
+   "n": 67
+  },
+  {
+   "sig": "\u00b7  ->  ID",
+   "n": 5
+  },
+  {
+   "sig": "\u00b7  ->  # ID : ID",
+   "n": 3
+  },
+  {
+   "sig": "ID  ->  \u00b7",
+   "n": 3
+  },
+  {
+   "sig": "}  ->  ]",
+   "n": 2
+  },
+  {
+   "sig": "\u00b7  ->  . ID",
+   "n": 2
+  },
+  {
+   "sig": "\u00b7  ->  `",
+   "n": 2
+  },
+  {
+   "sig": "\u00b7  ->  ( )",
+   "n": 2
+  }
+ ]
+}
