@@ -101,3 +101,69 @@ pin the properties each memory is supposed to have.
 - Two memory faults, both inside or one teaching step away from the vocabulary. A memory fault that is not
   a shape — a wrong dispatch *policy* rather than a wrong token — is outside this and would reach a human.
 - The fixed point is structural, not a proof of termination under adversarial memory faults.
+
+## The third direction: the loop grows as a net (`grown_loop.py`, 2026-09-18)
+
+`net.py` grows a search and its law returns two directions, **both of which search code** — REFUTED to wider,
+CAPPED to deeper. This file's own driver descends into the memory only because a human passes
+`--break gate`. So the net and the loop grew apart: nothing in the law ever says *go down*.
+
+There is a ruling that says it, and it needs no hand:
+
+> **MISDIRECTED** — the memory *remembered* the answering class and wave 1 still did not carry it.
+> Wider and deeper both search a repository that was never the problem. Go **down**: the memory file is the
+> territory and its suite is the judge.
+
+It is decidable against the memory's **own record**, never against ground truth about the code. And it
+arrives on its own: `WAVE1_CLASSES = 2` is correct for two remembered classes and becomes wrong the moment a
+third is learned and an older one answers. **Nothing here is broken by hand.** The memory is outgrown, which
+is what growth means.
+
+One property makes the descent work at all, and it is the shape of the whole loop: **when MISDIRECTED fires
+the memory's suite is still GREEN.** It passes every incident it has seen. So the descent must first write
+the incident into the suite — that is what turns the memory red — and only then can a fluidfix repair it,
+judged by a test encoding the very failure that triggered the descent.
+
+Replayed over the 31 recorded real-repo incidents (four repositories, seven classes,
+`../llm-fusion-2026-09-16/cases`), memory starting correct:
+
+| ruling | count | what happened |
+|---|---|---|
+| HIT | 7 | wave 1 carried the answer — 2 or 3 fluidfixes |
+| WIDER | 7 | the class had never been seen: widen to wave 2, then learn it |
+| **MISDIRECTED** | **17** | it knew the class and dropped it → **down into the memory** |
+
+**17 descents. 17 byte-exact rollbacks. 0 repairs. 0 wrong.** Each descent wrote its incident into
+`test_dispatch.py`, confirmed the suite went red, and dispatched 13 fluidfixes over `dispatch.py` — the 9
+shipped classes plus the 4 taught at the memory's own level (`memory_rules.py`) — and every one refused.
+
+### Why it refused, exactly
+
+The answering class sat at index 4, 5 or 6 of `remembered`, so the cap would have needed to jump by **3, 5
+or 5** — and the shipped literal class moves a literal by one, as does the class taught at this level. **No
+fixed value works either**: the cap here would have to be 7 and would grow with every class learned.
+
+The repair the suite actually describes is not a number at all:
+
+```python
+    for k in remembered[:WAVE1_CLASSES]:   ->   for k in remembered:
+```
+
+Drop the recency slice. Checked: every misdirected answer's class *is* in `remembered`, so carrying all of
+`remembered` satisfies all 17 appended tests. It is one line, and it is a structural rewrite, not a literal
+move — the same shape as the four one-line rewrites the model-bug study found outside the vocabulary.
+
+**So the loop closes and grows in three directions, and at the bottom it meets the same ceiling measured
+everywhere else today.** The ruling is sound, the descent is sound, the judge is sound, the rollback is
+byte-exact seventeen times over — and the vocabulary reaches a mechanical subset, here as everywhere. That
+is the honest shape of the thing: `WAVE1_CLASSES` was never the fault, it was the symptom of a policy that
+ranks when its own test says it must cover. **A fan-out must cover, not rank** — §2 of the lake result,
+arrived at again from underneath.
+
+### Not claimed
+
+- The survey per repository is built from the recorded corpus — every (file, class) pair is one some case
+  in that repository actually exhibited — not from a live `SURVEY` run. It is coarser than the real thing.
+- 31 incidents, one memory, one break-free run. The 17 refusals are one fault repeated, not 17 faults.
+- No descent went below level 2: the memory's own memory (`repairs-a-memory`) stayed empty because nothing
+  ever repaired a memory, so the fixed point is still unreached by measurement.
