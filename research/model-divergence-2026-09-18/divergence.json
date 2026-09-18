@@ -1,0 +1,1864 @@
+[
+ {
+  "set": "boundary",
+  "spec": "backoff",
+  "pool": 25,
+  "passing": [
+   "haiku",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "failing": [
+   "gemma3:4b"
+  ],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 12
+   },
+   "haiku": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 3
+   },
+   "phi4-mini": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 8
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "boundary",
+  "spec": "between",
+  "pool": 62,
+  "passing": [
+   "gemma3:4b",
+   "haiku",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "boundary",
+  "spec": "bytes_human",
+  "pool": 19,
+  "passing": [
+   "gemma3:4b",
+   "haiku",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 6
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": true,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 9
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 11
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 10
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "boundary",
+  "spec": "clip_exclusive",
+  "pool": 39,
+  "passing": [
+   "gemma3:4b",
+   "haiku",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": true,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": true,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 6
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 7
+   }
+  },
+  "divergences": [
+   {
+    "a": "gemma3:4b",
+    "b": "phi4-mini",
+    "input": [
+     7,
+     0
+    ],
+    "a_says": "0",
+    "b_says": "-1"
+   },
+   {
+    "a": "gemma3:4b",
+    "b": "qwen3.5:4b",
+    "input": [
+     7,
+     0
+    ],
+    "a_says": "0",
+    "b_says": "-1"
+   },
+   {
+    "a": "haiku",
+    "b": "phi4-mini",
+    "input": [
+     7,
+     0
+    ],
+    "a_says": "0",
+    "b_says": "-1"
+   },
+   {
+    "a": "haiku",
+    "b": "qwen3.5:4b",
+    "input": [
+     7,
+     0
+    ],
+    "a_says": "0",
+    "b_says": "-1"
+   }
+  ]
+ },
+ {
+  "set": "boundary",
+  "spec": "columns",
+  "pool": 43,
+  "passing": [
+   "gemma3:4b",
+   "haiku",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 6
+   },
+   "haiku": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 6
+   },
+   "phi4-mini": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 5
+   },
+   "qwen3.5:4b": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 12
+   }
+  },
+  "divergences": [
+   {
+    "a": "gemma3:4b",
+    "b": "qwen3.5:4b",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     -2
+    ],
+    "a_says": "!IndexError: list index out of range",
+    "b_says": "[]"
+   },
+   {
+    "a": "haiku",
+    "b": "qwen3.5:4b",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     -2
+    ],
+    "a_says": "!IndexError: list index out of range",
+    "b_says": "[]"
+   },
+   {
+    "a": "phi4-mini",
+    "b": "qwen3.5:4b",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     -2
+    ],
+    "a_says": "!IndexError: list index out of range",
+    "b_says": "[]"
+   }
+  ]
+ },
+ {
+  "set": "boundary",
+  "spec": "countdown",
+  "pool": 10,
+  "passing": [
+   "haiku",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "failing": [
+   "gemma3:4b"
+  ],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": true,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 6
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 4
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 7
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 7
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "boundary",
+  "spec": "insert_sorted",
+  "pool": 45,
+  "passing": [
+   "haiku"
+  ],
+  "failing": [
+   "gemma3:4b",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": true,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 5
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": true,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 5
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 7
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 8
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "boundary",
+  "spec": "nth_from_end",
+  "pool": 39,
+  "passing": [
+   "gemma3:4b",
+   "haiku",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 7
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 4
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 6
+   }
+  },
+  "divergences": [
+   {
+    "a": "gemma3:4b",
+    "b": "haiku",
+    "input": [
+     [],
+     1
+    ],
+    "a_says": "None",
+    "b_says": "!IndexError: list index out of range"
+   },
+   {
+    "a": "gemma3:4b",
+    "b": "qwen3.5:4b",
+    "input": [
+     [
+      2,
+      3
+     ],
+     3
+    ],
+    "a_says": "None",
+    "b_says": "3"
+   },
+   {
+    "a": "haiku",
+    "b": "phi4-mini",
+    "input": [
+     [],
+     1
+    ],
+    "a_says": "!IndexError: list index out of range",
+    "b_says": "None"
+   },
+   {
+    "a": "haiku",
+    "b": "qwen3.5:4b",
+    "input": [
+     [],
+     1
+    ],
+    "a_says": "!IndexError: list index out of range",
+    "b_says": "None"
+   },
+   {
+    "a": "phi4-mini",
+    "b": "qwen3.5:4b",
+    "input": [
+     [
+      2,
+      3
+     ],
+     3
+    ],
+    "a_says": "None",
+    "b_says": "3"
+   }
+  ]
+ },
+ {
+  "set": "boundary",
+  "spec": "overlap",
+  "pool": 96,
+  "passing": [
+   "gemma3:4b",
+   "haiku",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": true,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "boundary",
+  "spec": "page_count",
+  "pool": 45,
+  "passing": [
+   "gemma3:4b",
+   "haiku",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 8
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 5
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 4
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 5
+   }
+  },
+  "divergences": [
+   {
+    "a": "gemma3:4b",
+    "b": "haiku",
+    "input": [
+     10,
+     -5
+    ],
+    "a_says": "-2",
+    "b_says": "-1"
+   },
+   {
+    "a": "gemma3:4b",
+    "b": "phi4-mini",
+    "input": [
+     -10,
+     5
+    ],
+    "a_says": "-2",
+    "b_says": "0"
+   },
+   {
+    "a": "gemma3:4b",
+    "b": "qwen3.5:4b",
+    "input": [
+     10,
+     -5
+    ],
+    "a_says": "-2",
+    "b_says": "-1"
+   },
+   {
+    "a": "haiku",
+    "b": "phi4-mini",
+    "input": [
+     -10,
+     5
+    ],
+    "a_says": "-2",
+    "b_says": "0"
+   },
+   {
+    "a": "phi4-mini",
+    "b": "qwen3.5:4b",
+    "input": [
+     -10,
+     5
+    ],
+    "a_says": "0",
+    "b_says": "-2"
+   }
+  ]
+ },
+ {
+  "set": "boundary",
+  "spec": "percentile",
+  "pool": 76,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [
+   "gemma3:4b",
+   "phi4-mini"
+  ],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": true,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 12
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 6
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": true,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 7
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": true,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 9
+   }
+  },
+  "divergences": [
+   {
+    "a": "haiku",
+    "b": "qwen3.5:4b",
+    "input": [
+     [],
+     50
+    ],
+    "a_says": "!IndexError: list index out of range",
+    "b_says": "!ValueError: List must be non-empty"
+   }
+  ]
+ },
+ {
+  "set": "boundary",
+  "spec": "progress",
+  "pool": 57,
+  "passing": [
+   "gemma3:4b",
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [
+   "phi4-mini"
+  ],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 5
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 5
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 3
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": true,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 5
+   }
+  },
+  "divergences": [
+   {
+    "a": "gemma3:4b",
+    "b": "qwen3.5:4b",
+    "input": [
+     3,
+     2,
+     10
+    ],
+    "a_says": "15",
+    "b_says": "10"
+   },
+   {
+    "a": "haiku",
+    "b": "qwen3.5:4b",
+    "input": [
+     3,
+     2,
+     10
+    ],
+    "a_says": "15",
+    "b_says": "10"
+   }
+  ]
+ },
+ {
+  "set": "boundary",
+  "spec": "split_at",
+  "pool": 52,
+  "passing": [
+   "gemma3:4b",
+   "haiku",
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 4
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "boundary",
+  "spec": "trim_to_fit",
+  "pool": 29,
+  "passing": [
+   "gemma3:4b",
+   "haiku"
+  ],
+  "failing": [
+   "phi4-mini",
+   "qwen3.5:4b"
+  ],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 15
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 13
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 14
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 13
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "boundary",
+  "spec": "truncate_words",
+  "pool": 35,
+  "passing": [
+   "haiku",
+   "phi4-mini"
+  ],
+  "failing": [
+   "gemma3:4b",
+   "qwen3.5:4b"
+  ],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 7
+   },
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 6
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 8
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 8
+   }
+  },
+  "divergences": [
+   {
+    "a": "haiku",
+    "b": "phi4-mini",
+    "input": [
+     "a b c d",
+     0
+    ],
+    "a_says": "' ...'",
+    "b_says": "'...'"
+   }
+  ]
+ },
+ {
+  "set": "boundary",
+  "spec": "windows",
+  "pool": 63,
+  "passing": [
+   "gemma3:4b",
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [
+   "phi4-mini"
+  ],
+  "fingerprints": {
+   "gemma3:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 8
+   },
+   "haiku": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 5
+   },
+   "phi4-mini": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 6
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 5
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "average_or_zero",
+  "pool": 17,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 4
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 4
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "balanced",
+  "pool": 11,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 10
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 10
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "chunk",
+  "pool": 54,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 5
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 5
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "clamp",
+  "pool": 76,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": true,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": true,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "clip_index",
+  "pool": 50,
+  "passing": [
+   "haiku"
+  ],
+  "failing": [
+   "qwen3.5:4b"
+  ],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": true,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 5
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": true,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 5
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "count_words",
+  "pool": 8,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "dedupe",
+  "pool": 29,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 8
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 8
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "initials",
+  "pool": 10,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 3
+   },
+   "qwen3.5:4b": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "is_leap",
+  "pool": 27,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "last_index",
+  "pool": 22,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 4
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "median",
+  "pool": 38,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 7
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 9
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "pairs",
+  "pool": 21,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "qwen3.5:4b": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "parse_duration",
+  "pool": 13,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": true,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 21
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 15
+   }
+  },
+  "divergences": [
+   {
+    "a": "haiku",
+    "b": "qwen3.5:4b",
+    "input": [
+     "s54"
+    ],
+    "a_says": "0",
+    "b_says": "!ValueError: invalid literal for int() with base 10: ''"
+   }
+  ]
+ },
+ {
+  "set": "ordinary",
+  "spec": "percent",
+  "pool": 26,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 4
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 4
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "running_total",
+  "pool": 22,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 7
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 7
+   }
+  },
+  "divergences": []
+ },
+ {
+  "set": "ordinary",
+  "spec": "truncate",
+  "pool": 48,
+  "passing": [
+   "haiku",
+   "qwen3.5:4b"
+  ],
+  "failing": [],
+  "fingerprints": {
+   "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 6
+   },
+   "qwen3.5:4b": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 6
+   }
+  },
+  "divergences": []
+ }
+]
