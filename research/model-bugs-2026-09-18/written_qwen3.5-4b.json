@@ -1,0 +1,189 @@
+{
+ "author": "qwen3.5:4b",
+ "written": 16,
+ "failed": 1,
+ "rows": [
+  {
+   "name": "clamp",
+   "code": "def clamp(value, low, high):\n    return max(low, min(high, value))\n",
+   "tests": [
+    "assert clamp(5, 1, 10) == 5",
+    "assert clamp(0, 1, 10) == 1",
+    "assert clamp(11, 1, 10) == 10",
+    "assert clamp(1, 1, 10) == 1",
+    "assert clamp(10, 1, 10) == 10"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "last_index",
+   "code": "def last_index(items):\n    if not items:\n        return -1\n    return len(items) - 1\n",
+   "tests": [
+    "assert last_index([1, 2, 3]) == 2",
+    "assert last_index([]) == -1",
+    "assert last_index([9]) == 0"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "chunk",
+   "code": "def chunk(items, size):\n    \"\"\"Split items into consecutive lists of at most `size` elements.\"\"\"\n    result = []\n    for i in range(0, len(items), size):\n        result.append(items[i:i + size])\n    return result\n",
+   "tests": [
+    "assert chunk([1,2,3,4,5], 2) == [[1,2],[3,4],[5]]",
+    "assert chunk([], 3) == []",
+    "assert chunk([1,2,3], 3) == [[1,2,3]]"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "running_total",
+   "code": "def running_total(numbers):\n    total = 0\n    result = []\n    for num in numbers:\n        total += num\n        result.append(total)\n    return result\n",
+   "tests": [
+    "assert running_total([1,2,3]) == [1,3,6]",
+    "assert running_total([]) == []",
+    "assert running_total([5]) == [5]"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "median",
+   "code": "def median(numbers):\n    \"\"\"Return the median of a non-empty list of numbers (mean of the middle two when even).\"\"\"\n    sorted_numbers = sorted(numbers)\n    n = len(sorted_numbers)\n    if n % 2 == 1:\n        return sorted_numbers[n // 2]\n    else:\n        mid1 = sorted_numbers[n // 2 - 1]\n        mid2 = sorted_numbers[n // 2]\n        return (mid1 + mid2) / 2\n",
+   "tests": [
+    "assert median([3,1,2]) == 2",
+    "assert median([4,1,2,3]) == 2.5",
+    "assert median([7]) == 7"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "truncate",
+   "code": "def truncate(text, limit):\n    \"\"\"Return text unchanged when it fits in `limit` characters, otherwise cut it\n    and end with an ellipsis so the result is exactly `limit` characters long.\"\"\"\n    if len(text) <= limit:\n        return text\n    else:\n        return text[:limit - 3] + '...'\n",
+   "tests": [
+    "assert truncate('hello', 10) == 'hello'",
+    "assert truncate('hello', 5) == 'hello'",
+    "assert truncate('hello world', 8) == 'hello...'",
+    "assert len(truncate('abcdefgh', 6)) == 6"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "count_words",
+   "code": "def count_words(text):\n    \"\"\"Return the number of whitespace-separated words; an empty or blank string has none.\"\"\"\n    return len(text.split())\n",
+   "tests": [
+    "assert count_words('a b  c') == 3",
+    "assert count_words('') == 0",
+    "assert count_words('   ') == 0"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "is_leap",
+   "code": "def is_leap(year):\n    \"\"\"True when the year is a leap year in the Gregorian calendar.\"\"\"\n    return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)\n",
+   "tests": [
+    "assert is_leap(2024) is True",
+    "assert is_leap(1900) is False",
+    "assert is_leap(2000) is True",
+    "assert is_leap(2023) is False"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "percent",
+   "code": "def percent(part, whole):\n    \"\"\"Return part as a percentage of whole, rounded to one decimal; 0.0 when whole is 0.\"\"\"\n    if whole == 0:\n        return 0.0\n    return round((part / whole) * 100, 1)\n",
+   "tests": [
+    "assert percent(1, 4) == 25.0",
+    "assert percent(0, 0) == 0.0",
+    "assert percent(1, 3) == 33.3"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "dedupe",
+   "code": "def dedupe(items):\n    \"\"\"Remove duplicates, keeping the first occurrence and the original order.\"\"\"\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n",
+   "tests": [
+    "assert dedupe([1,2,1,3,2]) == [1,2,3]",
+    "assert dedupe([]) == []",
+    "assert dedupe([2,2]) == [2]"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "pairs",
+   "code": "def pairs(items):\n    return [(items[i], items[i+1]) for i in range(len(items)-1)]\n",
+   "tests": [
+    "assert pairs([1,2,3]) == [(1,2),(2,3)]",
+    "assert pairs([1]) == []",
+    "assert pairs([]) == []"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "initials",
+   "code": "def initials(full_name):\n    return ''.join(word[0].upper() for word in full_name.split())\n",
+   "tests": [
+    "assert initials('ada lovelace') == 'AL'",
+    "assert initials('grace') == 'G'",
+    "assert initials('') == ''"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "clip_index",
+   "code": "def clip_index(index, length):\n    if index < 0:\n        return length + index\n    else:\n        return min(max(index, 0), length - 1)\n",
+   "tests": [
+    "assert clip_index(2, 5) == 2",
+    "assert clip_index(9, 5) == 4",
+    "assert clip_index(-1, 5) == 4",
+    "assert clip_index(-9, 5) == 0"
+   ],
+   "passed": false,
+   "why": "AssertionError"
+  },
+  {
+   "name": "parse_duration",
+   "code": "def parse_duration(text):\n    text = text.strip().lower()\n    total_seconds = 0\n    \n    if 'h' in text:\n        hours = int(''.join(filter(str.isdigit, text.split('h')[0])))\n        total_seconds += hours * 3600\n        text = text.split('h')[1]\n    \n    if 'm' in text:\n        minutes = int(''.join(filter(str.isdigit, text.split('m')[0])))\n        total_seconds += minutes * 60\n        text = text.split('m')[1]\n    \n    if 's' in text:\n        seconds = int(''.join(filter(str.isdigit, text.split('s')[0])))\n        total_seconds += seconds\n    \n    return total_seconds\n",
+   "tests": [
+    "assert parse_duration('45s') == 45",
+    "assert parse_duration('1h30m') == 5400",
+    "assert parse_duration('2m') == 120"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "balanced",
+   "code": "def balanced(text):\n    count = 0\n    for char in text:\n        if char == '(':\n            count += 1\n        elif char == ')':\n            count -= 1\n            if count < 0:\n                return False\n    return count == 0\n",
+   "tests": [
+    "assert balanced('(a(b))') is True",
+    "assert balanced('(') is False",
+    "assert balanced(')(') is False",
+    "assert balanced('') is True"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "average_or_zero",
+   "code": "def average_or_zero(numbers):\n    \"\"\"Return the mean, or 0 when the list is empty.\"\"\"\n    if not numbers:\n        return 0\n    return sum(numbers) / len(numbers)\n",
+   "tests": [
+    "assert average_or_zero([2,4]) == 3",
+    "assert average_or_zero([]) == 0",
+    "assert average_or_zero([5]) == 5"
+   ],
+   "passed": true,
+   "why": ""
+  }
+ ]
+}

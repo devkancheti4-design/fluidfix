@@ -1,0 +1,18 @@
+  clamp              passes
+  last_index         passes
+  chunk              passes
+  running_total      passes
+  median             passes
+  truncate           passes
+  count_words        passes
+  is_leap            passes
+  percent            passes
+  dedupe             passes
+  pairs              passes
+  initials           passes
+  clip_index         FAILS   AssertionError
+  parse_duration     passes
+  balanced           passes
+  average_or_zero    passes
+
+qwen3.5:4b: 1 of 16 implementations fail their own hidden tests

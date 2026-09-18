@@ -1,0 +1,185 @@
+{
+ "author": "gemma3:4b-hard",
+ "written": 16,
+ "failed": 5,
+ "rows": [
+  {
+   "name": "page_count",
+   "code": "def page_count(total_items, per_page):\n    \"\"\"Number of pages needed to show all items, with a partial final page counted.\n    Zero items means zero pages.\"\"\"\n    if total_items == 0:\n        return 0\n    elif total_items % per_page == 0:\n        return total_items // per_page\n    else:\n        return total_items // per_page + 1\n",
+   "tests": [
+    "assert page_count(10, 5) == 2",
+    "assert page_count(11, 5) == 3",
+    "assert page_count(0, 5) == 0",
+    "assert page_count(1, 5) == 1"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "windows",
+   "code": "def windows(items, size):\n    \"\"\"Every consecutive run of exactly `size` elements, in order.\n    Fewer items than `size` gives an empty list.\"\"\"\n    if len(items) < size:\n        return []\n    result = []\n    for i in range(len(items) - size + 1):\n        result.append(items[i:i+size])\n    return result\n",
+   "tests": [
+    "assert windows([1,2,3,4], 2) == [[1,2],[2,3],[3,4]]",
+    "assert windows([1,2], 3) == []",
+    "assert windows([1,2,3], 3) == [[1,2,3]]"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "between",
+   "code": "def between(value, low, high):\n    \"\"\"True when value lies strictly between low and high, touching neither end.\"\"\"\n    return low < value < high\n",
+   "tests": [
+    "assert between(5, 1, 10) is True",
+    "assert between(1, 1, 10) is False",
+    "assert between(10, 1, 10) is False",
+    "assert between(0, 1, 10) is False"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "nth_from_end",
+   "code": "def nth_from_end(items, n):\n    \"\"\"The nth element counting back from the end, where n=1 is the last element.\"\"\"\n    if not items or n <= 0:\n        return None\n    \n    length = len(items)\n    \n    if n > length:\n        return None\n    \n    return items[length - n]\n",
+   "tests": [
+    "assert nth_from_end([1,2,3], 1) == 3",
+    "assert nth_from_end([1,2,3], 3) == 1"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "split_at",
+   "code": "def split_at(items, index):\n    \"\"\"Split into (before, after) where `before` holds the first `index` elements.\"\"\"\n    before = items[:index]\n    after = items[index:]\n    return before, after\n",
+   "tests": [
+    "assert split_at([1,2,3,4], 2) == ([1,2],[3,4])",
+    "assert split_at([1,2], 0) == ([],[1,2])",
+    "assert split_at([1,2], 2) == ([1,2],[])"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "overlap",
+   "code": "def overlap(a_start, a_end, b_start, b_end):\n    \"\"\"True when two half-open intervals [start, end) share at least one point.\"\"\"\n    return a_start < b_end and b_start < a_end\n",
+   "tests": [
+    "assert overlap(0, 5, 3, 8) is True",
+    "assert overlap(0, 5, 5, 8) is False",
+    "assert overlap(0, 5, 4, 8) is True",
+    "assert overlap(5, 8, 0, 5) is False"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "truncate_words",
+   "code": "def truncate_words(text, limit):\n    words = text.split()\n    if len(words) <= limit:\n        return text\n    else:\n        truncated = ' '.join(words[:limit])\n        return truncated + '...'\n",
+   "tests": [
+    "assert truncate_words('a b c d', 2) == 'a b ...'",
+    "assert truncate_words('a b', 5) == 'a b'",
+    "assert truncate_words('a b c', 3) == 'a b c'"
+   ],
+   "passed": false,
+   "why": "AssertionError"
+  },
+  {
+   "name": "bytes_human",
+   "code": "def bytes_human(n):\n    \"\"\"Format a byte count with one decimal using 1024 steps: 1024 -> '1.0 KB',\n    1023 -> '1023.0 B', 1048576 -> '1.0 MB'.\"\"\"\n    for x in ['B', 'KB', 'MB', 'GB', 'TB']:\n        if n < 1024.0:\n            return \"%3.1f %s\" % (n, x)\n        n /= 1024.0\n",
+   "tests": [
+    "assert bytes_human(1024) == '1.0 KB'",
+    "assert bytes_human(1023) == '1023.0 B'",
+    "assert bytes_human(1048576) == '1.0 MB'"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "insert_sorted",
+   "code": "def insert_sorted(items, value):\n    \"\"\"Insert into a sorted list, placing the value AFTER any equal values.\"\"\"\n    index = 0\n    while index < len(items) and items[index] <= value:\n        index += 1\n    items.insert(index, value)\n",
+   "tests": [
+    "assert insert_sorted([1,2,2,3], 2) == [1,2,2,2,3]",
+    "assert insert_sorted([], 1) == [1]",
+    "assert insert_sorted([1,3], 2) == [1,2,3]"
+   ],
+   "passed": false,
+   "why": "AssertionError"
+  },
+  {
+   "name": "backoff",
+   "code": "def backoff(attempts, base):\n    \"\"\"The delay before each retry, doubling each time and starting at `base`.\n    One entry per attempt.\"\"\"\n    if attempts == 0:\n        return base\n    elif attempts == 1:\n        return base * 2\n    elif attempts == 2:\n        return base * 4\n    elif attempts == 3:\n        return base * 8\n    else:\n        return base * (2 ** (attempts - 3))\n",
+   "tests": [
+    "assert backoff(3, 1) == [1,2,4]",
+    "assert backoff(1, 2) == [2]",
+    "assert backoff(0, 1) == []"
+   ],
+   "passed": false,
+   "why": "AssertionError"
+  },
+  {
+   "name": "percentile",
+   "code": "def percentile(values, p):\n    \"\"\"Nearest-rank percentile of a non-empty list: the value at rank ceil(p/100 * n),\n    counting from 1 in the sorted order.\"\"\"\n    if not values:\n        return None\n    values = sorted(values)\n    n = len(values)\n    rank = ceil(p / 100 * n)\n    if rank > n:\n        return values[-1]\n    if rank == n:\n        return values[-1]\n    return values[rank - 1]\n",
+   "tests": [
+    "assert percentile([1,2,3,4], 50) == 2",
+    "assert percentile([1,2,3,4], 100) == 4",
+    "assert percentile([1,2,3,4], 25) == 1"
+   ],
+   "passed": false,
+   "why": "NameError: name 'ceil' is not defined"
+  },
+  {
+   "name": "clip_exclusive",
+   "code": "def clip_exclusive(index, length):\n    \"\"\"Clip an index into the valid positions of a sequence of `length` items.\"\"\"\n    return max(0, min(index, length - 1))\n",
+   "tests": [
+    "assert clip_exclusive(7, 5) == 4",
+    "assert clip_exclusive(-3, 5) == 0",
+    "assert clip_exclusive(2, 5) == 2"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "columns",
+   "code": "def columns(items, n):\n    result = [[] for _ in range(n)]\n    for i, item in enumerate(items):\n        col_index = i % n\n        result[col_index].append(item)\n    return result\n",
+   "tests": [
+    "assert columns([1,2,3,4,5], 2) == [[1,3,5],[2,4]]",
+    "assert columns([1,2], 3) == [[1],[2],[]]"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "countdown",
+   "code": "def countdown(start):\n    \"\"\"Every whole number from `start` down to 1, in order. Zero or less gives nothing.\"\"\"\n    if start <= 0:\n        return\n    while start > 0:\n        print(start)\n        start -= 1\n",
+   "tests": [
+    "assert countdown(3) == [3,2,1]",
+    "assert countdown(1) == [1]",
+    "assert countdown(0) == []"
+   ],
+   "passed": false,
+   "why": "AssertionError"
+  },
+  {
+   "name": "trim_to_fit",
+   "code": "def trim_to_fit(words, width):\n    \"\"\"Take words from the front while the joined line stays within `width` characters,\n    counting the single spaces between them.\"\"\"\n    result = []\n    current_line = \"\"\n    current_width = 0\n    for word in words:\n        if current_width + len(word) + (len(result) > 0) <= width:\n            if len(result) > 0:\n                current_line += \" \"\n            current_line += word\n            current_width += len(word) + (len(result) > 0)\n            result.append(word)\n        else:\n            break\n    return result\n",
+   "tests": [
+    "assert trim_to_fit(['ab','cd'], 5) == ['ab','cd']",
+    "assert trim_to_fit(['ab','cd'], 4) == ['ab']",
+    "assert trim_to_fit(['abc'], 2) == []"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "progress",
+   "code": "def progress(done, total, width):\n    \"\"\"How many cells of a bar `width` wide should be filled, rounded down.\n    A finished job fills every cell; zero total fills none.\"\"\"\n    if total == 0:\n        return 0\n    return int(width * (done / total))\n",
+   "tests": [
+    "assert progress(1, 2, 10) == 5",
+    "assert progress(2, 2, 10) == 10",
+    "assert progress(0, 0, 10) == 0",
+    "assert progress(1, 3, 10) == 3"
+   ],
+   "passed": true,
+   "why": ""
+  }
+ ]
+}

@@ -1,0 +1,185 @@
+{
+ "author": "qwen3.5:4b-hard",
+ "written": 16,
+ "failed": 3,
+ "rows": [
+  {
+   "name": "page_count",
+   "code": "def page_count(total_items, per_page):\n    \"\"\"Number of pages needed to show all items, with a partial final page counted.\n    Zero items means zero pages.\"\"\"\n    if total_items == 0:\n        return 0\n    return (total_items + per_page - 1) // per_page\n",
+   "tests": [
+    "assert page_count(10, 5) == 2",
+    "assert page_count(11, 5) == 3",
+    "assert page_count(0, 5) == 0",
+    "assert page_count(1, 5) == 1"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "windows",
+   "code": "def windows(items, size):\n    result = []\n    for i in range(len(items) - size + 1):\n        result.append(items[i:i+size])\n    return result\n",
+   "tests": [
+    "assert windows([1,2,3,4], 2) == [[1,2],[2,3],[3,4]]",
+    "assert windows([1,2], 3) == []",
+    "assert windows([1,2,3], 3) == [[1,2,3]]"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "between",
+   "code": "def between(value, low, high):\n    return low < value < high\n",
+   "tests": [
+    "assert between(5, 1, 10) is True",
+    "assert between(1, 1, 10) is False",
+    "assert between(10, 1, 10) is False",
+    "assert between(0, 1, 10) is False"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "nth_from_end",
+   "code": "def nth_from_end(items, n):\n    if not items or n <= 0:\n        return None\n    length = len(items)\n    index = length - n\n    return items[index]\n",
+   "tests": [
+    "assert nth_from_end([1,2,3], 1) == 3",
+    "assert nth_from_end([1,2,3], 3) == 1"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "split_at",
+   "code": "def split_at(items, index):\n    return (items[:index], items[index:])\n",
+   "tests": [
+    "assert split_at([1,2,3,4], 2) == ([1,2],[3,4])",
+    "assert split_at([1,2], 0) == ([],[1,2])",
+    "assert split_at([1,2], 2) == ([1,2],[])"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "overlap",
+   "code": "def overlap(a_start, a_end, b_start, b_end):\n    return not (a_end <= b_start or b_end <= a_start)\n",
+   "tests": [
+    "assert overlap(0, 5, 3, 8) is True",
+    "assert overlap(0, 5, 5, 8) is False",
+    "assert overlap(0, 5, 4, 8) is True",
+    "assert overlap(5, 8, 0, 5) is False"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "truncate_words",
+   "code": "def truncate_words(text, limit):\n    \"\"\"Keep at most `limit` words. If any were dropped, add a single trailing ellipsis\n    as a separate word.\"\"\"\n    words = text.split()\n    if len(words) <= limit:\n        return ' '.join(words)\n    else:\n        truncated = ' '.join(words[:limit]) + '...'\n        return truncated\n",
+   "tests": [
+    "assert truncate_words('a b c d', 2) == 'a b ...'",
+    "assert truncate_words('a b', 5) == 'a b'",
+    "assert truncate_words('a b c', 3) == 'a b c'"
+   ],
+   "passed": false,
+   "why": "AssertionError"
+  },
+  {
+   "name": "bytes_human",
+   "code": "def bytes_human(n):\n    \"\"\"Format a byte count with one decimal using 1024 steps: 1024 -> '1.0 KB',\n    1023 -> '1023.0 B', 1048576 -> '1.0 MB'.\"\"\"\n    if n < 1024:\n        return f\"{n:.1f} B\"\n    elif n < 1048576:\n        kb = n / 1024\n        return f\"{kb:.1f} KB\"\n    else:\n        mb = n / 1048576\n        return f\"{mb:.1f} MB\"\n",
+   "tests": [
+    "assert bytes_human(1024) == '1.0 KB'",
+    "assert bytes_human(1023) == '1023.0 B'",
+    "assert bytes_human(1048576) == '1.0 MB'"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "insert_sorted",
+   "code": "def insert_sorted(items, value):\n    index = len(items)\n    for i in range(len(items)):\n        if items[i] < value:\n            index = i + 1\n        elif items[i] == value:\n            break\n    items.insert(index, value)\n",
+   "tests": [
+    "assert insert_sorted([1,2,2,3], 2) == [1,2,2,2,3]",
+    "assert insert_sorted([], 1) == [1]",
+    "assert insert_sorted([1,3], 2) == [1,2,3]"
+   ],
+   "passed": false,
+   "why": "AssertionError"
+  },
+  {
+   "name": "backoff",
+   "code": "def backoff(attempts, base):\n    \"\"\"The delay before each retry, doubling each time and starting at `base`.\n    One entry per attempt.\"\"\"\n    delays = []\n    current_delay = base\n    for _ in range(attempts):\n        delays.append(current_delay)\n        current_delay *= 2\n    return delays\n",
+   "tests": [
+    "assert backoff(3, 1) == [1,2,4]",
+    "assert backoff(1, 2) == [2]",
+    "assert backoff(0, 1) == []"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "percentile",
+   "code": "def percentile(values, p):\n    \"\"\"Nearest-rank percentile of a non-empty list: the value at rank ceil(p/100 * n),\n    counting from 1 in the sorted order.\"\"\"\n    import math\n    n = len(values)\n    if n == 0:\n        raise ValueError(\"List must be non-empty\")\n    sorted_values = sorted(values)\n    rank = math.ceil(p / 100.0 * n)\n    return sorted_values[rank - 1]\n",
+   "tests": [
+    "assert percentile([1,2,3,4], 50) == 2",
+    "assert percentile([1,2,3,4], 100) == 4",
+    "assert percentile([1,2,3,4], 25) == 1"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "clip_exclusive",
+   "code": "def clip_exclusive(index, length):\n    if index < 0:\n        return 0\n    elif index >= length:\n        return length - 1\n    else:\n        return index\n",
+   "tests": [
+    "assert clip_exclusive(7, 5) == 4",
+    "assert clip_exclusive(-3, 5) == 0",
+    "assert clip_exclusive(2, 5) == 2"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "columns",
+   "code": "def columns(items, n):\n    if not items:\n        return [[] for _ in range(n)]\n    \n    num_cols = len(items) // n\n    remainder = len(items) % n\n    \n    result = [[] for _ in range(n)]\n    \n    for i in range(num_cols):\n        for col in range(n):\n            result[col].append(items[i * n + col])\n    \n    for i in range(remainder):\n        result[i].append(items[num_cols * n + i])\n    \n    return result\n",
+   "tests": [
+    "assert columns([1,2,3,4,5], 2) == [[1,3,5],[2,4]]",
+    "assert columns([1,2], 3) == [[1],[2],[]]"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "countdown",
+   "code": "def countdown(start):\n    \"\"\"Every whole number from `start` down to 1, in order. Zero or less gives nothing.\"\"\"\n    if start <= 0:\n        return []\n    result = []\n    for i in range(start, 0, -1):\n        result.append(i)\n    return result\n",
+   "tests": [
+    "assert countdown(3) == [3,2,1]",
+    "assert countdown(1) == [1]",
+    "assert countdown(0) == []"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "trim_to_fit",
+   "code": "def trim_to_fit(words, width):\n    \"\"\"Take words from the front while the joined line stays within `width` characters,\n    counting the single spaces between them.\"\"\"\n    result = []\n    current_length = 0\n    \n    for word in words:\n        if not word:\n            continue\n            \n        # Calculate length if we add a space before this word (if it's not the first)\n        potential_length = current_length + 1 + len(word)\n        \n        # If adding this word exceeds the width, stop\n        if potential_length > width:\n            break\n        \n        result.append(word)\n        current_length += 1 + len(word)\n    \n    return ' '.join(result)\n",
+   "tests": [
+    "assert trim_to_fit(['ab','cd'], 5) == ['ab','cd']",
+    "assert trim_to_fit(['ab','cd'], 4) == ['ab']",
+    "assert trim_to_fit(['abc'], 2) == []"
+   ],
+   "passed": false,
+   "why": "AssertionError"
+  },
+  {
+   "name": "progress",
+   "code": "def progress(done, total, width):\n    if total == 0:\n        return 0\n    filled = int((done / total) * width)\n    return max(0, min(filled, width))\n",
+   "tests": [
+    "assert progress(1, 2, 10) == 5",
+    "assert progress(2, 2, 10) == 10",
+    "assert progress(0, 0, 10) == 0",
+    "assert progress(1, 3, 10) == 3"
+   ],
+   "passed": true,
+   "why": ""
+  }
+ ]
+}
