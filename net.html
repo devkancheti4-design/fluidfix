@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>The Growing Net</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#EFEDE7; --panel:#F7F5F1; --ink:#14191D; --ink-2:#59616A; --rule:#CFCBC2; --rule-2:#B9B4A9;
+    --brass:#9A6B1F; --teal:#0E6A63; --rust:#A93E2C; --shade:#E4E1D9; --cell:#DEDACF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#12161A; --panel:#1A2026; --ink:#E9E7E1; --ink-2:#9AA2AA; --rule:#2A3138; --rule-2:#3C454E;
+      --brass:#D9A441; --teal:#46C3AC; --rust:#E0705C; --shade:#171D23; --cell:#222A31;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12161A; --panel:#1A2026; --ink:#E9E7E1; --ink-2:#9AA2AA; --rule:#2A3138; --rule-2:#3C454E;
+    --brass:#D9A441; --teal:#46C3AC; --rust:#E0705C; --shade:#171D23; --cell:#222A31;
+  }
+  body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;
+       font-size:15px;line-height:1.55;margin:0}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px;padding-block:26px 56px}
+  .eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.16em;
+           text-transform:uppercase;color:var(--ink-2)}
+  h1{font-family:"Syne","Trebuchet MS",sans-serif;font-weight:800;font-size:clamp(30px,5.2vw,46px);
+     line-height:1.03;letter-spacing:-.02em;margin:6px 0 10px;text-wrap:balance}
+  h2{font-family:"Syne",sans-serif;font-weight:700;font-size:19px;margin:0 0 8px;text-wrap:balance}
+  h3{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+     color:var(--ink-2);font-weight:500;margin:0 0 8px}
+  p{margin:0 0 12px;max-width:66ch}
+  .lede{font-size:17px;color:var(--ink-2);max-width:62ch}
+  .lede b{color:var(--ink);font-weight:600}
+  a{color:var(--teal)}
+  header.top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
+             border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:22px}
+  .rig{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);border:1px solid var(--rule-2);
+       border-radius:3px;overflow:hidden;background:var(--panel)}
+  @media (max-width:880px){ .rig{grid-template-columns:1fr} }
+  .stage{background:var(--shade);border-right:1px solid var(--rule)}
+  @media (max-width:880px){ .stage{border-right:0;border-bottom:1px solid var(--rule)} }
+  canvas{display:block;width:100%;height:auto;max-width:100%}
+  .side{display:flex;flex-direction:column}
+  .pad{padding:15px 17px;border-bottom:1px solid var(--rule)}
+  .pad:last-child{border-bottom:0}
+  .runs{display:flex;flex-direction:column;gap:6px}
+  .runs button{font:500 12.5px/1.25 "IBM Plex Mono",monospace;text-align:left;padding:9px 10px;cursor:pointer;
+               border:1px solid var(--rule-2);background:transparent;color:var(--ink-2);border-radius:2px}
+  .runs button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .runs button b{font-weight:600}
+  button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .transport{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .transport button{font:600 13px "IBM Plex Sans",sans-serif;padding:9px 13px;border-radius:2px;cursor:pointer;
+                    border:1px solid var(--ink);background:var(--ink);color:var(--paper)}
+  .transport button.ghost{background:transparent;color:var(--ink);border-color:var(--rule-2)}
+  .meters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule)}
+  .meter{background:var(--panel);padding:10px 13px}
+  .meter .k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+  .meter .v{font-family:"IBM Plex Mono",monospace;font-size:20px;font-variant-numeric:tabular-nums}
+  .meter .v small{font-size:10.5px;color:var(--ink-2);margin-left:4px}
+  .legend{display:flex;flex-wrap:wrap;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-2)}
+  .legend i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px;border:1px solid var(--rule-2)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:600px}
+  .scroll{overflow-x:auto;margin-top:12px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:500}
+  td.n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.win{color:var(--teal);font-weight:600} td.no{color:var(--rust)}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;margin-top:34px}
+  .rulebox{border-top:2px solid var(--ink);padding-top:12px}
+  .rulebox .tag{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;color:var(--brass)}
+  .note{font-size:13px;color:var(--ink-2);max-width:72ch}
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-2)}
+  footer a{color:inherit}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">replayed from the runs of 18 september 2026</div>
+      <h1>The Growing Net</h1>
+    </div>
+    <div class="eyebrow" id="verdict">press play</div>
+  </header>
+
+  <p class="lede">A fan-out planned in advance searches the same places whether or not it learns anything.
+  This one <b>grows from the work</b>: every small fluidfix reports a ruling, and the ruling says which way
+  to grow. <b>Refuted</b> means the fault is not here, so the net widens. <b>Cut short</b> means it may well
+  be here, so the net splits that territory and looks closer. The first green stops everything.</p>
+
+  <div class="rig">
+    <div class="stage">
+      <canvas id="c" width="1000" height="700" aria-label="A grid of territories by fault class, filling round by round as the net grows"></canvas>
+    </div>
+    <div class="side">
+      <div class="pad">
+        <h3>a recorded run</h3>
+        <div class="runs" id="runs"></div>
+      </div>
+      <div class="pad">
+        <h3>replay</h3>
+        <div class="transport">
+          <button id="play" type="button">Play</button>
+          <button id="step" class="ghost" type="button">Step a round</button>
+          <button id="reset" class="ghost" type="button">Reset</button>
+        </div>
+      </div>
+      <div class="meters">
+        <div class="meter"><div class="k">round</div><div class="v" id="m-round">0</div></div>
+        <div class="meter"><div class="k">fluidfixes spent</div><div class="v" id="m-nodes">0</div></div>
+        <div class="meter"><div class="k">of all pairs</div><div class="v" id="m-pairs">0</div></div>
+        <div class="meter"><div class="k">memory</div><div class="v" id="m-mem">—</div></div>
+      </div>
+      <div class="pad">
+        <h3>legend</h3>
+        <div class="legend">
+          <span><i style="background:var(--cell)"></i>never opened</span>
+          <span><i style="background:var(--brass)"></i>this round</span>
+          <span><i style="background:var(--rule-2)"></i>refuted</span>
+          <span><i style="background:var(--teal)"></i>repaired, byte-exact</span>
+        </div>
+        <p class="note" id="caption" style="margin-top:10px"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="two">
+    <section class="rulebox">
+      <div class="tag">the growth rule</div>
+      <h2>The law says which way</h2>
+      <p>A node is one fluidfix over one territory, one fault class and one line range. Its refusal already
+      carries a ruling, so nothing extra has to be invented to steer the search.</p>
+      <p><b>Refuted</b> — every candidate it generated was rejected by the suite. The fault is not in this
+      class here, so the net opens the other classes this territory can exhibit and this class in further
+      territories.</p>
+      <p><b>Cut short</b> — a candidate passed but the view was capped, or the clock ran out with the failure
+      still pointing here. The net splits that node's line range in two and gives each half its own fluidfix.</p>
+      <p class="note">One correction the runs forced: a remembered class is evidence about the <em>class</em>,
+      not about the territory. Until a refusal on it moved territory first, a warm search crawled exactly
+      like a cold one — 129 nodes instead of 13.</p>
+    </section>
+
+    <section class="rulebox">
+      <div class="tag">what it costs, what it buys</div>
+      <h2>Growth against a fixed plan</h2>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>rich measure.py, one fault</th><th>nodes</th><th>suite runs</th><th>wall</th><th>result</th></tr></thead>
+        <tbody>
+          <tr><td>fixed waves, six territories</td><td class="n">45</td><td class="n">527</td><td class="n">160 s</td><td class="n no">refused</td></tr>
+          <tr><td>the net, first encounter</td><td class="n">129</td><td class="n">908</td><td class="n">626 s</td><td class="n win">exact</td></tr>
+          <tr><td>the net, shape known</td><td class="n">13</td><td class="n">62</td><td class="n">48 s</td><td class="n win">exact</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note" style="margin-top:12px">Where a fixed plan already contained the answer the net is four
+      times slower (60 nodes against 45 on rich table.py). Where it did not, the net is the only one that
+      finds the fault. And a remembered shape is worth what its scarcity is worth: arrow\u2019s class matched one
+      territory of ten, so the search was a single node and two suite runs.</p>
+    </section>
+  </div>
+
+  <footer>
+    Every round drawn here is read from the logs of those runs, in <b>research/lake-2026-09-18</b>; the
+    per-round node lists are real, and the totals are the ones each run reported. ·
+    <a href="./">fluidfix</a> · <a href="lake.html">the lake</a> · <a href="router-law.html">the router law</a> ·
+    <a href="life.html">fluidfix and the life</a>
+  </footer>
+</div>
+
+<script>
+const RUNS = [{"case":"rich/notdrop-1","territories":54,"memory":"nothing","pairs":161,"rounds":[[["console.py",10]],[["console.py",0],["console.py",1],["console.py",4],["console.py",5],["table.py",10],["text.py",10],["segment.py",10],["color.py",10]],[["console.py",6],["table.py",0],["text.py",0],["segment.py",0],["style.py",0],["console.py",8],["table.py",1],["text.py",1],["segment.py",1],["style.py",1],["console.py",9],["table.py",4],["text.py",4],["segment.py",4],["style.py",4],["console.py",12],["table.py",2],["table.py",3]],[["panel.py",10],["text.py",3],["align.py",10],["segment.py",3],["columns.py",10],["color.py",0],["color.py",1],["color.py",4],["color.py",6],["padding.py",10],["table.py",6],["text.py",6],["segment.py",6],["markdown.py",0]],[["pretty.py",0],["syntax.py",0],["table.py",8],["text.py",8],["segment.py",8],["columns.py",8],["syntax.py",1],["text.py",7],["segment.py",7],["panel.py",1],["align.py",1],["text.py",9],["_wrap.py",9],["_ratio.py",9],["table.py",7],["panel.py",4],["align.py",4],["columns.py",4]],[["table.py",12],["text.py",12],["segment.py",12],["markdown.py",12],["table.py",11],["panel.py",3],["align.py",3],["panel.py",0],["rule.py",10],["columns.py",3],["align.py",0],["measure.py",10],["segment.py",11],["padding.py",3],["columns.py",0],["columns.py",1],["highlighter.py",10]],[["color.py",7],["color.py",12],["box.py",4],["panel.py",6],["padding.py",0],["padding.py",1],["padding.py",6],["cells.py",10],["align.py",6],["columns.py",6],["pretty.py",12],["syntax.py",12],["box.py",0],["rule.py",8]],[["measure.py",8],["_ratio.py",8],["constrain.py",8],["columns.py",7],["padding.py",7],["rule.py",1],["measure.py",1],["_wrap.py",0],["_wrap.py",1],["_wrap.py",3],["_wrap.py",6],["_ratio.py",0],["_ratio.py",1],["_ratio.py",6]],[["_ratio.py",7],["cells.py",7],["terminal_theme.py",4],["align.py",11],["protocol.py",4],["_pick.py",4],["columns.py",12],["padding.py",11],["rule.py",11],["rule.py",3],["rule.py",0]],[["_wrap.py",10],["terminal_theme.py",3],["measure.py",0],["measure.py",6],["_ratio.py",10],["_wrap.py",11],["cells.py",1],["highlighter.py",0],["__init__.py",10],["box.py",12],["containers.py",1],["cells.py",0],["containers.py",12],["_wrap.py",12]]],"winner":["measure.py",6],"verdict":"EXACT","nodes":129,"suite_runs":908,"wall":625.7,"label":"rich measure.py \u2014 first encounter","known":false},{"case":"rich/lenm1-1","territories":54,"memory":"nothing","pairs":164,"rounds":[[["console.py",10]],[["console.py",0],["console.py",1],["console.py",4],["console.py",5],["text.py",10],["table.py",10],["segment.py",10],["columns.py",10]],[["console.py",6],["text.py",0],["table.py",0],["segment.py",0],["style.py",0],["console.py",8],["text.py",1],["table.py",1],["segment.py",1],["style.py",1],["console.py",9],["text.py",4],["table.py",4],["segment.py",4],["style.py",4],["console.py",12],["text.py",3],["color.py",10]],[["table.py",2],["table.py",3],["panel.py",10],["segment.py",3],["align.py",10],["columns.py",0],["columns.py",1],["columns.py",3],["columns.py",4],["padding.py",10],["text.py",6],["table.py",6],["segment.py",6],["columns.py",6],["markdown.py",0]],[["pretty.py",0],["syntax.py",0],["text.py",8],["table.py",8],["segment.py",8],["columns.py",8],["text.py",7],["syntax.py",1],["segment.py",7],["color.py",1],["panel.py",1],["text.py",9],["columns.py",9],["_wrap.py",9],["_ratio.py",9],["table.py",7],["color.py",4],["panel.py",4]]],"winner":["table.py",7],"verdict":"EXACT","nodes":60,"suite_runs":656,"wall":482.2,"label":"rich table.py \u2014 first encounter","known":false},{"case":"arrow/lenm1-1","territories":10,"memory":"[7]","pairs":19,"rounds":[[["locales.py",7]]],"winner":["locales.py",7],"verdict":"EXACT","nodes":1,"suite_runs":2,"wall":33.3,"label":"arrow locales.py \u2014 shape known","known":true},{"case":"rich/notdrop-1","territories":54,"memory":"[6]","pairs":161,"rounds":[[["console.py",6]],[["table.py",6],["text.py",6],["segment.py",6],["color.py",6],["panel.py",6],["align.py",6],["columns.py",6],["padding.py",6],["measure.py",6],["_wrap.py",6],["_ratio.py",6],["console.py",0]]],"winner":["measure.py",6],"verdict":"EXACT","nodes":13,"suite_runs":62,"wall":47.6,"label":"rich measure.py \u2014 shape known","known":true}];
+(() => {
+  const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const css = k => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CLASSES = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+
+  let run = RUNS[0], upto = 0, playing = false, tick = 0;
+
+  function territories(r) {
+    const seen = [];
+    for (const rd of r.rounds) for (const [f] of rd) if (!seen.includes(f)) seen.push(f);
+    return seen;
+  }
+
+  function stateAt(r, n) {
+    const st = new Map();
+    for (let i = 0; i < n; i++) for (const [f, k] of r.rounds[i]) st.set(f + '|' + k, i === n - 1 ? 'now' : 'refuted');
+    if (n >= r.rounds.length && r.winner) st.set(r.winner[0] + '|' + r.winner[1], 'green');
+    return st;
+  }
+
+  function draw() {
+    const shade = css('--shade'), ink = css('--ink'), ink2 = css('--ink-2'), rule = css('--rule-2'),
+          cell = css('--cell'), brass = css('--brass'), teal = css('--teal');
+    ctx.clearRect(0, 0, W, H); ctx.fillStyle = shade; ctx.fillRect(0, 0, W, H);
+    const terr = territories(run), st = stateAt(run, upto);
+    const left = 132, top = 54, gw = (W - left - 26) / CLASSES.length;
+    const gh = Math.min(20, (H - top - 56) / Math.max(terr.length, 1));
+
+    ctx.font = '500 10.5px "IBM Plex Mono", monospace'; ctx.fillStyle = ink2; ctx.textAlign = 'center';
+    ctx.fillText('FAULT CLASS', left + (W - left - 26) / 2, 22);
+    CLASSES.forEach((k, i) => ctx.fillText(String(k), left + i * gw + gw / 2, 42));
+    ctx.textAlign = 'right';
+    ctx.save(); ctx.translate(14, top + terr.length * gh / 2); ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center'; ctx.fillText('TERRITORY', 0, 0); ctx.restore();
+    ctx.textAlign = 'right';
+
+    terr.forEach((f, r) => {
+      const y = top + r * gh;
+      ctx.fillStyle = ink2; ctx.font = '400 10px "IBM Plex Mono", monospace';
+      ctx.fillText(f.length > 17 ? f.slice(0, 16) + '\u2026' : f, left - 8, y + gh - 5);
+      CLASSES.forEach((k, i) => {
+        const x = left + i * gw, s = st.get(f + '|' + k);
+        ctx.fillStyle = s === 'green' ? teal : s === 'now' ? brass : s === 'refuted' ? rule : cell;
+        ctx.globalAlpha = s ? 1 : 0.5;
+        ctx.fillRect(x + 1, y + 1, gw - 2, gh - 2);
+        ctx.globalAlpha = 1;
+        if (s === 'green') {
+          ctx.strokeStyle = teal; ctx.lineWidth = 2;
+          ctx.strokeRect(x - 1, y - 1, gw + 2, gh + 2);
+        }
+      });
+    });
+
+    // the round strip: how many fluidfixes each round spent
+    const sy = top + terr.length * gh + 18, max = Math.max(...run.rounds.map(r => r.length));
+    ctx.textAlign = 'left'; ctx.fillStyle = ink2; ctx.font = '500 10px "IBM Plex Mono", monospace';
+    ctx.fillText('NODES PER ROUND', left, sy - 4);
+    run.rounds.forEach((rd, i) => {
+      const bw = Math.min(26, (W - left - 26) / run.rounds.length) - 3;
+      const x = left + i * (bw + 3), h = 22 * (rd.length / max);
+      ctx.fillStyle = i < upto ? (i === upto - 1 ? brass : rule) : cell;
+      ctx.fillRect(x, sy + 22 - h, bw, h);
+      ctx.fillStyle = ink2; ctx.fillText(String(rd.length), x, sy + 36);
+    });
+
+    ctx.textAlign = 'center'; ctx.font = '600 12px "Syne", sans-serif';
+    if (upto >= run.rounds.length && run.winner) {
+      ctx.fillStyle = teal;
+      ctx.fillText(`${run.winner[0]} \u00b7 class ${run.winner[1]} \u00b7 repaired byte-exact in 2\u20138 suite runs`,
+                   W / 2, H - 14);
+    } else if (upto === 0) {
+      ctx.fillStyle = ink2; ctx.font = '400 11.5px "IBM Plex Mono", monospace';
+      ctx.fillText('the net starts as one fluidfix', W / 2, H - 14);
+    } else {
+      ctx.fillStyle = ink2; ctx.font = '400 11.5px "IBM Plex Mono", monospace';
+      ctx.fillText(`round ${upto}: every node refuted \u2014 the net widens`, W / 2, H - 14);
+    }
+  }
+
+  function meters() {
+    const spent = run.rounds.slice(0, upto).reduce((a, r) => a + r.length, 0);
+    document.getElementById('m-round').textContent = `${upto}/${run.rounds.length}`;
+    document.getElementById('m-nodes').textContent = spent;
+    document.getElementById('m-pairs').innerHTML = `${run.pairs}<small>possible</small>`;
+    document.getElementById('m-mem').innerHTML = run.known
+      ? `<span style="color:var(--brass)">${run.memory}</span>` : '<small>empty</small>';
+    document.getElementById('verdict').textContent = upto >= run.rounds.length
+      ? `${run.nodes} nodes \u00b7 ${run.suite_runs} suite runs \u00b7 ${run.wall}s \u00b7 ${run.verdict.toLowerCase()}`
+      : (playing ? 'growing\u2026' : 'press play');
+    document.getElementById('caption').textContent = run.known
+      ? 'The memory names a class, so the first node is already the right one and the net only has to find its territory.'
+      : 'Nothing is remembered, so the net seeds on the scarcest class of the busiest file and grows from what comes back.';
+  }
+
+  function select(i) {
+    run = RUNS[i]; upto = 0; playing = false;
+    document.getElementById('play').textContent = 'Play';
+    [...document.getElementById('runs').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
+    draw(); meters();
+  }
+
+  const runsEl = document.getElementById('runs');
+  RUNS.forEach((r, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.id = 'run-' + i;
+    b.innerHTML = `<b>${r.label.split(' \u2014 ')[0]}</b><br>${r.label.split(' \u2014 ')[1]} \u00b7 ${r.nodes} nodes \u00b7 ${r.wall}s`;
+    b.setAttribute('aria-pressed', String(i === 0));
+    b.addEventListener('click', () => select(i));
+    runsEl.appendChild(b);
+  });
+
+  document.getElementById('play').addEventListener('click', e => {
+    if (upto >= run.rounds.length) upto = 0;
+    playing = !playing; e.target.textContent = playing ? 'Pause' : 'Play'; tick = 0; meters();
+  });
+  document.getElementById('step').addEventListener('click', () => {
+    playing = false; document.getElementById('play').textContent = 'Play';
+    upto = Math.min(run.rounds.length, upto + 1); draw(); meters();
+  });
+  document.getElementById('reset').addEventListener('click', () => {
+    playing = false; upto = 0; document.getElementById('play').textContent = 'Play'; draw(); meters();
+  });
+
+  // opens on the finished cold run, so the first frame shows a net that has already grown
+  upto = RUNS[0].rounds.length; draw(); meters();
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = (now - last) / 1000; last = now;
+    if (playing && !reduced) {
+      tick += dt;
+      if (tick > 0.85) {
+        tick = 0; upto++;
+        if (upto >= run.rounds.length) { upto = run.rounds.length; playing = false;
+          document.getElementById('play').textContent = 'Play'; }
+        meters();
+      }
+    }
+    draw(); requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
