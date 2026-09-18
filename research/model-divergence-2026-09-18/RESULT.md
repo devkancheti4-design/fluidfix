@@ -159,6 +159,42 @@ stronger claim is a different one: sample each writer many times at temperature 
 logprobs over the competing conventions, and compare the **distributions** rather than one greedy answer.
 That turns 46 binary choices into a far richer signal, and it is the honest next step.
 
+## What one sample hides: the distribution it collapsed (`sampling.py`)
+
+A program is a **total function**, so one generation encodes the model's answer to unboundedly many inputs
+it was never shown. Sample the same model on the same prompt many times and you stop having an answer and
+start having the distribution — read out behaviourally, with no logprobs and nothing from inside the model.
+
+qwen3.5:4b, 20 samples per specification, temperature 0.8, each sample run against the hidden tests and then
+over the same harvested pool:
+
+| specification | pass | distinct **programs** | distinct **behaviours** | inputs the samples disagree on |
+|---|---|---|---|---|
+| `page_count` | 20/20 | 5 | 4 | 8 of 45 |
+| `clip_exclusive` | 18/20 | 13 | 7 | 6 of 39 |
+| `progress` | 16/20 | 17 | 9 | 16 of 57 |
+| `windows` | 15/20 | **18** | **4** | 6 of 63 |
+| `between` | 20/20 | 8 | 2 | 1 of 62 |
+
+**Surface variation and behavioural variation are not the same thing, and neither predicts the other.**
+`windows` was written 18 different ways that behave only 4 ways — many forms, one meaning. `page_count` was
+written just 5 ways that behave 4 ways — barely any variety in form, and almost all of it consequential. You
+cannot look at generated code and tell how uncertain the model was.
+
+**The single greedy sample hides a coin flip.** At temperature 0, qwen answers `clip_exclusive(7, 0)` with
+`-1`, and that looked like a decision. Across 20 samples it is `-1` seven times, `0` seven times, a raised
+`ValueError` three times and `7` once. The tests pass in every case. Even `between`, which no other writer
+disagreed with anyone about, splits 16–4 on inverted bounds — `between(0, 1, -10)`.
+
+That is what a distribution over programs buys that one program cannot: **the places where the prompt left
+the model genuinely undecided, with the odds attached.** The mechanism is ordinary and entirely outside the
+model — generate N times, run each over the same pool, count.
+
+**It still is not a path.** This measures the distribution over *outputs* at one temperature for one model.
+Two different internal computations can produce the same program and the same computation can produce
+different ones, so nothing here traces what happened inside. What it does is turn a black box's uncertainty
+into something you can count, using the executability of its own output as the instrument.
+
 ## So, honestly
 
 **Yes, and the subject is the specification, not the model.** With no access to weights, training data or
@@ -180,6 +216,9 @@ interpretability, and calling it that would not survive the first question from 
   (`../certify-2026-09-18`). The 8 ambiguous specs are a **lower bound**; there may be more.
 - Ambiguity here is measured *between writers*. A spec all four resolve the same way is not thereby
   unambiguous — they may share a prior.
+- The sampling run is one model, one temperature, five specifications, twenty samples each. Pass rates
+  fall at temperature 0.8 (15-20 of 20) against temperature 0, so some of the corpus's "correct" answers
+  elsewhere were partly luck.
 - The AST features are hand-chosen and shallow. A negative result on them is not a negative result on
   structural fingerprinting in general.
 - Nothing here changes the product. It is `differ.harvest_seeds`/`build_pool`/`evaluate`, unmodified.
