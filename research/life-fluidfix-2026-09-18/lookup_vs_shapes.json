@@ -1,0 +1,361 @@
+{
+ "bugs": 240,
+ "shapes": 6,
+ "holdout": 24,
+ "seconds": 23.1,
+ "final_file_rows": 240,
+ "final_line_rows": 133,
+ "rules": 6,
+ "points": [
+  {
+   "seen": 0,
+   "file_rows": 0,
+   "line_rows": 0,
+   "shape_rows": 6,
+   "file_hit": 0.0,
+   "line_hit": 0.0,
+   "shape_hit": 1.0,
+   "per_shape": {
+    "additive": [
+     4,
+     4
+    ],
+    "augmented": [
+     7,
+     7
+    ],
+    "ifnot": [
+     1,
+     1
+    ],
+    "lenm1": [
+     3,
+     3
+    ],
+    "literal": [
+     1,
+     1
+    ],
+    "strictness": [
+     8,
+     8
+    ]
+   }
+  },
+  {
+   "seen": 24,
+   "file_rows": 24,
+   "line_rows": 23,
+   "shape_rows": 6,
+   "file_hit": 0.0,
+   "line_hit": 0.20833333333333334,
+   "shape_hit": 1.0,
+   "per_shape": {
+    "additive": [
+     2,
+     2
+    ],
+    "augmented": [
+     4,
+     4
+    ],
+    "ifnot": [
+     5,
+     5
+    ],
+    "lenm1": [
+     4,
+     4
+    ],
+    "literal": [
+     6,
+     6
+    ],
+    "strictness": [
+     3,
+     3
+    ]
+   }
+  },
+  {
+   "seen": 48,
+   "file_rows": 48,
+   "line_rows": 38,
+   "shape_rows": 6,
+   "file_hit": 0.0,
+   "line_hit": 0.25,
+   "shape_hit": 1.0,
+   "per_shape": {
+    "additive": [
+     5,
+     5
+    ],
+    "augmented": [
+     3,
+     3
+    ],
+    "ifnot": [
+     2,
+     2
+    ],
+    "lenm1": [
+     6,
+     6
+    ],
+    "literal": [
+     5,
+     5
+    ],
+    "strictness": [
+     3,
+     3
+    ]
+   }
+  },
+  {
+   "seen": 72,
+   "file_rows": 72,
+   "line_rows": 54,
+   "shape_rows": 6,
+   "file_hit": 0.0,
+   "line_hit": 0.4166666666666667,
+   "shape_hit": 1.0,
+   "per_shape": {
+    "additive": [
+     3,
+     3
+    ],
+    "augmented": [
+     4,
+     4
+    ],
+    "ifnot": [
+     2,
+     2
+    ],
+    "lenm1": [
+     4,
+     4
+    ],
+    "literal": [
+     6,
+     6
+    ],
+    "strictness": [
+     5,
+     5
+    ]
+   }
+  },
+  {
+   "seen": 96,
+   "file_rows": 96,
+   "line_rows": 68,
+   "shape_rows": 6,
+   "file_hit": 0.0,
+   "line_hit": 0.375,
+   "shape_hit": 1.0,
+   "per_shape": {
+    "additive": [
+     5,
+     5
+    ],
+    "augmented": [
+     3,
+     3
+    ],
+    "ifnot": [
+     8,
+     8
+    ],
+    "lenm1": [
+     3,
+     3
+    ],
+    "literal": [
+     2,
+     2
+    ],
+    "strictness": [
+     3,
+     3
+    ]
+   }
+  },
+  {
+   "seen": 120,
+   "file_rows": 120,
+   "line_rows": 80,
+   "shape_rows": 6,
+   "file_hit": 0.0,
+   "line_hit": 0.5416666666666666,
+   "shape_hit": 1.0,
+   "per_shape": {
+    "additive": [
+     7,
+     7
+    ],
+    "augmented": [
+     1,
+     1
+    ],
+    "ifnot": [
+     5,
+     5
+    ],
+    "lenm1": [
+     4,
+     4
+    ],
+    "literal": [
+     5,
+     5
+    ],
+    "strictness": [
+     2,
+     2
+    ]
+   }
+  },
+  {
+   "seen": 144,
+   "file_rows": 144,
+   "line_rows": 91,
+   "shape_rows": 6,
+   "file_hit": 0.0,
+   "line_hit": 0.2916666666666667,
+   "shape_hit": 1.0,
+   "per_shape": {
+    "additive": [
+     5,
+     5
+    ],
+    "augmented": [
+     6,
+     6
+    ],
+    "ifnot": [
+     3,
+     3
+    ],
+    "lenm1": [
+     5,
+     5
+    ],
+    "literal": [
+     1,
+     1
+    ],
+    "strictness": [
+     4,
+     4
+    ]
+   }
+  },
+  {
+   "seen": 168,
+   "file_rows": 168,
+   "line_rows": 107,
+   "shape_rows": 6,
+   "file_hit": 0.0,
+   "line_hit": 0.625,
+   "shape_hit": 1.0,
+   "per_shape": {
+    "additive": [
+     3,
+     3
+    ],
+    "augmented": [
+     2,
+     2
+    ],
+    "ifnot": [
+     7,
+     7
+    ],
+    "lenm1": [
+     4,
+     4
+    ],
+    "literal": [
+     5,
+     5
+    ],
+    "strictness": [
+     3,
+     3
+    ]
+   }
+  },
+  {
+   "seen": 192,
+   "file_rows": 192,
+   "line_rows": 116,
+   "shape_rows": 6,
+   "file_hit": 0.0,
+   "line_hit": 0.8333333333333334,
+   "shape_hit": 1.0,
+   "per_shape": {
+    "additive": [
+     2,
+     2
+    ],
+    "augmented": [
+     3,
+     3
+    ],
+    "ifnot": [
+     4,
+     4
+    ],
+    "lenm1": [
+     5,
+     5
+    ],
+    "literal": [
+     8,
+     8
+    ],
+    "strictness": [
+     2,
+     2
+    ]
+   }
+  },
+  {
+   "seen": 216,
+   "file_rows": 216,
+   "line_rows": 120,
+   "shape_rows": 6,
+   "file_hit": 0.0,
+   "line_hit": 0.4583333333333333,
+   "shape_hit": 1.0,
+   "per_shape": {
+    "additive": [
+     4,
+     4
+    ],
+    "augmented": [
+     7,
+     7
+    ],
+    "ifnot": [
+     3,
+     3
+    ],
+    "lenm1": [
+     2,
+     2
+    ],
+    "literal": [
+     1,
+     1
+    ],
+    "strictness": [
+     7,
+     7
+    ]
+   }
+  }
+ ]
+}
