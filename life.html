@@ -492,7 +492,10 @@
 
   // opens with the cold repository incident already resolved, so the first frame shows the instrument working
   say('scale: <b>repository</b> — rich/table.py, the fault one guard never found', '');
-  start(false); if (!reduced) { for (let i = 0; i < 12; i++) step(0.34); }
+  // run the opening incident to its verdict, so the first frame shows the instrument at rest with a result
+  start(false);
+  for (let i = 0; i < 60 && phase !== 'done'; i++) step(0.25);
+  if (phase !== 'done') finish();
   setMeters();
 
   let last = performance.now();
