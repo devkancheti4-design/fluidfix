@@ -1,0 +1,29 @@
+{
+ "case": "arrow/lenm1-1",
+ "survey_s": 8.2,
+ "shape_prior": [
+  7
+ ],
+ "wave1": 1,
+ "wave2": 15,
+ "full_fan_out_would_be": 16,
+ "waves_used": 1,
+ "dispatched": 1,
+ "suite_runs": 2,
+ "winner": "arrow/locales.py|7",
+ "winner_runs": 2,
+ "verdict": "EXACT",
+ "wall_s": 31.7,
+ "cpu_sum_s": 31.6,
+ "memory_rows": 2,
+ "memory_bytes": 80,
+ "guards": {
+  "arrow/locales.py|7": {
+   "wave": "wave 1 (remembered shape)",
+   "exit": 0,
+   "seconds": 31.6,
+   "suite_runs": 2,
+   "byte_exact": true
+  }
+ }
+}

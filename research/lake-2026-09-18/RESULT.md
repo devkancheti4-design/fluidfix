@@ -107,10 +107,38 @@ suite is the cost and the tool is not. Every guard repaired byte-exactly at ever
 them, it does not make them wrong. So "as many as we want" is true of correctness and of memory, and bounded
 by cores and suite time for latency.
 
+## 4b. Keying the memory on the shape, not the signature
+
+Section 3's memory is keyed by the failure signature, so it only ever helps the *same incident* recurring —
+an exact-key lookup, and worth naming as one. The part of fluidfix that generalises is the shape: a class is
+a signal plus a transform, so it fires on lines it has never seen. `staged.py` puts the shape in the memory
+and dispatches in two waves: **wave 1** is the remembered class across only the territories that can exhibit
+it; **wave 2** is every remaining pair. A wave-1 miss widens, so coverage is never lost.
+
+| incident | shape memory | wave 1 | dispatched | suite runs | wall | verdict |
+|---|---|---|---|---|---|---|
+| rich `table.py`, cold | empty | — | 45 of 45 | 313 | 112.6 s | exact, learns `kind:7` |
+| **arrow `locales.py`** — new repo, file, line and test | `kind:7` | **1** | **1 of 16** | **2** | **31.7 s** | **exact** |
+| rich `measure.py`, a different class | `kind:7` | 3, missed | 45 of 45 | 527 | 159.6 s | refused |
+
+The middle row is the point. Its signature had never been seen, so a signature-keyed memory offers nothing;
+the same fault cost 23 dispatches and 75.4 s in §3, 931 s under kind-routing alone, and was *held unproven*
+by a single guard at 838 s. Keyed by shape it is **one fluidfix and two suite runs**. The 45-to-1 collapse
+survives the move from recall to generalisation, which is what a lookup table cannot do.
+
+The third row prices both failure modes honestly. A wrong shape guess costs its wave: 3 fluidfixes and 23
+suite runs before widening — about 5% of that incident's total. The refusal, though, is not the memory's
+fault: the territory cap of six excluded `rich/measure.py`, so the faulty file was never dispatched in
+either wave. The same fault repairs in 701 s when a single guard is pointed at the whole repository (§6 of
+the 2026-09-16 study). A cap that hides the fault is still a ranking problem wearing a fan-out's clothes.
+
 ## 5. What is not claimed
 
 - These are five incidents on two repositories, not a benchmark.
-- The memory was measured on exact-signature recall and one class transfer. It has not been measured against
+- The shape-keyed memory was measured on one class (`kind:7`) across two repositories, and the miss
+  case on one other class. The memory holds one shape here; nothing says how it behaves when a dozen
+  classes compete for wave 1.
+- The signature-keyed memory was measured on exact recall and one class transfer. It has not been measured against
   a drifting repository, nor against a signature that recurs with a *different* cause — the case where a
   confident memory would be confidently wrong. The gate abstains on absence, not on staleness.
 - The fan-out was capped at 6–8 territories by hand. A repository with the fault outside that cap is back to

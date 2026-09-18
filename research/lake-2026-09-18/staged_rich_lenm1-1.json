@@ -1,0 +1,335 @@
+{
+ "case": "rich/lenm1-1",
+ "survey_s": 5.0,
+ "shape_prior": [],
+ "wave1": 0,
+ "wave2": 45,
+ "full_fan_out_would_be": 45,
+ "waves_used": 1,
+ "dispatched": 45,
+ "suite_runs": 313,
+ "winner": "rich/table.py|7",
+ "winner_runs": 8,
+ "verdict": "EXACT",
+ "wall_s": 112.6,
+ "cpu_sum_s": 4828.5,
+ "memory_rows": 2,
+ "memory_bytes": 59,
+ "guards": {
+  "rich/console.py|0": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 112.6,
+   "suite_runs": 2,
+   "byte_exact": false
+  },
+  "rich/console.py|1": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 112.5,
+   "suite_runs": 23,
+   "byte_exact": false
+  },
+  "rich/console.py|8": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 112.4,
+   "suite_runs": 5,
+   "byte_exact": false
+  },
+  "rich/console.py|9": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 112.3,
+   "suite_runs": 3,
+   "byte_exact": false
+  },
+  "rich/console.py|10": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 112.3,
+   "suite_runs": 2,
+   "byte_exact": false
+  },
+  "rich/console.py|12": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 112.2,
+   "suite_runs": 16,
+   "byte_exact": false
+  },
+  "rich/console.py|4": {
+   "wave": "wave 2 (everything else)",
+   "exit": 125,
+   "seconds": 112.1,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "rich/console.py|5": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 112.0,
+   "suite_runs": 9,
+   "byte_exact": false
+  },
+  "rich/console.py|6": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 111.8,
+   "suite_runs": 9,
+   "byte_exact": false
+  },
+  "rich/text.py|0": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 111.7,
+   "suite_runs": 15,
+   "byte_exact": false
+  },
+  "rich/text.py|1": {
+   "wave": "wave 2 (everything else)",
+   "exit": 125,
+   "seconds": 111.6,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "rich/text.py|3": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 111.3,
+   "suite_runs": 12,
+   "byte_exact": false
+  },
+  "rich/text.py|8": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 111.1,
+   "suite_runs": 6,
+   "byte_exact": false
+  },
+  "rich/text.py|9": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 111.0,
+   "suite_runs": 5,
+   "byte_exact": false
+  },
+  "rich/text.py|10": {
+   "wave": "wave 2 (everything else)",
+   "exit": 125,
+   "seconds": 110.8,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "rich/text.py|11": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 110.6,
+   "suite_runs": 2,
+   "byte_exact": false
+  },
+  "rich/text.py|12": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 110.4,
+   "suite_runs": 10,
+   "byte_exact": false
+  },
+  "rich/text.py|4": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 110.3,
+   "suite_runs": 17,
+   "byte_exact": false
+  },
+  "rich/text.py|6": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 110.1,
+   "suite_runs": 10,
+   "byte_exact": false
+  },
+  "rich/text.py|7": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 109.9,
+   "suite_runs": 15,
+   "byte_exact": false
+  },
+  "rich/table.py|0": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 109.6,
+   "suite_runs": 5,
+   "byte_exact": false
+  },
+  "rich/table.py|1": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 109.4,
+   "suite_runs": 20,
+   "byte_exact": false
+  },
+  "rich/table.py|2": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 108.7,
+   "suite_runs": 2,
+   "byte_exact": false
+  },
+  "rich/table.py|3": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 108.5,
+   "suite_runs": 20,
+   "byte_exact": false
+  },
+  "rich/table.py|8": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 108.3,
+   "suite_runs": 10,
+   "byte_exact": false
+  },
+  "rich/table.py|10": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 108.0,
+   "suite_runs": 5,
+   "byte_exact": false
+  },
+  "rich/table.py|11": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 107.3,
+   "suite_runs": 1,
+   "byte_exact": false
+  },
+  "rich/table.py|12": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 106.5,
+   "suite_runs": 9,
+   "byte_exact": false
+  },
+  "rich/table.py|4": {
+   "wave": "wave 2 (everything else)",
+   "exit": 125,
+   "seconds": 105.8,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "rich/table.py|6": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 105.4,
+   "suite_runs": 12,
+   "byte_exact": false
+  },
+  "rich/table.py|7": {
+   "wave": "wave 2 (everything else)",
+   "exit": 0,
+   "seconds": 104.7,
+   "suite_runs": 8,
+   "byte_exact": true
+  },
+  "rich/style.py|0": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 104.5,
+   "suite_runs": 1,
+   "byte_exact": false
+  },
+  "rich/style.py|1": {
+   "wave": "wave 2 (everything else)",
+   "exit": 125,
+   "seconds": 104.3,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "rich/style.py|4": {
+   "wave": "wave 2 (everything else)",
+   "exit": 125,
+   "seconds": 103.5,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "rich/segment.py|0": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 102.8,
+   "suite_runs": 4,
+   "byte_exact": false
+  },
+  "rich/segment.py|1": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 102.1,
+   "suite_runs": 20,
+   "byte_exact": false
+  },
+  "rich/segment.py|3": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 102.0,
+   "suite_runs": 7,
+   "byte_exact": false
+  },
+  "rich/segment.py|10": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 101.3,
+   "suite_runs": 4,
+   "byte_exact": false
+  },
+  "rich/segment.py|11": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 100.5,
+   "suite_runs": 2,
+   "byte_exact": false
+  },
+  "rich/segment.py|12": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 100.4,
+   "suite_runs": 3,
+   "byte_exact": false
+  },
+  "rich/segment.py|4": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 99.7,
+   "suite_runs": 3,
+   "byte_exact": false
+  },
+  "rich/segment.py|6": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 99.5,
+   "suite_runs": 7,
+   "byte_exact": false
+  },
+  "rich/segment.py|7": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 99.3,
+   "suite_runs": 4,
+   "byte_exact": false
+  },
+  "rich/markdown.py|0": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 99.1,
+   "suite_runs": 1,
+   "byte_exact": false
+  },
+  "rich/markdown.py|12": {
+   "wave": "wave 2 (everything else)",
+   "exit": 2,
+   "seconds": 98.3,
+   "suite_runs": 4,
+   "byte_exact": false
+  }
+ }
+}

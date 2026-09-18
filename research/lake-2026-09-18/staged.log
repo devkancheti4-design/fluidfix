@@ -1,0 +1,22 @@
+===== 1. rich/lenm1-1 — cold, learns the shape =====
+[rich/lenm1-1] survey 5.0s: 53 files executed; shape memory knows nothing; a cold fan-out here would be 45 fluidfixes
+  wave 2 (everything else): 45 fluidfixes (0, 1, 10, 11, 12, 2, 3, 4, 5, 6, 7, 8, 9 as the class)
+    first green: rich/table.py kind 7 at 112.6s
+[rich/lenm1-1] EXACT | winner rich/table.py|7 in 8 suite runs | dispatched 45 of a possible 45 | suite runs 313 | wall 112.6s
+[rich/lenm1-1] shape memory now: ['kind:7'] (2 rows, 59 bytes)
+
+===== 2. arrow/lenm1-1 — new repo, new file, new test, SAME SHAPE =====
+[arrow/lenm1-1] survey 8.2s: 10 files executed; shape memory knows [7]; a cold fan-out here would be 16 fluidfixes
+  wave 1 (remembered shape): 1 fluidfix (7 as the class)
+    first green: arrow/locales.py kind 7 at 31.7s
+[arrow/lenm1-1] EXACT | winner arrow/locales.py|7 in 2 suite runs | dispatched 1 of a possible 16 | suite runs 2 | wall 31.7s
+[arrow/lenm1-1] shape memory now: ['kind:7'] (2 rows, 80 bytes)
+
+===== 3. rich/notdrop-1 — a DIFFERENT shape: what a wrong guess costs =====
+[rich/notdrop-1] survey 4.5s: 54 files executed; shape memory knows [7]; a cold fan-out here would be 45 fluidfixes
+  wave 1 (remembered shape): 3 fluidfixes (7 as the class)
+    wave 1 found nothing — widening, no coverage lost
+  wave 2 (everything else): 42 fluidfixes (0, 1, 10, 11, 12, 2, 3, 4, 5, 6, 8, 9 as the class)
+[rich/notdrop-1] REFUSED | winner None in None suite runs | dispatched 45 of a possible 45 | suite runs 527 | wall 159.6s
+[rich/notdrop-1] shape memory now: ['kind:7'] (2 rows, 80 bytes)
+STAGED_DONE
