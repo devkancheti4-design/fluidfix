@@ -1,0 +1,100 @@
+[
+ {
+  "id": "gemma3:4b-hard/truncate_words",
+  "before": false,
+  "after": true,
+  "shape": "missing-separator-before-appended-token",
+  "runs": 6
+ },
+ {
+  "id": "gemma3:4b-hard/insert_sorted",
+  "before": false,
+  "after": true,
+  "shape": "mutating-call-whose-result-is-dropped",
+  "runs": 9
+ },
+ {
+  "id": "gemma3:4b-hard/backoff",
+  "before": false,
+  "after": false,
+  "shape": null,
+  "runs": null
+ },
+ {
+  "id": "gemma3:4b-hard/percentile",
+  "before": false,
+  "after": false,
+  "shape": null,
+  "runs": null
+ },
+ {
+  "id": "gemma3:4b-hard/countdown",
+  "before": false,
+  "after": false,
+  "shape": null,
+  "runs": null
+ },
+ {
+  "id": "phi4-mini-hard/windows",
+  "before": false,
+  "after": false,
+  "shape": null,
+  "runs": null
+ },
+ {
+  "id": "phi4-mini-hard/insert_sorted",
+  "before": true,
+  "after": true,
+  "shape": "flipped-comparison-direction",
+  "runs": 3
+ },
+ {
+  "id": "phi4-mini-hard/percentile",
+  "before": false,
+  "after": false,
+  "shape": null,
+  "runs": null
+ },
+ {
+  "id": "phi4-mini-hard/trim_to_fit",
+  "before": false,
+  "after": false,
+  "shape": null,
+  "runs": null
+ },
+ {
+  "id": "phi4-mini-hard/progress",
+  "before": false,
+  "after": false,
+  "shape": null,
+  "runs": null
+ },
+ {
+  "id": "qwen3.5:4b-hard/truncate_words",
+  "before": false,
+  "after": true,
+  "shape": "missing-separator-before-appended-token",
+  "runs": 5
+ },
+ {
+  "id": "qwen3.5:4b-hard/insert_sorted",
+  "before": false,
+  "after": true,
+  "shape": "mutating-call-whose-result-is-dropped",
+  "runs": 7
+ },
+ {
+  "id": "qwen3.5:4b-hard/trim_to_fit",
+  "before": false,
+  "after": false,
+  "shape": null,
+  "runs": null
+ },
+ {
+  "id": "qwen3.5:4b/clip_index",
+  "before": false,
+  "after": false,
+  "shape": null,
+  "runs": null
+ }
+]

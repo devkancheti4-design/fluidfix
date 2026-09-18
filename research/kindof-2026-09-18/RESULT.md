@@ -89,3 +89,47 @@ not the 5 of 14 published this morning, and not the 12 the raw ladder reports.
   "no one-line fix exists".
 - Whether the nine plausible classes actually recur across repositories is unmeasured here. The taught
   classes in `../examples/taught-2026-09-16` were measured for recurrence; these are not.
+
+---
+
+## Closing the loop: teach the shapes the ladder found
+
+The ladder does not just classify — it **names what to teach**. Nine of the eleven one-line edits looked
+like recurring shapes; two of them appeared **twice each, in code written by different models**, which is
+the only evidence that a shape is worth a dictionary slot at all.
+
+Both were written up as classes in `../../examples/taught-2026-09-18/kinds_from_ladder.py`. A class is
+nothing more than a **signal** (a regex saying which lines could exhibit the fault) and an **applier** (a
+function proposing the replacement). Nothing about it is trusted: the project's own suite judges every
+candidate and rejects are rolled back byte-exact, so teaching can make the tool wider but never wrong.
+
+| class | the slip | seen in |
+|---|---|---|
+| `missing-separator-before-appended-token` | `+ '...'` where the spec wanted `+ ' ...'` | gemma3:4b, qwen3.5:4b |
+| `mutating-call-whose-result-is-dropped` | `items.insert(i, v)` on the last line, so the caller gets `None` | gemma3:4b, qwen3.5:4b |
+
+The second one is worth a second look. The fault *is* a missing `return` — an **insertion**, which no
+line-rewriting vocabulary can express, because every act transforms a line that is already there. But the
+mutation line itself can *become* the return: a mutating method answers `None`, so `or` then yields the
+collection. **The ladder found the form; the class only had to generalise it.**
+
+Re-running L0 over the same fourteen faults, same suite, same judge:
+
+```
+truncate_words   gemma3:4b-hard    refused -> REPAIRED by missing-separator-before-appended-token  (6 test runs)
+insert_sorted    gemma3:4b-hard    refused -> REPAIRED by mutating-call-whose-result-is-dropped    (9 test runs)
+insert_sorted    phi4-mini-hard    already -> REPAIRED by flipped-comparison-direction             (3 test runs)
+truncate_words   qwen3.5:4b-hard   refused -> REPAIRED by missing-separator-before-appended-token  (5 test runs)
+insert_sorted    qwen3.5:4b-hard   refused -> REPAIRED by mutating-call-whose-result-is-dropped    (7 test runs)
+
+L0 MECHANICAL, $0:  1 of 14  ->  5 of 14
+```
+
+**Two classes, one afternoon, and the free tier quintuples.** That is the whole loop in one line: the ladder
+measures the kind, the kinds that recur become classes, and what used to cost a model call costs a handful
+of test runs and nothing else.
+
+What it does **not** show: these five are the faults the ladder already told us were one-line shapes, so the
+gain is expected rather than surprising. The open question is recurrence in the wild — whether
+`missing-separator` and `mutating-call-dropped` appear in real repositories at a rate that pays for the
+slot, which is exactly what `../../examples/taught-2026-09-16` was measured for and these have not been.
