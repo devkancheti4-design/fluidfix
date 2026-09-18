@@ -1,0 +1,103 @@
+{
+ "territories": 8,
+ "pairs": 23,
+ "fault": {
+  "file": "pkg/windows.py",
+  "lineno": 6,
+  "orig": "    return [items[i:i+size] for i in range(len(items) - size + 1)]",
+  "kind": 3,
+  "name": "flipped-additive"
+ },
+ "remembered": [
+  10,
+  0,
+  3
+ ],
+ "wave1": 10,
+ "nodes": [
+  {
+   "rel": "pkg/between.py",
+   "kind": 10,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/bytes_human.py",
+   "kind": 10,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/overlap.py",
+   "kind": 10,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 10,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 10,
+   "ruling": "REFUTED"
+  },
+  {
+   "rel": "pkg/between.py",
+   "kind": 0,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/bytes_human.py",
+   "kind": 0,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/overlap.py",
+   "kind": 0,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 0,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 0,
+   "ruling": "REFUTED"
+  },
+  {
+   "rel": "pkg/bytes_human.py",
+   "kind": 3,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/page_count.py",
+   "kind": 3,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 3,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 3,
+   "ruling": "SHIP"
+  }
+ ],
+ "descent": {
+  "repaired": true,
+  "kind": 4,
+  "tried": 10,
+  "wave1_was": 0,
+  "depth": 1
+ },
+ "certificate": {
+  "certified": true,
+  "why": "red before, green on the full suite, stable on re-check",
+  "suite_runs": 3,
+  "sha": "1833ecf25ad6"
+ },
+ "byte_exact": true
+}

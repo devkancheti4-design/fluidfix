@@ -1,0 +1,133 @@
+{
+ "territories": 8,
+ "pairs": 23,
+ "fault": {
+  "file": "pkg/windows.py",
+  "lineno": 4,
+  "orig": "    if len(items) < size:",
+  "kind": 10,
+  "name": "flipped-comparison-direction"
+ },
+ "remembered": [],
+ "wave1": 0,
+ "nodes": [
+  {
+   "rel": "pkg/between.py",
+   "kind": 0,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/between.py",
+   "kind": 10,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/bytes_human.py",
+   "kind": 0,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/bytes_human.py",
+   "kind": 1,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/bytes_human.py",
+   "kind": 3,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/bytes_human.py",
+   "kind": 9,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/bytes_human.py",
+   "kind": 10,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/overlap.py",
+   "kind": 0,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/overlap.py",
+   "kind": 10,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/page_count.py",
+   "kind": 1,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/page_count.py",
+   "kind": 2,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/page_count.py",
+   "kind": 3,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/page_count.py",
+   "kind": 11,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 0,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 2,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 3,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/truncate_words.py",
+   "kind": 10,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 0,
+   "ruling": "REFUTED"
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 1,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 2,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 3,
+   "ruling": "EMPTY"
+  },
+  {
+   "rel": "pkg/windows.py",
+   "kind": 10,
+   "ruling": "SHIP"
+  }
+ ],
+ "descent": null,
+ "certificate": {
+  "certified": true,
+  "why": "red before, green on the full suite, stable on re-check",
+  "suite_runs": 3,
+  "sha": "1833ecf25ad6"
+ },
+ "byte_exact": true
+}
