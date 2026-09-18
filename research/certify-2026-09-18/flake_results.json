@@ -1,0 +1,33 @@
+{
+ "trials": 20,
+ "rows": [
+  {
+   "p": 0.02,
+   "confirm0": 19,
+   "confirm1": 16,
+   "confirm2": 15,
+   "confirm4": 9
+  },
+  {
+   "p": 0.05,
+   "confirm0": 15,
+   "confirm1": 11,
+   "confirm2": 8,
+   "confirm4": 4
+  },
+  {
+   "p": 0.1,
+   "confirm0": 7,
+   "confirm1": 7,
+   "confirm2": 3,
+   "confirm4": 1
+  },
+  {
+   "p": 0.25,
+   "confirm0": 5,
+   "confirm1": 1,
+   "confirm2": 0,
+   "confirm4": 0
+  }
+ ]
+}

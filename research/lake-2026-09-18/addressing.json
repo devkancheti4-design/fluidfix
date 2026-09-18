@@ -1,0 +1,62 @@
+[
+  {
+    "case": "rich/lenm1-1",
+    "memory_before": [],
+    "pairs_possible": 164,
+    "class_nodes": 60,
+    "class_runs": 656,
+    "wall_s": 482.2,
+    "territories_touched": 15,
+    "winner_territory": "rich/table.py",
+    "territory_rank": 3,
+    "territory_runs_lower_bound": 356,
+    "classes_tried_per_territory": {
+      "rich/console.py": 9,
+      "rich/text.py": 9,
+      "rich/table.py": 9
+    }
+  },
+  {
+    "case": "rich/notdrop-1",
+    "memory_before": [
+      6
+    ],
+    "pairs_possible": 161,
+    "class_nodes": 13,
+    "class_runs": 62,
+    "wall_s": 47.6,
+    "territories_touched": 10,
+    "winner_territory": "rich/measure.py",
+    "territory_rank": 10,
+    "territory_runs_lower_bound": 62,
+    "classes_tried_per_territory": {
+      "rich/console.py": 1,
+      "rich/table.py": 1,
+      "rich/text.py": 1,
+      "rich/segment.py": 1,
+      "rich/color.py": 1,
+      "rich/panel.py": 1,
+      "rich/align.py": 1,
+      "rich/columns.py": 1,
+      "rich/padding.py": 1,
+      "rich/measure.py": 1
+    }
+  },
+  {
+    "case": "arrow/lenm1-1",
+    "memory_before": [
+      7
+    ],
+    "pairs_possible": 19,
+    "class_nodes": 1,
+    "class_runs": 2,
+    "wall_s": 33.3,
+    "territories_touched": 1,
+    "winner_territory": "arrow/locales.py",
+    "territory_rank": 1,
+    "territory_runs_lower_bound": 2,
+    "classes_tried_per_territory": {
+      "arrow/locales.py": 1
+    }
+  }
+]

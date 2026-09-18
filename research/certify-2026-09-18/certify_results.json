@@ -1,0 +1,1626 @@
+[
+ {
+  "spec": "clip_index",
+  "author": "qwen3.5:4b",
+  "hard": false,
+  "red_before": [
+   "test_3"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_3"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.45,
+    "red_before": [
+     "test_3"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "COLLATERAL",
+    "why": "turned 1 passing test(s) red: test_2",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.71,
+    "red_before": [
+     "test_3"
+    ],
+    "broke": [
+     "test_2"
+    ]
+   },
+   "collateral": {
+    "verdict": "COLLATERAL",
+    "why": "turned 1 passing test(s) red: test_0",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_3"
+    ],
+    "broke": [
+     "test_0"
+    ]
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_3"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_3"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     3,
+     5
+    ],
+    "pool": 50,
+    "a": "3",
+    "b": "!KeyError: '(3, 5)'"
+   },
+   "outside-near": {
+    "witness": [
+     3,
+     5
+    ],
+    "pool": 50,
+    "a": "3",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 50,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "backoff",
+  "author": "gemma3:4b-hard",
+  "hard": true,
+  "red_before": [
+   "test_0",
+   "test_1",
+   "test_2"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - RuntimeError: intermittent",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     4,
+     1
+    ],
+    "pool": 25,
+    "a": "[1, 2, 4, 8]",
+    "b": "!KeyError: '(4, 1)'"
+   },
+   "outside-near": {
+    "witness": [
+     4,
+     1
+    ],
+    "pool": 25,
+    "a": "[1, 2, 4, 8]",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 25,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "countdown",
+  "author": "gemma3:4b-hard",
+  "hard": true,
+  "red_before": [
+   "test_0",
+   "test_1",
+   "test_2"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - RuntimeError: intermittent",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     4
+    ],
+    "pool": 10,
+    "a": "[4, 3, 2, 1]",
+    "b": "!KeyError: '(4,)'"
+   },
+   "outside-near": {
+    "witness": [
+     4
+    ],
+    "pool": 10,
+    "a": "[4, 3, 2, 1]",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 10,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "insert_sorted",
+  "author": "gemma3:4b-hard",
+  "hard": true,
+  "red_before": [
+   "test_0",
+   "test_1",
+   "test_2"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "wrong": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - assert [1, 2, 2, 3, 2] == [1, 2, 2, 2, 3]",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_1 - RuntimeError: intermittent",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.71,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     [
+      3,
+      2,
+      2,
+      1
+     ],
+     2
+    ],
+    "pool": 45,
+    "a": "[2, 3, 2, 2, 1]",
+    "b": "!KeyError: '([3, 2, 2, 1], 2)'"
+   },
+   "outside-near": {
+    "witness": [
+     [
+      1,
+      2,
+      2,
+      3
+     ],
+     3
+    ],
+    "pool": 45,
+    "a": "[1, 2, 2, 3, 3]",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 45,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "insert_sorted",
+  "author": "phi4-mini-hard",
+  "hard": true,
+  "red_before": [
+   "test_0",
+   "test_2"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "wrong": {
+    "verdict": "COLLATERAL",
+    "why": "turned 1 passing test(s) red: test_1",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_2"
+    ],
+    "broke": [
+     "test_1"
+    ]
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - RuntimeError: intermittent",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "collateral": {
+    "verdict": "COLLATERAL",
+    "why": "turned 1 passing test(s) red: test_1",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_2"
+    ],
+    "broke": [
+     "test_1"
+    ]
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_2"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     [
+      3,
+      2,
+      2,
+      1
+     ],
+     2
+    ],
+    "pool": 45,
+    "a": "[2, 3, 2, 2, 1]",
+    "b": "!KeyError: '([3, 2, 2, 1], 2)'"
+   },
+   "outside-near": {
+    "witness": [
+     [
+      1,
+      2,
+      2,
+      3
+     ],
+     3
+    ],
+    "pool": 45,
+    "a": "[1, 2, 2, 3, 3]",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 45,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "insert_sorted",
+  "author": "qwen3.5:4b-hard",
+  "hard": true,
+  "red_before": [
+   "test_0",
+   "test_1",
+   "test_2"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "wrong": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - assert None == [1, 2, 2, 2, 3]",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_1 - RuntimeError: intermittent",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.88,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     [
+      3,
+      2,
+      2,
+      1
+     ],
+     2
+    ],
+    "pool": 45,
+    "a": "[2, 3, 2, 2, 1]",
+    "b": "!KeyError: '([3, 2, 2, 1], 2)'"
+   },
+   "outside-near": {
+    "witness": [
+     [
+      1,
+      2,
+      2,
+      3
+     ],
+     3
+    ],
+    "pool": 45,
+    "a": "[1, 2, 2, 3, 3]",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 45,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "percentile",
+  "author": "gemma3:4b-hard",
+  "hard": true,
+  "red_before": [
+   "test_0",
+   "test_1",
+   "test_2"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "wrong": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - NameError: name 'math' is not defined. Di...",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_2 - RuntimeError: intermittent",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     [
+      4,
+      3,
+      2,
+      1
+     ],
+     50
+    ],
+    "pool": 76,
+    "a": "2",
+    "b": "!KeyError: '([4, 3, 2, 1], 50)'"
+   },
+   "outside-near": {
+    "witness": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     51
+    ],
+    "pool": 76,
+    "a": "3",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 76,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "percentile",
+  "author": "phi4-mini-hard",
+  "hard": true,
+  "red_before": [
+   "test_0",
+   "test_1",
+   "test_2"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "wrong": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - NameError: name 'ceil' is not defined",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_1 - RuntimeError: intermittent",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.7,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     [
+      4,
+      3,
+      2,
+      1
+     ],
+     50
+    ],
+    "pool": 76,
+    "a": "2",
+    "b": "!KeyError: '([4, 3, 2, 1], 50)'"
+   },
+   "outside-near": {
+    "witness": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     51
+    ],
+    "pool": 76,
+    "a": "3",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 76,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "progress",
+  "author": "phi4-mini-hard",
+  "hard": true,
+  "red_before": [
+   "test_2"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_2"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.44,
+    "red_before": [
+     "test_2"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "COLLATERAL",
+    "why": "turned 2 passing test(s) red: test_0, test_3",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.71,
+    "red_before": [
+     "test_2"
+    ],
+    "broke": [
+     "test_0",
+     "test_3"
+    ]
+   },
+   "collateral": {
+    "verdict": "COLLATERAL",
+    "why": "turned 1 passing test(s) red: test_0",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.89,
+    "red_before": [
+     "test_2"
+    ],
+    "broke": [
+     "test_0"
+    ]
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_2"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     0,
+     2,
+     10
+    ],
+    "pool": 57,
+    "a": "0",
+    "b": "!KeyError: '(0, 2, 10)'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 57,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "trim_to_fit",
+  "author": "phi4-mini-hard",
+  "hard": true,
+  "red_before": [
+   "test_0",
+   "test_1",
+   "test_2"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.45,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "wrong": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - AssertionError: assert 'ab' == ['ab', 'cd']",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.73,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.47,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - RuntimeError: intermittent",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.76,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.49,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.53,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     [
+      "cd",
+      "ab"
+     ],
+     5
+    ],
+    "pool": 29,
+    "a": "['cd', 'ab']",
+    "b": "!KeyError: \"(['cd', 'ab'], 5)\""
+   },
+   "outside-near": {
+    "witness": [
+     [
+      "ab",
+      "cd"
+     ],
+     6
+    ],
+    "pool": 29,
+    "a": "['ab', 'cd']",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 29,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "trim_to_fit",
+  "author": "qwen3.5:4b-hard",
+  "hard": true,
+  "red_before": [
+   "test_0",
+   "test_1",
+   "test_2"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.47,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "wrong": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - AssertionError: assert ['ab cd'] == ['ab'...",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.73,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.42,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - RuntimeError: intermittent",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.71,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.49,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.43,
+    "red_before": [
+     "test_0",
+     "test_1",
+     "test_2"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     [
+      "cd",
+      "ab"
+     ],
+     5
+    ],
+    "pool": 29,
+    "a": "['cd', 'ab']",
+    "b": "!KeyError: \"(['cd', 'ab'], 5)\""
+   },
+   "outside-near": {
+    "witness": [
+     [
+      "ab",
+      "cd"
+     ],
+     6
+    ],
+    "pool": 29,
+    "a": "['ab', 'cd']",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 29,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "truncate_words",
+  "author": "gemma3:4b-hard",
+  "hard": true,
+  "red_before": [
+   "test_0"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.48,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": []
+   },
+   "wrong": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - AssertionError: assert 'a b...' == 'a b ...'",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.76,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.51,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "COLLATERAL",
+    "why": "turned 2 passing test(s) red: test_1, test_2",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.73,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": [
+     "test_1",
+     "test_2"
+    ]
+   },
+   "collateral": {
+    "verdict": "COLLATERAL",
+    "why": "turned 1 passing test(s) red: test_1",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.94,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": [
+     "test_1"
+    ]
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.52,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.49,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     "",
+     2
+    ],
+    "pool": 35,
+    "a": "''",
+    "b": "!KeyError: \"('', 2)\""
+   },
+   "outside-near": {
+    "witness": [
+     "a b c d",
+     3
+    ],
+    "pool": 35,
+    "a": "'a b c ...'",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 35,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "truncate_words",
+  "author": "qwen3.5:4b-hard",
+  "hard": true,
+  "red_before": [
+   "test_0"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.5,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": []
+   },
+   "wrong": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - AssertionError: assert 'a b...' == 'a b ...'",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.74,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.47,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "COLLATERAL",
+    "why": "turned 2 passing test(s) red: test_1, test_2",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.73,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": [
+     "test_1",
+     "test_2"
+    ]
+   },
+   "collateral": {
+    "verdict": "COLLATERAL",
+    "why": "turned 1 passing test(s) red: test_1",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.73,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": [
+     "test_1"
+    ]
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.54,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.48,
+    "red_before": [
+     "test_0"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     "",
+     2
+    ],
+    "pool": 35,
+    "a": "''",
+    "b": "!KeyError: \"('', 2)\""
+   },
+   "outside-near": {
+    "witness": [
+     "a b c d",
+     3
+    ],
+    "pool": 35,
+    "a": "'a b c ...'",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 35,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ },
+ {
+  "spec": "windows",
+  "author": "phi4-mini-hard",
+  "hard": true,
+  "red_before": [
+   "test_0",
+   "test_1"
+  ],
+  "verdicts": {
+   "true": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.55,
+    "red_before": [
+     "test_0",
+     "test_1"
+    ],
+    "broke": []
+   },
+   "overfit": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.51,
+    "red_before": [
+     "test_0",
+     "test_1"
+    ],
+    "broke": []
+   },
+   "flaky": {
+    "verdict": "FAILS",
+    "why": "FAILED tests/test_spec.py::test_0 - RuntimeError: intermittent",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.71,
+    "red_before": [
+     "test_0",
+     "test_1"
+    ],
+    "broke": []
+   },
+   "collateral": {
+    "verdict": "COLLATERAL",
+    "why": "turned 1 passing test(s) red: test_2",
+    "suite_runs": 3,
+    "rolled_back_exact": true,
+    "seconds": 0.88,
+    "red_before": [
+     "test_0",
+     "test_1"
+    ],
+    "broke": [
+     "test_2"
+    ]
+   },
+   "outside-near": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.45,
+    "red_before": [
+     "test_0",
+     "test_1"
+    ],
+    "broke": []
+   },
+   "outside-far": {
+    "verdict": "CERTIFIED",
+    "why": "red before, green on the full suite, stable on re-check, nothing else broken",
+    "suite_runs": 4,
+    "rolled_back_exact": true,
+    "seconds": 1.44,
+    "red_before": [
+     "test_0",
+     "test_1"
+    ],
+    "broke": []
+   }
+  },
+  "separation": {
+   "overfit": {
+    "witness": [
+     [
+      4,
+      3,
+      2,
+      1
+     ],
+     2
+    ],
+    "pool": 63,
+    "a": "[[4, 3], [3, 2], [2, 1]]",
+    "b": "!KeyError: '([4, 3, 2, 1], 2)'"
+   },
+   "outside-near": {
+    "witness": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     3
+    ],
+    "pool": 63,
+    "a": "[[1, 2, 3], [2, 3, 4]]",
+    "b": "'**different**'"
+   },
+   "outside-far": {
+    "witness": null,
+    "pool": 63,
+    "why": "no input in the harvested pool tells them apart"
+   }
+  }
+ }
+]

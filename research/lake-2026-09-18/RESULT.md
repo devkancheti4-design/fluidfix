@@ -165,6 +165,49 @@ thousandfold one. Teaching buys a class; scarcity decides whether that class is 
 remembered class elsewhere. A remembered class is evidence about the class, not about the territory, so a
 refusal on it now moves territory first. That one change took the warm search from 129 nodes to 13.
 
+## 4d. Is the class earning its place in the address? — and what that means for other authors
+
+A node is addressed by (territory, class, line range). The class comes from fluidfix's own vocabulary, so an
+author from *outside* that vocabulary — a model writing a whole-function rewrite — has no class to be
+addressed by. That stopped being hypothetical once the judge was measured on external patches
+(`../certify-2026-09-18`: fourteen of fourteen model-written fixes certified, twenty-nine adversarial
+patches refused, byte-exact rollback every time). If the *address* needs the vocabulary, the net can only
+ever dispatch itself.
+
+`addressing.py` replays the question over rulings already recorded — nothing is re-run. A territory-only
+node must try every class in its file, so its cost is the sum of that file's class-nodes; only the classes
+each recorded run actually tried are counted, which makes every territory figure a **lower bound**.
+
+| incident | memory | class-addressed | territory-addressed (>=) |
+|---|---|---|---|
+| rich `table.py` | cold | 60 nodes, 656 suite runs | winner file **3rd of 15**, **356 runs** |
+| rich `measure.py` | class 6 known | 13 nodes, 62 runs | winner file 10th of 10, 62 runs |
+| arrow `locales.py` | class 7 known | 1 node, 2 runs | 1 of 1, 2 runs |
+
+**Cold, the class in the address costs roughly twice what it saves.** The net walked 60 class-nodes to reach
+`table.py`; by territory alone it is the third file touched, at about half the judging. The vocabulary was
+multiplying the address space — 164 pairs over 54 territories — and on a cold search the net pays for every
+class a file cannot exhibit before it moves on.
+
+**Warm, the two are identical.** With a class remembered, each territory node ran exactly one class anyway:
+62 runs either way. The memory had already collapsed the class dimension.
+
+So the vocabulary is not what makes the net work, and dropping it from the address makes a cold search
+cheaper, not dearer. What the vocabulary still buys is real and narrower than it looked: **$0 authoring when
+the fault is mechanical**, and a memory key that **transfers between repositories** — `kind:7` learned on
+rich took arrow to one node. A territory key could not have done that: the two rich incidents were won in
+*different files* (`measure.py`, `table.py`), so a territory-keyed memory would have carried nothing from
+the first to the second.
+
+That is the shape the evidence points at, and the part of it that is not yet built:
+
+- the growth rule (`grow_direction`) reads **rulings only** — REFUTED, CAPPED, EMPTY — and is already
+  author-agnostic. Nothing in it mentions a class.
+- the node address does not need the class, and is cheaper cold without it.
+- the memory *does* still key on `kind:` (`life.learn("shapes", f"kind:{winner[1]}")`), so a fix from an
+  external author teaches this net nothing. That is the honest gap: the search generalises across authors
+  today, the recall does not.
+
 ## 5. What is not claimed
 
 - These are five incidents on two repositories, not a benchmark.
@@ -178,4 +221,7 @@ refusal on it now moves territory first. That one change took the warm search fr
   is removed: the net reaches the fault, at four times the cost when the cap was not the problem.
 - The net was measured on three incidents in two repositories, with one class remembered at a time.
   Nothing here says how the growth rule behaves when several classes compete for the frontier.
+- §4d is a REPLAY over rulings already recorded, not a new search: no territory-addressed net was ever
+  run. Its figures are lower bounds, and the claim that the class costs more than it saves cold rests on
+  one incident.
 - Nothing here changes the product. It is a harness around the shipped guard.

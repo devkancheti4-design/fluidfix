@@ -27,12 +27,14 @@ right, and there is no bug to repair.
 **On boundary-heavy work the small models broke often**, and the breakages are the interesting part. The
 capable one did not break at all.
 
-| writer | wrote | broken | fluidfix repaired, verified | refused | wrong |
-|---|---|---|---|---|---|
-| qwen3.5:4b | 16 | 3 | 0 | 3 | 0 |
-| phi4-mini | 16 | 5 | 1 | 4 | 0 |
-| gemma3:4b | 16 | 5 | 0 | 5 | 0 |
-| **Claude Haiku** | 16 | **0** | — | — | — |
+| writer | set | wrote | broken | fluidfix repaired, verified | refused | wrong |
+|---|---|---|---|---|---|---|
+| qwen3.5:4b | boundary | 16 | 3 | 0 | 3 | 0 |
+| phi4-mini | boundary | 16 | 5 | 1 | 4 | 0 |
+| gemma3:4b | boundary | 16 | 5 | 0 | 5 | 0 |
+| qwen3.5:4b | ordinary | 16 | 1 | 0 | 1 | 0 |
+| **Claude Haiku** | both | **32** | **0** | — | — | — |
+| | | | **14** | **1** | **13** | **0** |
 
 Haiku wrote both sets without a single failure: 32 implementations, 32 passing their hidden tests, including
 the ceiling, the half-open interval and the nearest-rank percentile. Every bug measured here was written by
@@ -45,15 +47,16 @@ The one repair, free and byte-verified, was a flipped comparison in an insertion
 + if items[i] < value:
 ```
 
-## Why the other twelve were refused
+## Why the other thirteen were refused
 
-Reading them one by one, the twelve fall into three groups, and only the first is the kind of fault this
+Reading them one by one, the thirteen fall into three groups, and only the first is the kind of fault this
 vocabulary is built for:
 
-- **One-line token slips (3).** Two writers ended a truncation with `+ '...'` where the spec wanted the
-  ellipsis as a separate word, and one built windows with `range(0, n, size)` instead of
-  `range(n - size + 1)`. These are single-line rewrites. They are outside the five taught classes, but they
-  are exactly the sort of thing one worked example would add.
+- **One-line rewrites (4).** Two writers ended a truncation with `+ '...'` where the spec wanted the
+  ellipsis as a separate word, one built windows with `range(0, n, size)` instead of `range(n - size + 1)`,
+  and one clipped a negative index with `return length + index` where it needed `max(length + index, 0)`.
+  These are single-line rewrites. They are outside the five taught classes, but they are exactly the sort
+  of thing one worked example would add.
 - **Insertions, which a line-rewriting vocabulary cannot express at all (3).** Two used `ceil` without
   importing it; one mutated a list and forgot to return it. The fix is a line that is not there, and every
   act in the vocabulary transforms a line that is.
@@ -63,13 +66,19 @@ vocabulary is built for:
 
 ## So, honestly
 
-**It repairs the mechanical subset of model bugs, and only that.** One of thirteen out of the box; perhaps
-four of thirteen if the three token slips were taught, which is one afternoon's work. The remaining nine
-were never in reach of a line-transform vocabulary and it refused every one of them rather than guessing.
+**It repairs the mechanical subset of model bugs, and only that.** One of fourteen out of the box; perhaps
+five of fourteen if the four one-line rewrites were taught, which is one afternoon's work. The remaining
+nine were never in reach of a line-transform vocabulary and it refused every one of them rather than
+guessing.
 
 **Zero wrong repairs, again.** That is the number that transfers: across 240 generated bugs, 22 real-repo
-mutants and these 13 model-written faults, the tool has not once shipped a repair that the judging tests
+mutants and these 14 model-written faults, the tool has not once shipped a repair that the judging tests
 rejected, and every refusal named what it tried.
+
+**And a refusal to author is not a refusal to help.** The thirteen it could not write, it can still *judge*:
+handed a correct fix of the same specification written by another model, fluidfix certified fourteen of
+fourteen and refused twenty-nine adversarial patches — wrong, flaky, collateral — with byte-exact rollback
+every time (`../certify-2026-09-18`). The vocabulary is the replaceable half; the judge is not.
 
 **The pitch that survives this measurement** is not "it cleans up after your AI". It is: when a test goes
 red in a large repository, this finds the mechanical fault for free and refuses honestly on the rest — and
@@ -77,8 +86,12 @@ mechanical faults come from typos, refactors, merges and off-by-ones at least as
 
 ## Not claimed
 
-- Four writers, thirty-two implementations, thirteen bugs. This is a probe, not a benchmark.
+- Four writers, eighty implementations, fourteen bugs. This is a probe, not a benchmark.
+- The first pass of this study ran `repair.py` on the boundary set only, so qwen3.5:4b's one ordinary-set
+  bug (`clip_index`) went unmeasured and the totals read thirteen. Re-run over every set: fourteen bugs,
+  same one repair, same zero wrong.
 - No frontier model through an API wrote any of this code. The strongest writer available, Haiku through a
   sandboxed subagent, made no mistakes at all on either set, so there is no evidence here about what a
   frontier model's bugs look like — only about small local models.
-- The classification of the twelve refusals into three groups is my reading of the code, not a measurement.
+- The classification of the thirteen refusals into three groups is my reading of the code, not a
+  measurement.

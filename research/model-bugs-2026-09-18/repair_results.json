@@ -1,10 +1,10 @@
 [
  {
-  "author": "qwen3.5:4b-hard",
+  "author": "gemma3:4b-hard",
   "written": 16,
-  "failed": 3,
+  "failed": 5,
   "repaired": 0,
-  "refused": 3,
+  "refused": 5,
   "wrong": 0,
   "rows": [
    {
@@ -26,7 +26,25 @@
     "tests_run": 0
    },
    {
-    "name": "trim_to_fit",
+    "name": "backoff",
+    "why_it_failed": "AssertionError",
+    "repaired": false,
+    "shape": null,
+    "before": null,
+    "after": null,
+    "tests_run": 0
+   },
+   {
+    "name": "percentile",
+    "why_it_failed": "NameError: name 'ceil' is not defined",
+    "repaired": false,
+    "shape": null,
+    "before": null,
+    "after": null,
+    "tests_run": 0
+   },
+   {
+    "name": "countdown",
     "why_it_failed": "AssertionError",
     "repaired": false,
     "shape": null,
@@ -92,11 +110,11 @@
   ]
  },
  {
-  "author": "gemma3:4b-hard",
+  "author": "qwen3.5:4b-hard",
   "written": 16,
-  "failed": 5,
+  "failed": 3,
   "repaired": 0,
-  "refused": 5,
+  "refused": 3,
   "wrong": 0,
   "rows": [
    {
@@ -118,25 +136,7 @@
     "tests_run": 0
    },
    {
-    "name": "backoff",
-    "why_it_failed": "AssertionError",
-    "repaired": false,
-    "shape": null,
-    "before": null,
-    "after": null,
-    "tests_run": 0
-   },
-   {
-    "name": "percentile",
-    "why_it_failed": "NameError: name 'ceil' is not defined",
-    "repaired": false,
-    "shape": null,
-    "before": null,
-    "after": null,
-    "tests_run": 0
-   },
-   {
-    "name": "countdown",
+    "name": "trim_to_fit",
     "why_it_failed": "AssertionError",
     "repaired": false,
     "shape": null,
@@ -145,6 +145,34 @@
     "tests_run": 0
    }
   ]
+ },
+ {
+  "author": "qwen3.5:4b",
+  "written": 16,
+  "failed": 1,
+  "repaired": 0,
+  "refused": 1,
+  "wrong": 0,
+  "rows": [
+   {
+    "name": "clip_index",
+    "why_it_failed": "AssertionError",
+    "repaired": false,
+    "shape": null,
+    "before": null,
+    "after": null,
+    "tests_run": 0
+   }
+  ]
+ },
+ {
+  "author": "haiku",
+  "written": 16,
+  "failed": 0,
+  "repaired": 0,
+  "refused": 0,
+  "wrong": 0,
+  "rows": []
  },
  {
   "author": "haiku-hard",
