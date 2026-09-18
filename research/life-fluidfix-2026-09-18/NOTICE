@@ -1,0 +1,8 @@
+life.py in this directory is copied unmodified from two of the author's AGPL-3.0 repositories, where it is
+byte-identical (sha256 bd8d98c2ec5f...):
+
+  https://github.com/devkancheti4-design/life-debugger    life.py
+  https://github.com/devkancheti4-design/living-fused     life/life.py
+
+Copyright (C) 2026 Kancheti Devieswar, AGPL-3.0 — the same licence as fluidfix. It is used here as the memory
+organ of the recursive judge; the confidence gate it exposes is used as a router, after living-fused/routing.py.
