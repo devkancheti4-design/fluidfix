@@ -1,0 +1,426 @@
+{
+ "case": "rich/lenm1-1",
+ "rounds": 5,
+ "nodes": 60,
+ "suite_runs": 656,
+ "wall_s": 482.2,
+ "verdict": "EXACT",
+ "winner": [
+  "rich/table.py",
+  7,
+  1,
+  1016
+ ],
+ "winner_runs": 8,
+ "every_pair_would_be": 164,
+ "grew_deeper": 0,
+ "memory_before": [],
+ "nodes_detail": {
+  "rich/console.py|10|1-2699": {
+   "exit": 2,
+   "seconds": 11.8,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/console.py|0|1-2699": {
+   "exit": 2,
+   "seconds": 15.9,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/console.py|1|1-2699": {
+   "exit": 2,
+   "seconds": 15.8,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/console.py|4|1-2699": {
+   "exit": 2,
+   "seconds": 37.5,
+   "suite_runs": 34,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/console.py|5|1-2699": {
+   "exit": 2,
+   "seconds": 37.5,
+   "suite_runs": 11,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/text.py|10|1-1364": {
+   "exit": 2,
+   "seconds": 144.5,
+   "suite_runs": 15,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/table.py|10|1-1016": {
+   "exit": 2,
+   "seconds": 144.4,
+   "suite_runs": 5,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/segment.py|10|1-781": {
+   "exit": 2,
+   "seconds": 144.3,
+   "suite_runs": 4,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/columns.py|10|1-188": {
+   "exit": 2,
+   "seconds": 144.2,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/console.py|6|1-2699": {
+   "exit": 2,
+   "seconds": 33.9,
+   "suite_runs": 9,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/text.py|0|1-1364": {
+   "exit": 2,
+   "seconds": 40.1,
+   "suite_runs": 15,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/table.py|0|1-1016": {
+   "exit": 2,
+   "seconds": 40.0,
+   "suite_runs": 6,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/segment.py|0|1-781": {
+   "exit": 2,
+   "seconds": 39.9,
+   "suite_runs": 4,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/style.py|0|1-797": {
+   "exit": 2,
+   "seconds": 39.9,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/console.py|8|1-2699": {
+   "exit": 2,
+   "seconds": 39.8,
+   "suite_runs": 5,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/text.py|1|1-1364": {
+   "exit": 2,
+   "seconds": 126.4,
+   "suite_runs": 46,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/table.py|1|1-1016": {
+   "exit": 2,
+   "seconds": 126.3,
+   "suite_runs": 20,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/segment.py|1|1-781": {
+   "exit": 2,
+   "seconds": 126.2,
+   "suite_runs": 21,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/style.py|1|1-797": {
+   "exit": 2,
+   "seconds": 126.1,
+   "suite_runs": 86,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/console.py|9|1-2699": {
+   "exit": 2,
+   "seconds": 126.0,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/text.py|4|1-1364": {
+   "exit": 2,
+   "seconds": 125.8,
+   "suite_runs": 25,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/table.py|4|1-1016": {
+   "exit": 2,
+   "seconds": 125.7,
+   "suite_runs": 35,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/segment.py|4|1-781": {
+   "exit": 2,
+   "seconds": 125.6,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/style.py|4|1-797": {
+   "exit": 2,
+   "seconds": 125.5,
+   "suite_runs": 47,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/console.py|12|1-2699": {
+   "exit": 2,
+   "seconds": 125.3,
+   "suite_runs": 16,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/text.py|3|1-1364": {
+   "exit": 2,
+   "seconds": 125.2,
+   "suite_runs": 12,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/color.py|10|1-622": {
+   "exit": 2,
+   "seconds": 125.1,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/table.py|2|1-1016": {
+   "exit": 2,
+   "seconds": 21.7,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/table.py|3|1-1016": {
+   "exit": 2,
+   "seconds": 39.1,
+   "suite_runs": 23,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/panel.py|10|1-318": {
+   "exit": 2,
+   "seconds": 39.0,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/segment.py|3|1-781": {
+   "exit": 2,
+   "seconds": 39.0,
+   "suite_runs": 7,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/align.py|10|1-321": {
+   "exit": 2,
+   "seconds": 38.9,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/columns.py|0|1-188": {
+   "exit": 2,
+   "seconds": 38.8,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/columns.py|1|1-188": {
+   "exit": 2,
+   "seconds": 155.0,
+   "suite_runs": 19,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/columns.py|3|1-188": {
+   "exit": 2,
+   "seconds": 154.9,
+   "suite_runs": 10,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/columns.py|4|1-188": {
+   "exit": 2,
+   "seconds": 154.8,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/padding.py|10|1-142": {
+   "exit": 2,
+   "seconds": 154.7,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/text.py|6|1-1364": {
+   "exit": 2,
+   "seconds": 154.6,
+   "suite_runs": 10,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/table.py|6|1-1016": {
+   "exit": 2,
+   "seconds": 154.4,
+   "suite_runs": 12,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/segment.py|6|1-781": {
+   "exit": 2,
+   "seconds": 154.2,
+   "suite_runs": 11,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/columns.py|6|1-188": {
+   "exit": 2,
+   "seconds": 154.1,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/markdown.py|0|1-803": {
+   "exit": 2,
+   "seconds": 154.0,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/pretty.py|0|1-1017": {
+   "exit": 2,
+   "seconds": 22.1,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/syntax.py|0|1-989": {
+   "exit": 2,
+   "seconds": 22.1,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/text.py|8|1-1364": {
+   "exit": 2,
+   "seconds": 33.5,
+   "suite_runs": 8,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/table.py|8|1-1016": {
+   "exit": 2,
+   "seconds": 33.5,
+   "suite_runs": 10,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/segment.py|8|1-781": {
+   "exit": 2,
+   "seconds": 33.4,
+   "suite_runs": 0,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/columns.py|8|1-188": {
+   "exit": 2,
+   "seconds": 33.3,
+   "suite_runs": 4,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/text.py|7|1-1364": {
+   "exit": 2,
+   "seconds": 35.6,
+   "suite_runs": 15,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/syntax.py|1|1-989": {
+   "exit": 2,
+   "seconds": 35.5,
+   "suite_runs": 4,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/segment.py|7|1-781": {
+   "exit": 2,
+   "seconds": 35.4,
+   "suite_runs": 7,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/color.py|1|1-622": {
+   "exit": 2,
+   "seconds": 42.6,
+   "suite_runs": 23,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/panel.py|1|1-318": {
+   "exit": 2,
+   "seconds": 42.5,
+   "suite_runs": 16,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/text.py|9|1-1364": {
+   "exit": 2,
+   "seconds": 42.4,
+   "suite_runs": 5,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/columns.py|9|1-188": {
+   "exit": 2,
+   "seconds": 42.2,
+   "suite_runs": 5,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/_wrap.py|9|1-94": {
+   "exit": 2,
+   "seconds": 42.1,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/_ratio.py|9|1-154": {
+   "exit": 2,
+   "seconds": 41.9,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/table.py|7|1-1016": {
+   "exit": 0,
+   "seconds": 41.8,
+   "suite_runs": 8,
+   "grew": "done",
+   "byte_exact": true
+  }
+ }
+}

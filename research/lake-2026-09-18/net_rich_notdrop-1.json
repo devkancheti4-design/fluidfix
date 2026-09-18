@@ -1,0 +1,92 @@
+{
+ "case": "rich/notdrop-1",
+ "rounds": 2,
+ "nodes": 13,
+ "suite_runs": 62,
+ "wall_s": 47.6,
+ "verdict": "EXACT",
+ "winner": [
+  "rich/measure.py",
+  6,
+  1,
+  152
+ ],
+ "winner_runs": 2,
+ "every_pair_would_be": 161,
+ "grew_deeper": 0,
+ "memory_before": [
+  6
+ ],
+ "nodes_detail": {
+  "rich/console.py|6|1-2699": {
+   "exit": 2,
+   "seconds": 16.3,
+   "suite_runs": 9,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/table.py|6|1-1016": {
+   "exit": 2,
+   "seconds": 26.4,
+   "suite_runs": 12,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/text.py|6|1-1364": {
+   "exit": 2,
+   "seconds": 29.4,
+   "suite_runs": 15,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/segment.py|6|1-781": {
+   "exit": 2,
+   "seconds": 29.3,
+   "suite_runs": 11,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/color.py|6|1-622": {
+   "exit": 2,
+   "seconds": 29.3,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/panel.py|6|1-318": {
+   "exit": 2,
+   "seconds": 29.2,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/align.py|6|1-321": {
+   "exit": 2,
+   "seconds": 29.2,
+   "suite_runs": 4,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/columns.py|6|1-188": {
+   "exit": 2,
+   "seconds": 29.1,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/padding.py|6|1-142": {
+   "exit": 2,
+   "seconds": 29.0,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "rich/measure.py|6|1-152": {
+   "exit": 0,
+   "seconds": 30.6,
+   "suite_runs": 2,
+   "grew": "done",
+   "byte_exact": true
+  }
+ }
+}

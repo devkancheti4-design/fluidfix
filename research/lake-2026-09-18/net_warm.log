@@ -1,0 +1,6 @@
+[rich/notdrop-1] survey 4.5s: 54 territories; memory knows [6]; every (territory, class) pair here would be 161 nodes
+  round 1: 1 node(s) — console.py:6[1-2699]
+    grew: 0 deeper, 12 wider — frontier now 12
+  round 2: 12 node(s) — table.py:6[1-1016], text.py:6[1-1364], segment.py:6[1-781], color.py:6[1-622], panel.py:6[1-318], align.py:6[1-321], columns.py:6[1-188], padding.py:6[1-142], measure.py:6[1-152], _wrap.py:6[1-94], _ratio.py:6[1-154], console.py:0[1-2699]
+    green: rich/measure.py class 6 lines 1-152 (2 suite runs) — the net stops growing
+[rich/notdrop-1] EXACT | 13 nodes over 2 rounds (every pair would be 161) | 62 suite runs | 47.6s

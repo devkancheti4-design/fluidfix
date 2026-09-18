@@ -1,0 +1,9 @@
+seeded: the net already knows the inverted-guard shape
+[rich/notdrop-1] survey 4.5s: 54 territories; memory knows [6]; every (territory, class) pair here would be 161 nodes
+  round 1: 1 node(s) — console.py:6[1-2699]
+    grew: 0 deeper, 8 wider — frontier now 8
+  round 2: 8 node(s) — console.py:0[1-2699], console.py:1[1-2699], console.py:4[1-2699], console.py:5[1-2699], table.py:6[1-1016], text.py:6[1-1364], segment.py:6[1-781], color.py:6[1-622]
+    grew: 0 deeper, 60 wider — frontier now 34
+  round 3: 18 node(s) — console.py:8[1-2699], table.py:0[1-1016], text.py:0[1-1364], segment.py:0[1-781], style.py:0[1-797], console.py:9[1-2699], table.py:1[1-1016], text.py:1[1-1364], segment.py:1[1-781], style.py:1[1-797], console.py:10[1-2699], table.py:4[1-1016], text.py:4[1-1364], segment.py:4[1-781], style.py:4[1-797], console.py:12[1-2699], table.py:2[1-1016], table.py:3[1-1016]
+    grew: 0 deeper, 120 wider — frontier now 56
+  round 4: 14 node(s) — panel.py:6[1-318], text.py:3[1-1364], align.py:6[1-321], segment.py:3[1-781], columns.py:6[1-188], color.py:0[1-622], color.py:1[1-622], color.py:4[1-622], color.py:7[1-622], padding.py:6[1-142], table.py:8[1-1016], text.py:8[1-1364], segment.py:8[1-781], columns.py:8[1-188]

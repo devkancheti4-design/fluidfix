@@ -1,0 +1,29 @@
+{
+ "case": "arrow/lenm1-1",
+ "rounds": 1,
+ "nodes": 1,
+ "suite_runs": 2,
+ "wall_s": 33.3,
+ "verdict": "EXACT",
+ "winner": [
+  "arrow/locales.py",
+  7,
+  1,
+  6655
+ ],
+ "winner_runs": 2,
+ "every_pair_would_be": 19,
+ "grew_deeper": 0,
+ "memory_before": [
+  7
+ ],
+ "nodes_detail": {
+  "arrow/locales.py|7|1-6655": {
+   "exit": 0,
+   "seconds": 32.4,
+   "suite_runs": 2,
+   "grew": "done",
+   "byte_exact": true
+  }
+ }
+}

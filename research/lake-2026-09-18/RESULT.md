@@ -132,6 +132,39 @@ fault: the territory cap of six excluded `rich/measure.py`, so the faulty file w
 either wave. The same fault repairs in 701 s when a single guard is pointed at the whole repository (§6 of
 the 2026-09-16 study). A cap that hides the fault is still a ranking problem wearing a fan-out's clothes.
 
+## 4c. Not waves — a net that grows from the work
+
+Waves are a plan made before any work is done. A net instead grows, and the law already says in which
+direction: a node that comes back **REFUTED** means *not here*, so grow wider; a node that was **CAPPED**
+means *here but unproven*, so grow deeper by splitting its line range. Each node is one fluidfix over
+(territory, class, line range), and the first green stops all growth (`net.py`).
+
+| incident | search | nodes | suite runs | wall | verdict |
+|---|---|---|---|---|---|
+| rich `measure.py` (class 6) | fixed waves, 6 territories | 45 | 527 | 159.6 s | **refused** — the cap hid the file |
+| rich `measure.py` | net, cold | 129 of a possible 161 | 908 | 625.7 s | exact |
+| rich `measure.py` | net, shape known | **13** | **62** | **47.6 s** | exact |
+| rich `table.py` (class 7) | fixed waves, cold | 45 | 313 | 112.6 s | exact |
+| rich `table.py` | net, cold | 60 of 164 | 656 | 482.2 s | exact |
+| arrow `locales.py` (class 7) | net, shape known | **1** of 19 | **2** | **33.3 s** | exact |
+
+Three things fall out of that table.
+
+**Growth buys coverage and costs time.** Where the fixed plan happened to contain the answer, the net is
+four times slower (60 nodes against 45, 482 s against 113). Where it did not, the net is the only one that
+finds the fault at all. That is the trade you get for growth driven by refusals instead of a plan fixed in
+advance.
+
+**A remembered shape is worth what its scarcity is worth.** Arrow's `len(x) - 1` class matched exactly one
+of ten territories, so the memory took the search to one node and two suite runs. Rich's `if x:` class
+matches twelve of fifty-four, so the same memory narrows 161 pairs to about twelve — a tenfold saving, not a
+thousandfold one. Teaching buys a class; scarcity decides whether that class is one place or a dozen.
+
+**The growth rule has to spend the memory correctly.** The first warm run behaved exactly like a cold one
+(the same 129-node crawl) because a refusal opened *other classes in the same territory* before trying the
+remembered class elsewhere. A remembered class is evidence about the class, not about the territory, so a
+refusal on it now moves territory first. That one change took the warm search from 129 nodes to 13.
+
 ## 5. What is not claimed
 
 - These are five incidents on two repositories, not a benchmark.
@@ -141,6 +174,8 @@ the 2026-09-16 study). A cap that hides the fault is still a ranking problem wea
 - The signature-keyed memory was measured on exact recall and one class transfer. It has not been measured against
   a drifting repository, nor against a signature that recurs with a *different* cause — the case where a
   confident memory would be confidently wrong. The gate abstains on absence, not on staleness.
-- The fan-out was capped at 6–8 territories by hand. A repository with the fault outside that cap is back to
-  a ranking problem.
+- The fan-out in §3 and §4b was capped at 6–8 territories by hand, and §4c is what happens when that cap
+  is removed: the net reaches the fault, at four times the cost when the cap was not the problem.
+- The net was measured on three incidents in two repositories, with one class remembered at a time.
+  Nothing here says how the growth rule behaves when several classes compete for the frontier.
 - Nothing here changes the product. It is a harness around the shipped guard.

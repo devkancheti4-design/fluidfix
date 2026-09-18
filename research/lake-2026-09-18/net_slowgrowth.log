@@ -1,0 +1,15 @@
+===== A. rich/notdrop-1 — the fixed waves REFUSED this: the cap of six territories hid the file =====
+[rich/notdrop-1] survey 4.6s: 54 territories; memory knows nothing; every (territory, class) pair here would be 161 nodes
+  round 1: 1 node(s) — console.py:10[1-2699]
+    grew: 0 deeper, 2 wider — frontier now 2
+  round 2: 2 node(s) — console.py:0[1-2699], table.py:10[1-1016]
+    grew: 0 deeper, 4 wider — frontier now 3
+  round 3: 3 node(s) — console.py:1[1-2699], table.py:0[1-1016], text.py:10[1-1364]
+    grew: 0 deeper, 6 wider — frontier now 4
+  round 4: 4 node(s) — console.py:4[1-2699], table.py:1[1-1016], text.py:0[1-1364], segment.py:10[1-781]
+    grew: 0 deeper, 8 wider — frontier now 6
+  round 5: 6 node(s) — console.py:5[1-2699], table.py:4[1-1016], table.py:2[1-1016], text.py:1[1-1364], segment.py:0[1-781], color.py:10[1-622]
+    grew: 0 deeper, 10 wider — frontier now 9
+  round 6: 7 node(s) — console.py:6[1-2699], text.py:4[1-1364], table.py:3[1-1016], text.py:3[1-1364], segment.py:1[1-781], style.py:0[1-797], color.py:0[1-622]
+    grew: 0 deeper, 14 wider — frontier now 10
+  round 7: 7 node(s) — panel.py:10[1-318], console.py:8[1-2699], table.py:6[1-1016], segment.py:4[1-781], text.py:6[1-1364], segment.py:3[1-781], style.py:1[1-797]
