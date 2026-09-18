@@ -195,6 +195,54 @@ Two different internal computations can produce the same program and the same co
 different ones, so nothing here traces what happened inside. What it does is turn a black box's uncertainty
 into something you can count, using the executability of its own output as the instrument.
 
+## Laying the three maps on top of each other (`map.py`)
+
+Three local models, 20 seeded draws each on five specifications — 300 generations, reproducible. For every
+input in the harvested pool, each model now has a *distribution* rather than an answer. Laying those maps on
+top of each other asks the question worth more than any single map: **when one model is internally split on
+an input, is that input also contested between models?**
+
+First, the models are wildly different in how peaked they are, and it is not a small effect:
+
+| model | tests passed | distinct programs | distinct behaviours | mean entropy | inputs it is split on |
+|---|---|---|---|---|---|
+| gemma3:4b | **99/100** | 13 | 7 | **0.011** | 3 of 266 |
+| phi4-mini | 70/100 | 48 | 27 | 0.037 | 17 of 266 |
+| qwen3.5:4b | 85/100 | 69 | 30 | **0.083** | 31 of 266 |
+
+gemma3:4b is nearly deterministic at temperature 0.8 — on three of the five specs it produced one single
+behaviour in twenty draws — and it is also the most accurate. qwen3.5:4b explores eight times more widely.
+Same prompt, same temperature, same decoder.
+
+Then the result that matters:
+
+| | models disagree | models agree | |
+|---|---|---|---|
+| at least one model internally split | 19 | 14 | 58% disagree |
+| every model internally unanimous | **0** | 233 | **0% disagree** |
+
+**Of 266 shared inputs there is not one where all three models were internally unanimous and yet disagreed
+with each other.** Every single cross-model disagreement was already visible as spread inside at least one
+model. Within-model sampling missed nothing.
+
+**But no single model is sufficient**, and the recall follows the entropy exactly:
+
+| model | cross-model disagreements it flagged | its splits that matched no disagreement |
+|---|---|---|
+| qwen3.5:4b | **17 of 19** | 14 of 31 |
+| phi4-mini | 10 of 19 | 7 of 17 |
+| gemma3:4b | 3 of 19 | **0 of 3** |
+
+So the confident model is precise and nearly blind; the uncertain one catches almost everything and raises
+many alarms besides. (Those are not necessarily false: an input one model is split on is under-determined
+*for that model*, whether or not the others happen to agree. Cross-model disagreement is a convenient
+reference here, not ground truth.)
+
+**What this is good for.** You can find where a specification is under-determined with the models you
+already have and no ground truth: draw twenty times, run each program over a pool harvested from your own
+tests, and look at the inputs your own samples disagree on. On this corpus one uncertain model recovered 17
+of 19, and the three together recovered all of them.
+
 ## So, honestly
 
 **Yes, and the subject is the specification, not the model.** With no access to weights, training data or
@@ -216,7 +264,11 @@ interpretability, and calling it that would not survive the first question from 
   (`../certify-2026-09-18`). The 8 ambiguous specs are a **lower bound**; there may be more.
 - Ambiguity here is measured *between writers*. A spec all four resolve the same way is not thereby
   unambiguous — they may share a prior.
-- The sampling run is one model, one temperature, five specifications, twenty samples each. Pass rates
+- The sampling and mapping runs are three local models, ONE temperature (0.8), five specifications,
+  twenty seeded samples each: 300 generations, 266 shared pool inputs, 19 cross-model disagreements. The
+  zero in the contingency table rests on those 19. Frontier models are absent — they cannot be sampled
+  through this path.
+- An earlier unseeded exploratory run gave the same qualitative picture; the seeded run supersedes it. Pass rates
   fall at temperature 0.8 (15-20 of 20) against temperature 0, so some of the corpus's "correct" answers
   elsewhere were partly luck.
 - The AST features are hand-chosen and shallow. A negative result on them is not a negative result on

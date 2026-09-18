@@ -1,5 +1,5 @@
 {
- "model": "qwen3.5:4b",
+ "model": "gemma3:4b",
  "n": 20,
  "temp": 0.8,
  "specs": [
@@ -9,43 +9,17 @@
    "temp": 0.8,
    "passed": 20,
    "pool": 45,
-   "distinct_texts": 7,
-   "distinct_behaviours": 5,
+   "distinct_texts": 4,
+   "distinct_behaviours": 2,
    "undetermined_inputs": [
     {
      "input": [
       10,
-      0
-     ],
-     "answers": {
-      "!ZeroDivisionError: division by zero": 17,
-      "!ValueError: per_page cannot be zero": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
-     }
-    },
-    {
-     "input": [
-      10,
       -5
      ],
      "answers": {
-      "-1": 17,
-      "-2": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
-     }
-    },
-    {
-     "input": [
-      11,
-      0
-     ],
-     "answers": {
-      "!ZeroDivisionError: division by zero": 17,
-      "!ValueError: per_page cannot be zero": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
+      "-2": 11,
+      "-1": 9
      }
     },
     {
@@ -54,22 +28,8 @@
       -5
      ],
      "answers": {
-      "-1": 17,
-      "-3": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
-     }
-    },
-    {
-     "input": [
-      1,
-      0
-     ],
-     "answers": {
-      "!ZeroDivisionError: division by zero": 17,
-      "!ValueError: per_page cannot be zero": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
+      "-2": 11,
+      "-1": 9
      }
     },
     {
@@ -78,10 +38,8 @@
       -5
      ],
      "answers": {
-      "1": 17,
-      "-1": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
+      "0": 11,
+      "1": 9
      }
     }
    ],
@@ -209,10 +167,7 @@
       0
      ],
      "answers": {
-      "!ZeroDivisionError: division by zero": 17,
-      "!ValueError: per_page cannot be zero": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
+      "!ZeroDivisionError: division by zero": 20
      }
     },
     {
@@ -221,10 +176,8 @@
       -5
      ],
      "answers": {
-      "-1": 17,
-      "-2": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
+      "-2": 11,
+      "-1": 9
      }
     },
     {
@@ -305,10 +258,7 @@
       0
      ],
      "answers": {
-      "!ZeroDivisionError: division by zero": 17,
-      "!ValueError: per_page cannot be zero": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
+      "!ZeroDivisionError: division by zero": 20
      }
     },
     {
@@ -317,10 +267,8 @@
       -5
      ],
      "answers": {
-      "-1": 17,
-      "-3": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
+      "-2": 11,
+      "-1": 9
      }
     },
     {
@@ -473,10 +421,7 @@
       0
      ],
      "answers": {
-      "!ZeroDivisionError: division by zero": 17,
-      "!ValueError: per_page cannot be zero": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
+      "!ZeroDivisionError: division by zero": 20
      }
     },
     {
@@ -485,10 +430,8 @@
       -5
      ],
      "answers": {
-      "1": 17,
-      "-1": 1,
-      "inf": 1,
-      "!ValueError: per_page must be positive": 1
+      "0": 11,
+      "1": 9
      }
     },
     {
@@ -513,78 +456,8 @@
    "samples": [
     {
      "passed": true,
-     "text": "db3948f8",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "c3de2518",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "c3de2518",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "68785dad",
-     "behaviour": "f6433296"
-    },
-    {
-     "passed": true,
-     "text": "db3948f8",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "db3948f8",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "c3de2518",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "db3948f8",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "c3de2518",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "db3948f8",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "db3948f8",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "c3de2518",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "db3948f8",
-     "behaviour": "6ad29367"
-    },
-    {
-     "passed": true,
-     "text": "4e2d88d5",
-     "behaviour": "2d05d8ed"
-    },
-    {
-     "passed": true,
-     "text": "01d8d199",
-     "behaviour": "eb4b2fac"
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
     },
     {
      "passed": true,
@@ -593,23 +466,93 @@
     },
     {
      "passed": true,
-     "text": "db3948f8",
+     "text": "a797dd88",
      "behaviour": "6ad29367"
     },
     {
      "passed": true,
-     "text": "db3948f8",
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
+    },
+    {
+     "passed": true,
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
+    },
+    {
+     "passed": true,
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
+    },
+    {
+     "passed": true,
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
+    },
+    {
+     "passed": true,
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
+    },
+    {
+     "passed": true,
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
+    },
+    {
+     "passed": true,
+     "text": "125fa939",
      "behaviour": "6ad29367"
     },
     {
      "passed": true,
-     "text": "f1884760",
-     "behaviour": "7cc2d275"
+     "text": "a797dd88",
+     "behaviour": "6ad29367"
     },
     {
      "passed": true,
-     "text": "db3948f8",
+     "text": "c608998e",
      "behaviour": "6ad29367"
+    },
+    {
+     "passed": true,
+     "text": "a797dd88",
+     "behaviour": "6ad29367"
+    },
+    {
+     "passed": true,
+     "text": "c608998e",
+     "behaviour": "6ad29367"
+    },
+    {
+     "passed": true,
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
+    },
+    {
+     "passed": true,
+     "text": "a797dd88",
+     "behaviour": "6ad29367"
+    },
+    {
+     "passed": true,
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
+    },
+    {
+     "passed": true,
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
+    },
+    {
+     "passed": true,
+     "text": "c608998e",
+     "behaviour": "6ad29367"
+    },
+    {
+     "passed": true,
+     "text": "45e9a16c",
+     "behaviour": "d0057e5f"
     }
    ]
   },
@@ -617,77 +560,11 @@
    "spec": "clip_exclusive",
    "n": 20,
    "temp": 0.8,
-   "passed": 10,
+   "passed": 20,
    "pool": 39,
-   "distinct_texts": 17,
-   "distinct_behaviours": 11,
-   "undetermined_inputs": [
-    {
-     "input": [
-      7,
-      0
-     ],
-     "answers": {
-      "-1": 5,
-      "0": 4,
-      "None": 1
-     }
-    },
-    {
-     "input": [
-      7,
-      -5
-     ],
-     "answers": {
-      "-6": 4,
-      "0": 5,
-      "None": 1
-     }
-    },
-    {
-     "input": [
-      -3,
-      0
-     ],
-     "answers": {
-      "0": 8,
-      "None": 1,
-      "-1": 1
-     }
-    },
-    {
-     "input": [
-      -3,
-      -5
-     ],
-     "answers": {
-      "0": 9,
-      "None": 1
-     }
-    },
-    {
-     "input": [
-      2,
-      0
-     ],
-     "answers": {
-      "-1": 5,
-      "0": 4,
-      "None": 1
-     }
-    },
-    {
-     "input": [
-      2,
-      -5
-     ],
-     "answers": {
-      "-6": 4,
-      "0": 5,
-      "None": 1
-     }
-    }
-   ],
+   "distinct_texts": 1,
+   "distinct_behaviours": 1,
+   "undetermined_inputs": [],
    "per_input": [
     {
      "input": [
@@ -695,7 +572,7 @@
       5
      ],
      "answers": {
-      "4": 10
+      "4": 20
      }
     },
     {
@@ -704,7 +581,7 @@
       5
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -713,7 +590,7 @@
       5
      ],
      "answers": {
-      "2": 10
+      "2": 20
      }
     },
     {
@@ -722,7 +599,7 @@
       5
      ],
      "answers": {
-      "4": 10
+      "4": 20
      }
     },
     {
@@ -731,7 +608,7 @@
       5
      ],
      "answers": {
-      "4": 10
+      "4": 20
      }
     },
     {
@@ -740,7 +617,7 @@
       5
      ],
      "answers": {
-      "4": 10
+      "4": 20
      }
     },
     {
@@ -749,7 +626,7 @@
       5
      ],
      "answers": {
-      "4": 10
+      "4": 20
      }
     },
     {
@@ -758,7 +635,7 @@
       5
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -767,7 +644,7 @@
       5
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -776,7 +653,7 @@
       5
      ],
      "answers": {
-      "4": 10
+      "4": 20
      }
     },
     {
@@ -785,7 +662,7 @@
       6
      ],
      "answers": {
-      "5": 10
+      "5": 20
      }
     },
     {
@@ -794,7 +671,7 @@
       4
      ],
      "answers": {
-      "3": 10
+      "3": 20
      }
     },
     {
@@ -803,7 +680,7 @@
       7
      ],
      "answers": {
-      "6": 10
+      "6": 20
      }
     },
     {
@@ -812,7 +689,7 @@
       3
      ],
      "answers": {
-      "2": 10
+      "2": 20
      }
     },
     {
@@ -821,9 +698,7 @@
       0
      ],
      "answers": {
-      "-1": 5,
-      "0": 4,
-      "None": 1
+      "0": 20
      }
     },
     {
@@ -832,9 +707,7 @@
       -5
      ],
      "answers": {
-      "-6": 4,
-      "0": 5,
-      "None": 1
+      "0": 20
      }
     },
     {
@@ -843,7 +716,7 @@
       10
      ],
      "answers": {
-      "7": 10
+      "7": 20
      }
     },
     {
@@ -852,7 +725,7 @@
       5
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -861,7 +734,7 @@
       5
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -870,7 +743,7 @@
       5
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -879,7 +752,7 @@
       5
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -888,7 +761,7 @@
       5
      ],
      "answers": {
-      "3": 10
+      "3": 20
      }
     },
     {
@@ -897,7 +770,7 @@
       5
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -906,7 +779,7 @@
       6
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -915,7 +788,7 @@
       4
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -924,7 +797,7 @@
       7
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -933,7 +806,7 @@
       3
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -942,9 +815,7 @@
       0
      ],
      "answers": {
-      "0": 8,
-      "None": 1,
-      "-1": 1
+      "0": 20
      }
     },
     {
@@ -953,8 +824,7 @@
       -5
      ],
      "answers": {
-      "0": 9,
-      "None": 1
+      "0": 20
      }
     },
     {
@@ -963,7 +833,7 @@
       10
      ],
      "answers": {
-      "0": 10
+      "0": 20
      }
     },
     {
@@ -972,7 +842,7 @@
       5
      ],
      "answers": {
-      "1": 10
+      "1": 20
      }
     },
     {
@@ -981,7 +851,7 @@
       5
      ],
      "answers": {
-      "4": 10
+      "4": 20
      }
     },
     {
@@ -990,7 +860,7 @@
       6
      ],
      "answers": {
-      "2": 10
+      "2": 20
      }
     },
     {
@@ -999,7 +869,7 @@
       4
      ],
      "answers": {
-      "2": 10
+      "2": 20
      }
     },
     {
@@ -1008,7 +878,7 @@
       7
      ],
      "answers": {
-      "2": 10
+      "2": 20
      }
     },
     {
@@ -1017,7 +887,7 @@
       3
      ],
      "answers": {
-      "2": 10
+      "2": 20
      }
     },
     {
@@ -1026,9 +896,7 @@
       0
      ],
      "answers": {
-      "-1": 5,
-      "0": 4,
-      "None": 1
+      "0": 20
      }
     },
     {
@@ -1037,9 +905,7 @@
       -5
      ],
      "answers": {
-      "-6": 4,
-      "0": 5,
-      "None": 1
+      "0": 20
      }
     },
     {
@@ -1048,110 +914,110 @@
       10
      ],
      "answers": {
-      "2": 10
+      "2": 20
      }
     }
    ],
    "samples": [
     {
      "passed": true,
-     "text": "853ca2d4",
-     "behaviour": "461ceb5d"
-    },
-    {
-     "passed": true,
-     "text": "b2b86261",
-     "behaviour": "cb2fb1aa"
-    },
-    {
-     "passed": false,
-     "text": "f511f095",
-     "behaviour": "95a89651"
-    },
-    {
-     "passed": false,
-     "text": "efe2afe5",
-     "behaviour": "003e77e5"
-    },
-    {
-     "passed": false,
-     "text": "480068a8",
-     "behaviour": "4621d6f7"
-    },
-    {
-     "passed": true,
-     "text": "858576ef",
-     "behaviour": "461ceb5d"
-    },
-    {
-     "passed": false,
-     "text": "8f136787",
-     "behaviour": "865f2e11"
-    },
-    {
-     "passed": false,
-     "text": "7ca4319a",
-     "behaviour": "4621d6f7"
-    },
-    {
-     "passed": true,
-     "text": "b2b86261",
-     "behaviour": "cb2fb1aa"
-    },
-    {
-     "passed": false,
-     "text": "67a05b03",
-     "behaviour": "a1249a58"
-    },
-    {
-     "passed": true,
-     "text": "bc6a2490",
-     "behaviour": "9aeac08a"
-    },
-    {
-     "passed": false,
-     "text": "afd8406b",
-     "behaviour": "e7c75c14"
-    },
-    {
-     "passed": true,
-     "text": "853ca2d4",
-     "behaviour": "461ceb5d"
-    },
-    {
-     "passed": true,
-     "text": "5ad51426",
-     "behaviour": "b9e0ee2a"
-    },
-    {
-     "passed": false,
-     "text": "ab5a64fe",
-     "behaviour": "afd43d4e"
-    },
-    {
-     "passed": false,
-     "text": "225313e1",
-     "behaviour": "4621d6f7"
-    },
-    {
-     "passed": true,
-     "text": "8b908bbf",
+     "text": "4ba5245c",
      "behaviour": "cb2fb1aa"
     },
     {
      "passed": true,
-     "text": "eab26744",
+     "text": "4ba5245c",
      "behaviour": "cb2fb1aa"
     },
     {
      "passed": true,
-     "text": "858576ef",
-     "behaviour": "461ceb5d"
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
     },
     {
-     "passed": false,
-     "text": "38fff1e9",
-     "behaviour": "95a89651"
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
+    },
+    {
+     "passed": true,
+     "text": "4ba5245c",
+     "behaviour": "cb2fb1aa"
     }
    ]
   },
@@ -1159,149 +1025,11 @@
    "spec": "progress",
    "n": 20,
    "temp": 0.8,
-   "passed": 18,
+   "passed": 19,
    "pool": 57,
-   "distinct_texts": 19,
-   "distinct_behaviours": 7,
-   "undetermined_inputs": [
-    {
-     "input": [
-      3,
-      2,
-      10
-     ],
-     "answers": {
-      "10": 11,
-      "15": 7
-     }
-    },
-    {
-     "input": [
-      -1,
-      2,
-      10
-     ],
-     "answers": {
-      "0": 12,
-      "-5": 6
-     }
-    },
-    {
-     "input": [
-      1,
-      -2,
-      10
-     ],
-     "answers": {
-      "0": 12,
-      "-5": 6
-     }
-    },
-    {
-     "input": [
-      1,
-      2,
-      -10
-     ],
-     "answers": {
-      "0": 12,
-      "-10": 2,
-      "-5": 4
-     }
-    },
-    {
-     "input": [
-      4,
-      2,
-      10
-     ],
-     "answers": {
-      "10": 11,
-      "20": 7
-     }
-    },
-    {
-     "input": [
-      -2,
-      2,
-      10
-     ],
-     "answers": {
-      "0": 12,
-      "-10": 6
-     }
-    },
-    {
-     "input": [
-      2,
-      1,
-      10
-     ],
-     "answers": {
-      "10": 11,
-      "20": 7
-     }
-    },
-    {
-     "input": [
-      2,
-      -2,
-      10
-     ],
-     "answers": {
-      "0": 12,
-      "-10": 6
-     }
-    },
-    {
-     "input": [
-      2,
-      2,
-      -10
-     ],
-     "answers": {
-      "0": 12,
-      "-10": 6
-     }
-    },
-    {
-     "input": [
-      -1,
-      3,
-      10
-     ],
-     "answers": {
-      "0": 12,
-      "-4": 3,
-      "-3": 3
-     }
-    },
-    {
-     "input": [
-      1,
-      -3,
-      10
-     ],
-     "answers": {
-      "0": 12,
-      "-4": 3,
-      "-3": 3
-     }
-    },
-    {
-     "input": [
-      1,
-      3,
-      -10
-     ],
-     "answers": {
-      "0": 12,
-      "-10": 2,
-      "-4": 1,
-      "-3": 3
-     }
-    }
-   ],
+   "distinct_texts": 2,
+   "distinct_behaviours": 2,
+   "undetermined_inputs": [],
    "per_input": [
     {
      "input": [
@@ -1310,7 +1038,7 @@
       10
      ],
      "answers": {
-      "5": 18
+      "5": 19
      }
     },
     {
@@ -1320,7 +1048,7 @@
       10
      ],
      "answers": {
-      "10": 18
+      "10": 19
      }
     },
     {
@@ -1330,7 +1058,7 @@
       10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1340,7 +1068,7 @@
       10
      ],
      "answers": {
-      "3": 18
+      "3": 19
      }
     },
     {
@@ -1350,7 +1078,7 @@
       10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1360,8 +1088,7 @@
       10
      ],
      "answers": {
-      "10": 11,
-      "15": 7
+      "15": 19
      }
     },
     {
@@ -1371,8 +1098,7 @@
       10
      ],
      "answers": {
-      "0": 12,
-      "-5": 6
+      "-5": 19
      }
     },
     {
@@ -1382,7 +1108,7 @@
       10
      ],
      "answers": {
-      "10": 18
+      "10": 19
      }
     },
     {
@@ -1392,7 +1118,7 @@
       10
      ],
      "answers": {
-      "2": 18
+      "2": 19
      }
     },
     {
@@ -1402,7 +1128,7 @@
       10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1412,8 +1138,7 @@
       10
      ],
      "answers": {
-      "0": 12,
-      "-5": 6
+      "-5": 19
      }
     },
     {
@@ -1423,7 +1148,7 @@
       11
      ],
      "answers": {
-      "5": 18
+      "5": 19
      }
     },
     {
@@ -1433,7 +1158,7 @@
       9
      ],
      "answers": {
-      "4": 18
+      "4": 19
      }
     },
     {
@@ -1443,7 +1168,7 @@
       12
      ],
      "answers": {
-      "6": 18
+      "6": 19
      }
     },
     {
@@ -1453,7 +1178,7 @@
       8
      ],
      "answers": {
-      "4": 18
+      "4": 19
      }
     },
     {
@@ -1463,7 +1188,7 @@
       0
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1473,9 +1198,7 @@
       -10
      ],
      "answers": {
-      "0": 12,
-      "-10": 2,
-      "-5": 4
+      "-5": 19
      }
     },
     {
@@ -1485,7 +1208,7 @@
       20
      ],
      "answers": {
-      "10": 18
+      "10": 19
      }
     },
     {
@@ -1495,8 +1218,7 @@
       10
      ],
      "answers": {
-      "10": 11,
-      "20": 7
+      "20": 19
      }
     },
     {
@@ -1506,8 +1228,7 @@
       10
      ],
      "answers": {
-      "0": 12,
-      "-10": 6
+      "-10": 19
      }
     },
     {
@@ -1517,7 +1238,7 @@
       10
      ],
      "answers": {
-      "6": 18
+      "6": 19
      }
     },
     {
@@ -1527,8 +1248,7 @@
       10
      ],
      "answers": {
-      "10": 11,
-      "20": 7
+      "20": 19
      }
     },
     {
@@ -1538,7 +1258,7 @@
       10
      ],
      "answers": {
-      "5": 18
+      "5": 19
      }
     },
     {
@@ -1548,7 +1268,7 @@
       10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1558,8 +1278,7 @@
       10
      ],
      "answers": {
-      "0": 12,
-      "-10": 6
+      "-10": 19
      }
     },
     {
@@ -1569,7 +1288,7 @@
       11
      ],
      "answers": {
-      "11": 18
+      "11": 19
      }
     },
     {
@@ -1579,7 +1298,7 @@
       9
      ],
      "answers": {
-      "9": 18
+      "9": 19
      }
     },
     {
@@ -1589,7 +1308,7 @@
       12
      ],
      "answers": {
-      "12": 18
+      "12": 19
      }
     },
     {
@@ -1599,7 +1318,7 @@
       8
      ],
      "answers": {
-      "8": 18
+      "8": 19
      }
     },
     {
@@ -1609,7 +1328,7 @@
       0
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1619,8 +1338,7 @@
       -10
      ],
      "answers": {
-      "0": 12,
-      "-10": 6
+      "-10": 19
      }
     },
     {
@@ -1630,7 +1348,7 @@
       20
      ],
      "answers": {
-      "20": 18
+      "20": 19
      }
     },
     {
@@ -1640,7 +1358,7 @@
       10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1650,7 +1368,7 @@
       10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1660,7 +1378,7 @@
       10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1670,7 +1388,7 @@
       10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1680,7 +1398,7 @@
       10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1690,7 +1408,7 @@
       11
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1700,7 +1418,7 @@
       9
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1710,7 +1428,7 @@
       12
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1720,7 +1438,7 @@
       8
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1730,7 +1448,7 @@
       0
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1740,7 +1458,7 @@
       -10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1750,7 +1468,7 @@
       20
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1760,7 +1478,7 @@
       10
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1770,7 +1488,7 @@
       10
      ],
      "answers": {
-      "10": 18
+      "10": 19
      }
     },
     {
@@ -1780,9 +1498,7 @@
       10
      ],
      "answers": {
-      "0": 12,
-      "-4": 3,
-      "-3": 3
+      "-3": 19
      }
     },
     {
@@ -1792,7 +1508,7 @@
       10
      ],
      "answers": {
-      "2": 18
+      "2": 19
      }
     },
     {
@@ -1802,9 +1518,7 @@
       10
      ],
      "answers": {
-      "0": 12,
-      "-4": 3,
-      "-3": 3
+      "-3": 19
      }
     },
     {
@@ -1814,7 +1528,7 @@
       10
      ],
      "answers": {
-      "1": 18
+      "1": 19
      }
     },
     {
@@ -1824,7 +1538,7 @@
       11
      ],
      "answers": {
-      "3": 18
+      "3": 19
      }
     },
     {
@@ -1834,7 +1548,7 @@
       9
      ],
      "answers": {
-      "3": 18
+      "3": 19
      }
     },
     {
@@ -1844,7 +1558,7 @@
       12
      ],
      "answers": {
-      "4": 18
+      "4": 19
      }
     },
     {
@@ -1854,7 +1568,7 @@
       8
      ],
      "answers": {
-      "2": 18
+      "2": 19
      }
     },
     {
@@ -1864,7 +1578,7 @@
       0
      ],
      "answers": {
-      "0": 18
+      "0": 19
      }
     },
     {
@@ -1874,10 +1588,7 @@
       -10
      ],
      "answers": {
-      "0": 12,
-      "-10": 2,
-      "-4": 1,
-      "-3": 3
+      "-3": 19
      }
     },
     {
@@ -1887,110 +1598,110 @@
       20
      ],
      "answers": {
-      "6": 18
+      "6": 19
      }
     }
    ],
    "samples": [
     {
      "passed": true,
-     "text": "a356b108",
-     "behaviour": "1b72bf63"
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
     },
     {
      "passed": true,
-     "text": "bf028f7b",
-     "behaviour": "c1c4ae2a"
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
     },
     {
      "passed": true,
-     "text": "623c754d",
-     "behaviour": "3cd5c02a"
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
     },
     {
      "passed": true,
-     "text": "acd5ce16",
-     "behaviour": "3cd5c02a"
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
     },
     {
      "passed": true,
-     "text": "f227f640",
-     "behaviour": "1b72bf63"
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
+    },
+    {
+     "passed": true,
+     "text": "3efc20c5",
+     "behaviour": "ef3b5568"
     },
     {
      "passed": false,
-     "text": "ed29c6e4",
-     "behaviour": "b527069d"
+     "text": "d039c41d",
+     "behaviour": "d2f59b6b"
     },
     {
      "passed": true,
-     "text": "8236a0ba",
-     "behaviour": "c1c4ae2a"
-    },
-    {
-     "passed": true,
-     "text": "ba718af8",
-     "behaviour": "2cbcdc7c"
-    },
-    {
-     "passed": true,
-     "text": "c8c0abaa",
+     "text": "3efc20c5",
      "behaviour": "ef3b5568"
     },
     {
      "passed": true,
-     "text": "522c48fa",
-     "behaviour": "1b72bf63"
-    },
-    {
-     "passed": true,
-     "text": "9a204a98",
-     "behaviour": "1b72bf63"
-    },
-    {
-     "passed": true,
-     "text": "6fc70aed",
-     "behaviour": "c1c4ae2a"
-    },
-    {
-     "passed": true,
-     "text": "29e2a709",
-     "behaviour": "1b72bf63"
-    },
-    {
-     "passed": true,
-     "text": "604df88a",
-     "behaviour": "1b72bf63"
-    },
-    {
-     "passed": true,
-     "text": "64bbb336",
+     "text": "3efc20c5",
      "behaviour": "ef3b5568"
-    },
-    {
-     "passed": true,
-     "text": "6354ea64",
-     "behaviour": "1b72bf63"
-    },
-    {
-     "passed": true,
-     "text": "6354ea64",
-     "behaviour": "1b72bf63"
-    },
-    {
-     "passed": true,
-     "text": "580ab525",
-     "behaviour": "ef3b5568"
-    },
-    {
-     "passed": true,
-     "text": "af1393bc",
-     "behaviour": "1b72bf63"
-    },
-    {
-     "passed": false,
-     "text": "d02079ee",
-     "behaviour": "a032cf2a"
     }
    ]
   },
@@ -1998,96 +1709,11 @@
    "spec": "windows",
    "n": 20,
    "temp": 0.8,
-   "passed": 17,
+   "passed": 20,
    "pool": 63,
-   "distinct_texts": 16,
-   "distinct_behaviours": 5,
-   "undetermined_inputs": [
-    {
-     "input": [
-      [
-       1,
-       2,
-       3,
-       4
-      ],
-      0
-     ],
-     "answers": {
-      "[[], [], [], [], []]": 14,
-      "[]": 3
-     }
-    },
-    {
-     "input": [
-      [
-       1,
-       2,
-       3,
-       4
-      ],
-      -2
-     ],
-     "answers": {
-      "[[1, 2], [2, 3], [], [], [], [], []]": 14,
-      "[]": 3
-     }
-    },
-    {
-     "input": [
-      [
-       1,
-       2
-      ],
-      0
-     ],
-     "answers": {
-      "[[], [], []]": 14,
-      "[]": 3
-     }
-    },
-    {
-     "input": [
-      [
-       1,
-       2
-      ],
-      -3
-     ],
-     "answers": {
-      "[[], [], [], [], [], []]": 14,
-      "[]": 3
-     }
-    },
-    {
-     "input": [
-      [
-       1,
-       2,
-       3
-      ],
-      0
-     ],
-     "answers": {
-      "[[], [], [], []]": 14,
-      "[]": 3
-     }
-    },
-    {
-     "input": [
-      [
-       1,
-       2,
-       3
-      ],
-      -3
-     ],
-     "answers": {
-      "[[], [], [], [], [], [], []]": 14,
-      "[]": 3
-     }
-    }
-   ],
+   "distinct_texts": 5,
+   "distinct_behaviours": 1,
+   "undetermined_inputs": [],
    "per_input": [
     {
      "input": [
@@ -2100,7 +1726,7 @@
       2
      ],
      "answers": {
-      "[[1, 2], [2, 3], [3, 4]]": 17
+      "[[1, 2], [2, 3], [3, 4]]": 20
      }
     },
     {
@@ -2112,7 +1738,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2125,7 +1751,7 @@
       3
      ],
      "answers": {
-      "[[1, 2, 3]]": 17
+      "[[1, 2, 3]]": 20
      }
     },
     {
@@ -2139,7 +1765,7 @@
       2
      ],
      "answers": {
-      "[[4, 3], [3, 2], [2, 1]]": 17
+      "[[4, 3], [3, 2], [2, 1]]": 20
      }
     },
     {
@@ -2153,7 +1779,7 @@
       2
      ],
      "answers": {
-      "[[2, 1], [1, 3], [3, 4]]": 17
+      "[[2, 1], [1, 3], [3, 4]]": 20
      }
     },
     {
@@ -2166,7 +1792,7 @@
       2
      ],
      "answers": {
-      "[[2, 3], [3, 4]]": 17
+      "[[2, 3], [3, 4]]": 20
      }
     },
     {
@@ -2179,7 +1805,7 @@
       2
      ],
      "answers": {
-      "[[1, 2], [2, 3]]": 17
+      "[[1, 2], [2, 3]]": 20
      }
     },
     {
@@ -2194,7 +1820,7 @@
       2
      ],
      "answers": {
-      "[[1, 2], [2, 3], [3, 4], [4, 0]]": 17
+      "[[1, 2], [2, 3], [3, 4], [4, 0]]": 20
      }
     },
     {
@@ -2203,7 +1829,7 @@
       2
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2217,7 +1843,7 @@
       2
      ],
      "answers": {
-      "[[2, 2], [2, 3], [3, 4]]": 17
+      "[[2, 2], [2, 3], [3, 4]]": 20
      }
     },
     {
@@ -2231,7 +1857,7 @@
       2
      ],
      "answers": {
-      "[[0, 2], [2, 3], [3, 4]]": 17
+      "[[0, 2], [2, 3], [3, 4]]": 20
      }
     },
     {
@@ -2245,7 +1871,7 @@
       2
      ],
      "answers": {
-      "[[3, 2], [2, 3], [3, 4]]": 17
+      "[[3, 2], [2, 3], [3, 4]]": 20
      }
     },
     {
@@ -2259,7 +1885,7 @@
       2
      ],
      "answers": {
-      "[[1, 3], [3, 3], [3, 4]]": 17
+      "[[1, 3], [3, 3], [3, 4]]": 20
      }
     },
     {
@@ -2273,7 +1899,7 @@
       2
      ],
      "answers": {
-      "[[1, 1], [1, 3], [3, 4]]": 17
+      "[[1, 1], [1, 3], [3, 4]]": 20
      }
     },
     {
@@ -2287,7 +1913,7 @@
       2
      ],
      "answers": {
-      "[[1, 4], [4, 3], [3, 4]]": 17
+      "[[1, 4], [4, 3], [3, 4]]": 20
      }
     },
     {
@@ -2301,7 +1927,7 @@
       2
      ],
      "answers": {
-      "[[1, 2], [2, 4], [4, 4]]": 17
+      "[[1, 2], [2, 4], [4, 4]]": 20
      }
     },
     {
@@ -2315,7 +1941,7 @@
       2
      ],
      "answers": {
-      "[[1, 2], [2, 2], [2, 4]]": 17
+      "[[1, 2], [2, 2], [2, 4]]": 20
      }
     },
     {
@@ -2329,7 +1955,7 @@
       2
      ],
      "answers": {
-      "[[1, 2], [2, 5], [5, 4]]": 17
+      "[[1, 2], [2, 5], [5, 4]]": 20
      }
     },
     {
@@ -2343,7 +1969,7 @@
       2
      ],
      "answers": {
-      "[[1, 2], [2, 3], [3, 5]]": 17
+      "[[1, 2], [2, 3], [3, 5]]": 20
      }
     },
     {
@@ -2357,7 +1983,7 @@
       2
      ],
      "answers": {
-      "[[1, 2], [2, 3], [3, 3]]": 17
+      "[[1, 2], [2, 3], [3, 3]]": 20
      }
     },
     {
@@ -2371,7 +1997,7 @@
       2
      ],
      "answers": {
-      "[[1, 2], [2, 3], [3, 6]]": 17
+      "[[1, 2], [2, 3], [3, 6]]": 20
      }
     },
     {
@@ -2385,7 +2011,7 @@
       3
      ],
      "answers": {
-      "[[1, 2, 3], [2, 3, 4]]": 17
+      "[[1, 2, 3], [2, 3, 4]]": 20
      }
     },
     {
@@ -2399,7 +2025,7 @@
       1
      ],
      "answers": {
-      "[[1], [2], [3], [4]]": 17
+      "[[1], [2], [3], [4]]": 20
      }
     },
     {
@@ -2413,7 +2039,7 @@
       4
      ],
      "answers": {
-      "[[1, 2, 3, 4]]": 17
+      "[[1, 2, 3, 4]]": 20
      }
     },
     {
@@ -2427,8 +2053,7 @@
       0
      ],
      "answers": {
-      "[[], [], [], [], []]": 14,
-      "[]": 3
+      "[[], [], [], [], []]": 20
      }
     },
     {
@@ -2442,8 +2067,7 @@
       -2
      ],
      "answers": {
-      "[[1, 2], [2, 3], [], [], [], [], []]": 14,
-      "[]": 3
+      "[[1, 2], [2, 3], [], [], [], [], []]": 20
      }
     },
     {
@@ -2455,7 +2079,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2466,7 +2090,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2477,7 +2101,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2490,7 +2114,7 @@
       3
      ],
      "answers": {
-      "[[1, 2, 0]]": 17
+      "[[1, 2, 0]]": 20
      }
     },
     {
@@ -2499,7 +2123,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2511,7 +2135,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2523,7 +2147,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2535,7 +2159,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2547,7 +2171,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2559,7 +2183,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2571,7 +2195,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2583,7 +2207,7 @@
       4
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2595,7 +2219,7 @@
       2
      ],
      "answers": {
-      "[[1, 2]]": 17
+      "[[1, 2]]": 20
      }
     },
     {
@@ -2607,7 +2231,7 @@
       5
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2619,7 +2243,7 @@
       1
      ],
      "answers": {
-      "[[1], [2]]": 17
+      "[[1], [2]]": 20
      }
     },
     {
@@ -2631,8 +2255,7 @@
       0
      ],
      "answers": {
-      "[[], [], []]": 14,
-      "[]": 3
+      "[[], [], []]": 20
      }
     },
     {
@@ -2644,8 +2267,7 @@
       -3
      ],
      "answers": {
-      "[[], [], [], [], [], []]": 14,
-      "[]": 3
+      "[[], [], [], [], [], []]": 20
      }
     },
     {
@@ -2657,7 +2279,7 @@
       6
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2670,7 +2292,7 @@
       3
      ],
      "answers": {
-      "[[3, 2, 1]]": 17
+      "[[3, 2, 1]]": 20
      }
     },
     {
@@ -2683,7 +2305,7 @@
       3
      ],
      "answers": {
-      "[[2, 1, 3]]": 17
+      "[[2, 1, 3]]": 20
      }
     },
     {
@@ -2695,7 +2317,7 @@
       3
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2709,7 +2331,7 @@
       3
      ],
      "answers": {
-      "[[1, 2, 3], [2, 3, 0]]": 17
+      "[[1, 2, 3], [2, 3, 0]]": 20
      }
     },
     {
@@ -2722,7 +2344,7 @@
       3
      ],
      "answers": {
-      "[[2, 2, 3]]": 17
+      "[[2, 2, 3]]": 20
      }
     },
     {
@@ -2735,7 +2357,7 @@
       3
      ],
      "answers": {
-      "[[0, 2, 3]]": 17
+      "[[0, 2, 3]]": 20
      }
     },
     {
@@ -2748,7 +2370,7 @@
       3
      ],
      "answers": {
-      "[[3, 2, 3]]": 17
+      "[[3, 2, 3]]": 20
      }
     },
     {
@@ -2761,7 +2383,7 @@
       3
      ],
      "answers": {
-      "[[1, 3, 3]]": 17
+      "[[1, 3, 3]]": 20
      }
     },
     {
@@ -2774,7 +2396,7 @@
       3
      ],
      "answers": {
-      "[[1, 1, 3]]": 17
+      "[[1, 1, 3]]": 20
      }
     },
     {
@@ -2787,7 +2409,7 @@
       3
      ],
      "answers": {
-      "[[1, 4, 3]]": 17
+      "[[1, 4, 3]]": 20
      }
     },
     {
@@ -2800,7 +2422,7 @@
       3
      ],
      "answers": {
-      "[[1, 2, 4]]": 17
+      "[[1, 2, 4]]": 20
      }
     },
     {
@@ -2813,7 +2435,7 @@
       3
      ],
      "answers": {
-      "[[1, 2, 2]]": 17
+      "[[1, 2, 2]]": 20
      }
     },
     {
@@ -2826,7 +2448,7 @@
       3
      ],
      "answers": {
-      "[[1, 2, 5]]": 17
+      "[[1, 2, 5]]": 20
      }
     },
     {
@@ -2839,7 +2461,7 @@
       4
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2852,7 +2474,7 @@
       5
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     },
     {
@@ -2865,7 +2487,7 @@
       1
      ],
      "answers": {
-      "[[1], [2], [3]]": 17
+      "[[1], [2], [3]]": 20
      }
     },
     {
@@ -2878,8 +2500,7 @@
       0
      ],
      "answers": {
-      "[[], [], [], []]": 14,
-      "[]": 3
+      "[[], [], [], []]": 20
      }
     },
     {
@@ -2892,8 +2513,7 @@
       -3
      ],
      "answers": {
-      "[[], [], [], [], [], [], []]": 14,
-      "[]": 3
+      "[[], [], [], [], [], [], []]": 20
      }
     },
     {
@@ -2906,79 +2526,19 @@
       6
      ],
      "answers": {
-      "[]": 17
+      "[]": 20
      }
     }
    ],
    "samples": [
     {
      "passed": true,
-     "text": "b013432e",
+     "text": "2ca6b494",
      "behaviour": "b0497575"
     },
     {
      "passed": true,
-     "text": "d15f3a2e",
-     "behaviour": "b0497575"
-    },
-    {
-     "passed": true,
-     "text": "a580d925",
-     "behaviour": "8b2b4125"
-    },
-    {
-     "passed": true,
-     "text": "4d5f1c97",
-     "behaviour": "b0497575"
-    },
-    {
-     "passed": true,
-     "text": "ccf70578",
-     "behaviour": "b0497575"
-    },
-    {
-     "passed": false,
-     "text": "4a64bd81",
-     "behaviour": "8d334bfd"
-    },
-    {
-     "passed": true,
-     "text": "f080996e",
-     "behaviour": "8b2b4125"
-    },
-    {
-     "passed": false,
-     "text": "cb647a40",
-     "behaviour": "27a17b2c"
-    },
-    {
-     "passed": true,
-     "text": "c62f88ed",
-     "behaviour": "b0497575"
-    },
-    {
-     "passed": true,
-     "text": "2d06f2a4",
-     "behaviour": "b0497575"
-    },
-    {
-     "passed": true,
-     "text": "3bae5799",
-     "behaviour": "8b2b4125"
-    },
-    {
-     "passed": true,
-     "text": "d15f3a2e",
-     "behaviour": "b0497575"
-    },
-    {
-     "passed": true,
-     "text": "3b98f6f4",
-     "behaviour": "b0497575"
-    },
-    {
-     "passed": true,
-     "text": "7936297e",
+     "text": "2ca6b494",
      "behaviour": "b0497575"
     },
     {
@@ -2988,27 +2548,87 @@
     },
     {
      "passed": true,
-     "text": "9a06cf17",
+     "text": "c58b9b04",
      "behaviour": "b0497575"
     },
     {
      "passed": true,
-     "text": "d15f3a2e",
-     "behaviour": "b0497575"
-    },
-    {
-     "passed": false,
-     "text": "28cbdd5c",
-     "behaviour": "bc25a55b"
-    },
-    {
-     "passed": true,
-     "text": "d15f3a2e",
+     "text": "c58b9b04",
      "behaviour": "b0497575"
     },
     {
      "passed": true,
-     "text": "d15f3a2e",
+     "text": "e2f2140b",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "dd7c049f",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "c58b9b04",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "2ca6b494",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "c58b9b04",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "c58b9b04",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "c58b9b04",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "2ca6b494",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "c58b9b04",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "c58b9b04",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "c58b9b04",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "22488831",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "c58b9b04",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "c58b9b04",
+     "behaviour": "b0497575"
+    },
+    {
+     "passed": true,
+     "text": "c58b9b04",
      "behaviour": "b0497575"
     }
    ]
@@ -3019,21 +2639,9 @@
    "temp": 0.8,
    "passed": 20,
    "pool": 62,
-   "distinct_texts": 10,
-   "distinct_behaviours": 2,
-   "undetermined_inputs": [
-    {
-     "input": [
-      0,
-      1,
-      -10
-     ],
-     "answers": {
-      "False": 18,
-      "True": 2
-     }
-    }
-   ],
+   "distinct_texts": 1,
+   "distinct_behaviours": 1,
+   "undetermined_inputs": [],
    "per_input": [
     {
      "input": [
@@ -3642,8 +3250,7 @@
       -10
      ],
      "answers": {
-      "False": 18,
-      "True": 2
+      "False": 20
      }
     },
     {
@@ -3660,27 +3267,7 @@
    "samples": [
     {
      "passed": true,
-     "text": "4ee4212b",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "cf89cdf1",
-     "behaviour": "5c706018"
-    },
-    {
-     "passed": true,
-     "text": "abf40021",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "3e9834c1",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "42f3034e",
+     "text": "3666a0ef",
      "behaviour": "f4c1a576"
     },
     {
@@ -3690,62 +3277,7 @@
     },
     {
      "passed": true,
-     "text": "abf40021",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "4ee4212b",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "abf40021",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "4ee4212b",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "6dad0109",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "abf40021",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "4ee4212b",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "e3cd1668",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "3e9834c1",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "abf40021",
-     "behaviour": "f4c1a576"
-    },
-    {
-     "passed": true,
-     "text": "79c79f74",
-     "behaviour": "5c706018"
-    },
-    {
-     "passed": true,
-     "text": "6c63356f",
+     "text": "3666a0ef",
      "behaviour": "f4c1a576"
     },
     {
@@ -3755,7 +3287,82 @@
     },
     {
      "passed": true,
-     "text": "6dad0109",
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
+     "behaviour": "f4c1a576"
+    },
+    {
+     "passed": true,
+     "text": "3666a0ef",
      "behaviour": "f4c1a576"
     }
    ]

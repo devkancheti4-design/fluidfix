@@ -41,10 +41,11 @@ WORK = Path("/private/tmp/claude-501/-Users-kanchetidevieswar-neo/"
 PICK = ["page_count", "clip_exclusive", "progress", "windows", "between"]
 
 
-def ask(model, spec, temp):
+def ask(model, spec, temp, seed):
+    """One draw. The seed is per-sample, so the whole distribution is reproducible."""
     import urllib.request
     body = json.dumps({"model": model, "stream": False, "think": False,
-                       "options": {"temperature": temp, "num_predict": 400},
+                       "options": {"temperature": temp, "num_predict": 400, "seed": seed},
                        "messages": [{"role": "user",
                                      "content": collect.PROMPT.format(spec=spec)}]}).encode()
     req = urllib.request.Request("http://localhost:11434/api/chat", data=body,
@@ -57,6 +58,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="qwen3.5:4b"); ap.add_argument("--n", type=int, default=20)
     ap.add_argument("--temp", type=float, default=0.8)
+    ap.add_argument("--seed", type=int, default=20260918)
     a = ap.parse_args()
     allspecs = {n: (s, t) for n, s, t in list(S_ORD.SPECS) + list(S_HARD.SPECS)}
     WORK.mkdir(parents=True, exist_ok=True)
@@ -71,7 +73,7 @@ def main():
 
         texts, behaviours, passed, rows = Counter(), Counter(), 0, []
         for i in range(a.n):
-            code = collect.clean(ask(a.model, spec, a.temp))
+            code = collect.clean(ask(a.model, spec, a.temp, a.seed + i))
             ok, _why = collect.run_tests(code, tests)
             passed += ok
             texts[hashlib.md5(code.encode()).hexdigest()[:8]] += 1
@@ -83,14 +85,17 @@ def main():
                          "behaviour": key, "values": vals, "code": code})
         # per-input spread among the samples that PASS
         good = [r for r in rows if r["passed"] and r["values"]]
-        spread = []
+        spread, per_input = [], []
         for i in range(len(pool)):
             answers = Counter(str(r["values"][i]) for r in good if i < len(r["values"]))
+            per_input.append({"input": pool[i], "answers": dict(answers)})
             if len(answers) > 1:
                 spread.append({"input": pool[i], "answers": dict(answers)})
         rec = {"spec": spec_name, "n": a.n, "temp": a.temp, "passed": passed, "pool": len(pool),
                "distinct_texts": len(texts), "distinct_behaviours": len(behaviours),
-               "undetermined_inputs": spread}
+               "undetermined_inputs": spread, "per_input": per_input,
+               "samples": [{"passed": r["passed"], "text": r["text"], "behaviour": r["behaviour"]}
+                           for r in rows]}
         report.append(rec)
         print(f"{spec_name:16} {passed}/{a.n} pass | {len(texts):>2} distinct programs -> "
               f"{len(behaviours):>2} distinct behaviours | "
