@@ -266,3 +266,85 @@ So the honest statement, at last with a number behind it:
 - It says nothing about the **localisation**, which is the half that costs nothing and was not on trial here.
   Every one of the 26 refusals named the file, ranked the lines the failing test executed, and printed the
   test that killed each candidate.
+
+---
+
+# rich finished — two "repairs", and both are wrong
+
+rich's 49 completed: **29 genuinely judged, 2 REPAIRED**. The first non-zero on real history. Both were
+one-line fixes, both real searches (37 and 51 suite runs, ruling SHIP), and both maintainer fixes land
+squarely inside the vocabulary:
+
+```
+rich/segment.py    len(text)         ->  (len(text) - 1)     taught class 7, learned on CLICK
+rich/traceback.py  frame_index == 1  ->  frame_index == 0    shipped class 1, literal-off-by-one
+```
+
+So it looked like the result the whole exercise was after — including a class taught on one repository
+repairing a real bug in another. **It is not.** Re-running both and printing what was actually shipped:
+
+### segment.py — the right line, the wrong program
+
+```
+maintainer:   pos = int((cut / cell_length) * (len(text) - 1))
+fluidfix:     pos = int((cut / cell_length) *  len(text) - 1)
+```
+
+The `- 1` went outside the multiplication instead of inside it. Over 1,452 combinations of `len(text)` and
+`cut / cell_length`, the two disagree on **736** — at `len=2, cut/cell=3`, the maintainer returns 3 and
+fluidfix returns 5. Different programs.
+
+### traceback.py — not the fault at all
+
+```
+maintainer:   first = frame_index == 1      ->  == 0        (line 452 area)
+fluidfix:     padding=(0, 1),               ->  (0, 0),     (line 452)
+```
+
+It changed a padding tuple somewhere else entirely, and the suite went green. A compensating edit, not a
+repair.
+
+### Why both slipped through, and it is my doing
+
+Each of these revisions had **22 and 24 tests already failing** under a modern interpreter, and the harness
+deselects those so the suite can go green at all. That thins the judge — and the tool did exactly what it is
+documented to do: *the judge is absolute, and it will serve a suite that lies.* I weakened the suite to make
+the experiment runnable, and the weakened suite accepted two patches that a whole one would very likely have
+rejected.
+
+## The result, corrected
+
+| repository | judged | shipped a repair | correct on inspection |
+|---|---|---|---|
+| click | 26 | 0 | — |
+| python-sortedcontainers | 2 | 0 | — |
+| rich | 29 | 2 | **0** |
+| **total** | **57** | **2** | **0** |
+
+**0 correct repairs out of 57 real, tested bug fixes — with 2 false accepts, both traceable to tests I
+deselected.**
+
+Two things follow, and they point in opposite directions:
+
+- **The ceiling is structural.** Only 11 of the 57 judged fixes were one-line diffs at all. A line-rewriting
+  vocabulary cannot express the other 46 however much is taught.
+- **The false accepts are the more useful finding.** They are the first time the documented weakness has
+  been caught on real code rather than a constructed case, and they were caused by degrading the suite by
+  about 4%. That is a sharper warning than any of our synthetic overfitting demonstrations: *this tool is
+  exactly as good as the suite it is given, and thinning the suite is enough to make it wrong.*
+
+## What still stands
+
+The **localisation**, which was never on trial here. All 55 refusals and both false accepts named the file,
+ranked the lines the failing test executed, and printed the test that killed each candidate — at zero
+tokens. Nothing measured today touches that half.
+
+## Not claimed
+
+- 57 cases, three repositories, 2022 onward, commits whose subject says they fix something and that touch
+  one source file plus its tests.
+- The deselection is a harness compromise, not a product setting. A real deployment runs the whole suite,
+  where these two patches would have had 22 and 24 more tests to satisfy — but *whether they would have
+  been rejected is not measured*, only likely.
+- "Correct on inspection" is my reading of two diffs, though the segment.py divergence is arithmetic and
+  shown above rather than asserted.

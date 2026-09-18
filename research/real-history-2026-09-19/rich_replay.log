@@ -3,3 +3,60 @@ environment: pip install -e . -> ok
 
   # commit      file                            1L  outcome
   1 7ef2d05ca8  rich/markdown.py                 ·  REFUSED  (29 runs, 72 obs)
+  2 60b064a70a  rich/cells.py                    ·  SKIP-SUITE-ERROR
+  3 31930ddc84  rich/cells.py                    ·  CRASH
+  4 13f87a4007  rich/cells.py                    ·  REFUSED  (15 runs, 22 obs)
+  5 73ee8232e7  rich/cells.py                    y  REFUSED  (14 runs, 19 obs)
+  6 39ee57dfe7  rich/console.py                  ·  REFUSED  (59 runs, 105 obs)
+  7 1c5e03eb32  rich/table.py                    ·  REFUSED  (86 runs, 76 obs)
+  8 95fe8ff592  rich/prompt.py                   y  REFUSED  (11 runs, 21 obs)
+  9 655b5210cb  rich/style.py                    ·  SKIP-TEST-DOES-NOT-CATCH
+ 10 6c48a5c2e3  rich/_inspect.py                 y  SKIP-TEST-DOES-NOT-CATCH
+ 11 30e5ed61a6  rich/panel.py                    ·  REFUSED  (53 runs, 38 obs)
+ 12 4f40703e4f  rich/segment.py                  ·  SKIP-TEST-DOES-NOT-CATCH
+ 13 16b3830408  rich/table.py                    y  REFUSED  (12 runs, 21 obs)
+ 14 fd7b32603c  rich/console.py                  ·  SKIP-TEST-DOES-NOT-CATCH
+ 15 7022e20224  rich/panel.py                    ·  SKIP-TEST-DOES-NOT-CATCH
+ 16 a8c3b8700b  rich/segment.py                  ·  REFUSED  (38 runs, 42 obs)
+ 17 f2ee29531b  rich/text.py                     ·  SKIP-SUITE-ERROR
+ 18 6055e2d8ef  rich/pretty.py                   ·  REFUSED  (25 runs, 38 obs)
+ 19 a3b27a3aba  rich/console.py                  y  REFUSED  (65 runs, 108 obs)
+ 20 06a7555c36  rich/markdown.py                 y  REFUSED  (57 runs, 90 obs)
+ 21 f591471cf0  rich/highlighter.py              y  REFUSED  (249 runs, 26 obs)
+ 22 92e7164773  rich/_export_format.py           y  SKIP-NO-COLLECT
+ 23 dbf66e8bb9  rich/markdown.py                 ·  SKIP-NO-COLLECT
+ 24 d9eff2aa44  rich/repr.py                     y  SKIP-NO-COLLECT
+ 25 00181151a4  rich/console.py                  ·  SKIP-NO-COLLECT
+ 26 c2df987b18  rich/_export_format.py           ·  REFUSED  (58 runs, 13 obs)
+ 27 da4f6bc797  rich/pretty.py                   ·  SKIP-TEST-DOES-NOT-CATCH
+ 28 aa0929298b  rich/segment.py                  y  REPAIRED  (37 runs, 42 obs)
+ 29 fe1ed5399e  rich/syntax.py                   ·  SKIP-TEST-DOES-NOT-CATCH
+ 30 5e35957778  rich/markdown.py                 y  SKIP-TEST-DOES-NOT-CATCH
+ 31 ac69488768  rich/syntax.py                   ·  SKIP-TEST-DOES-NOT-CATCH
+ 32 02dffcf9cf  rich/pretty.py                   ·  REFUSED  (41 runs, 44 obs)
+ 33 2ef0c30905  rich/console.py                  ·  REFUSED  (63 runs, 103 obs)
+ 34 f8b536ca06  rich/progress.py                 ·  REFUSED  (76 runs, 106 obs)
+ 35 4787873fc0  rich/markdown.py                 ·  SKIP-TEST-DOES-NOT-CATCH
+ 36 cf28a12bb9  rich/markdown.py                 ·  SKIP-TEST-DOES-NOT-CATCH
+ 37 051dd0452c  rich/console.py                  ·  REFUSED  (67 runs, 105 obs)
+ 38 5a999f49f9  rich/console.py                  ·  REFUSED  (42 runs, 81 obs)
+ 39 95049662d6  rich/console.py                  ·  REFUSED  (142 runs, 145 obs)
+ 40 83af951663  rich/traceback.py                y  REPAIRED  (51 runs, 36 obs)
+ 41 193903dff5  rich/markup.py                   ·  REFUSED  (14 runs, 14 obs)
+ 42 9faafa0ab1  rich/ansi.py                     ·  REFUSED  (17 runs, 16 obs)
+ 43 f7aa3fb78e  rich/ansi.py                     ·  REFUSED  (17 runs, 17 obs)
+ 44 6d443ddaf0  rich/panel.py                    ·  REFUSED  (36 runs, 22 obs)
+ 45 0daccb0768  rich/highlighter.py              ·  REFUSED  (235 runs, 25 obs)
+ 46 c9b70864e3  rich/highlighter.py              ·  SKIP-TEST-DOES-NOT-CATCH
+ 47 71325bb5bb  rich/markup.py                   ·  REFUSED  (19 runs, 17 obs)
+ 48 5960f54917  rich/traceback.py                y  SKIP-TEST-DOES-NOT-CATCH
+ 49 4b1293e00d  rich/markup.py                   y  REFUSED  (1 runs, 4 obs)
+
+attempted 49 · judged 29 · repaired and accepted by the maintainer's own test: 2
+    REFUSED                    27
+    SKIP-TEST-DOES-NOT-CATCH   13
+    SKIP-NO-COLLECT            4
+    SKIP-SUITE-ERROR           2
+    REPAIRED                   2
+    CRASH                      1
+6794.8s  REPLAY_DONE
