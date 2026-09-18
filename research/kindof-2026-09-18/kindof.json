@@ -1,0 +1,197 @@
+{
+ "rows": {
+  "gemma3:4b-hard/truncate_words": {
+   "fault": "truncate_words",
+   "writer": "gemma3:4b-hard",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def truncate_words(text, limit):\n    words = text.split()\n    if len(words) <= limit:\n        return text\n    else:\n        truncated = ' '.join(words[:limit])\n        return truncated + ' ...'\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "gemma3:4b-hard/insert_sorted": {
+   "fault": "insert_sorted",
+   "writer": "gemma3:4b-hard",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def insert_sorted(items, value):\n    \"\"\"Insert into a sorted list, placing the value AFTER any equal values.\"\"\"\n    index = 0\n    while index < len(items) and items[index] <= value:\n        index += 1\n    return items.insert(index, value) or items\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "gemma3:4b-hard/backoff": {
+   "fault": "backoff",
+   "writer": "gemma3:4b-hard",
+   "kind": "INSERTION",
+   "level": 2,
+   "edit": {
+    "hunks": 1,
+    "removed": 0,
+    "added": 1
+   },
+   "patch": "def backoff(attempts, base):\n    \"\"\"The delay before each retry, doubling each time and starting at `base`.\n    One entry per attempt.\"\"\"\n    return [base * (2 ** i) for i in range(attempts)]\n    if attempts == 0:\n        return base\n    elif attempts == 1:\n        return base * 2\n    elif attempts == 2:\n        return base * 4\n    elif attempts == 3:\n        return base * 8\n    else:\n        return base * (2 ** (attempts - 3))\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "gemma3:4b-hard/percentile": {
+   "fault": "percentile",
+   "writer": "gemma3:4b-hard",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def percentile(values, p):\n    \"\"\"Nearest-rank percentile of a non-empty list: the value at rank ceil(p/100 * n),\n    counting from 1 in the sorted order.\"\"\"\n    if not values:\n        return None\n    values = sorted(values)\n    n = len(values)\n    rank = int(-(-p * n // 100))\n    if rank > n:\n        return values[-1]\n    if rank == n:\n        return values[-1]\n    return values[rank - 1]\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "gemma3:4b-hard/countdown": {
+   "fault": "countdown",
+   "writer": "gemma3:4b-hard",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def countdown(start):\n    return list(range(start, 0, -1))\n    if start <= 0:\n        return\n    while start > 0:\n        print(start)\n        start -= 1\n",
+   "structure_preserving": false,
+   "caveat": "replaced a docstring or comment, not a line the test executed"
+  },
+  "phi4-mini-hard/windows": {
+   "fault": "windows",
+   "writer": "phi4-mini-hard",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def windows(items, size):\n    result = []\n    for i in range(len(items) - size + 1):\n        chunk = items[i:i + size]\n        result.append(chunk)\n    return result\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "phi4-mini-hard/insert_sorted": {
+   "fault": "insert_sorted",
+   "writer": "phi4-mini-hard",
+   "kind": "MECHANICAL",
+   "level": 0,
+   "edit": {
+    "before": "if items[i] > value:",
+    "after": "if items[i] < value:",
+    "shape": "flipped-comparison-direction"
+   }
+  },
+  "phi4-mini-hard/percentile": {
+   "fault": "percentile",
+   "writer": "phi4-mini-hard",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def percentile(values, p):\n    if not values:\n        raise ValueError(\"The list must not be empty.\")\n    sorted_values = sorted(values)\n    n = len(sorted_values)\n    rank = int(-(-p * n // 100)) - 1\n    return sorted_values[rank]\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "phi4-mini-hard/trim_to_fit": {
+   "fault": "trim_to_fit",
+   "writer": "phi4-mini-hard",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def trim_to_fit(words, width):\n    trimmed_words = []\n    current_line = \"\"\n    for word in words:\n        if len(current_line) + len(word) + 1 <= width:\n            if current_line:\n                current_line += \" \"\n            current_line += word\n        else:\n            trimmed_words.append(current_line)\n            current_line = word\n    if current_line:\n        trimmed_words.append(current_line)\n    return [w for i, w in enumerate(words) if len(' '.join(words[:i + 1])) <= width]\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "phi4-mini-hard/progress": {
+   "fault": "progress",
+   "writer": "phi4-mini-hard",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def progress(done, total, width):\n    filled = int((done / total) * width) if total else 0\n    return filled\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "qwen3.5:4b-hard/truncate_words": {
+   "fault": "truncate_words",
+   "writer": "qwen3.5:4b-hard",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def truncate_words(text, limit):\n    \"\"\"Keep at most `limit` words. If any were dropped, add a single trailing ellipsis\n    as a separate word.\"\"\"\n    words = text.split()\n    if len(words) <= limit:\n        return ' '.join(words)\n    else:\n        truncated = ' '.join(words[:limit]) + ' ...'\n        return truncated\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "qwen3.5:4b-hard/insert_sorted": {
+   "fault": "insert_sorted",
+   "writer": "qwen3.5:4b-hard",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def insert_sorted(items, value):\n    index = len(items)\n    for i in range(len(items)):\n        if items[i] < value:\n            index = i + 1\n        elif items[i] == value:\n            break\n    return items.insert(index, value) or items\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "qwen3.5:4b-hard/trim_to_fit": {
+   "fault": "trim_to_fit",
+   "writer": "qwen3.5:4b-hard",
+   "kind": "STRUCTURAL",
+   "level": 3,
+   "edit": {
+    "hunks": 5,
+    "removed": 12,
+    "added": 8
+   },
+   "patch": "def trim_to_fit(words, width):\n    \"\"\"Take words from the front while the joined line stays within `width` characters,\n    counting the single spaces between them.\"\"\"\n    result = []\n    current_length = 0\n\n    for word in words:\n        # length of the joined line if this word is appended\n        potential_length = current_length + len(word) + (1 if result else 0)\n\n        if potential_length > width:\n            break\n\n        result.append(word)\n        current_length = potential_length\n\n    return result\n",
+   "structure_preserving": true,
+   "caveat": ""
+  },
+  "qwen3.5:4b/clip_index": {
+   "fault": "clip_index",
+   "writer": "qwen3.5:4b",
+   "kind": "ONE-LINE-TEACHABLE",
+   "level": 1,
+   "edit": {
+    "hunks": 1,
+    "removed": 1,
+    "added": 1
+   },
+   "patch": "def clip_index(index, length):\n    if index < 0:\n        return max(length + index, 0)\n    else:\n        return min(max(index, 0), length - 1)\n",
+   "structure_preserving": true,
+   "caveat": ""
+  }
+ }
+}

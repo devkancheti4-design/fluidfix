@@ -93,5 +93,10 @@ mechanical faults come from typos, refactors, merges and off-by-ones at least as
 - No frontier model through an API wrote any of this code. The strongest writer available, Haiku through a
   sandboxed subagent, made no mistakes at all on either set, so there is no evidence here about what a
   frontier model's bugs look like — only about small local models.
-- The classification of the thirteen refusals into three groups is my reading of the code, not a
-  measurement.
+- The classification of the thirteen refusals into three groups was my reading of the code, not a
+  measurement — and `../kindof-2026-09-18` has since measured it by searching for the smallest edit budget
+  the suite accepts. **The reading was wrong by a factor of four.** I called nine of thirteen beyond any
+  line rewrite; two are. A missing `ceil` import has a one-line replacement that needs no import
+  (`int(-(-p * n // 100))`), and a missing `return` has one that needs no new line
+  (`return items.insert(index, value) or items`). "This needs an insertion" was a statement about the fix
+  I thought of, not about the fault.

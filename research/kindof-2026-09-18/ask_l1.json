@@ -1,0 +1,124 @@
+{
+ "rule": "You may replace EXACTLY ONE existing line with exactly one line. You may not add or delete any line. No imports may be added.",
+ "cases": [
+  {
+   "id": "gemma3:4b-hard/truncate_words",
+   "code": "def truncate_words(text, limit):\n    words = text.split()\n    if len(words) <= limit:\n        return text\n    else:\n        truncated = ' '.join(words[:limit])\n        return truncated + '...'\n",
+   "tests": [
+    "assert truncate_words('a b c d', 2) == 'a b ...'",
+    "assert truncate_words('a b', 5) == 'a b'",
+    "assert truncate_words('a b c', 3) == 'a b c'"
+   ]
+  },
+  {
+   "id": "gemma3:4b-hard/insert_sorted",
+   "code": "def insert_sorted(items, value):\n    \"\"\"Insert into a sorted list, placing the value AFTER any equal values.\"\"\"\n    index = 0\n    while index < len(items) and items[index] <= value:\n        index += 1\n    items.insert(index, value)\n",
+   "tests": [
+    "assert insert_sorted([1,2,2,3], 2) == [1,2,2,2,3]",
+    "assert insert_sorted([], 1) == [1]",
+    "assert insert_sorted([1,3], 2) == [1,2,3]"
+   ]
+  },
+  {
+   "id": "gemma3:4b-hard/backoff",
+   "code": "def backoff(attempts, base):\n    \"\"\"The delay before each retry, doubling each time and starting at `base`.\n    One entry per attempt.\"\"\"\n    if attempts == 0:\n        return base\n    elif attempts == 1:\n        return base * 2\n    elif attempts == 2:\n        return base * 4\n    elif attempts == 3:\n        return base * 8\n    else:\n        return base * (2 ** (attempts - 3))\n",
+   "tests": [
+    "assert backoff(3, 1) == [1,2,4]",
+    "assert backoff(1, 2) == [2]",
+    "assert backoff(0, 1) == []"
+   ]
+  },
+  {
+   "id": "gemma3:4b-hard/percentile",
+   "code": "def percentile(values, p):\n    \"\"\"Nearest-rank percentile of a non-empty list: the value at rank ceil(p/100 * n),\n    counting from 1 in the sorted order.\"\"\"\n    if not values:\n        return None\n    values = sorted(values)\n    n = len(values)\n    rank = ceil(p / 100 * n)\n    if rank > n:\n        return values[-1]\n    if rank == n:\n        return values[-1]\n    return values[rank - 1]\n",
+   "tests": [
+    "assert percentile([1,2,3,4], 50) == 2",
+    "assert percentile([1,2,3,4], 100) == 4",
+    "assert percentile([1,2,3,4], 25) == 1"
+   ]
+  },
+  {
+   "id": "gemma3:4b-hard/countdown",
+   "code": "def countdown(start):\n    \"\"\"Every whole number from `start` down to 1, in order. Zero or less gives nothing.\"\"\"\n    if start <= 0:\n        return\n    while start > 0:\n        print(start)\n        start -= 1\n",
+   "tests": [
+    "assert countdown(3) == [3,2,1]",
+    "assert countdown(1) == [1]",
+    "assert countdown(0) == []"
+   ]
+  },
+  {
+   "id": "phi4-mini-hard/windows",
+   "code": "def windows(items, size):\n    result = []\n    for i in range(0, len(items), size):\n        chunk = items[i:i + size]\n        result.append(chunk)\n    return result\n",
+   "tests": [
+    "assert windows([1,2,3,4], 2) == [[1,2],[2,3],[3,4]]",
+    "assert windows([1,2], 3) == []",
+    "assert windows([1,2,3], 3) == [[1,2,3]]"
+   ]
+  },
+  {
+   "id": "phi4-mini-hard/percentile",
+   "code": "def percentile(values, p):\n    if not values:\n        raise ValueError(\"The list must not be empty.\")\n    sorted_values = sorted(values)\n    n = len(sorted_values)\n    rank = int(math.ceil(p / 100 * n)) - 1\n    return sorted_values[rank]\n",
+   "tests": [
+    "assert percentile([1,2,3,4], 50) == 2",
+    "assert percentile([1,2,3,4], 100) == 4",
+    "assert percentile([1,2,3,4], 25) == 1"
+   ]
+  },
+  {
+   "id": "phi4-mini-hard/trim_to_fit",
+   "code": "def trim_to_fit(words, width):\n    trimmed_words = []\n    current_line = \"\"\n    for word in words:\n        if len(current_line) + len(word) + 1 <= width:\n            if current_line:\n                current_line += \" \"\n            current_line += word\n        else:\n            trimmed_words.append(current_line)\n            current_line = word\n    if current_line:\n        trimmed_words.append(current_line)\n    return trimmed_words\n",
+   "tests": [
+    "assert trim_to_fit(['ab','cd'], 5) == ['ab','cd']",
+    "assert trim_to_fit(['ab','cd'], 4) == ['ab']",
+    "assert trim_to_fit(['abc'], 2) == []"
+   ]
+  },
+  {
+   "id": "phi4-mini-hard/progress",
+   "code": "def progress(done, total, width):\n    filled = int((done / total) * width)\n    return filled\n",
+   "tests": [
+    "assert progress(1, 2, 10) == 5",
+    "assert progress(2, 2, 10) == 10",
+    "assert progress(0, 0, 10) == 0",
+    "assert progress(1, 3, 10) == 3"
+   ]
+  },
+  {
+   "id": "qwen3.5:4b-hard/truncate_words",
+   "code": "def truncate_words(text, limit):\n    \"\"\"Keep at most `limit` words. If any were dropped, add a single trailing ellipsis\n    as a separate word.\"\"\"\n    words = text.split()\n    if len(words) <= limit:\n        return ' '.join(words)\n    else:\n        truncated = ' '.join(words[:limit]) + '...'\n        return truncated\n",
+   "tests": [
+    "assert truncate_words('a b c d', 2) == 'a b ...'",
+    "assert truncate_words('a b', 5) == 'a b'",
+    "assert truncate_words('a b c', 3) == 'a b c'"
+   ]
+  },
+  {
+   "id": "qwen3.5:4b-hard/insert_sorted",
+   "code": "def insert_sorted(items, value):\n    index = len(items)\n    for i in range(len(items)):\n        if items[i] < value:\n            index = i + 1\n        elif items[i] == value:\n            break\n    items.insert(index, value)\n",
+   "tests": [
+    "assert insert_sorted([1,2,2,3], 2) == [1,2,2,2,3]",
+    "assert insert_sorted([], 1) == [1]",
+    "assert insert_sorted([1,3], 2) == [1,2,3]"
+   ]
+  },
+  {
+   "id": "qwen3.5:4b-hard/trim_to_fit",
+   "code": "def trim_to_fit(words, width):\n    \"\"\"Take words from the front while the joined line stays within `width` characters,\n    counting the single spaces between them.\"\"\"\n    result = []\n    current_length = 0\n    \n    for word in words:\n        if not word:\n            continue\n            \n        # Calculate length if we add a space before this word (if it's not the first)\n        potential_length = current_length + 1 + len(word)\n        \n        # If adding this word exceeds the width, stop\n        if potential_length > width:\n            break\n        \n        result.append(word)\n        current_length += 1 + len(word)\n    \n    return ' '.join(result)\n",
+   "tests": [
+    "assert trim_to_fit(['ab','cd'], 5) == ['ab','cd']",
+    "assert trim_to_fit(['ab','cd'], 4) == ['ab']",
+    "assert trim_to_fit(['abc'], 2) == []"
+   ]
+  },
+  {
+   "id": "qwen3.5:4b/clip_index",
+   "code": "def clip_index(index, length):\n    if index < 0:\n        return length + index\n    else:\n        return min(max(index, 0), length - 1)\n",
+   "tests": [
+    "assert clip_index(2, 5) == 2",
+    "assert clip_index(9, 5) == 4",
+    "assert clip_index(-1, 5) == 4",
+    "assert clip_index(-9, 5) == 0"
+   ]
+  }
+ ]
+}
