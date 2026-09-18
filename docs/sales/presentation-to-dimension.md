@@ -24,9 +24,78 @@ Setup is about two minutes. No API key. Nothing installed outside the demo folde
 
 ---
 
+## The main point: it searches nodes, and every node teaches it something
+
+This is the thing to lead with. Everything else on the call is detail.
+
+A fault arrives. The net opens **one** small guard over one file and one fault class — not a plan, one node.
+What that node comes back with decides where the net grows next, and the growth is the search:
+
+- **REFUTED** — every candidate here was rejected, so the fault is not in this file under this class. Grow
+  **wider**: the next class here, this class in the next territory.
+- **CAPPED** — something passed but the view was cut short. Grow **deeper**: split the line range and give
+  each half its own guard.
+- **MISDIRECTED** — its own memory sent the search the wrong way. Grow **down**: the memory becomes the
+  territory and a guard repairs it.
+
+The first green stops everything — and then has to earn it: green on the full suite, still green on
+re-check, nothing else broken, byte-exact rollback otherwise.
+
+**And it keeps what it learns.** Measured on the same world, 23 (file, class) pairs:
+
+| | nodes walked | wall | tokens |
+|---|---|---|---|
+| first time it sees this shape | 22 of 23 | 19.3 s | 0 |
+| once it remembers the shape | **5 of 23** | **5.2 s** | 0 |
+
+It remembers the **shape**, not the place, which is why the knowledge travels: a class learned on `rich`
+took the search on `arrow` — a different repository — to **one node and two suite runs**.
+
+**When the knowledge itself is wrong, it repairs the knowledge.** Its memory is not a table, it is a file of
+dispatch rules with its own test suite. When it kept dropping a class it had already learned, the net went
+down, turned that incident into a test — which is what turns the memory red — and a guard repaired the
+memory under the memory's own suite. **17 misdirections became 1**, and the fault never recurred.
+
+**It also learns what kind of bug it is facing, by searching.** It tries the free repair first and widens
+the budget only when the tests reject everything, so the first budget that passes *is* the fault's kind.
+Run over fourteen bugs small local models actually wrote: 11 of 14 have a one-line fix. Two of those shapes
+recurred across different models, were taught from the ladder's own output, and the free tier went from
+**1 of 14 to 5 of 14** at zero tokens.
+
+**And the judge does not care who wrote the patch.** Handed fixes written by a different model — whole-file
+rewrites with inserted imports, nothing the vocabulary could author — it certified **14 of 14**, and refused
+**29 of 29** deliberately bad ones (wrong, intermittent, breaks-something-else) with byte-exact rollback
+every time.
+
+Interactive walkthrough of all of the above, with the real terminal output:
+`https://claude.ai/artifact/DhZMRkSW372Nv4z9ikFp7m` (private — share it before the call if they should see it).
+
+**Runs:** `research/fluidnet-2026-09-18/` · `research/lake-2026-09-18/` · `research/closed-loop-2026-09-18/`
+· `research/kindof-2026-09-18/` · `research/certify-2026-09-18/`
+
+**What this does not say.** It writes a minority of the fixes — 5 of 14 there, 7 of 22 on real repositories.
+The net finds and judges; a model or a person still writes most fixes. And where a fixed plan happens to
+contain the answer, the net is four times slower; where it does not, the net is the only one that found the
+fault at all.
+
+---
+
 ## The one-liners
 
 Use these as answers, not as slogans. Each is followed by what backs it.
+
+**"It searches, and every node it opens teaches it something."** — 22 nodes the first time it sees a shape,
+5 the second (`research/fluidnet-2026-09-18`).
+
+**"It remembers the shape, not the place, so the knowledge moves between repositories."** — a class learned
+on rich took arrow to one node and two suite runs (`research/lake-2026-09-18` §4c).
+
+**"When its own memory is wrong, it repairs the memory."** — the incident becomes a test, the memory goes
+red, a guard fixes it. 17 misdirections became 1 (`research/closed-loop-2026-09-18`).
+
+**"It works out what kind of bug it is by searching for the cheapest fix that passes."** — 11 of 14 real
+model-written bugs have a one-line fix; teaching two recurring shapes took the free tier from 1 to 5 of 14
+(`research/kindof-2026-09-18`).
 
 **What it does.** It never writes a guess: it takes the broken line, applies one taught transform to make a
 candidate, runs your tests, and keeps the candidate only if they pass, restoring the original bytes exactly
