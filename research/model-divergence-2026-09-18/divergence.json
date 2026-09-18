@@ -5,6 +5,7 @@
   "pool": 25,
   "passing": [
    "haiku",
+   "opus5",
    "phi4-mini",
    "qwen3.5:4b"
   ],
@@ -35,6 +36,18 @@
     "early_return": false,
     "guard_clause": false,
     "lines": 3
+   },
+   "opus5": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 5
    },
    "phi4-mini": {
     "comprehension": true,
@@ -70,6 +83,7 @@
   "passing": [
    "gemma3:4b",
    "haiku",
+   "opus5",
    "phi4-mini",
    "qwen3.5:4b"
   ],
@@ -88,6 +102,18 @@
     "lines": 2
    },
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": false,
@@ -133,6 +159,7 @@
   "passing": [
    "gemma3:4b",
    "haiku",
+   "opus5",
    "phi4-mini",
    "qwen3.5:4b"
   ],
@@ -151,6 +178,18 @@
     "lines": 6
    },
    "haiku": {
+    "comprehension": false,
+    "while_loop": true,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 9
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": true,
     "for_loop": false,
@@ -187,7 +226,44 @@
     "lines": 10
    }
   },
-  "divergences": []
+  "divergences": [
+   {
+    "a": "gemma3:4b",
+    "b": "opus5",
+    "input": [
+     -1024
+    ],
+    "a_says": "'-1024.0 B'",
+    "b_says": "'-1.0 KB'"
+   },
+   {
+    "a": "haiku",
+    "b": "opus5",
+    "input": [
+     -1024
+    ],
+    "a_says": "'-1024.0 B'",
+    "b_says": "'-1.0 KB'"
+   },
+   {
+    "a": "opus5",
+    "b": "phi4-mini",
+    "input": [
+     -1024
+    ],
+    "a_says": "'-1.0 KB'",
+    "b_says": "'-1024.0 B'"
+   },
+   {
+    "a": "opus5",
+    "b": "qwen3.5:4b",
+    "input": [
+     -1024
+    ],
+    "a_says": "'-1.0 KB'",
+    "b_says": "'-1024.0 B'"
+   }
+  ]
  },
  {
   "set": "boundary",
@@ -196,6 +272,7 @@
   "passing": [
    "gemma3:4b",
    "haiku",
+   "opus5",
    "phi4-mini",
    "qwen3.5:4b"
   ],
@@ -224,6 +301,18 @@
     "early_return": false,
     "guard_clause": false,
     "lines": 2
+   },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 8
    },
    "phi4-mini": {
     "comprehension": false,
@@ -290,6 +379,26 @@
     ],
     "a_says": "0",
     "b_says": "-1"
+   },
+   {
+    "a": "opus5",
+    "b": "phi4-mini",
+    "input": [
+     7,
+     0
+    ],
+    "a_says": "0",
+    "b_says": "-1"
+   },
+   {
+    "a": "opus5",
+    "b": "qwen3.5:4b",
+    "input": [
+     7,
+     0
+    ],
+    "a_says": "0",
+    "b_says": "-1"
    }
   ]
  },
@@ -300,6 +409,7 @@
   "passing": [
    "gemma3:4b",
    "haiku",
+   "opus5",
    "phi4-mini",
    "qwen3.5:4b"
   ],
@@ -327,6 +437,18 @@
     "floordiv": false,
     "early_return": false,
     "guard_clause": false,
+    "lines": 6
+   },
+   "opus5": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
     "lines": 6
    },
    "phi4-mini": {
@@ -357,6 +479,22 @@
   "divergences": [
    {
     "a": "gemma3:4b",
+    "b": "opus5",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     0
+    ],
+    "a_says": "!ZeroDivisionError: division by zero",
+    "b_says": "[]"
+   },
+   {
+    "a": "gemma3:4b",
     "b": "qwen3.5:4b",
     "input": [
      [
@@ -369,6 +507,22 @@
      -2
     ],
     "a_says": "!IndexError: list index out of range",
+    "b_says": "[]"
+   },
+   {
+    "a": "haiku",
+    "b": "opus5",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     0
+    ],
+    "a_says": "!ZeroDivisionError: division by zero",
     "b_says": "[]"
    },
    {
@@ -386,6 +540,38 @@
     ],
     "a_says": "!IndexError: list index out of range",
     "b_says": "[]"
+   },
+   {
+    "a": "opus5",
+    "b": "phi4-mini",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     0
+    ],
+    "a_says": "[]",
+    "b_says": "!ZeroDivisionError: division by zero"
+   },
+   {
+    "a": "opus5",
+    "b": "qwen3.5:4b",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     0
+    ],
+    "a_says": "[]",
+    "b_says": "!ZeroDivisionError: division by zero"
    },
    {
     "a": "phi4-mini",
@@ -411,6 +597,7 @@
   "pool": 10,
   "passing": [
    "haiku",
+   "opus5",
    "phi4-mini",
    "qwen3.5:4b"
   ],
@@ -431,6 +618,18 @@
     "lines": 6
    },
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 4
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": false,
@@ -474,7 +673,8 @@
   "spec": "insert_sorted",
   "pool": 45,
   "passing": [
-   "haiku"
+   "haiku",
+   "opus5"
   ],
   "failing": [
    "gemma3:4b",
@@ -506,6 +706,18 @@
     "guard_clause": false,
     "lines": 5
    },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": true,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": true,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 9
+   },
    "phi4-mini": {
     "comprehension": false,
     "while_loop": false,
@@ -531,7 +743,23 @@
     "lines": 8
    }
   },
-  "divergences": []
+  "divergences": [
+   {
+    "a": "haiku",
+    "b": "opus5",
+    "input": [
+     [
+      3,
+      2,
+      2,
+      1
+     ],
+     2
+    ],
+    "a_says": "[2, 3, 2, 2, 1]",
+    "b_says": "[3, 2, 2, 1, 2]"
+   }
+  ]
  },
  {
   "set": "boundary",
@@ -540,6 +768,7 @@
   "passing": [
    "gemma3:4b",
    "haiku",
+   "opus5",
    "phi4-mini",
    "qwen3.5:4b"
   ],
@@ -558,6 +787,18 @@
     "lines": 7
    },
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": false,
@@ -607,6 +848,16 @@
    },
    {
     "a": "gemma3:4b",
+    "b": "opus5",
+    "input": [
+     [],
+     1
+    ],
+    "a_says": "None",
+    "b_says": "!IndexError: list index out of range"
+   },
+   {
+    "a": "gemma3:4b",
     "b": "qwen3.5:4b",
     "input": [
      [
@@ -620,6 +871,20 @@
    },
    {
     "a": "haiku",
+    "b": "opus5",
+    "input": [
+     [
+      1,
+      2,
+      3
+     ],
+     0
+    ],
+    "a_says": "1",
+    "b_says": "!IndexError: list index out of range"
+   },
+   {
+    "a": "haiku",
     "b": "phi4-mini",
     "input": [
      [],
@@ -630,6 +895,26 @@
    },
    {
     "a": "haiku",
+    "b": "qwen3.5:4b",
+    "input": [
+     [],
+     1
+    ],
+    "a_says": "!IndexError: list index out of range",
+    "b_says": "None"
+   },
+   {
+    "a": "opus5",
+    "b": "phi4-mini",
+    "input": [
+     [],
+     1
+    ],
+    "a_says": "!IndexError: list index out of range",
+    "b_says": "None"
+   },
+   {
+    "a": "opus5",
     "b": "qwen3.5:4b",
     "input": [
      [],
@@ -660,6 +945,7 @@
   "passing": [
    "gemma3:4b",
    "haiku",
+   "opus5",
    "phi4-mini",
    "qwen3.5:4b"
   ],
@@ -678,6 +964,18 @@
     "lines": 2
    },
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": false,
@@ -723,6 +1021,7 @@
   "passing": [
    "gemma3:4b",
    "haiku",
+   "opus5",
    "phi4-mini",
    "qwen3.5:4b"
   ],
@@ -741,6 +1040,18 @@
     "lines": 8
    },
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 5
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": false,
@@ -790,6 +1101,16 @@
    },
    {
     "a": "gemma3:4b",
+    "b": "opus5",
+    "input": [
+     -10,
+     5
+    ],
+    "a_says": "-2",
+    "b_says": "0"
+   },
+   {
+    "a": "gemma3:4b",
     "b": "phi4-mini",
     "input": [
      -10,
@@ -810,6 +1131,16 @@
    },
    {
     "a": "haiku",
+    "b": "opus5",
+    "input": [
+     -10,
+     5
+    ],
+    "a_says": "-2",
+    "b_says": "0"
+   },
+   {
+    "a": "haiku",
     "b": "phi4-mini",
     "input": [
      -10,
@@ -817,6 +1148,26 @@
     ],
     "a_says": "-2",
     "b_says": "0"
+   },
+   {
+    "a": "opus5",
+    "b": "phi4-mini",
+    "input": [
+     10,
+     -5
+    ],
+    "a_says": "-2",
+    "b_says": "-1"
+   },
+   {
+    "a": "opus5",
+    "b": "qwen3.5:4b",
+    "input": [
+     -10,
+     5
+    ],
+    "a_says": "0",
+    "b_says": "-2"
    },
    {
     "a": "phi4-mini",
@@ -836,6 +1187,7 @@
   "pool": 76,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [
@@ -867,6 +1219,18 @@
     "guard_clause": false,
     "lines": 6
    },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": true,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 11
+   },
    "phi4-mini": {
     "comprehension": false,
     "while_loop": false,
@@ -895,6 +1259,31 @@
   "divergences": [
    {
     "a": "haiku",
+    "b": "opus5",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     0
+    ],
+    "a_says": "4",
+    "b_says": "1"
+   },
+   {
+    "a": "haiku",
+    "b": "qwen3.5:4b",
+    "input": [
+     [],
+     50
+    ],
+    "a_says": "!IndexError: list index out of range",
+    "b_says": "!ValueError: List must be non-empty"
+   },
+   {
+    "a": "opus5",
     "b": "qwen3.5:4b",
     "input": [
      [],
@@ -912,6 +1301,7 @@
   "passing": [
    "gemma3:4b",
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [
@@ -942,6 +1332,18 @@
     "guard_clause": true,
     "lines": 5
    },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 9
+   },
    "phi4-mini": {
     "comprehension": false,
     "while_loop": false,
@@ -970,7 +1372,29 @@
   "divergences": [
    {
     "a": "gemma3:4b",
+    "b": "opus5",
+    "input": [
+     3,
+     2,
+     10
+    ],
+    "a_says": "15",
+    "b_says": "10"
+   },
+   {
+    "a": "gemma3:4b",
     "b": "qwen3.5:4b",
+    "input": [
+     3,
+     2,
+     10
+    ],
+    "a_says": "15",
+    "b_says": "10"
+   },
+   {
+    "a": "haiku",
+    "b": "opus5",
     "input": [
      3,
      2,
@@ -999,6 +1423,7 @@
   "passing": [
    "gemma3:4b",
    "haiku",
+   "opus5",
    "phi4-mini",
    "qwen3.5:4b"
   ],
@@ -1017,6 +1442,18 @@
     "lines": 4
    },
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": false,
@@ -1061,7 +1498,8 @@
   "pool": 29,
   "passing": [
    "gemma3:4b",
-   "haiku"
+   "haiku",
+   "opus5"
   ],
   "failing": [
    "phi4-mini",
@@ -1091,6 +1529,18 @@
     "early_return": false,
     "guard_clause": true,
     "lines": 13
+   },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 11
    },
    "phi4-mini": {
     "comprehension": false,
@@ -1125,6 +1575,7 @@
   "pool": 35,
   "passing": [
    "haiku",
+   "opus5",
    "phi4-mini"
   ],
   "failing": [
@@ -1156,6 +1607,18 @@
     "guard_clause": true,
     "lines": 6
    },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 7
+   },
    "phi4-mini": {
     "comprehension": false,
     "while_loop": false,
@@ -1184,6 +1647,16 @@
   "divergences": [
    {
     "a": "haiku",
+    "b": "opus5",
+    "input": [
+     "a b c d",
+     0
+    ],
+    "a_says": "' ...'",
+    "b_says": "'...'"
+   },
+   {
+    "a": "haiku",
     "b": "phi4-mini",
     "input": [
      "a b c d",
@@ -1191,6 +1664,16 @@
     ],
     "a_says": "' ...'",
     "b_says": "'...'"
+   },
+   {
+    "a": "opus5",
+    "b": "phi4-mini",
+    "input": [
+     "a b c d",
+     -2
+    ],
+    "a_says": "'...'",
+    "b_says": "'a b ...'"
    }
   ]
  },
@@ -1201,6 +1684,7 @@
   "passing": [
    "gemma3:4b",
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [
@@ -1231,6 +1715,18 @@
     "guard_clause": true,
     "lines": 5
    },
+   "opus5": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 6
+   },
    "phi4-mini": {
     "comprehension": false,
     "while_loop": false,
@@ -1256,7 +1752,53 @@
     "lines": 5
    }
   },
-  "divergences": []
+  "divergences": [
+   {
+    "a": "gemma3:4b",
+    "b": "opus5",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     0
+    ],
+    "a_says": "[[], [], [], [], []]",
+    "b_says": "[]"
+   },
+   {
+    "a": "haiku",
+    "b": "opus5",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     0
+    ],
+    "a_says": "[[], [], [], [], []]",
+    "b_says": "[]"
+   },
+   {
+    "a": "opus5",
+    "b": "qwen3.5:4b",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     0
+    ],
+    "a_says": "[]",
+    "b_says": "[[], [], [], [], []]"
+   }
+  ]
  },
  {
   "set": "ordinary",
@@ -1264,6 +1806,7 @@
   "pool": 17,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
@@ -1279,6 +1822,18 @@
     "early_return": true,
     "guard_clause": true,
     "lines": 4
+   },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 5
    },
    "qwen3.5:4b": {
     "comprehension": false,
@@ -1301,11 +1856,24 @@
   "pool": 11,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
   "fingerprints": {
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 10
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": true,
@@ -1338,6 +1906,7 @@
   "pool": 54,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
@@ -1354,6 +1923,18 @@
     "guard_clause": false,
     "lines": 5
    },
+   "opus5": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": true,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 5
+   },
    "qwen3.5:4b": {
     "comprehension": false,
     "while_loop": false,
@@ -1367,7 +1948,40 @@
     "lines": 5
    }
   },
-  "divergences": []
+  "divergences": [
+   {
+    "a": "haiku",
+    "b": "opus5",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     0
+    ],
+    "a_says": "!ValueError: range() arg 3 must not be zero",
+    "b_says": "!ValueError: size must be positive"
+   },
+   {
+    "a": "opus5",
+    "b": "qwen3.5:4b",
+    "input": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     0
+    ],
+    "a_says": "!ValueError: size must be positive",
+    "b_says": "!ValueError: range() arg 3 must not be zero"
+   }
+  ]
  },
  {
   "set": "ordinary",
@@ -1375,6 +1989,7 @@
   "pool": 76,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
@@ -1391,6 +2006,18 @@
     "guard_clause": false,
     "lines": 2
    },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 6
+   },
    "qwen3.5:4b": {
     "comprehension": false,
     "while_loop": false,
@@ -1404,14 +2031,38 @@
     "lines": 2
    }
   },
-  "divergences": []
+  "divergences": [
+   {
+    "a": "haiku",
+    "b": "opus5",
+    "input": [
+     5,
+     1,
+     0
+    ],
+    "a_says": "1",
+    "b_says": "0"
+   },
+   {
+    "a": "opus5",
+    "b": "qwen3.5:4b",
+    "input": [
+     5,
+     1,
+     0
+    ],
+    "a_says": "0",
+    "b_says": "1"
+   }
+  ]
  },
  {
   "set": "ordinary",
   "spec": "clip_index",
   "pool": 50,
   "passing": [
-   "haiku"
+   "haiku",
+   "opus5"
   ],
   "failing": [
    "qwen3.5:4b"
@@ -1428,6 +2079,18 @@
     "early_return": false,
     "guard_clause": true,
     "lines": 5
+   },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 11
    },
    "qwen3.5:4b": {
     "comprehension": false,
@@ -1450,11 +2113,24 @@
   "pool": 8,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
   "fingerprints": {
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": false,
@@ -1487,6 +2163,7 @@
   "pool": 29,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
@@ -1502,6 +2179,18 @@
     "early_return": false,
     "guard_clause": true,
     "lines": 8
+   },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": true,
+    "lines": 15
    },
    "qwen3.5:4b": {
     "comprehension": false,
@@ -1524,6 +2213,7 @@
   "pool": 10,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
@@ -1539,6 +2229,18 @@
     "early_return": false,
     "guard_clause": false,
     "lines": 3
+   },
+   "opus5": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
    },
    "qwen3.5:4b": {
     "comprehension": true,
@@ -1561,11 +2263,24 @@
   "pool": 27,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
   "fingerprints": {
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": false,
@@ -1598,11 +2313,24 @@
   "pool": 22,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
   "fingerprints": {
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 2
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": false,
@@ -1635,6 +2363,7 @@
   "pool": 38,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
@@ -1651,6 +2380,18 @@
     "guard_clause": true,
     "lines": 7
    },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": true,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 9
+   },
    "qwen3.5:4b": {
     "comprehension": false,
     "while_loop": false,
@@ -1664,7 +2405,26 @@
     "lines": 9
    }
   },
-  "divergences": []
+  "divergences": [
+   {
+    "a": "haiku",
+    "b": "opus5",
+    "input": [
+     []
+    ],
+    "a_says": "!IndexError: list index out of range",
+    "b_says": "!ValueError: median of an empty list is undefined"
+   },
+   {
+    "a": "opus5",
+    "b": "qwen3.5:4b",
+    "input": [
+     []
+    ],
+    "a_says": "!ValueError: median of an empty list is undefined",
+    "b_says": "!IndexError: list index out of range"
+   }
+  ]
  },
  {
   "set": "ordinary",
@@ -1672,6 +2432,7 @@
   "pool": 21,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
@@ -1687,6 +2448,18 @@
     "early_return": false,
     "guard_clause": false,
     "lines": 2
+   },
+   "opus5": {
+    "comprehension": true,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 3
    },
    "qwen3.5:4b": {
     "comprehension": true,
@@ -1709,6 +2482,7 @@
   "pool": 13,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
@@ -1724,6 +2498,18 @@
     "early_return": false,
     "guard_clause": true,
     "lines": 21
+   },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 7
    },
    "qwen3.5:4b": {
     "comprehension": false,
@@ -1741,6 +2527,24 @@
   "divergences": [
    {
     "a": "haiku",
+    "b": "opus5",
+    "input": [
+     "45S"
+    ],
+    "a_says": "0",
+    "b_says": "45"
+   },
+   {
+    "a": "haiku",
+    "b": "qwen3.5:4b",
+    "input": [
+     "s54"
+    ],
+    "a_says": "0",
+    "b_says": "!ValueError: invalid literal for int() with base 10: ''"
+   },
+   {
+    "a": "opus5",
     "b": "qwen3.5:4b",
     "input": [
      "s54"
@@ -1756,11 +2560,24 @@
   "pool": 26,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
   "fingerprints": {
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 4
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": false,
@@ -1793,11 +2610,24 @@
   "pool": 22,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
   "fingerprints": {
    "haiku": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": true,
+    "math_module": false,
+    "min_max": false,
+    "slice": false,
+    "floordiv": false,
+    "early_return": false,
+    "guard_clause": false,
+    "lines": 7
+   },
+   "opus5": {
     "comprehension": false,
     "while_loop": false,
     "for_loop": true,
@@ -1830,6 +2660,7 @@
   "pool": 48,
   "passing": [
    "haiku",
+   "opus5",
    "qwen3.5:4b"
   ],
   "failing": [],
@@ -1846,6 +2677,18 @@
     "guard_clause": true,
     "lines": 6
    },
+   "opus5": {
+    "comprehension": false,
+    "while_loop": false,
+    "for_loop": false,
+    "math_module": false,
+    "min_max": true,
+    "slice": true,
+    "floordiv": false,
+    "early_return": true,
+    "guard_clause": true,
+    "lines": 8
+   },
    "qwen3.5:4b": {
     "comprehension": false,
     "while_loop": false,
@@ -1859,6 +2702,27 @@
     "lines": 6
    }
   },
-  "divergences": []
+  "divergences": [
+   {
+    "a": "haiku",
+    "b": "opus5",
+    "input": [
+     "hello",
+     0
+    ],
+    "a_says": "'he...'",
+    "b_says": "''"
+   },
+   {
+    "a": "opus5",
+    "b": "qwen3.5:4b",
+    "input": [
+     "hello",
+     0
+    ],
+    "a_says": "''",
+    "b_says": "'he...'"
+   }
+  ]
  }
 ]

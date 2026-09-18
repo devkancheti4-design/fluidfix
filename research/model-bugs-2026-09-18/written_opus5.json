@@ -1,0 +1,189 @@
+{
+ "author": "opus5",
+ "written": 16,
+ "failed": 0,
+ "rows": [
+  {
+   "name": "clamp",
+   "code": "def clamp(value, low, high):\n    \"\"\"Return value limited to the inclusive range [low, high].\"\"\"\n    if value < low:\n        return low\n    if value > high:\n        return high\n    return value\n",
+   "tests": [
+    "assert clamp(5, 1, 10) == 5",
+    "assert clamp(0, 1, 10) == 1",
+    "assert clamp(11, 1, 10) == 10",
+    "assert clamp(1, 1, 10) == 1",
+    "assert clamp(10, 1, 10) == 10"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "last_index",
+   "code": "def last_index(items):\n    \"\"\"Return the index of the final element, or -1 for an empty list.\"\"\"\n    return len(items) - 1\n",
+   "tests": [
+    "assert last_index([1, 2, 3]) == 2",
+    "assert last_index([]) == -1",
+    "assert last_index([9]) == 0"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "chunk",
+   "code": "def chunk(items, size):\n    \"\"\"Split items into consecutive lists of at most `size` elements.\"\"\"\n    if size <= 0:\n        raise ValueError(\"size must be positive\")\n    items = list(items)\n    return [items[i:i + size] for i in range(0, len(items), size)]\n",
+   "tests": [
+    "assert chunk([1,2,3,4,5], 2) == [[1,2],[3,4],[5]]",
+    "assert chunk([], 3) == []",
+    "assert chunk([1,2,3], 3) == [[1,2,3]]"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "running_total",
+   "code": "def running_total(numbers):\n    \"\"\"Return the cumulative sums: [1,2,3] -> [1,3,6].\"\"\"\n    totals = []\n    total = 0\n    for number in numbers:\n        total += number\n        totals.append(total)\n    return totals\n",
+   "tests": [
+    "assert running_total([1,2,3]) == [1,3,6]",
+    "assert running_total([]) == []",
+    "assert running_total([5]) == [5]"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "median",
+   "code": "def median(numbers):\n    \"\"\"Return the median of a non-empty list of numbers (mean of the middle two when even).\"\"\"\n    ordered = sorted(numbers)\n    count = len(ordered)\n    if count == 0:\n        raise ValueError(\"median of an empty list is undefined\")\n    middle = count // 2\n    if count % 2:\n        return ordered[middle]\n    return (ordered[middle - 1] + ordered[middle]) / 2\n",
+   "tests": [
+    "assert median([3,1,2]) == 2",
+    "assert median([4,1,2,3]) == 2.5",
+    "assert median([7]) == 7"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "truncate",
+   "code": "def truncate(text, limit):\n    \"\"\"Return text unchanged when it fits in `limit` characters, otherwise cut it\n    and end with an ellipsis so the result is exactly `limit` characters long.\"\"\"\n    if len(text) <= limit:\n        return text\n    ellipsis = \"...\"\n    if limit <= len(ellipsis):\n        return ellipsis[:max(limit, 0)]\n    return text[:limit - len(ellipsis)] + ellipsis\n",
+   "tests": [
+    "assert truncate('hello', 10) == 'hello'",
+    "assert truncate('hello', 5) == 'hello'",
+    "assert truncate('hello world', 8) == 'hello...'",
+    "assert len(truncate('abcdefgh', 6)) == 6"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "count_words",
+   "code": "def count_words(text):\n    \"\"\"Return the number of whitespace-separated words; an empty or blank string has none.\"\"\"\n    return len(text.split())\n",
+   "tests": [
+    "assert count_words('a b  c') == 3",
+    "assert count_words('') == 0",
+    "assert count_words('   ') == 0"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "is_leap",
+   "code": "def is_leap(year):\n    \"\"\"True when the year is a leap year in the Gregorian calendar.\"\"\"\n    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)\n",
+   "tests": [
+    "assert is_leap(2024) is True",
+    "assert is_leap(1900) is False",
+    "assert is_leap(2000) is True",
+    "assert is_leap(2023) is False"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "percent",
+   "code": "def percent(part, whole):\n    \"\"\"Return part as a percentage of whole, rounded to one decimal; 0.0 when whole is 0.\"\"\"\n    if whole == 0:\n        return 0.0\n    return round(part * 100.0 / whole, 1)\n",
+   "tests": [
+    "assert percent(1, 4) == 25.0",
+    "assert percent(0, 0) == 0.0",
+    "assert percent(1, 3) == 33.3"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "dedupe",
+   "code": "def dedupe(items):\n    \"\"\"Remove duplicates, keeping the first occurrence and the original order.\"\"\"\n    seen = set()\n    unseen = []\n    result = []\n    for item in items:\n        try:\n            if item in seen:\n                continue\n            seen.add(item)\n        except TypeError:\n            if item in unseen:\n                continue\n            unseen.append(item)\n        result.append(item)\n    return result\n",
+   "tests": [
+    "assert dedupe([1,2,1,3,2]) == [1,2,3]",
+    "assert dedupe([]) == []",
+    "assert dedupe([2,2]) == [2]"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "pairs",
+   "code": "def pairs(items):\n    \"\"\"Return each element paired with the one after it: [1,2,3] -> [(1,2),(2,3)].\"\"\"\n    items = list(items)\n    return [(items[i], items[i + 1]) for i in range(len(items) - 1)]\n",
+   "tests": [
+    "assert pairs([1,2,3]) == [(1,2),(2,3)]",
+    "assert pairs([1]) == []",
+    "assert pairs([]) == []"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "initials",
+   "code": "def initials(full_name):\n    \"\"\"Return the uppercase initials of each word: 'ada lovelace' -> 'AL'.\"\"\"\n    return \"\".join(word[0].upper() for word in full_name.split())\n",
+   "tests": [
+    "assert initials('ada lovelace') == 'AL'",
+    "assert initials('grace') == 'G'",
+    "assert initials('') == ''"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "clip_index",
+   "code": "def clip_index(index, length):\n    \"\"\"Return a valid index into a sequence of `length` items, clipped into range;\n    a negative index counts from the end as Python does.\"\"\"\n    if length <= 0:\n        return 0\n    if index < 0:\n        index += length\n    if index < 0:\n        return 0\n    if index > length - 1:\n        return length - 1\n    return index\n",
+   "tests": [
+    "assert clip_index(2, 5) == 2",
+    "assert clip_index(9, 5) == 4",
+    "assert clip_index(-1, 5) == 4",
+    "assert clip_index(-9, 5) == 0"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "parse_duration",
+   "code": "def parse_duration(text):\n    \"\"\"Parse '1h30m' or '45s' into whole seconds. Missing units are zero.\"\"\"\n    import re\n    units = {\"h\": 3600, \"m\": 60, \"s\": 1}\n    total = 0\n    for amount, unit in re.findall(r\"(\\d+)\\s*([hms])\", text.strip().lower()):\n        total += int(amount) * units[unit]\n    return total\n",
+   "tests": [
+    "assert parse_duration('45s') == 45",
+    "assert parse_duration('1h30m') == 5400",
+    "assert parse_duration('2m') == 120"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "balanced",
+   "code": "def balanced(text):\n    \"\"\"True when every round bracket in the text is opened before it is closed and all are closed.\"\"\"\n    depth = 0\n    for character in text:\n        if character == \"(\":\n            depth += 1\n        elif character == \")\":\n            depth -= 1\n            if depth < 0:\n                return False\n    return depth == 0\n",
+   "tests": [
+    "assert balanced('(a(b))') is True",
+    "assert balanced('(') is False",
+    "assert balanced(')(') is False",
+    "assert balanced('') is True"
+   ],
+   "passed": true,
+   "why": ""
+  },
+  {
+   "name": "average_or_zero",
+   "code": "def average_or_zero(numbers):\n    \"\"\"Return the mean, or 0 when the list is empty.\"\"\"\n    numbers = list(numbers)\n    if not numbers:\n        return 0\n    return sum(numbers) / len(numbers)\n",
+   "tests": [
+    "assert average_or_zero([2,4]) == 3",
+    "assert average_or_zero([]) == 0",
+    "assert average_or_zero([5]) == 5"
+   ],
+   "passed": true,
+   "why": ""
+  }
+ ]
+}

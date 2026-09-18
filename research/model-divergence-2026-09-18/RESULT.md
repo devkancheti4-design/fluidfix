@@ -4,15 +4,16 @@
 programs?* Point the same machinery across **authors** and it answers another: given one English
 specification, what did each model actually implement?
 
-Eighty implementations, four writers, thirty-two specifications, each answered independently from prose
-alone. For every spec, inputs are harvested from the suite's own literals, mutated and bisected, and every
+128 implementations, five writers, thirty-two specifications, each answered independently from prose alone.
+The fifth writer is the model writing this file, put through the same sandbox as the others — it had seen
+the specs, the hidden tests and every divergence, so it could not write them itself. For every spec, inputs are harvested from the suite's own literals, mutated and bisected, and every
 implementation is run over the same pool. Where two implementations that **both pass the tests** disagree,
 the disagreeing input is the artefact. **4.3 seconds for the whole corpus.**
 
 ## What came out
 
-**8 of 32 specifications are ambiguous** — implementations that all pass their tests and still disagree,
-22 disagreeing pairs, each with a concrete witness:
+**15 of 32 specifications are ambiguous** — implementations that all pass their tests and still disagree,
+58 disagreeing pairs, each with a concrete witness:
 
 | specification | witness | what the writers decided |
 |---|---|---|
@@ -69,6 +70,56 @@ Directionally Haiku writes shorter, flatter code and never reached for the math 
 per writer **none of these gaps is significant**. 44% against 62% is 14 specs against 20. This table is
 reported because it was measured, not because it separates the models. It does not.
 
+## Adding a fifth writer: the one running the experiment
+
+Four writers found 8 ambiguous specs. Adding a fifth — Opus 5, through two sandboxed subagents that saw the
+prose and nothing else — took it to **15 of 32**. Seven specifications that looked pinned down were not; they
+only looked that way because nobody present had a different convention.
+
+That writer passed **32 of 32** hidden tests, and is nevertheless involved in a disagreement on **all 15**
+ambiguous specs, standing alone against every other writer on seven of them:
+
+| input | Opus 5 | every other writer |
+|---|---|---|
+| `bytes_human(-1024)` | `'-1.0 KB'` | `'-1024.0 B'` |
+| `columns([1,2,3,4,5], 0)` | `[]` | `ZeroDivisionError` |
+| `windows([1,2,3,4], 0)` | `[]` | `[[], [], [], [], []]` |
+| `chunk([1,2,3,4,5], 0)` | `ValueError: size must be...` | `ValueError: range() arg 3...` |
+| `clamp(5, 1, 0)` | `0` | `1` |
+| `median([])` | `ValueError: median of an...` | `IndexError` |
+| `truncate('hello', 0)` | `''` | `'he...'` |
+
+The signature is legible: it guards degenerate inputs and raises **deliberate** errors with its own messages
+where the others let Python's incidental error escape. Nothing in any specification asked for that.
+
+## The structure, with five writers
+
+Re-running the permutation test on 92 undefined inputs (50,000 shuffles, two-sided, Bonferroni over ten
+pairs, α = 0.005) turns the earlier hint into a result:
+
+| pair | n | observed | null | p | |
+|---|---|---|---|---|---|
+| gemma3:4b / haiku | 43 | 70% | 39% | 0.00004 | **agree** |
+| haiku / qwen3.5:4b | 80 | 55% | 36% | 0.00072 | **agree** |
+| gemma3:4b / phi4-mini | 25 | 64% | 38% | 0.0130 | — |
+| phi4-mini / qwen3.5:4b | 25 | 64% | 38% | 0.0126 | — |
+| gemma3:4b / **opus5** | 43 | 16% | 39% | 0.00204 | **disagree** |
+| haiku / **opus5** | 92 | **13%** | 34% | **<0.00001** | **disagree** |
+
+Four writers form a loose consensus; the fifth sits systematically outside it. Counting who stands alone
+when exactly one writer does: **opus5 42 times, haiku 15, qwen3.5:4b 5, gemma3:4b and phi4-mini 0.**
+
+So the convention choices are **not** a coin flip. There is stable, strongly significant structure in who
+agrees with whom, and it does not follow scale: a 4B local model and Haiku are the tightest pair in the
+corpus.
+
+**The confound that keeps this from being a claim about models.** Opus 5 and Haiku were elicited through
+subagents; the three local models through a raw completion call at temperature 0. A system prompt that
+rewards careful code is a plausible cause of exactly the defensive signature measured above, and this design
+cannot separate the model from the harness it was run under. Haiku went through a subagent too and landed
+*inside* the consensus cluster, which weakens that explanation without eliminating it. Settling it needs the
+same model run through both paths.
+
 ## Is the choice a stable signature, or a coin flip? (`latent.py`)
 
 If a writer's resolution of an undefined input were read out of something shared and structured, the **same**
@@ -120,7 +171,10 @@ interpretability, and calling it that would not survive the first question from 
 
 ## Not claimed
 
-- Four writers, thirty-two specs, one pool per spec. A probe, not a benchmark.
+- Five writers, thirty-two specs, one pool per spec. A probe, not a benchmark.
+- The fifth writer (Opus 5) was elicited through subagents while the three local models got a raw
+  completion call at temperature 0. The defensive signature measured for it may be the harness, not the
+  model; this design cannot separate them.
 - The pool is harvested from the tests' own literals, then mutated and bisected, so a divergence far from
   anything the tests mention is unreachable by construction — measured separately at 0 of 14
   (`../certify-2026-09-18`). The 8 ambiguous specs are a **lower bound**; there may be more.
