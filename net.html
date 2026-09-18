@@ -86,6 +86,14 @@
   .rulebox{border-top:2px solid var(--ink);padding-top:12px}
   .rulebox .tag{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;color:var(--brass)}
   .note{font-size:13px;color:var(--ink-2);max-width:72ch}
+  .chartbox{border-top:2px solid var(--ink);padding-top:12px;margin-top:34px}
+  .chartbox .tag{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;color:var(--brass)}
+  .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin:14px 0 4px}
+  .charts figure{margin:0}
+  .charts figcaption{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
+                     text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+  .charts svg{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--rule);
+              border-radius:3px}
   footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-2)}
   footer a{color:inherit}
 </style>
@@ -187,6 +195,79 @@
       territory of ten, so the search was a single node and two suite runs.</p>
     </section>
   </div>
+
+  <section class="chartbox">
+    <div class="tag">measured on 240 generated bugs, six shapes, each with a test that catches it</div>
+    <h2>A table grows. A shape does not.</h2>
+    <p>Every bug in this stream is distinct: its own names, values and surroundings. After each one, three
+    arms are scored on the next twenty-four they have never seen — and every repair, in every arm, is
+    accepted only because that bug's own test passed.</p>
+    <div class="charts">
+      <figure>
+        <figcaption>what it must store</figcaption>
+        <svg viewBox="0 0 520 260" role="img" aria-label="Rows stored: the table of programs and the table of lines climb with every bug, the six rules stay flat">
+          <line x1="52" y1="22" x2="52" y2="220" stroke="var(--rule-2)"/>
+<line x1="52" y1="220" x2="506" y2="220" stroke="var(--rule-2)"/>
+<line x1="52" y1="220.0" x2="506" y2="220.0" stroke="var(--rule)" stroke-dasharray="2 4"/>
+<text x="45" y="223.0" text-anchor="end" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">0</text>
+<line x1="52" y1="170.5" x2="506" y2="170.5" stroke="var(--rule)" stroke-dasharray="2 4"/>
+<text x="45" y="173.5" text-anchor="end" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">65</text>
+<line x1="52" y1="121.0" x2="506" y2="121.0" stroke="var(--rule)" stroke-dasharray="2 4"/>
+<text x="45" y="124.0" text-anchor="end" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">130</text>
+<line x1="52" y1="71.5" x2="506" y2="71.5" stroke="var(--rule)" stroke-dasharray="2 4"/>
+<text x="45" y="74.5" text-anchor="end" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">195</text>
+<line x1="52" y1="22.0" x2="506" y2="22.0" stroke="var(--rule)" stroke-dasharray="2 4"/>
+<text x="45" y="25.0" text-anchor="end" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">260</text>
+<text x="52.0" y="235" text-anchor="middle" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">0</text>
+<text x="279.0" y="235" text-anchor="middle" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">108</text>
+<text x="506.0" y="235" text-anchor="middle" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">216</text>
+<text x="279" y="254" text-anchor="middle" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">BUGS ALREADY SEEN</text>
+          <path d="M52.0,220.0 L102.4,201.7 L152.9,183.4 L203.3,165.2 L253.8,146.9 L304.2,128.6 L354.7,110.3 L405.1,92.1 L455.6,73.8 L506.0,55.5" fill="none" stroke="var(--rust)" stroke-width="2"/>
+          <path d="M52.0,220.0 L102.4,202.5 L152.9,191.1 L203.3,178.9 L253.8,168.2 L304.2,159.1 L354.7,150.7 L405.1,138.5 L455.6,131.7 L506.0,128.6" fill="none" stroke="var(--brass)" stroke-width="2"/>
+          <path d="M52.0,215.4 L102.4,215.4 L152.9,215.4 L203.3,215.4 L253.8,215.4 L304.2,215.4 L354.7,215.4 L405.1,215.4 L455.6,215.4 L506.0,215.4" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+          <text x="502" y="50" text-anchor="end" fill="var(--rust)" font-size="10.5" font-family="IBM Plex Mono, monospace">240 programs</text>
+          <text x="502" y="123" text-anchor="end" fill="var(--brass)" font-size="10.5" font-family="IBM Plex Mono, monospace">133 lines</text>
+          <text x="502" y="208" text-anchor="end" fill="var(--teal)" font-size="10.5" font-family="IBM Plex Mono, monospace">6 rules</text>
+        </svg>
+      </figure>
+      <figure>
+        <figcaption>what it repairs, of bugs it has never seen</figcaption>
+        <svg viewBox="0 0 520 260" role="img" aria-label="Coverage of unseen bugs: the table of programs stays at zero, the table of lines wanders below half, the shapes hold at one hundred per cent">
+          <line x1="52" y1="22" x2="52" y2="220" stroke="var(--rule-2)"/>
+<line x1="52" y1="220" x2="506" y2="220" stroke="var(--rule-2)"/>
+<line x1="52" y1="220.0" x2="506" y2="220.0" stroke="var(--rule)" stroke-dasharray="2 4"/>
+<text x="45" y="223.0" text-anchor="end" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">0%</text>
+<line x1="52" y1="170.5" x2="506" y2="170.5" stroke="var(--rule)" stroke-dasharray="2 4"/>
+<text x="45" y="173.5" text-anchor="end" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">25%</text>
+<line x1="52" y1="121.0" x2="506" y2="121.0" stroke="var(--rule)" stroke-dasharray="2 4"/>
+<text x="45" y="124.0" text-anchor="end" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">50%</text>
+<line x1="52" y1="71.5" x2="506" y2="71.5" stroke="var(--rule)" stroke-dasharray="2 4"/>
+<text x="45" y="74.5" text-anchor="end" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">75%</text>
+<line x1="52" y1="22.0" x2="506" y2="22.0" stroke="var(--rule)" stroke-dasharray="2 4"/>
+<text x="45" y="25.0" text-anchor="end" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">100%</text>
+<text x="52.0" y="235" text-anchor="middle" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">0</text>
+<text x="279.0" y="235" text-anchor="middle" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">108</text>
+<text x="506.0" y="235" text-anchor="middle" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">216</text>
+<text x="279" y="254" text-anchor="middle" fill="var(--ink-2)" font-size="10" font-family="IBM Plex Mono, monospace">BUGS ALREADY SEEN</text>
+          <path d="M52.0,220.0 L102.4,220.0 L152.9,220.0 L203.3,220.0 L253.8,220.0 L304.2,220.0 L354.7,220.0 L405.1,220.0 L455.6,220.0 L506.0,220.0" fill="none" stroke="var(--rust)" stroke-width="2"/>
+          <path d="M52.0,220.0 L102.4,178.8 L152.9,170.5 L203.3,137.5 L253.8,145.8 L304.2,112.8 L354.7,162.2 L405.1,96.2 L455.6,55.0 L506.0,129.2" fill="none" stroke="var(--brass)" stroke-width="2"/>
+          <path d="M52.0,22.0 L102.4,22.0 L152.9,22.0 L203.3,22.0 L253.8,22.0 L304.2,22.0 L354.7,22.0 L405.1,22.0 L455.6,22.0 L506.0,22.0" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+          <text x="502" y="36" text-anchor="end" fill="var(--teal)" font-size="10.5" font-family="IBM Plex Mono, monospace">shapes 100%</text>
+          <text x="502" y="123" text-anchor="end" fill="var(--brass)" font-size="10.5" font-family="IBM Plex Mono, monospace">lines 46%</text>
+          <text x="502" y="213" text-anchor="end" fill="var(--rust)" font-size="10.5" font-family="IBM Plex Mono, monospace">programs 0%</text>
+        </svg>
+      </figure>
+    </div>
+    <p class="note">A table of whole programs never once repaired a bug it had not been handed: 240 rows,
+    nothing to show for them. A table of broken lines does better, because the same line does recur, but it
+    needs a row for each and still misses more than half. Six shapes repaired every one of the 240, and the
+    six never became seven.</p>
+    <p class="note"><b>So can it write a fix it has never seen?</b> Yes for a line: a shape is a signal and a
+    transform, so it produced a correct repair for lines, names and values that were not in any example —
+    that is what the right-hand chart is. <b>No for a class:</b> a fault whose shape nobody has written is
+    refused, not guessed. New shapes come from a person, or from a model that authors one and submits it to
+    the same test.</p>
+  </section>
 
   <footer>
     Every round drawn here is read from the logs of those runs, in <b>research/lake-2026-09-18</b>; the
