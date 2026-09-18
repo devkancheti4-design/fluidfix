@@ -116,9 +116,16 @@ wrote is refused, never guessed.
 **Do you train it?** No. You teach a vocabulary once by hand, the tool scans your repository itself on every
 failure, and the memory learns only which part of the vocabulary keeps paying off.
 
-**Why many small ones?** The tool is 5,580 lines with zero runtime dependencies, so the cost of running a
-hundred is the suite, not the tool — and that is the trade you get for growth driven by refusals instead of
-a plan fixed in advance.
+**Why many small ones?** The tool is 5,580 lines with zero runtime dependencies, so an extra guard costs no
+tool — only suite runs. It does cost cores, though: measured on twelve, four guards run at full speed,
+twelve at 2.0x each, thirty-two at about 5x, and all thirty-two still repaired byte-exactly. Crowding slows
+them; it never makes them wrong.
+
+**But what does the growth actually save?** This is the real answer, and it is not smallness. A fixed plan
+spends its 45 guards whether it needs them or not. The net opens only what its refusals force it to open —
+129 nodes when it knows nothing, 13 once it knows the shape, 5 once it has seen this exact one — and the
+first green stops everything. You pay for the nodes the search opened, and for nothing it did not need.
+That cuts both ways, and the cold number is the honest half: 129 is worse than 45.
 
 **What does the second occurrence cost?** Remembering the shape instead of the incident means a fault never
 seen before, in another repository, costs one fluidfix and two suite runs instead of forty-five and three
