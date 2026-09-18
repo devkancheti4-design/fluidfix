@@ -1,0 +1,26 @@
+{
+ "broke": "gate",
+ "why": "the gate stops answering at exactly its own threshold (a strictness slip)",
+ "waves": [
+  1
+ ],
+ "dispatched": 1,
+ "remembered_before": [
+  0
+ ],
+ "winner_kind": 0,
+ "byte_exact": true,
+ "suite_runs": 2,
+ "wall_s": 2.3,
+ "tokens": 0,
+ "head_memory_rows": 1,
+ "head_memory_bytes": 33,
+ "guards": {
+  "0": {
+   "exit": 0,
+   "seconds": 2.2,
+   "suite_runs": 2,
+   "byte_exact": true
+  }
+ }
+}

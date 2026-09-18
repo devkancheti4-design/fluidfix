@@ -1,0 +1,99 @@
+{
+ "broke": "cap",
+ "why": "wave 1 carries one class fewer than it should (an off-by-one in the cap)",
+ "waves": [
+  1,
+  12
+ ],
+ "dispatched": 13,
+ "remembered_before": [
+  0
+ ],
+ "winner_kind": 4,
+ "byte_exact": true,
+ "suite_runs": 6,
+ "wall_s": 4.2,
+ "tokens": 0,
+ "head_memory_rows": 1,
+ "head_memory_bytes": 44,
+ "guards": {
+  "0": {
+   "exit": 2,
+   "seconds": 0.9,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "1": {
+   "exit": 2,
+   "seconds": 2.8,
+   "suite_runs": 4,
+   "byte_exact": false
+  },
+  "2": {
+   "exit": 2,
+   "seconds": 2.8,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "3": {
+   "exit": 2,
+   "seconds": 2.8,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "8": {
+   "exit": 2,
+   "seconds": 2.8,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "9": {
+   "exit": 2,
+   "seconds": 2.8,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "10": {
+   "exit": 2,
+   "seconds": 2.8,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "11": {
+   "exit": 2,
+   "seconds": 2.8,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "12": {
+   "exit": 2,
+   "seconds": 2.7,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "4": {
+   "exit": 0,
+   "seconds": 3.1,
+   "suite_runs": 2,
+   "byte_exact": true
+  },
+  "5": {
+   "exit": 1,
+   "seconds": 3.1,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "6": {
+   "exit": 1,
+   "seconds": 3.0,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "7": {
+   "exit": 1,
+   "seconds": 3.0,
+   "suite_runs": 0,
+   "byte_exact": false
+  }
+ }
+}

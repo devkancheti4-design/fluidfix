@@ -1,0 +1,72 @@
+{
+ "broke": "gate",
+ "why": "the gate stops answering at exactly its own threshold (a strictness slip)",
+ "waves": [
+  9
+ ],
+ "dispatched": 9,
+ "remembered_before": [],
+ "winner_kind": 0,
+ "byte_exact": true,
+ "suite_runs": 8,
+ "wall_s": 2.8,
+ "tokens": 0,
+ "head_memory_rows": 1,
+ "head_memory_bytes": 33,
+ "guards": {
+  "0": {
+   "exit": 0,
+   "seconds": 2.7,
+   "suite_runs": 2,
+   "byte_exact": true
+  },
+  "1": {
+   "exit": 2,
+   "seconds": 2.7,
+   "suite_runs": 4,
+   "byte_exact": false
+  },
+  "2": {
+   "exit": 2,
+   "seconds": 2.7,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "3": {
+   "exit": 2,
+   "seconds": 2.7,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "8": {
+   "exit": 2,
+   "seconds": 2.7,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "9": {
+   "exit": 2,
+   "seconds": 2.7,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "10": {
+   "exit": 2,
+   "seconds": 2.7,
+   "suite_runs": 2,
+   "byte_exact": false
+  },
+  "11": {
+   "exit": 2,
+   "seconds": 2.6,
+   "suite_runs": 0,
+   "byte_exact": false
+  },
+  "12": {
+   "exit": 2,
+   "seconds": 2.6,
+   "suite_runs": 0,
+   "byte_exact": false
+  }
+ }
+}
