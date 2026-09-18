@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Fluidfix and the Life</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#EFEDE7; --panel:#F7F5F1; --ink:#14191D; --ink-2:#59616A; --rule:#CFCBC2; --rule-2:#B9B4A9;
+    --brass:#9A6B1F; --brass-soft:#E4D3AE; --teal:#0E6A63; --teal-soft:#BFDFDA; --rust:#A93E2C;
+    --shade:#E4E1D9;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#12161A; --panel:#1A2026; --ink:#E9E7E1; --ink-2:#9AA2AA; --rule:#2A3138; --rule-2:#3C454E;
+      --brass:#D9A441; --brass-soft:#3A2F17; --teal:#46C3AC; --teal-soft:#123833; --rust:#E0705C;
+      --shade:#171D23;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12161A; --panel:#1A2026; --ink:#E9E7E1; --ink-2:#9AA2AA; --rule:#2A3138; --rule-2:#3C454E;
+    --brass:#D9A441; --brass-soft:#3A2F17; --teal:#46C3AC; --teal-soft:#123833; --rust:#E0705C;
+    --shade:#171D23;
+  }
+
+  body{background:var(--paper);color:var(--ink);
+       font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+       font-size:15px;line-height:1.55;margin:0}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 20px;padding-block:26px 56px}
+  .eyebrow{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.16em;
+           text-transform:uppercase;color:var(--ink-2)}
+  h1{font-family:"Syne","Trebuchet MS",sans-serif;font-weight:800;font-size:clamp(30px,5.2vw,48px);
+     line-height:1.02;letter-spacing:-.02em;margin:6px 0 10px;text-wrap:balance}
+  h2{font-family:"Syne","Trebuchet MS",sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em;
+     margin:0 0 6px;text-wrap:balance}
+  h3{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+     color:var(--ink-2);font-weight:500;margin:0 0 8px}
+  p{margin:0 0 12px;max-width:66ch}
+  .lede{font-size:17px;color:var(--ink-2);max-width:60ch}
+  .lede b{color:var(--ink);font-weight:600}
+  a{color:var(--teal)}
+
+  header.top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
+             border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:22px}
+
+  /* ---- the instrument ---------------------------------------------------- */
+  .instrument{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:0;
+              border:1px solid var(--rule-2);border-radius:3px;overflow:hidden;background:var(--panel)}
+  @media (max-width:860px){ .instrument{grid-template-columns:1fr} }
+  .stage{position:relative;background:var(--shade);border-right:1px solid var(--rule)}
+  @media (max-width:860px){ .stage{border-right:0;border-bottom:1px solid var(--rule)} }
+  canvas{display:block;width:100%;height:auto;max-width:100%}
+  .side{display:flex;flex-direction:column}
+  .side-pad{padding:16px 18px;border-bottom:1px solid var(--rule)}
+  .side-pad:last-child{border-bottom:0}
+
+  .scales{display:flex;flex-wrap:wrap;gap:6px}
+  .scales button{font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;
+                 padding:8px 10px;border:1px solid var(--rule-2);background:transparent;color:var(--ink-2);
+                 border-radius:2px;cursor:pointer}
+  .scales button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .scales button:focus-visible,.run button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+  .run{display:flex;gap:8px;flex-wrap:wrap}
+  .run button{font:600 13px/1 "IBM Plex Sans",sans-serif;padding:10px 13px;border-radius:2px;cursor:pointer;
+              border:1px solid var(--ink);background:var(--ink);color:var(--paper)}
+  .run button.ghost{background:transparent;color:var(--ink);border-color:var(--rule-2)}
+  .run button[disabled]{opacity:.42;cursor:not-allowed}
+
+  .meters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule)}
+  .meter{background:var(--panel);padding:11px 14px}
+  .meter .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+            color:var(--ink-2)}
+  .meter .v{font-family:"IBM Plex Mono",monospace;font-size:21px;font-variant-numeric:tabular-nums;line-height:1.25}
+  .meter .v small{font-size:11px;color:var(--ink-2);margin-left:5px;letter-spacing:.04em}
+  .v.tealv{color:var(--teal)} .v.brassv{color:var(--brass)}
+
+  .log{font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.75;color:var(--ink-2);
+       min-height:104px;max-height:104px;overflow:auto}
+  .log b{color:var(--ink);font-weight:500}
+  .log .ok{color:var(--teal)} .log .mem{color:var(--brass)} .log .bad{color:var(--rust)}
+
+  /* ---- prose + tables ----------------------------------------------------- */
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:26px;margin-top:34px}
+  .dir{border-top:2px solid var(--ink);padding-top:12px}
+  .dir .arrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--brass)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin-top:10px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+     color:var(--ink-2);font-weight:500}
+  td.n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.win{color:var(--teal);font-weight:600}
+  .scroll{overflow-x:auto}
+  .levels{margin:34px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--rule)}
+  .levels li{display:grid;grid-template-columns:104px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid var(--rule)}
+  @media (max-width:560px){ .levels li{grid-template-columns:1fr;gap:4px} }
+  .levels .lv{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+              color:var(--brass)}
+  .levels .body{max-width:72ch}
+  .levels .body b{font-weight:600}
+  .note{font-size:13px;color:var(--ink-2);max-width:72ch}
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-2)}
+  footer a{color:inherit}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">the same organ at every scale</div>
+      <h1>Fluidfix and the Life</h1>
+    </div>
+    <div class="eyebrow" id="clock">memory empty</div>
+  </header>
+
+  <p class="lede">Two tools, fused both ways. <b>Fluidfix</b> owns a vocabulary of fault shapes and the rule
+  that only a test may accept a fix. <b>The Life</b> owns a memory that abstains when it does not know and a
+  confidence gate that routes. Put the shapes in the Life's free tier and it repairs instead of only naming.
+  Put the Life above many fluidfixes and the second incident costs one of them instead of forty-five.</p>
+
+  <div class="instrument">
+    <div class="stage">
+      <canvas id="c" width="1000" height="660" aria-label="Animated rings: an incident meets the shapes, the test judges it, the memory learns it"></canvas>
+    </div>
+    <div class="side">
+      <div class="side-pad">
+        <h3>scale</h3>
+        <div class="scales" id="scales" role="group" aria-label="Choose a scale"></div>
+        <p class="note" id="scale-note" style="margin:10px 0 0"></p>
+      </div>
+      <div class="side-pad">
+        <h3>send an incident</h3>
+        <div class="run">
+          <button id="send" type="button">Send</button>
+          <button id="again" class="ghost" type="button">Send the same one again</button>
+          <button id="forget" class="ghost" type="button">Forget</button>
+        </div>
+      </div>
+      <div class="meters">
+        <div class="meter"><div class="k">fluidfixes used</div><div class="v" id="m-guards">0</div></div>
+        <div class="meter"><div class="k">test runs paid</div><div class="v" id="m-runs">0</div></div>
+        <div class="meter"><div class="k">tokens</div><div class="v tealv" id="m-tokens">0</div></div>
+        <div class="meter"><div class="k">memory</div><div class="v brassv" id="m-mem">0<small>rows</small></div></div>
+      </div>
+      <div class="side-pad">
+        <h3>what happened</h3>
+        <div class="log" id="log"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <section class="dir">
+      <div class="arrow">fluidfix → the Life</div>
+      <h2>Shapes in the free tier</h2>
+      <p>The Life Debugger's first tier names a bug and cannot repair it, and a fix from its model tier is
+      trusted on sight. Fluidfix's shapes propose a correction for any line whose signal matches, the
+      caller's own test accepts or rejects it, and a rejected candidate is rolled back exactly. The model's
+      answer now faces the same test before it is believed.</p>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>fifteen small programs</th><th>cases</th><th>result</th><th>tokens</th></tr></thead>
+        <tbody>
+          <tr><td>in the vocabulary</td><td class="n">12</td><td class="n win">12 fixed, verified</td><td class="n">0</td></tr>
+          <tr><td>outside it</td><td class="n">3</td><td class="n">3 abstained</td><td class="n">0</td></tr>
+          <tr><td>wrong fixes</td><td class="n">—</td><td class="n">0</td><td class="n">0</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note" style="margin-top:10px">Whole pass 1.4 s, a median of one test run per repair. Run again
+      with the memory warm: 1.0 s, one run per case — the Life replays the shape and the test still
+      re-verifies it, so memory never outranks the judge.</p>
+    </section>
+
+    <section class="dir">
+      <div class="arrow">the Life → fluidfix</div>
+      <h2>A memory above the fan-out</h2>
+      <p>One guard searching a repository can open the wrong file and never recover. Many small fluidfixes,
+      one per file and fault class, cover instead of rank, and the first green ends the search. The judge
+      above them keeps a Life: the signature of the failure, and which territory and class answered it.</p>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>incident</th><th>fluidfixes</th><th>suite runs</th><th>wall</th></tr></thead>
+        <tbody>
+          <tr><td>one guard, no fan-out</td><td class="n">1</td><td class="n">—</td><td class="n">904 s, refused</td></tr>
+          <tr><td>cold, first sight</td><td class="n">45</td><td class="n">222</td><td class="n">112.6 s</td></tr>
+          <tr><td>warm, same failure</td><td class="n win">1</td><td class="n win">8</td><td class="n win">27.4 s</td></tr>
+          <tr><td>another repository</td><td class="n">23</td><td class="n">25</td><td class="n">75.4 s</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note" style="margin-top:10px">The last row is the recursion paying off: a signature never seen
+      before, in a different repository, but the class that answered last time leads the fan-out. Its winner
+      needed two suite runs.</p>
+    </section>
+  </div>
+
+  <ul class="levels">
+    <li><span class="lv">level 0</span><span class="body"><b>Inside one fluidfix.</b> The taught vocabulary
+      proposes, the suite judges, a candidate that fails is rolled back byte-exact, and a refusal is reported
+      with the test that killed each attempt.</span></li>
+    <li><span class="lv">level 1</span><span class="body"><b>The judge over many.</b> A Life keyed by the
+      failure signature, read through the gate <span class="eyebrow" style="letter-spacing:.04em">w = t/(t+C)</span>.
+      Above the gate, one fluidfix. Absent, it abstains into the fan-out and learns the winner.</span></li>
+    <li><span class="lv">level 2</span><span class="body"><b>The same organ, coarser key.</b> Which classes
+      have ever answered. A new signature inherits the order of the fan-out from it, so the lesson crosses
+      repositories even though the signature does not.</span></li>
+    <li><span class="lv">level 3</span><span class="body"><b>A judge over judges.</b> The same table keyed by
+      repository instead of by file. Nothing in the structure changes, only the key — which is what makes it
+      recursive. This level is drawn here but has not been measured.</span></li>
+  </ul>
+
+  <footer>
+    Every number on this page comes from runs on 2026-09-18 recorded in <b>research/lake-2026-09-18</b> and
+    <b>research/life-fluidfix-2026-09-18</b>. The memory core is <b>life.py</b>, byte-identical in
+    <a href="https://github.com/devkancheti4-design/life-debugger">life-debugger</a> and
+    <a href="https://github.com/devkancheti4-design/living-fused">living-fused</a>, AGPL-3.0, the same licence
+    as fluidfix. · <a href="./">fluidfix</a> · <a href="lake.html">the lake</a> ·
+    <a href="router-law.html">the router law</a> · <a href="https://pypi.org/project/fluidfix/">pip install fluidfix</a>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height, CX = W * 0.5, CY = H * 0.5;
+  const css = k => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- the four scales. Numbers are from the recorded runs; the fleet level is structure only.
+  const SCALES = {
+    snippet: {
+      label: 'snippet', unit: 'test runs', guardWord: 'shape searches',
+      note: 'One program, one test. Fluidfix’s shapes sit in the Life Debugger’s free tier: 12 of 12 in-vocabulary faults repaired and verified, 3 of 3 outside it abstained.',
+      rings: ['the line', 'the shapes', 'the test', 'the Life'],
+      cold: {guards: 1, runs: 5, wall: '0.24 s', winner: 'get-without-default', target: 'cfg.get("port") → .get("port", 0)'},
+      warm: {guards: 1, runs: 1, wall: '0.07 s'},
+      memRows: 13, memBytes: 835, fan: 13, measured: true
+    },
+    file: {
+      label: 'one file', unit: 'suite runs', guardWord: 'fluidfixes',
+      note: 'One file of a real repository, 294 executed lines. A guard reading the whole file needs 117 suite runs; routed to one class it needs 8.',
+      rings: ['the line', 'the classes', 'the suite', 'the Life'],
+      cold: {guards: 13, runs: 8, wall: '36 s', winner: 'len-as-last-index', target: 'rich/table.py:638'},
+      warm: {guards: 1, runs: 8, wall: '27.4 s'},
+      memRows: 4, memBytes: 203, fan: 13, measured: true
+    },
+    repo: {
+      label: 'repository', unit: 'suite runs', guardWord: 'fluidfixes',
+      note: 'A whole repository, 53 files executed by the failing test. Cold it fans out over every territory and class; warm it dispatches one.',
+      rings: ['the files', 'the territories', 'the suite', 'the Life'],
+      cold: {guards: 45, runs: 222, wall: '112.6 s', winner: 'len-as-last-index', target: 'rich/table.py × class 7'},
+      warm: {guards: 1, runs: 8, wall: '27.4 s'},
+      memRows: 6, memBytes: 419, fan: 45, measured: true
+    },
+    fleet: {
+      label: 'fleet', unit: 'suite runs', guardWord: 'judges',
+      note: 'Many repositories, one judge over the judges, the same table keyed by repository. Drawn to show the structure: this level has not been measured.',
+      rings: ['the repositories', 'the judges', 'the suites', 'the Life'],
+      cold: {guards: 0, runs: 0, wall: '—', winner: '—', target: 'not measured'},
+      warm: {guards: 0, runs: 0, wall: '—'},
+      memRows: 0, memBytes: 0, fan: 24, measured: false
+    }
+  };
+  let scale = 'repo';
+  const S = () => SCALES[scale];
+
+  // ---- state
+  let phase = 'idle', t = 0, beat = 0, warm = false, learned = false;
+  let workers = [], winner = -1, incident = null;
+  const meters = {guards: 0, runs: 0, tokens: 0, rows: 0};
+  const logEl = document.getElementById('log');
+  const lines = [];
+
+  function say(html, cls) {
+    lines.push(`<div${cls ? ` class="${cls}"` : ''}>${html}</div>`);
+    while (lines.length > 7) lines.shift();
+    logEl.innerHTML = lines.join('');
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+
+  function setMeters() {
+    document.getElementById('m-guards').textContent = meters.guards;
+    document.getElementById('m-runs').textContent = meters.runs;
+    document.getElementById('m-tokens').textContent = meters.tokens;
+    document.getElementById('m-mem').innerHTML = `${meters.rows}<small>${meters.rows === 1 ? 'row' : 'rows'}</small>`;
+    document.getElementById('clock').textContent = learned
+      ? `memory ${S().memRows} rows, ${S().memBytes} bytes`
+      : 'memory empty';
+    document.getElementById('again').disabled = !learned;
+  }
+
+  function layoutWorkers(n) {
+    workers = [];
+    for (let i = 0; i < n; i++) {
+      const a = -Math.PI / 2 + (i / n) * Math.PI * 2;
+      workers.push({a, state: 'idle', pulse: 0});
+    }
+  }
+
+  function start(isWarm) {
+    const s = S();
+    if (!s.measured && isWarm) return;
+    warm = isWarm; phase = 'arrive'; t = 0; beat = 0; winner = -1;
+    meters.guards = 0; meters.runs = 0; meters.tokens = 0;
+    incident = {r: 1.12, a: -Math.PI / 2 + 0.6};
+    layoutWorkers(warm ? 1 : s.fan);
+    if (warm) {
+      say(`<b>the same failure again</b> — the gate reads confidence 0.800`, 'mem');
+    } else {
+      say(`<b>incident</b> — ${s.cold.target}`, 'bad');
+      say(`the Life has no key for this signature: <b>abstain, fan out</b>`);
+    }
+    if (reduced) { finish(); }
+  }
+
+  function finish() {
+    const s = S(), d = warm ? s.warm : s.cold;
+    phase = 'done';
+    meters.guards = d.guards; meters.runs = d.runs; meters.tokens = 0;
+    winner = warm ? 0 : Math.floor(s.fan * 0.42);
+    workers.forEach((w, i) => w.state = i === winner ? 'green' : 'refused');
+    if (!s.measured) {
+      say('this level is drawn, not measured', 'bad');
+    } else if (warm) {
+      say(`one fluidfix, <b>${d.runs} ${s.unit}</b>, ${d.wall} — and the test re-verified it`, 'ok');
+    } else {
+      say(`<b>${s.cold.winner}</b> answered in ${d.runs} ${s.unit}, ${d.wall}`, 'ok');
+      say(`the judge learns it: ${s.memRows} rows, ${s.memBytes} bytes`, 'mem');
+      learned = true; meters.rows = s.memRows;
+    }
+    setMeters();
+  }
+
+  // ---- drawing
+  function ring(r, color, alpha, dash) {
+    ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = color; ctx.lineWidth = 1;
+    if (dash) ctx.setLineDash(dash);
+    ctx.beginPath(); ctx.arc(CX, CY, r, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+  }
+
+  function draw() {
+    const paper = css('--shade'), ink = css('--ink'), ink2 = css('--ink-2'), rule = css('--rule-2');
+    const brass = css('--brass'), teal = css('--teal'), rust = css('--rust'), panel = css('--panel');
+    const s = S(), R = Math.min(W, H) * 0.42;
+    ctx.clearRect(0, 0, W, H); ctx.fillStyle = paper; ctx.fillRect(0, 0, W, H);
+
+    // rings, outermost first: the source of incidents, the workers, the judge, the memory
+    ring(R, rule, 0.9, [2, 6]);
+    ring(R * 0.74, rule, 0.85);
+    ring(R * 0.46, rule, 0.85);
+    ctx.font = '500 11px "IBM Plex Mono", monospace'; ctx.textAlign = 'center';
+    ctx.fillStyle = ink2;
+    ctx.fillText(s.rings[0].toUpperCase(), CX, CY - R - 14);
+    ctx.fillText(s.rings[1].toUpperCase(), CX, CY - R * 0.74 - 10);
+    ctx.fillText(s.rings[2].toUpperCase(), CX, CY - R * 0.46 - 10);
+
+    // the Life at the centre
+    const memPulse = phase === 'learn' || (warm && phase !== 'idle');
+    ctx.beginPath(); ctx.arc(CX, CY, R * 0.24, 0, Math.PI * 2);
+    ctx.fillStyle = panel; ctx.fill();
+    ctx.strokeStyle = brass; ctx.lineWidth = memPulse ? 2.4 : 1.2; ctx.stroke();
+    if (memPulse && !reduced) {
+      const k = (t * 1.6) % 1;
+      ctx.save(); ctx.globalAlpha = 1 - k; ctx.strokeStyle = brass; ctx.lineWidth = 1.4;
+      ctx.beginPath(); ctx.arc(CX, CY, R * 0.24 + k * 26, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+    }
+    ctx.fillStyle = brass; ctx.font = '700 13px "Syne", sans-serif';
+    ctx.fillText('THE LIFE', CX, CY - 4);
+    ctx.font = '400 11px "IBM Plex Mono", monospace'; ctx.fillStyle = ink2;
+    ctx.fillText(learned ? `${S().memRows} rows` : 'no key yet', CX, CY + 13);
+    ctx.fillText(learned ? 'recall, then re-verify' : 'abstains on absence', CX, CY + 28);
+
+    // the workers
+    const wr = R * 0.74;
+    workers.forEach((w, i) => {
+      const x = CX + Math.cos(w.a) * wr, y = CY + Math.sin(w.a) * wr;
+      const on = w.state !== 'idle';
+      let col = ink2;
+      if (w.state === 'green') col = teal;
+      else if (w.state === 'refused') col = rule;
+      else if (w.state === 'working') col = brass;
+      ctx.beginPath(); ctx.arc(x, y, w.state === 'green' ? 7 : 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = on ? col : panel; ctx.fill();
+      ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.stroke();
+      if (w.state === 'working' && !reduced) {
+        const k = ((t * 1.3 + i * 0.13) % 1);
+        ctx.save(); ctx.globalAlpha = 0.5 * (1 - k); ctx.strokeStyle = brass;
+        ctx.beginPath(); ctx.arc(x, y, 5 + k * 13, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+      }
+      if (w.state === 'green') {
+        ctx.strokeStyle = teal; ctx.globalAlpha = 0.65; ctx.setLineDash([3, 4]);
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(CX + Math.cos(w.a) * R * 0.25, CY + Math.sin(w.a) * R * 0.25);
+        ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+      }
+    });
+
+    // the incident
+    if (incident) {
+      const x = CX + Math.cos(incident.a) * R * incident.r, y = CY + Math.sin(incident.a) * R * incident.r;
+      ctx.fillStyle = rust; ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fill();
+      if (phase === 'arrive' && !reduced) {
+        ctx.save(); ctx.globalAlpha = 0.45; ctx.strokeStyle = rust;
+        ctx.beginPath(); ctx.arc(x, y, 6 + ((t * 2) % 1) * 14, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+      }
+    }
+
+    // the winner's verdict, written on the judge ring
+    if (phase === 'done' && s.measured) {
+      const d = warm ? s.warm : s.cold;
+      ctx.fillStyle = teal; ctx.font = '700 14px "Syne", sans-serif';
+      ctx.fillText(warm ? 'RECALLED, THEN RE-VERIFIED' : 'ONE PROGRAM PASSED — SHIP', CX, CY + R * 0.46 + 26);
+      ctx.fillStyle = ink2; ctx.font = '400 11.5px "IBM Plex Mono", monospace';
+      ctx.fillText(`${d.guards} ${s.guardWord} · ${d.runs} ${s.unit} · ${d.wall} · 0 tokens`, CX, CY + R * 0.46 + 44);
+    }
+
+    // idle hint
+    if (phase === 'idle') {
+      ctx.fillStyle = ink2; ctx.font = '400 12px "IBM Plex Mono", monospace';
+      ctx.fillText('press SEND to drop an incident into the ring', CX, CY + R * 0.46 + 30);
+    }
+    // corner caption
+    ctx.textAlign = 'left'; ctx.fillStyle = ink2; ctx.font = '500 11px "IBM Plex Mono", monospace';
+    ctx.fillText(`SCALE: ${s.label.toUpperCase()}`, 18, 24);
+    ctx.textAlign = 'right';
+    ctx.fillText(s.measured ? 'MEASURED 2026-09-18' : 'STRUCTURE ONLY', W - 18, 24);
+    ctx.textAlign = 'center';
+  }
+
+  // ---- beats
+  function step(dt) {
+    if (phase === 'idle' || phase === 'done') return;
+    t += dt; beat += dt;
+    const s = S();
+    if (phase === 'arrive') {
+      incident.r = Math.max(0.78, incident.r - dt * 0.55);
+      if (beat > 1.1) {
+        beat = 0; phase = 'search';
+        if (warm) {
+          workers[0].state = 'working';
+          say('the gate answers: one fluidfix, no fan-out', 'mem');
+        } else {
+          say(`${s.fan} fluidfixes dispatched, one per territory and class`);
+        }
+      }
+    } else if (phase === 'search') {
+      const share = Math.min(1, beat / (warm ? 0.8 : 1.6));
+      const lit = Math.floor(share * workers.length);
+      workers.forEach((w, i) => { if (i < lit && w.state === 'idle') w.state = 'working'; });
+      meters.guards = Math.max(meters.guards, lit);
+      meters.runs = Math.floor(share * (warm ? s.warm.runs : s.cold.runs));
+      setMeters();
+      if (beat > (warm ? 1.0 : 2.0)) { beat = 0; phase = 'learn'; }
+    } else if (phase === 'learn') {
+      if (beat > 0.9) finish();
+    }
+  }
+
+  // ---- controls
+  const scalesEl = document.getElementById('scales');
+  Object.entries(SCALES).forEach(([key, v]) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.id = 'scale-' + key; b.textContent = v.label;
+    b.setAttribute('aria-pressed', String(key === scale));
+    b.addEventListener('click', () => {
+      scale = key; learned = false; phase = 'idle'; incident = null; workers = [];
+      meters.guards = meters.runs = meters.rows = 0;
+      lines.length = 0; logEl.innerHTML = '';
+      [...scalesEl.children].forEach(c => c.setAttribute('aria-pressed', String(c.id === 'scale-' + key)));
+      document.getElementById('scale-note').textContent = SCALES[key].note;
+      say(`scale: <b>${v.label}</b> — same rings, different key`);
+      setMeters();
+    });
+    scalesEl.appendChild(b);
+  });
+  document.getElementById('scale-note').textContent = SCALES[scale].note;
+  document.getElementById('send').addEventListener('click', () => start(false));
+  document.getElementById('again').addEventListener('click', () => start(true));
+  document.getElementById('forget').addEventListener('click', () => {
+    learned = false; meters.rows = 0; phase = 'idle'; incident = null; workers = [];
+    meters.guards = meters.runs = 0; setMeters();
+    say('memory cleared — the next incident is cold again', 'mem');
+  });
+
+  // opens with the cold repository incident already resolved, so the first frame shows the instrument working
+  say('scale: <b>repository</b> — rich/table.py, the fault one guard never found', '');
+  start(false); if (!reduced) { for (let i = 0; i < 12; i++) step(0.34); }
+  setMeters();
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    step(dt); draw(); requestAnimationFrame(frame);
+  }
+  draw(); requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
