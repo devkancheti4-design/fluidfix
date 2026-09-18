@@ -54,6 +54,46 @@ it asserts the break turns the suite red — which is how the gap surfaced. A te
 could the fault be found and repaired. My first taught signal was also wrong (`[A-Z_]+` excludes the digit
 in `WAVE1_CLASSES`), and it showed up as a refusal, never as a wrong repair.
 
+## Attacked — 2026-09-18, live, one at a time (`attack.py`, `attack_results.json`)
+
+A design is only flawless until someone measures it. Four attacks; two found real holes.
+
+| attack | what it does | result |
+|---|---|---|
+| **mutation sweep** | break the memory at every line a shipped class can touch | 1 repaired byte-exact, **0 wrong-green**, 1 fault its own suite cannot see |
+| **broken judge** | corrupt the *suite*, leave the memory correct | **it rewrote a correct memory** to satisfy the lie, in 2 suite runs |
+| **poison** | teach the head a class that repairs nothing, then break the memory | wasted 0 suite runs, widened, repaired byte-exact, recall self-healed |
+| **determinism** | the same break three times | identical winner, bytes and memory hash (`67211b08`) each time |
+
+### The two holes
+
+**A corrupted judge corrupts the memory.** With `test_dispatch.py` altered to assert the opposite of its
+gate test, the loop obediently rewrote the correct memory — `return conf >= THRESH` became `conf > THRESH`
+— and called it a repair, because the suite went green. This is not a bug in the laws; it is the price of
+the rule that makes them safe. The suite is the only authority, so the system is exactly as correct as its
+tests, and nothing in the loop can tell a broken judge from a broken memory. A repair that *reverts* a line
+the tests previously passed is the signature to look for, and the loop does not look for it.
+
+**A memory's suite under-constrains its memory.** `WAVE1_CLASSES = 2 → 3` leaves every test green: the
+memory silently carries more classes in wave 1 than it should, and no level of the loop can see it. This is
+the same shape as the earlier finding that the cap `2 → 1` passed until a test pinned it. A memory can only
+defend the properties someone thought to write down.
+
+### What held
+
+No wrong-green repair appeared in the sweep: every break was either repaired to the original bytes or left
+alone. Poisoning is cheap and self-correcting, because the recency-dominant memory replaces the wrong class
+as soon as a real repair lands, and a class that matches no line in the territory refuses for free. The
+whole loop is deterministic down to the memory's hash.
+
+### So: is it flawless?
+
+No. It is *sound in the direction that matters* — in these runs it never shipped a wrong memory — and it is
+**bounded above by its tests in both directions**: it cannot see a fault its suite does not pin, and it will
+happily serve a suite that lies. Every level of the recursion inherits that ceiling, because every level
+judges the same way. Making the loop stronger does not mean adding levels; it means writing the tests that
+pin the properties each memory is supposed to have.
+
 ## What is not claimed
 
 - Level 0 is cited from the recorded runs in `research/lake-2026-09-18`, not re-run here; levels 1 to 3 are

@@ -1,0 +1,12 @@
+ATTACK 1 — mutation sweep over the memory
+  line  20 return conf >= THRESH                          >= -> >        -> byte-exact
+ATTACK 2 — the judge itself is broken
+  suite corrupted, memory correct -> REWROTE A CORRECT MEMORY to satisfy the corrupted suite
+ATTACK 3 — poison the head's memory
+  poisoned wave 1 cost 0 suite runs, then widened and repaired (byte-exact True); memory now recalls kind:0
+ATTACK 4 — determinism
+  three identical breaks -> same winner, bytes and memory hash: True
+
+SWEEP: {"cases": 4, "byte_exact": 1, "wrong_green": 0, "refused": 0, "invisible_to_the_suite": 3}
+
+ATTACKS_DONE in 15.8s

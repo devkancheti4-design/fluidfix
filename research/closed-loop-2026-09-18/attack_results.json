@@ -1,0 +1,73 @@
+{
+ "sweep": [
+  {
+   "line": 15,
+   "code": "WAVE1_CLASSES = 2",
+   "break": "2 -> 3",
+   "outcome": "INVISIBLE",
+   "note": "the memory's own suite does not catch this",
+   "suite_runs": 0
+  },
+  {
+   "line": 20,
+   "code": "return conf >= THRESH",
+   "break": ">= -> >",
+   "outcome": "byte-exact",
+   "winner_class": 0,
+   "suite_runs": 2,
+   "shipped": null
+  }
+ ],
+ "broken_judge": {
+  "suite_red": true,
+  "winner_class": 0,
+  "verdict": "REWROTE A CORRECT MEMORY to satisfy the corrupted suite",
+  "lines_changed_in_the_memory": [
+   "20: return conf >= THRESH -> return conf > THRESH"
+  ],
+  "suite_runs": 2
+ },
+ "poison": {
+  "poisoned_with": "kind:12",
+  "wave1_wasted_runs": 0,
+  "wave1_repaired": false,
+  "widened_winner": 0,
+  "byte_exact_after_widening": true,
+  "recall_after": "kind:0",
+  "history": [
+   "kind:12",
+   "kind:0"
+  ]
+ },
+ "determinism": {
+  "runs": [
+   {
+    "winner": 0,
+    "byte_exact": true,
+    "suite_runs": 2,
+    "life_sha": "67211b087f6d2f12"
+   },
+   {
+    "winner": 0,
+    "byte_exact": true,
+    "suite_runs": 2,
+    "life_sha": "67211b087f6d2f12"
+   },
+   {
+    "winner": 0,
+    "byte_exact": true,
+    "suite_runs": 2,
+    "life_sha": "67211b087f6d2f12"
+   }
+  ],
+  "identical": true
+ },
+ "seconds": 15.5,
+ "sweep_tally": {
+  "cases": 2,
+  "byte_exact": 1,
+  "wrong_green": 0,
+  "refused": 0,
+  "invisible_to_the_suite": 1
+ }
+}
