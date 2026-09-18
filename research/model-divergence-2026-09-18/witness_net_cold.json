@@ -1,0 +1,207 @@
+{
+ "cases": 12,
+ "budget": 24,
+ "memory": "cold",
+ "rows": [
+  {
+   "spec": "backoff",
+   "arg": 0,
+   "threshold": 5000,
+   "fixed_found": false,
+   "fixed_evals": 25,
+   "net_found": true,
+   "net_evals": 38,
+   "net_nodes": 17,
+   "net_how": "localised",
+   "net_witness": [
+    5001,
+    1
+   ]
+  },
+  {
+   "spec": "between",
+   "arg": 0,
+   "threshold": 50000,
+   "fixed_found": false,
+   "fixed_evals": 62,
+   "net_found": true,
+   "net_evals": 41,
+   "net_nodes": 20,
+   "net_how": "localised",
+   "net_witness": [
+    50001,
+    1,
+    10
+   ]
+  },
+  {
+   "spec": "bytes_human",
+   "arg": 0,
+   "threshold": 5000000,
+   "fixed_found": false,
+   "fixed_evals": 19,
+   "net_found": true,
+   "net_evals": 40,
+   "net_nodes": 24,
+   "net_how": "localised",
+   "net_witness": [
+    5000001
+   ]
+  },
+  {
+   "spec": "chunk",
+   "arg": 1,
+   "threshold": 5000,
+   "fixed_found": false,
+   "fixed_evals": 54,
+   "net_found": true,
+   "net_evals": 29,
+   "net_nodes": 23,
+   "net_how": "localised",
+   "net_witness": [
+    [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    5001
+   ]
+  },
+  {
+   "spec": "clamp",
+   "arg": 0,
+   "threshold": 500,
+   "fixed_found": false,
+   "fixed_evals": 76,
+   "net_found": true,
+   "net_evals": 30,
+   "net_nodes": 24,
+   "net_how": "localised",
+   "net_witness": [
+    501,
+    1,
+    10
+   ]
+  },
+  {
+   "spec": "clip_exclusive",
+   "arg": 0,
+   "threshold": 500,
+   "fixed_found": false,
+   "fixed_evals": 39,
+   "net_found": true,
+   "net_evals": 27,
+   "net_nodes": 21,
+   "net_how": "localised",
+   "net_witness": [
+    501,
+    5
+   ]
+  },
+  {
+   "spec": "clip_index",
+   "arg": 0,
+   "threshold": 50000,
+   "fixed_found": false,
+   "fixed_evals": 50,
+   "net_found": true,
+   "net_evals": 30,
+   "net_nodes": 24,
+   "net_how": "localised",
+   "net_witness": [
+    50001,
+    5
+   ]
+  },
+  {
+   "spec": "columns",
+   "arg": 1,
+   "threshold": 5000,
+   "fixed_found": false,
+   "fixed_evals": 43,
+   "net_found": true,
+   "net_evals": 30,
+   "net_nodes": 24,
+   "net_how": "localised",
+   "net_witness": [
+    [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    5001
+   ]
+  },
+  {
+   "spec": "countdown",
+   "arg": 0,
+   "threshold": 5000,
+   "fixed_found": false,
+   "fixed_evals": 10,
+   "net_found": true,
+   "net_evals": 29,
+   "net_nodes": 23,
+   "net_how": "localised",
+   "net_witness": [
+    5001
+   ]
+  },
+  {
+   "spec": "insert_sorted",
+   "arg": 1,
+   "threshold": 5000,
+   "fixed_found": false,
+   "fixed_evals": 45,
+   "net_found": true,
+   "net_evals": 29,
+   "net_nodes": 23,
+   "net_how": "localised",
+   "net_witness": [
+    [
+     1,
+     2,
+     2,
+     3
+    ],
+    5001
+   ]
+  },
+  {
+   "spec": "is_leap",
+   "arg": 0,
+   "threshold": 5000,
+   "fixed_found": false,
+   "fixed_evals": 27,
+   "net_found": true,
+   "net_evals": 30,
+   "net_nodes": 24,
+   "net_how": "localised",
+   "net_witness": [
+    5001
+   ]
+  },
+  {
+   "spec": "nth_from_end",
+   "arg": 1,
+   "threshold": 500,
+   "fixed_found": false,
+   "fixed_evals": 39,
+   "net_found": true,
+   "net_evals": 30,
+   "net_nodes": 24,
+   "net_how": "localised",
+   "net_witness": [
+    [
+     1,
+     2,
+     3
+    ],
+    501
+   ]
+  }
+ ]
+}

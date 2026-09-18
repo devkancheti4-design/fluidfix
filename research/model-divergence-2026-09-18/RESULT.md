@@ -243,6 +243,45 @@ already have and no ground truth: draw twenty times, run each program over a poo
 tests, and look at the inputs your own samples disagree on. On this corpus one uncertain model recovered 17
 of 19, and the three together recovered all of them.
 
+## Growing the input space instead of fixing it (`witness_net.py`)
+
+Everything above rests on `differ`'s pool, and that pool is **a plan made before any work is done**: the
+suite's literals, local mutations, midpoints. Its blind spot is measured and documented — a disagreement far
+from anything the tests mention is unreachable by construction (`../certify-2026-09-18`: 0 of 14), which is
+the `w > 20` against `w > 120` case differ's own docstring warns about.
+
+The net's growth rule fits this exactly, and it is the *same* rule `../lake-2026-09-18/net.py` uses to hunt
+a fault across a repository — it reads rulings, not a plan:
+
+- **REFUTED** — no input in this region separates the two programs → grow **wider**: the next magnitude out,
+  then the next argument position
+- **WITNESS** — they disagree here → grow **deeper**: bisect between a point the suite proves they agree on
+  and the witness, until the boundary is located
+
+Twelve rivals, each differing from a correct implementation only beyond a threshold placed **above every
+value the suite mentions**, so every rival still passes the tests. That is the blind spot and nothing else.
+
+| arm | witnesses found | evaluations |
+|---|---|---|
+| FIXED pool (today) | **0 of 12** | 489 |
+| NET, cold | **12 of 12** | 383 |
+| NET, warm | 12 of 12 | 347 |
+
+**12 of 12 against 0 of 12, for fewer evaluations than the fixed pool spends missing.** And the bisection
+returns the boundary exactly: a threshold planted at 500 comes back as 501, at 5,000 as 5,001, at 5,000,000
+as 5,000,001 — in all twelve.
+
+**The memory, honestly, bought almost nothing**: 347 evaluations warm against 383 cold, a 9% saving, with
+slightly *more* nodes. The reason is the same gap recorded in `../lake-2026-09-18` §4d. A magnitude is only
+worth remembering if faults recur at similar magnitudes, and here each case drew its threshold
+independently, so the memory ended dominated by a single rung that was wrong for most cases. **The growth
+rule is the valuable half; the memory key is still the weak one.**
+
+**What it costs to believe this.** The net's advantage comes from a prior wired into it — a geometric
+magnitude ladder over numeric arguments. That is exactly right for a drifted bound and useless for a defect
+that is not magnitude-shaped: a particular string, a specific list structure, one wrong key. This result
+says a growing search beats a fixed pool *on the shape it was built for*, and says nothing about the others.
+
 ## So, honestly
 
 **Yes, and the subject is the specification, not the model.** With no access to weights, training data or
@@ -273,4 +312,7 @@ interpretability, and calling it that would not survive the first question from 
   elsewhere were partly luck.
 - The AST features are hand-chosen and shallow. A negative result on them is not a negative result on
   structural fingerprinting in general.
+- `witness_net.py` is twelve synthetic rivals of one shape (a threshold above the suite's range), not
+  found defects. The 0 of 12 for the fixed pool is by construction — that is the point of the case, not a
+  surprise — so what the row actually measures is the net's cost, and the exactness of its boundary.
 - Nothing here changes the product. It is `differ.harvest_seeds`/`build_pool`/`evaluate`, unmodified.
