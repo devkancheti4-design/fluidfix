@@ -1,0 +1,42 @@
+{
+ "taught": 3,
+ "bugs": 240,
+ "free": 210,
+ "table": 52,
+ "table_rows": 132,
+ "per_shape": {
+  "additive": [
+   30,
+   30
+  ],
+  "augmented": [
+   30,
+   30
+  ],
+  "ifnot": [
+   30,
+   30
+  ],
+  "lenm1": [
+   0,
+   30
+  ],
+  "literal": [
+   30,
+   30
+  ],
+  "mutating": [
+   30,
+   30
+  ],
+  "separator": [
+   30,
+   30
+  ],
+  "strictness": [
+   30,
+   30
+  ]
+ },
+ "seconds": 14.9
+}
