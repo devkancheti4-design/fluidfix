@@ -1,0 +1,69 @@
+{
+ "repo": "python-sortedcontainers",
+ "rows": [
+  {
+   "sha": "7dc426c95a",
+   "file": "sortedcontainers/sortedlist.py",
+   "subject": "Fix update() ordering to be more consistent with add() ordering (#159)",
+   "one_line": false,
+   "outcome": "REFUSED",
+   "suite_runs": 85
+  },
+  {
+   "sha": "2b037039bb",
+   "file": "sortedcontainers/sorteddict.py",
+   "subject": "Fix for issue #147 -- Stop caching dict methods using super",
+   "one_line": false,
+   "outcome": "REFUSED",
+   "suite_runs": 8
+  },
+  {
+   "sha": "be06d8d1b2",
+   "file": "sortedcontainers/sortedset.py",
+   "outcome": "BASELINE-GREEN"
+  },
+  {
+   "sha": "53ab610cc4",
+   "file": "sortedcontainers/sortedlist.py",
+   "outcome": "BASELINE-ERROR"
+  },
+  {
+   "sha": "c04ff65317",
+   "file": "sortedcontainers/sortedlist.py",
+   "outcome": "BASELINE-ERROR"
+  },
+  {
+   "sha": "b3cae1040a",
+   "file": "sortedcontainers/sortedlist.py",
+   "outcome": "BASELINE-ERROR"
+  },
+  {
+   "sha": "fe780f5b89",
+   "file": "sortedcontainers/sorteddict.py",
+   "subject": "Fixes for Python 2.6, 3.2, 3.3, and 3.4",
+   "one_line": false,
+   "outcome": "NO-OBSERVATIONS",
+   "suite_runs": 0
+  },
+  {
+   "sha": "1c6a43a5f3",
+   "file": "sortedcontainers/sortedset.py",
+   "outcome": "BASELINE-ERROR"
+  },
+  {
+   "sha": "367c64a06f",
+   "file": "sortedcontainers/sortedlist.py",
+   "outcome": "BASELINE-ERROR"
+  },
+  {
+   "sha": "a04f4a6818",
+   "file": "sortedcontainers/sorteddict.py",
+   "outcome": "BASELINE-ERROR"
+  },
+  {
+   "sha": "9e81697c60",
+   "file": "sortedcontainers/sorteddict.py",
+   "outcome": "BASELINE-ERROR"
+  }
+ ]
+}

@@ -62,6 +62,74 @@ history", where idioms recur far more. That experiment still needs one team's re
 
 ---
 
+# RETEST — 2026-09-19, later the same day
+
+Asked to retest, and the retest broke my own result as well as the original claim. **Two things above are
+wrong and one of them is the headline.**
+
+## Wrong 1 — the commit filter was biased, and biased the other way
+
+The first pass demanded a commit touch **exactly one file**. A well-made bug fix changes the code *and ships
+a regression test*, so that filter excluded every properly-tested fix and kept the ones too trivial to test.
+Half the survivors being typos should have been the clue.
+
+Re-mined allowing test files alongside the one source file:
+
+| | commits kept | one-line share |
+|---|---|---|
+| first pass — exactly one file in total | 289 | 46% |
+| **corrected — one source file, tests allowed** | **565** | **38%** |
+| … of those, shipping a regression test | 198 | **24%** |
+| … no test shipped | 367 | **45%** |
+
+**It discarded 198 fixes that came with their own regression test** — and those are nearly half as likely
+to be one-line. The filter selected for triviality, so the 46% was inflated, not deflated.
+
+## Wrong 2 — "produces the committed line exactly" is the wrong question
+
+fluidfix does not have to reproduce the maintainer's characters. It has to produce a line **the tests
+accept**. Measuring against the committed text asks it to match a style, and undercounts by an unknown
+amount. So the 2-of-134 figure — and the "under 2% on real history" conclusion drawn from it — does not
+measure what it claimed to.
+
+## The right experiment, and why it did not run
+
+The 198 tested fixes carry their own judge, so the whole thing is runnable: check out the parent commit,
+take **only the test files** from the fix, confirm the suite goes red, hand the source file to the guard,
+and let that test decide. `run_real.py` does exactly this.
+
+It is blocked by something duller than a result: **old revisions do not collect under a modern toolchain.**
+
+```
+ERROR tests/test_basic.py - pytest.PytestRemovedIn10Warning: Passing a non-Co...
+Interrupted: 1 error during collection
+```
+
+Coverage therefore comes back empty, the packet has no executed lines, and the guard returns
+NO-OBSERVATIONS having run **zero suite runs** — which is a harness failure wearing the costume of a
+refusal. 22 of 23 click cases were exactly that, and an earlier run of the same file produced the same
+shape for a different reason (I had not installed `pytest-cov` at all).
+
+**Genuinely judged, in the end: 2 cases.** Both sortedcontainers, both real searches (85 and 8 suite runs),
+both refused, and neither was a one-line fix. Two cases is not a measurement.
+
+## So the honest state of shape coverage on real history
+
+| figure | status |
+|---|---|
+| 58%, from our seeded mutations | **withdrawn** — the seeds were shapes chosen in advance |
+| "under 2% on real history" | **withdrawn** — rested on exact-line matching, the wrong question |
+| the real number | **unknown** |
+
+Both the optimistic number and my own pessimistic one are gone. What remains is a method that works and an
+environment problem that blocks it: replaying history needs an **era-appropriate toolchain**, a pytest
+contemporary with each commit, which is a day of work and not a hard one.
+
+Until that is done, **every claim resting on shape coverage is unsupported in both directions** — including
+the ones I marked "weak" above.
+
+---
+
 ## Claim 1 — a gate on every merge
 
 > *The same six checks run against a pull request instead of a local tree.*
