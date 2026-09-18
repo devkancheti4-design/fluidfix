@@ -1,0 +1,5 @@
+rich: 49 fixes from 2022 onward that ship their own regression test
+environment: pip install -e . -> ok
+
+  # commit      file                            1L  outcome
+  1 7ef2d05ca8  rich/markdown.py                 ·  REFUSED  (29 runs, 72 obs)

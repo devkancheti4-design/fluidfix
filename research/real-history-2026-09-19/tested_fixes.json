@@ -1,0 +1,4988 @@
+[
+ {
+  "repo": "arrow",
+  "sha": "02e3b1b4c56b905a13f7ae3f552728a5a17fc5bd",
+  "subject": "Fix \"ago\" Greek translation and month typo (#1184)",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/test_locales.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "    past = \"{0} \u03c0\u03c1\u03b9\u03bd\"",
+   "        \"\u039c\u03b1\u03ca\","
+  ],
+  "plus": [
+   "    past = \"\u03c0\u03c1\u03b9\u03bd \u03b1\u03c0\u03cc {0}\"",
+   "        \"\u039c\u03b1\u0390\","
+  ],
+  "one_line": false,
+  "date": "2024-08-25T17:41:56-07:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "8cac5fabf588b19818f21c0f90c55b851b8fefe6",
+  "subject": "Spelling Fixes (#1131)",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/test_arrow.py",
+   "tests/test_parser.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "        the time difference relative to the attrbiutes of the",
+   "                \"Input string not valid. Note: Some locales do not support the week granulairty in Arrow. \""
+  ],
+  "plus": [
+   "        the time difference relative to the attributes of the",
+   "                \"Input string not valid. Note: Some locales do not support the week granularity in Arrow. \""
+  ],
+  "one_line": false,
+  "date": "2022-10-18T19:35:10-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "cdc8d337835ab4132e0a3f3de1f73581eaa42e81",
+  "subject": "Fix Issues and Add Tests for Danish Language (#1091)",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/test_locales.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "    future = \"efter {0}\"",
+   "        \"seconds\": \"{0} et par sekunder\","
+  ],
+  "plus": [
+   "    future = \"om {0}\"",
+   "        \"seconds\": \"{0} sekunder\",",
+   "        \"week\": \"en uge\",",
+   "        \"weeks\": \"{0} uger\",",
+   "    def _ordinal_number(self, n: int) -> str:",
+   "        return f\"{n}.\"",
+   ""
+  ],
+  "one_line": false,
+  "date": "2022-02-13T23:04:52-05:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "e43524088f78efacb425524445a886600660d854",
+  "subject": "Fix ordinals for norwegian languages (#1074)",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/test_locales.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "        \"month\": \"en m\u00e5nad\","
+  ],
+  "plus": [
+   "        \"week\": \"en uke\",",
+   "        \"weeks\": \"{0} uker\",",
+   "    def _ordinal_number(self, n: int) -> str:",
+   "        return f\"{n}.\"",
+   "",
+   "        \"week\": \"ei veke\",",
+   "        \"weeks\": \"{0} veker\",",
+   "        \"month\": \"ein m\u00e5nad\",",
+   "    def _ordinal_number(self, n: int) -> str:",
+   "        return f\"{n}.\"",
+   ""
+  ],
+  "one_line": false,
+  "date": "2022-01-05T21:29:06Z"
+ },
+ {
+  "repo": "arrow",
+  "sha": "baebfff4d1bb64b9cbf9be10a625c69abc5a1af7",
+  "subject": "Incorrect plural for seconds in Russian (#1056) (#1057)",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/test_arrow.py",
+   "tests/test_locales.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        \"second\": \"\u0412\u0442\u043e\u0440\u043e\u0439\",",
+   "        \"seconds\": \"{0} \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0441\u0435\u043a\u0443\u043d\u0434\","
+  ],
+  "plus": [
+   "        \"second\": \"\u0441\u0435\u043a\u0443\u043d\u0434\u0430\",",
+   "        \"seconds\": {",
+   "            \"singular\": \"{0} \u0441\u0435\u043a\u0443\u043d\u0434\u0443\",",
+   "            \"dual\": \"{0} \u0441\u0435\u043a\u0443\u043d\u0434\u044b\",",
+   "            \"plural\": \"{0} \u0441\u0435\u043a\u0443\u043d\u0434\",",
+   "        },"
+  ],
+  "one_line": false,
+  "date": "2021-10-28T23:35:25-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "b8a9df754e81a2a5f2c8d5efd42d3567cca5e21c",
+  "subject": "Fix floats appearing in Humanize output for locales that override _format_timeframe (#986)",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/test_arrow.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "        humanized = self._format_timeframe(timeframe, delta)",
+   "            self._format_timeframe(timeframe, delta) for timeframe, delta in timeframes",
+   "        return self.timeframes[key].format(trunc(abs(delta)))",
+   "            last_humanized = self._format_timeframe(timeframe, delta)"
+  ],
+  "plus": [
+   "        humanized = self._format_timeframe(timeframe, trunc(delta))",
+   "            self._format_timeframe(timeframe, trunc(delta))",
+   "            for timeframe, delta in timeframes",
+   "        return self.timeframes[key].format(abs(delta))",
+   "            last_humanized = self._format_timeframe(timeframe, trunc(delta))"
+  ],
+  "one_line": false,
+  "date": "2021-06-23T23:36:50-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "47c715d9aa9b01aa6681f64e4c936070cc217944",
+  "subject": "Swedish locale fix (#935)",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/test_locales.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        \"seconds\": \"{0} n\u00e5gra sekunder\","
+  ],
+  "plus": [
+   "        \"seconds\": \"{0} sekunder\","
+  ],
+  "one_line": true,
+  "date": "2021-03-02T14:54:51-05:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "f885241eb7e954a79d95a59b085fbe310c537c1c",
+  "subject": "Fix MAX_TIMESTAMP on Windows (#882)",
+  "file": "arrow/constants.py",
+  "tests": [
+   "tests/test_parser.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "import os",
+   "MAX_TIMESTAMP = (",
+   "    datetime(3001, 1, 18, 23, 59, 59, 999999) if os.name == \"nt\" else datetime.max",
+   ").timestamp()",
+   "MAX_TIMESTAMP_MS = MAX_TIMESTAMP * 1000",
+   "MAX_TIMESTAMP_US = MAX_TIMESTAMP * 1000000"
+  ],
+  "plus": [
+   "import sys",
+   "try:",
+   "    # Get max timestamp. Works on POSIX-based systems like Linux and macOS,",
+   "    # but will trigger an OverflowError, ValueError, or OSError on Windows",
+   "    MAX_TIMESTAMP = datetime.max.timestamp()",
+   "except (OverflowError, ValueError, OSError):  # pragma: no cover",
+   "    # Fallback for Windows if initial max timestamp call fails",
+   "    # Must get max value of ctime on Windows based on architecture (x32 vs x64)",
+   "    # https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/ctime-ctime32-ctime64-wctime-wctime32-wctime64",
+   "    is_64bits = sys.maxsize > 2 ** 32",
+   "    MAX_TIMESTAMP = (",
+   "        datetime(3000, 12, 31, 23, 59, 59, 999999).timestamp()",
+   "        if is_64bits",
+   "        else datetime(2038, 1, 18, 23, 59, 59, 999999).timestamp()",
+   "    )",
+   "",
+   "MAX_TIMESTAMP_MS = MAX_TIMESTAMP * 1e3",
+   "MAX_TIMESTAMP_US = MAX_TIMESTAMP * 1e6"
+  ],
+  "one_line": false,
+  "date": "2020-11-18T11:14:07-05:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "fe9602e2171d49d0d95d775e71f9735c3aaf92e4",
+  "subject": "Correct mistakes in Japanese locale (#873)",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/test_locales.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "        \"second\": \"\u4e8c\u756a\u76ee\u306e\",",
+   "        \"seconds\": \"{0}\u6570\u79d2\","
+  ],
+  "plus": [
+   "    and_word = \"\"",
+   "        \"second\": \"1\u79d2\",",
+   "        \"seconds\": \"{0}\u79d2\","
+  ],
+  "one_line": false,
+  "date": "2020-10-22T11:17:53+01:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "da6ed8c028136ae2b4421e156d3cd65ecbf5efae",
+  "subject": "Fix range behaviour at end of month/quarter/year frames (#842) (#844)",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/test_arrow.py"
+  ],
+  "hunks": 3,
+  "minus": [],
+  "plus": [
+   "        original_day = start.day",
+   "        day_is_clipped = False",
+   "            if frame in [\"month\", \"quarter\", \"year\"] and current.day < original_day:",
+   "                day_is_clipped = True",
+   "",
+   "            if day_is_clipped and not cls._is_last_day_of_month(current):",
+   "                current = current.replace(day=original_day)",
+   "",
+   "    @staticmethod",
+   "    def _is_last_day_of_month(date):",
+   "        return date.day == calendar.monthrange(date.year, date.month)[1]",
+   ""
+  ],
+  "one_line": false,
+  "date": "2020-09-26T21:01:31+01:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "15ed80b54f29865f87f79f6af2d2c3119fe4d047",
+  "subject": "Fix up MK locale and add tests.",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/test_locales.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        \"seconds\": \"{0} \u0441\u0435\u043a\u0443\u043d\u0434\u0438\","
+  ],
+  "plus": [
+   "        \"seconds\": [\"{0} \u0441\u0435\u043a\u0443\u043d\u0434\u0430\", \"{0} \u0441\u0435\u043a\u0443\u043d\u0434\u0438\", \"{0} \u0441\u0435\u043a\u0443\u043d\u0434\u0438\"],"
+  ],
+  "one_line": true,
+  "date": "2020-06-05T15:45:57Z"
+ },
+ {
+  "repo": "arrow",
+  "sha": "a593b067235bdb981ed3706065ca19c500e25150",
+  "subject": "Style fixes, update test, documentation additions",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/arrow_tests.py"
+  ],
+  "hunks": 14,
+  "minus": [
+   "                    delta = delta % self._SECS_PER_YEAR",
+   "                    delta = delta % self._SECS_PER_MONTH",
+   "                    delta = delta % self._SECS_PER_WEEK",
+   "                    delta = delta % self._SECS_PER_DAY",
+   "                    delta = delta % self._SECS_PER_HOUR",
+   "                    delta = delta % self._SECS_PER_MINUTE",
+   "                for index in range(len(timeframes)):",
+   "                    gran, delta = timeframes[index]"
+  ],
+  "plus": [
+   "                    delta %= self._SECS_PER_YEAR",
+   "",
+   "                    delta %= self._SECS_PER_MONTH",
+   "",
+   "                    delta %= self._SECS_PER_WEEK",
+   "",
+   "                    delta %= self._SECS_PER_DAY",
+   "",
+   "                    delta %= self._SECS_PER_HOUR",
+   "",
+   "                    delta %= self._SECS_PER_MINUTE",
+   "",
+   "",
+   "",
+   "                for index, (_, delta) in enumerate(timeframes):"
+  ],
+  "one_line": false,
+  "date": "2019-12-09T13:04:46-05:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "ce9e5b420cb3f59c2fad90fd052330539b7ea93a",
+  "subject": "Fixed linting failures",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "        starting_punctuation_bound = r\"(?<!\\S\\S)(?<![^,.;:?!\\\"'`\\[\\]{}(\" \\",
+   "                                     r\")<>\\s])(\\b|^)\"",
+   "        bounded_fmt_pattern = r\"{}{}{}\".format(starting_punctuation_bound,",
+   "                                               final_fmt_pattern,",
+   "                                               ending_punctuation_bound)"
+  ],
+  "plus": [
+   "        starting_punctuation_bound = (",
+   "            r\"(?<!\\S\\S)(?<![^,.;:?!\\\"'`\\[\\]{}(\" r\")<>\\s])(\\b|^)\"",
+   "        )",
+   "        bounded_fmt_pattern = r\"{}{}{}\".format(",
+   "            starting_punctuation_bound, final_fmt_pattern, ending_punctuation_bound",
+   "        )"
+  ],
+  "one_line": false,
+  "date": "2019-11-25T12:16:25-05:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "f434f7a6b54e41106d20991a176994c6a62ad9e9",
+  "subject": "Fixed issue #701",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "        # Reference: https://stackoverflow.com/q/14232931/3820660",
+   "        starting_word_boundary = r\"(?<![\\S])\"",
+   "        ending_word_boundary = r\"(?![\\S])\"",
+   "        bounded_fmt_pattern = r\"{}{}{}\".format(",
+   "            starting_word_boundary, final_fmt_pattern, ending_word_boundary",
+   "        )"
+  ],
+  "plus": [
+   "",
+   "        # Certain punctuation before or after the target pattern such as",
+   "        # \"1998-09-12,\" is permitted. For the full list of valid punctuation,",
+   "        # see the documentation.",
+   "",
+   "        starting_punctuation_bound = r\"(?<!\\S\\S)(?<!\\s[^,.;:?!\\\"'`\\[\\]{}(\" \\",
+   "                                     r\")<>\\s])(\\b|^)\"",
+   "        ending_punctuation_bound = r\"(?=[,.;:?!\\\"'`\\[\\]{}()<>]?(?!\\S))\"",
+   "        bounded_fmt_pattern = r\"{}{}{}\".format(starting_punctuation_bound,",
+   "                                               final_fmt_pattern,",
+   "                                               ending_punctuation_bound)"
+  ],
+  "one_line": false,
+  "date": "2019-11-24T21:27:08-05:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "eed2f9dafce95d253a88fd87ecc5066554187f1c",
+  "subject": "Reverted windows_datetime_from_timestamp to use local timezone by default. Removed os_name",
+  "file": "arrow/util.py",
+  "tests": [
+   "tests/parser_tests.py",
+   "tests/util_tests.py"
+  ],
+  "hunks": 7,
+  "minus": [
+   "import os",
+   "        seconds=sec, microseconds=sec_frac * 1e6",
+   "    if tz is not None:",
+   "        if tz == dateutil.tz.tzlocal():",
+   "            # because datetime.astimezone does not work on Windows for tzlocal() and dates before the 1970-01-01",
+   "            # take timestamp from appropriate time of the year, because of daylight saving time changes",
+   "            ts = time.mktime(dt.replace(year=1970).timetuple())",
+   "            dt += datetime.datetime.fromtimestamp(",
+   "                ts",
+   "            ) - datetime.datetime.utcfromtimestamp(ts)",
+   "            dt = dt.replace(tzinfo=dateutil.tz.tzlocal())",
+   "        else:",
+   "            dt = dt.astimezone(tz)",
+   "def safe_utcfromtimestamp(timestamp, os_name=os.name):",
+   "    \"\"\" datetime.utcfromtimestamp alternative which supports negatvie timestamps on Windows platform.\"\"\"",
+   "def safe_fromtimestamp(timestamp, tz=None, os_name=os.name):",
+   "    \"\"\" datetime.fromtimestamp alternative which supports negatvie timestamps on Windows platform.\"\"\"",
+   "        if tz is None:",
+   "            # because datetime.fromtimestamp default is local time",
+   "            tz = dateutil.tz.tzlocal()"
+  ],
+  "plus": [
+   "from os import name as os_name",
+   "        seconds=sec, microseconds=sec_frac * 1000000",
+   "    if tz is None:",
+   "        tz = dateutil.tz.tzlocal()",
+   "",
+   "    if tz == dateutil.tz.tzlocal():",
+   "        # because datetime.astimezone does not work on Windows for tzlocal() and dates before the 1970-01-01",
+   "        # take timestamp from appropriate time of the year, because of daylight saving time changes",
+   "        ts = time.mktime(dt.replace(year=1970).timetuple())",
+   "        dt += datetime.datetime.fromtimestamp(ts) - datetime.datetime.utcfromtimestamp(",
+   "            ts",
+   "        )",
+   "        dt = dt.replace(tzinfo=dateutil.tz.tzlocal())",
+   "    else:",
+   "        dt = dt.astimezone(tz)",
+   "def safe_utcfromtimestamp(timestamp):",
+   "    \"\"\" datetime.utcfromtimestamp alternative which supports negative timestamps on Windows platform.\"\"\"",
+   "def safe_fromtimestamp(timestamp, tz=None):",
+   "    \"\"\" datetime.fromtimestamp alternative which supports negative timestamps on Windows platform.\"\"\""
+  ],
+  "one_line": false,
+  "date": "2019-11-21T11:50:18+01:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "67e3ec80a75f655229958e8bda592ec8448a2205",
+  "subject": "Attempt fix for Windows and py35",
+  "file": "arrow/constants.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "import time",
+   "from datetime import datetime",
+   "MAX_TIMESTAMP = time.mktime(datetime.max.timetuple())"
+  ],
+  "plus": [
+   "# output of time.mktime(datetime.max.timetuple()) on macOS",
+   "# must hardcode for compatibility with Windows",
+   "MAX_TIMESTAMP = 253402318799.0"
+  ],
+  "one_line": false,
+  "date": "2019-10-01T22:24:22-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "bce8f60e43b97b07a2d9cac82dc98b5ead30cbb4",
+  "subject": "Fixed a few bugs an added token to docs",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "                    expanded_timestamp /= 1000",
+   "                    expanded_timestamp /= 1000000"
+  ],
+  "plus": [
+   "                    expanded_timestamp /= 1000.0",
+   "                    expanded_timestamp /= 1000000.0"
+  ],
+  "one_line": false,
+  "date": "2019-10-01T21:57:05-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "dafdb69f1dc0c6c6b1fb8bf2aa07383fbb2bed78",
+  "subject": "Fix bug with tzinfo.zone",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/factory_tests.py",
+   "tests/parser_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "            and hasattr(tzinfo, \"zone\")"
+  ],
+  "one_line": false,
+  "date": "2019-09-10T13:39:21-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "fca652290d9944652b1c97200e9eff12f559197e",
+  "subject": "Added ordinal tests and added new error type to fix exception bubbling issue with ordinal ",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 11,
+  "minus": [
+   "                \"Expected an ISO 8601-like string, but was given '{}' which contains multiple spaces. Try passing in a format string to resolve this.\".format(",
+   "                \"Expected an ISO 8601-like string, but was given '{}' which contains \\\"T\\\" separator and spaces. Try passing in a format string to resolve this.\".format(",
+   "            raise ParserError(",
+   "        if timestamp:",
+   "        if day_of_year:",
+   "                    \"Year component is required with the DDD and DDDD tokens\"",
+   "                    \"Month component is not allowed with the DDD and DDDD tokens\"",
+   "                    \"Expected a valid day of year, but received '{}'\".format(",
+   "                        day_of_year",
+   "                    )",
+   "            except ParserError:",
+   "                \"Could not match input '{}' to any of the formats provided: {}\".format("
+  ],
+  "plus": [
+   "# Allows for ParserErrors to be propagated from _build_datetime()",
+   "# when day_of_year errors occur.",
+   "# Before this, the ParserErrors were caught by the try/except in",
+   "# _parse_multiformat() and the appropriate error message was not",
+   "# transmitted to the user.",
+   "class ParserMatchError(ParserError):",
+   "    pass",
+   "",
+   "",
+   "                \"Expected an ISO 8601-like string, but was given '{}', which contains multiple spaces. Try passing in a format string to resolve this.\".format(",
+   "                \"Expected an ISO 8601-like string, but was given '{}', which contains a 'T' separator and spaces. Try passing in a format string to resolve this.\".format(",
+   "            raise ParserMatchError(",
+   "        if timestamp is not None:",
+   "        if day_of_year is not None:",
+   "                    \"Year component is required with the DDD and DDDD tokens.\"",
+   "                    \"Month component is not allowed with the DDD and DDDD tokens.\"",
+   "                    \"The provided day of year '{}' is invalid.\".format(day_of_year)",
+   "            except ParserMatchError:",
+   "                \"Could not match input '{}' to any of the following formats: {}\".format("
+  ],
+  "one_line": false,
+  "date": "2019-08-17T15:16:47+03:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "f872d7a56c4399bb31c7f9a6bfcad6491d1d9de5",
+  "subject": "Fix locale argument for factory.get() (#631)",
+  "file": "arrow/factory.py",
+  "tests": [
+   "tests/factory_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        locale = kwargs.get(\"locale\", \"en_us\")"
+  ],
+  "plus": [
+   "        locale = kwargs.pop(\"locale\", \"en_us\")"
+  ],
+  "one_line": true,
+  "date": "2019-08-08T13:41:18+01:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "1011d9bdddbe430ec5751df0a20ee1154dbaac58",
+  "subject": "Fix regression when tzinfo kwarg is a string",
+  "file": "arrow/factory.py",
+  "tests": [
+   "tests/factory_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            if not isinstance(tz, tzinfo):"
+  ],
+  "plus": [
+   "            if not tz:"
+  ],
+  "one_line": true,
+  "date": "2019-07-29T10:07:26-07:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "188693d8084d88e726867721bb825415a5be9db4",
+  "subject": "Fixed an issue with the timestamp not strictly matching",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "    _TIMESTAMP_RE = re.compile(r\"\\d+\")"
+  ],
+  "plus": [
+   "    _TIMESTAMP_RE = re.compile(r\"^\\d+\\.?\\d+$\")",
+   ""
+  ],
+  "one_line": false,
+  "date": "2019-07-13T17:31:09-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "a50137f1ac37d486ef90ac188827965dc2ace04c",
+  "subject": "More progress toward GET fixes",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py",
+   "tests/util_tests.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "            has_tz = len(time_parts) > 1",
+   "            if string[-1] == \"Z\" and match.end() != len(string):"
+  ],
+  "plus": [
+   "            has_tz = len(time_parts) > 1 or string[-1] == \"Z\"",
+   "            # Accounts for cases such as \"blahblah2016\"",
+   "            # Accounts for cases such as \"2016-05T04:05:06.78912blahZ\"",
+   "            if string[-1] == \"Z\" and match.end() != len(string) - 1:",
+   "            # Accounts for cases such as \"2016-05T04:05:06.78912Zblah\"",
+   ""
+  ],
+  "one_line": false,
+  "date": "2019-06-29T11:15:47-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "88de0faf97aebe3f8ec2ecaf30c7d1064d4001f6",
+  "subject": "Fix humanize behavior with future days (#575)",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/arrow_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        delta = int(util.total_seconds(self._datetime - dt))"
+  ],
+  "plus": [
+   "        delta = int(round(util.total_seconds(self._datetime - dt)))"
+  ],
+  "one_line": true,
+  "date": "2019-04-26T09:33:50+01:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "c8af8f8f1c4205c31e7785ce80cc44cc9d42eb9d",
+  "subject": "Fix broken Python 2 support",
+  "file": "arrow/util.py",
+  "tests": [
+   "tests/arrow_tests.py"
+  ],
+  "hunks": 6,
+  "minus": [
+   "    def __init__(self, iterable=(), *, warn_text=None):",
+   "        self._warn_text = warn_text or 'this object will be converted to an iterator in a future release'",
+   "        list.__init__(self, iterable)",
+   "    @functools.wraps(list.__iter__)",
+   "        @functools.wraps(list_func)",
+   "    clear = _wrap_method('clear')",
+   "    copy = _wrap_method('copy')"
+  ],
+  "plus": [
+   "    def __init__(self, iterable=(), **kwargs):",
+   "        self._warn_text = kwargs.pop('warn_text', None) or 'this object will be converted to an iterator in a future release'",
+   "        list.__init__(self, iterable, **kwargs)",
+   "    if version >= '3.0':  # pragma: no cover",
+   "        clear = _wrap_method('clear')",
+   "        copy = _wrap_method('copy')"
+  ],
+  "one_line": false,
+  "date": "2017-09-25T16:36:00-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "c5c89b5dadf5335dd6ed3aab66b564729592b1c5",
+  "subject": "Return generator instead of list in Arrow.range(), Arrow.span_range(), and Arrow.interval(",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/arrow_tests.py"
+  ],
+  "hunks": 7,
+  "minus": [
+   "        ''' Returns a list of :class:`Arrow <arrow.arrow.Arrow>` objects, representing",
+   "        results = []",
+   "        while current <= end and len(results) < limit:",
+   "            results.append(current)",
+   "        return results",
+   "",
+   "        return [r.span(frame) for r in _range]",
+   "        spanRange = cls.span_range(frame,start,end,tz)",
+   "        return [ (spanRange[i][0],spanRange[i+ interval - 1][1]) for i in range(0,bound, interval) ]"
+  ],
+  "plus": [
+   "        ''' Returns a generator of :class:`Arrow <arrow.arrow.Arrow>` objects, representing",
+   "        i = 0",
+   "        while current <= end and i < limit:",
+   "            i += 1",
+   "            yield current",
+   "        return (r.span(frame) for r in _range)",
+   "        spanRange = list(cls.span_range(frame, start, end, tz))",
+   "        return ((spanRange[i][0], spanRange[i + interval - 1][1]) for i in range(0, bound, interval))"
+  ],
+  "one_line": false,
+  "date": "2017-09-23T12:16:37-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "b1fcf1cc88f464d075edfdc23efeac988755929e",
+  "subject": "Fixes #378",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/arrow_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            return int(self.month/self._MONTHS_PER_QUARTER) + 1"
+  ],
+  "plus": [
+   "            return int((self.month-1)/self._MONTHS_PER_QUARTER) + 1"
+  ],
+  "one_line": true,
+  "date": "2016-11-29T10:45:29-06:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "9355b404c9745b1b697ff4efc955aabb8324ea93",
+  "subject": "fix py2, too, and don't swallow unexpected exceptions",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "            value = value.ljust(7, '0')",
+   "            except:"
+  ],
+  "plus": [
+   "            value = value.ljust(7, str('0'))",
+   "            except ParserError:"
+  ],
+  "one_line": false,
+  "date": "2016-11-16T16:48:43-08:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "bc03b0b5337642c6766cda4f483074e0ecc88455",
+  "subject": "fix parsing of iso-8601 dates as emitted by GNU date -Ins",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 8,
+  "minus": [
+   "    _FORMAT_RE = re.compile('(YYY?Y?|MM?M?M?|Do|DD?D?D?|d?d?d?d|HH?|hh?|mm?|ss?|SS?S?S?S?S?|ZZ?Z?|a|A|X)')",
+   "    _ONE_THROUGH_SIX_DIGIT_RE = re.compile('\\d{1,6}')",
+   "    _ONE_THROUGH_FIVE_DIGIT_RE = re.compile('\\d{1,5}')",
+   "    _ONE_THROUGH_FOUR_DIGIT_RE = re.compile('\\d{1,4}')",
+   "    _ONE_TWO_OR_THREE_DIGIT_RE = re.compile('\\d{1,3}')",
+   "        'SSSSSS': _ONE_THROUGH_SIX_DIGIT_RE,",
+   "        'SSSSS': _ONE_THROUGH_FIVE_DIGIT_RE,",
+   "        'SSSS': _ONE_THROUGH_FOUR_DIGIT_RE,",
+   "        'SSS': _ONE_TWO_OR_THREE_DIGIT_RE,",
+   "        'SS': _ONE_OR_TWO_DIGIT_RE,",
+   "        'S': re.compile('\\d'),",
+   "            has_subseconds = '.' in time_parts[0]",
+   "                subseconds_token = 'S' * min(len(re.split('\\D+', time_parts[0].split('.')[1], 1)[0]), 6)",
+   "                formats = ['YYYY-MM-DDTHH:mm:ss.%s' % subseconds_token]",
+   "        elif token == 'SSSSSS':",
+   "            parts['microsecond'] = int(value)",
+   "        elif token == 'SSSSS':",
+   "            parts['microsecond'] = int(value) * 10",
+   "        elif token == 'SSSS':",
+   "            parts['microsecond'] = int(value) * 100",
+   "        elif token == 'SSS':",
+   "            parts['microsecond'] = int(value) * 1000",
+   "        elif token == 'SS':",
+   "            parts['microsecond'] = int(value) * 10000",
+   "            parts['microsecond'] = int(value) * 100000"
+  ],
+  "plus": [
+   "    _FORMAT_RE = re.compile('(YYY?Y?|MM?M?M?|Do|DD?D?D?|d?d?d?d|HH?|hh?|mm?|ss?|S+|ZZ?Z?|a|A|X)')",
+   "    _ONE_OR_MORE_DIGIT_RE = re.compile('\\d+')",
+   "        'S': _ONE_OR_MORE_DIGIT_RE,",
+   "            has_subseconds = re.search('[.,]', time_parts[0])",
+   "                formats = ['YYYY-MM-DDTHH:mm:ss%sS' % has_subseconds.group()]",
+   "        # Any number of S is the same as one.",
+   "        escaped_fmt = re.sub('S+', 'S', escaped_fmt)",
+   "            # We have the *most significant* digits of an arbitrary-precision integer.",
+   "            # We want the six most significant digits as an integer, rounded.",
+   "            # FIXME: add nanosecond support somehow?",
+   "            value = value.ljust(7, '0')",
+   "            parts['microsecond'] = int(value[:6])"
+  ],
+  "one_line": false,
+  "date": "2016-11-16T16:47:16-08:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "b5eee6ddf91f6479309a8597f3052a0f8ffa37a0",
+  "subject": "Bug: `replace` was using the value of the last-read argument for the `quarters` argument",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/arrow_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        if 'quarters' in relative_kwargs.keys():",
+   "            if relative_kwargs.get('months') is None:",
+   "                relative_kwargs['months'] = 0",
+   "            relative_kwargs['months'] += (value * self._MONTHS_PER_QUARTER)",
+   "            relative_kwargs.pop('quarters')",
+   "            "
+  ],
+  "plus": [
+   "        relative_kwargs.setdefault('months', 0)",
+   "        relative_kwargs['months'] += relative_kwargs.pop('quarters', 0) * self._MONTHS_PER_QUARTER",
+   ""
+  ],
+  "one_line": false,
+  "date": "2016-08-23T11:59:49-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "adce66bbeb3833112e8dd0fb14caa010cac57af5",
+  "subject": "Fixed problems with coverage, broken build, and testing",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/arrow_tests.py",
+   "tests/locales_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "class RomanshLocale(locales.Locale):"
+  ],
+  "plus": [
+   "class RomanshLocale(Locale):"
+  ],
+  "one_line": true,
+  "date": "2016-03-23T13:27:13-07:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "39f2762e0dfcf7913296a2a572ee505bd44fdaa4",
+  "subject": "fixed #301: __rsub__ returns timedelta of opposite sign",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/arrow_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        return self.__sub__(other)"
+  ],
+  "plus": [
+   "",
+   "        if isinstance(other, datetime):",
+   "            return other - self._datetime",
+   "",
+   "        raise TypeError()"
+  ],
+  "one_line": false,
+  "date": "2016-02-05T19:13:41+01:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "77c6e854952e0f50a24a3c29ae1f4146a36071f9",
+  "subject": "Fixed a bug in rebuilding the escaped regular expression",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        for pattern_part, escaped in zip(fmt_pattern.split(\"#\"), escaped_data + [\"\"]):",
+   "            final_fmt_pattern += pattern_part + escaped[1:-1]"
+  ],
+  "plus": [
+   "",
+   "        a = fmt_pattern.split(\"#\")",
+   "        b = escaped_data",
+   "",
+   "        for i in range(max(len(a), len(b))):",
+   "            if i < len(a):",
+   "                final_fmt_pattern += a[i]",
+   "            if i < len(b):",
+   "                final_fmt_pattern += b[i][1:-1]"
+  ],
+  "one_line": false,
+  "date": "2015-12-11T23:04:08-08:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "877cd14967ef414bf1e8c33be6f44d23e3950f66",
+  "subject": "Fix overzealous time truncation in span_range().",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/arrow_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        start = cls.fromdate(start, tzinfo).span(frame)[0]"
+  ],
+  "plus": [
+   "        start = cls.fromdatetime(start, tzinfo).span(frame)[0]"
+  ],
+  "one_line": true,
+  "date": "2015-08-17T09:58:16+02:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "51bdf3f6a7fc2b7baf385f409f41a84935b34e4f",
+  "subject": "Fix parsing of localized meridians (refers #228)",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "        'a': re.compile('(a|A|p|P)'),",
+   "        'A': re.compile('(am|AM|pm|PM)'),",
+   "            'Do': re.compile(self.locale.ordinal_day_re)",
+   "            if value in ['a', 'A', 'am', 'AM']:",
+   "            elif value in ['p', 'P', 'pm', 'PM']:"
+  ],
+  "plus": [
+   "            'Do': re.compile(self.locale.ordinal_day_re),",
+   "            'a': self._choice_re(",
+   "                (self.locale.meridians['am'], self.locale.meridians['pm'])",
+   "            ),",
+   "            # note: 'A' token accepts both 'am/pm' and 'AM/PM' formats to",
+   "            # ensure backwards compatibility of this token",
+   "            'A': self._choice_re(self.locale.meridians.values())",
+   "            if value in (",
+   "                    self.locale.meridians['am'],",
+   "                    self.locale.meridians['AM']",
+   "            ):",
+   "            elif value in (",
+   "                    self.locale.meridians['pm'],",
+   "                    self.locale.meridians['PM']",
+   "            ):"
+  ],
+  "one_line": false,
+  "date": "2015-07-14T10:31:11+02:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "c3db6efff6ddc6875439b4d998217d1bc4c16c85",
+  "subject": "Fix #219. Add minimal support for fractional seconds longer than six digits.",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                subseconds_token = 'S' * len(re.split('\\D+', time_parts[0].split('.')[1], 1)[0])"
+  ],
+  "plus": [
+   "                subseconds_token = 'S' * min(len(re.split('\\D+', time_parts[0].split('.')[1], 1)[0]), 6)"
+  ],
+  "one_line": true,
+  "date": "2015-05-15T06:14:19-07:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "98b9570416c3c56255c07a1cbda3c0108c391c30",
+  "subject": "Fixes parsing of time strings with a final Z",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                subseconds_token = 'S' * len(time_parts[0].split('.')[1])"
+  ],
+  "plus": [
+   "                subseconds_token = 'S' * len(re.split('\\D+', time_parts[0].split('.')[1], 1)[0])"
+  ],
+  "one_line": true,
+  "date": "2014-09-11T15:36:07-05:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "b2b90d4339abcc1b1cbacf14a5306a39ad5a6e24",
+  "subject": "fix span_range for week frame",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/arrow_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   ""
+  ],
+  "plus": [
+   "        tzinfo = cls._get_tzinfo(start.tzinfo if tz is None else tz)",
+   "        start = cls.fromdate(start, tzinfo).span(frame)[0]"
+  ],
+  "one_line": false,
+  "date": "2014-09-05T23:08:56+04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "2876bf8582a85f9ff5626e5a9616fd055de67e58",
+  "subject": "Fixed discrepancy between specifying 'X' to arrow.get and specifying no template",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/factory_tests.py",
+   "tests/parser_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            return datetime.fromtimestamp(timestamp)"
+  ],
+  "plus": [
+   "            tz_utc = tz.tzutc()",
+   "            return datetime.fromtimestamp(timestamp, tz=tz_utc)"
+  ],
+  "one_line": false,
+  "date": "2014-07-29T12:48:48-04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "46a02ec07ba56cfab1ceb96eef9beb80577c2627",
+  "subject": "Implemented arrow.get(date[, t]) to fix #99.",
+  "file": "arrow/factory.py",
+  "tests": [
+   "tests/factory_tests.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "from datetime import datetime, tzinfo"
+  ],
+  "plus": [
+   "from datetime import datetime, tzinfo, date",
+   "        **One** naive ``date``, to get that date in UTC::",
+   "",
+   "            >>> arrow.get(date(2013, 5, 5))",
+   "            <Arrow [2013-05-05T00:00:00+00:00]>",
+   "",
+   "        **Two** arguments, a naive ``date``, and a timezone expression (as above)::",
+   "",
+   "            >>> arrow.get(date(2013, 5, 5), 'US/Pacific')",
+   "            <Arrow [2013-05-05T00:00:00-07:00]>",
+   "",
+   "            # (date) -> from date.",
+   "            if isinstance(arg, date):",
+   "                return self.type.fromdate(arg)",
+   "",
+   "            # (date, tzinfo/str) -> fromdate @ tzinfo/string.",
+   "            elif isinstance(arg_1, date):",
+   "",
+   "                if isinstance(arg_2, tzinfo) or isstr(arg_2):",
+   "                    return self.type.fromdate(arg_1, tzinfo=arg_2)",
+   "                else:",
+   "                    raise TypeError('Can\\'t parse two arguments of types \\'date\\', \\'{0}\\''.format(",
+   "                        type(arg_2)))",
+   ""
+  ],
+  "one_line": false,
+  "date": "2014-03-31T12:38:45+02:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "1be016dad415f820836e3f82e6a25025d04a64b7",
+  "subject": "Fix humanize() to return unicode",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/arrow_tests.py",
+   "tests/locales_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "from __future__ import unicode_literals"
+  ],
+  "one_line": false,
+  "date": "2013-10-15T10:56:08+04:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "08d9dc2f17435c965bb9bfa08817e50e87d5f918",
+  "subject": "Fixed plurals of Russian and Ukrainian feminine nouns.",
+  "file": "arrow/locales.py",
+  "tests": [
+   "tests/locales_tests.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "    ",
+   "        'minutes': ['{0} \u043c\u0438\u043d\u0443\u0442\u0430', '{0} \u043c\u0438\u043d\u0443\u0442\u044b', '{0} \u043c\u0438\u043d\u0443\u0442'],",
+   "        'minutes': ['{0} \u0445\u0432\u0438\u043b\u0438\u043d\u0430', '{0} \u0445\u0432\u0438\u043b\u0438\u043d\u0438', '{0} \u0445\u0432\u0438\u043b\u0438\u043d'],",
+   "        'hours': ['{0} \u0433\u043e\u0434\u0438\u043d\u0430', '{0} \u0433\u043e\u0434\u0438\u043d\u0438', '{0} \u0433\u043e\u0434\u0438\u043d'],"
+  ],
+  "plus": [
+   "",
+   "        'minutes': ['{0} \u043c\u0438\u043d\u0443\u0442\u0443', '{0} \u043c\u0438\u043d\u0443\u0442\u044b', '{0} \u043c\u0438\u043d\u0443\u0442'],",
+   "        'minutes': ['{0} \u0445\u0432\u0438\u043b\u0438\u043d\u0443', '{0} \u0445\u0432\u0438\u043b\u0438\u043d\u0438', '{0} \u0445\u0432\u0438\u043b\u0438\u043d'],",
+   "        'hours': ['{0} \u0433\u043e\u0434\u0438\u043d\u0443', '{0} \u0433\u043e\u0434\u0438\u043d\u0438', '{0} \u0433\u043e\u0434\u0438\u043d'],"
+  ],
+  "one_line": false,
+  "date": "2013-10-04T23:24:19+03:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "c953efb28a04016d0555c5b42d0e999f27727157",
+  "subject": "correct return type for iso factory method, some docs",
+  "file": "arrow/factory.py",
+  "tests": [
+   "tests/factory_tests.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "    def iso(self, string, locale='en_us'):",
+   "        return parser.DateTimeParser(locale).parse_iso(string)"
+  ],
+  "plus": [
+   "    def iso(self, string):",
+   "        '''Returns an :class:`Arrow <arrow.arrow.Arrow>` object, converted from an ISO-8601-formatted",
+   "        string, without requiring a format string for parsing.",
+   "        Usage::",
+   "",
+   "            >>> import arrow",
+   "            >>> from datetime import datetime",
+   "            >>> arrow.iso(datetime.utcnow().isoformat()) ",
+   "            <Arrow [2013-09-28T17:49:16.325951+00:00]>",
+   "",
+   "        '''",
+   "",
+   "        dt = parser.DateTimeParser('en_us').parse_iso(string)",
+   "        return Arrow.fromdatetime(dt)"
+  ],
+  "one_line": false,
+  "date": "2013-09-28T10:51:16-07:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "02445de13eb1a148831642052dcd251b2506cce4",
+  "subject": "fix for backwards handling of 2-digit years in parser",
+  "file": "arrow/parser.py",
+  "tests": [
+   "tests/parser_tests.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            parts['year'] = 2000 + value if value > 68 else 1900 + value"
+  ],
+  "plus": [
+   "            parts['year'] = 1900 + value if value > 68 else 2000 + value"
+  ],
+  "one_line": true,
+  "date": "2013-06-10T08:23:59-07:00"
+ },
+ {
+  "repo": "arrow",
+  "sha": "2fd52f28a3fa51d83ebc8e3a70ac6de6c4cbd698",
+  "subject": "readme update, tests update; fix for instantiation error with datetime & tz",
+  "file": "arrow/arrow.py",
+  "tests": [
+   "tests/arrow_test.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "",
+   "            time_expr = time"
+  ],
+  "plus": [
+   "    print date, tz",
+   "            tz_expr = tz"
+  ],
+  "one_line": false,
+  "date": "2012-11-20T07:56:23-08:00"
+ },
+ {
+  "repo": "click",
+  "sha": "f58ca3e81424a35626c8a475eb59ab95589008ce",
+  "subject": "Fix `copy`, `deepcopy` and `pickle` of `Sentinel` members",
+  "file": "src/click/_utils.py",
+  "tests": [
+   "tests/test_utils/test_sentinel.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "    def __copy__(self) -> Sentinel:",
+   "        return self",
+   "",
+   "    def __deepcopy__(self, memo: dict[int, t.Any]) -> Sentinel:",
+   "        return self",
+   "",
+   "    def __reduce_ex__(self, protocol: object) -> tuple[t.Any, ...]:",
+   "        return getattr, (self.__class__, self.name)",
+   ""
+  ],
+  "one_line": false,
+  "date": "2026-08-29T08:53:55+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "bec59289d8cf9b9b4010642b2fee483e5f8eeefc",
+  "subject": "Fix `package_name` resolution when top-level module differs from distribution name",
+  "file": "src/click/decorators.py",
+  "tests": [
+   "tests/test_basic.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "    inspecting the stack frames. This will be used to detect the",
+   "    version, so it must match the name of the installed package.",
+   "                raise RuntimeError(",
+   "                    f\"{package_name!r} is not installed. Try passing\"",
+   "                    \" 'package_name' instead.\"",
+   "                ) from None"
+  ],
+  "plus": [
+   "    inspecting the stack frames. If the detected (or given) name does",
+   "    not match an installed distribution, Click resolves it as an import",
+   "    (top-level module) name via",
+   "    :func:`importlib.metadata.packages_distributions`, so e.g. ``PIL``",
+   "    resolves to the ``Pillow`` distribution.",
+   "",
+   "    .. versionchanged:: 8.4.2",
+   "        When ``package_name`` does not match an installed distribution,",
+   "        Click now resolves it as an import (top-level module).",
+   "        nonlocal package_name",
+   "                # The given name didn't match an installed distribution.",
+   "                # Try resolving it as an import (top-level module) name,",
+   "                # e.g. ``PIL`` is provided by the ``Pillow`` distribution.",
+   "                distributions = importlib.metadata.packages_distributions().get(",
+   "                    package_name, []",
+   "                )",
+   "                if len(distributions) == 1:",
+   "                    package_name = distributions[0]",
+   "                    version = importlib.metadata.version(package_name)",
+   "                elif len(distributions) > 1:",
+   "                    raise RuntimeError(",
+   "                        f\"{package_name!r} maps to multiple installed\"",
+   "                        f\" distributions ({', '.join(distributions)}).\"",
+   "                        \" Pass 'package_name' to disambiguate.\"",
+   "                    ) from None",
+   "                else:",
+   "                    raise RuntimeError(",
+   "                        f\"{package_name!r} is not installed. Try passing\"",
+   "                        \" 'package_name' instead.\"",
+   "                    ) from None"
+  ],
+  "one_line": false,
+  "date": "2026-06-14T08:53:53+04:00"
+ },
+ {
+  "repo": "click",
+  "sha": "762c97eef7c1b3779678992f26a553a2a8c80793",
+  "subject": "Fix double-bracketing of choices in synopsis",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_basic.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "        if not self.required:"
+  ],
+  "plus": [
+   "        # Types like ``Choice`` and ``DateTime`` already surround their metavar",
+   "        # with square brackets to enumerate the allowed values. Reuse those",
+   "        # outer brackets as the optional-argument indicator instead of wrapping",
+   "        # the metavar in a second pair, which would produce ``[[a|b|c]]``.",
+   "        already_bracketed = var.startswith(\"[\") and var.endswith(\"]\")",
+   "        if not self.required and not already_bracketed:"
+  ],
+  "one_line": false,
+  "date": "2026-06-10T17:31:37+04:00"
+ },
+ {
+  "repo": "click",
+  "sha": "7eb57cff7cd292fbd526eaf861c8f945ddeb07a3",
+  "subject": "Fix pager test race by raising before yield",
+  "file": "src/click/_compat.py",
+  "tests": [
+   "tests/test_stream_lifecycle.py",
+   "tests/test_utils.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "MAC = sys.platform == \"darwin\""
+  ],
+  "plus": [],
+  "one_line": false,
+  "date": "2026-05-27T09:53:09+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "82f377c547e1867d073f02bb8f476214d07e245b",
+  "subject": "Fix deprecated label formatting",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_commands.py",
+   "tests/test_options.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "            text = f\"{_(text)} {_format_deprecated_label(self.deprecated)}\"",
+   "            help = f\"{help} {label}\" if help is not None else label"
+  ],
+  "plus": [
+   "            label = _format_deprecated_label(self.deprecated)",
+   "            text = f\"{_(text)} {label}\" if text else label",
+   "            help = f\"{help} {label}\" if help else label"
+  ],
+  "one_line": false,
+  "date": "2026-05-23T15:59:39+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "b7e5fd4cc7de70280eccd39f2bb956df617e5519",
+  "subject": "Fix broken fish completion and multiline help string",
+  "file": "src/click/shell_completion.py",
+  "tests": [
+   "tests/test_shell_completion.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "        set -l metadata (string split \\n $completion);",
+   "            if test $metadata[3] != \"_\";",
+   "                echo $metadata[2]\\t$metadata[3];",
+   "            else;",
+   "                echo $metadata[2];",
+   "            end;",
+   "        # The fish completion script splits each response line on literal",
+   "        # newlines, so any newline in the value or help would corrupt the",
+   "        # frame. Replace them with the two-character escape \"\\n\" so the text",
+   "        # round-trips through fish without breaking the format. The \"_\"",
+   "        # sentinel for missing help mirrors :class:`ZshComplete`.",
+   "        help_ = item.help or \"_\"",
+   "        value = item.value.replace(\"\\n\", r\"\\n\")",
+   "        help_escaped = help_.replace(\"\\n\", r\"\\n\")",
+   "        return f\"{item.type}\\n{value}\\n{help_escaped}\""
+  ],
+  "plus": [
+   "        set -l metadata (string split \",\" $completion);",
+   "            echo $metadata[2];",
+   "        # According to https://fishshell.com/docs/current/cmds/complete.html",
+   "        # Command substitutions found in ARGUMENTS should return a newline-",
+   "        # separated list of arguments, and each argument may optionally have a tab",
+   "        # character followed by the argument description.",
+   "        if item.help:",
+   "            help_ = item.help.replace(\"\\n\", \"\\\\n\").replace(\"\\t\", \" \")",
+   "            return f\"{item.type},{item.value}\\t{help_}\"",
+   "",
+   "        return f\"{item.type},{item.value}\""
+  ],
+  "one_line": false,
+  "date": "2026-05-23T09:13:25+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "c3535905c77a29afc84861b29d3ad366ce5451bd",
+  "subject": "Fix broken fish completion and multiline help string",
+  "file": "src/click/shell_completion.py",
+  "tests": [
+   "tests/test_shell_completion.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "        set -l metadata (string split \\n $completion);",
+   "            if test $metadata[3] != \"_\";",
+   "                echo $metadata[2]\\t$metadata[3];",
+   "            else;",
+   "                echo $metadata[2];",
+   "            end;",
+   "        # The fish completion script splits each response line on literal",
+   "        # newlines, so any newline in the value or help would corrupt the",
+   "        # frame. Replace them with the two-character escape \"\\n\" so the text",
+   "        # round-trips through fish without breaking the format. The \"_\"",
+   "        # sentinel for missing help mirrors :class:`ZshComplete`.",
+   "        help_ = item.help or \"_\"",
+   "        value = item.value.replace(\"\\n\", r\"\\n\")",
+   "        help_escaped = help_.replace(\"\\n\", r\"\\n\")",
+   "        return f\"{item.type}\\n{value}\\n{help_escaped}\""
+  ],
+  "plus": [
+   "        set -l metadata (string split \",\" $completion);",
+   "            echo $metadata[2];",
+   "        # According to https://fishshell.com/docs/current/cmds/complete.html",
+   "        # Command substitutions found in ARGUMENTS should return a newline-",
+   "        # separated list of arguments, and each argument may optionally have a tab",
+   "        # character followed by the argument description.",
+   "        if item.help:",
+   "            help_ = item.help.replace(\"\\n\", \"\\\\n\").replace(\"\\t\", \" \")",
+   "            return f\"{item.type},{item.value}\\t{help_}\"",
+   "",
+   "        return f\"{item.type},{item.value}\""
+  ],
+  "one_line": false,
+  "date": "2026-05-23T09:05:16+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "7d05a59b9d46a415d85937630d1d812cf477f60a",
+  "subject": "Fix get_parameter_source() during type conversion and eager callbacks",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_defaults.py",
+   "tests/test_options.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "            ctx.set_parameter_source(self.name, source)",
+   "        elif existing_source is None:",
+   "            # Nothing has claimed the slot yet. Record at least our source so downstream",
+   "            # lookups don't return ``None``.",
+   "            ctx.set_parameter_source(self.name, source)"
+  ],
+  "plus": [
+   "            # Record the source before processing so eager callbacks and type",
+   "            # conversion can inspect it. Restored after arbitration if this",
+   "            # option loses a feature-switch group.",
+   "            ctx.set_parameter_source(self.name, source)",
+   "",
+   "        elif existing_source is not None:",
+   "            # Lost arbitration; restore the winning option's source.",
+   "            ctx.set_parameter_source(self.name, existing_source)",
+   "        # else: keep the provisional source recorded before process_value."
+  ],
+  "one_line": false,
+  "date": "2026-05-21T14:43:26+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "d15f3c23a177e80c324e1ee9681c9449c31ac965",
+  "subject": "fix: Skip flaky pager test on macOS with free-threaded Python 3.14t",
+  "file": "src/click/_compat.py",
+  "tests": [
+   "tests/test_utils.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "MAC = sys.platform == \"darwin\""
+  ],
+  "one_line": false,
+  "date": "2026-05-18T14:01:46-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "0551bf53588ae87f462d336f24f853a156fefe3a",
+  "subject": "Fix `HelpFormatter.write_usage` producing spurious characters",
+  "file": "src/click/formatting.py",
+  "tests": [
+   "tests/test_formatting.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "        if not args:",
+   "            # Without args, the prefix's trailing space and the wrap_text",
+   "            # call that would normally place args on the line are both",
+   "            # unnecessary. Emit just the prefix line.",
+   "            self.write(usage_prefix.rstrip(\" \"))",
+   "            self.write(\"\\n\")",
+   "            return",
+   ""
+  ],
+  "one_line": false,
+  "date": "2026-05-16T08:39:31+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "a09c1c655eef3d43181eb46036b66cf058d72df4",
+  "subject": "fix: show custom error message in prompt with hide_input=True",
+  "file": "src/click/termui.py",
+  "tests": [
+   "tests/test_termui.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                echo(_(\"Error: The value you entered was invalid.\"), err=err)"
+  ],
+  "plus": [
+   "                repr_val = repr(value)",
+   "                if repr_val in e.message:",
+   "                    # Built-in type pattern: mask the repr'd value.",
+   "                    msg = e.message.replace(repr_val, \"'***'\")",
+   "                elif value in e.message:",
+   "                    # Raw value found: could be a coincidental or",
+   "                    # unquoted match. Ambiguous, use generic.",
+   "                    msg = _(\"The value you entered was invalid.\")",
+   "                else:",
+   "                    # Value not found: show as-is, assuming custom",
+   "                    # types with hide_input=True avoid leaking input.",
+   "                    msg = e.message",
+   "",
+   "                echo(_(\"Error: {msg}\").format(msg=msg), err=err)"
+  ],
+  "one_line": false,
+  "date": "2026-05-08T16:04:59+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "2468b70997a6ec27ced4b4867954c90da3f92075",
+  "subject": "Fix readline backspace/line-wrapping on linux (#2969)",
+  "file": "src/click/termui.py",
+  "tests": [
+   "tests/test_utils.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "            # Write the prompt separately so that we get nice",
+   "            # coloring through colorama on Windows",
+   "            echo(text[:-1], nl=False, err=err)",
+   "            # Echo the last character to stdout to work around an issue where",
+   "            # readline causes backspace to clear the whole line.",
+   "            return f(text[-1:])",
+   "            # Write the prompt separately so that we get nice",
+   "            # coloring through colorama on Windows",
+   "            echo(prompt[:-1], nl=False, err=err)",
+   "            # Echo the last character to stdout to work around an issue where",
+   "            # readline causes backspace to clear the whole line.",
+   "            value = visible_prompt_func(prompt[-1:]).lower().strip()"
+  ],
+  "plus": [
+   "from contextlib import redirect_stdout",
+   "from ._compat import WIN",
+   "def _readline_prompt(func: t.Callable[[str], str], text: str, err: bool) -> str:",
+   "    \"\"\"Call a prompt function, passing the full prompt on non-Windows so",
+   "    readline can handle line editing and cursor positioning correctly.",
+   "",
+   "    On Windows the prompt is written separately via :func:`echo` for",
+   "    colorama support, with only the last character passed to *func*.",
+   "    \"\"\"",
+   "    if WIN:",
+   "        # Write the prompt separately so that we get nice coloring",
+   "        # through colorama on Windows.",
+   "        echo(text[:-1], nl=False, err=err)",
+   "        # Echo the last character to stdout to work around an issue",
+   "        # where readline causes backspace to clear the whole line.",
+   "        return func(text[-1:])",
+   "    if err:",
+   "        with redirect_stdout(sys.stderr):",
+   "            return func(text)",
+   "    return func(text)",
+   "",
+   "",
+   "            return _readline_prompt(f, text, err)",
+   "            value = _readline_prompt(visible_prompt_func, prompt, err).lower().strip()"
+  ],
+  "one_line": false,
+  "date": "2026-04-30T00:20:22+01:00"
+ },
+ {
+  "repo": "click",
+  "sha": "d340b0c1202284a1b9d0ca892549208527d586ce",
+  "subject": "Fix speculative speculative empty string check",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_options.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            elif default_value == \"\":"
+  ],
+  "plus": [
+   "            elif isinstance(default_value, str) and default_value == \"\":"
+  ],
+  "one_line": true,
+  "date": "2026-04-08T16:29:07+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "546f2851f414b07413777ebcae89b2c21a685252",
+  "subject": "Fix callable ``flag_value`` being instantiated when used as a default",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_defaults.py",
+   "tests/test_options.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "        # Support the special case of aligning the default value with the flag_value",
+   "        # for flags whose default is explicitly set to True. Note that as long as we",
+   "        # have this condition, there is no way a flag can have a default set to True,",
+   "        # and a flag_value set to something else. Refs:",
+   "        if self.default is True and self.flag_value is not UNSET:",
+   "            self.default = self.flag_value"
+  ],
+  "plus": [
+   "        # The alignement of default to the flag_value is resolved lazily in",
+   "        # get_default() to prevent callable flag_values (like classes) from",
+   "        # being instantiated. Refs:",
+   "        # https://github.com/pallets/click/issues/3121",
+   "    def get_default(",
+   "        self, ctx: Context, call: bool = True",
+   "    ) -> t.Any | t.Callable[[], t.Any] | None:",
+   "        value = super().get_default(ctx, call=False)",
+   "",
+   "        # Lazily resolve default=True to flag_value. Doing this here",
+   "        # (instead of eagerly in __init__) prevents callable flag_values",
+   "        # (like classes) from being instantiated by the callable check below.",
+   "        # https://github.com/pallets/click/issues/3121",
+   "        if value is True and self.is_flag:",
+   "            value = self.flag_value",
+   "        elif call and callable(value):",
+   "            value = value()",
+   "",
+   "        return value",
+   ""
+  ],
+  "one_line": false,
+  "date": "2026-03-01T20:27:16+04:00"
+ },
+ {
+  "repo": "click",
+  "sha": "955ca492a6b9e8de0660dae1c415568ca6f9c4b3",
+  "subject": "Cleanup changes to fix flag_value bug",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_options.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "    .. versionchanged:: 8.3.dev",
+   "         If ``flag_value`` is set or no default is provided, the flag can be",
+   "         accepted without an argument.",
+   "",
+   "        # Handle options that are not flags but provide a flag_value.",
+   "        # If flag_value is set or no default is provided the flag can be accepted",
+   "        # without an argument.",
+   "        # https://github.com/pallets/click/issues/3084"
+  ],
+  "plus": [
+   "        # The option is explicitly not a flag, but to determine whether or not it needs",
+   "        # value, we need to check if `flag_value` or `default` was set. Either one is",
+   "        # sufficient.",
+   "        # Ref: https://github.com/pallets/click/issues/3084"
+  ],
+  "one_line": false,
+  "date": "2025-11-19T15:07:25-06:00"
+ },
+ {
+  "repo": "click",
+  "sha": "91de59c6c8abc8251e7af551cd4546cc964288af",
+  "subject": "Fix #3084: Correct flag optional value behavior and add comprehensive tests",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_options.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "        # The option is explicitly not a flag. But we do not know yet if it needs a",
+   "        # value or not. So we look at the default value to determine it.",
+   "            self._flag_needs_value = self.default is UNSET"
+  ],
+  "plus": [
+   "    .. versionchanged:: 8.3.dev",
+   "         If ``flag_value`` is set or no default is provided, the flag can be",
+   "         accepted without an argument.",
+   "",
+   "",
+   "        # Handle options that are not flags but provide a flag_value.",
+   "        # If flag_value is set or no default is provided the flag can be accepted",
+   "        # without an argument.",
+   "        # https://github.com/pallets/click/issues/3084",
+   "            self._flag_needs_value = flag_value is not UNSET or self.default is UNSET"
+  ],
+  "one_line": false,
+  "date": "2025-11-19T14:45:44-06:00"
+ },
+ {
+  "repo": "click",
+  "sha": "1c20dc6e724cd5625faaa17b715ba928d44c08bf",
+  "subject": "Fix default handling to defer UNSET normalization",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_defaults.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "            and self.name not in ctx.params",
+   "            # Normalize UNSET values to None, as we're about to pass them to the",
+   "            # command function and move them to the pure-Python realm of user-written",
+   "            # code.",
+   "            ctx.params[self.name] = value if value is not UNSET else None"
+  ],
+  "plus": [
+   "        # after handling *all* parameters, do a pass over the params to rewrite",
+   "        # `UNSET`",
+   "        for name, value in ctx.params.items():",
+   "            if value is UNSET:",
+   "                ctx.params[name] = None",
+   "",
+   "            and (self.name not in ctx.params or ctx.params[self.name] is UNSET)",
+   "            # Do not normalize UNSET values to None at this point",
+   "            # It needs to be done, but doing so too early impacts multiple parameters",
+   "            # targeting the same variable name",
+   "            ctx.params[self.name] = value"
+  ],
+  "one_line": false,
+  "date": "2025-09-24T09:17:13-05:00"
+ },
+ {
+  "repo": "click",
+  "sha": "701b313160be12752e49b3f7cea32402c0969a69",
+  "subject": "Fix completions for quoted/escaped parameters in Fish (#3013)",
+  "file": "src/click/shell_completion.py",
+  "tests": [
+   "tests/test_shell_completion.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "        if incomplete:",
+   "            incomplete = split_arg_string(incomplete)[0]"
+  ],
+  "one_line": false,
+  "date": "2025-08-09T14:43:46+01:00"
+ },
+ {
+  "repo": "click",
+  "sha": "812b8000f79c1fbb747a2de5114fc74515558857",
+  "subject": "Fix rendering when `prompt_suffix` is empty",
+  "file": "src/click/termui.py",
+  "tests": [
+   "tests/test_utils.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "            echo(text.rstrip(\" \"), nl=False, err=err)",
+   "            # Echo a space to stdout to work around an issue where",
+   "            return f(\" \")",
+   "            echo(prompt.rstrip(\" \"), nl=False, err=err)",
+   "            # Echo a space to stdout to work around an issue where",
+   "            value = visible_prompt_func(\" \").lower().strip()"
+  ],
+  "plus": [
+   "            echo(text[:-1], nl=False, err=err)",
+   "            # Echo the last character to stdout to work around an issue where",
+   "            return f(text[-1:])",
+   "            echo(prompt[:-1], nl=False, err=err)",
+   "            # Echo the last character to stdout to work around an issue where",
+   "            value = visible_prompt_func(prompt[-1:]).lower().strip()"
+  ],
+  "one_line": false,
+  "date": "2025-07-28T16:56:51-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "a1235aacb1be55dc66ddcfefbf64dec44b6ab54d",
+  "subject": "Fix Zsh completions with colons (#2846)",
+  "file": "src/click/shell_completion.py",
+  "tests": [
+   "tests/test_shell_completion.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "        return f\"{item.type}\\n{item.value}\\n{item.help if item.help else '_'}\""
+  ],
+  "plus": [
+   "# See ZshComplete.format_completion below, and issue #2703, before",
+   "# changing this script.",
+   "#",
+   "# (TL;DR: _describe is picky about the format, but this Zsh script snippet",
+   "# is already widely deployed.  So freeze this script, and use clever-ish",
+   "# handling of colons in ZshComplet.format_completion.)",
+   "        help_ = item.help or \"_\"",
+   "        # The zsh completion script uses `_describe` on items with help",
+   "        # texts (which splits the item help from the item value at the",
+   "        # first unescaped colon) and `compadd` on items without help",
+   "        # text (which uses the item value as-is and does not support",
+   "        # colon escaping).  So escape colons in the item value if and",
+   "        # only if the item help is not the sentinel \"_\" value, as used",
+   "        # by the completion script.",
+   "        #",
+   "        # (The zsh completion script is potentially widely deployed, and",
+   "        # thus harder to fix than this method.)",
+   "        #",
+   "        # See issue #1812 and issue #2703 for further context.",
+   "        value = item.value.replace(\":\", r\"\\:\") if help_ != \"_\" else item.value",
+   "        return f\"{item.type}\\n{value}\\n{help_}\""
+  ],
+  "one_line": false,
+  "date": "2025-07-21T20:35:04+01:00"
+ },
+ {
+  "repo": "click",
+  "sha": "ac6a2acfdb4550c35ce69ce54db502ba96c96324",
+  "subject": "Fix shell completion for nested groups",
+  "file": "src/click/shell_completion.py",
+  "tests": [
+   "tests/test_shell_completion.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "                        args = ctx._protected_args + ctx.args",
+   "                            args = sub_ctx.args"
+  ],
+  "plus": [
+   "                        args = ctx._protected_args + ctx.args",
+   "                            args = sub_ctx.args"
+  ],
+  "one_line": false,
+  "date": "2025-05-20T16:13:35-04:00"
+ },
+ {
+  "repo": "click",
+  "sha": "4fd2fea0db423d242aedcae0a5f664efe0a93484",
+  "subject": "Fix condition for setting flag value when type is provided",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_options.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "            if flag_value is None:",
+   "                flag_value = not self.default"
+  ],
+  "plus": [
+   "        if is_flag and flag_value is None:",
+   "            flag_value = not self.default",
+   ""
+  ],
+  "one_line": false,
+  "date": "2025-05-20T08:35:46-04:00"
+ },
+ {
+  "repo": "click",
+  "sha": "70c673d37eb91ba42a129be9037caf3ebed62f3e",
+  "subject": "Fix eagerness of help option generated by `help_option_names` (#2811)",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_commands.py"
+  ],
+  "hunks": 6,
+  "minus": [
+   "    \"\"\"Given a sequence of parameters in the order as should be considered",
+   "    for processing and an iterable of parameters that exist, this returns",
+   "    a list in the correct order as they should be processed.",
+   "        # Avoid circular import.",
+   "        from .decorators import HelpOption",
+   "        return HelpOption(help_options)"
+  ],
+  "plus": [
+   "    from .decorators import HelpOption",
+   "    \"\"\"Returns all declared parameters in the order they should be processed.",
+   "",
+   "    The declared parameters are re-shuffled depending on the order in which",
+   "    they were invoked, as well as the eagerness of each parameters.",
+   "",
+   "    The invocation order takes precedence over the declaration order. I.e. the",
+   "    order in which the user provided them to the CLI is respected.",
+   "",
+   "    This behavior and its effect on callback evaluation is detailed at:",
+   "    https://click.palletsprojects.com/en/stable/advanced/#callback-evaluation-order",
+   "        self._help_option: t.Optional[HelpOption] = None",
+   "",
+   "        .. versionchanged:: 8.1.8",
+   "            The help option is now cached to avoid creating it multiple times.",
+   "        # Cache the help option object in private _help_option attribute to",
+   "        # avoid creating it multiple times. Not doing this will break the",
+   "        # callback odering by iter_params_for_processing(), which relies on",
+   "        # object comparison.",
+   "        if self._help_option is None:",
+   "            # Avoid circular import.",
+   "            from .decorators import HelpOption",
+   "",
+   "            self._help_option = HelpOption(help_options)",
+   "        return self._help_option"
+  ],
+  "one_line": false,
+  "date": "2024-11-30T01:45:28+01:00"
+ },
+ {
+  "repo": "click",
+  "sha": "c326df95e9e3da0425360e030413f6a3ee25fdee",
+  "subject": "Fix closing of callbacks on CLI exit (#2680)",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_context.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        \"\"\"Exits the application with a given exit code.\"\"\""
+  ],
+  "plus": [
+   "        \"\"\"Exits the application with a given exit code.",
+   "",
+   "        .. versionchanged:: 8.2",
+   "            Force closing of callbacks registered with",
+   "            :meth:`call_on_close` before exiting the CLI.",
+   "        \"\"\"",
+   "        self.close()"
+  ],
+  "one_line": false,
+  "date": "2024-11-03T12:35:15Z"
+ },
+ {
+  "repo": "click",
+  "sha": "1a4d8c1bb1e8f8e214ede7223bd2c05dc2ce006a",
+  "subject": "Fix metavar for Choice options when show_choices=False (#2365)",
+  "file": "src/click/types.py",
+  "tests": [
+   "tests/test_options.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        choices_str = \"|\".join(self.choices)"
+  ],
+  "plus": [
+   "        if param.param_type_name == \"option\" and not param.show_choices:  # type: ignore",
+   "            choice_metavars = [",
+   "                convert_type(type(choice)).name.upper() for choice in self.choices",
+   "            ]",
+   "            choices_str = \"|\".join([*dict.fromkeys(choice_metavars)])",
+   "        else:",
+   "            choices_str = \"|\".join([str(i) for i in self.choices])"
+  ],
+  "one_line": false,
+  "date": "2024-11-02T22:45:03Z"
+ },
+ {
+  "repo": "click",
+  "sha": "afc86c748c214939e2293ec00879d85293bcd9fa",
+  "subject": "Fix colored output on Windows (#2607)",
+  "file": "src/click/utils.py",
+  "tests": [
+   "tests/test_utils.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                file = auto_wrap_for_ansi(file)  # type: ignore"
+  ],
+  "plus": [
+   "                file = auto_wrap_for_ansi(file, color)  # type: ignore"
+  ],
+  "one_line": true,
+  "date": "2024-10-26T14:43:32+01:00"
+ },
+ {
+  "repo": "click",
+  "sha": "bf1e8be90c46428f8bf8b45f295af80cfaf2e188",
+  "subject": "show correct value for flag default when using default_map",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_defaults.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                    (self.opts if self.default else self.secondary_opts)[0]"
+  ],
+  "plus": [
+   "                    (self.opts if default_value else self.secondary_opts)[0]"
+  ],
+  "one_line": true,
+  "date": "2024-05-22T13:53:37-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "61f8101f4e0d02cb902ef17853fa35ad88185265",
+  "subject": "Fix printing of default option value to handle empty strings",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_options.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "            elif default_value == \"\":",
+   "                default_string = '\"\"'"
+  ],
+  "one_line": false,
+  "date": "2024-05-21T12:24:16-04:00"
+ },
+ {
+  "repo": "click",
+  "sha": "20280d4f76928db0617fbc4c0059fabb42b8d77e",
+  "subject": "fix `group` overload with `cls` arg",
+  "file": "src/click/decorators.py",
+  "tests": [
+   "tests/typing/typing_group_kw_options.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "# The _correct_ way to spell this overload is to use keyword-only argument syntax:",
+   "# def group(*, cls: t.Type[GrpType], **attrs: t.Any) -> ...",
+   "# However, mypy thinks this doesn't fit the overloaded function. Pyright does",
+   "# accept that spelling, and the following work-around makes pyright issue a",
+   "# warning that GrpType could be left unsolved, but mypy sees it as fine. *shrug*",
+   "    cls: t.Type[GrpType] = ...,"
+  ],
+  "plus": [
+   "    *,",
+   "    cls: t.Type[GrpType],"
+  ],
+  "one_line": false,
+  "date": "2023-07-18T12:52:53-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+  "subject": "Fix return value and type signature of `shell_completion.add_completion_class` function (#",
+  "file": "src/click/shell_completion.py",
+  "tests": [
+   "tests/test_shell_completion.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "    cls: t.Type[ShellComplete], name: t.Optional[str] = None",
+   ") -> None:"
+  ],
+  "plus": [
+   "ShellCompleteType = t.TypeVar(\"ShellCompleteType\", bound=t.Type[ShellComplete])",
+   "",
+   "",
+   "    cls: ShellCompleteType, name: t.Optional[str] = None",
+   ") -> ShellCompleteType:",
+   "    return cls",
+   ""
+  ],
+  "one_line": false,
+  "date": "2023-05-08T00:01:21-04:00"
+ },
+ {
+  "repo": "click",
+  "sha": "e0033315510510acdba14e880a361ccca091fb4b",
+  "subject": "fix ParamType.to_info_dict() with no name",
+  "file": "src/click/types.py",
+  "tests": [
+   "tests/test_info_dict.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        return {\"param_type\": param_type, \"name\": self.name}"
+  ],
+  "plus": [
+   "",
+   "        # Custom subclasses might not remember to set a name.",
+   "        if hasattr(self, \"name\"):",
+   "            name = self.name",
+   "        else:",
+   "            name = param_type",
+   "",
+   "        return {\"param_type\": param_type, \"name\": name}"
+  ],
+  "one_line": false,
+  "date": "2022-03-19T11:26:19-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "05b795c917f4146edfe83b2d08c189886b301785",
+  "subject": "Fix copy-paste errors in `click.style()`",
+  "file": "src/click/termui.py",
+  "tests": [
+   "tests/test_utils.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "        bits.append(f\"\\033[{53 if underline else 55}m\")",
+   "        bits.append(f\"\\033[{5 if underline else 23}m\")"
+  ],
+  "plus": [
+   "        bits.append(f\"\\033[{53 if overline else 55}m\")",
+   "        bits.append(f\"\\033[{3 if italic else 23}m\")"
+  ],
+  "one_line": false,
+  "date": "2021-09-26T07:40:26-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "ee56925bc4f5451a125317e183f498e8bd1aecb3",
+  "subject": "Fix is_bool_flag being set to True even if is_flag is False",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_options.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        self.is_bool_flag = isinstance(self.type, types.BoolParamType)"
+  ],
+  "plus": [
+   "        self.is_bool_flag = is_flag and isinstance(self.type, types.BoolParamType)"
+  ],
+  "one_line": true,
+  "date": "2021-07-03T06:53:45-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "043511294a9eec59d08e64c351621e790ae74b76",
+  "subject": "Fixed inconsistency in forwarding params",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_commands.py"
+  ],
+  "hunks": 3,
+  "minus": [],
+  "plus": [
+   "",
+   "        .. versionchanged:: 8.0",
+   "            All ``kwargs`` are tracked in :attr:`params` so they will be",
+   "            passed if :meth:`forward` is called at multiple levels.",
+   "            # Track all kwargs as params, so that forward() will pass",
+   "            # them on in subsequent calls.",
+   "            ctx.params.update(kwargs)",
+   "",
+   "",
+   "        .. versionchanged:: 8.0",
+   "            All ``kwargs`` are tracked in :attr:`params` so they will be",
+   "            passed if ``forward`` is called at multiple levels."
+  ],
+  "one_line": false,
+  "date": "2021-04-12T19:33:58-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "4aff02676c0d9628e095731c124b647ed256ee5a",
+  "subject": "fix backspace in prompt with readline enabled",
+  "file": "src/click/termui.py",
+  "tests": [
+   "tests/test_utils.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            echo(text, nl=False, err=err)",
+   "            return f(\"\")"
+  ],
+  "plus": [
+   "            echo(text.rstrip(\" \"), nl=False, err=err)",
+   "            # Echo a space to stdout to work around an issue where",
+   "            # readline causes backspace to clear the whole line.",
+   "            return f(\" \")"
+  ],
+  "one_line": false,
+  "date": "2021-04-06T09:25:56-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "42ee8a1f6011e0f4a8a19c34a545f3eb7ae978fa",
+  "subject": "fix formatting with empty options_metavar",
+  "file": "src/click/core.py",
+  "tests": [
+   "tests/test_formatting.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        rv = [self.options_metavar]"
+  ],
+  "plus": [
+   "        rv = [self.options_metavar] if self.options_metavar else []"
+  ],
+  "one_line": true,
+  "date": "2020-10-12T18:38:47-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "11c286a37d55357b82c7e5db7237544cd79fe25a",
+  "subject": "fix edit() require_save check for fast editors",
+  "file": "src/click/_termui_impl.py",
+  "tests": [
+   "tests/test_termui.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "            # If the filesystem resolution is 1 second, like Mac OS",
+   "            # 10.12 Extended, or 2 seconds, like FAT32, and the editor",
+   "            # closes very fast, require_save can fail. Set the modified",
+   "            # time to be 2 seconds in the past to work around this.",
+   "            os.utime(name, (os.path.getatime(name), os.path.getmtime(name) - 2))",
+   "            # Depending on the resolution, the exact value might not be",
+   "            # recorded, so get the new recorded value."
+  ],
+  "one_line": false,
+  "date": "2020-08-08T10:59:16-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "3106951b6fc733385f08b2a397621dec756a2989",
+  "subject": "Correct ZSH completion definitions",
+  "file": "click/_bashcomplete.py",
+  "tests": [
+   "tests/test_compat.py"
+  ],
+  "hunks": 2,
+  "minus": [],
+  "plus": [
+   "#compdef %(script_names)s",
+   "",
+   "    (( ! $+commands[%(script_names)s] )) && return 1",
+   ""
+  ],
+  "one_line": false,
+  "date": "2020-02-24T06:46:25-08:00"
+ },
+ {
+  "repo": "click",
+  "sha": "99ef35e3b4919b5dc33d1ee4b1e04b437b6307a5",
+  "subject": "Fix for string cast of MissingParameter",
+  "file": "click/exceptions.py",
+  "tests": [
+   "tests/test_arguments.py",
+   "tests/test_options.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "    def __str__(self):",
+   "        if self.message is None:",
+   "            param_name = self.param.name if self.param else None",
+   "            return \"missing parameter: {}\".format(param_name)",
+   "        else:",
+   "            return self.message",
+   "",
+   "    if PY2:",
+   "        __unicode__ = __str__",
+   "",
+   "        def __str__(self):",
+   "            return self.__unicode__().encode(\"utf-8\")",
+   ""
+  ],
+  "one_line": false,
+  "date": "2020-02-16T19:38:26-08:00"
+ },
+ {
+  "repo": "click",
+  "sha": "cbb3c0c3d969cc35f49b18280bd7a11f139e3185",
+  "subject": "Correct ZSH completion definitions",
+  "file": "click/_bashcomplete.py",
+  "tests": [
+   "tests/test_compat.py"
+  ],
+  "hunks": 2,
+  "minus": [],
+  "plus": [
+   "#compdef %(script_names)s",
+   "",
+   "    (( ! $+commands[%(script_names)s] )) && return 1",
+   ""
+  ],
+  "one_line": false,
+  "date": "2019-08-01T13:20:31-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "36da06fe44c5cb7a14c67e5e5be1458ee5d5e521",
+  "subject": "Changing documentation in ParameterSource to indicate 'parameter' instead of 'option'. Rem",
+  "file": "click/core.py",
+  "tests": [
+   "tests/test_context.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "    \"\"\"This is an enum that indicates the source of a command line option.",
+   "    VALUES = [COMMANDLINE, ENVIRONMENT, DEFAULT, DEFAULT_MAP]",
+   "                             \"values are: {}\".format(\",\".join(VALUES)))",
+   "        \"\"\"Get the `source` of a parameter.",
+   "        return self._parameter_sources.get(name)"
+  ],
+  "plus": [
+   "    \"\"\"This is an enum that indicates the source of a command line parameter.",
+   "    VALUES = {COMMANDLINE, ENVIRONMENT, DEFAULT, DEFAULT_MAP}",
+   "                             \"values are: {}\".format(value, \",\".join(clz.VALUES)))",
+   "        \"\"\"Get the source of a parameter.",
+   "        return self._parameter_sources[name]"
+  ],
+  "one_line": false,
+  "date": "2019-06-02T08:43:13-04:00"
+ },
+ {
+  "repo": "click",
+  "sha": "a17b544788256d59baae0352a90bdb9af2b8ed34",
+  "subject": "Fix issue #926 - copy option attrs so that custom classes can be re-used.",
+  "file": "click/decorators.py",
+  "tests": [
+   "tests/test_options.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        if 'help' in attrs:",
+   "            attrs['help'] = inspect.cleandoc(attrs['help'])",
+   "        OptionClass = attrs.pop('cls', Option)",
+   "        _param_memo(f, OptionClass(param_decls, **attrs))"
+  ],
+  "plus": [
+   "        # Issue 926, copy attrs, so pre-defined options can re-use the same cls=",
+   "        option_attrs = attrs.copy()",
+   "",
+   "        if 'help' in option_attrs:",
+   "            option_attrs['help'] = inspect.cleandoc(option_attrs['help'])",
+   "        OptionClass = option_attrs.pop('cls', Option)",
+   "        _param_memo(f, OptionClass(param_decls, **option_attrs))"
+  ],
+  "one_line": false,
+  "date": "2018-05-14T15:17:48-04:00"
+ },
+ {
+  "repo": "click",
+  "sha": "92c8053bb9e7221efc87355c364fee256e1efc76",
+  "subject": "Fix bashautocompletion of arguments on chained commands",
+  "file": "click/_bashcomplete.py",
+  "tests": [
+   "tests/test_bashcomplete.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "    while ctx.protected_args + ctx.args and isinstance(ctx.command, MultiCommand):",
+   "        a = ctx.protected_args + ctx.args",
+   "        cmd = ctx.command.get_command(ctx, a[0])",
+   "        ctx = cmd.make_context(a[0], a[1:], parent=ctx, resilient_parsing=True)",
+   "    return ctx"
+  ],
+  "plus": [
+   "    args_remaining = ctx.protected_args + ctx.args",
+   "    while ctx is not None and args_remaining:",
+   "      if isinstance(ctx.command, MultiCommand):",
+   "        cmd = ctx.command.get_command(ctx, args_remaining[0])",
+   "        ctx = cmd.make_context(args_remaining[0], args_remaining[1:], parent=ctx, resilient_parsing=True)",
+   "        args_remaining = ctx.protected_args + ctx.args",
+   "      else:",
+   "        ctx = ctx.parent",
+   "    return ctx",
+   "    if not start_of_option(incomplete) and ctx.parent is not None and isinstance(ctx.parent.command, MultiCommand) and ctx.parent.command.chain:",
+   "        # completion for chained commands",
+   "        remaining_comands = set(ctx.parent.command.list_commands(ctx.parent))-set(ctx.parent.protected_args)",
+   "        choices.extend(remaining_comands)",
+   ""
+  ],
+  "one_line": false,
+  "date": "2017-05-02T08:19:11-07:00"
+ },
+ {
+  "repo": "click",
+  "sha": "8780a763aab11f69258acccbcb9d0d97e92ebadb",
+  "subject": "Update progress after iteration (fix #651)",
+  "file": "click/_termui_impl.py",
+  "tests": [
+   "tests/test_termui.py"
+  ],
+  "hunks": 8,
+  "minus": [
+   "        return self",
+   "            t = self.eta + 1",
+   "            t /= 60",
+   "            t /= 60",
+   "            t /= 24",
+   "    def next(self):",
+   "            return next(self.iter)",
+   "        try:",
+   "            rv = next(self.iter)",
+   "            self.current_item = rv",
+   "        except StopIteration:",
+   "            raise StopIteration()",
+   "        else:",
+   "            self.update(1)",
+   "            return rv",
+   "",
+   "    if not PY2:",
+   "        __next__ = next",
+   "        del next"
+  ],
+  "plus": [
+   "        return self.generator()",
+   "            t = int(self.eta)",
+   "            t //= 60",
+   "            t //= 60",
+   "            t //= 24",
+   "    def generator(self):",
+   "        \"\"\"",
+   "        Returns a generator which yields the items added to the bar during",
+   "        construction, and updates the progress bar *after* the yielded block",
+   "        returns.",
+   "        \"\"\"",
+   "        if not self.entered:",
+   "            raise RuntimeError('You need to use progress bars in a with block.')",
+   "",
+   "            for rv in self.iter:",
+   "                yield rv",
+   "        else:",
+   "            for rv in self.iter:",
+   "                self.current_item = rv",
+   "                yield rv",
+   "                self.update(1)"
+  ],
+  "one_line": false,
+  "date": "2016-12-22T23:29:27+01:00"
+ },
+ {
+  "repo": "click",
+  "sha": "8af7ec14f3d936e02c2e4ee62d3573593868e07e",
+  "subject": "Fix #630: Bash completion for nested commands broken",
+  "file": "click/_bashcomplete.py",
+  "tests": [
+   "tests/test_bashcomplete.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    while ctx.args + ctx.protected_args and isinstance(ctx.command, MultiCommand):",
+   "        a = ctx.args + ctx.protected_args"
+  ],
+  "plus": [
+   "    while ctx.protected_args + ctx.args and isinstance(ctx.command, MultiCommand):",
+   "        a = ctx.protected_args + ctx.args"
+  ],
+  "one_line": false,
+  "date": "2016-08-19T21:49:44+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "262c275d8513a377fdc741695c7ab11920fc8391",
+  "subject": "Fixed broken tests and behavior on windows.",
+  "file": "click/_compat.py",
+  "tests": [
+   "tests/test_arguments.py",
+   "tests/test_imports.py",
+   "tests/test_testing.py",
+   "tests/test_utils.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "_rename = os.rename",
+   "        _rename(self._tmp_filename, self._real_filename)"
+  ],
+  "plus": [
+   "if hasattr(os, 'replace'):",
+   "    _replace = os.replace",
+   "    _can_replace = True",
+   "else:",
+   "    _replace = os.rename",
+   "    _can_replace = not WIN",
+   "        if not _can_replace:",
+   "            try:",
+   "                os.remove(self._real_filename)",
+   "            except OSError:",
+   "                pass",
+   "        _replace(self._tmp_filename, self._real_filename)"
+  ],
+  "one_line": false,
+  "date": "2015-11-05T23:24:42+01:00"
+ },
+ {
+  "repo": "click",
+  "sha": "0f20511f41e8d99acd074b063cadaa0b9f8aecf0",
+  "subject": "Fix bug with multiple args after star arg",
+  "file": "click/utils.py",
+  "tests": [
+   "tests/test_arguments.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "            return (spos is not None and c.pop() or c.popleft())"
+  ],
+  "plus": [
+   "    >>> unpack_args(range(6), [-1,1,1,1,1])",
+   "    (((0, 1), 5, 4, 3, 2), [])",
+   "            if spos is None:",
+   "                return c.popleft()",
+   "            else:",
+   "                return c.pop()",
+   "        rv[spos + 1:] = reversed(rv[spos + 1:])"
+  ],
+  "one_line": false,
+  "date": "2015-07-14T19:31:13+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "4e519da58ac79fbd97eb86eb7717603d77eec379",
+  "subject": "Fix formatting issue when last line of docstring is blank",
+  "file": "click/formatting.py",
+  "tests": [
+   "tests/test_formatting.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    lines = [lines[0]] + [subsequent_indent + line for line in lines[1:]]"
+  ],
+  "plus": [
+   "    lines = lines[:1] + [subsequent_indent + line for line in lines[1:]]"
+  ],
+  "one_line": true,
+  "date": "2015-04-26T14:11:32+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "e2c3b9bc6122562c015bb98d3890a6d6512fba24",
+  "subject": "Fix corner-case where subsequent wrapped lines are one character longer than max width",
+  "file": "click/formatting.py",
+  "tests": [
+   "tests/test_formatting.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "                          subsequent_indent='',",
+   "        return add_subsequent_indent(wrapper.fill(text), subsequent_indent)",
+   "                                                subsequent_indent))",
+   "                                                subsequent_indent))"
+  ],
+  "plus": [
+   "    post_wrap_indent = subsequent_indent[:-1]",
+   "    subsequent_indent = subsequent_indent[-1:]",
+   "                          subsequent_indent=subsequent_indent,",
+   "        return add_subsequent_indent(wrapper.fill(text), post_wrap_indent)",
+   "                                                post_wrap_indent))",
+   "                                                post_wrap_indent))"
+  ],
+  "one_line": false,
+  "date": "2014-10-22T10:48:05+01:00"
+ },
+ {
+  "repo": "click",
+  "sha": "65ca572d7c193123b9bcfdb4c2c7d9be9199be21",
+  "subject": "Fixed up pausing tests and added doc information.",
+  "file": "click/termui.py",
+  "tests": [
+   "tests/test_utils.py"
+  ],
+  "hunks": 4,
+  "minus": [],
+  "plus": [
+   "    .. versionadded:: 4.0",
+   "       Added the `err` parameter.",
+   "",
+   "    .. versionadded:: 4.0",
+   "       Added the `err` parameter.",
+   "",
+   "    .. versionadded:: 4.0",
+   "       Added the `err` parameter.",
+   "",
+   "    :param err: if set to message goes to ``stderr`` instead of",
+   "                ``stdout``, the same as with echo."
+  ],
+  "one_line": false,
+  "date": "2014-09-10T00:12:48+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "b625654063f03936c65f33d1f5025376f57f4a06",
+  "subject": "Fixed a regression for echo_via_pager on 3.x.  This fixes #185",
+  "file": "click/_termui_impl.py",
+  "tests": [
+   "tests/test_utils.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "        c.stdin.write(text)",
+   "    with open_stream(filename, 'w')[0] as f:",
+   "        f.write(text)"
+  ],
+  "plus": [
+   "    encoding = get_best_encoding(c.stdin)",
+   "        c.stdin.write(text.encode(encoding, 'replace'))",
+   "    encoding = get_best_encoding(sys.stdout)",
+   "    with open_stream(filename, 'wb')[0] as f:",
+   "        f.write(text.encode(encoding))"
+  ],
+  "one_line": false,
+  "date": "2014-07-08T16:10:50+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "fd401cd761a2cf15fbb9a54404860b636a5b558d",
+  "subject": "Fix indentation of option help",
+  "file": "click/decorators.py",
+  "tests": [
+   "tests/test_options.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "        if 'help' in attrs:",
+   "            attrs['help'] = inspect.cleandoc(attrs['help'])"
+  ],
+  "one_line": false,
+  "date": "2014-06-05T14:02:26+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "a6af25df9c2e82e94c3aa15d579f9347881e5efb",
+  "subject": "Fixed a bug in argument handling",
+  "file": "click/core.py",
+  "tests": [
+   "tests/test_arguments.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                required = attrs.get('nargs', 0) > 0"
+  ],
+  "plus": [
+   "                required = attrs.get('nargs', 1) > 0"
+  ],
+  "one_line": true,
+  "date": "2014-05-29T02:50:41+06:00"
+ },
+ {
+  "repo": "click",
+  "sha": "39b5df2b12a0e746c5020e0f4379b8e27b44f911",
+  "subject": "Fixed lack of clear reporting for paths",
+  "file": "click/types.py",
+  "tests": [
+   "tests/test_basic.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "            ))",
+   "            ))",
+   "            ))",
+   "            ))",
+   "            ))"
+  ],
+  "plus": [
+   "            ), param, ctx)",
+   "            ), param, ctx)",
+   "            ), param, ctx)",
+   "            ), param, ctx)",
+   "            ), param, ctx)"
+  ],
+  "one_line": false,
+  "date": "2014-05-21T21:36:14+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "4fd19ce097576072020084a61b6172bfb9b07f26",
+  "subject": "Fixed argument handling for \"-\" and added test.  This fixes #77",
+  "file": "click/parser.py",
+  "tests": [
+   "tests/test_arguments.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "            elif arg[0:2] in self._opt_prefixes:",
+   "            elif arg[:1] in self._opt_prefixes and len(arg) > 1:"
+  ],
+  "plus": [
+   "            arglen = len(arg)",
+   "            elif arg[:2] in self._opt_prefixes and arglen > 2:",
+   "            elif arg[:1] in self._opt_prefixes and arglen > 1:"
+  ],
+  "one_line": false,
+  "date": "2014-05-12T01:43:57+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "7ebd3b9482ea63b787f637c8bf52d81f5547ef52",
+  "subject": "Fixed a bug with forwarding and added a test",
+  "file": "click/core.py",
+  "tests": [
+   "tests/test_commands.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            if param.name in self.params and \\",
+   "               param.name not in kwargs:",
+   "                kwargs[param.name] = self.params[param.name]"
+  ],
+  "plus": [
+   "            if param in self.params and \\",
+   "               param not in kwargs:",
+   "                kwargs[param] = self.params[param]"
+  ],
+  "one_line": false,
+  "date": "2014-05-10T02:14:09+02:00"
+ },
+ {
+  "repo": "click",
+  "sha": "4e2a3291613f6903afa179396676d4aebb340eb1",
+  "subject": "Fixed a bug with whitespace preservation.",
+  "file": "click/formatting.py",
+  "tests": [
+   "tests/test_formatting.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "    indent = 0",
+   "            p.append((indent, True, '\\n'.join(buf[1:])))",
+   "            p.append((indent, False, ' '.join(buf)))",
+   "            indent = len(line) - len(line.lstrip())",
+   "            buf.append(line.lstrip())"
+  ],
+  "plus": [
+   "    indent = None",
+   "            p.append((indent or 0, True, '\\n'.join(buf[1:])))",
+   "            p.append((indent or 0, False, ' '.join(buf)))",
+   "            indent = None",
+   "            if indent is None:",
+   "                orig_len = len(line)",
+   "                line = line.lstrip()",
+   "                indent = orig_len - len(line)",
+   "            buf.append(line)"
+  ],
+  "one_line": false,
+  "date": "2014-05-07T00:02:44+02:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "7dc426c95a0c329d5514e6198d92080f1ffc1e5e",
+  "subject": "Fix update() ordering to be more consistent with add() ordering (#159)",
+  "file": "sortedcontainers/sortedlist.py",
+  "tests": [
+   "tests/test_coverage_sortedkeylist_modulo.py",
+   "tests/test_coverage_sortedkeylist_negate.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "                values.extend(chain.from_iterable(_lists))",
+   "                values.extend(chain.from_iterable(_lists))"
+  ],
+  "plus": [
+   "                _lists.append(values)",
+   "                values = reduce(iadd, _lists, [])",
+   "                _lists.append(values)",
+   "                values = reduce(iadd, _lists, [])"
+  ],
+  "one_line": false,
+  "date": "2020-11-03T22:37:30-08:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "2b037039bb16c81ddc1ee94e88c44aa85eed2810",
+  "subject": "Fix for issue #147 -- Stop caching dict methods using super",
+  "file": "sortedcontainers/sorteddict.py",
+  "tests": [
+   "tests/issue_147.py",
+   "tests/test_coverage_sorteddict.py"
+  ],
+  "hunks": 13,
+  "minus": [
+   "        # Calls to super() are expensive so cache references to dict methods on",
+   "        # sorted dict instances.",
+   "",
+   "        _dict = super(SortedDict, self)",
+   "        self._dict_clear = _dict.clear",
+   "        self._dict_delitem = _dict.__delitem__",
+   "        self._dict_iter = _dict.__iter__",
+   "        self._dict_pop = _dict.pop",
+   "        self._dict_setitem = _dict.__setitem__",
+   "        self._dict_update = _dict.update",
+   "",
+   "        self._dict_clear()",
+   "        self._dict_delitem(key)",
+   "        self._dict_setitem(key, value)",
+   "            return self._dict_pop(key)",
+   "        value = self._dict_pop(key)",
+   "        self._dict_setitem(key, default)",
+   "            self._dict_update(*args, **kwargs)",
+   "            self._list_update(self._dict_iter())",
+   "            self._dict_update(pairs)",
+   "            self._list_update(self._dict_iter())",
+   "    _dict_delitem = _mapping._dict_delitem",
+   "            _dict_delitem(key)",
+   "        _dict_delitem(key)"
+  ],
+  "plus": [
+   "        dict.clear(self)",
+   "        dict.__delitem__(self, key)",
+   "        dict.__setitem__(self, key, value)",
+   "            return dict.pop(self, key)",
+   "        value = dict.pop(self, key)",
+   "        dict.__setitem__(self, key, default)",
+   "            dict.update(self, *args, **kwargs)",
+   "            self._list_update(dict.__iter__(self))",
+   "            dict.update(self, pairs)",
+   "            self._list_update(dict.__iter__(self))",
+   "    dict_delitem = dict.__delitem__",
+   "            dict_delitem(_mapping, key)",
+   "        dict_delitem(_mapping, key)"
+  ],
+  "one_line": false,
+  "date": "2020-06-03T22:34:17-07:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "be06d8d1b2d6994b85719d1b75ac6854f46a0a20",
+  "subject": "Pickle fix for SortedSet on py27",
+  "file": "sortedcontainers/sortedset.py",
+  "tests": [
+   "tests/test_coverage_sortedset.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        return (type(self)._fromset, (self._set, self._key))"
+  ],
+  "plus": [
+   "        return (type(self), (self._set, self._key))"
+  ],
+  "one_line": true,
+  "date": "2019-03-05T14:29:52-08:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "53ab610cc4615888f3fcf2fa1d5d340440247a2a",
+  "subject": "Test and bug fix for SortedList.extend with empty iterable",
+  "file": "sortedcontainers/sortedlist.py",
+  "tests": [
+   "tests/test_coverage_sortedlist.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "        if not len(_index):"
+  ],
+  "plus": [
+   "        if not _index:",
+   "        if not values:",
+   "            return",
+   ""
+  ],
+  "one_line": false,
+  "date": "2016-12-05T10:14:04-08:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "c04ff65317940f324bb83586ee12d9371840e9ac",
+  "subject": "Fix Issue #48: SortedListWithKey.__init__ called twice from SortedList.__new__",
+  "file": "sortedcontainers/sortedlist.py",
+  "tests": [
+   "tests/test_coverage_sortedlistwithkey_modulo.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                return SortedListWithKey(iterable=iterable, key=key, load=load)"
+  ],
+  "plus": [
+   "                return object.__new__(SortedListWithKey)"
+  ],
+  "one_line": true,
+  "date": "2016-10-16T13:29:24-07:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "b3cae1040a510d95b86d5f5be0b1ab71bf89adf1",
+  "subject": "Fix index check when child exceeds length",
+  "file": "sortedcontainers/sortedlist.py",
+  "tests": [
+   "tests/test_stress_sortedlist.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                    if self._index[pos] == 0:",
+   "                        assert child >= len(self._index)"
+  ],
+  "plus": [
+   "                    if child >= len(self._index):",
+   "                        assert self._index[pos] == 0"
+  ],
+  "one_line": false,
+  "date": "2015-06-22T09:52:55-07:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "fe780f5b89944a891d98cdec67a849130d7d73a8",
+  "subject": "Fixes for Python 2.6, 3.2, 3.3, and 3.4",
+  "file": "sortedcontainers/sorteddict.py",
+  "tests": [
+   "tests/test_coverage_sorteddict.py",
+   "tests/test_stress_sorteddict.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "        self._viewitems = _dict.viewitems",
+   "        self._viewkeys = _dict.viewkeys",
+   "        self._viewvalues = _dict.viewvalues",
+   "            self._view = sorted_dict._viewkeys()",
+   "            self._view = sorted_dict._viewvalues()",
+   "            self._view = sorted_dict._viewitems()"
+  ],
+  "plus": [
+   "        self._dict = _dict",
+   "            self._view = sorted_dict._dict.viewkeys()",
+   "            self._view = sorted_dict._dict.viewvalues()",
+   "            self._view = sorted_dict._dict.viewitems()"
+  ],
+  "one_line": false,
+  "date": "2014-10-12T22:05:53-07:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "1c6a43a5f3d85b0d655dcff2210e4a4587b89cb3",
+  "subject": "Fix sortedset setitem and improve tests",
+  "file": "sortedcontainers/sortedset.py",
+  "tests": [
+   "tests/test_coverage_sortedset.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "            _set.update(prev)",
+   "            _set.add(prev)"
+  ],
+  "plus": [
+   "            _set.update(value)",
+   "            _set.add(value)"
+  ],
+  "one_line": false,
+  "date": "2014-10-11T14:52:19-07:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "367c64a06f86f1eb60f2c331c3b13a3de32977b9",
+  "subject": "Bug fix: setitem must update _maxes",
+  "file": "sortedcontainers/sortedlist.py",
+  "tests": [
+   "tests/test_coverage_sortedlist.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "        _pos, _lists, _check_order = self._pos, self._lists, self._check_order"
+  ],
+  "plus": [
+   "        _maxes, _lists, _pos = self._maxes, self._lists, self._pos",
+   "        _check_order = self._check_order",
+   "                    if len(_lists[pos]) == (loc + 1):",
+   "                        _maxes[pos] = val",
+   "                        if len(_lists[pos]) == (loc + 1):",
+   "                            _maxes[pos] = oldval",
+   "            if len(_lists[pos]) == (loc + 1):",
+   "                _maxes[pos] = value"
+  ],
+  "one_line": false,
+  "date": "2014-09-18T11:29:36-07:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "a04f4a68188fea6797fe3e5f16f388086e405e62",
+  "subject": "Fix bug in SortedDict comparison (possible KeyError)",
+  "file": "sortedcontainers/sorteddict.py",
+  "tests": [
+   "tests/test_coverage_sorteddict.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "                and all(self[key] == that[key] for key in self))",
+   "                or any(self[key] != that[key] for key in self))"
+  ],
+  "plus": [
+   "                and all((key in that) and (self[key] == that[key])",
+   "                        for key in self))",
+   "                or any((key not in that) or (self[key] != that[key])",
+   "                       for key in self))"
+  ],
+  "one_line": false,
+  "date": "2014-04-28T11:09:34-07:00"
+ },
+ {
+  "repo": "python-sortedcontainers",
+  "sha": "9e81697c60a83114c67032b846f3f6ed00870a2b",
+  "subject": "Improve coverage for sorteddict and fix bugs",
+  "file": "sortedcontainers/sorteddict.py",
+  "tests": [
+   "tests/test_coverage_sorteddict.py"
+  ],
+  "hunks": 16,
+  "minus": [
+   "    def setdefault(self, default=None):",
+   "        self._view = sorted_dict.viewkeys()",
+   "        return self._list.iter()",
+   "    def __lte__(self, that):",
+   "    def __gte__(self, that):",
+   "    def isdisjoint(self, that):",
+   "        return self._view.isdisjoint(that)",
+   "        self._view = sorted_dict.viewvalues()",
+   "        return key in self._dict",
+   "    def __lte__(self, that):",
+   "    def __gte__(self, that):",
+   "        self._view = sorted_dict.viewitems()",
+   "    def __lte__(self, that):",
+   "    def __gte__(self, that):"
+  ],
+  "plus": [
+   "    def setdefault(self, key, default=None):",
+   "        self._view = sorted_dict._dict.viewkeys()",
+   "        return iter(self._list)",
+   "    def __le__(self, that):",
+   "    def __ge__(self, that):",
+   "    def __repr__(self):",
+   "        return 'SortedDict_keys({0})'.format(repr(list(self)))",
+   "        self._view = sorted_dict._dict.viewvalues()",
+   "        return key in self._view",
+   "    def __le__(self, that):",
+   "    def __ge__(self, that):",
+   "    def __repr__(self):",
+   "        return 'SortedDict_values({0})'.format(repr(list(self)))",
+   "        self._view = sorted_dict._dict.viewitems()",
+   "    def __le__(self, that):",
+   "    def __ge__(self, that):",
+   "    def __repr__(self):",
+   "        return 'SortedDict_items({0})'.format(repr(list(self)))"
+  ],
+  "one_line": false,
+  "date": "2014-01-09T10:53:03-08:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "7ef2d05ca8aa3cb405dab2fdf3282e69cf8089e3",
+  "subject": "fix inline code in table cells",
+  "file": "rich/markdown.py",
+  "tests": [
+   "tests/test_markdown.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        text = Text(text) if isinstance(text, str) else text",
+   "        text.stylize(context.current_style)",
+   "        self.content.append_text(text)"
+  ],
+  "plus": [
+   "        if isinstance(text, str):",
+   "            self.content.append(text, context.current_style)",
+   "        else:",
+   "            self.content.append_text(text)",
+   "        # text = Text(text) if isinstance(text, str) else text",
+   "        # text.stylize(context.current_style)",
+   "        # self.content.append_text(text)"
+  ],
+  "one_line": false,
+  "date": "2026-04-12T14:39:10+07:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "60b064a70a9db813e96955b7b344f61f62817f4c",
+  "subject": "fix for infinite loop in split_graphemes",
+  "file": "rich/cells.py",
+  "tests": [
+   "tests/test_cells.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "        else:",
+   "            index = index + 1"
+  ],
+  "one_line": false,
+  "date": "2026-02-19T14:02:23Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "31930ddc842d9e1cd224327d5f6c22eff4a87f82",
+  "subject": "fix test",
+  "file": "rich/cells.py",
+  "tests": [
+   "tests/test_cells.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            if character == \"\\ufe0f\" and last_measured_character:"
+  ],
+  "plus": [
+   "            if character == \"\\u200d\":",
+   "                index += 1",
+   "            elif character == \"\\ufe0f\" and last_measured_character:"
+  ],
+  "one_line": false,
+  "date": "2026-02-01T15:24:39Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "13f87a4007f629c00b491286034751d53ae9d63c",
+  "subject": "Fix ZWJ and edge cases",
+  "file": "rich/cells.py",
+  "tests": [
+   "tests/test_cells.py"
+  ],
+  "hunks": 10,
+  "minus": [
+   "    if codepoint > table[-1][1]:",
+   "    index = (lower_bound + upper_bound) // 2",
+   "    while True:",
+   "        start, end, width = table[index]",
+   "        elif codepoint > end:",
+   "            return 0 if width == -1 else width",
+   "        if upper_bound < lower_bound:",
+   "            break",
+   "        index = (lower_bound + upper_bound) // 2",
+   "    iter_characters = iter(text)",
+   "    for character in iter_characters:",
+   "            if character == \"\\u200d\":",
+   "                next(iter_characters)",
+   "            elif last_measured_character:"
+  ],
+  "plus": [
+   "    if codepoint and codepoint < 32 or 0x07F <= codepoint < 0x0A0:",
+   "        return 0",
+   "",
+   "    # Fast path: codepoint beyond table range",
+   "    last_entry = table[-1]",
+   "    if codepoint > last_entry[1]:",
+   "",
+   "    # Binary search with fewer tuple unpacks",
+   "",
+   "    while lower_bound <= upper_bound:",
+   "        index = (lower_bound + upper_bound) >> 1  # Faster than // 2",
+   "        entry = table[index]",
+   "        start = entry[0]",
+   "",
+   "        elif codepoint > entry[1]:  # end",
+   "            # Found: codepoint is in range [start, end]",
+   "            return entry[2]",
+   "",
+   "    index = 0",
+   "    character_count = len(text)",
+   "    while index < character_count:",
+   "        character = text[index]",
+   "            if character == \"\\ufe0f\" and last_measured_character:",
+   "        index += 1"
+  ],
+  "one_line": false,
+  "date": "2026-02-01T15:00:41Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "73ee8232e7ea72a90130ccf67d8ffefd4122e9f4",
+  "subject": "fix fonts",
+  "file": "rich/cells.py",
+  "tests": [
+   "tests/test_cells.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        return 0"
+  ],
+  "plus": [
+   "        return 1"
+  ],
+  "one_line": true,
+  "date": "2026-01-24T21:33:23Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "39ee57dfe70614381c3ebce34cb35cab557af2f5",
+  "subject": "fix background style with soft wrap",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_text.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "                    extend(",
+   "                        Segment.apply_style(",
+   "                            render(renderable, render_options), self.get_style(style)",
+   "                        )",
+   "                    )"
+  ],
+  "plus": [
+   "                render_style = self.get_style(style)",
+   "                new_line = Segment.line()",
+   "                    for line in Segment.split_lines(render(renderable, render_options)):",
+   "                        extend(Segment.apply_style(line, render_style))",
+   "                        new_segments.append(new_line)",
+   ""
+  ],
+  "one_line": false,
+  "date": "2026-01-23T15:04:35Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "1c5e03eb32020011f5b13174e186c588d09d749c",
+  "subject": "fix for padding width",
+  "file": "rich/table.py",
+  "tests": [
+   "tests/test_columns.py",
+   "tests/test_table.py"
+  ],
+  "hunks": 6,
+  "minus": [
+   "            if column_index > 0:",
+   "                pad_left = max(0, pad_left - pad_right)",
+   ""
+  ],
+  "plus": [
+   "",
+   "",
+   "",
+   "            pad_left = 0",
+   "            pad_right = abs(pad_left - pad_right)",
+   "",
+   "        if not self.pad_edge:",
+   "            if column_index == 0:",
+   "                pad_left = 0",
+   "            if column_index == len(self.columns) - 1:",
+   "                pad_right = 0",
+   "",
+   ""
+  ],
+  "one_line": false,
+  "date": "2026-01-23T11:20:32Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "95fe8ff59249d9ac0534a82af7c746826a5999f4",
+  "subject": "Fix raw markup printed on prompt errors sometimes",
+  "file": "rich/prompt.py",
+  "tests": [
+   "tests/test_prompt.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        self.console.print(error)"
+  ],
+  "plus": [
+   "        self.console.print(error, markup=True)"
+  ],
+  "one_line": true,
+  "date": "2025-11-13T09:06:57+02:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "655b5210cb1403100a646d167cf027eec760dd9f",
+  "subject": "test fixes",
+  "file": "rich/style.py",
+  "tests": [
+   "tests/test_inspect.py",
+   "tests/test_pretty.py",
+   "tests/test_text.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "from marshal import dumps, loads",
+   "        self._hash = hash(",
+   "            (",
+   "                self._color,",
+   "                self._bgcolor,",
+   "                self._attributes,",
+   "                self._set_attributes,",
+   "                self._link,",
+   "                self._meta,",
+   "            )",
+   "        )"
+  ],
+  "plus": [
+   "from operator import attrgetter",
+   "from pickle import dumps, loads",
+   "_hash_getter = attrgetter(",
+   "    \"_color\", \"_bgcolor\", \"_attributes\", \"_set_attributes\", \"_link\", \"_meta\"",
+   ")",
+   "",
+   "        self._hash = hash(_hash_getter(self))"
+  ],
+  "one_line": false,
+  "date": "2025-10-09T09:35:09+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "6c48a5c2e3d8daa58d566d14ced2f775f76102a7",
+  "subject": "Fix small typo in comments",
+  "file": "rich/_inspect.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        The processing consists in cleaning up the doctring's indentation,"
+  ],
+  "plus": [
+   "        The processing consists in cleaning up the docstring's indentation,"
+  ],
+  "one_line": true,
+  "date": "2025-06-20T14:34:53Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "30e5ed61a6064220fe2ff40f4713463488ee6d07",
+  "subject": "fix(panel): fix title missing panel background",
+  "file": "rich/panel.py",
+  "tests": [
+   "tests/test_panel.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "        partial_border_style = console.get_style(self.border_style)",
+   "        border_style = style + partial_border_style",
+   "            title_text.stylize_before(partial_border_style)",
+   "            subtitle_text.stylize_before(partial_border_style)"
+  ],
+  "plus": [
+   "        border_style = style + console.get_style(self.border_style)",
+   "            title_text.stylize_before(border_style)",
+   "            subtitle_text.stylize_before(border_style)"
+  ],
+  "one_line": false,
+  "date": "2025-05-01T21:49:07+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "4f40703e4fa01a749b306b2161a425a314b85606",
+  "subject": "fix for split cells",
+  "file": "rich/segment.py",
+  "tests": [
+   "tests/test_segment.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "        pos = int((cut / cell_length) * (len(text))) - 1",
+   "        if pos < 0:",
+   "            pos = 0",
+   "        before = text[:pos]",
+   "        cell_pos = cell_len(before)",
+   "        if cell_pos == cut:",
+   "            return (",
+   "                _Segment(before, style, control),",
+   "                _Segment(text[pos:], style, control),",
+   "            )",
+   "        while pos < len(text):",
+   "            char = text[pos]",
+   "            pos += 1",
+   "            cell_pos += cell_size(char)",
+   "            if cell_pos == cut:",
+   "            if cell_pos > cut:",
+   "",
+   "        raise AssertionError(\"Will never reach here\")"
+  ],
+  "plus": [
+   "        pos = int((cut / cell_length) * len(text))",
+   "        while True:",
+   "            cell_pos = cell_len(before)",
+   "            out_by = cell_pos - cut",
+   "            if not out_by:",
+   "            if out_by == -1 and cell_size(text[pos]) == 2:",
+   "                return (",
+   "                    _Segment(before[:pos] + \" \", style, control),",
+   "                    _Segment(\" \" + text[pos + 1 :], style, control),",
+   "                )",
+   "            if out_by == +1 and cell_size(text[pos]) == 2:",
+   "            if cell_pos < cut:",
+   "                pos += 1",
+   "            else:",
+   "                pos -= 1"
+  ],
+  "one_line": false,
+  "date": "2024-10-04T11:55:26+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "16b3830408df98db41967774e59175a1f919ce25",
+  "subject": "fix(table): highlight columns added by add_row",
+  "file": "rich/table.py",
+  "tests": [
+   "tests/test_table.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                column = Column(_index=index)"
+  ],
+  "plus": [
+   "                column = Column(_index=index, highlight=self.highlight)"
+  ],
+  "one_line": true,
+  "date": "2024-10-03T16:05:56+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "fd7b32603cf0bcb4e5b631202134b4d77ed121fc",
+  "subject": "test fix",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_panel.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        for file_descriptor in _STD_STREAMS_OUTPUT if WINDOWS else _STD_STREAMS:"
+  ],
+  "plus": [
+   "        streams = _STD_STREAMS_OUTPUT if WINDOWS else _STD_STREAMS",
+   "        for file_descriptor in streams:"
+  ],
+  "one_line": false,
+  "date": "2024-10-01T12:38:31+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "7022e202245b6bdeb39e8025d2b5dab793841ec8",
+  "subject": "Test fixes",
+  "file": "rich/panel.py",
+  "tests": [
+   "tests/test_console.py",
+   "tests/test_progress.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "            if title_text.style is not None:",
+   "                title_text.stylize_before(title_text.style)"
+  ],
+  "one_line": false,
+  "date": "2024-09-30T17:45:26+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "a8c3b8700bc05222b8e6ca855c618f30a8c8eac8",
+  "subject": "fix split cells",
+  "file": "rich/segment.py",
+  "tests": [
+   "tests/test_segment.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "",
+   "        pos = int((cut / cell_length) * (len(text) - 1))"
+  ],
+  "plus": [
+   "        \"\"\"Split a segment in to two at a given cell position.",
+   "",
+   "        Returns:",
+   "            A tuple of two segments.",
+   "        \"\"\"",
+   "        pos = int((cut / cell_length) * (len(text) - 1)) - 1",
+   "        if pos < 0:",
+   "            pos = 0"
+  ],
+  "one_line": false,
+  "date": "2024-09-28T20:19:10+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "f2ee29531bd01354a5acf26f7c98dfadf70e6ab1",
+  "subject": "fix infinite loop in append",
+  "file": "rich/text.py",
+  "tests": [
+   "tests/test_text.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "                    for start, end, style in text._spans",
+   "            for start, end, style in text._spans"
+  ],
+  "plus": [
+   "                    for start, end, style in text._spans.copy()",
+   "            for start, end, style in text._spans.copy()"
+  ],
+  "one_line": false,
+  "date": "2024-09-06T10:32:01+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "6055e2d8ef98e5487949b9c6e5d0dfce6a5b9e28",
+  "subject": "fix for missing field in dataclass",
+  "file": "rich/pretty.py",
+  "tests": [
+   "tests/test_pretty.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                    field for field in fields(obj) if field.repr"
+  ],
+  "plus": [
+   "                    field",
+   "                    for field in fields(obj)",
+   "                    if field.repr and hasattr(obj, field.name)"
+  ],
+  "one_line": false,
+  "date": "2024-08-26T16:59:16+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "a3b27a3aba6dddc480467d479c12d7dc5756b5ca",
+  "subject": "Fix record and capture",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            if self.record:"
+  ],
+  "plus": [
+   "            if self.record and not self._buffer_index:"
+  ],
+  "one_line": true,
+  "date": "2024-08-26T15:45:22+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "06a7555c367f10285bb86764ee3cb7e51856a694",
+  "subject": "fix superfluous space",
+  "file": "rich/markdown.py",
+  "tests": [
+   "tests/test_markdown.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                        if new_line:"
+  ],
+  "plus": [
+   "                        if new_line and node_type != \"inline\":"
+  ],
+  "one_line": true,
+  "date": "2024-08-26T15:09:07+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "f591471cf005062c9068f5ac348c01aec4ca13ef",
+  "subject": "Fix [BUG] @ breaks highlighting in hyperlink #3327",
+  "file": "rich/highlighter.py",
+  "tests": [
+   "tests/test_highlighter.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            r\"(?P<url>(file|https|http|ws|wss)://[-0-9a-zA-Z$_+!`(),.?/;:&=%#~]*)\","
+  ],
+  "plus": [
+   "            r\"(?P<url>(file|https|http|ws|wss)://[-0-9a-zA-Z$_+!`(),.?/;:&=%#~@]*)\","
+  ],
+  "one_line": true,
+  "date": "2024-08-15T21:21:18+05:30"
+ },
+ {
+  "repo": "rich",
+  "sha": "92e7164773ab1a0dd438ba43fee5d3b76b28ba1a",
+  "subject": "Fix #3104 (#3105)",
+  "file": "rich/_export_format.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    <pre style=\"font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"><code>{code}</code></pre>"
+  ],
+  "plus": [
+   "    <pre style=\"font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"><code style=\"font-family:inherit\">{code}</code></pre>"
+  ],
+  "one_line": true,
+  "date": "2023-11-07T17:04:31Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "dbf66e8bb9d9391a268e4db8b0d3408a58a27da9",
+  "subject": "fix for markdown table",
+  "file": "rich/markdown.py",
+  "tests": [
+   "tests/test_markdown.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        assert self.body is not None",
+   "        for row in self.body.rows:",
+   "            row_content = [element.content for element in row.cells]",
+   "            table.add_row(*row_content)"
+  ],
+  "plus": [
+   "        if self.body is not None:",
+   "            for row in self.body.rows:",
+   "                row_content = [element.content for element in row.cells]",
+   "                table.add_row(*row_content)"
+  ],
+  "one_line": false,
+  "date": "2023-07-29T10:07:27+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "d9eff2aa44501ee1c6c9808543c493e4b2efe3c9",
+  "subject": "Fixed issue with custom classes (fixes #2875)",
+  "file": "rich/repr.py",
+  "tests": [
+   "tests/test_repr.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                        if param.default == param.empty:"
+  ],
+  "plus": [
+   "                        if param.default is param.empty:"
+  ],
+  "one_line": true,
+  "date": "2023-06-22T11:39:46+02:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "00181151a4a6ad845de6683df65eb366df91a5d8",
+  "subject": "fix for is_terminal",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   ""
+  ],
+  "plus": [
+   "            return True"
+  ],
+  "one_line": false,
+  "date": "2023-04-12T17:34:32+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "c2df987b180c01ed36bef44d7054e4b2a5fe8514",
+  "subject": "fix pre output",
+  "file": "rich/_export_format.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    <pre style=\"font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">",
+   "        <code>{code}</code>",
+   "    </pre>"
+  ],
+  "plus": [
+   "    <pre style=\"font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"><code>{code}</code></pre>"
+  ],
+  "one_line": false,
+  "date": "2023-03-04T09:57:32Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "da4f6bc797544e30dc6546170d275c7ff6e8380e",
+  "subject": "fix for empty dataclass",
+  "file": "rich/pretty.py",
+  "tests": [
+   "tests/test_pretty.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "                    empty=f\"{obj.__class__.__name__}()\","
+  ],
+  "one_line": false,
+  "date": "2023-02-19T22:51:55Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "aa0929298bf85b9357edf8af239d715a18ab5ce8",
+  "subject": "fix issue splitting segments",
+  "file": "rich/segment.py",
+  "tests": [
+   "tests/test_segment.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        pos = int((cut / cell_length) * len(text))"
+  ],
+  "plus": [
+   "        pos = int((cut / cell_length) * (len(text) - 1))"
+  ],
+  "one_line": true,
+  "date": "2023-01-06T14:14:48Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "fe1ed5399e298402eafdf6b726fb05ba3d1dbec1",
+  "subject": "fix for syntax measure",
+  "file": "rich/syntax.py",
+  "tests": [
+   "tests/test_syntax.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "            + max(cell_len(line) for line in self.code.splitlines())"
+  ],
+  "plus": [
+   "        lines = self.code.splitlines()",
+   "            + (max(cell_len(line) for line in lines) if lines else 0)"
+  ],
+  "one_line": false,
+  "date": "2022-10-01T15:21:45+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "5e359577783648d57a617ab5147e087eb1d0b6a4",
+  "subject": "fix unreadable text on light",
+  "file": "rich/markdown.py",
+  "tests": [
+   "tests/test_markdown.py",
+   "tests/test_markdown_no_hyperlinks.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        return cls(lexer_name or \"default\", markdown.code_theme)"
+  ],
+  "plus": [
+   "        return cls(lexer_name or \"text\", markdown.code_theme)"
+  ],
+  "one_line": true,
+  "date": "2022-09-20T11:41:11+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "ac69488768e9c54cdef26e45b26a1b42ebf2f5d3",
+  "subject": "fix for syntax measure",
+  "file": "rich/syntax.py",
+  "tests": [
+   "tests/test_syntax.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "            width = self.code_width + self._numbers_column_width + right + left",
+   "        return Measurement(self._numbers_column_width, options.max_width)"
+  ],
+  "plus": [
+   "from .cells import cell_len",
+   "",
+   "        padding = left + right",
+   "            width = self.code_width + self._numbers_column_width + padding + 1",
+   "        width = (",
+   "            self._numbers_column_width",
+   "            + padding",
+   "            + max(cell_len(line) for line in self.code.splitlines())",
+   "        )",
+   "        if self.line_numbers:",
+   "            width += 1",
+   "        return Measurement(self._numbers_column_width, width)"
+  ],
+  "one_line": false,
+  "date": "2022-09-20T10:44:10+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "02dffcf9cfe0e3c48fe98ee41f9bec4941340f58",
+  "subject": "Fix `pretty` cyclic reference handling",
+  "file": "rich/pretty.py",
+  "tests": [
+   "tests/test_pretty.py"
+  ],
+  "hunks": 11,
+  "minus": [
+   "",
+   "            obj_id = id(obj)",
+   "            if obj_id in visited_ids:",
+   "                # Recursion detected",
+   "                return Node(value_repr=\"...\")",
+   "",
+   "                pop_visited(obj_id)",
+   "            obj_id = id(obj)",
+   "            if obj_id in visited_ids:",
+   "                # Recursion detected",
+   "                return Node(value_repr=\"...\")"
+  ],
+  "plus": [
+   "        obj_id = id(obj)",
+   "        if obj_id in visited_ids:",
+   "            # Recursion detected",
+   "            return Node(value_repr=\"...\")",
+   "",
+   "            push_visited(obj_id)",
+   "            pop_visited(obj_id)",
+   "            push_visited(obj_id)",
+   "            pop_visited(obj_id)",
+   "            pop_visited(obj_id)",
+   "            push_visited(obj_id)",
+   "            pop_visited(obj_id)"
+  ],
+  "one_line": false,
+  "date": "2022-09-14T15:32:11-05:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "2ef0c30905ae801ae0359b8b42f53135bc87dfe7",
+  "subject": "Fix issue with NO_COLOR, add test for Console with no file",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            self._force_terminal = self._environ.get(\"FORCE_COLOR\") is not None"
+  ],
+  "plus": [
+   "            # If FORCE_COLOR env var has any value at all, we force terminal.",
+   "            force_terminal = self._environ.get(\"FORCE_COLOR\")",
+   "            if force_terminal is not None:",
+   "                self._force_terminal = bool(force_terminal)",
+   "            else:",
+   "                self._force_terminal = None",
+   "",
+   "        print(self._force_terminal)"
+  ],
+  "one_line": false,
+  "date": "2022-09-07T14:13:00+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "f8b536ca066c75c2d71b166adc618b11a82dfae0",
+  "subject": "Fix missing `mode` property on file wrapper",
+  "file": "rich/progress.py",
+  "tests": [
+   "tests/test_progress.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "    @property",
+   "    def mode(self) -> str:",
+   "        return self.handle.mode",
+   ""
+  ],
+  "one_line": false,
+  "date": "2022-08-27T17:08:29+02:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "4787873fc0da30956cc72efc1a6b32a546e04184",
+  "subject": "Fix some broken tests, remove redundant code",
+  "file": "rich/markdown.py",
+  "tests": [
+   "tests/_card_render.py",
+   "tests/test_markdown_no_hyperlinks.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    def on_child_close(",
+   "        self, context: \"MarkdownContext\", child: \"MarkdownElement\"",
+   "    ) -> bool:",
+   "        print(f\"Link.on_child_close({child})\")",
+   "        return False",
+   ""
+  ],
+  "plus": [],
+  "one_line": false,
+  "date": "2022-08-02T15:14:37+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "cf28a12bb90a1ddef31510c50dcfd1d0102a5eef",
+  "subject": "Fix a test, remove debugging stuff",
+  "file": "rich/markdown.py",
+  "tests": [
+   "tests/test_markdown.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "        print(f\"closing list item child {vars(child)}\")",
+   "            print(f\"{self.stack.top}.on_text({text}, {node_type})\")",
+   "            print(node_type, token)",
+   "                print(f\"text {token.content}\")",
+   "                    print(tag, f\"markdown.{style_name}\")"
+  ],
+  "plus": [],
+  "one_line": false,
+  "date": "2022-08-02T13:05:51+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "051dd0452c6d8156d729bf3fccb578d275428010",
+  "subject": "Fix interaction between Console capture and record",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "            if self._buffer_index == 0:",
+   "                if self.record:",
+   "                    with self._record_buffer_lock:",
+   "                        self._record_buffer.extend(self._buffer[:])"
+  ],
+  "plus": [
+   "            if self.record:",
+   "                with self._record_buffer_lock:",
+   "                    self._record_buffer.extend(self._buffer[:])",
+   "            if self._buffer_index == 0:"
+  ],
+  "one_line": false,
+  "date": "2022-06-15T17:07:04+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "5a999f49f9e1617ab6d31381a4c862caa0a75873",
+  "subject": "Render height fix (#2246)",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "                    render_options.height,"
+  ],
+  "plus": [
+   "",
+   "            render_height = render_options.height",
+   "            if render_height is not None:",
+   "                render_height = max(0, render_height)",
+   "",
+   "                    render_height,"
+  ],
+  "one_line": false,
+  "date": "2022-05-03T13:23:43+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "95049662d6bcc50fcee95ea3a25860161641adf2",
+  "subject": "fix background",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "            return escape(text).replace(\" \", \"\\u00A0\")",
+   "                if background is not None:"
+  ],
+  "plus": [
+   "            return escape(text).replace(\" \", \"&#160;\")",
+   "                    has_background = True",
+   "                    has_background = style.bgcolor is not None",
+   "                if has_background:"
+  ],
+  "one_line": false,
+  "date": "2022-05-02T20:18:28+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "83af95166323acccd1f73284753a05807bd678c2",
+  "subject": "[traceback] Fix \"missing whitespace\" bug",
+  "file": "rich/traceback.py",
+  "tests": [
+   "tests/test_traceback.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            first = frame_index == 1"
+  ],
+  "plus": [
+   "            first = frame_index == 0"
+  ],
+  "one_line": true,
+  "date": "2022-04-26T11:36:43+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "193903dff5a2a5fb4f84eb9a9fba0f555f6101de",
+  "subject": "fix escaping issue",
+  "file": "rich/markup.py",
+  "tests": [
+   "tests/test_markup.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    markup: str, _escape: _EscapeSubMethod = re.compile(r\"(\\\\*)(\\[[a-z#\\/@].*?\\])\").sub"
+  ],
+  "plus": [
+   "    markup: str,",
+   "    _escape: _EscapeSubMethod = re.compile(r\"(\\\\*)(\\[[a-z#/@][^[]*?])\").sub,"
+  ],
+  "one_line": false,
+  "date": "2022-04-12T14:16:54+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "9faafa0ab17ff24a1f066950a4a81b16fc22ac81",
+  "subject": "fix for ansi issue",
+  "file": "rich/ansi.py",
+  "tests": [
+   "tests/test_ansi.py",
+   "tests/test_text.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "re_ansi = re.compile(r\"(?:\\x1b\\[(.*?)m)|(?:\\x1b\\](.*?)\\x1b\\\\)\")",
+   "re_csi = re.compile(r\"\\x1B(?:[@-Z\\\\-_]|\\[[0-?]*[ -/]*[@-~])\")",
+   "    def remove_csi(ansi_text: str) -> str:",
+   "        \"\"\"Remove unknown CSI sequences.\"\"\"",
+   "        return re_csi.sub(\"\", ansi_text)",
+   "",
+   "        sgr, osc = match.groups()",
+   "            yield _AnsiToken(remove_csi(ansi_text[position:start]))",
+   "        yield _AnsiToken(\"\", sgr, osc)",
+   "        yield _AnsiToken(remove_csi(ansi_text[position:]))"
+  ],
+  "plus": [
+   "re_ansi = re.compile(",
+   "    r\"\"\"",
+   "(?:\\x1b\\](.*?)\\x1b\\\\)|",
+   "(?:\\x1b([(@-Z\\\\-_]|\\[[0-?]*[ -/]*[@-~]))",
+   "\"\"\",",
+   "    re.VERBOSE,",
+   ")",
+   "        osc, sgr = match.groups()",
+   "            yield _AnsiToken(ansi_text[position:start])",
+   "",
+   "        if sgr and not sgr.endswith(\"m\"):",
+   "            sgr = \"\"",
+   "        yield _AnsiToken(",
+   "            \"\",",
+   "            sgr[1:-1] if sgr else None,",
+   "            osc,",
+   "        )",
+   "        yield _AnsiToken(ansi_text[position:])"
+  ],
+  "one_line": false,
+  "date": "2022-03-26T14:40:20Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "f7aa3fb78e438cfb4761847a1aaa237c5368bf1d",
+  "subject": "fix for ansi issue",
+  "file": "rich/ansi.py",
+  "tests": [
+   "tests/test_text.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "    sgr: str = \"\"",
+   "    osc: str = \"\"",
+   "            elif osc:",
+   "            elif sgr:",
+   "                    min(255, int(_code)) for _code in sgr.split(\";\") if _code.isdigit()"
+  ],
+  "plus": [
+   "    sgr: str | None = \"\"",
+   "    osc: str | None = \"\"",
+   "    sgr: str | None",
+   "    osc: str | None",
+   "            elif osc is not None:",
+   "            elif sgr is not None:",
+   "                    min(255, int(_code or \"0\"))",
+   "                    for _code in sgr.split(\";\")",
+   "                    if _code.isdigit() or _code == \"\""
+  ],
+  "one_line": false,
+  "date": "2022-03-26T12:59:20Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "6d443ddaf0ef5cf4e1425b5ff932650dd2692cc0",
+  "subject": "panel bug",
+  "file": "rich/panel.py",
+  "tests": [
+   "tests/test_panel.py"
+  ],
+  "hunks": 8,
+  "minus": [
+   "from typing import Optional, TYPE_CHECKING",
+   "",
+   "from .box import Box, ROUNDED",
+   "from .segment import Segment",
+   "            yield from console.render(title_text)",
+   "            yield from console.render(subtitle_text)",
+   "    from .box import ROUNDED, DOUBLE"
+  ],
+  "plus": [
+   "from typing import TYPE_CHECKING, Optional",
+   "from .box import ROUNDED, Box",
+   "from .segment import Segment",
+   "            yield from console.render(title_text, child_options.update_width(width - 4))",
+   "            yield from console.render(",
+   "                subtitle_text, child_options.update_width(width - 4)",
+   "            )",
+   "    from .box import DOUBLE, ROUNDED"
+  ],
+  "one_line": false,
+  "date": "2022-03-21T16:31:41Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "0daccb07684760c86a5583ee98bb94a406837992",
+  "subject": "fix uuid highlighter",
+  "file": "rich/highlighter.py",
+  "tests": [
+   "tests/test_highlighter.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "            r\"(?P<uuid>[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})\","
+  ],
+  "plus": [
+   "            r\"(?P<uuid>[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})\","
+  ],
+  "one_line": false,
+  "date": "2022-03-18T17:17:10Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "c9b70864e3cf5160cf5f93b9f4637cbe0a6a6d7d",
+  "subject": "Fix JSON key highlighting when no indentation",
+  "file": "rich/highlighter.py",
+  "tests": [
+   "tests/test_highlighter.py"
+  ],
+  "hunks": 7,
+  "minus": [
+   "from .text import Text",
+   "            r\"(?<![\\\\\\w])(?P<str>b?\\\".*?(?<!\\\\)\\\")\",",
+   "        r\"(?<![\\\\\\w])(?P<key>b?\\\"[^\\\"]*?(?<!\\\\)\\\")\\:\","
+  ],
+  "plus": [
+   "import json",
+   "import re",
+   "import string",
+   "from .text import Span, Text",
+   "    # Captures the start and end of JSON strings, handling escaped quotes",
+   "    JSON_STR = r\"(?<![\\\\\\w])(?P<str>b?\\\".*?(?<!\\\\)\\\")\"",
+   "",
+   "            JSON_STR,",
+   "    def highlight(self, text: Text) -> None:",
+   "        super().highlight(text)",
+   "",
+   "        # Additional work to handle highlighting JSON keys",
+   "        plain = text.plain",
+   "        append = text.spans.append",
+   "        for match in re.finditer(self.JSON_STR, plain):",
+   "            start, end = match.span()",
+   "            cursor = end",
+   "            while cursor < len(plain):",
+   "                char = plain[cursor]",
+   "                cursor += 1",
+   "                if char in string.whitespace:",
+   "                    continue",
+   "                elif char == \":\":",
+   "                    append(Span(start, end, \"json.key\"))",
+   "                else:",
+   "                    break",
+   "",
+   "",
+   "    console.print_json(json.dumps(obj={\"name\": \"apple\", \"count\": 1}), indent=None)"
+  ],
+  "one_line": false,
+  "date": "2022-03-08T15:21:50Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "71325bb5bbb194ae0c09256c3035187354e042c2",
+  "subject": "Fix issue with markup escaping",
+  "file": "rich/markup.py",
+  "tests": [
+   "tests/test_markup.py"
+  ],
+  "hunks": 9,
+  "minus": [
+   "import re",
+   "from .emoji import EmojiVariant",
+   "from ._emoji_replace import _emoji_replace",
+   "",
+   "    r\"\"\"((\\\\*)\\[([a-z#\\/@].*?)\\])\"\"\",",
+   "RE_HANDLER = re.compile(r\"^([\\w\\.]*?)(\\(.*?\\))?$\")",
+   "    from rich.table import Table"
+  ],
+  "plus": [
+   "import re",
+   "from ._emoji_replace import _emoji_replace",
+   "from .emoji import EmojiVariant",
+   "    r\"\"\"((\\\\*)\\[([a-z#/@][^[]*?)])\"\"\",",
+   "RE_HANDLER = re.compile(r\"^([\\w.]*?)(\\(.*?\\))?$\")",
+   "            # Capture open brace escapes, where the brace is not part of a tag.",
+   "            plain_text = plain_text.replace(\"\\\\[\", \"[\")",
+   "    from rich.table import Table"
+  ],
+  "one_line": false,
+  "date": "2022-02-10T14:31:37Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "5960f54917b3b4c5926700b77696e5fc851cab82",
+  "subject": "chore: fix typos",
+  "file": "rich/traceback.py",
+  "tests": [
+   "tests/test_columns.py",
+   "tests/test_highlighter.py",
+   "tests/test_logging.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        # if wihin ipython, use customized traceback"
+  ],
+  "plus": [
+   "        # if within ipython, use customized traceback"
+  ],
+  "one_line": true,
+  "date": "2022-01-06T22:44:05-08:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "4b1293e00dc49513b8678be8d0ba51b50c5e0453",
+  "subject": "fix at escape",
+  "file": "rich/markup.py",
+  "tests": [
+   "tests/test_markup.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    markup: str, _escape: _EscapeSubMethod = re.compile(r\"(\\\\*)(\\[[a-z#\\/].*?\\])\").sub"
+  ],
+  "plus": [
+   "    markup: str, _escape: _EscapeSubMethod = re.compile(r\"(\\\\*)(\\[[a-z#\\/@].*?\\])\").sub"
+  ],
+  "one_line": true,
+  "date": "2022-01-02T16:51:41Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "260508bfa058d9d7e7f782482e91adf7ddf06342",
+  "subject": "fix for overlapping markip",
+  "file": "rich/text.py",
+  "tests": [
+   "tests/test_segment.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "        order = {span: span_index for span_index, span in enumerate(self._spans)}",
+   "        span_stack = sorted(self._spans, key=attrgetter(\"start\"), reverse=True)",
+   "        pop = span_stack.pop",
+   "        push = span_stack.append",
+   "        get_order = order.__getitem__",
+   "",
+   "        for line, (start, end) in zip(new_lines, line_ranges):",
+   "            if not span_stack:",
+   "                break",
+   "            append_span = line._spans.append",
+   "            position = len(span_stack) - 1",
+   "            while span_stack[position].start < end:",
+   "                span = pop(position)",
+   "                add_span, remaining_span = span.split(end)",
+   "                if remaining_span:",
+   "                    push(remaining_span)",
+   "                    order[remaining_span] = order[span]",
+   "                span_start, span_end, span_style = add_span",
+   "                line_span = _Span(span_start - start, span_end - start, span_style)",
+   "                order[line_span] = order[span]",
+   "                append_span(line_span)",
+   "                position -= 1",
+   "                if position < 0 or not span_stack:",
+   "                    break  # pragma: no cover",
+   "            line._spans.sort(key=get_order)"
+  ],
+  "plus": [
+   "",
+   "",
+   "        for line, (line_start, line_end) in zip(new_lines._lines, line_ranges):",
+   "            for span_start, span_end, style in self._spans:",
+   "                if span_end > line_start:",
+   "                    new_start = max(0, span_start - line_start)",
+   "                    new_end = min(span_end - line_start, line_end - line_start)",
+   "                    if new_end > new_start:",
+   "                        line._spans.append(_Span(new_start, new_end, style))"
+  ],
+  "one_line": false,
+  "date": "2021-12-14T17:57:11Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "8a74a97563dad3437ce537ed07dc72e031c54638",
+  "subject": "fix infinite loop",
+  "file": "rich/cells.py",
+  "tests": [
+   "tests/test_cells.py"
+  ],
+  "hunks": 3,
+  "minus": [
+   "    end = cell_size",
+   "        before = text[:pos]"
+  ],
+  "plus": [
+   "    if not total:",
+   "        return \"\"",
+   "    end = len(text)",
+   "        before = text[: pos + 1]"
+  ],
+  "one_line": false,
+  "date": "2021-11-13T09:04:12Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "7657a8e8f90f8b4a1841fa7811d42d1fdd933af1",
+  "subject": "fix trailing comma",
+  "file": "rich/pretty.py",
+  "tests": [
+   "tests/test_pretty.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            for last, field in loop_last(fields(obj)):"
+  ],
+  "plus": [
+   "            for last, field in loop_last(field for field in fields(obj) if field.repr):"
+  ],
+  "one_line": true,
+  "date": "2021-11-07T15:59:12Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "f5f67a9ebb494dd65ad3eeb3437567e9da44d559",
+  "subject": "fix for missing newline",
+  "file": "rich/live.py",
+  "tests": [
+   "tests/test_live.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "        if not self.console.is_interactive:",
+   "            return self.console.print()"
+  ],
+  "one_line": false,
+  "date": "2021-11-06T12:27:32Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "e1c105b8f0ab182dae6814b632bc80acc5c6090f",
+  "subject": "fix detect color",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            _term_name, _hyphen, colors = term.partition(\"-\")"
+  ],
+  "plus": [
+   "            _term_name, _hyphen, colors = term.rpartition(\"-\")"
+  ],
+  "one_line": true,
+  "date": "2021-11-05T10:26:02Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "8a33ce27db8ede85395d81aee3ac3e26034d5fdb",
+  "subject": "fix a edge case bug when running under pytest",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        return False if isatty is None else isatty()"
+  ],
+  "plus": [
+   "        try:",
+   "            return False if isatty is None else isatty()",
+   "        except ValueError:",
+   "            # in some situation (at the end of a pytest run for example) isatty() can raise",
+   "            # ValueError: I/O operation on closed file",
+   "            # return False because we aren't in a terminal anymore",
+   "            return False"
+  ],
+  "one_line": false,
+  "date": "2021-10-13T17:39:30+02:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "1e8253e52ddca3d5b009afeb14f47cf9b20ffed8",
+  "subject": "Fix typo and update tests",
+  "file": "rich/__main__.py",
+  "tests": [
+   "tests/_card_render.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "Supports much of the *markdown*, __syntax__!"
+  ],
+  "plus": [
+   "Supports much of the *markdown* __syntax__!"
+  ],
+  "one_line": true,
+  "date": "2021-09-16T15:57:26+05:30"
+ },
+ {
+  "repo": "rich",
+  "sha": "d04a8123721b27764b48fadc1e37430f0d568146",
+  "subject": "fix for markup span sorting",
+  "file": "rich/markup.py",
+  "tests": [
+   "tests/test_markup.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "    text.spans = sorted(spans, key=attrgetter(\"start\", \"end\"))"
+  ],
+  "plus": [
+   "",
+   "    text.spans = sorted(spans[::-1], key=attrgetter(\"start\"))"
+  ],
+  "one_line": false,
+  "date": "2021-07-09T22:02:14+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "5a71691cfae384493ad9c57237fa341e27860e8e",
+  "subject": "edge case fix",
+  "file": "rich/segment.py",
+  "tests": [
+   "tests/test_segment.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "                if end_pos == cut:",
+   "                    add_segment(segment)",
+   "                    yield split_segments[:]",
+   "                    del split_segments[:]",
+   "                    pos = end_pos",
+   "                else:",
+   "                    before, segment = segment.split_cells(cut - pos)",
+   "                    add_segment(before)",
+   "                    yield split_segments[:]",
+   "                    del split_segments[:]",
+   "                    pos = cut",
+   "                    if not segment:",
+   "                        break",
+   "                    cut = next(iter_cuts)",
+   "                except StopIteration:",
+   "                    return"
+  ],
+  "plus": [
+   "                    if end_pos == cut:",
+   "                        add_segment(segment)",
+   "                        yield split_segments[:]",
+   "                        del split_segments[:]",
+   "                        pos = end_pos",
+   "                        break",
+   "                    else:",
+   "                        before, segment = segment.split_cells(cut - pos)",
+   "                        add_segment(before)",
+   "                        yield split_segments[:]",
+   "                        del split_segments[:]",
+   "                        pos = cut",
+   "                finally:",
+   "                    try:",
+   "                        cut = next(iter_cuts)",
+   "                    except StopIteration:",
+   "                        return"
+  ],
+  "one_line": false,
+  "date": "2021-07-04T20:52:35+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "966679bdaa4b17af7560a9f4b673eaab5e2f66f4",
+  "subject": "Unit test fix",
+  "file": "rich/spinner.py",
+  "tests": [
+   "tests/test_spinner.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "from .text import Text, TextType"
+  ],
+  "plus": [
+   "from .text import Text"
+  ],
+  "one_line": true,
+  "date": "2021-03-29T10:10:43-07:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "0c5809d0387bc55460859ebc6b0cf0d9c20b6a40",
+  "subject": "formatting fixes",
+  "file": "rich/live_render.py",
+  "tests": [
+   "tests/test_layout.py",
+   "tests/test_screen.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "                yield _Segment.line()"
+  ],
+  "plus": [
+   "                yield _Segment.line()"
+  ],
+  "one_line": true,
+  "date": "2021-02-13T18:25:47Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "60f41610cda7e6915bd0bfbd5959de3de10f83ba",
+  "subject": "test fixes",
+  "file": "rich/layout.py",
+  "tests": [
+   "tests/test_layout.py",
+   "tests/test_live.py",
+   "tests/test_screen.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            console.render_lines(child.renderable, options.update(width=render_width))"
+  ],
+  "plus": [
+   "            console.render_lines(child, options.update(width=render_width))"
+  ],
+  "one_line": true,
+  "date": "2021-02-13T18:17:14Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "f7c078313d805598e428784cca9e8e6d6a305bd0",
+  "subject": "fix TypeError in inspect",
+  "file": "rich/_inspect.py",
+  "tests": [
+   "tests/test_inspect.py"
+  ],
+  "hunks": 5,
+  "minus": [
+   "    def _get_signature(self, name: str, obj: Any) -> Text:",
+   "            yield self._get_signature(\"\", obj)",
+   "            yield \"\"",
+   "                _signature_text = self._get_signature(key, value)",
+   "                if self.docs:",
+   "                    docs = getdoc(value)",
+   "                    if docs is not None:",
+   "                        _doc = _reformat_doc(str(docs))",
+   "                        if not self.help:",
+   "                            _doc = _first_paragraph(_doc)",
+   "                        _signature_text.append(\"\\n\" if \"\\n\" in _doc else \" \")",
+   "                        doc = highlighter(_doc)",
+   "                        doc.stylize(\"inspect.doc\")",
+   "                        _signature_text.append(doc)",
+   "",
+   "                add_row(key_text, _signature_text)"
+  ],
+  "plus": [
+   "    def _get_signature(self, name: str, obj: Any) -> Optional[Text]:",
+   "        except TypeError:",
+   "            return None",
+   "            signature = self._get_signature(\"\", obj)",
+   "            if signature is not None:",
+   "                yield signature",
+   "                yield \"\"",
+   "                _signature_text = self._get_signature(key, value)",
+   "                if _signature_text is None:",
+   "                    add_row(key_text, Pretty(value, highlighter=highlighter))",
+   "                else:",
+   "                    if self.docs:",
+   "                        docs = getdoc(value)",
+   "                        if docs is not None:",
+   "                            _doc = _reformat_doc(str(docs))",
+   "                            if not self.help:",
+   "                                _doc = _first_paragraph(_doc)",
+   "                            _signature_text.append(\"\\n\" if \"\\n\" in _doc else \" \")",
+   "                            doc = highlighter(_doc)",
+   "                            doc.stylize(\"inspect.doc\")",
+   "                            _signature_text.append(doc)",
+   "",
+   "                    add_row(key_text, _signature_text)"
+  ],
+  "one_line": false,
+  "date": "2021-01-13T16:51:38Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "6d616467f4e90427ec6e93b9030ea87ba2c11e3a",
+  "subject": "test fix",
+  "file": "rich/progress.py",
+  "tests": [
+   "tests/test_progress.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "            if refresh:",
+   "                self.refresh()",
+   ""
+  ],
+  "plus": [
+   "            if refresh:",
+   "                self.refresh()",
+   ""
+  ],
+  "one_line": false,
+  "date": "2020-12-28T16:33:46Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "0c34ddcb67f5adff14917ac297d8473a78289b6c",
+  "subject": "fix black",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py",
+   "tests/test_file_proxy.py"
+  ],
+  "hunks": 6,
+  "minus": [
+   "        soft_wrap: bool = False,",
+   "            soft_wrap (bool, optional): Enable soft wrap mode which disables word wrapping and cropping. Defaults to False."
+  ],
+  "plus": [
+   "        soft_wrap (Optional[bool], optional): Set soft wrap default on print method. Defaults to False.",
+   "        soft_wrap: bool = False,",
+   "        self.soft_wrap = soft_wrap",
+   "        soft_wrap: bool = None,",
+   "            soft_wrap (bool, optional): Enable soft wrap mode which disables word wrapping and cropping of text. Defaults to False.",
+   "        if soft_wrap is None:",
+   "            soft_wrap = self.soft_wrap"
+  ],
+  "one_line": false,
+  "date": "2020-12-17T17:39:54Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "0138b18950b3d21f6fdb52b1e2e2ab3ef459d256",
+  "subject": "fix tuple of one issue",
+  "file": "rich/pretty.py",
+  "tests": [
+   "tests/test_pretty.py"
+  ],
+  "hunks": 12,
+  "minus": [
+   "                if hasattr(value, \"__rich_console__\") or hasattr(value, \"__rich__\")",
+   "        lines = [_Line(node=self)]",
+   "                suffix=\"\" if child.last else \",\",",
+   "            suffix=\"\" if node.last else \",\","
+  ],
+  "plus": [
+   "from .abc import RichRenderable",
+   "    expand_all: bool = False,",
+   "        expand_all (bool, optional): Expand all containers. Defaults to False",
+   "                if isinstance(value, RichRenderable)",
+   "                    expand_all=expand_all,",
+   "    @property",
+   "    def separator(self) -> str:",
+   "        \"\"\"Get separator between items.\"\"\"",
+   "        return \"\" if self.last else \",\"",
+   "",
+   "        lines = [_Line(node=self, is_root=True)]",
+   "    is_root: bool = False",
+   "        tuple_of_one = node.is_tuple and len(node.children) == 1",
+   "            separator = \",\" if tuple_of_one else child.separator",
+   "                suffix=separator,",
+   "            suffix=\",\" if (tuple_of_one and not self.is_root) else node.separator,"
+  ],
+  "one_line": false,
+  "date": "2020-11-27T20:04:53Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "0e57047e6baa83e538b4d34cfec9263c773e15df",
+  "subject": "fix tests",
+  "file": "rich/__main__.py",
+  "tests": [
+   "tests/_card_render.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "            1,",
+   "            \"Hello World!\",",
+   "            100.123,",
+   "            323.232,",
+   "            432324.0,",
+   "            {5, 6, 7, (1, 2, 3, 4), 8},",
+   "        \"bar\": frozenset({1, 2, 3}),"
+  ],
+  "plus": [
+   "            3.1427,",
+   "            (",
+   "                \"Paul Atriedies\",",
+   "                \"Vladimir Harkonnen\",",
+   "                \"Thufir Haway\",",
+   "            ),"
+  ],
+  "one_line": false,
+  "date": "2020-11-25T22:31:26Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "9f2a426ea7b27e9ef41bb08bff7b0481d4755aa6",
+  "subject": "fix input on legacy windows",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py",
+   "tests/test_padding.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "        if self.legacy_windows:",
+   "            # Legacy windows doesn't like ANSI codes in getpass or input (colorama bug)?",
+   "            self.file.write(prompt_str)",
+   "            prompt_str = \"\""
+  ],
+  "one_line": false,
+  "date": "2020-10-19T16:41:15+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "60fde2a274e20e92f56e1e9b23515f4c4a995980",
+  "subject": "Fix broken HTML encoding",
+  "file": "rich/console.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "<meta charset=\"UTF-8\">"
+  ],
+  "one_line": false,
+  "date": "2020-09-19T14:11:43+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "465a56f465385b6d3187f27e4b9f8de89e23df4e",
+  "subject": "fix cjk i think",
+  "file": "rich/rule.py",
+  "tests": [
+   "tests/test_rule.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "from .cells import cell_len, get_character_cell_size as get_char_size",
+   "                print(side)",
+   "    console.print(Rule(title=\"foo\", characters=\"\u597d\"))"
+  ],
+  "plus": [
+   "from .cells import cell_len, get_character_cell_size as get_char_size, set_cell_size",
+   "            rule_text.plain = set_cell_size(rule_text.plain, width)",
+   "    console.print(Rule(title=\"\u597d\", characters=\"+-\"))"
+  ],
+  "one_line": false,
+  "date": "2020-08-07T01:04:19Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "58b7224e93f1b63e21be9ee18eb0f399aba4ec4a",
+  "subject": "Fix deprecation warnings due to invalid escape sequences.",
+  "file": "rich/markup.py",
+  "tests": [
+   "tests/test_markup.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    return markup.replace(\"[\", \"\\[\")"
+  ],
+  "plus": [
+   "    return markup.replace(\"[\", r\"\\[\")"
+  ],
+  "one_line": true,
+  "date": "2020-08-05T13:08:38Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "e386a669fc5d068138b63a2311f6c1b60b2e0653",
+  "subject": "fix tests",
+  "file": "rich/rule.py",
+  "tests": [
+   "tests/test_rule.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    console.print(Rule(title=\"\u6b22\u8fce\uff01\"))"
+  ],
+  "plus": [
+   "    console.print(Rule(title=\"foo\"))"
+  ],
+  "one_line": true,
+  "date": "2020-08-05T08:50:15Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "eb2f0d5277c159d8693636ec60c79c5442fd2e43",
+  "subject": "windows test fix",
+  "file": "rich/text.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "            include_separator (bool, optional): Include the separator in the lines. Defaults to False.",
+   "            allow_blank (bool, optional): Return a blank line if the text ends with a separator. Defaults to False."
+  ],
+  "one_line": false,
+  "date": "2020-07-27T17:27:50+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "9a4fbf83c5051eaf94a88996292c438c895306d5",
+  "subject": "fix test",
+  "file": "rich/table.py",
+  "tests": [
+   "tests/test_progress.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        expand: bool = True,"
+  ],
+  "plus": [
+   "        expand: bool = False,"
+  ],
+  "one_line": true,
+  "date": "2020-07-22T18:05:45+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "e63da0a751f64703eeb0809dc00830f3021b706c",
+  "subject": "fix box docs",
+  "file": "rich/box.py",
+  "tests": [
+   "tests/test_rich_print.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    # console.save_html(\"box.html\", inline_styles=True)"
+  ],
+  "plus": [
+   "    console.save_html(\"box.html\", inline_styles=True)"
+  ],
+  "one_line": true,
+  "date": "2020-06-28T17:53:43+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "93f917493c1f4e75572fde41ebae6a17ba2c8840",
+  "subject": "test fix",
+  "file": "rich/logging.py",
+  "tests": [
+   "tests/test_logging.py"
+  ],
+  "hunks": 6,
+  "minus": [
+   "from rich.highlighter import ReprHighlighter",
+   "    def __init__(self, level: int = logging.NOTSET, console: Console = None) -> None:",
+   "        self.highlighter = ReprHighlighter()",
+   "        message_text.highlight_words(self.KEYWORDS, \"logging.keyword\")"
+  ],
+  "plus": [
+   "from typing import List",
+   "from rich.highlighter import Highlighter, ReprHighlighter",
+   "    def __init__(",
+   "        self,",
+   "        level: int = logging.NOTSET,",
+   "        console: Console = None,",
+   "        highlighter: Highlighter = None,",
+   "        keywords: List[str] = None,",
+   "    ) -> None:",
+   "        self.highlighter = highlighter or ReprHighlighter()",
+   "        self.keywords = self.KEYWORDS if keywords is None else keywords",
+   "        message_text.highlight_words(self.keywords, \"logging.keyword\")"
+  ],
+  "one_line": false,
+  "date": "2020-06-14T15:23:43+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "7838d87d3d690793c91045f37f50edef38c036ea",
+  "subject": "ratio fix",
+  "file": "rich/_ratio.py",
+  "tests": [
+   "tests/test_columns.py",
+   "tests/test_table.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            distributed = round(",
+   "                max(minimum, int(ratio * total_remaining / total_ratio))",
+   "            )"
+  ],
+  "plus": [
+   "            distributed = max(minimum, ceil(ratio * total_remaining / total_ratio))"
+  ],
+  "one_line": false,
+  "date": "2020-06-06T18:06:44+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "568850d170f4f31b3b6946b5eb27605fefd4835b",
+  "subject": "fixed space after progress",
+  "file": "rich/progress.py",
+  "tests": [
+   "tests/test_progress.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        table = Table.grid()",
+   "        table.pad_edge = True",
+   "        table.padding = (0, 1, 0, 0)"
+  ],
+  "plus": [
+   "        table = Table.grid(padding=(0, 1))"
+  ],
+  "one_line": false,
+  "date": "2020-06-06T17:47:29+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "e2d3bfec19b007d1d74a8405d8c012b96811e0e3",
+  "subject": "fix time for progress tests",
+  "file": "rich/progress.py",
+  "tests": [
+   "tests/test_progress.py"
+  ],
+  "hunks": 2,
+  "minus": [
+   "    _get_time: GetTimeCallable = monotonic",
+   "    \"\"\"Callable to get the current time.\"\"\"",
+   ""
+  ],
+  "plus": [
+   "    _get_time: GetTimeCallable",
+   "    \"\"\"Callable to get the current time.\"\"\"",
+   ""
+  ],
+  "one_line": false,
+  "date": "2020-05-24T15:43:33+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "0feff22ea590c51f69e2f56f3fc1a1c4ee2289cc",
+  "subject": "test fixes",
+  "file": "rich/default_styles.py",
+  "tests": [
+   "tests/test_bar.py",
+   "tests/test_markdown.py",
+   "tests/test_markdown_no_hyperlinks.py",
+   "tests/test_progress.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "    \"markdown.hr\": Style(dim=True),"
+  ],
+  "plus": [
+   "    \"markdown.hr\": Style(color=\"yellow\"),"
+  ],
+  "one_line": true,
+  "date": "2020-05-24T11:52:33+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "a3b09979d56962b671bf445cbbd0df107c5c9b6d",
+  "subject": "fix for right align",
+  "file": "rich/containers.py",
+  "tests": [
+   "tests/_card_render.py"
+  ],
+  "hunks": 1,
+  "minus": [],
+  "plus": [
+   "                line.rstrip()"
+  ],
+  "one_line": false,
+  "date": "2020-05-22T16:56:21+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "5097f44092a4ba4ef7741755b3752d2aebe772a0",
+  "subject": "bar width fix",
+  "file": "rich/progress.py",
+  "tests": [
+   "tests/test_progress.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            width=max(1, self.bar_width),"
+  ],
+  "plus": [
+   "            width=None if self.bar_width is None else max(1, self.bar_width),"
+  ],
+  "one_line": true,
+  "date": "2020-05-20T18:55:23+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "337259459c9e6737145af5cd774958f88ea59b94",
+  "subject": "fix url quoting",
+  "file": "rich/style.py",
+  "tests": [
+   "tests/test_markdown.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "            rendered = f\"\\x1b]8;id={crc32(self.link.encode('utf-8'))};{quote(self.link)}\\x1b\\\\{rendered}\\x1b]8;;\\x1b\\\\\""
+  ],
+  "plus": [
+   "            link = quote(self.link, \"/:\")",
+   "            rendered = f\"\\x1b]8;id={crc32(link.encode('utf-8'))};{link}\\x1b\\\\{rendered}\\x1b]8;;\\x1b\\\\\""
+  ],
+  "one_line": false,
+  "date": "2020-05-10T12:38:57+01:00"
+ },
+ {
+  "repo": "rich",
+  "sha": "9a98dec22b879db1cf64c5f98567bc1aa2cb6338",
+  "subject": "fix style",
+  "file": "rich/traceback.py",
+  "tests": [
+   "tests/test_console.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        theme (str, optional) Pygments theme to use in traceback. Defaults to ``None`` which will pick"
+  ],
+  "plus": [
+   "        theme (Optional[str], optional) Pygments theme to use in traceback. Defaults to ``None`` which will pick"
+  ],
+  "one_line": true,
+  "date": "2020-03-02T11:45:39Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "b74e5bae2d6b1ba9d8237f5f769e6ae7eba677f6",
+  "subject": "fixes / tests for tabs_to_spaces",
+  "file": "rich/text.py",
+  "tests": [
+   "tests/test_text.py"
+  ],
+  "hunks": 4,
+  "minus": [
+   "            tab_size (int, optional): Number of spaces per tab, or ``None`` to use ``console.tab_size``. Defaults to None.",
+   "        tab_size: int = None,",
+   "    def tabs_to_spaces(self, tab_size: int = 8) -> \"Text\":"
+  ],
+  "plus": [
+   "            tab_size (int): Number of spaces per tab, or ``None`` to use ``console.tab_size``. Defaults to 8.",
+   "        tab_size: int = 8,",
+   "    def tabs_to_spaces(self, tab_size: int = None) -> \"Text\":",
+   "        if tab_size is None:",
+   "            tab_size = self.tab_size"
+  ],
+  "one_line": false,
+  "date": "2020-03-01T14:55:03Z"
+ },
+ {
+  "repo": "rich",
+  "sha": "875283640987f413177fe9856d5c80b87f6f308f",
+  "subject": "test fixes",
+  "file": "rich/color.py",
+  "tests": [
+   "tests/test_color.py"
+  ],
+  "hunks": 1,
+  "minus": [
+   "        return cls(name=triplet.css, type=ColorType.TRUECOLOR, triplet=triplet)"
+  ],
+  "plus": [
+   "        return cls(name=triplet.hex, type=ColorType.TRUECOLOR, triplet=triplet)"
+  ],
+  "one_line": true,
+  "date": "2019-12-09T22:02:46Z"
+ }
+]

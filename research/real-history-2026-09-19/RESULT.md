@@ -197,3 +197,72 @@ a statement about two halves costing different amounts, not about a saving.
   recurrence question in particular deserves that setting.
 - 54 code fixes is a small sample for the recurrence claim, and the abstraction that produced the
   signatures is ours.
+
+---
+
+# THE TEST, RUN — 2026-09-19
+
+The replay works now, and it gives the number that both withdrawn figures were standing in for.
+
+## Four harness defects had to be fixed first, and every one of them looked like a result
+
+| defect | what it looked like | what it was |
+|---|---|---|
+| `pytest-cov` never installed | `NO-OBSERVATIONS`, 0 suite runs | coverage empty, so the packet had no executed lines |
+| the repo's own `filterwarnings = error` | `SKIP-NO-COLLECT` on 30 of 31 click cases, at every era | a pytest *deprecation warning* raised as a collection error. `-W default` collects 583 tests instead of none |
+| tests already failing at the parent revision | baseline never green | interpreter drift, unrelated to the commit. Deselected, and the count recorded |
+| dependencies change across a repo's own history | `SKIP-NO-COLLECT` on rich | rich needed `commonmark` before it moved to markdown-it-py; installing once at HEAD leaves old revisions unable to import their tests |
+
+**A guard whose coverage came back empty returns a refusal after zero suite runs, and that is indistinguishable
+from a real refusal unless you look at the suite-run count.** Three separate runs of this file produced exactly
+that shape before the harness was right.
+
+## The protocol
+
+Every case must clear three preconditions before the guard is allowed to run, so nothing broken is ever counted
+as a refusal:
+
+- **COLLECTS** — the suite at the parent revision collects without error
+- **GREEN** — with the fix's test files removed, the suite passes
+- **RED** — with the maintainer's own regression test added, it fails
+
+Then the source file is handed over with the shipped and taught vocabulary, and **that test decides**. Nothing
+is compared to what the maintainer typed.
+
+## Result: click, 31 fixes from 2022 onward that ship their own test
+
+| | |
+|---|---|
+| attempted | 31 |
+| **genuinely judged** | **26** |
+| **repaired, accepted by the maintainer's own test** | **0** |
+| skipped — the test passes at the parent anyway | 4 |
+| skipped — suite error | 1 |
+
+These were real searches, not empty ones: **1,116 suite runs across the 26**, between 1 and 100 each, ranking
+between 1 and 185 candidate lines per case. Every one ended in the same ruling — `HARVEST_COUNTEREXAMPLE`,
+the law's REFUTED exit: every candidate built was rejected by the suite.
+
+Adding sortedcontainers' two genuinely-judged cases: **0 repaired out of 28.**
+
+## Why, and it is not the vocabulary's coverage
+
+**Only 2 of the 26 judged fixes were one-line diffs at all.** The rest change several lines, which a
+line-rewriting vocabulary cannot express however much is taught. The seeded mutations that produced
+"7 of 22 exact" were single-line *by construction* — that was the whole of the difference.
+
+So the honest statement, at last with a number behind it:
+
+> On real, tested bug fixes from a real repository, the vocabulary repaired **0 of 28**. The ceiling is not
+> set by which shapes are taught; it is set by real bug fixes not being single-line edits.
+
+## What this does not say
+
+- 26 cases from one repository, plus 2 from another. rich's 49 are still running at roughly twelve minutes
+  each and will be added; they are not in this number.
+- 2022 onward only. Older revisions need an era-appropriate toolchain that this harness does not build.
+- Commits whose subject says they fix something, touching one source file and its tests. Fixes that say
+  nothing, or that touch two files, are absent.
+- It says nothing about the **localisation**, which is the half that costs nothing and was not on trial here.
+  Every one of the 26 refusals named the file, ranked the lines the failing test executed, and printed the
+  test that killed each candidate.

@@ -4,221 +4,385 @@
   {
    "sha": "f58ca3e814",
    "file": "src/click/_utils.py",
+   "date": "2026-08-29",
    "subject": "Fix `copy`, `deepcopy` and `pickle` of `Sentinel` members",
    "one_line": false,
+   "pre_existing_failures": 0,
    "outcome": "REFUSED",
-   "suite_runs": 1
+   "executed": 19,
+   "observations": 1,
+   "suite_runs": 1,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "bec59289d8",
    "file": "src/click/decorators.py",
-   "outcome": "BASELINE-ERROR"
+   "date": "2026-06-14",
+   "subject": "Fix `package_name` resolution when top-level module differs from distribution name",
+   "one_line": false,
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 98,
+   "observations": 20,
+   "suite_runs": 17,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "762c97eef7",
    "file": "src/click/core.py",
-   "outcome": "BASELINE-ERROR"
+   "date": "2026-06-10",
+   "subject": "Fix double-bracketing of choices in synopsis",
+   "one_line": false,
+   "pre_existing_failures": 1,
+   "outcome": "REFUSED",
+   "executed": 688,
+   "observations": 168,
+   "suite_runs": 90,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "7eb57cff7c",
    "file": "src/click/_compat.py",
-   "outcome": "BASELINE-GREEN"
+   "date": "2026-05-27",
+   "subject": "Fix pager test race by raising before yield",
+   "one_line": false,
+   "pre_existing_failures": 1,
+   "outcome": "SKIP-TEST-DOES-NOT-CATCH"
   },
   {
    "sha": "82f377c547",
    "file": "src/click/core.py",
+   "date": "2026-05-23",
    "subject": "Fix deprecated label formatting",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 1,
+   "outcome": "REFUSED",
+   "executed": 598,
+   "observations": 163,
+   "suite_runs": 81,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "b7e5fd4cc7",
    "file": "src/click/shell_completion.py",
+   "date": "2026-05-23",
    "subject": "Fix broken fish completion and multiline help string",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 1,
+   "outcome": "REFUSED",
+   "executed": 190,
+   "observations": 45,
+   "suite_runs": 27,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "c3535905c7",
    "file": "src/click/shell_completion.py",
+   "date": "2026-05-23",
    "subject": "Fix broken fish completion and multiline help string",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 1,
+   "outcome": "REFUSED",
+   "executed": 190,
+   "observations": 45,
+   "suite_runs": 27,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "7d05a59b9d",
    "file": "src/click/core.py",
+   "date": "2026-05-21",
    "subject": "Fix get_parameter_source() during type conversion and eager callbacks",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 1,
+   "outcome": "REFUSED",
+   "executed": 588,
+   "observations": 146,
+   "suite_runs": 65,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "d15f3c23a1",
    "file": "src/click/_compat.py",
-   "outcome": "BASELINE-ERROR"
+   "date": "2026-05-18",
+   "subject": "fix: Skip flaky pager test on macOS with free-threaded Python 3.14t",
+   "one_line": false,
+   "pre_existing_failures": 1,
+   "outcome": "SKIP-SUITE-ERROR"
   },
   {
    "sha": "0551bf5358",
    "file": "src/click/formatting.py",
+   "date": "2026-05-16",
    "subject": "Fix `HelpFormatter.write_usage` producing spurious characters",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 1,
+   "outcome": "REFUSED",
+   "executed": 64,
+   "observations": 20,
+   "suite_runs": 18,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "a09c1c655e",
    "file": "src/click/termui.py",
+   "date": "2026-05-08",
    "subject": "fix: show custom error message in prompt with hide_input=True",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 95,
+   "observations": 37,
+   "suite_runs": 35,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "2468b70997",
    "file": "src/click/termui.py",
+   "date": "2026-04-30",
    "subject": "Fix readline backspace/line-wrapping on linux (#2969)",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 82,
+   "observations": 34,
+   "suite_runs": 34,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "d340b0c120",
    "file": "src/click/core.py",
+   "date": "2026-04-08",
    "subject": "Fix speculative speculative empty string check",
    "one_line": true,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 436,
+   "observations": 132,
+   "suite_runs": 50,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "546f2851f4",
    "file": "src/click/core.py",
+   "date": "2026-03-01",
    "subject": "Fix callable ``flag_value`` being instantiated when used as a default",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 549,
+   "observations": 139,
+   "suite_runs": 60,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "955ca492a6",
    "file": "src/click/core.py",
-   "outcome": "BASELINE-GREEN"
+   "date": "2025-11-19",
+   "subject": "Cleanup changes to fix flag_value bug",
+   "one_line": false,
+   "pre_existing_failures": 0,
+   "outcome": "SKIP-TEST-DOES-NOT-CATCH"
   },
   {
    "sha": "91de59c6c8",
    "file": "src/click/core.py",
+   "date": "2025-11-19",
    "subject": "Fix #3084: Correct flag optional value behavior and add comprehensive tests",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 445,
+   "observations": 130,
+   "suite_runs": 54,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "1c20dc6e72",
    "file": "src/click/core.py",
+   "date": "2025-09-24",
    "subject": "Fix default handling to defer UNSET normalization",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 548,
+   "observations": 140,
+   "suite_runs": 60,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "701b313160",
    "file": "src/click/shell_completion.py",
+   "date": "2025-08-09",
    "subject": "Fix completions for quoted/escaped parameters in Fish (#3013)",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 189,
+   "observations": 45,
+   "suite_runs": 26,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "812b8000f7",
    "file": "src/click/termui.py",
+   "date": "2025-07-28",
    "subject": "Fix rendering when `prompt_suffix` is empty",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 83,
+   "observations": 33,
+   "suite_runs": 32,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "a1235aacb1",
    "file": "src/click/shell_completion.py",
+   "date": "2025-07-21",
    "subject": "Fix Zsh completions with colons (#2846)",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 185,
+   "observations": 41,
+   "suite_runs": 23,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "ac6a2acfdb",
    "file": "src/click/shell_completion.py",
+   "date": "2025-05-20",
    "subject": "Fix shell completion for nested groups",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 164,
+   "observations": 38,
+   "suite_runs": 20,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "4fd2fea0db",
    "file": "src/click/core.py",
+   "date": "2025-05-20",
    "subject": "Fix condition for setting flag value when type is provided",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 533,
+   "observations": 143,
+   "suite_runs": 65,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "70c673d37e",
    "file": "src/click/core.py",
+   "date": "2024-11-30",
    "subject": "Fix eagerness of help option generated by `help_option_names` (#2811)",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 564,
+   "observations": 159,
+   "suite_runs": 76,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "c326df95e9",
    "file": "src/click/core.py",
+   "date": "2024-11-03",
    "subject": "Fix closing of callbacks on CLI exit (#2680)",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 516,
+   "observations": 142,
+   "suite_runs": 60,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "1a4d8c1bb1",
    "file": "src/click/types.py",
+   "date": "2024-11-02",
    "subject": "Fix metavar for Choice options when show_choices=False (#2365)",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 173,
+   "observations": 41,
+   "suite_runs": 12,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "afc86c748c",
    "file": "src/click/utils.py",
-   "outcome": "BASELINE-GREEN"
+   "date": "2024-10-26",
+   "subject": "Fix colored output on Windows (#2607)",
+   "one_line": true,
+   "pre_existing_failures": 0,
+   "outcome": "SKIP-TEST-DOES-NOT-CATCH"
   },
   {
    "sha": "bf1e8be90c",
    "file": "src/click/core.py",
+   "date": "2024-05-22",
    "subject": "show correct value for flag default when using default_map",
    "one_line": true,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 697,
+   "observations": 185,
+   "suite_runs": 100,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "61f8101f4e",
    "file": "src/click/core.py",
+   "date": "2024-05-21",
    "subject": "Fix printing of default option value to handle empty strings",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 404,
+   "observations": 135,
+   "suite_runs": 51,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   },
   {
    "sha": "20280d4f76",
    "file": "src/click/decorators.py",
-   "outcome": "BASELINE-ERROR"
+   "date": "2023-07-18",
+   "subject": "fix `group` overload with `cls` arg",
+   "one_line": false,
+   "pre_existing_failures": 0,
+   "outcome": "SKIP-TEST-DOES-NOT-CATCH"
   },
   {
    "sha": "e002dbc40c",
    "file": "src/click/shell_completion.py",
+   "date": "2023-05-08",
    "subject": "Fix return value and type signature of `shell_completion.add_completion_class` function (#",
    "one_line": false,
-   "outcome": "NO-OBSERVATIONS",
-   "suite_runs": 0
+   "pre_existing_failures": 0,
+   "outcome": "REFUSED",
+   "executed": 182,
+   "observations": 34,
+   "suite_runs": 17,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
+  },
+  {
+   "sha": "e003331551",
+   "file": "src/click/types.py",
+   "date": "2022-03-19",
+   "subject": "fix ParamType.to_info_dict() with no name",
+   "one_line": false,
+   "pre_existing_failures": 1,
+   "outcome": "REFUSED",
+   "executed": 190,
+   "observations": 45,
+   "suite_runs": 15,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
   }
  ]
 }
