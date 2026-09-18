@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Two patches both pass your tests. A differential check goes and finds the input that separates them - or proves there is none.">
+<style>*{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Two Greens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --bg:#070A0E;
+  --panel:#0D1219;
+  --panel-2:#111823;
+  --edge:rgba(255,255,255,.085);
+  --edge-hi:rgba(255,255,255,.2);
+  --ink:#E8EDF2;
+  --ink-dim:#94A2B3;
+  --ink-faint:#61707F;
+  --ok:#22D3A7;
+  --ok-soft:rgba(34,211,167,.12);
+  --no:#FF5C7A;
+  --no-soft:rgba(255,92,122,.12);
+  --soon:#FFB020;
+  --soon-soft:rgba(255,176,32,.11);
+  --sans:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+  --disp:'Archivo',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;
+  line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:20px;padding-block:0}
+h1,h2,h3{font-family:var(--disp);margin:0;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:clamp(2.1rem,5.6vw,3.5rem);line-height:1.04;font-weight:700}
+h2{font-size:clamp(1.4rem,3.2vw,1.95rem);line-height:1.14;font-weight:700;margin-bottom:.4em}
+h3{font-size:1rem;font-weight:600;font-family:var(--sans);margin-bottom:.3em}
+p{margin:0 0 1em}
+.lede{font-size:clamp(1rem,2vw,1.14rem);color:var(--ink-dim);max-width:62ch}
+.eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 .8em}
+section{padding-block:clamp(40px,6vw,72px)}
+hr{border:0;height:1px;background:var(--edge);margin:0}
+.mono{font-family:var(--mono)}
+.tnum{font-variant-numeric:tabular-nums}
+.ok{color:var(--ok)}.no{color:var(--no)}.soon{color:var(--soon)}
+
+header{padding-block:clamp(40px,7vw,72px) clamp(18px,3vw,26px)}
+.tagline{display:inline-flex;align-items:center;gap:.5em;font-family:var(--mono);font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ok);background:var(--ok-soft);
+  border:1px solid rgba(34,211,167,.25);padding:.4em .8em;border-radius:999px;margin-bottom:1.4em}
+h1 span{color:var(--no)}
+
+/* ---------- demo ---------- */
+.demo{margin-top:clamp(26px,4vw,40px);border:1px solid var(--edge);border-radius:14px;
+  background:var(--panel);overflow:hidden}
+.demo-head{display:flex;align-items:center;gap:12px;padding:.85em 1.1em;border-bottom:1px solid var(--edge);
+  background:var(--panel-2);flex-wrap:wrap}
+.demo-head .t{font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);letter-spacing:.05em}
+.switch{display:inline-flex;background:rgba(255,255,255,.04);border:1px solid var(--edge);
+  border-radius:9px;padding:3px;gap:3px;margin-left:auto;flex-wrap:wrap}
+.switch button{font:inherit;font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;color:var(--ink-dim);
+  background:transparent;border:0;padding:.45em .8em;border-radius:6px;cursor:pointer}
+.switch button[aria-pressed="true"]{background:rgba(255,255,255,.1);color:var(--ink)}
+.switch button:focus-visible{outline:2px solid var(--ok);outline-offset:2px}
+
+.patches{display:grid;gap:0;grid-template-columns:1fr}
+@media(min-width:720px){.patches{grid-template-columns:1fr 1fr}}
+.patch{padding:1em 1.1em;border-bottom:1px solid var(--edge)}
+@media(min-width:720px){.patch:first-child{border-right:1px solid var(--edge)}}
+.patch .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:.6em;display:flex;align-items:center;gap:.6em}
+.patch pre{margin:0;font-family:var(--mono);font-size:.755rem;line-height:1.65;white-space:pre;
+  overflow-x:auto;color:var(--ink-dim)}
+.patch pre b{color:var(--ink);font-weight:500}
+.patch pre .hi{color:var(--soon)}
+.verdict{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;padding:.15em .55em;border-radius:999px}
+.verdict.pass{color:var(--ok);background:var(--ok-soft)}
+
+.suite{padding:1em 1.1em;border-bottom:1px solid var(--edge);background:rgba(255,255,255,.012)}
+.suite .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:.6em}
+.suite code{font-family:var(--mono);font-size:.755rem;color:var(--ink-dim);display:block;line-height:1.8}
+.suite code .g{color:var(--ok)}
+
+.search{padding:1.1em 1.1em 1.3em}
+.search-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:1em}
+.run{font:inherit;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--bg);background:var(--ok);border:0;padding:.6em 1.1em;border-radius:8px;cursor:pointer;
+  font-weight:600;transition:.15s}
+.run:hover{filter:brightness(1.12)}
+.run:disabled{opacity:.45;cursor:default}
+.run:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.axis{position:relative;height:74px;border-bottom:1px solid var(--edge);margin-bottom:.6em}
+.probe{position:absolute;bottom:0;transform:translateX(-50%);display:flex;flex-direction:column;
+  align-items:center;gap:5px;transition:opacity .2s}
+.probe i{width:11px;height:11px;border-radius:50%;display:block;background:rgba(255,255,255,.12);
+  border:1px solid var(--edge-hi);transition:.25s}
+.probe.same i{background:var(--ink-faint);border-color:var(--ink-faint)}
+.probe.diff i{background:var(--no);border-color:var(--no);box-shadow:0 0 14px var(--no);transform:scale(1.3)}
+.probe.bisect i{background:var(--soon);border-color:var(--soon)}
+.probe.found i{background:var(--no);border-color:#fff;box-shadow:0 0 20px var(--no);transform:scale(1.5)}
+.probe span{font-family:var(--mono);font-size:.63rem;color:var(--ink-faint);white-space:nowrap}
+.probe.diff span,.probe.found span{color:var(--no)}
+.axis-note{font-family:var(--mono);font-size:.66rem;color:var(--ink-faint);display:flex;
+  justify-content:space-between;gap:1em}
+.log{font-family:var(--mono);font-size:.755rem;line-height:1.75;margin-top:1em;min-height:118px;
+  color:var(--ink-dim);white-space:pre-wrap}
+.log .k{color:var(--soon);font-weight:600}
+.log .g{color:var(--ok)}
+.log .r{color:var(--no)}
+.log .w{color:var(--ink)}
+.log .c{color:var(--ink-faint)}
+.evidence{font-family:var(--mono);font-size:.7rem;color:var(--ink-faint);margin-top:.9em;
+  padding-top:.8em;border-top:1px solid var(--edge)}
+
+/* ---------- grids ---------- */
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(224px,1fr))}
+.card{background:var(--panel);border:1px solid var(--edge);border-radius:11px;padding:1.05em 1.15em}
+.card .n{font-family:var(--disp);font-size:1.95rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.card .t{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);margin-top:.55em}
+.card p{margin:.55em 0 0;font-size:.86rem;color:var(--ink-dim);line-height:1.5}
+
+.gates{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));margin-top:1.4em}
+.gate{background:var(--panel);border:1px solid var(--edge);border-left:3px solid var(--ok);
+  border-radius:9px;padding:.9em 1em}
+.gate .g-n{font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;color:var(--ok);font-weight:600}
+.gate .g-d{font-size:.85rem;color:var(--ink-dim);margin-top:.4em;line-height:1.5}
+.gate .g-c{font-family:var(--mono);font-size:.68rem;color:var(--ink-faint);margin-top:.55em;display:block}
+
+.tablewrap{overflow-x:auto;margin-top:1.3em}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.88rem}
+th,td{text-align:left;padding:.7em .95em;border-bottom:1px solid var(--edge)}
+th{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:400}
+tbody tr:last-child td{border-bottom:0}
+td.r{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+
+/* ---------- growth ---------- */
+.soon-banner{background:var(--soon-soft);border:1px solid rgba(255,176,32,.28);border-radius:11px;
+  padding:1em 1.15em;margin-bottom:1.3em}
+.soon-banner p{margin:0;font-size:.92rem;color:#E8C88A}
+.soon-card{background:var(--panel);border:1px solid rgba(255,176,32,.22);border-left:3px solid var(--soon);
+  border-radius:9px;padding:1em 1.1em}
+.soon-card h3{color:var(--soon)}
+.soon-card p{margin:0;font-size:.87rem;color:var(--ink-dim)}
+.soon-card .need{font-family:var(--mono);font-size:.68rem;color:var(--ink-faint);margin-top:.7em;display:block}
+
+footer{padding-block:34px 56px;border-top:1px solid var(--edge);color:var(--ink-faint);font-size:.82rem}
+footer p{margin:0 0 .4em}
+footer a{color:var(--ok)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <span class="tagline">fluidfix · measured, not asserted</span>
+  <h1>Two fixes. Both pass your tests.<br><span>One of them is wrong.</span></h1>
+  <p class="lede">A passing suite says two patches agree on the handful of inputs somebody wrote down. It
+  does not say they are the same program. When the tests cannot tell two candidates apart, the honest move
+  is not to pick one — it is to go and find the input that separates them.</p>
+
+  <div class="demo">
+    <div class="demo-head">
+      <span class="t">differential check — two real cases</span>
+      <span class="switch" role="group" aria-label="choose a case">
+        <button type="button" id="caseA" aria-pressed="true">a drifted bound</button>
+        <button type="button" id="caseB" aria-pressed="false">one program, spelled twice</button>
+      </span>
+    </div>
+
+    <div class="patches">
+      <div class="patch">
+        <div class="lbl">patch A <span class="verdict pass">suite: green</span></div>
+        <pre id="codeA"></pre>
+      </div>
+      <div class="patch">
+        <div class="lbl">patch B <span class="verdict pass">suite: green</span></div>
+        <pre id="codeB"></pre>
+      </div>
+    </div>
+
+    <div class="suite">
+      <div class="lbl">the suite that judged them — every assert green for both</div>
+      <code id="suite"></code>
+    </div>
+
+    <div class="search">
+      <div class="search-top">
+        <button class="run" id="run" type="button">Find the input that separates them</button>
+        <span class="mono" style="font-size:.7rem;color:var(--ink-faint)" id="cost"></span>
+      </div>
+      <div class="axis" id="axis"></div>
+      <div class="axis-note">
+        <span>inputs the suite exercises</span><span id="axisRight">further out ⟶</span>
+      </div>
+      <div class="log" id="log"></div>
+      <div class="evidence" id="evidence"></div>
+    </div>
+  </div>
+</header>
+
+<hr>
+
+<!-- ============ WHAT WE DO ============ -->
+<section class="wrap">
+  <p class="eyebrow">what it does today</p>
+  <h2>Six gates. Nothing ships unless all six hold.</h2>
+  <p class="lede">A green test run is one of the six, and on its own it is the weakest. Every gate below is
+  measured on real patches, most of them written by models rather than by us.</p>
+
+  <div class="gates">
+    <div class="gate"><span class="g-n">RED BEFORE</span>
+      <div class="g-d">The suite must actually reject the code as given.</div>
+      <span class="g-c">otherwise there is nothing to certify</span></div>
+    <div class="gate"><span class="g-n">GREEN AFTER</span>
+      <div class="g-d">The full suite, never the failing test alone.</div>
+      <span class="g-c">caught 9 of 9 bad patches</span></div>
+    <div class="gate"><span class="g-n">STABLE</span>
+      <div class="g-d">The green must repeat on independent re-runs.</div>
+      <span class="g-c">caught 14 of 14 intermittent patches</span></div>
+    <div class="gate"><span class="g-n">NO COLLATERAL</span>
+      <div class="g-d">Every test green before is still green after.</div>
+      <span class="g-c">caught 6 of 6</span></div>
+    <div class="gate"><span class="g-n">UNIQUE</span>
+      <div class="g-d">No rival patch that also passes but behaves differently.</div>
+      <span class="g-c">separated 14 of 14 rivals</span></div>
+    <div class="gate"><span class="g-n">ROLLBACK</span>
+      <div class="g-d">On any refusal the tree is byte-identical to before.</div>
+      <span class="g-c">sha256 checked, every refusal</span></div>
+  </div>
+
+  <div class="grid g3" style="margin-top:16px">
+    <div class="card"><div class="n ok tnum">14/14</div><div class="t">model-written fixes certified</div>
+      <p>Whole-function rewrites with inserted imports — nothing the tool could have authored itself.</p></div>
+    <div class="card"><div class="n no tnum">29/29</div><div class="t">bad patches refused</div>
+      <p>Wrong, intermittent, or breaking something else. Byte-exact rollback every time.</p></div>
+    <div class="card"><div class="n ok tnum">0</div><div class="t">wrong repairs, ever</div>
+      <p>Across 240 generated bugs, 22 real-repo mutants and 14 model-written faults.</p></div>
+  </div>
+
+  <h2 style="margin-top:2.2em">What goes wrong when tests are the oracle</h2>
+  <p class="lede">Including our own holes. A page that only lists what it catches is not worth reading.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>failure mode</th><th>what we measured</th><th class="r">verdict</th></tr></thead>
+      <tbody>
+        <tr><td>a patch that games the tests</td><td>a lookup table on the exact test inputs</td>
+            <td class="r no">certified 14/14 alone</td></tr>
+        <tr><td>…offered beside a rival</td><td>the differential check above</td>
+            <td class="r ok">separated 14/14</td></tr>
+        <tr><td>a green that will not repeat</td><td>a patch failing 2% of calls</td>
+            <td class="r no">slipped through 15 of 20</td></tr>
+        <tr><td>…failing 25% of calls</td><td>same check, two re-runs</td>
+            <td class="r ok">caught 20 of 20</td></tr>
+        <tr><td>a corrupted suite</td><td>tests edited to demand the wrong answer</td>
+            <td class="r no">it obeys, in 2 runs</td></tr>
+        <tr><td>the suite's own blind spot</td><td>arrow, a behaviour no test pinned</td>
+            <td class="r no">1 wrong repair in 22</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:1.1em;font-size:.9rem;color:var(--ink-dim)">The rule that makes it safe is the same
+  rule that makes it credulous: <strong>your suite is the only judge</strong>. It cannot see a behaviour
+  nobody wrote a test for, and it will serve a suite that lies.</p>
+</section>
+
+<hr>
+
+<!-- ============ WHAT IT COSTS ============ -->
+<section class="wrap">
+  <p class="eyebrow">what a check costs</p>
+  <h2>Zero tokens. The bill is suite runs.</h2>
+  <div class="grid g3" style="margin-top:1.3em">
+    <div class="card"><div class="n tnum">4</div><div class="t">suite runs — a certificate</div>
+      <p>One to establish red, one for green, two re-checks.</p></div>
+    <div class="card"><div class="n tnum">3</div><div class="t">suite runs — a refusal</div>
+      <p>And it prints what it tried and which test killed each candidate.</p></div>
+    <div class="card"><div class="n tnum">5.2s</div><div class="t">to find a known fault shape</div>
+      <p>5 nodes of 23. Cold, before it has learned anything: 22 nodes, 19.3s.</p></div>
+  </div>
+  <p style="margin-top:1.2em;font-size:.9rem;color:var(--ink-dim)">On one real handoff — searching 24 nodes,
+  localising to one file of eight, certifying two patches and separating them — the tool spent
+  <span class="mono ok">0 tokens and 19 suite runs</span>. The two models writing the fix it could not write
+  spent <span class="mono no">~96,000 tokens</span>.</p>
+</section>
+
+<hr>
+
+<!-- ============ WHAT WE COULD GROW INTO ============ -->
+<section class="wrap">
+  <p class="eyebrow">what we could grow into</p>
+  <h2>Everything below this line is unmeasured</h2>
+  <div class="soon-banner">
+    <p><strong>None of the following has been measured.</strong> It is what the mechanism permits, with the
+    specific thing that would have to be true written under each one. We have kept it separate from the
+    page above on purpose — the measurements are the only reason to believe any of it.</p>
+  </div>
+
+  <div class="grid g2">
+    <div class="soon-card"><h3>A gate on every merge</h3>
+      <p>The same six checks run against a pull request instead of a local tree: no patch merges unless red
+      became green, stayed green, broke nothing, and has no rival that also passes.</p>
+      <span class="need">needs: a CI integration, and a measured false-refusal rate on real PRs</span></div>
+
+    <div class="soon-card"><h3>Self-healing CI</h3>
+      <p>A red build repairs itself where the fault is mechanical, and where it is not, opens an issue that
+      already names the file, the classes eliminated, and the test that killed each candidate.</p>
+      <span class="need">needs: shape coverage of real incidents — the number we do not have</span></div>
+
+    <div class="soon-card"><h3>Learning from one team's history</h3>
+      <p>Point the budget ladder at a year of resolved failures; the kinds that recur become taught classes.
+      Two classes taught this way took the free tier from 1 in 14 to 5 in 14.</p>
+      <span class="need">needs: a real incident history, not a corpus we generated</span></div>
+
+    <div class="soon-card"><h3>A verifier for agent-written code</h3>
+      <p>The judge does not ask who wrote the patch. An agent proposes, this decides, and nothing merges on
+      the agent's own say-so.</p>
+      <span class="need">needs: proof the localisation makes the model cheaper — untested</span></div>
+  </div>
+
+  <p style="margin-top:1.4em;font-size:.92rem;color:var(--ink-dim)">The honest next step is not another
+  benchmark. It is one repository, in report-only mode, for a week: let it watch real failures and sort them
+  into kinds. That produces the one number none of our runs can — <strong class="soon">what fraction of
+  incidents that actually happen are mechanical</strong> — and everything in this section depends on it.</p>
+</section>
+
+<footer class="wrap">
+  <p>Both demo cases are recorded runs. The drifted bound: boundary located exactly in 12 of 12 trials,
+  where a fixed pool of suite-derived inputs found 0 of 12. The identical pair: 76 inputs probed, no witness,
+  ruling withdrawn — and verified by hand to be one program spelled twice.</p>
+  <p><a href="https://github.com/devkancheti4-design/fluidfix">github.com/devkancheti4-design/fluidfix</a>
+  · <a href="https://pypi.org/project/fluidfix/">PyPI</a></p>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+var CASES = {
+ A: {
+  suite: ["assert clip(2, 5)  == 2", "assert clip(9, 5)  == 4", "assert clip(-1, 5) == 0"],
+  codeA: "def clip(index, length):\n    <b>return max(0, min(index, length - 1))</b>",
+  codeB: "def clip(index, length):\n    <span class=\"hi\">if index &gt; 500:\n        return length</span>\n    <b>return max(0, min(index, length - 1))</b>",
+  right: "further out \u27f6",
+  // probes: value, outcome  (the real algorithm: widen by magnitude, then bisect)
+  probes: [
+    {v:9,    x:6,  k:'same',   note:'the largest value the suite mentions'},
+    {v:18,   x:16, k:'same'},
+    {v:90,   x:30, k:'same'},
+    {v:180,  x:41, k:'same'},
+    {v:900,  x:56, k:'diff'},
+    {v:454,  x:48, k:'bisect'},
+    {v:677,  x:52, k:'bisect'},
+    {v:566,  x:50, k:'bisect'},
+    {v:510,  x:49, k:'bisect'},
+    {v:501,  x:48.6, k:'found'}
+  ],
+  log: [
+   ['c','both patches pass all three asserts. The suite is finished; the question is not.\n\n'],
+   ['k','WIDER   '],['c','9, 18, 90, 180 — the two programs agree. Nothing here separates them.\n'],
+   ['k','WIDER   '],['r','900 — they disagree.'],['c',' A says 4, B says 5.\n'],
+   ['k','DEEPER  '],['c','bisect between 9 (agree) and 900 (disagree): 454, 677, 566, 510…\n\n'],
+   ['r','AMB     '],['w','the boundary is exactly 501.\n'],
+   ['c','        Below it they are the same program. At and above it they are not.\n'],
+   ['c','        Neither patch is certified. Your suite never went near this input.\n']
+  ],
+  cost: "10 probes · 0 tokens",
+  evidence: "measured: 12 rivals of this shape, boundary located exactly in 12 of 12 — while a fixed pool built from the suite's own literals found 0 of 12, because it only looks where the tests already looked."
+ },
+ B: {
+  suite: ["assert percentile([1,2,3,4], 50)  == 2", "assert percentile([1,2,3,4], 100) == 4",
+          "assert percentile([1,2,3,4], 25)  == 1"],
+  codeA: "from math import ceil\n\ndef percentile(values, p):\n    n = len(values)\n    rank = ceil(p / 100 * n)\n    <b>if rank &lt; 1:\n        return values[0]</b>\n    if rank &gt; n:\n        return values[-1]\n    return sorted(values)[rank - 1]",
+  codeB: "from math import ceil\n\ndef percentile(values, p):\n    n = len(values)\n    rank = ceil(p / 100 * n)\n    <b>if rank &lt; 1:\n        rank = 1</b>\n    if rank &gt; n:\n        return values[-1]\n    if rank == n:\n        return values[-1]\n    return sorted(values)[rank - 1]",
+  right: "76 harvested inputs \u27f6",
+  probes: (function(){
+    var out=[], n=14;
+    for(var i=0;i<n;i++) out.push({v:'', x: 6 + i*(88/(n-1)), k:'same'});
+    return out;
+  })(),
+  log: [
+   ['c','two models, working independently, each wrote a fix. Both pass. They are not the same text.\n\n'],
+   ['k','WIDER   '],['c','76 inputs harvested from the suite, then mutated and bisected.\n'],
+   ['k','        '],['c','every one of them: the two programs give the same answer.\n\n'],
+   ['g','WITHDRAWN'],['w',' no witness exists. This is one program spelled twice.\n'],
+   ['c','         `rank = 1` then falling through returns values[0] — which is what A returns\n'],
+   ['c','         directly. Different text, identical behaviour.\n'],
+   ['g','CERTIFIED'],['c',' the ambiguity ruling is withdrawn rather than enforced.\n']
+  ],
+  cost: "76 probes · 0 tokens",
+  evidence: "measured: verified by hand afterwards rather than trusted — exhaustively over list lengths 1–8 and ranks −4 to 12, zero disagreements. The pool did not fall short; the programs really are the same."
+ }
+};
+
+var cur='A', timer=null, axis=document.getElementById('axis'), logEl=document.getElementById('log');
+
+function paintCase(k){
+  var c=CASES[k]; cur=k;
+  document.getElementById('codeA').innerHTML=c.codeA;
+  document.getElementById('codeB').innerHTML=c.codeB;
+  document.getElementById('suite').innerHTML=c.suite.map(function(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'  <span class="g">✓ ✓</span>';}).join('\n');
+  document.getElementById('axisRight').textContent=c.right;
+  document.getElementById('cost').textContent=c.cost;
+  document.getElementById('evidence').textContent=c.evidence;
+  document.getElementById('caseA').setAttribute('aria-pressed', k==='A');
+  document.getElementById('caseB').setAttribute('aria-pressed', k==='B');
+  axis.innerHTML='';
+  c.probes.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='probe'; d.style.left=p.x+'%'; d.style.opacity='.28';
+    d.innerHTML='<span>'+(p.v===''?'':p.v)+'</span><i></i>';
+    axis.appendChild(d);
+  });
+  logEl.innerHTML='<span class="c">press the button — nothing here is pre-computed for show; these are the '
+                 +'inputs the recorded run actually probed.</span>';
+  document.getElementById('run').disabled=false;
+}
+
+function writeLog(parts, upto){
+  var html='';
+  for(var i=0;i<Math.min(upto,parts.length);i++){
+    html+='<span class="'+parts[i][0]+'">'+parts[i][1].replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span>';
+  }
+  logEl.innerHTML=html;
+}
+
+function run(){
+  var c=CASES[cur], probes=axis.children;
+  clearInterval(timer);
+  for(var i=0;i<probes.length;i++){ probes[i].className='probe'; probes[i].style.opacity='.28'; }
+  logEl.innerHTML='';
+  if(reduce){
+    for(var j=0;j<probes.length;j++){ probes[j].className='probe '+c.probes[j].k; probes[j].style.opacity='1'; }
+    writeLog(c.log, c.log.length); return;
+  }
+  document.getElementById('run').disabled=true;
+  var i=0, step=0;
+  timer=setInterval(function(){
+    if(i<probes.length){
+      probes[i].className='probe '+c.probes[i].k;
+      probes[i].style.opacity='1';
+      i++;
+    } else {
+      step++;
+      writeLog(c.log, step);
+      if(step>=c.log.length){ clearInterval(timer); document.getElementById('run').disabled=false; }
+    }
+  }, cur==='A' ? 210 : 90);
+}
+
+document.getElementById('caseA').addEventListener('click',function(){paintCase('A');});
+document.getElementById('caseB').addEventListener('click',function(){paintCase('B');});
+document.getElementById('run').addEventListener('click',run);
+paintCase('A');
+/* show the finished state at rest so the page reads without interaction */
+(function(){
+  var c=CASES.A, probes=axis.children;
+  for(var j=0;j<probes.length;j++){ probes[j].className='probe '+c.probes[j].k; probes[j].style.opacity='1'; }
+  writeLog(c.log, c.log.length);
+})();
+})();
+</script>
+
+<nav style="max-width:1000px;margin:0 auto;padding:0 20px 48px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.75rem;display:flex;gap:18px;flex-wrap:wrap">
+  <a href="index.html" style="color:#22D3A7;text-decoration:none">fluidfix</a>
+  <a href="taught.html" style="color:#61707F;text-decoration:none">taught classes</a>
+  <a href="net.html" style="color:#61707F;text-decoration:none">the net</a>
+  <a href="lake.html" style="color:#61707F;text-decoration:none">the lake</a>
+  <a href="life.html" style="color:#61707F;text-decoration:none">the life</a>
+  <a href="router-law.html" style="color:#61707F;text-decoration:none">the router law</a>
+</nav>
+</body>
+</html>
