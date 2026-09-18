@@ -43,6 +43,13 @@
   a{color:var(--teal)}
   header.top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
              border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:22px}
+  .plain{border:1px solid var(--rule-2);background:var(--panel);border-left:4px solid var(--brass);
+         border-radius:3px;padding:16px 18px;margin:0 0 18px}
+  .plain h3{margin:0 0 8px}
+  .plain p{font-size:16px;max-width:70ch;margin:0 0 6px;color:var(--ink)}
+  .plain p:last-child{margin-bottom:0}
+  .plain .sq{display:inline-block;width:11px;height:11px;vertical-align:-1px;margin:0 2px;
+             border:1px solid var(--rule-2)}
   .rig{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);border:1px solid var(--rule-2);
        border-radius:3px;overflow:hidden;background:var(--panel)}
   @media (max-width:880px){ .rig{grid-template-columns:1fr} }
@@ -97,6 +104,17 @@
   This one <b>grows from the work</b>: every small fluidfix reports a ruling, and the ruling says which way
   to grow. <b>Refuted</b> means the fault is not here, so the net widens. <b>Cut short</b> means it may well
   be here, so the net splits that territory and looks closer. The first green stops everything.</p>
+
+  <section class="plain">
+    <h3>in plain words</h3>
+    <p>A test just broke, and nobody knows which line did it.</p>
+    <p>Every square below is one place to look: one file, one kind of mistake.</p>
+    <p>A tiny program checks one square and runs the tests. Grey
+      <span class="sq" style="background:var(--rule-2)"></span> means it looked and the bug was not there;
+      teal <span class="sq" style="background:var(--teal)"></span> means it found the bug and put the
+      original line back.</p>
+    <p>Press play and watch the search spread, square by square, until one lands.</p>
+  </section>
 
   <div class="rig">
     <div class="stage">
