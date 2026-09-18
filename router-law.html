@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>The Router Law</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#E9EFF1; --water:#C9DCE3; --deep:#B3CCD6; --ink:#17283A; --ink-2:#4A5D6E; --rule:#A9BCC6;
+    --guard:#2457A6; --judge:#17283A; --bug:#C8322B; --ok:#2E8B57; --held:#B9861B; --off:#8A98A3; --panel:#F5F8F9; --dial:#DCE7EC;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1A23; --water:#16303D; --deep:#1D3D4C; --ink:#E4ECF1; --ink-2:#9FB2BF; --rule:#2F4655;
+      --guard:#6FA3F2; --judge:#E4ECF1; --bug:#E4574E; --ok:#5CC08A; --held:#D9A83A; --off:#6D7C88; --panel:#132330; --dial:#1B3340;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0F1A23; --water:#16303D; --deep:#1D3D4C; --ink:#E4ECF1; --ink-2:#9FB2BF; --rule:#2F4655;
+    --guard:#6FA3F2; --judge:#E4ECF1; --bug:#E4574E; --ok:#5CC08A; --held:#D9A83A; --off:#6D7C88; --panel:#132330; --dial:#1B3340;
+  }
+  body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.5;padding:0 20px;padding-block:22px 40px;max-width:1180px;margin:0 auto}
+  header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+  h1{font-family:"IBM Plex Sans Condensed","Arial Narrow",sans-serif;font-weight:600;font-size:28px;letter-spacing:.01em;margin:0;text-wrap:balance}
+  h2{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:600;font-size:18px;margin:26px 0 8px;text-wrap:balance}
+  .eyebrow{font-family:"IBM Plex Sans Condensed",sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  .lede{max-width:64ch;color:var(--ink-2);margin:0 0 14px}
+  .chart{position:relative;border:1px solid var(--rule);background:var(--paper);border-radius:4px;overflow:hidden}
+  canvas{display:block;width:100%;height:auto;max-width:100%}
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+  button{font:500 14px "IBM Plex Sans Condensed",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--paper);background:var(--ink);border:0;border-radius:3px;padding:9px 14px;cursor:pointer}
+  button.quiet{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+  button:focus-visible{outline:2px solid var(--guard);outline-offset:2px}
+  .phase{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:13px;color:var(--ink-2)}
+  .wrap{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+  th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--rule)}
+  th{font-family:"IBM Plex Sans Condensed",sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);font-weight:600}
+  td.m{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;white-space:nowrap}
+  td.free{color:var(--ok);font-weight:500}
+  .note{font-size:13px;color:var(--ink-2);max-width:72ch;margin:12px 0 0}
+  @media (max-width:520px){ h1{font-size:22px} }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="eyebrow">debugging mode · many searchers, one judge</div>
+    <h1>The Router Law</h1>
+  </div>
+  <div class="eyebrow" id="cycle">incident 1</div>
+</header>
+<p class="lede">A failing test lands on a large repository. Nothing reads the code to decide where to go: the lines the failing test executed are matched against the fault vocabulary, the matches become an integer, and the router law turns that integer into a dispatch. The guards that own those kinds search in parallel; the judge rules with one more integer. Every decision a model would charge for is arithmetic here.</p>
+
+<div class="chart"><canvas id="c" width="1140" height="640" aria-label="Animated diagram of the router law dispatching an incident to parallel guards and a judge ruling"></canvas></div>
+<div class="controls">
+  <button id="next" type="button">Next incident</button>
+  <button id="pause" class="quiet" type="button">Pause</button>
+  <span class="phase" id="phase">observing</span>
+</div>
+
+<h2>The same four decisions, priced</h2>
+<div class="wrap">
+<table>
+  <thead><tr><th>decision</th><th>frontier model</th><th>fluidfix law</th><th>measured today</th></tr></thead>
+  <tbody>
+    <tr><td>Where to look</td><td>reads the packet, guesses a file; a 4B model anchored on the crash line, not the guard above it</td><td class="free">sight law over coverage and frames: integer bits, 0 tokens</td><td class="m">302 files: true file first 10/10, ~5 s</td></tr>
+    <tr><td>What to try</td><td>proposes a line from its own reasoning; 4k–14k tokens per case</td><td class="free">router law: (Fq + A1 − F1) mod 16 picks the act, 0 tokens</td><td class="m">taught once, held-out 6/11 exact, 0 tokens</td></tr>
+    <tr><td>Is it fixed</td><td>trusts the proposal unless someone runs the tests</td><td class="free">the repository's own suite, byte-exact rollback on rejection</td><td class="m">0 wrong repairs from any author's proposals</td></tr>
+    <tr><td>Is it the only fix</td><td>rarely asked</td><td class="free">engine law: BUILT+AMB → refuse; BUILT alone → ship</td><td class="m">held rather than guessed on 6,000-line files</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">The suite still pays its runs — two to five seconds each on these repositories, 16 to 78 per repair. What it never pays is a token, a prompt, or a reviewer's time on a guess. Local 4B models on the same packets: 0 of 4, at 4k–14k tokens per case.</p>
+
+<script>
+(() => {
+  const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const css = k => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const KINDS = ['strictness','literal +1','return operands','additive flip','and/or (taught)','.get default (taught)','if not (taught)','len−1 (taught)','min/max','augmented','comparison dir','reversed minus','boolean literal','—','—','—'];
+  const TERR = [];  // the repository: a grid of territories with names from today's repos
+  const names = ['core.py','parser.py','locales.py','shell_completion.py','formatting.py','termui.py','sortedlist.py','sorteddict.py','pretty.py','table.py','console.py','markdown.py','utils.py','types.py','arrow.py','factory.py','panel.py','measure.py','api.py','util.py'];
+  for (let i = 0; i < names.length; i++) TERR.push({n: names[i], x: 40 + (i % 5) * 118, y: 110 + Math.floor(i / 5) * 92, w: 104, h: 74, exec: 0});
+  const guards = [];
+  for (let k = 0; k < 13; k++) guards.push({k, x: 700 + (k % 4) * 108, y: 120 + Math.floor(k / 4) * 96, run: 0, state: 'idle', runs: 0});
+  const judge = {x: 866, y: 560};
+
+  // incidents: drawn from today's cases (file, kind observed, outcome the suite reached)
+  const INC = [
+    {test: 'test_full_complete', file: 'shell_completion.py', kinds: [4, 0, 1], out: {4: 'exact'}, runs: {4: 28, 0: 41, 1: 33}},
+    {test: 'test_pipepager_less', file: 'termui.py', kinds: [5, 1], out: {5: 'exact'}, runs: {5: 6, 1: 22}},
+    {test: 'test_plurals_timeframe', file: 'locales.py', kinds: [4, 0, 12], out: {4: 'held'}, runs: {4: 340, 0: 120, 12: 60}},
+    {test: 'test_bisect_left', file: 'sortedlist.py', kinds: [0, 1, 3], out: {0: 'exact'}, runs: {0: 78, 1: 30, 3: 12}},
+    {test: 'test_pretty_dataclass', file: 'pretty.py', kinds: [4, 12], out: {}, runs: {4: 509, 12: 90}},
+    {test: 'test_parse_HH_24', file: 'parser.py', kinds: [5, 1, 0], out: {5: 'exact'}, runs: {5: 46, 1: 40, 0: 35}},
+  ];
+  let idx = 0, t = 0, phase = 0, ptime = 0, paused = false, cycle = 1;
+  const PH = ['incident', 'observe', 'route', 'search', 'report', 'rule'];
+  const PDUR = [1.2, 1.6, 1.8, 4.2, 1.6, 2.6];
+  let inc = INC[0], routed = [], dial = 0, dialTarget = 0, ruling = '';
+
+  function begin(i) {
+    inc = INC[i % INC.length]; phase = 0; ptime = 0; routed = []; ruling = '';
+    for (const g of guards) { g.state = 'idle'; g.run = 0; g.runs = 0; }
+    for (const tr of TERR) tr.exec = 0;
+    document.getElementById('cycle').textContent = `incident ${cycle}`;
+  }
+  function step(dt) {
+    t += dt; ptime += dt;
+    if (ptime > PDUR[phase]) {
+      ptime = 0; phase++;
+      if (phase >= PH.length) { cycle++; begin(idx = (idx + 1) % INC.length); return; }
+      if (phase === 2) { dialTarget = (inc.kinds[0] * 22.5) * Math.PI / 180; }
+      if (phase === 3) { routed = inc.kinds.slice(); for (const k of routed) { guards[k].state = 'run'; guards[k].runs = inc.runs[k] || 20; } }
+      if (phase === 4) { for (const k of routed) guards[k].state = inc.out[k] || 'refused'; }
+      if (phase === 5) { const greens = routed.filter(k => inc.out[k] === 'exact'); const held = routed.filter(k => inc.out[k] === 'held');
+        ruling = greens.length === 1 ? 'BUILT → SHIP · byte-exact · 0 tokens' : held.length ? 'BUILT + CAPPED → RAISE_BUDGET · held, not guessed' : 'REFUTED → refuse, every guard\'s reason attached'; }
+    }
+    if (phase === 1) { const f = TERR.find(x => x.n === inc.file); if (f) f.exec = Math.min(1, f.exec + dt * 1.2); for (const tr of TERR) if (tr !== f) tr.exec = Math.min(0.25, tr.exec + dt * 0.3); }
+    if (phase >= 2) dial += (dialTarget - dial) * Math.min(1, dt * 4);
+    if (phase === 3) for (const k of routed) guards[k].run = Math.min(1, guards[k].run + dt / (PDUR[3] * (0.55 + Math.min(1, guards[k].runs / 400))));
+    document.getElementById('phase').textContent = PH[phase] + (phase === 3 ? `: ${routed.length} guards, suite runs in parallel` : phase === 5 ? `: ${ruling}` : '');
+  }
+
+  function draw() {
+    const paper = css('--paper'), ink = css('--ink'), ink2 = css('--ink-2'), rule = css('--rule'), water = css('--water'), dialc = css('--dial');
+    const C = {guard: css('--guard'), bug: css('--bug'), exact: css('--ok'), held: css('--held'), refused: css('--off'), judge: css('--judge')};
+    ctx.clearRect(0, 0, W, H); ctx.fillStyle = paper; ctx.fillRect(0, 0, W, H);
+    ctx.font = '500 12px "IBM Plex Sans Condensed", sans-serif'; ctx.fillStyle = ink2; ctx.textAlign = 'left';
+    ctx.fillText('THE REPOSITORY · TERRITORIES', 40, 90); ctx.fillText('GUARDS · ONE PER KIND · OWN CLONE EACH', 700, 90);
+    // territories
+    for (const tr of TERR) {
+      ctx.fillStyle = water; ctx.globalAlpha = 0.5 + tr.exec * 0.5; ctx.fillRect(tr.x, tr.y, tr.w, tr.h); ctx.globalAlpha = 1;
+      ctx.strokeStyle = rule; ctx.strokeRect(tr.x + 0.5, tr.y + 0.5, tr.w, tr.h);
+      ctx.fillStyle = ink; ctx.font = '400 11px "IBM Plex Mono", monospace'; ctx.fillText(tr.n, tr.x + 6, tr.y + 16);
+      if (tr.exec > 0.3) { ctx.fillStyle = ink2; ctx.font = '400 10px "IBM Plex Sans Condensed", sans-serif'; ctx.fillText(tr.n === inc.file ? 'executed by the failing test' : 'executed', tr.x + 6, tr.y + 32); }
+      if (tr.n === inc.file && phase >= 1) { ctx.fillStyle = C.bug; ctx.beginPath(); ctx.arc(tr.x + tr.w - 12, tr.y + 12, 5 + (phase === 0 ? 0 : 2 * Math.abs(Math.sin(t * 3))), 0, Math.PI * 2); ctx.fill(); }
+    }
+    // incident
+    ctx.fillStyle = C.bug; ctx.font = '500 12px "IBM Plex Sans Condensed", sans-serif';
+    ctx.fillText(`INCIDENT  FAILED ${inc.test}`, 40, 470);
+    if (phase >= 1) { ctx.fillStyle = ink2; ctx.font = '400 11px "IBM Plex Mono", monospace'; ctx.fillText(`observed on executed lines: kinds ${inc.kinds.join(', ')} → x = ${inc.kinds.reduce((a, k) => a | (1 << k), 0)}`, 40, 490); }
+    // the dial: the router law
+    const dx = 330, dy = 560, r = 62;
+    ctx.fillStyle = dialc; ctx.beginPath(); ctx.arc(dx, dy, r, 0, Math.PI * 2); ctx.fill(); ctx.strokeStyle = rule; ctx.stroke();
+    for (let k = 0; k < 16; k++) {
+      const a = k * Math.PI / 8 - Math.PI / 2, on = phase >= 2 && inc.kinds.includes(k);
+      ctx.fillStyle = on ? C.guard : ink2; ctx.beginPath(); ctx.arc(dx + Math.cos(a) * (r - 10), dy + Math.sin(a) * (r - 10), on ? 4 : 2, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.strokeStyle = ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(dx, dy); ctx.lineTo(dx + Math.cos(dial - Math.PI / 2) * (r - 16), dy + Math.sin(dial - Math.PI / 2) * (r - 16)); ctx.stroke(); ctx.lineWidth = 1;
+    ctx.fillStyle = ink; ctx.font = '600 12px "IBM Plex Sans Condensed", sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('ROUTER LAW', dx, dy + r + 18);
+    ctx.font = '400 11px "IBM Plex Mono", monospace'; ctx.fillStyle = ink2;
+    ctx.fillText('act = (Fq + A1 − F1) mod 16', dx, dy + r + 34);
+    ctx.fillText(phase >= 2 ? `dispatch → guards ${inc.kinds.map(k => 'k' + String(k).padStart(2, '0')).join(' ')} · 0 tokens` : 'waiting for an observation', dx, dy + r + 50);
+    // dispatch lines
+    if (phase >= 2) for (const k of inc.kinds) {
+      const g = guards[k]; ctx.strokeStyle = C.guard; ctx.globalAlpha = phase === 2 ? Math.min(1, ptime / 1.2) : 0.5; ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(dx + r, dy); ctx.bezierCurveTo(560, dy, 560, g.y + 30, g.x, g.y + 30); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+    }
+    // guards
+    ctx.textAlign = 'left';
+    for (const g of guards) {
+      const col = g.state === 'run' ? C.guard : g.state === 'idle' ? rule : C[g.state];
+      ctx.fillStyle = paper; ctx.fillRect(g.x, g.y, 96, 64); ctx.strokeStyle = col; ctx.strokeRect(g.x + 0.5, g.y + 0.5, 96, 64);
+      ctx.fillStyle = ink; ctx.font = '500 11px "IBM Plex Sans Condensed", sans-serif'; ctx.fillText(`k${String(g.k).padStart(2, '0')} ${KINDS[g.k]}`, g.x + 6, g.y + 15);
+      if (g.state !== 'idle') {
+        ctx.fillStyle = rule; ctx.fillRect(g.x + 6, g.y + 26, 84, 6); ctx.fillStyle = col; ctx.fillRect(g.x + 6, g.y + 26, 84 * (g.state === 'run' ? g.run : 1), 6);
+        ctx.fillStyle = ink2; ctx.font = '400 10px "IBM Plex Mono", monospace';
+        ctx.fillText(g.state === 'run' ? `${Math.floor(g.runs * g.run)} suite runs` : g.state === 'exact' ? `${g.runs} runs · exact` : g.state === 'held' ? `${g.runs} runs · held` : `${g.runs} runs · refused`, g.x + 6, g.y + 46);
+        if (g.state === 'run') { ctx.fillStyle = ink2; ctx.fillText(inc.file, g.x + 6, g.y + 58); }
+      } else { ctx.fillStyle = ink2; ctx.font = '400 10px "IBM Plex Sans Condensed", sans-serif'; ctx.fillText('not routed · idle', g.x + 6, g.y + 46); }
+      // reports up to the judge
+      if (phase >= 4 && routed.includes(g.k)) {
+        const p = phase === 4 ? Math.min(1, ptime / 1.4) : 1, x = g.x + 48 + (judge.x - g.x - 48) * p, y = g.y + 64 + (judge.y - 24 - g.y - 64) * p;
+        ctx.strokeStyle = rule; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(g.x + 48, g.y + 64); ctx.lineTo(judge.x, judge.y - 24); ctx.stroke(); ctx.globalAlpha = 1;
+        ctx.fillStyle = C[g.state] || C.refused; ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    // judge
+    ctx.fillStyle = C.judge; ctx.beginPath(); ctx.moveTo(judge.x, judge.y - 22); ctx.lineTo(judge.x + 16, judge.y + 8); ctx.lineTo(judge.x - 16, judge.y + 8); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = ink; ctx.font = '600 12px "IBM Plex Sans Condensed", sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('THE JUDGE · NO SUITE OF ITS OWN', judge.x, judge.y + 26);
+    ctx.font = '400 11px "IBM Plex Mono", monospace'; ctx.fillStyle = ink2;
+    ctx.fillText('act = (4 & ntzb(x−7)) + ntzb(x + (x & 128)) · SHIP iff (x & 0x7E) == 0', judge.x, judge.y + 42);
+    if (phase === 5) { ctx.fillStyle = ruling.includes('SHIP') ? C.exact : ruling.includes('held') ? C.held : C.refused; ctx.font = '600 13px "IBM Plex Sans Condensed", sans-serif'; ctx.fillText(ruling.toUpperCase(), judge.x, judge.y + 62); }
+  }
+
+  document.getElementById('next').addEventListener('click', () => { cycle++; begin(idx = (idx + 1) % INC.length); });
+  document.getElementById('pause').addEventListener('click', e => { paused = !paused; e.target.textContent = paused ? 'Resume' : 'Pause'; });
+  begin(0);
+  for (let i = 0; i < 6; i++) step(0.5);   // opens mid-incident, not on a blank frame
+  let last = performance.now();
+  function frame(now) { const dt = Math.min(0.05, (now - last) / 1000); last = now; if (!paused && !reduced) step(dt); draw(); requestAnimationFrame(frame); }
+  draw(); requestAnimationFrame(frame);
+})();
+</script>
+<footer style="max-width:1180px;margin:0 auto;padding:28px 20px 40px;font:13px/1.6 system-ui,sans-serif;opacity:.7">
+  <a href="./" style="color:inherit">fluidfix</a> ·
+  <a href="lake.html" style="color:inherit">the lake</a> ·
+  <a href="router-law.html" style="color:inherit">the router law</a> ·
+  <a href="https://pypi.org/project/fluidfix/" style="color:inherit">pip install fluidfix</a>
+</footer>
+
+</body>
+</html>

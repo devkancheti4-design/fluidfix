@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Fluidfix Lake</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#E9EFF1; --water:#C9DCE3; --deep:#B3CCD6; --ink:#17283A; --ink-2:#4A5D6E; --rule:#A9BCC6;
+    --guard:#2457A6; --judge:#17283A; --bug:#C8322B; --edge:#D79A2B; --ok:#2E8B57; --held:#B9861B; --off:#8A98A3;
+    --panel:#F5F8F9;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1A23; --water:#16303D; --deep:#1D3D4C; --ink:#E4ECF1; --ink-2:#9FB2BF; --rule:#2F4655;
+      --guard:#6FA3F2; --judge:#E4ECF1; --bug:#E4574E; --edge:#E5B04C; --ok:#5CC08A; --held:#D9A83A; --off:#6D7C88;
+      --panel:#132330;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0F1A23; --water:#16303D; --deep:#1D3D4C; --ink:#E4ECF1; --ink-2:#9FB2BF; --rule:#2F4655;
+    --guard:#6FA3F2; --judge:#E4ECF1; --bug:#E4574E; --edge:#E5B04C; --ok:#5CC08A; --held:#D9A83A; --off:#6D7C88;
+    --panel:#132330;
+  }
+  body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.5;padding:0 20px;padding-block:22px 40px;max-width:1180px;margin:0 auto}
+  header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+  h1{font-family:"IBM Plex Sans Condensed","Arial Narrow",sans-serif;font-weight:600;font-size:28px;letter-spacing:.01em;margin:0;text-wrap:balance}
+  .eyebrow{font-family:"IBM Plex Sans Condensed",sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  .lede{max-width:64ch;color:var(--ink-2);margin:0 0 14px}
+  .chart{position:relative;border:1px solid var(--rule);background:var(--water);border-radius:4px;overflow:hidden}
+  canvas{display:block;width:100%;height:auto;max-width:100%}
+  .ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border:1px solid var(--rule);border-top:0;background:var(--panel);border-radius:0 0 4px 4px}
+  .cell{padding:10px 14px;border-right:1px solid var(--rule)}
+  .cell:last-child{border-right:0}
+  .cell .k{font-family:"IBM Plex Sans Condensed",sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+  .cell .v{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:22px;font-variant-numeric:tabular-nums;line-height:1.2}
+  .cell .v small{font-size:12px;color:var(--ink-2);margin-left:4px}
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+  button{font:500 14px "IBM Plex Sans Condensed",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--paper);background:var(--ink);border:0;border-radius:3px;padding:9px 14px;cursor:pointer}
+  button.quiet{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+  button:focus-visible{outline:2px solid var(--guard);outline-offset:2px}
+  .note{font-size:13px;color:var(--ink-2);max-width:70ch;margin:14px 0 0}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-family:"IBM Plex Sans Condensed",sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);margin-top:10px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+  @media (max-width:520px){ h1{font-size:22px} .cell .v{font-size:18px} }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="eyebrow">many searchers, one judge</div>
+    <h1>Fluidfix Lake</h1>
+  </div>
+  <div class="eyebrow" id="clock">t = 0 s</div>
+</header>
+<p class="lede">The repository is the lake. Commits flow in from the left and carry bugs and edge cases. Guard buoys hold territories across the water, each running the same six laws over its own slice, and every one is moored to a single judge that never searches, only rules. Teach a class once and every buoy knows it.</p>
+
+<div class="chart"><canvas id="c" width="1140" height="620" aria-label="Animated chart of a lake with guard buoys catching bugs and reporting to one judge"></canvas></div>
+<div class="ledger">
+  <div class="cell"><div class="k">arrived</div><div class="v" id="n-arrived">0</div></div>
+  <div class="cell"><div class="k">restored exact</div><div class="v" id="n-exact">0</div></div>
+  <div class="cell"><div class="k">held for uniqueness</div><div class="v" id="n-held">0</div></div>
+  <div class="cell"><div class="k">refused</div><div class="v" id="n-refused">0</div></div>
+  <div class="cell"><div class="k">wrong repairs shipped</div><div class="v" id="n-wrong">0</div></div>
+  <div class="cell"><div class="k">tokens spent</div><div class="v" id="n-tokens">0</div></div>
+  <div class="cell"><div class="k">classes taught</div><div class="v" id="n-taught">9<small>of 14</small></div></div>
+</div>
+<div class="controls">
+  <button id="teach" type="button">Teach one example</button>
+  <button id="pause" class="quiet" type="button">Pause</button>
+  <span class="eyebrow" id="taught-what">next: and/or flip</span>
+</div>
+<div class="legend">
+  <span><i style="background:var(--bug)"></i>bug</span>
+  <span><i style="background:var(--edge)"></i>edge case</span>
+  <span><i style="background:var(--guard)"></i>guard buoy</span>
+  <span><i style="background:var(--ok)"></i>restored exact</span>
+  <span><i style="background:var(--held)"></i>found, held for uniqueness</span>
+  <span><i style="background:var(--off)"></i>refused with reason</span>
+</div>
+<p class="note">A buoy that finds a passing line inside a capped view does not ship; it sends the line up to the judge. The judge ships when exactly one program passes, refuses as ambiguous when two buoys report different programs, and refuses with every buoy's reason when none does. Nothing on this chart spends a token.</p>
+
+<script>
+(() => {
+  const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const css = k => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- classes: the nine shipped, the five met today (taught one by one with the button)
+  const CLASSES = [
+    {n:'strictness', t:true},{n:'additive flip', t:true},{n:'literal +1', t:true},{n:'min/max swap', t:true},
+    {n:'augmented assign', t:true},{n:'comparison direction', t:true},{n:'reversed minus', t:true},{n:'boolean literal', t:true},{n:'return operands', t:true},
+    {n:'and/or flip', t:false},{n:'.get without default', t:false},{n:'inverted if not', t:false},{n:'len(x) − 1', t:false},{n:'range start', t:false},
+  ];
+  const nextUntaught = () => CLASSES.find(c => !c.t);
+
+  // ---- the lake: an organic basin, inflow at the left
+  const shore = [];
+  for (let i = 0; i < 64; i++) {
+    const a = i / 64 * Math.PI * 2;
+    const r = 1 + 0.06 * Math.sin(a * 3 + 1.2) + 0.04 * Math.cos(a * 5 + 0.4) + 0.03 * Math.sin(a * 7);
+    shore.push([W * 0.52 + Math.cos(a) * W * 0.47 * r, H * 0.56 + Math.sin(a) * H * 0.40 * r]);
+  }
+  const inLake = (x, y) => {  // point-in-polygon
+    let inside = false;
+    for (let i = 0, j = shore.length - 1; i < shore.length; j = i++) {
+      const [xi, yi] = shore[i], [xj, yj] = shore[j];
+      if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
+    }
+    return inside;
+  };
+
+  // ---- guards: N buoys on a staggered grid inside the basin, one judge at the top
+  const guards = [];
+  let id = 1;
+  for (let row = 0; row < 3; row++) for (let col = 0; col < 5; col++) {
+    const x = W * (0.17 + col * 0.165) + (row % 2 ? 40 : 0), y = H * (0.36 + row * 0.20);
+    if (inLake(x, y)) guards.push({id: id++, x, y, r: 74, busy: null, pulse: 0, glow: 0});
+  }
+  const judge = {x: W * 0.52, y: 54};
+
+  // ---- flow
+  const bugs = [], marks = [], reports = [], current = [];
+  for (let i = 0; i < 90; i++) current.push({x: Math.random() * W, y: Math.random() * H, s: 0.25 + Math.random() * 0.5});
+  const N = {arrived: 0, exact: 0, held: 0, refused: 0, wrong: 0, tokens: 0};
+  let t = 0, paused = false, spawnAt = 0.6, teachRipple = 0;
+
+  function spawn() {
+    const cls = CLASSES[Math.floor(Math.random() * CLASSES.length)];
+    const edge = Math.random() < 0.22;
+    bugs.push({x: 14, y: H * (0.44 + (Math.random() - 0.5) * 0.28), vx: 38 + Math.random() * 22, vy: (Math.random() - 0.5) * 8,
+               cls, edge, huge: Math.random() < 0.18, state: 'drift', life: 0});
+    N.arrived++;
+  }
+
+  function judgeOf(bug, g) {
+    // the outcome a buoy reaches for this bug; probabilities shaped by today's measurements
+    if (!bug.cls.t) return {v: 'refused', why: 'outside the taught vocabulary', runs: 20 + Math.floor(Math.random() * 60)};
+    if (bug.huge) return {v: 'held', why: 'passing line found; view of a huge file capped', runs: 120 + Math.floor(Math.random() * 200)};
+    if (bug.edge && Math.random() < 0.35) return {v: 'refused', why: 'failure pointed at a docstring, not the code', runs: 40 + Math.floor(Math.random() * 30)};
+    return {v: 'exact', why: 'restored byte-exact', runs: 6 + Math.floor(Math.random() * 60)};
+  }
+
+  function step(dt) {
+    t += dt; spawnAt -= dt;
+    if (spawnAt <= 0) { spawn(); spawnAt = 1.1 + Math.random() * 1.6; }
+    for (const p of current) { p.x += p.s * 30 * dt; if (p.x > W) { p.x = 0; p.y = Math.random() * H; } }
+    for (const b of bugs) {
+      if (b.state === 'drift') {
+        b.x += b.vx * dt; b.y += b.vy * dt + Math.sin(t * 2 + b.x * 0.02) * 6 * dt;
+        for (const g of guards) if (!g.busy && Math.hypot(b.x - g.x, b.y - g.y) < g.r) {
+          b.state = 'judging'; b.g = g; b.life = 0; g.busy = b; g.pulse = 0; b.verdict = judgeOf(b, g); b.dur = 1.4 + Math.min(2.4, b.verdict.runs / 60);
+          break;
+        }
+        if (b.x > W - 10) b.state = 'gone';
+      } else if (b.state === 'judging') {
+        b.life += dt; b.g.pulse += dt;
+        b.x += (b.g.x - b.x) * 2 * dt; b.y += (b.g.y - 16 - b.y) * 2 * dt;
+        if (b.life > b.dur) {
+          const v = b.verdict.v;
+          marks.push({x: b.g.x + (Math.random() - 0.5) * 60, y: b.g.y + 30 + Math.random() * 20, v, age: 0, why: b.verdict.why, runs: b.verdict.runs});
+          reports.push({from: b.g, p: 0, v});
+          if (v === 'exact') N.exact++; else if (v === 'held') N.held++; else N.refused++;
+          b.g.busy = null; b.g.glow = 1; b.state = 'gone';
+        }
+      }
+    }
+    for (let i = bugs.length - 1; i >= 0; i--) if (bugs[i].state === 'gone') bugs.splice(i, 1);
+    for (const g of guards) g.glow = Math.max(0, g.glow - dt * 0.8);
+    for (const m of marks) m.age += dt;
+    while (marks.length > 40) marks.shift();
+    for (const r of reports) r.p += dt * 0.7;
+    for (let i = reports.length - 1; i >= 0; i--) if (reports[i].p > 1) reports.splice(i, 1);
+    teachRipple = Math.max(0, teachRipple - dt);
+  }
+
+  function draw() {
+    const paper = css('--paper'), water = css('--water'), deep = css('--deep'), ink = css('--ink'), ink2 = css('--ink-2'), rule = css('--rule');
+    const C = {guard: css('--guard'), judge: css('--judge'), bug: css('--bug'), edge: css('--edge'), exact: css('--ok'), held: css('--held'), refused: css('--off')};
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = paper; ctx.fillRect(0, 0, W, H);
+    // soundings grid
+    ctx.strokeStyle = rule; ctx.globalAlpha = 0.35; ctx.lineWidth = 1;
+    for (let x = 0; x < W; x += 60) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (let y = 0; y < H; y += 60) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    ctx.globalAlpha = 1;
+    // basin
+    ctx.beginPath(); shore.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath();
+    ctx.fillStyle = water; ctx.fill(); ctx.strokeStyle = ink2; ctx.lineWidth = 1.2; ctx.stroke();
+    ctx.save(); ctx.clip();
+    ctx.beginPath(); ctx.ellipse(W * 0.55, H * 0.6, W * 0.3, H * 0.22, 0, 0, Math.PI * 2); ctx.fillStyle = deep; ctx.fill();
+    ctx.fillStyle = ink2; ctx.globalAlpha = 0.35;
+    for (const p of current) ctx.fillRect(p.x, p.y, 7, 1);
+    ctx.globalAlpha = 1;
+    ctx.restore();
+    // inflow
+    ctx.fillStyle = ink2; ctx.font = '500 12px "IBM Plex Sans Condensed", sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('COMMITS IN  →', 16, H * 0.30);
+    ctx.textAlign = 'right'; ctx.fillText('THE REPOSITORY', W - 16, H - 14);
+    // moorings to the judge
+    for (const g of guards) {
+      ctx.strokeStyle = ink2; ctx.globalAlpha = 0.28; ctx.lineWidth = 1; ctx.setLineDash([3, 5]);
+      ctx.beginPath(); ctx.moveTo(g.x, g.y); ctx.lineTo(judge.x, judge.y); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+    }
+    // teach ripple: one example reaches every buoy
+    if (teachRipple > 0) {
+      const k = 1 - teachRipple / 1.6;
+      for (const g of guards) {
+        const x = judge.x + (g.x - judge.x) * k, y = judge.y + (g.y - judge.y) * k;
+        ctx.fillStyle = C.guard; ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    // reports travelling up
+    for (const r of reports) {
+      const x = r.from.x + (judge.x - r.from.x) * r.p, y = r.from.y + (judge.y - r.from.y) * r.p;
+      ctx.fillStyle = C[r.v]; ctx.beginPath(); ctx.arc(x, y, 3.5, 0, Math.PI * 2); ctx.fill();
+    }
+    // marks on the chart (outcomes)
+    ctx.font = '400 11px "IBM Plex Mono", monospace'; ctx.textAlign = 'left';
+    for (const m of marks) {
+      const a = Math.max(0.15, 1 - m.age / 30);
+      ctx.globalAlpha = a; ctx.fillStyle = C[m.v]; ctx.beginPath(); ctx.arc(m.x, m.y, 3, 0, Math.PI * 2); ctx.fill();
+      if (m.age < 6) { ctx.fillStyle = ink; ctx.fillText(`${m.runs} runs · ${m.why}`, m.x + 8, m.y + 4); }
+      ctx.globalAlpha = 1;
+    }
+    // guards
+    for (const g of guards) {
+      ctx.strokeStyle = C.guard; ctx.globalAlpha = 0.35 + g.glow * 0.4; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(g.x, g.y, g.r, 0, Math.PI * 2); ctx.stroke(); ctx.globalAlpha = 1;
+      if (g.busy) { const k = (g.pulse % 1); ctx.strokeStyle = C.guard; ctx.globalAlpha = 1 - k; ctx.beginPath(); ctx.arc(g.x, g.y, 12 + k * 30, 0, Math.PI * 2); ctx.stroke(); ctx.globalAlpha = 1; }
+      ctx.fillStyle = C.guard; ctx.beginPath(); ctx.moveTo(g.x, g.y - 12); ctx.lineTo(g.x + 9, g.y + 6); ctx.lineTo(g.x - 9, g.y + 6); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = ink; ctx.font = '500 11px "IBM Plex Sans Condensed", sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(`GUARD ${String(g.id).padStart(2, '0')}`, g.x, g.y + 22);
+      if (g.busy) { ctx.fillStyle = ink2; ctx.fillText(g.busy.cls.n.toUpperCase(), g.x, g.y + 35); }
+    }
+    // bugs
+    for (const b of bugs) {
+      ctx.fillStyle = b.edge ? C.edge : C.bug; ctx.beginPath(); ctx.arc(b.x, b.y, b.huge ? 6 : 4, 0, Math.PI * 2); ctx.fill();
+      if (!b.cls.t) { ctx.strokeStyle = ink; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(b.x, b.y, 8, 0, Math.PI * 2); ctx.stroke(); }
+    }
+    // the judge
+    ctx.fillStyle = C.judge; ctx.beginPath(); ctx.moveTo(judge.x, judge.y - 22); ctx.lineTo(judge.x + 16, judge.y + 10); ctx.lineTo(judge.x - 16, judge.y + 10); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = ink; ctx.font = '600 13px "IBM Plex Sans Condensed", sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('ONE FLUIDFIX · THE JUDGE', judge.x, judge.y + 28);
+    ctx.font = '400 11px "IBM Plex Sans Condensed", sans-serif'; ctx.fillStyle = ink2;
+    ctx.fillText('ships one passing program · refuses two as ambiguous · refuses none with every reason', judge.x, judge.y + 42);
+  }
+
+  function ledger() {
+    for (const k of ['arrived', 'exact', 'held', 'refused', 'wrong', 'tokens']) document.getElementById('n-' + k).textContent = N[k];
+    const taught = CLASSES.filter(c => c.t).length;
+    document.getElementById('n-taught').innerHTML = `${taught}<small>of ${CLASSES.length}</small>`;
+    const nx = nextUntaught();
+    document.getElementById('taught-what').textContent = nx ? `next: ${nx.n}` : 'every class met today is taught';
+    document.getElementById('teach').disabled = !nx;
+    document.getElementById('clock').textContent = `t = ${Math.floor(t)} s`;
+  }
+
+  document.getElementById('teach').addEventListener('click', () => {
+    const nx = nextUntaught(); if (!nx) return;
+    nx.t = true; teachRipple = 1.6; ledger();
+  });
+  document.getElementById('pause').addEventListener('click', e => { paused = !paused; e.target.textContent = paused ? 'Resume' : 'Pause'; });
+
+  // warm start: the chart is already working when it is first seen
+  for (let i = 0; i < 26; i++) step(0.5);
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (!paused && !reduced) step(dt);
+    draw(); ledger();
+    requestAnimationFrame(frame);
+  }
+  draw(); ledger();
+  requestAnimationFrame(frame);
+})();
+</script>
+<footer style="max-width:1180px;margin:0 auto;padding:28px 20px 40px;font:13px/1.6 system-ui,sans-serif;opacity:.7">
+  <a href="./" style="color:inherit">fluidfix</a> ·
+  <a href="lake.html" style="color:inherit">the lake</a> ·
+  <a href="router-law.html" style="color:inherit">the router law</a> ·
+  <a href="https://pypi.org/project/fluidfix/" style="color:inherit">pip install fluidfix</a>
+</footer>
+
+</body>
+</html>
