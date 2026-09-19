@@ -65,3 +65,24 @@ def test_inverted_guard():
     f = repaired(appliers.inverted_bare_guard,
                  "def head(xs):\n    if xs:\n        return None\n    return xs[0]", 1)
     assert f is not None and f([]) is None and f([7]) == 7
+
+
+# ---- the criterion the project is actually scored on: the ORIGINAL BYTES come back
+#
+# Semantic correctness on a second input is not enough. The real-repo study counts a repair only when the
+# line it produces equals the pre-mutation original byte for byte, and every lenm1 original in that corpus
+# is unparenthesised. A class that brackets unconditionally is semantically right and scores zero here.
+BYTE_EXACT = [
+    ("elif index == len(timeframes):  # Must have at least 2 items",
+     "elif index == len(timeframes) - 1:  # Must have at least 2 items"),
+    ("    last_index = len(words)", "    last_index = len(words) - 1"),
+    ("    max_pos = len(_maxes)", "    max_pos = len(_maxes) - 1"),
+    ("    last_column = column_index == len(self.columns)",
+     "    last_column = column_index == len(self.columns) - 1"),
+]
+
+
+def test_len_restores_the_original_bytes():
+    for mutated, original in BYTE_EXACT:
+        assert original in appliers.len_as_last_index(mutated), (
+            f"no candidate restores the original bytes for {mutated!r}")

@@ -48,23 +48,47 @@ It found both defects, and a third I had missed:
 Verified across eight shapes: correct everywhere, strictly wider than before, and still idempotent on
 `len(xs) - 1`.
 
-## And it makes the placement law look unnecessary
+## I claimed the law was cosmetic. It is not — checked again
 
-The model's applier **always brackets**. That sidesteps the placement question rather than answering it —
-and always bracketing is unconditionally correct for appending a suffix to a call.
+The model's applier **always brackets**, which sidesteps the placement question, and on the two lines I
+compared it was byte-identical to the law where it mattered. I concluded the law bought style rather than
+correctness. **That was wrong, and the check that shows it is the project's own acceptance criterion.**
 
-| line | the law | always-wrap | the maintainer wrote |
-|---|---|---|---|
-| rich's real incident | `* (len(text) - 1)` | `* (len(text) - 1)` | `* (len(text) - 1)` |
-| click's teaching example | `len(words) - 1` | `(len(words) - 1)` | `len(words) - 1` |
+A repair counts in the real-repo study only when the line it produces equals the pre-mutation original
+**byte for byte** — that is what "7 of 22 exact, zero tokens" means. Every `lenm1` original in that corpus
+is unparenthesised:
 
-**Both are byte-exact on the case that mattered.** The law's remaining advantage is the second row: it
-produces the line a human would write, where always-wrap leaves redundant parentheses.
+```
+arrow    elif index == len(timeframes) - 1:  # Must have at least 2 items
+click    last_index = len(words) - 1
+sorted   max_pos = len(_maxes) - 1
+rich     last_column = column_index == len(self.columns) - 1
+```
 
-So the honest position on the placement law, one day after generating it: **it buys style, not
-correctness**, for this class. Where it would still earn its keep is anywhere bracketing is not available —
-an inserted token that is not a suffix on a parenthesised call, or a context where extra parens are
-invalid. Neither is measured.
+| | the law | always-wrap |
+|---|---|---|
+| byte-exact restorations | **4 / 4** | **0 / 4** |
+
+Always-wrap produces `(len(words) - 1)` where the original had none, and fails every case. **Here style
+*is* the criterion**, so the law is not decoration — it is the thing being scored.
+
+### And my suite certified the regression
+
+The classes' suite checked semantic correctness on a second input and never checked byte-exactness, so it
+passed a patch that would have taken four previously-exact repairs to zero. The audit I was proud of had
+the same shape of hole as the classes it was auditing: **it encoded what I had thought to look for.**
+
+Both are now in the applier and both in the suite — the model's narrowed signal, which genuinely widened
+the class, and the law's placement, which the criterion requires:
+
+```
+return len(xs) * 2     ->  return (len(xs) - 1) * 2      widened, was refused outright
+return k * len(xs)     ->  return k * (len(xs) - 1)      the rich incident
+return len(xs) + 3     ->  return len(xs) - 1 + 3        no redundant parens
+last_index = len(words) -> last_index = len(words) - 1   byte-exact
+```
+
+7 passed.
 
 ## What the level actually bought
 
