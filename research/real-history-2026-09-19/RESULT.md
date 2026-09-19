@@ -348,3 +348,75 @@ tokens. Nothing measured today touches that half.
   been rejected is not measured*, only likely.
 - "Correct on inspection" is my reading of two diffs, though the segment.py divergence is arithmetic and
   shown above rather than asserted.
+
+---
+
+# CORRECTION — I tested one guard, not fluidnet
+
+Fair objection, and it changes what the 57 cases are evidence *about*. `replay.py`'s guard is:
+
+```python
+o = Oracle(...); pk = build_packet(o, rel, ...); res = repair(o, rel, obs)
+```
+
+That is **one fluidfix guard, on a file I handed it**. No survey, no growth by ruling, no memory carried
+between the 57 cases, no descent — and no certificate: `repair()` accepts on a single green, where
+fluidnet's CERTIFY re-checks, checks collateral, and checks uniqueness. So the two false accepts might have
+been an artefact of testing the wrong thing.
+
+**They are not.** Running the six gates against both, on the real revisions:
+
+| gate | segment.py | traceback.py |
+|---|---|---|
+| RED BEFORE | yes | yes |
+| GREEN AFTER | yes | yes |
+| STABLE (3 re-runs) | yes | yes |
+| NO-COLLATERAL | yes | yes |
+| UNIQUE | *a rival passes* | no rival found |
+| ROLLBACK | byte-exact | byte-exact |
+
+The UNIQUE hit looked like the gate working — until I checked where that rival came from. **I supplied it
+myself**, by hand, as the maintainer's own fix. The real gate only compares candidates the search produced,
+and at that line the vocabulary produces exactly one:
+
+```
+line:                pos = int((cut / cell_length) * len(text))
+class 7 proposes:    pos = int((cut / cell_length) * len(text) - 1)     ← the wrong one
+maintainer's fix:    pos = int((cut / cell_length) * (len(text) - 1))   ← NOT among the candidates
+```
+
+One green, so no ambiguity, so it ships. **Both false accepts survive full certification.** Adding the
+gates does not change the result.
+
+## A product defect found on the way: taught class 7 has a precedence bug
+
+`len-as-last-index` was taught from one worked example — `last_index = len(words)` in click's `utils.py` —
+and its applier appends ` - 1` after the closing paren. That is correct when `len(...)` *is* the
+right-hand side, and wrong whenever it is an operand:
+
+```
+last_index = len(words)                       ->  last_index = len(words) - 1          correct
+pos = int((cut / cell_length) * len(text))    ->  ... * len(text) - 1                  WRONG
+n = total / len(items)                        ->  total / len(items) - 1               WRONG
+return offset + len(buf)                      ->  offset + len(buf) - 1                WRONG
+```
+
+**A class taught from one example generalised its signal but not its semantics.** The signal correctly finds
+every `len(...)` that could be a last-index mistake; the applier only produces the right line for the shape
+of its own example. This is the first time teaching-by-example has been shown to produce a class that is
+confidently wrong rather than merely narrow, and it is the direct cause of one of the two false accepts.
+
+The fix is one line — wrap the call rather than trail the expression — but
+`examples/taught-2026-09-16/rules_session.py` is checksummed and referenced in the sales material as a
+frozen teaching set, so it is **recorded here and not silently edited**.
+
+## What the 57 cases do and do not measure, corrected
+
+**They measure:** whether the taught vocabulary can produce a line that the maintainer's own regression test
+accepts, on a file it is told to look at. Answer: 0 correct in 57, 2 shipped wrong, and the gates do not
+catch either.
+
+**They do not measure fluidnet.** Survey, growth by ruling, memory carried between incidents, and descent
+into the memory were all absent. Those determine **cost and reach** — how many nodes it takes to find the
+file, and whether the second incident is cheaper — not whether a shipped repair is right. On this evidence
+the net's growth machinery would change the price of the 57 searches and none of their outcomes.
