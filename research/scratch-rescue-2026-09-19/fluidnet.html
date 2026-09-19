@@ -1,0 +1,566 @@
+<title>fluidnet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Karla:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<style>
+:root{
+  --ground:#0A0F1C;
+  --glass:rgba(255,255,255,.055);
+  --glass-2:rgba(255,255,255,.028);
+  --edge:rgba(255,255,255,.11);
+  --edge-bright:rgba(255,255,255,.2);
+  --ink:#E7ECF5;
+  --ink-dim:#9AA6BC;
+  --ink-faint:#6B7891;
+  --amber:#F0B429;
+  --amber-dim:rgba(240,180,41,.14);
+  --mint:#5EEAD4;
+  --mint-dim:rgba(94,234,212,.13);
+  --rose:#FB7185;
+  --rose-dim:rgba(251,113,133,.13);
+  --violet:#A78BFA;
+  --violet-dim:rgba(167,139,250,.13);
+  --radius:16px;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --body:'Karla',system-ui,-apple-system,Segoe UI,sans-serif;
+  --display:'Fraunces','Iowan Old Style',Georgia,serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.field{position:fixed;inset:0;z-index:-1;background:
+   radial-gradient(1100px 620px at 12% -8%, rgba(240,180,41,.10), transparent 62%),
+   radial-gradient(980px 640px at 92% 4%, rgba(94,234,212,.09), transparent 60%),
+   radial-gradient(900px 700px at 60% 105%, rgba(167,139,250,.10), transparent 62%),
+   linear-gradient(180deg,#0A0F1C 0%,#0B1120 45%,#090D18 100%);}
+.field::after{content:"";position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(1000px 800px at 50% 0%,#000 25%,transparent 80%);}
+
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:0}
+.glass{background:var(--glass);border:1px solid var(--edge);border-radius:var(--radius);
+  backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+  box-shadow:0 1px 0 rgba(255,255,255,.07) inset, 0 20px 50px -30px rgba(0,0,0,.9)}
+.glass-quiet{background:var(--glass-2);border:1px solid rgba(255,255,255,.07);border-radius:12px}
+
+h1,h2,h3{font-family:var(--display);font-weight:500;text-wrap:balance;margin:0;letter-spacing:-.015em}
+h1{font-size:clamp(2.5rem,6.6vw,4.4rem);line-height:1;font-weight:300;font-variation-settings:'SOFT' 0,'WONK' 1}
+h2{font-size:clamp(1.55rem,3.6vw,2.2rem);line-height:1.12;margin-bottom:.35em}
+h3{font-size:1.06rem;font-family:var(--body);font-weight:700;letter-spacing:0}
+p{margin:0 0 1em}
+.lede{font-size:clamp(1.02rem,2.1vw,1.2rem);color:var(--ink-dim);max-width:64ch}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .9em}
+.mono{font-family:var(--mono)}
+.tnum{font-variant-numeric:tabular-nums}
+a{color:var(--mint)}
+section{padding-block:clamp(48px,7vw,86px)}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--edge),transparent);border:0;margin:0}
+
+.hero{padding-top:clamp(44px,8vw,82px);padding-bottom:clamp(30px,4vw,44px)}
+.badge{display:inline-flex;align-items:center;gap:.5em;font-family:var(--mono);font-size:.7rem;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--amber);background:var(--amber-dim);
+  border:1px solid rgba(240,180,41,.25);padding:.42em .8em;border-radius:999px;margin-bottom:1.5em}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber)}
+h1 em{font-style:italic;color:var(--amber);font-weight:300}
+.hero-sub{margin-top:1.3em;max-width:62ch;font-size:clamp(1.02rem,2.1vw,1.22rem);color:var(--ink-dim)}
+
+.term{margin-top:clamp(30px,4.5vw,44px);overflow:hidden}
+.term-bar{display:flex;align-items:center;gap:.7em;padding:.75em 1.1em;border-bottom:1px solid var(--edge);
+  background:rgba(255,255,255,.03);flex-wrap:wrap}
+.lights{display:flex;gap:6px}
+.lights i{width:10px;height:10px;border-radius:50%;display:block}
+.term-title{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);letter-spacing:.04em}
+.term-btn{margin-left:auto;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-dim);background:rgba(255,255,255,.05);border:1px solid var(--edge);
+  padding:.4em .85em;border-radius:8px;cursor:pointer;transition:.18s}
+.term-btn:hover{color:var(--ink);border-color:var(--edge-bright);background:rgba(255,255,255,.09)}
+.term-btn:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.term-body{font-family:var(--mono);font-size:.79rem;line-height:1.72;padding:1.15em 1.25em 1.5em;
+  overflow-x:auto;min-height:412px;white-space:pre;color:var(--ink-dim)}
+.term-body .c{color:var(--ink-faint)}
+.term-body .p{color:var(--violet)}
+.term-body .k{color:var(--amber);font-weight:700}
+.term-body .g{color:var(--mint)}
+.term-body .r{color:var(--rose)}
+.term-body .w{color:var(--ink);font-weight:500}
+.term-body .free{color:var(--mint);background:var(--mint-dim);padding:0 .35em;border-radius:4px}
+.term-body .paid{color:var(--rose);background:var(--rose-dim);padding:0 .35em;border-radius:4px}
+.caret{display:inline-block;width:8px;height:1.05em;vertical-align:-.2em;background:var(--amber);
+  animation:blink 1.05s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(248px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.stat{padding:1.15em 1.25em}
+.stat .n{font-family:var(--display);font-size:2.3rem;line-height:1;font-weight:500;font-variant-numeric:tabular-nums}
+.stat .l{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin-top:.7em}
+.stat .d{font-size:.87rem;color:var(--ink-dim);margin-top:.5em;line-height:1.5}
+.n-amber{color:var(--amber)}.n-mint{color:var(--mint)}.n-rose{color:var(--rose)}.n-violet{color:var(--violet)}
+
+/* directions */
+.dirs{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(224px,1fr));margin-top:1.6em}
+.dir{padding:1.05em 1.15em;cursor:pointer;text-align:left;font:inherit;color:inherit;
+  background:var(--glass-2);border:1px solid rgba(255,255,255,.08);border-radius:14px;transition:.2s}
+.dir:hover{background:rgba(255,255,255,.07);border-color:var(--edge-bright)}
+.dir[aria-pressed="true"]{background:rgba(255,255,255,.085);border-color:var(--sel,var(--amber));
+  box-shadow:0 0 0 1px var(--sel,var(--amber)) inset, 0 0 34px -12px var(--sel,var(--amber))}
+.dir .name{font-family:var(--mono);font-size:.76rem;letter-spacing:.11em;font-weight:700;color:var(--sel,var(--amber));display:block}
+.dir .way{font-family:var(--display);font-size:1.32rem;margin-top:.15em;display:block;color:var(--ink)}
+.dir .what{font-size:.86rem;color:var(--ink-dim);margin-top:.5em;line-height:1.5;display:block}
+.dir .tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mint);background:var(--mint-dim);padding:.15em .5em;border-radius:999px;margin-top:.7em;display:inline-block}
+.dir-out{margin-top:14px;padding:1.2em 1.3em;border-left:3px solid var(--sel,var(--amber))}
+.dir-out h3{margin-bottom:.4em;color:var(--sel,var(--amber))}
+.dir-out p{margin:0;color:var(--ink-dim);font-size:.94rem}
+.dir-out .ev{font-family:var(--mono);font-size:.76rem;color:var(--ink-faint);margin-top:.85em;display:block}
+
+/* memory */
+.mem{display:grid;gap:20px;grid-template-columns:1fr;align-items:start;margin-top:1.6em}
+@media(min-width:760px){.mem{grid-template-columns:1fr 1fr}}
+.nodes{display:grid;grid-template-columns:repeat(8,1fr);gap:7px;padding:1.2em}
+.node{aspect-ratio:1;border-radius:5px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);
+  transition:background .3s,border-color .3s,transform .3s}
+.node.on{background:var(--amber-dim);border-color:rgba(240,180,41,.5)}
+.node.win{background:var(--mint);border-color:var(--mint);transform:scale(1.14);box-shadow:0 0 16px var(--mint)}
+.toggle{display:inline-flex;background:rgba(255,255,255,.05);border:1px solid var(--edge);border-radius:10px;padding:3px;gap:3px;flex-wrap:wrap}
+.toggle button{font:inherit;font-family:var(--mono);font-size:.73rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-dim);background:transparent;border:0;padding:.5em 1.05em;border-radius:7px;cursor:pointer;transition:.18s}
+.toggle button[aria-pressed="true"]{background:rgba(255,255,255,.1);color:var(--ink)}
+.toggle button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.memfig{display:flex;gap:26px;flex-wrap:wrap;margin-top:1.3em}
+.memfig div span{display:block;font-family:var(--mono);font-size:.67rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint);margin-top:.3em}
+.memfig strong{font-family:var(--display);font-size:2rem;font-weight:500;font-variant-numeric:tabular-nums;line-height:1}
+
+/* ladder */
+.faults{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.4em}
+.fault{font-family:var(--mono);font-size:.73rem;padding:.44em .75em;border-radius:8px;cursor:pointer;
+  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);color:var(--ink-dim);transition:.18s}
+.fault:hover{color:var(--ink);border-color:var(--edge-bright)}
+.fault[aria-pressed="true"]{background:rgba(255,255,255,.1);color:var(--ink);border-color:var(--edge-bright)}
+.fault:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.ladder{margin-top:16px;padding:1.25em 1.35em}
+.rung{display:flex;gap:14px;align-items:flex-start;padding:.72em 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.rung:last-child{border-bottom:0}
+.rung .lv{font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--ink-faint);min-width:26px;padding-top:.15em}
+.rung .bd{flex:1;min-width:0}
+.rung .t{font-family:var(--mono);font-size:.81rem;color:var(--ink-dim)}
+.rung .v{font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;margin-top:.3em;display:block}
+.rung.hit .t{color:var(--ink)}.rung.hit .lv{color:var(--mint)}.rung.hit .v{color:var(--mint)}
+.rung.skip{opacity:.42}
+.rung.miss .v{color:var(--rose)}
+.diffline{font-family:var(--mono);font-size:.76rem;margin-top:.55em;white-space:pre-wrap;word-break:break-word}
+.diffline .minus{color:var(--rose)}
+.diffline .plus{color:var(--mint)}
+
+.tablewrap{overflow-x:auto;margin-top:1.4em;border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.89rem}
+th,td{text-align:left;padding:.78em 1.05em;border-bottom:1px solid rgba(255,255,255,.07)}
+th{font-family:var(--mono);font-size:.67rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);font-weight:400}
+tbody tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.pill{font-family:var(--mono);font-size:.7rem;letter-spacing:.07em;padding:.2em .6em;border-radius:999px;white-space:nowrap}
+.pill.ok{color:var(--mint);background:var(--mint-dim)}
+.pill.no{color:var(--rose);background:var(--rose-dim)}
+.pill.hole{color:var(--amber);background:var(--amber-dim)}
+
+.bars{margin-top:1.5em;display:grid;gap:1.1em}
+.bar-row .top{display:flex;justify-content:space-between;align-items:baseline;gap:1em;margin-bottom:.45em;flex-wrap:wrap}
+.bar-row .who{font-size:.94rem}
+.bar-row .amt{font-family:var(--mono);font-size:.82rem;font-variant-numeric:tabular-nums}
+.track{height:12px;border-radius:999px;background:rgba(255,255,255,.055);overflow:hidden;border:1px solid rgba(255,255,255,.07)}
+.fill{height:100%;border-radius:999px}
+.fill.free{width:1%;background:var(--mint);box-shadow:0 0 14px var(--mint)}
+.fill.paid{width:100%;background:linear-gradient(90deg,rgba(251,113,133,.45),var(--rose))}
+
+.limit{padding:1.1em 1.25em;border-left:3px solid var(--rose)}
+.limit h3{color:var(--rose);margin-bottom:.35em}
+.limit p{margin:0;font-size:.9rem;color:var(--ink-dim)}
+footer{padding-block:44px 60px;color:var(--ink-faint);font-size:.83rem}
+footer .mono{font-size:.75rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="field" aria-hidden="true"></div>
+
+<!-- ============ HERO ============ -->
+<div class="wrap hero">
+  <span class="badge"><span class="dot"></span>measured 18 september 2026</span>
+  <h1>A net that grows<br>until it <em>finds it</em>.</h1>
+  <p class="hero-sub">Nothing is planned in advance. One small guard opens on one file and one fault class,
+  and what it comes back with decides where the net grows next — wider, deeper, or <em>down into its own
+  memory</em>. The first green stops everything, and then has to earn it.</p>
+
+  <div class="term glass">
+    <div class="term-bar">
+      <span class="lights"><i style="background:#FB7185"></i><i style="background:#F0B429"></i><i style="background:#5EEAD4"></i></span>
+      <span class="term-title">one run — it fixed its own memory on the way to the fault</span>
+      <button class="term-btn" id="replay" type="button">Replay</button>
+    </div>
+    <div class="term-body" id="term"></div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ============ DIRECTIONS ============ -->
+<section class="wrap">
+  <p class="eyebrow">the law says which way</p>
+  <h2>Three directions, and the third one is new</h2>
+  <p class="lede">A net that grows wider on a refutation and deeper on a cut-short view was already the
+  design. What it could never do was notice that <em>its own memory</em> had sent the search the wrong way —
+  because wider and deeper both search a repository that was never the problem.</p>
+
+  <div class="dirs" id="dirs"></div>
+  <div class="dir-out glass" id="dirOut"></div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ MEMORY ============ -->
+<section class="wrap">
+  <p class="eyebrow">the second time costs less</p>
+  <h2>It remembers the shape, not the place</h2>
+  <p class="lede">Twenty-three (file, class) pairs in this world. Cold, it walks nearly all of them. Once it
+  has seen the shape once it goes almost straight there — and a shape carries between repositories, which a
+  filename never could.</p>
+
+  <div class="mem">
+    <div>
+      <div class="toggle" role="group" aria-label="memory state">
+        <button type="button" id="btnCold" aria-pressed="true">Cold</button>
+        <button type="button" id="btnWarm" aria-pressed="false">Remembers the shape</button>
+      </div>
+      <div class="memfig">
+        <div><strong class="tnum n-amber" id="memNodes">22</strong><span>nodes walked</span></div>
+        <div><strong class="tnum" id="memTime">19.3s</strong><span>wall clock</span></div>
+        <div><strong class="tnum n-mint">0</strong><span>tokens</span></div>
+      </div>
+      <p style="margin-top:1.2em;font-size:.91rem;color:var(--ink-dim)" id="memNote"></p>
+    </div>
+    <div class="nodes glass" id="nodeGrid" aria-hidden="true"></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ CERTIFY ============ -->
+<section class="wrap">
+  <p class="eyebrow">the first green has to earn it</p>
+  <h2>Finding it is not fixing it</h2>
+  <p class="lede">When a node goes green the net stops — and then asks six things of it, each measured:
+  red before, green on the <em>full</em> suite, still green when re-run, nothing else broken, no rival
+  program that also passes, and a byte-exact rollback if any of that fails. The judge never asks who wrote
+  the patch, which is why it also works on fixes the net could not have written.</p>
+
+  <div class="tablewrap glass">
+    <table>
+      <thead><tr><th>patch offered to the judge</th><th class="num">n</th><th>verdict</th><th>what it was</th></tr></thead>
+      <tbody>
+        <tr><td>the net's own repair</td><td class="num">4</td>
+            <td><span class="pill ok">certified</span></td><td>original line restored byte-for-byte</td></tr>
+        <tr><td>a fix written by a different model</td><td class="num">14</td>
+            <td><span class="pill ok">certified 14</span></td><td>whole-function rewrites</td></tr>
+        <tr><td>a different model's failing code</td><td class="num">9</td>
+            <td><span class="pill no">refused 9</span></td><td>the suite rejects them</td></tr>
+        <tr><td>correct but raises half the time</td><td class="num">14</td>
+            <td><span class="pill no">refused 14</span></td><td>a green that will not repeat</td></tr>
+        <tr><td>fixes the red test, breaks a green one</td><td class="num">6</td>
+            <td><span class="pill no">refused 6</span></td><td>the full suite is the gate</td></tr>
+        <tr><td>a lookup table on the exact test inputs</td><td class="num">14</td>
+            <td><span class="pill hole">certified 14</span></td><td>the hole — see below</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid g2" style="margin-top:18px">
+    <div class="stat glass"><div class="n n-mint tnum">0</div><div class="l">wrong repairs, ever</div>
+      <div class="d">Across 240 generated bugs, 22 real-repo mutants and 14 model-written faults, it has
+      never shipped a patch the judging tests rejected. Every refusal named what it tried.</div></div>
+    <div class="stat glass"><div class="n n-amber tnum">14/14</div><div class="l">the hole, and its cure</div>
+      <div class="d">A patch that games the tests is certified <em>when offered alone</em> — a certificate
+      is a statement about your suite, not about intent. Offered beside a rival, the ambiguity check
+      separated it every single time.</div></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ LADDER ============ -->
+<section class="wrap">
+  <p class="eyebrow">the same net, a fourth axis</p>
+  <h2>It grows over how big a fix may be, too</h2>
+  <p class="lede">Territories, line ranges, its own memory — and edit budgets. Same rulings, same stop
+  condition. It tries the free repair first and widens the budget only when the tests reject everything, so
+  the first budget that passes <em>is</em> the fault's kind. Nobody has to judge it. Fourteen bugs small
+  models actually wrote; pick one.</p>
+
+  <div class="faults" id="faults" role="group" aria-label="choose a fault"></div>
+  <div class="ladder glass" id="ladder"></div>
+
+  <div class="grid g4" style="margin-top:20px">
+    <div class="stat glass"><div class="n n-mint tnum">5</div><div class="l">of 14, free</div>
+      <div class="d">After teaching two shapes the ladder itself found. It was 1 before.</div></div>
+    <div class="stat glass"><div class="n n-amber tnum">11</div><div class="l">one-line fixable</div>
+      <div class="d">Read by eye, I had called nine of these beyond any line rewrite. Two are.</div></div>
+    <div class="stat glass"><div class="n tnum">1</div><div class="l">needs a new line</div>
+      <div class="d">Returns scalars across three branches where a list was wanted.</div></div>
+    <div class="stat glass"><div class="n n-rose tnum">1</div><div class="l">needs the algorithm</div>
+      <div class="d">Wrong accumulation and wrong return type at once.</div></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ HANDOFF ============ -->
+<section class="wrap">
+  <p class="eyebrow">the minority it cannot write</p>
+  <h2>When it can't, the refusal is still worth something</h2>
+  <p class="lede">On a fault outside everything it can author, it spent 24 nodes and 13 suite runs to say:
+  the failure is in <span class="mono">pkg/percentile.py</span>, one file of eight, and these six classes
+  are eliminated there — with the suite's own error attached. Zero tokens. Two models each wrote a fix from
+  that and nothing else; both were certified, and the net then checked whether they were really two
+  programs.</p>
+
+  <div class="bars">
+    <div class="bar-row">
+      <div class="top"><span class="who">the net — search, localise, certify twice, separate, roll back, remember</span>
+        <span class="amt n-mint">0 tokens · 19 suite runs</span></div>
+      <div class="track"><div class="fill free"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="top"><span class="who">two models — writing the fix it could not write</span>
+        <span class="amt n-rose">~96,000 tokens</span></div>
+      <div class="track"><div class="fill paid"></div></div>
+    </div>
+  </div>
+
+  <div class="grid g3" style="margin-top:22px">
+    <div class="stat glass"><div class="n n-violet tnum">17→1</div><div class="l">it repaired its own memory</div>
+      <div class="d">Its memory kept sending the search the wrong way. It went down, turned that incident
+      into a test, and fixed the memory under the memory's own suite.</div></div>
+    <div class="stat glass"><div class="n tnum">1 of 8</div><div class="l">localised, for nothing</div>
+      <div class="d">The file named, six classes eliminated there, the suite's error attached. That is the
+      artefact handed onward.</div></div>
+    <div class="stat glass"><div class="n n-mint tnum">76</div><div class="l">inputs probed, ruling withdrawn</div>
+      <div class="d">Two patches both passed. It looked for an input telling them apart, found none, and
+      said so — one program spelled twice is not ambiguity.</div></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ LIMITS ============ -->
+<section class="wrap">
+  <p class="eyebrow">published, not buried</p>
+  <h2>What it does not do</h2>
+  <p class="lede">Everything above is a measurement. So is everything here.</p>
+  <div class="grid g2" style="margin-top:1.5em">
+    <div class="limit glass-quiet"><h3>It writes a minority of fixes</h3>
+      <p>Free repairs on 5 of 14 model-written faults after teaching, and 7 of 22 real-repo mutants. Most
+      faults still need a model or a person to write the fix — the net finds and judges them.</p></div>
+    <div class="limit glass-quiet"><h3>A certificate is about your suite</h3>
+      <p>A patch that special-cases the tested inputs passes, when offered alone. If the suite cannot see a
+      behaviour, neither can the certificate.</p></div>
+    <div class="limit glass-quiet"><h3>Re-checking helps, it does not save you</h3>
+      <p>A patch failing 25% of the time is caught every time by two re-runs. One failing 2% of the time
+      still slipped through 15 times in 20.</p></div>
+    <div class="limit glass-quiet"><h3>Growth costs, when the plan was right</h3>
+      <p>Where a fixed plan happened to contain the answer, the net is four times slower. Where it did not,
+      the net is the only one that found the fault at all.</p></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<footer class="wrap">
+  <p>fluidnet — every node is one small guard over one file and one fault class, and the target project's
+  own test suite is the only thing allowed to accept anything. Rejected candidates are rolled back
+  byte-exact.</p>
+  <p class="mono" style="margin:0">every number here came out of a recorded run · 18 sep 2026</p>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------------- terminal: the run where it repaired its own memory ---------------- */
+var LINES=[
+ ['p','$ '],['w','fluidnet pkg/\n'],
+ ['c','world: 8 territories, 23 (territory, class) pairs\n'],
+ ['r','fault: flipped-additive planted in pkg/windows.py:6 — the suite is red\n'],
+ ['c','\n'],
+ ['k','DISPATCH  '],['c','memory knows [10, 0, 3] -> wave 1 is 10 node(s)\n'],
+ ['k','RULING    MISDIRECTED'],['c',' — it knew this class and wave 1 dropped it\n'],
+ ['w','          -> DOWN into the memory\n'],
+ ['c','          the incident becomes a test; the memory goes red; a guard repairs it\n'],
+ ['g','          repaired by class 4 after 10 tried\n'],
+ ['c','          wave 1 now 14 node(s); carries the answer: '],['g','True'],['c','\n\n'],
+ ['k','GROW      '],['c','node  1: pkg/between.py class 10 -> EMPTY   (wider)\n'],
+ ['k','GROW      '],['c','node  5: pkg/windows.py class 10 -> REFUTED (wider)\n'],
+ ['k','GROW      '],['c','node  9: pkg/overlap.py class  0 -> EMPTY   (wider)\n'],
+ ['k','GROW      '],['c','node 14: pkg/windows.py class  3 -> '],['g','SHIP'],['c','    (the first green stops the net)\n'],
+ ['c','          14 nodes of 23 possible, 13.6s, '],['free','0 tokens'],['c','\n\n'],
+ ['k','CERTIFY   '],['g','CERTIFIED'],['c',' — red before, green on the full suite, stable on re-check\n'],
+ ['w','          restored the original line byte-for-byte: True\n'],
+ ['c','\n'],
+ ['k','LEARN     '],['c','the lake remembers kind:3 — next time this shape costs 5 nodes\n'],
+ ['k','          '],['c','the head remembers kind:4 — what repairs a memory\n']
+];
+var term=document.getElementById('term');
+function render(upto){
+  var html='', n=0;
+  for(var i=0;i<LINES.length;i++){
+    var cls=LINES[i][0], txt=LINES[i][1];
+    if(upto!=null && n+txt.length>upto){ txt=txt.slice(0,Math.max(0,upto-n)); }
+    html+='<span class="'+cls+'">'+txt.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span>';
+    n+=LINES[i][1].length;
+    if(upto!=null && n>=upto) break;
+  }
+  term.innerHTML = html + (upto!=null ? '<span class="caret"></span>' : '');
+}
+var total=0; LINES.forEach(function(l){total+=l[1].length;});
+render(null);
+var timer=null;
+function play(){
+  if(reduce){ render(null); return; }
+  clearInterval(timer); var i=0;
+  timer=setInterval(function(){ i+=9; if(i>=total){clearInterval(timer); render(null); return;} render(i); },16);
+}
+document.getElementById('replay').addEventListener('click',play);
+
+/* ---------------- the three directions ---------------- */
+var DIRS=[
+ {k:'REFUTED', way:'grow wider', c:'var(--amber)',
+  what:'Every candidate this node built was rejected by the suite.',
+  h:'Not here. Open the next class, and this class in the next territory.',
+  p:'A refutation is evidence about a whole file-and-class pair, so the net spends it on a wider frontier rather than digging where it has already been refuted. A fan-out must cover, not rank — pruning to the scariest-looking classes once excluded the answer outright.',
+  ev:'rich/table.py — 60 nodes cold, 5 once the shape was remembered'},
+ {k:'CAPPED', way:'grow deeper', c:'var(--violet)',
+  what:'Something passed, but the view was cut short.',
+  h:'Here, but unproven. Split this node’s line range in two.',
+  p:'A green under a truncated view is not a repair. Rather than trust it, the net halves the range and gives each half its own guard, until the claim is made on a view that is whole. A fixed plan refused one real fault outright because the cap hid the file.',
+  ev:'45 nodes of fixed waves: refused. The net: exact.'},
+ {k:'MISDIRECTED', way:'go down', c:'var(--mint)', isNew:true,
+  what:'It knew the answering class, and wave one dropped it.',
+  h:'The memory was wrong, not the code.',
+  p:'Wider and deeper both search a repository that was never the problem, so neither can help. The memory file becomes the territory and the incident becomes a test — which is what turns the memory red — and a guard repairs the memory under the memory’s own suite, byte-exact rollback if it cannot. Nothing outside the system fixes it.',
+  ev:'17 misdirections became 1, and the fault never recurred'}
+];
+var dBox=document.getElementById('dirs'), dOut=document.getElementById('dirOut');
+DIRS.forEach(function(d,idx){
+  var b=document.createElement('button');
+  b.type='button'; b.className='dir'; b.style.setProperty('--sel',d.c);
+  b.setAttribute('aria-pressed', idx===2?'true':'false');
+  b.innerHTML='<span class="name">'+d.k+'</span><span class="way">'+d.way+'</span>'+
+              '<span class="what">'+d.what+'</span>'+
+              (d.isNew?'<span class="tag">new in fluidnet</span>':'');
+  b.addEventListener('click',function(){
+    Array.prototype.forEach.call(dBox.children,function(c){c.setAttribute('aria-pressed','false');});
+    b.setAttribute('aria-pressed','true'); showDir(idx);
+  });
+  dBox.appendChild(b);
+});
+function showDir(i){
+  var d=DIRS[i];
+  dOut.style.setProperty('--sel',d.c);
+  dOut.innerHTML='<h3>'+d.h+'</h3><p>'+d.p+'</p><span class="ev">measured: '+d.ev+'</span>';
+}
+showDir(2);
+
+/* ---------------- memory ---------------- */
+var grid=document.getElementById('nodeGrid');
+for(var i=0;i<24;i++){ var el=document.createElement('div'); el.className='node'; grid.appendChild(el); }
+var cells=grid.children;
+function paint(count,winner){
+  for(var i=0;i<cells.length;i++){
+    cells[i].className='node'+(i<count?' on':'')+(i===winner?' win':'');
+  }
+}
+var MEM={cold:{n:22,t:'19.3s',win:21,
+   note:'No memory. It opens the scarcest class in the first territory, is refuted, widens, and keeps widening until the green — then certifies it and remembers the shape.'},
+  warm:{n:5,t:'5.2s',win:4,
+   note:'It remembers the class that answered last time, so wave one carries that class in every territory that can exhibit it. Fifth node, green, certified, byte-exact.'}};
+function setMem(which){
+  var m=MEM[which];
+  document.getElementById('memNodes').textContent=m.n;
+  document.getElementById('memTime').textContent=m.t;
+  document.getElementById('memNote').textContent=m.note;
+  document.getElementById('btnCold').setAttribute('aria-pressed', which==='cold');
+  document.getElementById('btnWarm').setAttribute('aria-pressed', which==='warm');
+  paint(m.n,m.win);
+}
+document.getElementById('btnCold').addEventListener('click',function(){setMem('cold');});
+document.getElementById('btnWarm').addEventListener('click',function(){setMem('warm');});
+setMem('cold');
+
+/* ---------------- the ladder ---------------- */
+var FAULTS=[
+ {n:'insert_sorted',w:'phi4-mini',lv:0,d:['- if items[i] > value:','+ if items[i] < value:'],
+  note:'A flipped comparison. The net repairs it itself, for nothing.'},
+ {n:'insert_sorted',w:'gemma3:4b',lv:0,taught:1,d:['- items.insert(index, value)','+ return items.insert(index, value) or items'],
+  note:'The fault is a missing return — a line that is not there. But the mutation line can BECOME the return, because a mutating method answers None. The ladder found that form; it is now a taught shape.'},
+ {n:'truncate_words',w:'qwen3.5:4b',lv:0,taught:1,d:["- truncated = ' '.join(words[:limit]) + '...'","+ truncated = ' '.join(words[:limit]) + ' ...'"],
+  note:'The separator that joins the rest of the words was forgotten. Two different models made this same slip.'},
+ {n:'percentile',w:'gemma3:4b',lv:1,d:['- rank = ceil(p / 100 * n)','+ rank = int(-(-p * n // 100))'],
+  note:'I had read this as needing an import, so beyond reach. It does not: integer ceiling arithmetic needs no import at all.'},
+ {n:'windows',w:'phi4-mini',lv:1,d:['- for i in range(0, len(items), size):','+ for i in range(len(items) - size + 1):'],
+  note:'Chunking where a sliding window was meant.'},
+ {n:'progress',w:'phi4-mini',lv:1,d:['- filled = int((done / total) * width)','+ filled = int((done / total) * width) if total else 0'],
+  note:'No guard on a zero denominator.'},
+ {n:'clip_index',w:'qwen3.5:4b',lv:1,d:['- return length + index','+ return max(length + index, 0)'],
+  note:'A computed index that is never clamped.'},
+ {n:'backoff',w:'gemma3:4b',lv:2,d:['+ (a new line: collect the delays into a list)'],
+  note:'Returns a scalar from each of three branches where the spec wants one list. The only fault here that genuinely needs a line that is not there.'},
+ {n:'trim_to_fit',w:'qwen3.5:4b',lv:3,d:['(five hunks: the accumulation and the return type, both wrong)'],
+  note:'Two independent defects at once. No single-line transform reaches it — this one needs a model or a person.'}
+];
+var LV=[
+ {t:'the net proposes from its shapes; the suite judges',v:'MECHANICAL'},
+ {t:'exactly one existing line replaced, no import added',v:'ONE-LINE'},
+ {t:'lines may be added; no existing line may change',v:'INSERTION'},
+ {t:'anything at all',v:'STRUCTURAL'}
+];
+var fBox=document.getElementById('faults'), lBox=document.getElementById('ladder');
+FAULTS.forEach(function(f,idx){
+  var b=document.createElement('button');
+  b.type='button'; b.className='fault';
+  b.setAttribute('aria-pressed', idx===0?'true':'false');
+  b.textContent=f.n+' · '+f.w;
+  b.addEventListener('click',function(){
+    Array.prototype.forEach.call(fBox.children,function(c){c.setAttribute('aria-pressed','false');});
+    b.setAttribute('aria-pressed','true'); showFault(idx);
+  });
+  fBox.appendChild(b);
+});
+function showFault(i){
+  var f=FAULTS[i], html='';
+  for(var l=0;l<4;l++){
+    var cls = l===f.lv ? 'rung hit' : (l<f.lv ? 'rung miss' : 'rung skip');
+    var verdict = l===f.lv ? LV[l].v+' — the suite accepts it'
+                : (l<f.lv ? 'refused → widen the budget' : 'never reached');
+    html+='<div class="'+cls+'"><span class="lv">L'+l+'</span><div class="bd">'+
+          '<span class="t">'+LV[l].t+'</span><span class="v">'+verdict+'</span>';
+    if(l===f.lv){
+      html+='<div class="diffline">';
+      f.d.forEach(function(line){
+        var c=line.charAt(0)==='-'?'minus':(line.charAt(0)==='+'?'plus':'');
+        html+='<span class="'+c+'">'+line.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span>\n';
+      });
+      html+='</div><p style="margin:.7em 0 0;font-size:.88rem;color:var(--ink-dim)">'+f.note+'</p>';
+      if(f.taught){ html+='<p style="margin:.5em 0 0;font-size:.82rem;color:var(--mint)">'+
+        'Taught from the ladder’s own output — it now repairs for free.</p>'; }
+    }
+    html+='</div></div>';
+  }
+  lBox.innerHTML=html;
+}
+showFault(0);
+})();
+</script>

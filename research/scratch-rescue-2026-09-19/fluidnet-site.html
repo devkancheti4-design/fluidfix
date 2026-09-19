@@ -1,0 +1,431 @@
+<title>fluidnet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --bg:#060A0F;--panel:#0C1219;--panel-2:#101822;
+  --edge:rgba(255,255,255,.08);--edge-hi:rgba(255,255,255,.22);
+  --ink:#E9EEF4;--dim:#93A1B2;--faint:#5E6C7C;
+  --ok:#22D3A7;--ok-s:rgba(34,211,167,.12);
+  --no:#FF5C7A;--no-s:rgba(255,92,122,.12);
+  --dn:#8B7CFF;--dn-s:rgba(139,124,255,.13);
+  --soon:#FFB020;--soon-s:rgba(255,176,32,.1);
+  --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --disp:'Archivo',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;
+  line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--disp);margin:0;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:clamp(2rem,5.4vw,3.4rem);line-height:1.05;font-weight:700}
+h2{font-size:clamp(1.35rem,3.1vw,1.9rem);font-weight:700;line-height:1.15;margin-bottom:.4em}
+h3{font-family:var(--sans);font-size:.97rem;font-weight:600;margin-bottom:.3em}
+p{margin:0 0 1em}
+.lede{font-size:clamp(1rem,2vw,1.12rem);color:var(--dim);max-width:62ch}
+.eyebrow{font-family:var(--mono);font-size:.67rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 .8em}
+section{padding-block:clamp(38px,5.5vw,68px)}
+hr{border:0;height:1px;background:var(--edge);margin:0}
+.mono{font-family:var(--mono)}.tnum{font-variant-numeric:tabular-nums}
+.ok{color:var(--ok)}.no{color:var(--no)}.dn{color:var(--dn)}.soon{color:var(--soon)}
+a{color:var(--ok)}
+
+header{padding-block:clamp(38px,6.5vw,66px) clamp(16px,2.5vw,24px)}
+.tagline{display:inline-flex;align-items:center;gap:.5em;font-family:var(--mono);font-size:.67rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ok);background:var(--ok-s);
+  border:1px solid rgba(34,211,167,.25);padding:.4em .8em;border-radius:999px;margin-bottom:1.3em}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:pu 2s ease-in-out infinite}
+@keyframes pu{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,211,167,.5)}50%{opacity:.6;box-shadow:0 0 0 6px rgba(34,211,167,0)}}
+h1 em{font-style:normal;color:var(--ok)}
+
+/* ================= the machine ================= */
+.machine{margin-top:clamp(24px,4vw,38px);border:1px solid var(--edge);border-radius:14px;
+  background:var(--panel);overflow:hidden}
+.m-head{display:flex;align-items:center;gap:12px;padding:.8em 1.1em;border-bottom:1px solid var(--edge);
+  background:var(--panel-2);flex-wrap:wrap}
+.m-head .t{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
+.m-btn{margin-left:auto;font:inherit;font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--bg);background:var(--ok);border:0;padding:.5em 1em;
+  border-radius:7px;cursor:pointer;font-weight:600}
+.m-btn:disabled{opacity:.4;cursor:default}
+.m-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+.states{display:flex;align-items:stretch;gap:0;padding:1.3em 1.1em .4em;overflow-x:auto}
+.st{flex:1 0 128px;min-width:128px;position:relative;text-align:center;padding:0 4px}
+.st .ring{width:38px;height:38px;margin:0 auto;border-radius:50%;border:2px solid var(--edge-hi);
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.72rem;
+  color:var(--faint);transition:.3s;background:var(--panel)}
+.st .nm{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);margin-top:.6em;transition:.3s}
+.st .sub{font-size:.73rem;color:var(--faint);margin-top:.25em;line-height:1.35;opacity:.7;transition:.3s}
+.st::after{content:"";position:absolute;top:19px;left:calc(50% + 24px);width:calc(100% - 48px);height:2px;
+  background:var(--edge);transition:.35s}
+.st:last-child::after{display:none}
+.st.done .ring{border-color:var(--ok);color:var(--ok);background:var(--ok-s)}
+.st.done .nm{color:var(--dim)}
+.st.done::after{background:var(--ok)}
+.st.live .ring{border-color:var(--ok);color:var(--ok);background:var(--ok-s);
+  box-shadow:0 0 0 5px rgba(34,211,167,.13);transform:scale(1.12)}
+.st.live .nm{color:var(--ok)}
+.st.live .sub{opacity:1;color:var(--dim)}
+.st.down .ring{border-color:var(--dn);color:var(--dn);background:var(--dn-s);
+  box-shadow:0 0 0 5px rgba(139,124,255,.14);transform:scale(1.12)}
+.st.down .nm{color:var(--dn)}
+.st.down::after{background:var(--dn)}
+.st.down .sub{opacity:1;color:var(--dim)}
+
+.counters{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--edge);
+  border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);margin-top:1em}
+@media(max-width:560px){.counters{grid-template-columns:repeat(2,1fr)}}
+.ct{background:var(--panel);padding:.85em 1em}
+.ct .v{font-family:var(--disp);font-size:1.5rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.ct .l{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--faint);margin-top:.5em}
+
+.m-body{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:780px){.m-body{grid-template-columns:200px 1fr}}
+.nodes{padding:1.1em;border-bottom:1px solid var(--edge)}
+@media(min-width:780px){.nodes{border-bottom:0;border-right:1px solid var(--edge)}}
+.nodes .cap{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:.7em}
+.ngrid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.nd{aspect-ratio:1;border-radius:4px;background:rgba(255,255,255,.045);border:1px solid var(--edge);
+  transition:.25s}
+.nd.empty{background:rgba(255,255,255,.07)}
+.nd.ref{background:var(--no-s);border-color:rgba(255,92,122,.4)}
+.nd.win{background:var(--ok);border-color:var(--ok);box-shadow:0 0 14px var(--ok);transform:scale(1.15)}
+.log{padding:1.1em;font-family:var(--mono);font-size:.755rem;line-height:1.78;min-height:238px;
+  color:var(--dim);white-space:pre-wrap;overflow-x:auto}
+.log .k{color:var(--soon);font-weight:600}
+.log .d{color:var(--dn);font-weight:600}
+.log .g{color:var(--ok)}.log .r{color:var(--no)}.log .w{color:var(--ink)}.log .c{color:var(--faint)}
+
+/* ================= blocks ================= */
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(222px,1fr))}
+.card{background:var(--panel);border:1px solid var(--edge);border-radius:11px;padding:1.05em 1.15em}
+.card .n{font-family:var(--disp);font-size:1.9rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.card .t{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);margin-top:.5em}
+.card p{margin:.55em 0 0;font-size:.855rem;color:var(--dim);line-height:1.5}
+
+.rulings{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:1.4em}
+.rl{background:var(--panel);border:1px solid var(--edge);border-left:3px solid var(--c,var(--ok));
+  border-radius:9px;padding:.95em 1.05em}
+.rl .h{font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;color:var(--c,var(--ok));font-weight:600}
+.rl .w{font-family:var(--disp);font-size:1.05rem;font-weight:600;margin-top:.15em}
+.rl .d{font-size:.85rem;color:var(--dim);margin-top:.45em;line-height:1.5}
+.rl .e{font-family:var(--mono);font-size:.67rem;color:var(--faint);margin-top:.6em;display:block}
+
+.tablewrap{overflow-x:auto;margin-top:1.3em}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.87rem}
+th,td{text-align:left;padding:.68em .95em;border-bottom:1px solid var(--edge)}
+th{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:400}
+tbody tr:last-child td{border-bottom:0}
+td.r{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+
+pre.snip{margin:1.2em 0 0;background:var(--panel);border:1px solid var(--edge);border-radius:9px;
+  padding:1em 1.1em;overflow-x:auto;font-family:var(--mono);font-size:.76rem;line-height:1.72;color:var(--dim)}
+pre.snip .p{color:var(--dn)}pre.snip .g{color:var(--ok)}pre.snip .c{color:var(--faint)}
+
+.soon-banner{background:var(--soon-s);border:1px solid rgba(255,176,32,.28);border-radius:11px;
+  padding:1em 1.15em;margin-bottom:1.2em}
+.soon-banner p{margin:0;font-size:.91rem;color:#E9C88C}
+.soon-card{background:var(--panel);border:1px solid rgba(255,176,32,.2);border-left:3px solid var(--soon);
+  border-radius:9px;padding:1em 1.1em}
+.soon-card h3{color:var(--soon)}
+.soon-card p{margin:0;font-size:.86rem;color:var(--dim)}
+.soon-card .need{font-family:var(--mono);font-size:.67rem;color:var(--faint);margin-top:.65em;display:block}
+
+footer{padding-block:32px 54px;border-top:1px solid var(--edge);color:var(--faint);font-size:.81rem}
+footer p{margin:0 0 .4em}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="wrap">
+  <span class="tagline"><span class="pulse"></span>fluidnet · every figure from a recorded run</span>
+  <h1>It finds the fault, fixes it,<br>and <em>repairs its own memory</em> on the way.</h1>
+  <p class="lede">Nothing is planned in advance. One guard opens on one file and one fault class, and what
+  it comes back with decides where the net grows next — wider, deeper, or down into the memory that sent it
+  the wrong way. Zero tokens, start to finish.</p>
+
+  <div class="machine">
+    <div class="m-head">
+      <span class="t">one run — pkg/, 8 territories, 23 (file, class) pairs</span>
+      <button class="m-btn" id="run" type="button">Run it</button>
+    </div>
+
+    <div class="states" id="states"></div>
+
+    <div class="counters">
+      <div class="ct"><div class="v tnum" id="cNodes">0</div><div class="l">nodes opened</div></div>
+      <div class="ct"><div class="v tnum" id="cRuns">0</div><div class="l">suite runs</div></div>
+      <div class="ct"><div class="v tnum ok" id="cTok">0</div><div class="l">tokens</div></div>
+      <div class="ct"><div class="v tnum" id="cWall">0.0s</div><div class="l">wall clock</div></div>
+    </div>
+
+    <div class="m-body">
+      <div class="nodes">
+        <div class="cap">the search space</div>
+        <div class="ngrid" id="ngrid" aria-hidden="true"></div>
+      </div>
+      <div class="log" id="log"></div>
+    </div>
+  </div>
+</header>
+
+<hr>
+
+<!-- ============ RULINGS ============ -->
+<section class="wrap">
+  <p class="eyebrow">the law decides, the body only measures</p>
+  <h2>Three directions. The third one is the new part.</h2>
+  <p class="lede">A net that widens on a refutation and deepens on a cut-short view was already the design.
+  What it could not do was notice that <em>its own memory</em> had misdirected the search — because widening
+  and deepening both search a repository that was never the problem.</p>
+
+  <div class="rulings">
+    <div class="rl" style="--c:var(--no)"><span class="h">REFUTED</span>
+      <div class="w">grow wider</div>
+      <div class="d">Every candidate here was rejected. The fault is not in this file under this class, so
+      spend that on a wider frontier — the next class here, this class in the next territory.</div>
+      <span class="e">rich/table.py: 60 nodes cold, 5 with the shape known</span></div>
+    <div class="rl" style="--c:var(--soon)"><span class="h">CAPPED</span>
+      <div class="w">grow deeper</div>
+      <div class="d">Something passed, but the view was cut short. A green under a truncated view is not a
+      repair, so halve the line range and give each half its own guard.</div>
+      <span class="e">a fixed plan refused this case outright; the net found it</span></div>
+    <div class="rl" style="--c:var(--dn)"><span class="h">MISDIRECTED</span>
+      <div class="w">go down</div>
+      <div class="d">It knew the answering class and wave one dropped it. The memory file becomes the
+      territory, the incident becomes a test — which is what turns the memory red — and a guard repairs the
+      memory under the memory's own suite.</div>
+      <span class="e">17 misdirections became 1, and it never recurred</span></div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ============ MEMORY ============ -->
+<section class="wrap">
+  <p class="eyebrow">it keeps what it learns</p>
+  <h2>The second time costs a fifth as much</h2>
+  <p class="lede">It remembers the <em>shape</em> of a fault, not the place it was found. That is why the
+  knowledge travels: a class learned on one repository took the search on a different one to a single node.</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>the same world, 23 (file, class) pairs</th><th class="r">nodes</th><th class="r">wall</th><th class="r">tokens</th></tr></thead>
+      <tbody>
+        <tr><td>first time it sees this shape</td><td class="r">22</td><td class="r">19.3s</td><td class="r ok">0</td></tr>
+        <tr><td>once it remembers the shape</td><td class="r ok">5</td><td class="r ok">5.2s</td><td class="r ok">0</td></tr>
+        <tr><td>a different repository, class known</td><td class="r ok">1</td><td class="r">33.3s</td><td class="r ok">0</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card"><div class="n ok tnum">100%</div><div class="t">of unseen bugs, per taught shape</div>
+      <p>240 bugs, every instance distinct. Each taught class took its full 30 of 30 on code it had never
+      been shown — while a table storing one row per repair reached 28% with 146 rows.</p></div>
+    <div class="card"><div class="n tnum">4 vs 146</div><div class="t">rules against rows</div>
+      <p>The vocabulary stays four. A shape is a signal plus a transform, so it does not wear out on inputs
+      nobody wrote down.</p></div>
+    <div class="card"><div class="n tnum">1 → 5</div><div class="t">of 14, free</div>
+      <p>The budget ladder names which shapes recur; two written up from its own output quintupled the
+      free tier at zero tokens.</p></div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ============ GATES ============ -->
+<section class="wrap">
+  <p class="eyebrow">finding it is not fixing it</p>
+  <h2>The first green has to earn it</h2>
+  <p class="lede">Six gates, each measured. The judge never asks who wrote the patch — which is why it also
+  works on fixes the net could not have written itself.</p>
+
+<pre class="snip"><span class="c"># a real refusal, on a fault outside everything it can author</span>
+<span class="p">RULING</span>    REFUTED — 24 nodes, 6 real searches, 13 suite runs, 22.2s
+          the failure points at: pkg/percentile.py        <span class="c">← one file of eight</span>
+          classes ruled out there: [0, 1, 2, 3, 10, 11]
+          cost: <span class="g">0 tokens</span>
+
+<span class="c"># two models each wrote a fix from that and nothing else</span>
+<span class="p">CERTIFY</span>   <span class="g">CERTIFIED</span> — red before, green on the full suite, stable on re-check
+<span class="p">SEPARATE</span>  76 inputs probed, no witness — one program spelled twice, not ambiguity</pre>
+
+  <div class="grid g3" style="margin-top:16px">
+    <div class="card"><div class="n ok tnum">14/14</div><div class="t">model-written fixes certified</div>
+      <p>Whole-function rewrites with inserted imports — nothing the vocabulary could author.</p></div>
+    <div class="card"><div class="n no tnum">29/29</div><div class="t">bad patches refused</div>
+      <p>Wrong, intermittent, or breaking something else. Byte-exact rollback each time.</p></div>
+    <div class="card"><div class="n ok tnum">0</div><div class="t">wrong repairs, ever</div>
+      <p>Across 240 generated bugs, 22 real-repo mutants and 14 model-written faults.</p></div>
+  </div>
+
+  <h2 style="margin-top:2em">And where it fails</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>failure mode</th><th>measured</th><th class="r">outcome</th></tr></thead>
+      <tbody>
+        <tr><td>a patch that games the tests</td><td>a lookup table on the exact test inputs</td><td class="r no">certified, offered alone</td></tr>
+        <tr><td>…offered beside a rival</td><td>the differential check</td><td class="r ok">separated 14/14</td></tr>
+        <tr><td>a green that will not repeat</td><td>a patch failing 2% of calls</td><td class="r no">slipped through 15 of 20</td></tr>
+        <tr><td>a corrupted suite</td><td>tests edited to demand the wrong answer</td><td class="r no">it obeys, in 2 runs</td></tr>
+        <tr><td>the suite's own blind spot</td><td>a behaviour no test pinned</td><td class="r no">1 wrong repair in 22</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:1em;font-size:.89rem;color:var(--dim)">The rule that makes it safe is the rule that
+  makes it credulous: <strong>your suite is the only judge.</strong></p>
+</section>
+
+<hr>
+
+<!-- ============ GROWTH ============ -->
+<section class="wrap">
+  <p class="eyebrow">what we could grow into</p>
+  <h2>Everything below this line is unmeasured</h2>
+  <div class="soon-banner">
+    <p><strong>None of the following has been measured.</strong> It is what the mechanism permits, with the
+    thing that would have to be true written under each one. It is kept apart from the page above on
+    purpose — the measurements are the only reason to believe any of it.</p>
+  </div>
+  <div class="grid g2">
+    <div class="soon-card"><h3>A gate on every merge</h3>
+      <p>The six checks run against a pull request: nothing merges unless red became green, stayed green,
+      broke nothing, and has no rival that also passes.</p>
+      <span class="need">needs: a CI integration, and a false-refusal rate measured on real PRs</span></div>
+    <div class="soon-card"><h3>Self-healing CI</h3>
+      <p>A red build repairs itself where the fault is mechanical; where it is not, it opens an issue
+      already naming the file, the classes eliminated and the test that killed each candidate.</p>
+      <span class="need">needs: shape coverage of real incidents — the number we do not have</span></div>
+    <div class="soon-card"><h3>Learning one team's history</h3>
+      <p>Point the budget ladder at a year of resolved failures and let the kinds that recur become taught
+      classes, the way two were written from its own output this week.</p>
+      <span class="need">needs: a real incident history, not a corpus we generated</span></div>
+    <div class="soon-card"><h3>A verifier for agent-written code</h3>
+      <p>The judge does not ask who wrote the patch. An agent proposes, this decides, and nothing merges on
+      the agent's own say-so.</p>
+      <span class="need">needs: proof the localisation makes the model cheaper — untested</span></div>
+  </div>
+  <p style="margin-top:1.3em;font-size:.91rem;color:var(--dim)">The honest next step is not another
+  benchmark. It is one repository, in report-only mode, for a week — real failures, sorted into kinds. That
+  produces the one number none of our runs can: <strong class="soon">what fraction of incidents that
+  actually happen are mechanical.</strong></p>
+</section>
+
+<footer class="wrap">
+  <p>Every node is one small guard over one file and one fault class, and the project's own test suite is
+  the only thing allowed to accept anything. Rejected candidates are rolled back byte-exact.</p>
+  <p><a href="https://github.com/devkancheti4-design/fluidfix">github.com/devkancheti4-design/fluidfix</a>
+   · <a href="https://pypi.org/project/fluidfix/">PyPI</a></p>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+var STATES=[
+ {k:'DISPATCH', n:'1', sub:'the memory says where to look'},
+ {k:'GROW',     n:'2', sub:'refutations widen the frontier'},
+ {k:'DESCEND',  n:'3', sub:'the memory was wrong — repair it', down:true},
+ {k:'SHIP',     n:'4', sub:'the first green stops everything'},
+ {k:'CERTIFY',  n:'5', sub:'six gates, or byte-exact rollback'},
+ {k:'LEARN',    n:'6', sub:'the shape is remembered'}
+];
+var sBox=document.getElementById('states');
+STATES.forEach(function(s){
+  var d=document.createElement('div'); d.className='st';
+  d.innerHTML='<div class="ring">'+s.n+'</div><div class="nm">'+s.k+'</div><div class="sub">'+s.sub+'</div>';
+  sBox.appendChild(d);
+});
+
+var grid=document.getElementById('ngrid');
+for(var i=0;i<24;i++){ var c=document.createElement('div'); c.className='nd'; grid.appendChild(c); }
+
+/* the recorded run: fault planted in pkg/windows.py, memory holds [10, 0, 3] */
+var TL=[
+ {st:0, log:[['c','world: 8 territories, 23 (file, class) pairs — the suite is red\n\n'],
+             ['k','DISPATCH  '],['c','memory knows [10, 0, 3] → wave 1 is 10 node(s)\n']], runs:1, wall:0.4},
+ {st:2, log:[['d','RULING    MISDIRECTED'],['c',' — it knew this class and wave 1 dropped it\n'],
+             ['w','          → DOWN into the memory\n'],
+             ['c','          the incident becomes a test; the memory goes red\n']], runs:3, wall:1.9},
+ {st:2, log:[['d','REPAIR    '],['g','the memory is fixed'],['c',' by class 4, after 10 tried\n'],
+             ['c','          wave 1 now 14 node(s); carries the answer: '],['g','True'],['c','\n\n']],
+        runs:11, wall:6.1},
+ {st:1, nodes:4, log:[['k','GROW      '],['c','node  1: pkg/between.py  class 10 → EMPTY   (wider)\n'],
+             ['k','GROW      '],['c','node  5: pkg/windows.py  class 10 → REFUTED (wider)\n']], runs:14, wall:8.7},
+ {st:1, nodes:13, log:[['k','GROW      '],['c','node  9: pkg/overlap.py  class  0 → EMPTY   (wider)\n']],
+        runs:17, wall:11.4},
+ {st:3, nodes:14, win:true, log:[['k','GROW      '],['c','node 14: pkg/windows.py  class  3 → '],['g','SHIP'],
+             ['c','\n          14 nodes of 23 possible\n\n']], runs:18, wall:13.0},
+ {st:4, log:[['k','CERTIFY   '],['g','CERTIFIED'],['c',' — red before, green on the full suite,\n'],
+             ['c','          stable on re-check, nothing else broken\n'],
+             ['w','          original line restored byte-for-byte\n\n']], runs:21, wall:13.6},
+ {st:5, log:[['k','LEARN     '],['c','the lake remembers kind:3 — next time this shape costs 5 nodes\n'],
+             ['k','          '],['c','the head remembers kind:4 — what repairs a memory\n']], runs:21, wall:13.6}
+];
+
+var logEl=document.getElementById('log');
+function setStates(active, isDown){
+  var els=sBox.children;
+  for(var i=0;i<els.length;i++){
+    els[i].className='st'+(i<active?' done':'')+(i===active?(isDown?' down':' live'):'');
+  }
+}
+function setNodes(n, win){
+  var cs=grid.children;
+  for(var i=0;i<cs.length;i++){
+    cs[i].className='nd'+(i<n?(i===n-1&&win?' win':(i%3===0?' empty':' ref')):'');
+  }
+}
+function setCounters(nodes, runs, wall){
+  document.getElementById('cNodes').textContent=nodes;
+  document.getElementById('cRuns').textContent=runs;
+  document.getElementById('cWall').textContent=wall.toFixed(1)+'s';
+}
+function renderAll(){
+  var html='', nodes=0, runs=0, wall=0, win=false, st=0, down=false;
+  TL.forEach(function(f){
+    f.log.forEach(function(p){ html+='<span class="'+p[0]+'">'+p[1].replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span>'; });
+    if(f.nodes!==undefined) nodes=f.nodes;
+    if(f.win) win=true;
+    runs=f.runs; wall=f.wall; st=f.st; down=!!STATES[f.st].down;
+  });
+  logEl.innerHTML=html; setNodes(nodes,win); setCounters(nodes,runs,wall); setStates(STATES.length-1,false);
+}
+
+var timer=null;
+function play(){
+  clearInterval(timer);
+  if(reduce){ renderAll(); return; }
+  document.getElementById('run').disabled=true;
+  logEl.innerHTML=''; setNodes(0,false); setCounters(0,0,0); setStates(-1,false);
+  var i=0, nodes=0, win=false;
+  timer=setInterval(function(){
+    if(i>=TL.length){ clearInterval(timer); document.getElementById('run').disabled=false;
+                      setStates(STATES.length-1,false); return; }
+    var f=TL[i];
+    setStates(f.st, !!STATES[f.st].down);
+    f.log.forEach(function(p){
+      logEl.innerHTML+='<span class="'+p[0]+'">'+p[1].replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span>';
+    });
+    if(f.nodes!==undefined) nodes=f.nodes;
+    if(f.win) win=true;
+    setNodes(nodes,win); setCounters(nodes,f.runs,f.wall);
+    i++;
+  }, 1100);
+}
+document.getElementById('run').addEventListener('click',play);
+renderAll();                       /* readable at rest; the button replays it */
+})();
+</script>

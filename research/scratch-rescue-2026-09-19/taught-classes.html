@@ -1,0 +1,281 @@
+<title>Taught Classes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --paper:#F8F8F6;
+  --surface:#FFFFFF;
+  --code-bg:#F1F2EE;
+  --ink:#16191C;
+  --ink-dim:#5A6270;
+  --ink-faint:#8A919C;
+  --rule:#E3E5E0;
+  --rule-soft:#EDEEEA;
+  --teal:#0E7C66;
+  --teal-soft:#E4F0EC;
+  --sienna:#B4532A;
+  --sienna-soft:#F6E9E2;
+  --serif:'Source Serif 4','Iowan Old Style',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.66;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding-inline:22px;padding-block:0}
+h1,h2{font-family:var(--serif);font-weight:600;letter-spacing:-.012em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5.2vw,3rem);line-height:1.08}
+h2{font-size:clamp(1.3rem,3vw,1.62rem);line-height:1.2;margin-bottom:.5em}
+h3{font-family:var(--sans);font-size:.98rem;font-weight:600;margin:0 0 .35em}
+p{margin:0 0 1.05em}
+.lede{font-size:1.1rem;color:var(--ink-dim)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+code{font-family:var(--mono);font-size:.88em;background:var(--code-bg);padding:.1em .35em;border-radius:3px}
+section{padding-block:clamp(34px,5vw,52px)}
+hr{border:0;height:1px;background:var(--rule);margin:0}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 .85em}
+a{color:var(--teal)}
+
+header{padding-block:clamp(48px,8vw,74px) clamp(20px,3vw,28px)}
+header .lede{max-width:56ch;margin-top:.9em}
+.stamp{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:1.6em}
+
+/* code block */
+pre{margin:0;background:var(--surface);border:1px solid var(--rule);border-radius:8px;
+  padding:1.05em 1.15em;overflow-x:auto;font-family:var(--mono);font-size:.795rem;line-height:1.7;
+  color:var(--ink)}
+pre .cm{color:var(--ink-faint)}
+pre .kw{color:var(--sienna)}
+pre .st{color:var(--teal)}
+.annot{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:14px}
+.annot div{border-left:2px solid var(--teal);padding-left:12px}
+.annot h3{color:var(--teal)}
+.annot p{margin:0;font-size:.89rem;color:var(--ink-dim)}
+
+/* the curve */
+.chart{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:18px 16px 12px;margin-top:18px}
+.chart svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:.83rem;color:var(--ink-dim)}
+.legend span{display:inline-flex;align-items:center;gap:.5em}
+.legend i{width:16px;height:3px;border-radius:2px;display:block}
+
+table{border-collapse:collapse;width:100%;font-size:.89rem;margin-top:16px}
+th,td{text-align:left;padding:.6em .75em;border-bottom:1px solid var(--rule-soft)}
+th{font-family:var(--mono);font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:400;border-bottom-color:var(--rule)}
+td.r{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:last-child td{font-weight:600}
+.tablewrap{overflow-x:auto}
+.good{color:var(--teal)}
+.dim{color:var(--ink-faint)}
+
+.callout{background:var(--sienna-soft);border:1px solid #EBD6C9;border-radius:8px;padding:1.1em 1.25em;margin-top:18px}
+.callout h3{color:var(--sienna)}
+.callout p{margin:0;font-size:.93rem;color:#6B4230}
+.callout p + p{margin-top:.7em}
+
+.two{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:16px}
+.box{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:1em 1.1em}
+.box .k{font-family:var(--serif);font-size:1.85rem;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.box .t{font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-faint);margin-top:.55em}
+.box p{margin:.55em 0 0;font-size:.87rem;color:var(--ink-dim)}
+
+footer{padding-block:30px 56px;color:var(--ink-faint);font-size:.82rem;border-top:1px solid var(--rule)}
+footer p{margin:0 0 .4em}
+</style>
+
+<header class="wrap">
+  <p class="stamp">fluidfix · measured 18 september 2026</p>
+  <h1>A taught class is a regex and a function.</h1>
+  <p class="lede">That is the whole mechanism. It is not a model, not a table of past fixes, and not
+  trained. Four of them repaired 240 bugs none of them had ever seen — while a table that stores one row
+  per repair needed 146 rows to reach 28%.</p>
+</header>
+
+<hr>
+
+<!-- ============ WHAT A CLASS IS ============ -->
+<section class="wrap">
+  <p class="eyebrow">the mechanism</p>
+  <h2>Two halves, and neither is trusted</h2>
+  <p>A class says <em>which lines could possibly have this fault</em> and <em>what to try instead</em>.
+  Nothing else. Here is a real one, written from a bug a 4-billion-parameter model actually wrote:</p>
+
+<pre><span class="cm"># The fault: a collection is mutated in place on the last line and never returned,
+# so the caller gets None.  items.insert(index, value)  ->  the caller wanted `items`.</span>
+
+<span class="kw">def</span> _return_the_mutated(line, o):
+    m = re.match(<span class="st">r"^(\s*)([A-Za-z_]\w*)\.(\w+)\((.*)\)\s*$"</span>, line)
+    <span class="kw">if not</span> m:
+        <span class="kw">return</span> []
+    indent, receiver, _meth, _args = m.groups()
+    <span class="kw">return</span> [<span class="st">f"{indent}return {line.strip()} or {receiver}"</span>]
+
+register(<span class="st">4</span>, <span class="st">"mutating-call-whose-result-is-dropped"</span>,
+         <span class="st">"mutated in place on the last line and never returned"</span>,
+         re.compile(<span class="st">r"^\s*[A-Za-z_]\w*\.\w+\(.*\)\s*$"</span>),   <span class="cm"># the signal</span>
+         _return_the_mutated)                        <span class="cm"># the applier</span></pre>
+
+  <div class="annot">
+    <div><h3>The signal</h3><p>A regex. It says only that this line <em>could</em> exhibit the fault, so
+      the search knows which lines are worth a candidate at all.</p></div>
+    <div><h3>The applier</h3><p>Proposes replacement lines. It may propose several, or none. It never
+      decides anything.</p></div>
+    <div><h3>The judge</h3><p>Your test suite, and only your test suite. A candidate is kept because the
+      tests went green; every rejected one is rolled back byte-exact.</p></div>
+  </div>
+
+  <p style="margin-top:1.3em">Because the applier <em>derives</em> the fix from the line in front of it,
+  a class is not bound to the line it was taught from. That is the difference between this and a cache,
+  and it is measurable.</p>
+</section>
+
+<hr>
+
+<!-- ============ GENERALISATION ============ -->
+<section class="wrap">
+  <p class="eyebrow">the measurement</p>
+  <h2>240 bugs, every one of them unseen</h2>
+  <p>Eight fault shapes, 30 instances each, and <strong>every instance distinct</strong> — its own function
+  name, its own variables, its own literals, its own surrounding code. Each carries a test that catches it,
+  verified to fail first. Two arms face the same stream: the vocabulary, and a line table that stores the
+  exact broken line against the exact fixed line and may only replay what it stored.</p>
+
+  <div class="chart">
+    <svg viewBox="0 0 640 260" role="img" aria-label="Free repair rate against number of taught classes: shapes rise from 50% to 100%; the line table rises from 17% to 28%.">
+      <!-- grid + y labels -->
+      <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A919C">
+        <line x1="52" y1="26" x2="616" y2="26" stroke="#EDEEEA" stroke-width="1"/>
+        <line x1="52" y1="72" x2="616" y2="72" stroke="#EDEEEA" stroke-width="1"/>
+        <line x1="52" y1="118" x2="616" y2="118" stroke="#EDEEEA" stroke-width="1"/>
+        <line x1="52" y1="164" x2="616" y2="164" stroke="#EDEEEA" stroke-width="1"/>
+        <line x1="52" y1="210" x2="616" y2="210" stroke="#E3E5E0" stroke-width="1"/>
+        <text x="44" y="30" text-anchor="end">100%</text>
+        <text x="44" y="76" text-anchor="end">75%</text>
+        <text x="44" y="122" text-anchor="end">50%</text>
+        <text x="44" y="168" text-anchor="end">25%</text>
+        <text x="44" y="214" text-anchor="end">0</text>
+      </g>
+      <!-- x labels -->
+      <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A919C" text-anchor="middle">
+        <text x="82"  y="232">0</text><text x="215" y="232">1</text><text x="348" y="232">2</text>
+        <text x="481" y="232">3</text><text x="614" y="232">4</text>
+        <text x="348" y="250" fill="#5A6270">taught classes loaded</text>
+      </g>
+      <!-- shapes: 50,62,75,88,100  -> y = 210 - pct*1.84 -->
+      <polyline points="82,118 215,096 348,072 481,048 614,026"
+                fill="none" stroke="#0E7C66" stroke-width="2.5" stroke-linejoin="round"/>
+      <g fill="#0E7C66">
+        <circle cx="82" cy="118" r="4"/><circle cx="215" cy="96" r="4"/><circle cx="348" cy="72" r="4"/>
+        <circle cx="481" cy="48" r="4"/><circle cx="614" cy="26" r="4.5"/>
+      </g>
+      <!-- table: 17,17,17,22,28 -->
+      <polyline points="82,179 215,179 348,179 481,169 614,159"
+                fill="none" stroke="#B4532A" stroke-width="2.5" stroke-dasharray="5 4" stroke-linejoin="round"/>
+      <g fill="#B4532A">
+        <circle cx="82" cy="179" r="3.5"/><circle cx="215" cy="179" r="3.5"/><circle cx="348" cy="179" r="3.5"/>
+        <circle cx="481" cy="169" r="3.5"/><circle cx="614" cy="159" r="3.5"/>
+      </g>
+      <!-- end labels -->
+      <g font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">
+        <text x="606" y="16" text-anchor="end" fill="#0E7C66">100% · 4 rules</text>
+        <text x="606" y="150" text-anchor="end" fill="#B4532A">28% · 146 rows</text>
+      </g>
+    </svg>
+    <div class="legend">
+      <span><i style="background:#0E7C66"></i>taught classes — repaired free, no model call</span>
+      <span><i style="background:#B4532A"></i>line table — replays a stored line</span>
+    </div>
+  </div>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>taught classes</th><th class="r">repaired free</th><th class="r">line table</th><th class="r">rows stored</th></tr></thead>
+    <tbody>
+      <tr><td>0 — shipped vocabulary only</td><td class="r">50%</td><td class="r dim">17%</td><td class="r dim">79</td></tr>
+      <tr><td>1 — <code>mutating-call</code></td><td class="r">62%</td><td class="r dim">17%</td><td class="r dim">109</td></tr>
+      <tr><td>2 — <code>missing-separator</code></td><td class="r">75%</td><td class="r dim">17%</td><td class="r dim">113</td></tr>
+      <tr><td>3 — <code>inverted-guard</code></td><td class="r">88%</td><td class="r dim">22%</td><td class="r dim">132</td></tr>
+      <tr><td>4 — <code>len-as-last-index</code></td><td class="r good">100%</td><td class="r dim">28%</td><td class="r dim">146</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="two">
+    <div class="box"><div class="k good">0 → 30</div><div class="t">out of 30, per class</div>
+      <p>Each class took its <em>entire</em> share of the stream the moment it was loaded — not a
+      diminishing fraction. A shape does not wear out on inputs it has not seen.</p></div>
+    <div class="box"><div class="k">4 vs 146</div><div class="t">rules against rows</div>
+      <p>The vocabulary stays four. The table grew to 146 rows and still lost by 72 points, because the
+      exact lines almost never recur.</p></div>
+  </div>
+
+  <p style="margin-top:1.3em">Two of those four classes were written the same afternoon, from faults real
+  models had actually produced — and they behaved exactly like the ones taught by hand a fortnight earlier.
+  Knowledge pulled out of one incident transfers to code nobody has seen.</p>
+</section>
+
+<hr>
+
+<!-- ============ WHERE A CLASS COMES FROM ============ -->
+<section class="wrap">
+  <p class="eyebrow">where a class comes from</p>
+  <h2>You do not invent them. The search names them.</h2>
+  <p>For a red test, it tries the free vocabulary first and widens the budget only when the tests reject
+  everything — one line, then adding a line, then a rewrite. <strong>The first budget that passes is the
+  fault's kind</strong>, so no one has to judge it. Over fourteen bugs small models actually wrote:</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>smallest budget that passed</th><th class="r">n</th><th>what it means</th></tr></thead>
+    <tbody>
+      <tr><td>the free vocabulary</td><td class="r">1</td><td>already repaired, no tokens</td></tr>
+      <tr><td>one existing line replaced</td><td class="r">11</td><td>teachable — a class would reach it</td></tr>
+      <tr><td>a line added</td><td class="r">1</td><td>outside any line rewrite</td></tr>
+      <tr><td>a rewrite</td><td class="r">1</td><td>needs a model or a person</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p style="margin-top:1.2em">A shape earns a slot only when it <em>recurs</em>. Two of the eleven appeared
+  twice each, in code written by different models — those two were written up as classes, and the free tier
+  went from <span class="num">1 of 14</span> to <span class="num good">5 of 14</span>, at zero tokens.</p>
+</section>
+
+<hr>
+
+<!-- ============ THE OPEN QUESTION ============ -->
+<section class="wrap">
+  <p class="eyebrow">what is not settled</p>
+  <h2>We need to scan real repositories</h2>
+  <p>Everything above is about behaviour <em>within</em> a shape, and there it is complete: the vocabulary
+  generalises, the curve rises, the table does not keep up. The question it cannot answer is the one that
+  decides how much of the work a model still has to do.</p>
+
+  <div class="callout">
+    <h3>100% means 100% of bugs whose shape is taught.</h3>
+    <p>Every bug in that corpus is one of eight shapes we chose, so the open-ended faults — the ones a model
+    must still write — are absent by construction. What fraction of a real codebase's incidents fall into
+    teachable shapes cannot be measured from a corpus we built ourselves.</p>
+    <p>The nearest real figure is much weaker and we would not quote it: on four open-source repositories,
+    22 of 38 live breaks fell inside the taught vocabulary. Those were seeded faults, of shapes chosen in
+    advance — not a team's actual incident history.</p>
+  </div>
+
+  <p style="margin-top:1.4em">So the next measurement is not another benchmark. It is a real repository:
+  point it at a CI in report-only mode, take a week of failures, and let the budget ladder sort them into
+  kinds. That produces the one number nothing here can — <strong>the shape distribution of incidents that
+  actually happen</strong> — and with it, how many classes an afternoon of teaching would be worth.</p>
+</section>
+
+<footer class="wrap">
+  <p>Runs: <code>research/generalise-2026-09-18</code> · <code>research/kindof-2026-09-18</code> ·
+  <code>research/llm-fusion-2026-09-16</code></p>
+  <p>Every figure came out of a recorded run. Nothing on this page is illustrative.</p>
+</footer>
