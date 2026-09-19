@@ -22,3 +22,36 @@ register(7, "len-as-last-index",
          "a len(x) standing where the last valid index len(x) - 1 belongs",
          re.compile(r"\blen\([\w.\[\]]+\)(?!\s*[-+*/%])"),
          _len_minus_one)
+
+
+# ---------------------------------------------------------------- class 5, re-authored
+#
+# The 2026-09-18 version proposed  `return CALL or RECEIVER`, which is correct only when CALL answers
+# None. Its signal matches ANY bare method call, so the same defect shape as class 7: the signal
+# generalises and the semantics do not. Audited 2026-09-19:
+#
+#     xs.append(v)   -> return xs.append(v) or xs      correct   (append answers None)
+#     xs.pop()       -> return xs.pop() or xs          WRONG     (pop answers the item)
+#
+# and it is not merely narrow, it is a latent WRONG ACCEPT: `drop_last([1,2,0]) == [1,2]` passes, because
+# the popped 0 is falsy, while `drop_last([9,8,7])` then returns 9 instead of [9,8].
+#
+# Whether a call answers None is not decidable from the line, so the applier must stop needing to know.
+# A tuple discards the result positionally and depends on nothing:
+#
+#     return (CALL, RECEIVER)[-1]
+#
+# The call still happens, for its effect; its answer is never consulted.
+
+def _return_the_mutated_safely(line, o):
+    m = re.match(r"^(\s*)([A-Za-z_]\w*)\.(\w+)\((.*)\)\s*$", line)
+    if not m:
+        return []
+    indent, receiver, _meth, _args = m.groups()
+    return [f"{indent}return ({line.strip()}, {receiver})[-1]"]
+
+
+register(5, "mutating-call-whose-result-is-dropped",
+         "a collection is mutated in place on the last line and never returned, so the caller gets None",
+         re.compile(r"^\s*[A-Za-z_]\w*\.\w+\(.*\)\s*$"),
+         _return_the_mutated_safely)
