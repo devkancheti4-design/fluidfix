@@ -24,6 +24,44 @@ Setup is about two minutes. No API key. Nothing installed outside the demo folde
 
 ---
 
+## What it is, in one sentence
+
+**Teach it a fault shape once and it debugs that shape for free, forever, with a certificate — and refuses
+everything else.**
+
+It is not an assistant and it does not save you tokens on a model you are already calling. On the shapes it
+has been taught, **the model is not called at all**. That is a narrower claim than "AI debugging" and it is
+the one that survives every measurement below.
+
+| | measured |
+|---|---|
+| on a taught shape, unseen instance | **100%** — 240 distinct bugs, four classes, none ever shown to it |
+| a table of past fixes on the same stream | 28%, and it needed 146 rows to get there |
+| cost per repair | **0 tokens.** A certificate is 4 suite runs, a refusal 3 |
+| on a real repository, never told which file | found it and restored the **original bytes** |
+| the same fault a second time | **1 node, 4 suite runs, 41 seconds** |
+| outside the taught shapes | it refuses, and says what it eliminated |
+
+**The number we cannot get without your repository** is the only one that decides the value: what fraction
+of your incidents fall inside shapes worth teaching. A week of your CI in report-only mode produces it.
+
+### Three things we do not claim
+
+**It does not save tokens.** Tested directly. When a failure raises, the traceback already prints
+`file.py:line`, so the localisation adds nothing; when a failure is an assertion and the cause is hidden,
+the localisation ranked the guilty file **7th of 14**. The claim fails in both directions and is withdrawn
+(`research/localisation-2026-09-19`).
+
+**It does not repair real bug fixes generally.** Replayed against 57 real fixes from click, rich and
+sortedcontainers — each judged by the maintainer's own regression test — it produced **1 correct repair**.
+Only 11 of those 57 were one-line diffs at all; a vocabulary that rewrites one line cannot express the rest,
+however much is taught.
+
+**A certificate is exactly as strong as your suite.** A patch your tests cannot distinguish is certified
+when offered alone. Offered beside a rival, the ambiguity check separated it 14 of 14 times.
+
+---
+
 ## The main point: it searches nodes, and every node teaches it something
 
 This is the thing to lead with. Everything else on the call is detail.
@@ -115,6 +153,11 @@ wrote is refused, never guessed.
 
 **Do you train it?** No. You teach a vocabulary once by hand, the tool scans your repository itself on every
 failure, and the memory learns only which part of the vocabulary keeps paying off.
+
+**Is it cheaper than just asking a model?** Wrong question, and we got it wrong ourselves for a while. It
+does not make a model call cheaper — measured, and withdrawn. On a taught shape it means **there is no model
+call**: 240 distinct unseen bugs, 100%, zero tokens. Outside those shapes it refuses and you are back to a
+model at full price.
 
 **Why many small ones?** The tool is 5,580 lines with zero runtime dependencies, so an extra guard costs no
 tool — only suite runs. It does cost cores, though: measured on twelve, four guards run at full speed,
