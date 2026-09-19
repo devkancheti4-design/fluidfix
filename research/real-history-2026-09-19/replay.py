@@ -27,12 +27,16 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SRC = HERE.parents[1] / "src"
+# loaded in order; a later file re-registering a slot wins. rules_placed.py re-authors class 7 so the
+# PLACEMENT LAW decides where the inserted token goes, instead of the applier trailing it after the paren.
 DICTS = [HERE.parents[1] / "examples" / "taught-2026-09-16" / "rules_session.py",
-         HERE.parents[1] / "examples" / "taught-2026-09-18" / "kinds_from_ladder.py"]
+         HERE.parents[1] / "examples" / "taught-2026-09-18" / "kinds_from_ladder.py",
+         HERE.parents[1] / "examples" / "taught-2026-09-19" / "rules_placed.py"]
 
 GUARD = """
 import sys
-src, rel, d1, d2 = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+src, rel = sys.argv[1], sys.argv[2]
+dicts = [d for d in sys.argv[3:6] if d]
 sys.path.insert(0, src)
 from fluidfix import Oracle
 from fluidfix.acts import load_dictionary
@@ -40,9 +44,9 @@ from fluidfix.localize import build_packet
 from fluidfix.guard import rank_observations
 from fluidfix.loop import repair
 from fluidfix.observers import MechanicalObserver
-for d in (d1, d2):
-    if d: load_dictionary(d)
-extra = sys.argv[5].split("\x01") if len(sys.argv) > 5 and sys.argv[5] else []
+for d in dicts:
+    load_dictionary(d)
+extra = sys.argv[6].split("\x01") if len(sys.argv) > 6 and sys.argv[6] else []
 o = Oracle(".", python=sys.executable, timeout=600, per_test_timeout=60, extra_args=extra)
 red, out = o.failing_output()
 if not red:
@@ -74,10 +78,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("root"); ap.add_argument("--repo", required=True)
     ap.add_argument("--limit", type=int, default=50); ap.add_argument("--since", default="2022")
+    ap.add_argument("--only", help="comma-separated sha prefixes, for re-running specific cases")
     a = ap.parse_args()
 
     rows = [r for r in json.load(open(HERE / "tested_fixes.json"))
             if r["repo"] == a.repo and r["date"][:4] >= a.since]
+    if a.only:
+        want = set(a.only.split(","))
+        rows = [r for r in rows if any(r["sha"].startswith(w) for w in want)]
     rows.sort(key=lambda r: r["date"], reverse=True)
     print(f"{a.repo}: {len(rows)} fixes from {a.since} onward that ship their own regression test",
           flush=True)
@@ -137,7 +145,7 @@ def main():
                     rec["outcome"] = "SKIP-SUITE-ERROR"
                 else:
                     extra = "\x01".join(["-W", "default"] + desel)
-                    gr = sh([py, "-c", GUARD, str(SRC), rel, str(DICTS[0]), str(DICTS[1]), extra],
+                    gr = sh([py, "-c", GUARD, str(SRC), rel, str(DICTS[0]), str(DICTS[1]), str(DICTS[2]), extra],
                             cwd=work, env=env, t=1500)
                     txt = (gr.stdout or "") + (gr.stderr or "")
                     def field(k, d=""):
@@ -152,7 +160,7 @@ def main():
                  if rec["outcome"] in ("REPAIRED", "REFUSED", "NO-OBSERVATIONS") else "")
         print(f"{i:>3} {sha[:10]:11} {rel[-30:]:30} {'y' if r['one_line'] else '·':>3}  "
               f"{rec['outcome']}{extra}", flush=True)
-        (HERE / f"replay_{a.repo}.json").write_text(json.dumps({"repo": a.repo, "rows": out}, indent=1))
+        (HERE / f"replay2_{a.repo}{'_only' if a.only else ''}.json").write_text(json.dumps({"repo": a.repo, "rows": out}, indent=1))
 
     sh(["git", "checkout", "-q", "-f", "HEAD"], cwd=work)
     judged = [o for o in out if o["outcome"] in ("REPAIRED", "REFUSED")]

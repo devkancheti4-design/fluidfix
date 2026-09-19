@@ -1,0 +1,18 @@
+{
+ "repo": "rich",
+ "rows": [
+  {
+   "sha": "7ef2d05ca8",
+   "file": "rich/markdown.py",
+   "date": "2026-04-12",
+   "subject": "fix inline code in table cells",
+   "one_line": false,
+   "pre_existing_failures": 8,
+   "outcome": "REFUSED",
+   "executed": 279,
+   "observations": 72,
+   "suite_runs": 29,
+   "ruling": "HARVEST_COUNTEREXAMPLE"
+  }
+ ]
+}

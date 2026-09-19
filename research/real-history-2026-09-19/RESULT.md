@@ -420,3 +420,41 @@ catch either.
 into the memory were all absent. Those determine **cost and reach** — how many nodes it takes to find the
 file, and whether the second incident is cheaper — not whether a shipped repair is right. On this evidence
 the net's growth machinery would change the price of the 57 searches and none of their outcomes.
+
+---
+
+# RERUN WITH THE PLACEMENT LAW — the first correct repair on real history
+
+The law (`../placement-law-2026-09-19`) replaces the taught applier's guess about *where* an inserted token
+goes with a ruling on the syntactic situation. Re-running the two cases that shipped:
+
+| | before the law | after the law |
+|---|---|---|
+| `rich/segment.py` | `* len(text) - 1` — **wrong** | `* (len(text) - 1)` — **byte-identical to the maintainer's commit** |
+| `rich/traceback.py` | `padding=(0, 1)` → `(0, 0)` — **wrong** | unchanged — **still wrong** |
+
+The second is class 1, `literal-off-by-one`, which the placement law does not touch: nothing was inserted,
+a literal was changed, and the edit is 135 lines from the actual fault. It is a compensating change and no
+placement ruling can see that.
+
+## The tally, corrected
+
+| repository | judged | shipped | correct |
+|---|---|---|---|
+| click | 26 | 0 | — |
+| python-sortedcontainers | 2 | 0 | — |
+| rich | 29 | 2 | **1** |
+| **total** | **57** | **2** | **1** |
+
+**From 0 correct to 1 correct**, and the one is exact: not merely a line the thinned suite accepted, but the
+line the maintainer actually committed. That distinction matters here, because 24 tests were deselected for
+this revision — the earlier repair depended on that weakness, and this one does not.
+
+## What is not yet re-verified, and it is the obvious risk
+
+Only the two known-shipping cases were re-run. Changing an applier can make a previously-REFUSED case ship
+something new, and **nothing here has checked that**. The full 49-case rich sweep and the 26-case click
+sweep are the outstanding work; the rich sweep is running.
+
+Until those finish, the honest form is: *of the two repairs this study produced, the law turns one from
+wrong to exactly right and leaves the other wrong — and whether it causes any new ship is unmeasured.*

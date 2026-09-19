@@ -1,0 +1,31 @@
+{
+ "repo": "rich",
+ "rows": [
+  {
+   "sha": "aa0929298b",
+   "file": "rich/segment.py",
+   "date": "2023-01-06",
+   "subject": "fix issue splitting segments",
+   "one_line": true,
+   "pre_existing_failures": 24,
+   "outcome": "REPAIRED",
+   "executed": 131,
+   "observations": 42,
+   "suite_runs": 37,
+   "ruling": "SHIP"
+  },
+  {
+   "sha": "83af951663",
+   "file": "rich/traceback.py",
+   "date": "2022-04-26",
+   "subject": "[traceback] Fix \"missing whitespace\" bug",
+   "one_line": true,
+   "pre_existing_failures": 22,
+   "outcome": "REPAIRED",
+   "executed": 272,
+   "observations": 36,
+   "suite_runs": 51,
+   "ruling": "SHIP"
+  }
+ ]
+}
