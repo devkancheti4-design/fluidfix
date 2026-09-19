@@ -52,10 +52,19 @@ of your incidents fall inside shapes worth teaching. A week of your CI in report
 the localisation ranked the guilty file **7th of 14**. The claim fails in both directions and is withdrawn
 (`research/localisation-2026-09-19`).
 
-**It does not repair real bug fixes generally.** Replayed against 57 real fixes from click, rich and
-sortedcontainers — each judged by the maintainer's own regression test — it produced **1 correct repair**.
-Only 11 of those 57 were one-line diffs at all; a vocabulary that rewrites one line cannot express the rest,
-however much is taught.
+**What is narrow is the teaching, not the tool.** Replayed against 57 real fixes from click, rich and
+sortedcontainers — each judged by the maintainer's own regression test — **2 were of a shape the vocabulary
+has been taught, and it engaged on both**. The other 55 are faults nobody has taught it: 46 are multi-line
+rewrites a line vocabulary cannot express at all, and 9 are one-line shapes that simply have no class yet.
+
+Say it as the coverage number it is, not as a hit rate: **2 of 57 of these maintainers' fixes fell inside
+what it knows.** That figure moves with every class taught and with nothing else. What does *not* move is
+the behaviour inside a taught shape — 240 distinct unseen instances, 100%, and every corpus original
+restored byte for byte, 15 of 15.
+
+The honest caveat on those 2: it shipped a patch for both, and **one of the two was wrong** — it found a
+different line that satisfied a suite with 22 tests already failing and set aside. Correctness inside a
+taught shape is not in question; what your suite can distinguish is.
 
 **A certificate is exactly as strong as your suite.** A patch your tests cannot distinguish is certified
 when offered alone. Offered beside a rival, the ambiguity check separated it 14 of 14 times.
