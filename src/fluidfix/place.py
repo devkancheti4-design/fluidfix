@@ -85,6 +85,14 @@ def _left_class(line: str, start: int) -> int:
         two = line[i-1:i+1]
         if len(two) == 2 and _class_of(two):
             return _class_of(two)
+        # A minus to the LEFT negates the call, so the call enters the enclosing expression with
+        # coefficient -1. Appending ` - 1` then SUBTRACTS where subtracting one from len(x) would ADD:
+        #     k - len(x) - 1   is  k - L - 1        k - (len(x) - 1)  is  k - L + 1
+        # `+` has no such problem and stays in class 4. Found 2026-09-19 by the class-property check
+        # (research/property-gate-2026-09-19) — the law was right, the TABLE's class 4 was wrong to
+        # hold `+` and `-` together on this side. The law is untouched; only the measurement moves.
+        if c == "-" and _class_of(c) == 4:
+            return 5
         return _class_of(c)
     return 0
 

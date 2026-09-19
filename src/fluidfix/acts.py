@@ -362,7 +362,11 @@ def load_dictionary(path: str) -> int:
     classes the file registered."""
     import re as _re
     before = set(KINDS)
-    ns = {"register": register, "re": _re, "SpanEdit": SpanEdit}
+    from . import propcheck as _propcheck
+    from .props import teach_property as _teach_property
+    ns = {"register": register, "re": _re, "SpanEdit": SpanEdit,
+          # a dictionary teaches a class's PROPERTY the same way it teaches the class
+          "teach_property": _teach_property, "propcheck": _propcheck}
     with open(path, encoding="utf-8") as f:
         code = compile(f.read(), path, "exec")
     exec(code, ns)
