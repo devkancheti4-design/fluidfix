@@ -1,0 +1,906 @@
+[
+ {
+  "case": "lenm1-1",
+  "answer_file": "src/click/utils.py",
+  "answer_class": 7,
+  "failing_output": "...................................................................... [ 55%]\n........................................................................ [ 58%]\n........................................................................ [ 62%]\n........................................................................ [ 65%]\n........................................................................ [ 69%]\n........................................................................ [ 72%]\n......sssssssssssssssssssss..................ss......................... [ 76%]\n........................................................................ [ 79%]\n........................................................................ [ 82%]\n.................................................s...................... [ 86%]\n....................s................................................... [ 89%]\n................................................................F\n=================================== FAILURES ===================================\n_____________ test_make_default_short_help[-equal length, no dot] ______________\n\nvalue = '123 567 90', max_length = 10, alter = None, expect = '123 567 90'\n\n    @pytest.mark.parametrize(\n        (\"value\", \"max_length\", \"expect\"),\n        [\n            pytest.param(\"\", 10, \"\", id=\"empty\"),\n            pytest.param(\"123 567 90\", 10, \"123 567 90\", id=\"equal length, no dot\"),\n            pytest.param(\"123 567 9. aaaa bbb\", 10, \"123 567 9.\", id=\"sentence < max\"),\n            pytest.param(\"123 567\\n\\n 9. aaaa bbb\", 10, \"123 567\", id=\"paragraph < max\"),\n            pytest.param(\"123 567 90123.\", 10, \"123 567...\", id=\"truncate\"),\n            pytest.param(\"123 5678 xxxxxx\", 10, \"123...\", id=\"length includes suffix\"),\n            pytest.param(\n                \"token in ~/.netrc ciao ciao\",\n                20,\n                \"token in ~/.netrc...\",\n                id=\"ignore dot in word\",\n            ),\n        ],\n    )\n    @pytest.mark.parametrize(\n        \"alter\",\n        [\n            pytest.param(None, id=\"\"),\n            pytest.param(\n                lambda text: \"\\n\\b\\n\" + \"  \".join(text.split(\" \")) + \"\\n\", id=\"no-wrap mark\"\n            ),\n        ],\n    )\n    def test_make_default_short_help(value, max_length, alter, expect):\n        assert len(expect) <= max_length\n    \n        if alter:\n            value = alter(value)\n    \n        out = click.utils._make_default_short_help(value, max_length)\n>       assert out == expect\nE       AssertionError: assert '123 567...' == '123 567 90'\nE         \nE         - 123 567 90\nE         + 123 567...\n\ntests/test_utils/test_make_default_short_help.py:39: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short_help[-equal length, no dot]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1910 passed, 25 skipped, 31000 deselected, 1 xfailed in 7.18s\n\n",
+  "files": {
+   "src/click/__init__.py": {
+    "executed": 74,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/_compat.py": {
+    "executed": 71,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/_utils.py": {
+    "executed": 18,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/core.py": {
+    "executed": 303,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/decorators.py": {
+    "executed": 33,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/exceptions.py": {
+    "executed": 63,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/formatting.py": {
+    "executed": 30,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/globals.py": {
+    "executed": 8,
+    "kinds": [
+     0,
+     12
+    ]
+   },
+   "src/click/parser.py": {
+    "executed": 42,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/termui.py": {
+    "executed": 49,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   },
+   "src/click/testing.py": {
+    "executed": 94,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/types.py": {
+    "executed": 200,
+    "kinds": [
+     0,
+     1,
+     10,
+     12
+    ]
+   },
+   "src/click/utils.py": {
+    "executed": 86,
+    "kinds": [
+     0,
+     1,
+     2,
+     3,
+     9,
+     10,
+     12,
+     4,
+     7
+    ]
+   }
+  }
+ },
+ {
+  "case": "andor-1",
+  "answer_file": "src/click/shell_completion.py",
+  "answer_class": 4,
+  "failing_output": "................ [ 34%]\n........................................................................ [ 38%]\n........................................................................ [ 41%]\n........................................................................ [ 44%]\n........................................................................ [ 48%]\n........................................................................ [ 51%]\n........................................................................ [ 55%]\n........................................................................ [ 58%]\n........................................................................ [ 62%]\n........................................................................ [ 65%]\n..................................................F\n=================================== FAILURES ===================================\n__________ test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n] ___________\n\nrunner = <click.testing.CliRunner object at 0x107fbe510>, shell = 'zsh'\nenv = {'COMP_WORDS': '', 'COMP_CWORD': '0', '_CLI_COMPLETE': 'zsh_complete'}\nexpect = 'plain\\na\\n_\\nplain\\nb\\nbee\\n'\n\n    @pytest.mark.parametrize(\n        (\"shell\", \"env\", \"expect\"),\n        [\n            (\"bash\", {\"COMP_WORDS\": \"\", \"COMP_CWORD\": \"0\"}, \"plain,a\\nplain,b\\n\"),\n            (\"bash\", {\"COMP_WORDS\": \"a b\", \"COMP_CWORD\": \"1\"}, \"plain,b\\n\"),\n            (\"zsh\", {\"COMP_WORDS\": \"\", \"COMP_CWORD\": \"0\"}, \"plain\\na\\n_\\nplain\\nb\\nbee\\n\"),\n            (\"zsh\", {\"COMP_WORDS\": \"a b\", \"COMP_CWORD\": \"1\"}, \"plain\\nb\\nbee\\n\"),\n            (\"fish\", {\"COMP_WORDS\": \"\", \"COMP_CWORD\": \"\"}, \"plain,a\\nplain,b\\tbee\\n\"),\n            (\"fish\", {\"COMP_WORDS\": \"a b\", \"COMP_CWORD\": \"b\"}, \"plain,b\\tbee\\n\"),\n            (\"fish\", {\"COMP_WORDS\": 'a \"b', \"COMP_CWORD\": '\"b'}, \"plain,b\\tbee\\n\"),\n            (\n                \"powershell\",\n                {\"COMP_WORDS\": \"\", \"COMP_CWORD\": \"0\"},\n                \"plain\\na\\n_\\nplain\\nb\\nbee\\n\",\n            ),\n            (\"powershell\", {\"COMP_WORDS\": \"a b\", \"COMP_CWORD\": \"1\"}, \"plain\\nb\\nbee\\n\"),\n        ],\n    )\n    @pytest.mark.usefixtures(\"_patch_for_completion\")\n    def test_full_complete(runner, shell, env, expect):\n        cli = Group(\"cli\", commands=[Command(\"a\"), Command(\"b\", help=\"bee\")])\n        env[\"_CLI_COMPLETE\"] = f\"{shell}_complete\"\n        result = runner.invoke(cli, env=env)\n>       assert result.output == expect\nE       AssertionError: assert 'plain\\na\\n\\nplain\\nb\\n_\\n' == 'plain\\na\\n_\\nplain\\nb\\nbee\\n'\nE         \nE           plain\nE           a\nE         - _\nE         + \nE           plain\nE           b\nE         - bee\nE         + _\n\ntests/test_shell_completion.py:391: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shell_completion.py::test_full_complete[zsh-env2-plain\\na\\n_\\nplain\\nb\\nbee\\n]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1417 passed, 31000 deselected, 1 xfailed in 3.96s\n\n",
+  "files": {
+   "src/click/__init__.py": {
+    "executed": 74,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/_compat.py": {
+    "executed": 106,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/_utils.py": {
+    "executed": 18,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/core.py": {
+    "executed": 657,
+    "kinds": [
+     0,
+     1,
+     9,
+     10,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/decorators.py": {
+    "executed": 50,
+    "kinds": [
+     0,
+     12,
+     4
+    ]
+   },
+   "src/click/exceptions.py": {
+    "executed": 63,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/formatting.py": {
+    "executed": 30,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/globals.py": {
+    "executed": 10,
+    "kinds": [
+     0,
+     12
+    ]
+   },
+   "src/click/parser.py": {
+    "executed": 102,
+    "kinds": [
+     0,
+     1,
+     12,
+     4,
+     6,
+     7
+    ]
+   },
+   "src/click/shell_completion.py": {
+    "executed": 143,
+    "kinds": [
+     0,
+     1,
+     3,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/termui.py": {
+    "executed": 49,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   },
+   "src/click/testing.py": {
+    "executed": 222,
+    "kinds": [
+     0,
+     1,
+     10,
+     4,
+     6
+    ]
+   },
+   "src/click/types.py": {
+    "executed": 239,
+    "kinds": [
+     0,
+     1,
+     10,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/utils.py": {
+    "executed": 98,
+    "kinds": [
+     0,
+     1,
+     3,
+     9,
+     10,
+     11,
+     12,
+     4,
+     6,
+     7
+    ]
+   }
+  }
+ },
+ {
+  "case": "getdef-1",
+  "answer_file": "src/click/_termui_impl.py",
+  "answer_class": 5,
+  "failing_output": " None\n\n    @contextlib.contextmanager\n    def _pipepager(\n        cmd_path: Path, cmd_params: list[str], color: bool | None = None\n    ) -> t.Iterator[tuple[t.TextIO, bool | None]]:\n        \"\"\"Page through text by feeding it to another program.\n    \n        Invokes the pager via :class:`subprocess.Popen` with an ``argv`` list.\n    \n        Invoking a pager through this might support colors: if piping to\n        ``less`` and the user hasn't decided on colors, ``LESS=-R`` is set\n        automatically.\n        \"\"\"\n        import subprocess\n    \n        # Make a local copy of the environment to not affect the global one.\n        env = dict(os.environ)\n    \n        # If we're piping to less and the user hasn't decided on colors, we enable\n        # them: either the invocation already requests raw control characters, or\n        # ``LESS=-R`` is injected. Match on the stem so a resolved ``less.exe`` is\n        # recognized like bare ``less``, case-insensitively on Windows since its\n        # filesystems are. POSIX keeps an exact match.\n        cmd_name = cmd_path.stem\n        if WIN:\n            # ``_pager_contextmanager`` currently routes every Windows invocation\n            # to ``_tempfilepager``, so this branch is not reachable on Windows\n            # today: it keeps the detection correct should that routing ever\n            # change.\n            cmd_name = cmd_name.casefold()\n    \n        if color is None and cmd_name == \"less\":\n            less_env = os.environ.get(\"LESS\")\n>           if _less_uses_raw_mode(less_env, cmd_params):\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nsrc/click/_termui_impl.py:580: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nless_env = None, cmd_params = []\n\n    def _less_uses_raw_mode(less_env: str, cmd_params: list[str]) -> bool:\n        \"\"\"Detect a raw-control-characters request in a ``less`` invocation.\n    \n        Parses the tokens of the ``LESS`` environment variable and the command\n        line: only short-option clusters (``-R``, ``-rX``, ``-XrY``) and the\n        ``--raw-control-chars`` long option request raw mode. Filenames and\n        long-option values may carry the letter ``r`` without being such a\n        request.\n        \"\"\"\n        try:\n            env_tokens = shlex.split(less_env)\n        except ValueError:\n            # Unbalanced quotes make ``LESS`` unparsable: fall back to whitespace\n            # splitting rather than failing the pager over it.\n>           env_tokens = less_env.split()\n                         ^^^^^^^^^^^^^^\nE           AttributeError: 'NoneType' object has no attribute 'split'\n\nsrc/click/_termui_impl.py:534: AttributeError\n=========================== short test summary info ============================\nFAILED tests/test_termui.py::test_pipepager_less_detection_matches_stem[less]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1558 passed, 23 skipped, 31000 deselected, 1 xfailed in 4.37s\n\n",
+  "files": {
+   "src/click/__init__.py": {
+    "executed": 74,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/_compat.py": {
+    "executed": 101,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/_termui_impl.py": {
+    "executed": 108,
+    "kinds": [
+     0,
+     1,
+     12,
+     4,
+     5,
+     6
+    ]
+   },
+   "src/click/_utils.py": {
+    "executed": 18,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/core.py": {
+    "executed": 303,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/decorators.py": {
+    "executed": 33,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/exceptions.py": {
+    "executed": 63,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/formatting.py": {
+    "executed": 30,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/globals.py": {
+    "executed": 17,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   },
+   "src/click/parser.py": {
+    "executed": 42,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/termui.py": {
+    "executed": 71,
+    "kinds": [
+     0,
+     1,
+     2,
+     3,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/testing.py": {
+    "executed": 94,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/types.py": {
+    "executed": 205,
+    "kinds": [
+     0,
+     1,
+     10,
+     12
+    ]
+   },
+   "src/click/utils.py": {
+    "executed": 67,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   }
+  }
+ },
+ {
+  "case": "notdrop-1",
+  "answer_file": "src/click/shell_completion.py",
+  "answer_class": 6,
+  "failing_output": "\"\"Determine the context and last complete command or parameter\n        from the complete args. Call that object's ``shell_complete``\n        method to get the completions for the incomplete value.\n    \n        :param args: List of complete args before the incomplete value.\n        :param incomplete: Value being completed. May be empty.\n        \"\"\"\n        ctx = _resolve_context(self.cli, self.ctx_args, self.prog_name, args)\n>       obj, incomplete = _resolve_incomplete(ctx, args, incomplete)\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nsrc/click/shell_completion.py:365: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nctx = <click.core.Context object at 0x10eb3fed0>, args = [], incomplete = ''\n\n    def _resolve_incomplete(\n        ctx: Context, args: list[str], incomplete: str\n    ) -> tuple[Command | Parameter, str]:\n        \"\"\"Find the Click object that will handle the completion of the\n        incomplete value. Return the object and the incomplete value.\n    \n        :param ctx: Invocation context for the command represented by\n            the parsed complete args.\n        :param args: List of complete args before the incomplete value.\n        :param incomplete: Value being completed. May be empty.\n        \"\"\"\n        # Different shells treat an \"=\" between a long option name and\n        # value differently. Might keep the value joined, return the \"=\"\n        # as a separate item, or return the split name and value. Always\n        # split and discard the \"=\" to make completion easier.\n        if incomplete == \"=\":\n            incomplete = \"\"\n        elif \"=\" in incomplete and _start_of_option(ctx, incomplete):\n            name, _, incomplete = incomplete.partition(\"=\")\n            args.append(name)\n    \n        # The \"--\" marker tells Click to stop treating values as options\n        # even if they start with the option character. If it hasn't been\n        # given and the incomplete arg looks like an option, the current\n        # command will provide option name completions.\n>       if \"--\" not in args and _start_of_option(ctx, incomplete):\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nsrc/click/shell_completion.py:782: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nctx = <click.core.Context object at 0x10eb3fed0>, value = ''\n\n    def _start_of_option(ctx: Context, value: str) -> bool:\n        \"\"\"Check if the value looks like the start of an option.\"\"\"\n        if value:\n            return False\n    \n>       c = value[0]\n            ^^^^^^^^\nE       IndexError: string index out of range\n\nsrc/click/shell_completion.py:667: IndexError\n=========================== short test summary info ============================\nFAILED tests/test_shell_completion.py::test_command - IndexError: string inde...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1379 passed, 31000 deselected, 1 xfailed in 3.96s\n\n",
+  "files": {
+   "src/click/__init__.py": {
+    "executed": 74,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/_compat.py": {
+    "executed": 101,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/_termui_impl.py": {
+    "executed": 129,
+    "kinds": [
+     0,
+     1,
+     3,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/_utils.py": {
+    "executed": 18,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/core.py": {
+    "executed": 618,
+    "kinds": [
+     0,
+     1,
+     9,
+     10,
+     12,
+     4,
+     6,
+     7
+    ]
+   },
+   "src/click/decorators.py": {
+    "executed": 50,
+    "kinds": [
+     0,
+     12,
+     4
+    ]
+   },
+   "src/click/exceptions.py": {
+    "executed": 63,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/formatting.py": {
+    "executed": 30,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/globals.py": {
+    "executed": 19,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   },
+   "src/click/parser.py": {
+    "executed": 105,
+    "kinds": [
+     0,
+     1,
+     12,
+     4,
+     6,
+     7
+    ]
+   },
+   "src/click/shell_completion.py": {
+    "executed": 95,
+    "kinds": [
+     0,
+     1,
+     3,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/termui.py": {
+    "executed": 71,
+    "kinds": [
+     0,
+     1,
+     2,
+     3,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/testing.py": {
+    "executed": 94,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/types.py": {
+    "executed": 244,
+    "kinds": [
+     0,
+     1,
+     10,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/utils.py": {
+    "executed": 67,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   }
+  }
+ },
+ {
+  "case": "cmp-1",
+  "answer_file": "src/click/_textwrap.py",
+  "answer_class": 10,
+  "failing_output": "........................................................................ [  3%]\n........................................................................ [  6%]\n........................................................................ [ 10%]\n.........................x.............................................. [ 13%]\n........................................................................ [ 17%]\n........................................................................ [ 20%]\n........................................................................ [ 24%]\n........................................................................ [ 27%]\n........................................................................ [ 31%]\n..............F\n=================================== FAILURES ===================================\n________________________ test_help_formatter_write_text ________________________\n\n    def test_help_formatter_write_text():\n        text = \"Lorem ipsum dolor sit amet, consectetur adipiscing elit\"\n        formatter = click.HelpFormatter(width=len(\"  Lorem ipsum dolor sit amet,\"))\n        formatter.current_indent = 2\n        formatter.write_text(text)\n        actual = formatter.getvalue()\n        expected = \"  Lorem ipsum dolor sit amet,\\n  consectetur adipiscing elit\\n\"\n>       assert actual == expected\nE       AssertionError: assert '  Lorem ipsu...iscing elit\\n' == '  Lorem ipsu...iscing elit\\n'\nE         \nE         -   Lorem ipsum dolor sit amet,\nE         ?                        ------\nE         +   Lorem ipsum dolor sit\nE         +   amet, consectetur\nE         -   consectetur adipiscing elit\nE         ?  ------------\nE         +   adipiscing elit\n\ntests/test_formatting.py:436: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_formatting.py::test_help_formatter_write_text - AssertionEr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 661 passed, 31000 deselected, 1 xfailed in 3.00s\n\n",
+  "files": {
+   "src/click/__init__.py": {
+    "executed": 74,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/_compat.py": {
+    "executed": 73,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/_textwrap.py": {
+    "executed": 47,
+    "kinds": [
+     0,
+     1,
+     3,
+     9,
+     10,
+     11,
+     4,
+     6
+    ]
+   },
+   "src/click/_utils.py": {
+    "executed": 18,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/core.py": {
+    "executed": 627,
+    "kinds": [
+     0,
+     1,
+     9,
+     10,
+     12,
+     4,
+     6,
+     7
+    ]
+   },
+   "src/click/decorators.py": {
+    "executed": 50,
+    "kinds": [
+     0,
+     12,
+     4
+    ]
+   },
+   "src/click/exceptions.py": {
+    "executed": 77,
+    "kinds": [
+     0,
+     1,
+     6
+    ]
+   },
+   "src/click/formatting.py": {
+    "executed": 68,
+    "kinds": [
+     0,
+     1,
+     3,
+     11,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/globals.py": {
+    "executed": 16,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   },
+   "src/click/parser.py": {
+    "executed": 148,
+    "kinds": [
+     0,
+     1,
+     9,
+     10,
+     12,
+     4,
+     6,
+     7
+    ]
+   },
+   "src/click/shell_completion.py": {
+    "executed": 117,
+    "kinds": [
+     0,
+     1,
+     3,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/termui.py": {
+    "executed": 49,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   },
+   "src/click/testing.py": {
+    "executed": 94,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/types.py": {
+    "executed": 241,
+    "kinds": [
+     0,
+     1,
+     10,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/utils.py": {
+    "executed": 67,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   }
+  }
+ },
+ {
+  "case": "lit-1",
+  "answer_file": "src/click/_termui_impl.py",
+  "answer_class": 1,
+  "failing_output": "........................................................................ [  3%]\n........................................................................ [  6%]\n........................................................................ [ 10%]\n.........................x.............................................. [ 13%]\n........................................................................ [ 17%]\n........................................................................ [ 20%]\n........................................................................ [ 24%]\n........................................................................ [ 27%]\n........................................................................ [ 31%]\n........................................................................ [ 34%]\n........................................................................ [ 38%]\n........................................................................ [ 41%]\n........................................................................ [ 44%]\n........................................................................ [ 48%]\n........................................................................ [ 51%]\n........................................................................ [ 55%]\n........................................................................ [ 58%]\n........................................................................ [ 62%]\n........................................................................ [ 65%]\n........................................................................ [ 69%]\n..........................................F\n=================================== FAILURES ===================================\n___________________ test_progressbar_format_eta[0-00:00:00] ____________________\n\nrunner = <click.testing.CliRunner object at 0x10df45ef0>, eta = 0\nexpected = '00:00:00'\n\n    @pytest.mark.parametrize(\n        \"eta, expected\",\n        [\n            (0, \"00:00:00\"),\n            (30, \"00:00:30\"),\n            (90, \"00:01:30\"),\n            (900, \"00:15:00\"),\n            (9000, \"02:30:00\"),\n            (99999999999, \"1157407d 09:46:39\"),\n            (None, \"\"),\n        ],\n    )\n    def test_progressbar_format_eta(runner, eta, expected):\n        with _create_progress(1, eta_known=eta is not None, avg=[eta]) as progress:\n>           assert progress.format_eta() == expected\nE           AssertionError: assert '  0:00:00' == '00:00:00'\nE             \nE             - 00:00:00\nE             ? ^\nE             +   0:00:00\nE             ? ^^\n\ntests/test_termui.py:169: AssertionError\n----------------------------- Captured stdout call -----------------------------\n\n=========================== short test summary info ============================\nFAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1481 passed, 31000 deselected, 1 xfailed in 4.17s\n\n",
+  "files": {
+   "src/click/__init__.py": {
+    "executed": 74,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/_compat.py": {
+    "executed": 110,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/_termui_impl.py": {
+    "executed": 145,
+    "kinds": [
+     0,
+     1,
+     2,
+     3,
+     10,
+     11,
+     12,
+     4,
+     7
+    ]
+   },
+   "src/click/_utils.py": {
+    "executed": 18,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/core.py": {
+    "executed": 303,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/decorators.py": {
+    "executed": 33,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/exceptions.py": {
+    "executed": 63,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/formatting.py": {
+    "executed": 30,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/globals.py": {
+    "executed": 17,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   },
+   "src/click/parser.py": {
+    "executed": 42,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/termui.py": {
+    "executed": 71,
+    "kinds": [
+     0,
+     1,
+     2,
+     3,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/testing.py": {
+    "executed": 101,
+    "kinds": [
+     0,
+     1,
+     4
+    ]
+   },
+   "src/click/types.py": {
+    "executed": 205,
+    "kinds": [
+     0,
+     1,
+     10,
+     12
+    ]
+   },
+   "src/click/utils.py": {
+    "executed": 80,
+    "kinds": [
+     0,
+     1,
+     9,
+     12,
+     6
+    ]
+   }
+  }
+ },
+ {
+  "case": "lit-1b",
+  "answer_file": "src/click/_termui_impl.py",
+  "answer_class": 1,
+  "failing_output": "........................................................................ [  3%]\n........................................................................ [  6%]\n........................................................................ [ 10%]\n.........................x.............................................. [ 13%]\n........................................................................ [ 17%]\n........................................................................ [ 20%]\n........................................................................ [ 24%]\n........................................................................ [ 27%]\n........................................................................ [ 31%]\n........................................................................ [ 34%]\n........................................................................ [ 38%]\n........................................................................ [ 41%]\n........................................................................ [ 44%]\n........................................................................ [ 48%]\n........................................................................ [ 51%]\n........................................................................ [ 55%]\n........................................................................ [ 58%]\n........................................................................ [ 62%]\n........................................................................ [ 65%]\n........................................................................ [ 69%]\n..........................................F\n=================================== FAILURES ===================================\n___________________ test_progressbar_format_eta[0-00:00:00] ____________________\n\nrunner = <click.testing.CliRunner object at 0x1105fdef0>, eta = 0\nexpected = '00:00:00'\n\n    @pytest.mark.parametrize(\n        \"eta, expected\",\n        [\n            (0, \"00:00:00\"),\n            (30, \"00:00:30\"),\n            (90, \"00:01:30\"),\n            (900, \"00:15:00\"),\n            (9000, \"02:30:00\"),\n            (99999999999, \"1157407d 09:46:39\"),\n            (None, \"\"),\n        ],\n    )\n    def test_progressbar_format_eta(runner, eta, expected):\n        with _create_progress(1, eta_known=eta is not None, avg=[eta]) as progress:\n>           assert progress.format_eta() == expected\nE           AssertionError: assert '000:00:00' == '00:00:00'\nE             \nE             - 00:00:00\nE             + 000:00:00\nE             ? +\n\ntests/test_termui.py:169: AssertionError\n----------------------------- Captured stdout call -----------------------------\n\n=========================== short test summary info ============================\nFAILED tests/test_termui.py::test_progressbar_format_eta[0-00:00:00] - Assert...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1481 passed, 31000 deselected, 1 xfailed in 4.02s\n\n",
+  "files": {
+   "src/click/__init__.py": {
+    "executed": 74,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/_compat.py": {
+    "executed": 110,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/_termui_impl.py": {
+    "executed": 145,
+    "kinds": [
+     0,
+     1,
+     2,
+     3,
+     10,
+     11,
+     12,
+     4,
+     7
+    ]
+   },
+   "src/click/_utils.py": {
+    "executed": 18,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/core.py": {
+    "executed": 303,
+    "kinds": [
+     0,
+     1,
+     12,
+     4
+    ]
+   },
+   "src/click/decorators.py": {
+    "executed": 33,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/exceptions.py": {
+    "executed": 63,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/formatting.py": {
+    "executed": 30,
+    "kinds": [
+     0
+    ]
+   },
+   "src/click/globals.py": {
+    "executed": 17,
+    "kinds": [
+     0,
+     1,
+     12
+    ]
+   },
+   "src/click/parser.py": {
+    "executed": 42,
+    "kinds": [
+     0,
+     1
+    ]
+   },
+   "src/click/termui.py": {
+    "executed": 71,
+    "kinds": [
+     0,
+     1,
+     2,
+     3,
+     12,
+     4,
+     6
+    ]
+   },
+   "src/click/testing.py": {
+    "executed": 101,
+    "kinds": [
+     0,
+     1,
+     4
+    ]
+   },
+   "src/click/types.py": {
+    "executed": 205,
+    "kinds": [
+     0,
+     1,
+     10,
+     12
+    ]
+   },
+   "src/click/utils.py": {
+    "executed": 80,
+    "kinds": [
+     0,
+     1,
+     9,
+     12,
+     6
+    ]
+   }
+  }
+ }
+]
