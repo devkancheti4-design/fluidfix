@@ -1,0 +1,33 @@
+=========================================================== click/andor-1
+[click/andor-1] survey 4.6s: 14 territories; memory knows nothing; every (territory, class) pair here would be 56 nodes
+  round 1: 1 node(s) — core.py:10[1-3839]
+  round 2: 2 node(s) — core.py:0[1-3839], types.py:10[1-1423]
+  round 3: 3 node(s) — core.py:1[1-3839], types.py:0[1-1423], testing.py:10[1-799]
+  round 4: 4 node(s) — core.py:5[1-3839], types.py:1[1-1423], testing.py:0[1-799], utils.py:10[1-689]
+  round 5: 6 node(s) — core.py:6[1-3839], testing.py:5[1-799], types.py:6[1-1423], testing.py:1[1-799], shell_completion.py:0[1-802], utils.py:0[1-689]
+  round 6: 4 node(s) — core.py:9[1-3839], shell_completion.py:5[1-802], types.py:12[1-1423], testing.py:6[1-799]
+  round 7: 6 node(s) — shell_completion.py:1[1-802], _compat.py:0[1-591], utils.py:1[1-689], core.py:12[1-3839], utils.py:9[1-689], _compat.py:5[1-591]
+  round 8: 6 node(s) — shell_completion.py:6[1-802], shell_completion.py:3[1-802], _compat.py:1[1-591], parser.py:0[1-534], utils.py:3[1-689], shell_completion.py:12[1-802]
+  round 9: 3 node(s) — parser.py:5[1-534], parser.py:6[1-534], _compat.py:12[1-591]
+  round 10: 5 node(s) — parser.py:1[1-534], __init__.py:0[1-145], utils.py:5[1-689], utils.py:6[1-689], parser.py:12[1-534]
+[click/andor-1] BUDGET | 40 nodes over 10 rounds (every pair would be 56) | 230 suite runs | 258.7s
+=========================================================== click/cmp-1
+[click/cmp-1] survey 4.1s: 15 territories; memory knows nothing; every (territory, class) pair here would be 69 nodes
+  round 1: 1 node(s) — core.py:10[1-3839]
+  round 2: 2 node(s) — core.py:0[1-3839], types.py:10[1-1423]
+=========================================================== click/getdef-1
+[click/getdef-1] survey 5.1s: 14 territories; memory knows nothing; every (territory, class) pair here would be 38 nodes
+  round 1: 1 node(s) — core.py:1[1-3839]
+  round 2: 2 node(s) — core.py:0[1-3839], types.py:1[1-1423]
+  round 3: 3 node(s) — core.py:12[1-3839], types.py:0[1-1423], _termui_impl.py:1[1-973]
+  round 4: 4 node(s) — types.py:12[1-1423], types.py:10[1-1423], _termui_impl.py:0[1-973], _compat.py:1[1-591]
+  round 5: 4 node(s) — _termui_impl.py:12[1-973], _termui_impl.py:6[1-973], _compat.py:0[1-591], testing.py:1[1-799]
+  round 6: 5 node(s) — _compat.py:12[1-591], termui.py:6[1-1025], _compat.py:5[1-591], testing.py:0[1-799], termui.py:1[1-1025]
+  round 7: 5 node(s) — termui.py:12[1-1025], termui.py:0[1-1025], termui.py:5[1-1025], __init__.py:0[1-145], utils.py:1[1-689]
+  round 8: 4 node(s) — utils.py:12[1-689], termui.py:2[1-1025], utils.py:0[1-689], exceptions.py:1[1-379]
+  round 9: 4 node(s) — globals.py:12[1-68], termui.py:3[1-1025], exceptions.py:0[1-379], parser.py:1[1-534]
+  round 10: 3 node(s) — globals.py:0[1-68], parser.py:0[1-534], globals.py:1[1-68]
+  round 11: 1 node(s) — decorators.py:0[1-628]
+  round 12: 1 node(s) — formatting.py:0[1-321]
+  round 13: 1 node(s) — _utils.py:0[1-46]
+[click/getdef-1] EXHAUSTED | 38 nodes over 13 rounds (every pair would be 38) | 160 suite runs | 355.5s

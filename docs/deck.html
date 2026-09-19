@@ -1,0 +1,511 @@
+<meta charset="utf-8">
+<title>fluidfix Demo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* A projector deck: one committed dark palette, painted explicitly on every surface. */
+:root{
+  --ground:#0B0F14; --surface:#121821; --raised:#171F2A; --rule:#1F2A36; --rule2:#2C3A4A;
+  --ink:#FFFFFF; --text:#DDE3EA; --muted:#8B95A2; --dim:#5A6572;
+  --amber:#F2B441; --amber-soft:#2A2210; --ok:#5FB58A; --bad:#D9776B;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;cursor:pointer}
+button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+b{color:var(--ink);font-weight:700}
+.wrap{position:fixed;inset:0;display:grid;place-items:center;padding:16px}
+.stage{width:1600px;height:900px;position:relative;transform-origin:center;flex:none}
+.slide{position:absolute;inset:0;padding:64px 88px 96px;display:none;grid-template-rows:auto auto 1fr;gap:18px}
+.slide.on{display:grid;animation:in .35s ease both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);font-weight:500}
+h1,h2,h3{margin:0;color:var(--ink);letter-spacing:-.025em;text-wrap:balance}
+h1{font-weight:800;font-size:112px;line-height:1}
+h2{font-weight:800;font-size:54px;line-height:1.08}
+h3{font-weight:700;font-size:20px;letter-spacing:-.01em}
+p{margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;min-height:0}
+.claim{font-size:24px;color:var(--text);max-width:34ch;display:flex;flex-direction:column;gap:18px}
+.claim .k{font-family:var(--mono);font-size:14px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.fine{font-size:16px;color:var(--muted);max-width:60ch}
+.mono{font-family:var(--mono)}
+.amber{color:var(--amber)}
+.ok{color:var(--ok)} .bad{color:var(--bad)}
+
+/* panels */
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:18px;padding:22px 24px}
+.term{background:#0E1116;color:var(--text);border:1px solid var(--rule);border-radius:18px;padding:18px 22px;font-family:var(--mono);font-size:17px;line-height:1.65;min-height:300px;position:relative}
+.term .tb{display:flex;gap:8px;align-items:center;color:var(--dim);font-size:13px;margin-bottom:12px}
+.term .tb i{width:10px;height:10px;border-radius:50%;background:var(--rule2);display:inline-block}
+.term .l{white-space:pre-wrap;word-break:break-word;min-height:1.65em}
+.term .l.c{color:var(--dim)} .term .l.g{color:var(--ok)} .term .l.a{color:var(--amber)} .term .l.r{color:var(--bad)} .term .l.d{color:var(--amber)}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;font-weight:700;font-size:15px;border:1.5px solid var(--rule2);background:var(--raised);color:var(--ink)}
+.pill.primary{background:var(--amber);color:#0E1116;border-color:var(--amber)}
+.pill:hover{border-color:var(--amber)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+/* slide 1: the regression */
+.code{font-family:var(--mono);font-size:19px;line-height:1.7;background:#0E1116;border:1px solid var(--rule);border-radius:16px;padding:18px 22px;white-space:pre}
+.code .hl{background:rgba(217,119,107,.18);border-radius:6px;padding:2px 6px;margin:0 -6px}
+.tests{display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:17px;margin-top:14px}
+.tests .t{display:flex;gap:12px;align-items:baseline}
+.tests .sum{margin-top:10px;font-weight:600;display:inline-block;padding:6px 12px;border-radius:8px}
+.sum.g{background:rgba(95,181,138,.14);color:var(--ok)} .sum.r{background:rgba(217,119,107,.14);color:var(--bad)}
+
+/* slide 2: steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.step{text-align:left;background:var(--raised);border:1px solid var(--rule);border-radius:16px;padding:16px 18px;color:var(--text);display:flex;flex-direction:column;gap:6px;transition:border-color .15s,background .15s}
+.step[aria-selected="true"]{border-color:var(--amber);background:var(--amber-soft)}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.12em}
+.step .t{font-weight:700;color:var(--ink);font-size:18px}
+.step .s{font-size:14px;color:var(--muted)}
+.detail{margin-top:20px;font-size:22px;color:var(--text);max-width:70ch;min-height:5.2em}
+.detail .num{font-family:var(--mono);color:var(--amber);font-weight:600}
+
+/* slide 3: the brain */
+.brain{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start}
+canvas#grid{display:block;border-radius:14px;background:var(--surface);border:1px solid var(--rule)}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--ground);font-family:var(--mono);font-size:13px;line-height:1.45;padding:8px 10px;border-radius:8px;transform:translate(-50%,calc(-100% - 12px));white-space:nowrap;opacity:0;transition:opacity .1s}
+.tip b{color:#8A5A00}
+.tip[data-on]{opacity:1}
+.bits{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.bit{appearance:none;background:var(--surface);border:1px solid var(--rule);border-radius:10px;color:var(--muted);font-family:var(--mono);font-size:12px;text-align:left;padding:10px;display:flex;flex-direction:column;gap:5px;transition:border-color .15s,background .15s,color .15s}
+.bit .k{display:flex;justify-content:space-between;align-items:center;font-weight:600}
+.bit .k i{width:8px;height:8px;border-radius:50%;background:var(--rule2)}
+.bit .d{font-family:var(--sans);font-size:12px;line-height:1.3;color:var(--dim);font-weight:500}
+.bit[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-soft);color:var(--ink)}
+.bit[aria-pressed="true"] .k i{background:var(--amber);box-shadow:0 0 8px var(--amber)}
+.bit[aria-pressed="true"] .d{color:var(--muted)}
+.readout{border-top:1px solid var(--rule);padding-top:14px;margin-top:14px}
+.readout .val{font-family:var(--mono);font-size:14px;color:var(--muted)}
+.readout .rule{font-family:var(--mono);font-weight:600;font-size:34px;color:var(--amber);margin-top:6px}
+.readout .means{font-size:16px;color:var(--muted);min-height:3em;margin-top:6px}
+
+/* slide 5: teach chooser */
+.choices{display:flex;gap:10px;flex-wrap:wrap}
+.choice{background:var(--raised);border:1px solid var(--rule);border-radius:999px;padding:8px 14px;color:var(--text);font-size:14px;font-weight:600}
+.choice[aria-selected="true"]{border-color:var(--amber);background:var(--amber-soft);color:var(--ink)}
+
+/* slide 7: numbers */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat{text-align:left;background:var(--surface);border:1px solid var(--rule);border-radius:16px;padding:20px 22px;min-height:150px;display:flex;flex-direction:column;gap:6px;color:var(--text);transition:border-color .15s}
+.stat:hover{border-color:var(--rule2)}
+.stat .n{font-family:var(--mono);font-weight:600;font-size:44px;color:var(--amber);letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.stat .l{font-size:15px;color:var(--text)}
+.stat .src{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:auto}
+.stat[data-open="true"]{border-color:var(--amber)}
+.stat[data-open="true"] .src{color:var(--amber)}
+
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.m{font-family:var(--mono);font-size:15px}
+
+/* limits & pricing */
+.list{display:grid;gap:14px;font-size:20px;max-width:64ch}
+.list li{list-style:none;padding-left:26px;position:relative}
+.list li:before{content:"";position:absolute;left:0;top:.62em;width:10px;height:10px;border-radius:50%;background:var(--amber)}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tier{background:var(--surface);border:1px solid var(--rule);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.tier.hi{border-color:var(--amber)}
+.tier .p{font-family:var(--mono);font-weight:600;font-size:30px;color:var(--ink);letter-spacing:-.02em}
+.tier .p small{font-size:13px;color:var(--muted);font-weight:400;margin-left:6px}
+.tier .t{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-family:var(--mono)}
+.tier .d{font-size:14px;color:var(--muted)}
+
+/* rail + notes */
+.rail{position:absolute;left:88px;right:88px;bottom:34px;display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--dim)}
+.rail .dots{display:flex;gap:6px;flex:1}
+.rail .dots button{width:100%;height:4px;border:0;border-radius:2px;background:var(--rule);padding:0}
+.rail .dots button[aria-current="true"]{background:var(--amber)}
+.rail .nav{display:flex;gap:6px}
+.rail .nav button{background:var(--raised);border:1px solid var(--rule);color:var(--text);border-radius:8px;width:34px;height:28px}
+.notes{position:absolute;left:88px;right:88px;bottom:70px;background:var(--raised);border:1px solid var(--rule2);border-radius:14px;padding:16px 20px;font-size:16px;color:var(--text);display:none;box-shadow:0 10px 32px rgba(0,0,0,.4)}
+.notes[data-on]{display:block}
+.notes .k{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+</style>
+
+<div class="wrap"><div class="stage" id="stage">
+
+<!-- 0 · title -->
+<section class="slide" data-notes="Open with the tagline. It does two things and only two: repairs what it can prove, refuses what it cannot. Everything on this deck is measured; if a number comes up, the source is one click away on slide 8.">
+  <div class="eyebrow">fluidfix · demo</div>
+  <div></div>
+  <div style="display:flex;flex-direction:column;justify-content:center;gap:28px">
+    <div style="display:flex;align-items:center;gap:22px"><span style="width:56px;height:56px;border-radius:14px;background:var(--amber);position:relative;display:inline-block"><span style="position:absolute;inset:16px;border-radius:4px;background:var(--ground)"></span></span><h1>fluidfix</h1></div>
+    <h2 style="font-size:64px">Repairs the bug. <span class="amber">Refuses the guess.</span></h2>
+    <p class="claim" style="font-size:24px">A guard for your test suite: it restores what breaks, refuses what it cannot prove, and never spends a token. Every decision is a ruling from one integer law, judged by your own tests.</p>
+    <p class="fine mono">→ / space to advance · N for speaker notes · F for full screen · hover and click anything amber</p>
+  </div>
+</section>
+
+<!-- 1 · the regression -->
+<section class="slide" data-notes="Click 'Ship it'. A teammate flips one operator in a formula; the suite goes red. This is the shape of most maintenance work: one line, one token, found by a human or an LLM at real cost. Nobody has to be watching for fluidfix to act.">
+  <div class="eyebrow">the problem</div>
+  <h2>Someone tidies a formula. The suite goes red.</h2>
+  <div class="two">
+    <div class="claim">
+      <p>A regression is usually one line. Finding it is a person's afternoon, or a few thousand tokens of an agent reading files it does not need.</p>
+      <p>fluidfix runs where the suite runs. It does not read your code as prose. It measures.</p>
+      <div class="row"><button class="pill primary" id="shipBtn" type="button">Ship it</button><button class="pill" id="resetBtn" type="button">Reset</button></div>
+    </div>
+    <div>
+      <div class="code" id="code">def invoice_total(shipments):
+    net = sum(quote(w, z) for w, z in shipments)
+    gross = net * (<span id="op">1 + VAT</span>)
+    return round(gross, 2)</div>
+      <div class="tests" id="tests">
+        <div class="t"><span class="ok">✓</span><span>test_quote_domestic</span></div>
+        <div class="t"><span class="ok">✓</span><span>test_express_eu</span></div>
+        <div class="t"><span class="ok" id="tmark">✓</span><span>test_invoice</span><span class="bad" id="terr" hidden>AssertionError: assert 23.49 == 34.51</span></div>
+        <span class="sum g" id="tsum">3 passed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · what it does -->
+<section class="slide" data-notes="Click through the four steps. The point to land: every step is a measurement except the third, which is a ruling. No model, no heuristics, no if-statements deciding outcomes. The suite is the only judge.">
+  <div class="eyebrow">what it does</div>
+  <h2>Four steps. One of them decides.</h2>
+  <div>
+    <div class="steps" role="tablist" id="steps">
+      <button class="step" role="tab" aria-selected="true" data-i="0"><span class="n">LOCALISE</span><span class="t">Find the file</span><span class="s">traceback frames, then coverage of the failing tests</span></button>
+      <button class="step" role="tab" aria-selected="false" data-i="1"><span class="n">OBSERVE</span><span class="t">Measure eight bits</span><span class="s">what happened, not what it means</span></button>
+      <button class="step" role="tab" aria-selected="false" data-i="2"><span class="n">RULE</span><span class="t">The law decides</span><span class="s">256 situations, one integer expression</span></button>
+      <button class="step" role="tab" aria-selected="false" data-i="3"><span class="n">JUDGE</span><span class="t">Your suite says yes or no</span><span class="s">every candidate runs your tests</span></button>
+    </div>
+    <p class="detail" id="detail"></p>
+  </div>
+</section>
+
+<!-- 3 · the brain -->
+<section class="slide" data-notes="This is the whole brain, not a picture of it. Hover the grid: every square is one of the 256 situations the tool can be in, coloured by what the law rules. Gold squares are the only four where it writes code. Toggle the bits on the right to walk the audience through a ruling. Numbers: 178 integer ops, 2.01 ns, verified on all 256 states by selfcheck.">
+  <div class="eyebrow">the brain</div>
+  <h2>Every situation it can ever be in, and what it decides.</h2>
+  <div class="brain">
+    <div style="position:relative"><canvas id="grid" width="560" height="560"></canvas><div class="tip" id="tip"></div>
+      <p class="fine" style="margin-top:12px;max-width:52ch"><b>Gold:</b> it edits your code. <b>Grey:</b> it refuses, and says why. One expression over one byte: <span class="mono">178</span> integer operations, <span class="mono">2.01 ns</span> per ruling, no floats, no branches, no weights.</p></div>
+    <div class="panel">
+      <div class="row" style="justify-content:space-between;margin-bottom:12px"><span class="eyebrow" style="color:var(--muted)">observations</span><span class="mono" style="font-size:12px;color:var(--dim)">toggle any bit</span></div>
+      <div class="bits" id="bits"></div>
+      <div class="readout">
+        <div class="val">byte <b id="byteval">1</b> <span id="bytebin">00000001</span></div>
+        <div class="rule" id="ruling">SHIP</div>
+        <div class="means" id="means"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · watch it rule -->
+<section class="slide" data-notes="Two real runs replayed. The first repairs: one green, nothing blocks it, SHIP, byte-exact. The second is the one to dwell on: two candidates both pass the suite, so the tool asks whether they are the same program, finds an input where they differ, and refuses with a pinning test written out. It does not pick.">
+  <div class="eyebrow">watch it rule</div>
+  <h2>A repair, then a refusal.</h2>
+  <div class="two">
+    <div class="term"><div class="tb"><i></i><i></i><i></i><span>fluidfix guard .</span><span id="tlabel" style="margin-left:auto"></span></div><div id="lines"></div>
+      <div class="row" style="position:absolute;right:16px;bottom:14px"><button class="pill" id="play" type="button" style="padding:7px 12px;font-size:13px">Pause</button><button class="pill" id="next" type="button" style="padding:7px 12px;font-size:13px">Next run</button></div></div>
+    <div class="claim">
+      <p><span class="k">the repair</span><br>The candidate that greens the suite is written byte for byte and committed as <span class="mono">fluidfix: restore file:line</span>.</p>
+      <p><span class="k">the refusal</span><br>Two green candidates are two programs until proven otherwise. The differential probe finds the input that separates them; the law rules <span class="mono amber">BUILT+AMB → ADD_STATE</span>; a pinning test is written and the file is left alone.</p>
+      <p class="fine">Killed mid-write? The next run restores the original bytes from the journal before judging anything. Nothing is re-queued; there is no queue.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · teach -->
+<section class="slide" data-notes="Teaching is the product. Pick an incident: what you write is a structured example, never prose: the line before, the line after, a signal, a transform. One register() call, and every future member of that class is decided by the law at zero tokens. Real history: one 2016 cglm example produced the correct repair for four fixes across 2016 to 2023.">
+  <div class="eyebrow">teach it once</div>
+  <h2>One structured example. A whole class, forever.</h2>
+  <div class="two">
+    <div class="claim">
+      <p>When it refuses, the refusal is the teach-me signal. Write the incident down once, as structure, not prose.</p>
+      <div class="choices" id="choices" role="tablist">
+        <button class="choice" role="tab" aria-selected="true" data-k="0">round lost its precision</button>
+        <button class="choice" role="tab" aria-selected="false" data-k="1">.get() lost its default</button>
+        <button class="choice" role="tab" aria-selected="false" data-k="2">split() lost its separator</button>
+      </div>
+      <p class="fine">Kinds 4–7 are yours. The act code is derived from the example on every call, never stored: <span class="mono">4,096 / 4,096</span> routes verified by selfcheck.</p>
+    </div>
+    <div class="code" id="teach" style="font-size:16px;line-height:1.6"></div>
+  </div>
+</section>
+
+<!-- 6 · refusal is the feature -->
+<section class="slide" data-notes="Why customers can trust the repairs: a wrong repair cannot land. Candidates that fail are rolled back byte for byte; two greens refuse; novel classes refuse; a crash mid-write is undone from the journal. Precision is bounded by the suite, never by a guess. Say the negative plainly: it does not reason and does not learn.">
+  <div class="eyebrow">why it can be trusted</div>
+  <h2>A wrong repair cannot land.</h2>
+  <div class="two">
+    <ul class="list">
+      <li>A candidate that fails your suite is rolled back <b>byte for byte</b>, CRLF included.</li>
+      <li>Two different green programs are <b>refused as ambiguous</b>; the pinning test is written for you.</li>
+      <li>A class it was never taught is <b>refused, tree untouched</b>, exit code 2 for CI.</li>
+      <li>A process killed mid-write is <b>restored from the journal</b> on the next run, before anything is judged.</li>
+      <li>It does not reason and it does not learn. It picks one of eight acts, only one of which writes code, and your suite decides whether that write was right.</li>
+    </ul>
+    <div class="term" style="min-height:0"><div class="tb"><i></i><i></i><i></i><span>the guard's own words</span></div>
+<div class="l c">$ fluidfix guard .</div>
+<div class="l r">REFUSED: fault is outside the taught vocabulary</div>
+<div class="l a">  hint: AMBIGUOUS: 2 candidates pass this suite and they are</div>
+<div class="l a">  DIFFERENT PROGRAMS — rate(10, 0) returns '0.0' vs '0'.</div>
+<div class="l">  Your tests cannot tell them apart. A pinning test is written</div>
+<div class="l">  beside the refusal (engine law: BUILT+AMB -> ADD_STATE, never guess)</div>
+<div class="l c">  refusal report: .fluidfix/last_refusal.json</div>
+<div class="l c">  pinning test:   .fluidfix/pin_me_test.py</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · measured -->
+<section class="slide" data-notes="Click any tile to show where the number comes from. Everything here is reproducible from the repo: research/ holds the scripts, logs and JSON. The two to lead with: zero wrong repairs across 64 runs on Python and C, and the full suite green.">
+  <div class="eyebrow">measured, not claimed</div>
+  <h2>Every number has a file behind it.</h2>
+  <div class="stats" id="stats"></div>
+</section>
+
+<!-- 8 · real repos -->
+<section class="slide" data-notes="The Sep 10 maintenance run on real C repos. The honest story: the released package could not repair any of the five cglm defects, and the reason was the oracle, not the laws: macOS make compares timestamps at whole seconds, so the suite was judging the previous candidate's binary. Fixed, pinned; then two real defects repaired byte-exact and three more hold the correct line, withheld until the search finishes. The run found and fixed seven defects in the tool, every one an observation that lied to the law, never a ruling.">
+  <div class="eyebrow">on real repositories · 2026-09-10</div>
+  <h2>What a maintenance run found, and fixed.</h2>
+  <div class="two">
+    <div style="overflow:auto">
+      <table>
+        <tr><th>defect, shipped vocabulary</th><th>released 0.15.0</th><th>master, fixed oracle</th></tr>
+        <tr><td>cglm D3 · ray.h:140 comparison</td><td class="bad">refused</td><td class="ok">repaired byte-exact · 56 runs</td></tr>
+        <tr><td>Box2D D5 · aabb.c:13 comparison</td><td class="bad">refused (0.13.0)</td><td class="ok">repaired byte-exact · 9 runs · 20 s</td></tr>
+        <tr><td>cglm D1, D2, D4</td><td class="bad">refused</td><td class="amber">correct line green, withheld as unproven-unique</td></tr>
+        <tr><td>wrong bytes written, 32 C runs</td><td class="mono">0</td><td class="mono">0</td></tr>
+      </table>
+      <p class="fine" style="margin-top:14px">Refusals carry the law's ruling and every rejected candidate with the test that killed it. <span class="mono">research/maintenance-2026-09-10/RESULT.md</span></p>
+    </div>
+    <div class="claim" style="font-size:19px">
+      <p><span class="k">the finding</span><br>GNU make 3.81 compares timestamps at whole seconds. A candidate written in the same second as the previous compile was never rebuilt, so the suite judged the <b>previous</b> candidate's binary: 7 of 8 fast cycles judged the pristine line red. Fixed, pinned with a fake whole-second make: 0 of 8 after.</p>
+      <p><span class="k">seven fixes from one run</span><br>Two vocabulary signals, the stale build, a suite testing the installed package, a fixture weaker than the vocabulary, a harness path, a report that undercounted. None was a ruling.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · where it stops -->
+<section class="slide" data-notes="Say the limits before anyone asks. It needs a suite that pins boundaries; it repairs one file at a time; on C the search order and proving uniqueness by exhaustion are the wall; it refuses novel classes until taught. These are lanes on the roadmap, not regexes.">
+  <div class="eyebrow">where it stops</div>
+  <h2>What it will not do, stated plainly.</h2>
+  <ul class="list" style="font-size:22px;max-width:72ch">
+    <li><b>Weak suites bound it.</b> A test that cannot see the defect cannot judge a repair; on cglm, 3 of 6 real one-token fixes are invisible to its own tests.</li>
+    <li><b>One file at a time.</b> Multi-file fixes are out of reach today; on Box2D that is most of them. The PAIR law's PARTITION lane exists and is not yet actuated.</li>
+    <li><b>C path: order and proof.</b> The wrong file ranked first eats the budget, and "unique" means finishing the search, ~5 s per candidate. A C differential probe is the next lane.</li>
+    <li><b>Untaught means refused.</b> The vocabulary ships with nine classes; yours come from your incidents, one structured example each.</li>
+  </ul>
+</section>
+
+<!-- 10 · try it -->
+<section class="slide" data-notes="Three commands to try it on any Python repo with pytest. Free and AGPL for everything. For teams, the pilot is the honest first step: six weeks, we run it against their history and produce the number that does not exist yet, how many of their regressions are this shape. Credited in full against a licence.">
+  <div class="eyebrow">try it · price it</div>
+  <h2>Three commands. Then a number for your repo.</h2>
+  <div style="display:grid;gap:22px">
+    <div class="code" style="font-size:20px">pip install -U fluidfix pytest-cov
+fluidfix selfcheck              <span style="color:var(--dim)"># re-proves all six laws on your machine, ~1 s</span>
+fluidfix guard . --commit       <span style="color:var(--dim)"># restores what breaks, refuses what is novel</span></div>
+    <div class="tiers">
+      <div class="tier"><span class="t">open source</span><span class="p">Free<small>AGPL-3.0</small></span><span class="d">Everything. All six laws, every language path, unlimited repositories, no feature gate.</span></div>
+      <div class="tier hi"><span class="t">measurement pilot</span><span class="p">$5,000<small>six weeks</small></span><span class="d">We run it against your history and your suite and produce the number: how many of your regressions are this shape. Credited in full against a licence.</span></div>
+      <div class="tier"><span class="t">commercial licence</span><span class="p">$12,000<small>/ year</small></span><span class="d">Closed-source use, up to 10 repositories, one language path, CI integration, the hotspots report.</span></div>
+      <div class="tier"><span class="t">studio</span><span class="p">$40,000<small>/ year</small></span><span class="d">Unlimited repositories, all paths, and we author and maintain the fault classes from your worked examples.</span></div>
+    </div>
+    <p class="fine">No per-seat pricing: it runs on your machine and costs nothing per repair.</p>
+  </div>
+</section>
+
+<!-- 11 · close -->
+<section class="slide" data-notes="Close on the one-liner and leave the links up for questions.">
+  <div class="eyebrow">questions</div>
+  <div></div>
+  <div style="display:flex;flex-direction:column;justify-content:center;gap:26px">
+    <h2 style="font-size:64px">Repairs the bug. <span class="amber">Refuses the guess.</span></h2>
+    <p class="claim">Every decision a ruling. Every ruling verifiable. Every repair judged by your own tests.</p>
+    <div class="code" style="font-size:19px">github.com/devkancheti4-design/fluidfix
+pypi.org/project/fluidfix
+devkancheti4@gmail.com</div>
+  </div>
+</section>
+
+<div class="notes" id="notes"><div class="k">speaker notes</div><div id="notesBody"></div></div>
+<div class="rail"><span id="counter">1 / 12</span><div class="dots" id="dots"></div><div class="nav"><button type="button" id="prev" aria-label="previous">‹</button><button type="button" id="nxt" aria-label="next">›</button></div></div>
+</div></div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // ---- verified law data (identical to the engine; see docs/verify.sh)
+  var BITS=['BUILT','AMB','UNREAD','NOTWIN','HIDDEN','CAPPED','REFUTED','SELF'];
+  var DESC=['a candidate passed','one input, two outputs','a tool reads nothing','built, but not what was wanted','fine records disagree','the search was cut short','every candidate rejected','the job is the worker'];
+  var ACTS=['SHIP','ADD_STATE','ADD_MATERIAL','RESHAPE','CHANGE_GRANULARITY','RAISE_BUDGET','HARVEST_COUNTEREXAMPLE','AUTHOR_SUCCESSOR'];
+  var MEANS=['A candidate passed the suite and nothing blocks it. Write it, byte-exact.','Two different programs both pass. Refuse, and write the test that separates them.','Something the search needed read nothing. Bring more material.','The material exists but not in the form needed. Reshape the candidate set.','A single run cannot judge this. Keep per-test records, not per-run.','A candidate may be in hand, but the search was cut short. Raise the budget.','Every candidate was rejected. Keep each with the test that killed it.','The law cannot rule here. Author its successor from the counterexample.'];
+  var TABLE=[0,0,1,1,2,2,1,1,3,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,6,6,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,0,0,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,6,6,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1,5,5,1,1,2,2,1,5,7,3,1,1,2,2,1,1,4,4,1,1,2,2,1,5,7,3,1,1,2,2,1,1];
+
+  // ---- deck mechanics
+  var slides=[].slice.call(document.querySelectorAll('.slide')), cur=0, N=slides.length;
+  var dots=document.getElementById('dots'), counter=document.getElementById('counter'), notes=document.getElementById('notes'), notesBody=document.getElementById('notesBody');
+  slides.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','slide '+(i+1));b.addEventListener('click',function(){go(i);});dots.appendChild(b);});
+  function go(i){
+    cur=(i+N)%N;
+    slides.forEach(function(s,k){s.classList.toggle('on',k===cur);});
+    [].forEach.call(dots.children,function(d,k){d.setAttribute('aria-current',k===cur?'true':'false');});
+    counter.textContent=(cur+1)+' / '+N;
+    notesBody.textContent=slides[cur].getAttribute('data-notes')||'';
+    if(location.hash!=='#'+(cur+1)) history.replaceState(null,'','#'+(cur+1));
+    if(cur===4) startScene(); else stopReplay();
+  }
+  document.getElementById('prev').addEventListener('click',function(){go(cur-1);});
+  document.getElementById('nxt').addEventListener('click',function(){go(cur+1);});
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA') return;
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(cur+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1);}
+    else if(e.key==='Home'){go(0);} else if(e.key==='End'){go(N-1);}
+    else if(e.key==='n'||e.key==='N'){notes.hasAttribute('data-on')?notes.removeAttribute('data-on'):notes.setAttribute('data-on','');}
+    else if(e.key==='f'||e.key==='F'){var el=document.documentElement; if(!document.fullscreenElement&&el.requestFullscreen) el.requestFullscreen(); else if(document.exitFullscreen) document.exitFullscreen();}
+  });
+  // fit the 1600x900 stage to the viewport
+  var stage=document.getElementById('stage');
+  function fit(){var s=Math.max(0.2,Math.min((window.innerWidth-32)/1600,(window.innerHeight-32)/900));stage.style.transform='scale('+s+')';}
+  window.addEventListener('resize',fit); fit();
+
+  // ---- slide 1: ship the regression
+  var op=document.getElementById('op'), tmark=document.getElementById('tmark'), terr=document.getElementById('terr'), tsum=document.getElementById('tsum');
+  function ship(on){
+    op.innerHTML=on?'1 <span class="hl">-</span> VAT':'1 + VAT';
+    tmark.textContent=on?'✗':'✓'; tmark.className=on?'bad':'ok'; terr.hidden=!on;
+    tsum.textContent=on?'1 failed, 2 passed':'3 passed'; tsum.className='sum '+(on?'r':'g');
+  }
+  document.getElementById('shipBtn').addEventListener('click',function(){ship(true);});
+  document.getElementById('resetBtn').addEventListener('click',function(){ship(false);});
+
+  // ---- slide 2: steps
+  var DETAIL=[
+    'Traceback frames first. If nothing names a file, the lines the <em>failing</em> tests executed rank the candidates — the SIGHT law orders them. <span class="num">33 / 33</span> localised correctly on the Python benchmark; no model reads your code.',
+    'Eight bits, each a measurement with a file behind it: did a candidate pass, do two greens disagree on an input, did a tool read nothing, was the search cut short. <span class="num">256</span> situations, every one enumerated before the tool ever ran.',
+    'One integer expression over that byte — <span class="num">178</span> operations, <span class="num">2.01 ns</span> — picks one of eight acts. Only SHIP writes code, in <span class="num">4</span> of the 256 situations. Re-proven on every state by <span class="mono">fluidfix selfcheck</span>, no network, no cache.',
+    'Every candidate is written, your suite runs, and the file is restored byte-exactly unless it passed. On the Python arm: <span class="num">12 / 12</span> repairs byte-identical to the pristine file, <span class="num">0</span> wrong in 32 runs, 2–7 suite runs each.'
+  ];
+  var steps=document.getElementById('steps'), detail=document.getElementById('detail');
+  function pick(i){[].forEach.call(steps.children,function(b,k){b.setAttribute('aria-selected',k===i?'true':'false');});detail.innerHTML=DETAIL[i];}
+  steps.addEventListener('click',function(e){var b=e.target.closest('.step');if(b)pick(+b.dataset.i);});
+  pick(0);
+
+  // ---- slide 3: grid + bits
+  var cv=document.getElementById('grid'), ctx=cv.getContext('2d'), tip=document.getElementById('tip');
+  var COLS=16,PAD=14,CW=(cv.width-PAD*2)/COLS,sweep=0,hover=-1;
+  function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+  function draw(){
+    ctx.fillStyle='#121821'; ctx.fillRect(0,0,cv.width,cv.height);
+    for(var x=0;x<256;x++){
+      var r=Math.floor(x/COLS),c=x%COLS,a=TABLE[x],s=(a===0);
+      var px=PAD+c*CW,py=PAD+r*CW,w=CW-4;
+      var al=s?1:(0.14+a*0.07);
+      if(x===hover||x===state_byte()) al=Math.min(1,al+0.4);
+      if(!reduce&&Math.abs(x-sweep)<1.5) al=Math.min(1,al+0.3);
+      ctx.globalAlpha=al; ctx.fillStyle=s?'#F2B441':'#DDE3EA'; rr(px,py,w,w,s?6:3); ctx.fill();
+      if(s){ctx.globalAlpha=.35;ctx.shadowColor='#F2B441';ctx.shadowBlur=16;rr(px,py,w,w,6);ctx.fill();ctx.shadowBlur=0;}
+      if(x===state_byte()){ctx.globalAlpha=1;ctx.strokeStyle='#FFFFFF';ctx.lineWidth=2;rr(px-2,py-2,w+4,w+4,6);ctx.stroke();}
+    }
+    ctx.globalAlpha=1;
+  }
+  cv.addEventListener('mousemove',function(e){
+    var rc=cv.getBoundingClientRect(),mx=(e.clientX-rc.left)*(cv.width/rc.width),my=(e.clientY-rc.top)*(cv.height/rc.height);
+    var c=Math.floor((mx-PAD)/CW),r=Math.floor((my-PAD)/CW);
+    if(c<0||c>=COLS||r<0||r>=COLS){hover=-1;tip.removeAttribute('data-on');return;}
+    hover=r*COLS+c; var on=[]; for(var i=0;i<8;i++) if(hover>>i&1) on.push(BITS[i]);
+    tip.innerHTML='byte '+hover+'<br>'+(on.length?on.join(' + '):'nothing measured')+'<br>→ <b>'+ACTS[TABLE[hover]]+'</b>';
+    tip.style.left=(e.clientX-rc.left)*(cv.clientWidth/rc.width)+'px'; tip.style.top=(e.clientY-rc.top)*(cv.clientHeight/rc.height)+'px'; tip.setAttribute('data-on','');
+  });
+  cv.addEventListener('mouseleave',function(){hover=-1;tip.removeAttribute('data-on');});
+  cv.addEventListener('click',function(){ if(hover>=0){ for(var i=0;i<8;i++) state[i]=(hover>>i)&1; render(); } });
+  var grid=document.getElementById('bits'), state=[1,0,0,0,0,0,0,0], els=[];
+  BITS.forEach(function(b,i){
+    var el=document.createElement('button'); el.className='bit'; el.type='button'; el.setAttribute('aria-pressed',state[i]?'true':'false');
+    el.innerHTML='<span class="k"><span>'+b+'</span><i></i></span><span class="d">'+DESC[i]+'</span>';
+    el.addEventListener('click',function(){stopReplay();state[i]=state[i]?0:1;render();});
+    grid.appendChild(el); els.push(el);
+  });
+  function state_byte(){var x=0;for(var i=0;i<8;i++)x|=state[i]<<i;return x;}
+  function setBits(a){state=a.slice();render();}
+  function render(){
+    var x=state_byte(),a=TABLE[x];
+    for(var i=0;i<8;i++) els[i].setAttribute('aria-pressed',state[i]?'true':'false');
+    document.getElementById('byteval').textContent=x;
+    document.getElementById('bytebin').textContent=('00000000'+x.toString(2)).slice(-8);
+    document.getElementById('ruling').textContent=ACTS[a];
+    document.getElementById('means').textContent=MEANS[a];
+    draw();
+  }
+  render();
+  if(!reduce)(function anim(){sweep=(sweep+0.5)%256;if(cur===3)draw();requestAnimationFrame(anim);})();
+
+  // ---- slide 4: replay of two real runs
+  var SCENES=[
+    {label:'a repair', bits:[1,0,0,0,0,0,0,0], lines:[
+      ['c','$ fluidfix guard .'],['','pkg/ledger.py:13   if spend > 250:'],['c','candidate   if spend >= 250:   suite…'],
+      ['g','repaired line 13 in 13 suite runs (4.7s)'],['r','  - if spend > 250:'],['g','  + if spend >= 250:'],['a','BUILT → SHIP   ·   byte-exact   ·   0 tokens']]},
+    {label:'a refusal', bits:[1,1,0,0,0,0,0,0], lines:[
+      ['c','$ fluidfix guard .'],['','gate.py:5   return readings[1] > limit'],['c','candidate A   readings[0] > limit    green'],['c','candidate B   readings[1] >= limit   green'],
+      ['','two greens · are they the same program?'],['d','alarm([3, 7], 3)  →  A: True   B: False'],['a','BUILT+AMB → ADD_STATE   ·   file unchanged'],['','pin_me_test.py written. You choose.']]}
+  ];
+  var linesEl=document.getElementById('lines'), tlabel=document.getElementById('tlabel'), playBtn=document.getElementById('play');
+  var si=0,li=0,ch=0,timer=null,playing=false;
+  function startScene(){playing=true;playBtn.textContent='Pause';linesEl.innerHTML='';li=0;ch=0;tlabel.textContent=SCENES[si].label;step();}
+  function step(){
+    if(!playing)return;
+    var sc=SCENES[si];
+    if(li>=sc.lines.length){timer=setTimeout(function(){si=(si+1)%SCENES.length;startScene();},4200);return;}
+    var L=sc.lines[li], el=linesEl.children[li];
+    if(!el){el=document.createElement('div');el.className='l '+L[0];linesEl.appendChild(el);}
+    if(reduce){el.textContent=L[1];li++;ch=0;return step();}
+    ch++; el.textContent=L[1].slice(0,ch);
+    if(ch>=L[1].length){li++;ch=0;timer=setTimeout(step,420);} else timer=setTimeout(step,14);
+  }
+  function stopReplay(){playing=false;clearTimeout(timer);playBtn.textContent='Play';}
+  playBtn.addEventListener('click',function(){if(playing){stopReplay();}else{playing=true;playBtn.textContent='Pause';step();}});
+  document.getElementById('next').addEventListener('click',function(){clearTimeout(timer);si=(si+1)%SCENES.length;startScene();});
+
+  // ---- slide 5: teach chooser
+  var TEACH=[
+    ['# incident: money rounded to whole units','#   return round(total)        <- shipped','#   return round(total, 2)     <- the fix','register(','    4, "round-lost-precision",',"    'a round() on a money value with no ndigits, dropping the cents',",'    re.compile(r"round\\(\\w+\\)"),','    lambda line, o: re.sub(r"round\\((\\w+)\\)", r"round(\\1, 2)", line),',')'],
+    ['# incident INC-2041: summed None, crashed','#   due += inv["amount"] + inv.get("tax")      <- shipped','#   due += inv["amount"] + inv.get("tax", 0)   <- the fix','register(','    4, "missing-get-default",',"    'a .get(key) with no default, letting None poison arithmetic',",'    re.compile(r"\\.get\\((\\"[^\\"]+\\"|\'[^\']+\')\\)"),','    lambda line, o: re.sub(r"\\.get\\((\\"[^\\"]+\\"|\'[^\']+\')\\)", r".get(\\1, 0)", line),',')'],
+    ['# incident INC-3105: whitespace-split over comma data','#   fields = row.split()         <- shipped','#   fields = row.split(",")      <- the fix','register(','    4, "split-lost-separator",',"    'a .split() with no separator applied to comma-separated text',",'    re.compile(r"\\.split\\(\\)"),',"    lambda line, o: line.replace('.split()', '.split(\",\")'),",')']
+  ];
+  var choices=document.getElementById('choices'), teach=document.getElementById('teach');
+  function chooseTeach(k){[].forEach.call(choices.children,function(b,i){b.setAttribute('aria-selected',i===k?'true':'false');});teach.textContent=TEACH[k].join('\n');}
+  choices.addEventListener('click',function(e){var b=e.target.closest('.choice');if(b)chooseTeach(+b.dataset.k);});
+  chooseTeach(0);
+
+  // ---- slide 7: numbers with sources
+  var STATS=[
+    ['0','tokens, ever — no model is invoked','by construction: nothing in the package imports an API client'],
+    ['2.01 ns','per ruling, compiled','research/laws-2026-09-07 · engine law, 178 integer ops, 1,555 chars'],
+    ['12 / 12','repairs byte-exact, Python arm, master','research/maintenance-2026-09-10/run_py_master.log'],
+    ['0','wrong repairs in 64 runs, Python and C','research/maintenance-2026-09-10/RESULT.md'],
+    ['225 / 225','tests green, full suite, idle machine','research/maintenance-2026-09-10/full_suite_final2.log'],
+    ['4,096 / 4,096','router cases · 256 / 256 each law','fluidfix selfcheck  ·  docs/verify.sh'],
+    ['46','suite runs to a byte-exact Box2D repair, no class written','docs/BENCHMARK.md · math_functions.h:212, measured on a clean clone'],
+    ['12 / 12','ambiguities separated, 6 wrong repairs → 0','tests/test_amb_is_program_identity.py'],
+    ['0 / 63','wrong outcomes ever recorded in a ruling','research/AUDIT-2026-09-07.md · 44 reports, 20 attacks']
+  ];
+  var stats=document.getElementById('stats');
+  STATS.forEach(function(s){
+    var b=document.createElement('button'); b.className='stat'; b.type='button'; b.setAttribute('data-open','false');
+    b.innerHTML='<span class="n">'+s[0]+'</span><span class="l">'+s[1]+'</span><span class="src">click for the source</span>';
+    b.addEventListener('click',function(){var o=b.getAttribute('data-open')==='true';b.setAttribute('data-open',o?'false':'true');b.querySelector('.src').textContent=o?'click for the source':s[2];});
+    stats.appendChild(b);
+  });
+
+  function fromHash(){var n=parseInt((location.hash||'#1').slice(1),10);return isNaN(n)?0:Math.min(N-1,Math.max(0,n-1));}
+  window.addEventListener('hashchange',function(){if(fromHash()!==cur)go(fromHash());});
+  go(fromHash());
+})();
+</script>

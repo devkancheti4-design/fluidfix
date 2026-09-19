@@ -1,0 +1,50 @@
+{
+ "case": "click/notdrop-1",
+ "rounds": 2,
+ "nodes": 6,
+ "suite_runs": 15,
+ "wall_s": 360.3,
+ "verdict": "EXACT",
+ "winner": [
+  "src/click/shell_completion.py",
+  6,
+  1,
+  802
+ ],
+ "winner_runs": 3,
+ "every_pair_would_be": 52,
+ "grew_deeper": 0,
+ "memory_before": [
+  6
+ ],
+ "nodes_detail": {
+  "src/click/core.py|6|1-3839": {
+   "exit": 2,
+   "seconds": 18.3,
+   "suite_runs": 8,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/types.py|6|1-1423": {
+   "exit": 2,
+   "seconds": 22.5,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/parser.py|6|1-534": {
+   "exit": 2,
+   "seconds": 23.5,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/shell_completion.py|6|1-802": {
+   "exit": 0,
+   "seconds": 341.7,
+   "suite_runs": 3,
+   "grew": "done",
+   "byte_exact": true
+  }
+ }
+}

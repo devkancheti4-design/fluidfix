@@ -1,0 +1,3 @@
+### ARM A — nothing persists
+A  [click/lenm1-1] EXACT | 16 nodes over 6 rounds (every pair would be 36) | 47 suite runs | 284.5s
+A  [click/andor-1] EXACT | 10 nodes over 4 rounds (every pair would be 57) | 33 suite runs | 133.1s

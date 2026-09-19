@@ -1,0 +1,29 @@
+{
+ "case": "click/getdef-1",
+ "rounds": 1,
+ "nodes": 1,
+ "suite_runs": 3,
+ "wall_s": 34.8,
+ "verdict": "EXACT",
+ "winner": [
+  "src/click/_termui_impl.py",
+  5,
+  1,
+  973
+ ],
+ "winner_runs": 3,
+ "every_pair_would_be": 41,
+ "grew_deeper": 0,
+ "memory_before": [
+  5
+ ],
+ "nodes_detail": {
+  "src/click/_termui_impl.py|5|1-973": {
+   "exit": 0,
+   "seconds": 34.7,
+   "suite_runs": 3,
+   "grew": "done",
+   "byte_exact": true
+  }
+ }
+}

@@ -1,0 +1,5 @@
+observer: mechanical (default) — no model, zero tokens; budget 900 s per case; dictionaries frozen before this run
+### andor: dictionary rules_taught.py
+  [andor] worked example click/andor-1 -> EXACT in 475.9s runs=23
+  [andor] hold-out arrow/andor-1 arrow/locales.py:5468 -> REFUSED in 828.3s runs=None
+  [andor] hold-out python-sortedcontainers/andor-1 src/sortedcontainers/sorteddict.py:134 -> EXACT in 30.9s runs=19

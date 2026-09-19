@@ -1,0 +1,22 @@
+COLD  [click/andor-1] survey 4.6s: 14 territories; memory knows nothing; every (territory, class) pair here would be 57 nodes
+[click/andor-1] EXACT | 27 nodes over 7 rounds (every pair would be 57) | 236 suite runs | 218.8s
+WARM  [click/andor-1] survey 4.6s: 14 territories; memory knows [4]; every (territory, class) pair here would be 57 nodes
+[click/andor-1] EXACT | 7 nodes over 2 rounds (every pair would be 57) | 79 suite runs | 94.6s
+COLD  [click/getdef-1] survey 5.0s: 14 territories; memory knows nothing; every (territory, class) pair here would be 41 nodes
+[click/getdef-1] EXACT | 17 nodes over 5 rounds (every pair would be 41) | 91 suite runs | 122.1s
+WARM  [click/getdef-1] survey 5.0s: 14 territories; memory knows [5]; every (territory, class) pair here would be 41 nodes
+[click/getdef-1] EXACT | 1 nodes over 1 rounds (every pair would be 41) | 3 suite runs | 34.8s
+COLD  [click/notdrop-1] survey 5.1s: 15 territories; memory knows nothing; every (territory, class) pair here would be 59 nodes
+[click/notdrop-1] EXACT | 36 nodes over 9 rounds (every pair would be 59) | 229 suite runs | 594.1s
+WARM  [click/notdrop-1] survey 4.6s: 14 territories; memory knows [6]; every (territory, class) pair here would be 52 nodes
+[click/notdrop-1] EXACT | 6 nodes over 2 rounds (every pair would be 52) | 15 suite runs | 360.3s
+COLD  [click/cmp-1] survey 4.0s: 14 territories; memory knows nothing; every (territory, class) pair here would be 50 nodes
+WARM  [click/cmp-1] survey 6.1s: 14 territories; memory knows nothing; every (territory, class) pair here would be 50 nodes
+COLD  [click/lit-1] survey 15.7s: 16 territories; memory knows nothing; every (territory, class) pair here would be 121 nodes
+[click/lit-1] BUDGET | 40 nodes over 9 rounds (every pair would be 121) | 69 suite runs | 193.2s
+WARM  [click/lit-1] survey 5.0s: 14 territories; memory knows nothing; every (territory, class) pair here would be 47 nodes
+[click/lit-1] BUDGET | 41 nodes over 10 rounds (every pair would be 47) | 176 suite runs | 257.0s
+COLD  [click/lit-1b] survey 4.7s: 14 territories; memory knows nothing; every (territory, class) pair here would be 47 nodes
+[click/lit-1b] EXACT | 12 nodes over 4 rounds (every pair would be 47) | 63 suite runs | 104.7s
+WARM  [click/lit-1b] survey 4.7s: 14 territories; memory knows [1]; every (territory, class) pair here would be 47 nodes
+[click/lit-1b] EXACT | 7 nodes over 2 rounds (every pair would be 47) | 34 suite runs | 79.3s

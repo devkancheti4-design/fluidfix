@@ -1,0 +1,104 @@
+{
+ "case": "click/lenm1-1",
+ "rounds": 6,
+ "nodes": 16,
+ "suite_runs": 47,
+ "wall_s": 284.5,
+ "verdict": "EXACT",
+ "winner": [
+  "src/click/utils.py",
+  7,
+  1,
+  689
+ ],
+ "winner_runs": 4,
+ "every_pair_would_be": 36,
+ "grew_deeper": 0,
+ "memory_before": [],
+ "nodes_detail": {
+  "src/click/utils.py|2|1-689": {
+   "exit": 2,
+   "seconds": 28.2,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|0|1-689": {
+   "exit": 2,
+   "seconds": 29.9,
+   "suite_runs": 6,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|1|1-689": {
+   "exit": 2,
+   "seconds": 51.2,
+   "suite_runs": 7,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/core.py|0|1-3839": {
+   "exit": 2,
+   "seconds": 51.1,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|3|1-689": {
+   "exit": 2,
+   "seconds": 54.2,
+   "suite_runs": 4,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/core.py|1|1-3839": {
+   "exit": 2,
+   "seconds": 54.1,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/types.py|0|1-1423": {
+   "exit": 2,
+   "seconds": 54.0,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|4|1-689": {
+   "exit": 2,
+   "seconds": 38.7,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/core.py|4|1-3839": {
+   "exit": 2,
+   "seconds": 41.6,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/types.py|1|1-1423": {
+   "exit": 2,
+   "seconds": 48.0,
+   "suite_runs": 12,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/testing.py|0|1-799": {
+   "exit": 2,
+   "seconds": 47.9,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|7|1-689": {
+   "exit": 0,
+   "seconds": 72.1,
+   "suite_runs": 4,
+   "grew": "done",
+   "byte_exact": true
+  }
+ }
+}

@@ -1,0 +1,69 @@
+{
+ "case": "click/andor-1",
+ "rounds": 4,
+ "nodes": 10,
+ "suite_runs": 33,
+ "wall_s": 133.1,
+ "verdict": "EXACT",
+ "winner": [
+  "src/click/shell_completion.py",
+  4,
+  1,
+  802
+ ],
+ "winner_runs": 6,
+ "every_pair_would_be": 57,
+ "grew_deeper": 0,
+ "memory_before": [],
+ "nodes_detail": {
+  "src/click/shell_completion.py|3|1-802": {
+   "exit": 2,
+   "seconds": 18.8,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/shell_completion.py|0|1-802": {
+   "exit": 2,
+   "seconds": 22.8,
+   "suite_runs": 4,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|3|1-689": {
+   "exit": 2,
+   "seconds": 22.8,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/shell_completion.py|1|1-802": {
+   "exit": 2,
+   "seconds": 30.3,
+   "suite_runs": 11,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/core.py|0|1-3839": {
+   "exit": 2,
+   "seconds": 30.2,
+   "suite_runs": 4,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|0|1-689": {
+   "exit": 2,
+   "seconds": 30.1,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/shell_completion.py|4|1-802": {
+   "exit": 0,
+   "seconds": 60.8,
+   "suite_runs": 6,
+   "grew": "done",
+   "byte_exact": true
+  }
+ }
+}

@@ -1,0 +1,302 @@
+{
+ "case": "click/lit-1",
+ "rounds": 10,
+ "nodes": 41,
+ "suite_runs": 176,
+ "wall_s": 257.0,
+ "verdict": "BUDGET",
+ "winner": null,
+ "winner_runs": null,
+ "every_pair_would_be": 47,
+ "grew_deeper": 0,
+ "memory_before": [],
+ "nodes_detail": {
+  "src/click/core.py|4|1-3839": {
+   "exit": 2,
+   "seconds": 14.8,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/core.py|0|1-3839": {
+   "exit": 2,
+   "seconds": 19.9,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_termui_impl.py|4|1-973": {
+   "exit": 2,
+   "seconds": 20.5,
+   "suite_runs": 4,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/core.py|1|1-3839": {
+   "exit": 2,
+   "seconds": 28.3,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/types.py|0|1-1423": {
+   "exit": 2,
+   "seconds": 28.2,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_termui_impl.py|0|1-973": {
+   "exit": 2,
+   "seconds": 28.2,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_compat.py|4|1-591": {
+   "exit": 2,
+   "seconds": 30.5,
+   "suite_runs": 8,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/core.py|12|1-3839": {
+   "exit": 2,
+   "seconds": 27.8,
+   "suite_runs": 9,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/types.py|1|1-1423": {
+   "exit": 2,
+   "seconds": 28.3,
+   "suite_runs": 12,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_termui_impl.py|1|1-973": {
+   "exit": 2,
+   "seconds": 32.3,
+   "suite_runs": 19,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_compat.py|0|1-591": {
+   "exit": 2,
+   "seconds": 32.3,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/testing.py|4|1-799": {
+   "exit": 2,
+   "seconds": 32.2,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/types.py|12|1-1423": {
+   "exit": 2,
+   "seconds": 32.1,
+   "suite_runs": 22,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/types.py|10|1-1423": {
+   "exit": 2,
+   "seconds": 32.0,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_termui_impl.py|2|1-973": {
+   "exit": 2,
+   "seconds": 32.0,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_compat.py|1|1-591": {
+   "exit": 2,
+   "seconds": 31.9,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/testing.py|0|1-799": {
+   "exit": 2,
+   "seconds": 31.9,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/termui.py|4|1-1025": {
+   "exit": 2,
+   "seconds": 21.9,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_termui_impl.py|12|1-973": {
+   "exit": 2,
+   "seconds": 24.1,
+   "suite_runs": 7,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_termui_impl.py|10|1-973": {
+   "exit": 2,
+   "seconds": 24.1,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_termui_impl.py|3|1-973": {
+   "exit": 2,
+   "seconds": 24.0,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/termui.py|2|1-1025": {
+   "exit": 2,
+   "seconds": 24.0,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_compat.py|12|1-591": {
+   "exit": 2,
+   "seconds": 24.0,
+   "suite_runs": 7,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/testing.py|1|1-799": {
+   "exit": 2,
+   "seconds": 23.9,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|0|1-689": {
+   "exit": 2,
+   "seconds": 23.9,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/termui.py|0|1-1025": {
+   "exit": 2,
+   "seconds": 23.8,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_termui_impl.py|7|1-973": {
+   "exit": 2,
+   "seconds": 23.8,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/termui.py|3|1-1025": {
+   "exit": 2,
+   "seconds": 23.8,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|12|1-689": {
+   "exit": 2,
+   "seconds": 24.7,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|1|1-689": {
+   "exit": 2,
+   "seconds": 24.6,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/__init__.py|0|1-145": {
+   "exit": 2,
+   "seconds": 24.6,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/termui.py|1|1-1025": {
+   "exit": 2,
+   "seconds": 34.9,
+   "suite_runs": 22,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_termui_impl.py|11|1-973": {
+   "exit": 2,
+   "seconds": 34.9,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/termui.py|12|1-1025": {
+   "exit": 2,
+   "seconds": 22.0,
+   "suite_runs": 5,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|6|1-689": {
+   "exit": 2,
+   "seconds": 21.9,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/exceptions.py|0|1-379": {
+   "exit": 2,
+   "seconds": 21.9,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/termui.py|6|1-1025": {
+   "exit": 2,
+   "seconds": 21.8,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/exceptions.py|1|1-379": {
+   "exit": 2,
+   "seconds": 20.6,
+   "suite_runs": 4,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/globals.py|12|1-68": {
+   "exit": 2,
+   "seconds": 20.6,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/utils.py|9|1-689": {
+   "exit": 2,
+   "seconds": 20.5,
+   "suite_runs": 2,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/parser.py|0|1-534": {
+   "exit": 2,
+   "seconds": 20.4,
+   "suite_runs": 1,
+   "grew": "wider",
+   "byte_exact": false
+  }
+ }
+}

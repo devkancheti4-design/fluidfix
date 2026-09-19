@@ -1,0 +1,43 @@
+{
+ "case": "click/lit-1b",
+ "rounds": 2,
+ "nodes": 7,
+ "suite_runs": 34,
+ "wall_s": 79.3,
+ "verdict": "EXACT",
+ "winner": [
+  "src/click/_termui_impl.py",
+  1,
+  1,
+  973
+ ],
+ "winner_runs": 19,
+ "every_pair_would_be": 47,
+ "grew_deeper": 0,
+ "memory_before": [
+  1
+ ],
+ "nodes_detail": {
+  "src/click/core.py|1|1-3839": {
+   "exit": 2,
+   "seconds": 14.8,
+   "suite_runs": 3,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/types.py|1|1-1423": {
+   "exit": 2,
+   "seconds": 33.4,
+   "suite_runs": 12,
+   "grew": "wider",
+   "byte_exact": false
+  },
+  "src/click/_termui_impl.py|1|1-973": {
+   "exit": 0,
+   "seconds": 64.3,
+   "suite_runs": 19,
+   "grew": "done",
+   "byte_exact": true
+  }
+ }
+}
