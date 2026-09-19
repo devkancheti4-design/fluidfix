@@ -71,6 +71,11 @@ five of fourteen if the four one-line rewrites were taught, which is one afterno
 nine were never in reach of a line-transform vocabulary and it refused every one of them rather than
 guessing.
 
+**WITHDRAWN 2026-09-19 — the one repair was never held out.** `if items[i] > value:` → `< value:` passes
+all three of this case's tests and returns `[1, 5, 4, 6]` for `insert_sorted([1, 4, 6], 5)`. The honest
+figure for this corpus is **0 correct of 14**, not 1, and the sentence below is kept only to show what was
+claimed. With the span classes of `../span-classes-2026-09-19` it is now 4 correct of 14.
+
 **Zero wrong repairs, again.** That is the number that transfers: across 240 generated bugs, 22 real-repo
 mutants and these 14 model-written faults, the tool has not once shipped a repair that the judging tests
 rejected, and every refusal named what it tried.
