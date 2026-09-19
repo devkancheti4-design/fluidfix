@@ -11,16 +11,20 @@
 from fluidfix.place import insert_token
 
 
+# The signal was narrowed on 2026-09-19: `(?!\s*[-+*/%])` suppressed repair whenever ANY operator
+# followed, refusing `len(xs) * 2` and `len(xs) + 3` outright. This skips only an already-correct line.
+# The PLACEMENT stays the law's: bracketing unconditionally is semantically correct and scores 0 of 4 on
+# byte-exact restoration against the real-repo corpus, where every lenm1 original is unparenthesised.
+_LEN = re.compile(r"\blen\([\w.\[\]]+\)(?!\s*-\s*1\b)")
+
+
 def _len_minus_one(line, o):
-    out = []
-    for m in re.finditer(r"\blen\([\w.\[\]]+\)(?!\s*[-+*/%])", line):
-        out.append(insert_token(line, m.start(), m.end(), " - 1"))
-    return out or [line]
+    return [insert_token(line, m.start(), m.end(), " - 1") for m in _LEN.finditer(line)] or [line]
 
 
 register(7, "len-as-last-index",
          "a len(x) standing where the last valid index len(x) - 1 belongs",
-         re.compile(r"\blen\([\w.\[\]]+\)(?!\s*[-+*/%])"),
+         _LEN,
          _len_minus_one)
 
 
