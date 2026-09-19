@@ -1,0 +1,16 @@
+[
+ {
+  "case": "rich/segment.py \u2014 Segment._split_cells",
+  "calls": 35,
+  "candidate_delta": 0,
+  "reference_delta": 0,
+  "reference_calls": 35
+ },
+ {
+  "case": "rich/traceback.py \u2014 Traceback.__rich_console__",
+  "calls": 16,
+  "candidate_delta": 16,
+  "reference_delta": 16,
+  "reference_calls": 16
+ }
+]
