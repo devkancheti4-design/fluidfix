@@ -61,16 +61,32 @@ def check(kind: int, original: str, candidate: str):
     return PROVEN, statement, n
 
 
-def gate(kind: int, original: str, candidates: list):
+def classes_without_properties(kinds) -> list:
+    """Which of these taught classes have no property, so the gate cannot speak for them.
+
+    This exists because the gate FAILS OPEN. Properties live in their own file, and a dictionary loaded
+    without it leaves PROPERTIES empty: every check returns UNPROVEN, every candidate passes, and the
+    gate reports zero refusals while shipping whatever the suite happens to accept. Measured 2026-09-20 —
+    a composed descent reproduced the rich incident exactly that way, ` k * len(x) - 1` accepted by a
+    suite that only ever exercised k = 1. Call this after loading and say something about what it returns."""
+    return sorted(k for k in kinds if k not in PROPERTIES)
+
+
+def gate(kind: int, original: str, candidates: list, strict: bool = False):
     """Split candidates into those the class property permits and those it refutes.
 
     Refusal here costs no suite run. That is the point: the suite is the expensive judge and the only
     one that can accept, but a class property can reject for free — and can reject candidates the suite
-    would have accepted."""
+    would have accepted.
+
+    With strict=True an UNPROVEN candidate is refused too — use it where an unproved rewrite must not
+    reach the suite at all. The default is permissive because the suite is still a real judge; strict is
+    for the case where the proof, not the suite, is the thing being relied on."""
     kept, refused = [], []
     for c in candidates:
         if c == original:
             continue
         verdict, why, n = check(kind, original, c)
-        (refused if verdict == REFUTED else kept).append((c, verdict, why, n))
+        bad = verdict == REFUTED or (strict and verdict == UNPROVEN)
+        (refused if bad else kept).append((c, verdict, why, n))
     return kept, refused
