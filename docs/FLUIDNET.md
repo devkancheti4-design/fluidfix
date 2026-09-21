@@ -69,6 +69,9 @@ advice, it is enforced: a check that evaluates zero inputs reports UNPROVEN, nev
    │  property gate ──> your suite ──> certificate                 │
    │  refuses for       the ONLY       six gates,                  │
    │  free              acceptor       byte-exact rollback         │
+   │       ^                 │                                     │
+   │       └─────────────────┘                                     │
+   │   still red, but FEWER tests failing: keep the fix, go again   │
    └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -84,6 +87,60 @@ is the only thing that can *prove*. Rejection restores the file byte-exactly.
 
 **Certification mode** is the same bottom row pointed at a patch the net didn't write — a model's, a
 colleague's. 14/14 accepted, 29/29 adversarial refused.
+
+---
+
+## More than one bug at a time
+
+Suppose your code has two bugs and the net knows how to fix both kinds.
+
+**What used to happen.** It applies its first fix. That fix is *correct* — but the second bug is still
+there, so the tests are still red. Its only question was "are the tests green now?", the answer was no, so
+it threw the correct fix away and undid it. Same for the second. It refused, holding both right answers
+the whole time. The problem was never the knowledge; it was that **red** and **less red** looked identical
+to it.
+
+**What happens now.** It counts how many tests are failing. A real run, three bugs, three different taught
+classes:
+
+```
+start                                      5 tests failing
+off-by-one        len(words) -> len(words) - 1     4 failing   better, keep it
+wrong operator    and -> or                        2 failing   better, keep it
+flipped guard     if x: -> if not x:               0 failing   green, done
+```
+
+A step is kept only if the count goes **down** and nothing that was passing starts failing. It walks
+downhill until green.
+
+**What did not change.** Only the final state is accepted, and only on the whole suite going green. If it
+walks downhill and gets stuck short of green, every edit is rolled back byte-for-byte and the answer is
+still refusal. Intermediate steps are working guesses, never certified.
+
+**Two bugs on the same line** need one more thing. Neither fix alone changes which tests fail — the two
+faults mask each other, so there is no gradient to follow — so a candidate is fed back through the
+vocabulary and the pair is tested together:
+
+```
+return words[len(words)] and fallback          both tests failing
+  fix the index only                           both still failing   no signal
+  fix the operator only                        both still failing   no signal
+  compose:  words[len(words) - 1] or fallback  green
+```
+
+Measured 2026-09-20: two faults across two lines, 6 suite runs; three faults across three lines, 11 runs;
+two faults on one line, 4 runs. All refused outright before this.
+
+**The safety cost, and who pays it.** Smaller steps are a new way to be wrong, so it was tested against a
+deliberately weak suite — one that cannot tell the right fix from the wrong one, exactly like the suite
+that accepted the `rich` incident. Without the property gate it confidently shipped the wrong fix. With
+the gate it refused, blocking 8 candidates before a single suite run. **The properties are what make
+descent safe, not the descent itself.**
+
+**And they fail open.** Properties live in a separate file from the classes. Load the classes without them
+and the gate silently does nothing — every check returns UNPROVEN, every candidate passes, and it reports
+zero refusals, which reads as a clean bill of health. Call `props.classes_without_properties(kinds)` after
+loading and act on what it returns, or use `gate(..., strict=True)` to refuse unproved rewrites outright.
 
 ---
 
