@@ -1,0 +1,53 @@
+{
+ "one_line": 276,
+ "total": 565,
+ "reached": [
+  57,
+  235,
+  238,
+  305,
+  360,
+  389,
+  431,
+  479,
+  525,
+  529
+ ],
+ "per_net": [
+  [
+   "shipped",
+   80,
+   7
+  ],
+  [
+   "rules_session.py",
+   102,
+   7
+  ],
+  [
+   "rules_session_b.py",
+   80,
+   7
+  ],
+  [
+   "corpus.py",
+   102,
+   8
+  ],
+  [
+   "spans.py",
+   86,
+   7
+  ],
+  [
+   "literal_either_way.py",
+   80,
+   9
+  ],
+  [
+   "combined.py",
+   89,
+   8
+  ]
+ ]
+}
