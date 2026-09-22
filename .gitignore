@@ -30,3 +30,5 @@ research/**/*.gcno
 research/**/*.o
 research/**/*.a
 .DS_Store
+docs/media/trailer/fluidfix-trailer.mp4
+docs/media/trailer/one-example-sets-the-path.mp4
