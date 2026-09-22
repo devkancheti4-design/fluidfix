@@ -38,6 +38,8 @@ from .acts import Observation, SpanEdit, act_for, candidates
 from .engine import decide, situation
 from .lanes import ADVANCE, EMIT, HALT, kind_of, mask_of
 from .oracle import Oracle
+from .props import check as _prop_check, REFUTED as _PROP_REFUTED
+
 
 __all__ = ["RepairResult", "repair"]
 
@@ -82,13 +84,20 @@ class RepairResult:
     # provenance: the repair equals the git-HEAD content at that line (the
     # defect was an uncommitted edit); None when git/HEAD is unavailable
     restored_original: bool | None = None
+    # candidates the CLASS PROPERTY refuted before any suite run (2026-09-22).
+    # A property is algebra over the rewrite, so the refusal is free — and it
+    # can refuse what the suite would have accepted (rich segment.py).
+    refuted_by_property: int = 0
 
     def summary(self) -> str:
+        gate = (f"; {self.refuted_by_property} candidate"
+                f"{'s' if self.refuted_by_property != 1 else ''} refuted by class "
+                f"property before any suite run") if self.refuted_by_property else ""
         if self.repaired:
             return (f"repaired line {self.lineno} in {self.suite_runs} suite runs "
-                    f"({self.seconds:.1f}s):\n  - {self.old_line.strip()}\n"
+                    f"({self.seconds:.1f}s{gate}):\n  - {self.old_line.strip()}\n"
                     f"  + {self.new_line.strip()}")
-        return f"refused: {self.reason} ({self.seconds:.1f}s)"
+        return f"refused: {self.reason} ({self.seconds:.1f}s{gate})"
 
 
 def _max_changed_lines() -> int:
@@ -510,6 +519,25 @@ def repair(oracle: Oracle, defect_file: str,
                                 res.tried_log.append(
                                     {"at": at_str, "tried": crepr[:200],
                                      "why": f"does not compile: {e}"[:400]})
+                            else:
+                                res.tried_more += 1
+                            continue
+                    # THE CLASS PROPERTY, if one was taught for this kind:
+                    # algebra over the rewrite, asked BEFORE the suite. A
+                    # REFUTED candidate is never written and costs no run —
+                    # and it may be one the suite would have accepted (rich
+                    # segment.py, 2026-09-19: `* len(text) - 1`, green).
+                    # UNPROVEN passes through; the suite is still a real
+                    # judge. Per-line only: a span has no single rewrite.
+                    if isinstance(cand, str):
+                        _pv, _pwhy, _pn = _prop_check(kind, body, cand)
+                        if _pv == _PROP_REFUTED:
+                            res.refuted_by_property += 1
+                            if len(res.tried_log) < 64:
+                                res.tried_log.append(
+                                    {"at": at_str, "tried": crepr[:200],
+                                     "why": ("class property refuted it, no "
+                                             f"suite run: {_pwhy}")[:400]})
                             else:
                                 res.tried_more += 1
                             continue

@@ -120,13 +120,37 @@ class GuardReport:
                      "(a few times your green suite's seconds) and re-run.")
         if self.attempts:
             total = len(self.attempts) + self.rejected_unlisted
-            base += (f" {total} candidate(s) were tried and rejected — "
-                     + (f"{len(self.attempts)} of them are logged with the test "
-                        f"that failed each (the log keeps 64 per file)."
-                        if self.rejected_unlisted else
-                        "each is logged with the test that failed it in the "
-                        "refusal report."))
+            prop, comp, suite = _refusal_kinds(self.attempts)
+            if prop and not suite and not self.rejected_unlisted:
+                # No suite run was paid. Say so — and say which judge spoke.
+                base = ("REFUSED before any suite run: "
+                        f"{prop} candidate(s) refuted by class property"
+                        + (f", {comp} could not compile" if comp else "")
+                        + ". A property is algebra over the rewrite, so this "
+                        "refusal cost nothing — and it can refuse what the "
+                        "suite would have accepted. The refusal report "
+                        "records the input that refutes each one.")
+            else:
+                parts = []
+                if prop: parts.append(f"{prop} refuted by class property before any suite run")
+                if comp: parts.append(f"{comp} could not compile")
+                if suite: parts.append(f"{suite} rejected by the suite")
+                base += (f" {total} candidate(s) were tried: " + ", ".join(parts) + " — "
+                         + (f"{len(self.attempts)} of them are logged with what "
+                            f"killed each (the log keeps 64 per file)."
+                            if self.rejected_unlisted else
+                            "each is logged with what killed it in the refusal report."))
         return base + (f"\n  hint: {self.hint}" if self.hint else "")
+
+
+def _refusal_kinds(attempts: list) -> tuple:
+    """(by property, could not compile, by the suite) — what actually killed each logged candidate.
+    Needed since 2026-09-22: a class property can refute a candidate BEFORE any suite run, and a
+    refusal that then says "rejected by the suite" names the wrong judge and hides the one that paid
+    nothing."""
+    prop = sum(1 for a in attempts if str(a.get("why", "")).startswith("class property refuted"))
+    comp = sum(1 for a in attempts if str(a.get("why", "")).startswith("does not compile"))
+    return prop, comp, len(attempts) - prop - comp
 
 
 def _is_test_path(rel: str) -> bool:
@@ -692,15 +716,27 @@ def guard_once(oracle: Oracle, observer, files: list[str] | None = None,
                 hint = result.reason          # the third outcome, again
         if any_acts and not greens_seen and not hint and \
                 decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
-            hint = ("every generated candidate was rejected by the suite "
-                    "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — "
-                    "the refusal report lists what was tried; teach the "
-                    "class or fix by hand")
+            _p, _c, _s = _refusal_kinds(attempts)
+            hint = (("the class property refuted every candidate the suite "
+                     "would have judged; no suite run was paid (engine law: "
+                     "REFUTED -> HARVEST_COUNTEREXAMPLE) — the refusal report "
+                     "carries the refuting input for each")
+                    if _p and not _s else
+                    ("every generated candidate was rejected by the suite "
+                     "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — "
+                     "the refusal report lists what was tried; teach the "
+                     "class or fix by hand"))
     if not hint and acts0 and not greens_seen and \
             decide(situation(REFUTED=True)) == "HARVEST_COUNTEREXAMPLE":
-        hint = ("every generated candidate was rejected by the suite "
-                "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the "
-                "refusal report lists each one with the test that killed it")
+        _p, _c, _s = _refusal_kinds(attempts)
+        hint = (("the class property refuted every candidate the suite would "
+                 "have judged; no suite run was paid (engine law: REFUTED -> "
+                 "HARVEST_COUNTEREXAMPLE) — the refusal report carries the "
+                 "refuting input for each")
+                if _p and not _s else
+                ("every generated candidate was rejected by the suite "
+                 "(engine law: REFUTED -> HARVEST_COUNTEREXAMPLE) — the "
+                 "refusal report lists each one with the test that killed it"))
     return GuardReport(status="refused", candidates=candidates,
                        seconds=time.time() - t0, hint=hint, evidence=ev,
                        attempts=attempts, rejected_unlisted=unlisted, executed=executed, failing=failing)
