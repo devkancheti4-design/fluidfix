@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fluidnet — the teaching cycle</title>
+<style>
+:root{
+  --surface-0:#FAF9F7; --surface-1:#F1EFE8; --surface-2:#FFFFFF;
+  --text-primary:#2C2C2A; --text-secondary:#5F5E5A; --text-muted:#888780; --text-accent:#185FA5;
+  --border:rgba(0,0,0,.12); --border-strong:rgba(0,0,0,.24);
+  --amber-fill:#FAEEDA; --amber-line:#854F0B; --amber-title:#633806; --amber-sub:#854F0B;
+  --green-fill:#EAF3DE; --green-line:#3B6D11; --green-title:#27500A; --green-sub:#3B6D11;
+  --radius:8px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --surface-0:#1A1A19; --surface-1:#252523; --surface-2:#2C2C2A;
+  --text-primary:#EDEBE6; --text-secondary:#B4B2A9; --text-muted:#888780; --text-accent:#85B7EB;
+  --border:rgba(255,255,255,.14); --border-strong:rgba(255,255,255,.28);
+  --amber-fill:#633806; --amber-line:#EF9F27; --amber-title:#FAC775; --amber-sub:#EF9F27;
+  --green-fill:#27500A; --green-line:#97C459; --green-title:#C0DD97; --green-sub:#97C459;
+}}
+:root[data-theme="dark"]{
+  --surface-0:#1A1A19; --surface-1:#252523; --surface-2:#2C2C2A;
+  --text-primary:#EDEBE6; --text-secondary:#B4B2A9; --text-muted:#888780; --text-accent:#85B7EB;
+  --border:rgba(255,255,255,.14); --border-strong:rgba(255,255,255,.28);
+  --amber-fill:#633806; --amber-line:#EF9F27; --amber-title:#FAC775; --amber-sub:#EF9F27;
+  --green-fill:#27500A; --green-line:#97C459; --green-title:#C0DD97; --green-sub:#97C459;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:2.5rem 1.25rem;background:var(--surface-0);color:var(--text-primary);
+  font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
+main{max-width:720px;margin:0 auto}
+h1{font-size:22px;font-weight:500;margin:0 0 .4rem}
+p.lede{font-size:15px;color:var(--text-secondary);margin:0 0 2rem}
+svg{display:block;width:100%;height:auto}
+.th{font-size:14px;font-weight:500;fill:var(--text-primary)}
+.ts{font-size:12px;fill:var(--text-secondary)}
+.a .th{fill:var(--amber-title)} .a .ts{fill:var(--amber-sub)}
+.g .th{fill:var(--green-title)} .g .ts{fill:var(--green-sub)}
+.a rect{fill:var(--amber-fill);stroke:var(--amber-line)}
+.g rect{fill:var(--green-fill);stroke:var(--green-line)}
+.box{fill:var(--surface-2);stroke:var(--border-strong)}
+.arr{stroke:var(--text-secondary);stroke-width:1.5;fill:none}
+.ctl{display:flex;align-items:center;gap:12px;margin:1.8rem 0 1rem}
+label{font-size:14px;color:var(--text-secondary)}
+input[type=range]{flex:1;accent-color:var(--text-accent)}
+#out{font-size:14px;font-weight:500;min-width:30px;text-align:right}
+#nets{display:flex;gap:10px;flex-wrap:wrap}
+.net{background:var(--surface-1);border-radius:var(--radius);padding:8px 10px}
+.net h2{font-size:12px;font-weight:400;color:var(--text-secondary);margin:0 0 6px}
+.slots{display:flex;gap:4px}
+.slot{width:13px;height:13px;border-radius:3px;border:.5px solid var(--border-strong)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:1.6rem}
+.card{background:var(--surface-1);border-radius:var(--radius);padding:1rem}
+.card .k{font-size:13px;color:var(--text-secondary)}
+.card .v{font-size:24px;font-weight:500}
+footer{margin-top:2.5rem;padding-top:1rem;border-top:.5px solid var(--border);
+  font-size:13px;color:var(--text-muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>fluidnet — the teaching cycle</h1>
+<p class="lede">Your work splits into shapes a net already owns, which come back repaired and proved, and
+open-ended work you solve yourself and may then teach, feeding the vocabulary. Seven of your own classes
+fit in a guard, and the cap is per process — so the vocabulary grows by adding nets.</p>
+
+<svg viewBox="0 0 680 258" role="img"><title>the teaching cycle</title><desc>Your vocabulary sits at the top. Work splits into taught shapes, which a net repairs and proves without your attention, and open-ended work, which you solve and may then teach, feeding back into the vocabulary.</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<g class="a"><rect x="40" y="40" width="600" height="50" rx="4" stroke-width=".5"/><text x="340" y="63" class="th" text-anchor="middle">Your vocabulary</text><text x="340" y="80" class="ts" text-anchor="middle" id="voc">7 shapes taught, across 1 net</text></g>
+<g><rect x="40" y="145" width="110" height="56" rx="4" class="box" stroke-width=".5"/><text x="95" y="168" class="th" text-anchor="middle">Your work</text><text x="95" y="186" class="ts" text-anchor="middle">a failing test</text></g>
+<line x1="150" y1="162" x2="179" y2="140" class="arr" marker-end="url(#ar)"/>
+<line x1="150" y1="184" x2="179" y2="208" class="arr" marker-end="url(#ar)"/>
+<g class="g"><rect x="183" y="112" width="190" height="52" rx="4" stroke-width=".5"/><text x="278" y="135" class="th" text-anchor="middle">Taught shape</text><text x="278" y="153" class="ts" text-anchor="middle">the net owns this</text></g>
+<line x1="373" y1="138" x2="391" y2="138" class="arr" marker-end="url(#ar)"/>
+<g class="g"><rect x="393" y="112" width="207" height="52" rx="4" stroke-width=".5"/><text x="496" y="135" class="th" text-anchor="middle">Repaired, with a proof</text><text x="496" y="153" class="ts" text-anchor="middle">no attention from you</text></g>
+<g><rect x="183" y="186" width="190" height="52" rx="4" class="box" stroke-width=".5"/><text x="278" y="209" class="th" text-anchor="middle">Open-ended</text><text x="278" y="227" class="ts" text-anchor="middle">nothing taught matches</text></g>
+<line x1="373" y1="212" x2="391" y2="212" class="arr" marker-end="url(#ar)"/>
+<g class="a"><rect x="393" y="186" width="207" height="52" rx="4" stroke-width=".5"/><text x="496" y="209" class="th" text-anchor="middle">You solve it</text><text x="496" y="227" class="ts" text-anchor="middle">then teach the shape</text></g>
+<path d="M600 212 L620 212 L620 94" class="arr" marker-end="url(#ar)"/>
+</svg>
+
+<div class="ctl">
+  <label for="n">Shapes taught</label>
+  <input type="range" min="1" max="35" value="7" step="1" id="n">
+  <span id="out">7</span>
+</div>
+<div id="nets"></div>
+
+<div class="cards">
+  <div class="card"><div class="k">real fixes that are 1 line</div><div class="v">37%</div></div>
+  <div class="card"><div class="k">5 lines or fewer</div><div class="v">70%</div></div>
+  <div class="card"><div class="k">20 lines or fewer</div><div class="v">91%</div></div>
+</div>
+
+<footer>The seven-slot arithmetic is exact — a dictionary holds 16 kinds, 7 of them reserved for your own
+classes, and the cap is per process. The 37 / 70 / 91 figures are measured on real maintainer fixes across
+click, arrow, rich and python-sortedcontainers. How fast your own split shifts from the lower lane to the
+upper one is not measured — that depends on how repetitive your work is.</footer>
+</main>
+<script>
+(function(){
+var sl=document.getElementById('n');
+function render(){
+  var n=parseInt(sl.value,10),nets=Math.ceil(n/7),left=n,out='';
+  document.getElementById('out').textContent=n;
+  document.getElementById('voc').textContent=n+' shape'+(n===1?'':'s')+' taught, across '+nets+' net'+(nets===1?'':'s');
+  for(var i=0;i<nets;i++){
+    var f=Math.min(7,left);left-=f;
+    var d='';
+    for(var s=0;s<7;s++)d+='<div class="slot" style="background:'+(s<f?'var(--text-accent)':'transparent')+'"></div>';
+    out+='<div class="net"><h2>net '+(i+1)+' · '+f+'/7</h2><div class="slots">'+d+'</div></div>';
+  }
+  document.getElementById('nets').innerHTML=out;
+}
+sl.addEventListener('input',render);render();
+})();
+</script>
+</body>
+</html>

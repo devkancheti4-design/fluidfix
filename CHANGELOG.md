@@ -1,5 +1,52 @@
 # Changelog
 
+## 0.16.0 — 2026-09-22
+
+**A candidate now meets its class property before it meets the suite.** A property is algebra over the
+rewrite — checked exhaustively over a bounded domain, before any test runs — and it can refuse what the
+suite would have accepted. Measured 2026-09-19: rich's own suite accepted `* len(text) - 1`; the property
+refutes it at `{'__L': 1, 'k': 2}`. The refusal costs no suite run and the refusal report says which judge
+spoke.
+
+- **`teach_property(kind, statement, checker)`** in a dictionary file, beside `register()`. `load_dictionary`
+  supplies it and `propcheck` (`agree_over`, `free_names`, `rhs`, `nth_boolop_swapped`). Verdicts are
+  PROVEN / REFUTED / UNPROVEN; a check that evaluated zero inputs is UNPROVEN, never PROVEN, and a checker
+  that raises passes nothing. (`src/fluidfix/props.py`, `propcheck.py`)
+- **The loop asks the property** before writing a candidate; REFUTED is logged with its refuting input and
+  never written. `Result.refuted_by_property`; the summary says how many. (`loop.py`)
+- **A refusal names the judge.** When no suite run was paid, the headline and the HARVEST hint say "refuted
+  by class property", not "rejected by the suite" — which was false and hid the one judge that cost
+  nothing. (`guard.py`)
+- **The gate fails open, and now says so.** Properties live in a file; load classes without it and every
+  check is UNPROVEN and passes. `props.classes_without_properties(kinds)` names the classes the gate cannot
+  speak for; `gate(..., strict=True)` refuses UNPROVEN. Found 2026-09-20 when a composed descent shipped
+  the rich incident with `0 blocked` because the properties file was not loaded.
+- **The placement law.** Classes that insert a token (`- 1`, `+ 1`) no longer decide where it goes: the body
+  measures the operator context into a situation word and a superoptimizer-found law rules TRAIL or WRAP
+  (`src/fluidfix/place.py`, `laws/place.c`). `k * len(x)` went 0/12 → 12/12; the rich line is placed as the
+  maintainer placed it.
+- **The law's table was wrong for a left-hand minus** — `+` and `-` shared a class, but `k - len(x) - 1`
+  is off by two from `k - (len(x) - 1)`. Found by a class property, not by checking the law against its
+  table; fixed in the body's measurement (`_left_class`), the law byte-for-byte unchanged. Corollary kept:
+  verifying a law against its spec does not verify the spec.
+- **Span classes.** A candidate containing `\n` becomes several lines and always did; the limit was in the
+  appliers. `examples/taught-2026-09-19/spans.py`: 0/24 → 24/24 on unseen generated instances, 0 → 4 of 14
+  real fixes. (2026-09-19)
+- **One class taught from one commit, tested on real history.** `examples/taught-2026-09-22/
+  sibling_attribute.py`: 84/84 exact across seven never-taught positions, 0/12 wrong accepts; on 15 held-out
+  real commits the right name is in the file's evidence for 8 and every one of those is reached under the
+  candidate cap. A pre-registered ranking change was tested blind and not adopted.
+
+Measured in this range, in `research/`: the six gates certify fixes fluidfix did not write, 14/14 accepted,
+29/29 adversarial refused (2026-09-18); more than one fault at a time by descent on the failing-test count,
+three faults from three classes in 11 suite runs (2026-09-20); the current vocabulary reaches 10 of 565
+real fixes — 75% of single-token mechanical ones, ~2% of everything, because most real one-line fixes are
+data and docstrings (2026-09-22). Earlier in the range: a real-repository study, 7/22 exact at zero tokens
+(2026-09-16); the router fused per guard, 36 s against 904 s (2026-09-18).
+
+`docs/FLUIDNET.md` is the account of the whole; `docs/media/fluidnet-demo/` is a 3:52 recording of every
+command above running live.
+
 ## 0.15.0 — 2026-09-07
 
 **0.14.0 was never released.** Its central change — measuring ambiguity across
